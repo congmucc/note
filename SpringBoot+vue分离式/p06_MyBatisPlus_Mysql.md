@@ -47,12 +47,18 @@
 
   ```
   # 配置数据库相关信息
-  spring.datasource.type=com.alibaba.druid.pool.DruidDataSource  # 使用我们添加的依赖中的连接池
-  spring.datasource.driver-class-name=com.mysql.jdbc.Driver  # 指定我们用什么驱动连接数据库
-  spring.datasource.url=jdbc:mysql://localhost:3306/mydb?useSSL=false  # 数据库在哪里  3306是本地的数据库地址，mydb是数据库名字(可修改)
-  spring.datasource.username=root  # 数据库的账号
-  spring.datasource.password=123456  #数据库的密码
-  mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl # 指定了日志输出的格式
+  # 使用我们添加的依赖中的连接池
+  spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+  # 指定我们用什么驱动连接数据库
+  spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+  # 数据库在哪里  3306是本地的数据库地址，miniProject是数据库名字(可修改)
+  spring.datasource.url=jdbc:mysql://localhost:3306/miniProject?useSSL=false
+  # 数据库的账号
+  spring.datasource.username=root
+  #数据库的密码
+  spring.datasource.password=123456
+  # 指定了日志输出的格式
+  mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
   ```
 
   > 记得把# 这种注释全删了，不然报错找不到配置
@@ -60,7 +66,7 @@
 #### - 添加@MapperScan注解
 
   ```
-  
+  这个是plus的
   ```
 
 

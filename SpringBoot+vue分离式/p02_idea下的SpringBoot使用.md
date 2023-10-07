@@ -24,15 +24,15 @@
 #### 其次添加依赖
 
 ```
+    <!-- 依赖  -->
     <dependencies>
         <!--添加web类路径依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        
-    </dependencies>
 
+    </dependencies>
 ```
 
 
@@ -75,11 +75,14 @@
 spring:
 devtools:
 restart:
-enabled: true  #设置开启热部署
-additional-paths: src/main/java #重启目录
+#设置开启热部署
+enabled: true
+#重启目录
+additional-paths: src/main/java
 exclude: WEB-INF/**
 freemarker:
-cache: false    #页面不加载缓存，修改即时生效
+#页面不加载缓存，修改即时生效
+cache: false
 ```
 
 以及修改idea

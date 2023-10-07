@@ -14,7 +14,7 @@
 
 
 
-![image-20230711200834574](D:\Code\笔记\SpringBoot+vue分离式\image-20230711200834574.png)
+![image-20230711200834574](image-20230711200834574.png)
 
 ### 问题
 
@@ -41,7 +41,7 @@ Token 是在服务端产生的一串字符串,是客户端访问资源接口（A
 
 
 
-![image-20230712085650016](D:\Code\笔记\SpringBoot+vue分离式\image-20230712085650016.png)
+![image-20230712085650016](image-20230712085650016.png)
 
 
 
@@ -180,4 +180,49 @@ base64enc(payload)
     <version>0.9.1</version>
 </dependency>
 ```
+
+
+
+
+
+### TokenUtil——生成与解析token
+
+> 在工具类TokenUtil.java中
+
+```
+public class JwtUtils {
+  //7天过期
+    private static long expire = 604800;
+    //32位秘钥
+    private static String secret = "abcdfghiabcdfghiabcdfghiabcdfghi"
+    //生成token
+    public static String generateToken(String username){
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + 1000 * expire);
+        return Jwts.builder()
+                .setHeaderParam( "type","JWT")
+                .setSubject(username)
+                .setIssuedAt(now)
+                .setExpiration(expiration)
+                .signWith(SignatureAlgorithm.HS512,secret)
+                .compact);
+
+    }
+
+    //解析token
+    public static Claims getClaimsByToken(String token){
+        return Jwts.parser()
+                .setSigningKey(secret)
+                .parseClaimsJws(token)
+                .getBody() ;
+    }
+}
+
+```
+
+
+
+
+
+## 错误码
 

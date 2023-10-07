@@ -14,7 +14,7 @@ npm install -g @vue/cli
 
 ## Vue CLI使用
 
-- Vue CLI是Vue官方提供的构建工具，通常称为脚手架。
+- Vue CLI是Vue官方提供的构建工具，通常称为**脚手架**。
 - 用于快速搭建一个带有热重载（在代码修改后不必刷新页面即可呈现修改后的 效果）及构建生产版本等功能的单页面应用。
 - Vue CLI基于 webpack 构建，也可以通过项目内的配置文件进行配置。
 - 安装：npm install -g @vue/cli

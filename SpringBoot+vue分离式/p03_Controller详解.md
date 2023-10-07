@@ -5,8 +5,10 @@
   > 如果请求的是界面和数据，使用@Controller注解即可；如果只是请求数据，则可以使用@RestController注解。默认情况下，@RestController注解会将返回的对象数据转换为JSON格式
 
   > 如果返回一个name数据，前端界面中可以通过${name}参数获取后台返回的数据并显示
-
-
+  >
+  > 一般前后端分离的项目使用@RestController，@Controller这个是ssm中的知识，个人认为是mvc和ioc的结合
+  >
+  > @RestController注解是springMVC提供的一个复合注解，标识在控制器的类上，就相当于为类添加了 @Controller注解，并且为其中的每个方法添加了@ResponseBody注解
 
 - @RequestMapping
 
@@ -26,7 +28,7 @@
   >
   > params，headers: 请求的参数及请求头的值
 
-![image-20230706010110393](D:\Code\笔记\SpringBoot\image-20230706010110393.png)
+![image-20230706010110393](./image-20230706010110393.png)
 
 - @RequestParam：
 
@@ -35,7 +37,7 @@
   
 
 ```
-@RequestMapping(value = "/hello", method = RequestMethod.*GET*)
+@RequestMapping(value = "/hello", method = RequestMethod.GET)
 // http://localhost:8080/hello?nickname=zhangsan
 public String hello(@RequestParam("nickname") String nickname) {
     return "你好" + nickname;
@@ -43,8 +45,6 @@ public String hello(@RequestParam("nickname") String nickname) {
 ```
 
   > 加入之后，@RequestParam("nickname")中的nickname和String nickname 将会一致， 如果不传入nickname  eg：`http://localhost:8080/hello` 网站将会报错
-
-
 
 
 

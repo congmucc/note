@@ -23,7 +23,7 @@
 
 ## HTTP Method
 
-![image-20230706162103830](D:\Code\笔记\SpringBoot+vue分离式\image-20230706162103830.png)
+![image-20230706162103830](image-20230706162103830.png)
 
 
 
@@ -56,7 +56,7 @@
 
 ## Spring Boot实现RESTful API
 
-![image-20230706163129946](D:\Code\笔记\SpringBoot+vue分离式\image-20230706163129946.png)
+![image-20230706163129946](image-20230706163129946.png)
 
 ## Swagger含义
 
@@ -120,4 +120,4 @@
 
 ## Swagger常用注解
 
-![image-20230706171847592](D:\Code\笔记\SpringBoot+vue分离式\image-20230706171847592.png)
+![image-20230706171847592](image-20230706171847592.png)
