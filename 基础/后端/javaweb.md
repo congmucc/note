@@ -1,6 +1,227 @@
-## 1 Maven高级  
+## 10 分页查询 
 
-### 1.1 分模块设计与开发
+> 步骤： 
+>
+> 	1. 分页查询原理
+> 	1. 分页查询
+> 	1. 分页查询（插件）
+
+### 10.1 分页查询原理
+
+> 核心原理就是`select * from emp limit ?, ?`
+>
+> 不过前端会传来一个page和pageSize
+>     接口路径： /user/page?page=1&pageSize=10
+>     page是第几页   pageSize是一页显示几个
+>     limit 第一个参数 ： (page - 1) * pageSize（这里page-1是因为需要的是第几页，例如第一页是0，pageSize）
+>     第二个参数：pageSize
+
+### 10.2 分页查询
+
+> 步骤： 
+>
+>  	1. 根据返回结果值设置pageBean这个返回类，包括总数total和分页对象rows
+>  	2. Service实现层中需要进行编写
+>  	 - 1、获取总记录数
+>  	 - 2、获取分页查询结果列表
+>  	 - 3、封装PageBean对象
+>  	3. mapper中进行sql查询
+
+ 1. **根据返回结果值设置pageBean这个返回类，包括总数total和分页对象rows**
+
+    ```java
+    package com.kcxgdw.obj;
+    
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+    
+    import java.util.List;
+    
+    /**
+     * 分页查询结果
+     */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class PageBean {
+        private Long total;
+        private List rows;
+    }
+    
+    ```
+
+    
+
+ 2. **Service实现层中需要进行编写**
+
+    - **1、获取总记录数**
+    - **2、获取分页查询结果列表**
+    - **3、封装PageBean对象**
+
+    ```java
+    import com.itheima.mapper.EmpMapper;
+    import com.itheima.pojo.Emp;
+    import com.itheima.pojo.PageBean;
+    import com.itheima.service.EmpService;
+    import lombok.extern.slf4j.Slf4j;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Service;
+    import java.time.LocalDate;
+    import java.util.List;
+    @Slf4j
+    @Service
+    public class EmpServiceImpl implements EmpService {
+        @Autowired
+        private EmpMapper empMapper;
+        @Override
+        public PageBean page(Integer page, Integer pageSize) {
+            //1、获取总记录数
+            // "select count(*) from emp
+            Long count = empMapper.count();
+            
+            //2、获取分页查询结果列表
+            Integer start = (page - 1) * pageSize; //计算起始索引 , 公式:(页码-1)*页大小
+            //select * from emp limit start, pageSize
+            List<Emp> empList = empMapper.list(start, pageSize);
+            
+            //3、封装PageBean对象
+            PageBean pageBean = new PageBean(count , empList);
+            return pageBean;
+        }
+    }
+    ```
+
+ 3. **mapper中进行sql查询**
+
+    
+
+### 10.3 分页查询（插件）
+
+> 步骤：
+>
+> 	1. 引入依赖
+> 	1. Service中使用
+> 	1. mapper中进行查询
+
+ 1. **引入依赖**
+
+    ```java
+    <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>1.4.2</version>
+    </dependency>
+    ```
+
+ 2. **Service中使用**
+
+    ```java
+    Override
+    public PageBean page(Integer page, Integer pageSize) {
+        // 设置分页参数
+        PageHelper.startPage(page, pageSize);
+        // 执行分页查询
+        List<Emp> empList = empMapper.list();
+        // 获取分页结果
+        Page<Emp> p = (Page<Emp>) empList; 
+        //封装PageBean
+        PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
+        return pageBean;
+    }
+    ```
+
+ 3. **mapper中进行查询**
+
+    ````
+    @Mapper
+    public interface EmpMapper {
+        //获取当前页的结果列表
+        @Select("select * from emp")
+        public List<Emp> page();
+    }
+    ````
+
+### 10.4 分页查询（条件）
+
+> 步骤： 
+>
+> ​	其他都一样，只是要使用动态sql
+
+1. **Service中修改**
+
+    ```java
+    @Slf4j
+    @Service
+    public class EmpServiceImpl implements EmpService {
+        @Autowired
+        private EmpMapper empMapper;
+        @Override
+        public PageBean page(Integer page, Integer pageSize, String
+        name, Short gender, LocalDate begin, LocalDate end) {
+            //设置分页参数
+            PageHelper.startPage(page, pageSize);
+    
+            //执行条件分页查询
+            List<Emp> empList = empMapper.list(name, gender, begin,end);
+    
+            //获取查询结果
+            Page<Emp> p = (Page<Emp>) empList;
+    
+            //封装PageBean
+            PageBean pageBean = new PageBean(p.getTotal(),p.getResult());
+            return pageBean;
+         }
+    }
+    ```
+
+
+
+2. **mapper中进行查询**
+
+    ```java
+    @Mapper
+    public interface EmpMapper {
+        //获取当前页的结果列表
+        public List<Emp> list(String name, Short gender, LocalDate begin,LocalDate end);
+    }
+    ```
+
+3. **xml动态sql**
+
+    ```java
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper
+    		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.itheima.mapper.EmpMapper">
+        <!-- 条件分页查询 -->
+        <select id="list" resultType="com.itheima.pojo.Emp">
+             select * from emp
+            <where>
+                <if test="name != null and name != ''">
+                 name like concat('%',#{name},'%')
+                </if>
+                <if test="gender != null">
+                 and gender = #{gender}
+                </if>
+                <if test="begin != null and end != null">
+                 and entrydate between #{begin} and #{end}
+                </if>
+            </where>
+             order by update_time desc
+        </select>
+    </mapper>
+    
+    ```
+
+    
+
+
+
+## 15 Maven高级  
+
+### 15.1 分模块设计与开发
 
 通过new Module创建Maven项目
 
@@ -8,13 +229,13 @@
 
 
 
-### 1.2 继承关系
+### 15.2 继承关系
 
 > 文件格式为BackEndManagementSystem为父工程
 
 
 
-#### 1.2.1 创建maven模块 parent，该工程为父工程，设置打包方式pom(默认jar)
+#### 15.2.1 创建maven模块 parent，该工程为父工程，设置打包方式pom(默认jar)
 
 ```
 
@@ -42,7 +263,7 @@
 
 
 
-#### 1.2.2 在子工程的pom.xml文件中，配置继承关系。
+#### 15.2.2 在子工程的pom.xml文件中，配置继承关系。
 
 ```
 <parent>
@@ -67,7 +288,7 @@
 
 
 
-#### 1.2.3 在父工程中配置各个工程共有的依赖(子工程会自动继承父工程的依赖)
+#### 15.2.3 在父工程中配置各个工程共有的依赖(子工程会自动继承父工程的依赖)
 
 
 
@@ -85,7 +306,7 @@
 
 
 
-### 1.3 版本锁定
+### 15.3 版本锁定
 
 > 在父工程中可以加入dependencyManagement标签用作版本管理，其中仅仅对子工程版本号进行控制，如果子工程想要导入，需要自己导入相应依赖
 
@@ -156,7 +377,7 @@
 
 
 
-### 1.3 聚合
+### 15.3 聚合
 
 
 
@@ -180,7 +401,7 @@
 
 
 
-### 1.4 继承与聚合对比 
+### 15.4 继承与聚合对比 
 
 - 作用
 
