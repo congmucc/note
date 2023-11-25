@@ -1,1 +1,6 @@
-{}
+{
+  "attachmentFolderPath": "./assets",
+  "newLinkFormat": "relative",
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true
+}
