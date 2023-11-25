@@ -13,11 +13,11 @@
 
 - checklist：跨文件整合任务列表（#same tag）
 
-![](https://i0.hdslb.com/bfs/note/80b06312748bd5e14de5d5f2c7adc91fe65ba336.jpg@680w_!web-note.webp)
+![](./assets/80b06312748bd5e14de5d5f2c7adc91fe65ba336.jpg@680w_!web-note.webp)
 
 - kanban:看板
 
-![](https://i0.hdslb.com/bfs/note/66aaf9d8f80639ba44175fdd0d8e4c8057cab7e0.jpg@680w_!web-note.webp)
+![](./assets/66aaf9d8f80639ba44175fdd0d8e4c8057cab7e0.jpg@680w_!web-note.webp)
 
   
 
@@ -25,7 +25,7 @@
 
 - advanced slides:简易PPT，支持白板功能
 
-![](https://i0.hdslb.com/bfs/note/02085149348db6daca2ee7340ba114e737cce74e.jpg@680w_!web-note.webp)
+![](./assets/02085149348db6daca2ee7340ba114e737cce74e.jpg@680w_!web-note.webp)
 
 - obsidian excalidraw：手绘风格绘图软件（但官方正在开发类似）
 
@@ -39,13 +39,13 @@ Obsidian 默认不开启 Daily Note 功能，Logseq 或 RR 用户可能会很不
 ## 什么时候记 Daily Note
 
 1. 当你想写日记的时候，它就是一个支持 Markdown 的日记本
-    
+   
 2. 当你想快速记录灵感的时候，你不用也不该纠结应该放在哪个文件夹，就像传统纸笔，翻开就能写，就像摄影，拍到比拍好更重要。**而使用传统的笔记软件，你总要先找到（或建立）一个合适的文件夹用来存放**，但灵感和冲动往往消失在这个麻烦的时候。
-    
+   
 
 ## 配置方法
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlHxZ3oVJ9N2ExjgI42Aty1Wx0QkRUS89kC9kb1R4qIyPSQibUWRiay6eaA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+![图片](./assets/640-1700915863570-12.png)
 
 ## 日记模板
 
@@ -55,7 +55,7 @@ Obsidian 默认不开启 Daily Note 功能，Logseq 或 RR 用户可能会很不
 
 设置好模板后，**使用快捷键**创建日记文档，就能自动调用这个模板，就像下图这样子：
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/oiabfUBO7nd798sY99oamUhGqdrE6KAlHXD31uziaXoGA7a6fRDNF2XYVF55MkPFBMqcNkPAghTxIQY8FUG6gsDg/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
+![图片](./assets/640-1700915829133-3.gif)
 
 当然你也可以让 Obsidian 在启动后，自动载入当天的日记页面，在【设置 - 插件选项 - 日记】中你可以找到这个选项。  
 
@@ -65,7 +65,7 @@ Obsidian 默认不开启 Daily Note 功能，Logseq 或 RR 用户可能会很不
 
 **①** 点击每一个被 `[[]]` 框住的关键词，都会自动创建一个以这个关键词为名的文档，然后进入到这个文档中。比如在下图中我就通过这种方式创建了一个名为 `Notion` 的文档。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_gif/oiabfUBO7nd798sY99oamUhGqdrE6KAlHztsrmg0faDeeI0pdaE4JrBrs2gObEuaicGWAEwg7WxW2u17P18EC30A/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
+![图片](./assets/640.gif)
 
 **②** 打开这个文档的反向链接面板，它会在笔记库内搜索**这个关键词曾经出现过的位置**
 
@@ -80,9 +80,9 @@ Obsidian 默认不开启 Daily Note 功能，Logseq 或 RR 用户可能会很不
 使用 Task 插件能用非常简单的语法，将分散于各篇日记的任务集中于一处管理，请在安装并启用 Task 插件后，执行如下操作
 
 1. 在【设置 - 快捷键】中，搜索 `Tasks`，并为 `Task: Create or edit task` 创建一个快捷键命令，例如 `Ctrl+T`
-    
+   
 2. 使用快捷键 `Ctrl+T` 唤出 Task 任务面板，然后在下图的自定义选项设置你的任务
-    
+   
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlH3f2rAKRZvyU7DzRI3gfPjjWbaopTNFxORzp0QIeTdhkgAzeUADTqicw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -109,13 +109,13 @@ Day Planner 与前文提到的 Tasks ，都能对笔记库中的 To-do 内容进
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlHP65UL6HMK9Cwlyu0tTTPpzSDMmwH5EFAltUDt6NFBnLC43jFFibNMNg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
 - 文档顶部自动生成甘特图
-    
+  
 - 右侧自动生成时间线
-    
+  
 - 底部右下角有全局的任务提示
-    
+  
 - 当任务到点时，还能弹出系统级的通知提醒
-    
+  
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlHSjmgmfhAoSGqrVqyiaYsmJibSdvMbLeO6al1yWIQ8No3AP033x1x7fSQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -124,29 +124,29 @@ Day Planner 与前文提到的 Tasks ，都能对笔记库中的 To-do 内容进
 安装完 Day Planner 插件后
 
 1. 会默认开启 `File mode` 功能
-    
+   
 2. 会在笔记列表根目录中自动创建名为 `Day Planner` 的文件夹
-    
+   
 3. 在 `Day Planner` 文件夹内，每天都会自动创建一个新的日程文件
-    
+   
 4. 你需要用下列语法格式来书写你的日程，才能被插件正确识别
-    
+   
 
 `## 任务标题-[]07:00 任务`
 
 - 你也可以使用 Ctrl+Enter 来快速创建 Checkbox
-    
+  
 - 时间需要 24 小时制，1:00 应写成 01:00
-    
+  
 - 时间与任务描述之间需要空格
-    
+  
 
 5. 如果右侧时间线没有正确显示，请使用下列操作：
 
 - 使用快捷键 Ctrl+P 唤出命令面板
-    
+  
 - 搜索关键词 `show` ，然后选择 `Show the Day Planner Timeline`
-    
+  
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlH4xcvo4rlQTlRDdzjY8Alzicq6MjxD3dia1u7lp6sqRwoqbjhNqXcX5qw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -155,9 +155,9 @@ Day Planner 与前文提到的 Tasks ，都能对笔记库中的 To-do 内容进
 在插件设置中，将 File mode 切换到 Command mode，**能够让你在任意一页文档中使用 Day Planner 插件**，而无需创建额外的 Day Planner 文件夹。任务书写语法与 `File mode` 一样，但你还需要执行下面的操作
 
 1. 使用快捷键 Ctrl+P 唤出命令面板
-    
+   
 2. 搜索关键词 `link` ，然后选择 `Link todays' Day Planner to the current note`
-    
+   
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlHIfypwLvtJJfHGb6bIMiblic2Dyuw4NV97l2jw5giczn3waAbumKa8KeqQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -170,14 +170,14 @@ Day Planner 与前文提到的 Tasks ，都能对笔记库中的 To-do 内容进
 **创建看板的两种方式**
 
 - 右键点击任意一个文件夹， 选择 `新看板`
-    
+  
 - Ctrl+P 唤出命令面板，搜索 `Kanban` ，并选择 `创建新看板`
-    
+  
 
 **启用看板复选框**
 
 - 【设置 - 插件选项 - Kanban】中，开启 `展示卡片复选框` 功能
-    
+  
 
 **看板与双链联动**
 
@@ -204,21 +204,21 @@ Day Planner 与前文提到的 Tasks ，都能对笔记库中的 To-do 内容进
 ### 插件配置
 
 1. 你需要先建立一个专门用来存放模板的模板文件夹，并且提前写好你所需要的模板
-    
+   
 2. 打开【设置 - 插件选项 - Templater】
-    
+   
 
 - 在 `Template folder location` 将路径指向模板文件夹
-    
+  
 - 打开 `Trigger Templater on new file creation` 这个选项
-    
+  
 - 然后在 `Add New` 那一栏，将文件夹与模板一一对应。如下图所示，左边是文件夹，右边是模板文件。
-    
+  
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/oiabfUBO7nd798sY99oamUhGqdrE6KAlHJx6U6DSP6hGUfsW78wgELR5QEfpZFV2y6Y0fAE3VZic3mJfV0ibInMrw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
 5. 如此一来，当我们在 `会议记录` 文件夹新建文档，它创建的就不是空白文档，而是加载了模板的文档了。
-    
+   
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/oiabfUBO7nd798sY99oamUhGqdrE6KAlHRTMJzj4GZXam86CInpriapOkaABwPNVTVjIfal5NsUnvp0VWgbytKEg/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
 
@@ -287,9 +287,9 @@ Day Planner 与前文提到的 Tasks ，都能对笔记库中的 To-do 内容进
 显然我们需要的只有那些创建时间在一周之内的日报和会议记录文档，所以我们还需要两个步骤
 
 1. 为需要的文档打标签，分别是 `创建时间`、`日报`、以及 `会议记录`
-    
+   
 2. 让 Dataview 筛选过滤这些标签
-    
+   
 
 ### 用 YAML 语言为文档打标签
 
@@ -328,9 +328,9 @@ Obsidian 原生支持 PDF 阅读，你只需要将 PDF 文件**拖到文件夹�
 ### 插件用法
 
 1. 将你的 PDF 文件拖入 Obsidian 的文件夹上
-    
+   
 2. 新建一个文档，然后在文档的最开头添加下面这样的 YAML 语法
-    
+   
 
 ```
 ---
@@ -347,11 +347,11 @@ Obsidian 原生支持 PDF 阅读，你只需要将 PDF 文件**拖到文件夹�
 插件效果
 
 1. 所有高亮和批注都会成为侧边栏中的卡片
-    
+   
 2. 点击卡片即可跳转回 PDF 原文位置.
-    
+   
 3. 你还可以为批注打上可被 Obsidian 识别的标签
-    
+   
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/oiabfUBO7nd6h4TuzuRJgb4ulBiaBRGDpISyYEibRPVcskY6kExRpOClqBfgw7EdKkDWWfuyw2YUCYc6FICQiaXSBA/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
 
@@ -404,11 +404,11 @@ B 站本身自带视频笔记功能，但只能说堪堪够用，回看笔记的
 在 Obsidian 中，你可以这么操作
 
 1. 复制粘贴视频网址到 Obsidian 中
-    
+   
 2. **在阅读视图下**，才能在 Obsidian 内部打开视频链接
-    
+   
 3. **在编辑视图下**，才能通过右上角的五角星截取时间点
-    
+   
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/oiabfUBO7nd798sY99oamUhGqdrE6KAlH56uyuM8xEdgKJ1kUicywlHApWwCMgmCTv9y3icJF9BKhbIk3kibqlMHYw/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
 
