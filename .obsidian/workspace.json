@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "796e01f9f2b21a1b",
+    "type": "split",
+    "children": [
+      {
+        "id": "b2ac9e6a98fa6b93",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3595786a7e0950e7",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "Task/月看板.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ef65d6432b82765f",
+    "type": "split",
+    "children": [
+      {
+        "id": "e851f0c43f49e6ac",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "23e17f4719f8a01f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ff17a40e34515f2a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0b1a79a34fe1f99a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f97e224a7ac1a7c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "37290d49e8053811",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3f9c07ae12a12a27",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Task/月看板.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9c64785934be1fa0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Task/月看板.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "47007a28d336c130",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e2e95db7a15f4e50",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Task/月看板.md"
+              }
+            }
+          },
+          {
+            "id": "4a7b2315888a870b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          },
+          {
+            "id": "1738759d88b721b6",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "workspaces:管理工作区布局": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "3595786a7e0950e7",
+  "lastOpenFiles": [
+    "Task/月-规划.md",
+    "Task/月看板.md",
+    "Diary/2023-11-25-学习obsidian.md",
+    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
+    "01-笔记使用/01b-Markdown语法规则.md",
+    "01-笔记使用/01b2-LaTeX.md",
+    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+    "01-笔记使用/01a1-Obsidian插件.md",
+    "01-笔记使用/01c个人知识管理.md",
+    "01-笔记使用/01d-卢曼卡片盒笔记.md",
+    "01-笔记使用/笔记目录.md"
+  ]
+}
