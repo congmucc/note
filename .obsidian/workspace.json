@@ -11,9 +11,11 @@
             "id": "3595786a7e0950e7",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "01-笔记使用/01a1-Obsidian插件.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/月看板.md",
+                "file": "01-笔记使用/01a1-Obsidian插件.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/月看板.md",
+                "file": "01-笔记使用/01a1-Obsidian插件.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "01-笔记使用/01a1-Obsidian插件.md"
               }
             }
           },
@@ -145,12 +147,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -165,11 +167,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "3595786a7e0950e7",
+  "active": "e2e95db7a15f4e50",
   "lastOpenFiles": [
-    "Task/月-规划.md",
-    "Task/月看板.md",
     "Diary/2023-11-25-学习obsidian.md",
+    "Task/月看板.md",
+    "Task/月-规划.md",
     "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
     "01-笔记使用/01b-Markdown语法规则.md",
     "01-笔记使用/01b2-LaTeX.md",
