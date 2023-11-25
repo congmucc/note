@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-笔记使用/01a1-Obsidian插件.md",
+                "file": "01-笔记使用/01b2-LaTeX.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-笔记使用/01a1-Obsidian插件.md",
+                "file": "01-笔记使用/01b2-LaTeX.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-笔记使用/01a1-Obsidian插件.md",
+                "file": "01-笔记使用/01b2-LaTeX.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-笔记使用/01a1-Obsidian插件.md"
+                "file": "01-笔记使用/01b2-LaTeX.md"
               }
             }
           },
@@ -167,8 +167,9 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "e2e95db7a15f4e50",
+  "active": "3595786a7e0950e7",
   "lastOpenFiles": [
+    "01-笔记使用/01a1-Obsidian插件.md",
     "Diary/2023-11-25-学习obsidian.md",
     "Task/月看板.md",
     "Task/月-规划.md",
@@ -176,7 +177,6 @@
     "01-笔记使用/01b-Markdown语法规则.md",
     "01-笔记使用/01b2-LaTeX.md",
     "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
-    "01-笔记使用/01a1-Obsidian插件.md",
     "01-笔记使用/01c个人知识管理.md",
     "01-笔记使用/01d-卢曼卡片盒笔记.md",
     "01-笔记使用/笔记目录.md"
