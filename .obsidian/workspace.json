@@ -11,11 +11,9 @@
             "id": "8f497470289b96c4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "02-Code/npee-408-note-main/计算机网络.md",
-                "mode": "source",
-                "source": false
+                "file": "02-Code/npee-408-note-main/NAT进行IP互联.md"
               }
             }
           },
@@ -25,12 +23,11 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "02-Code/npee-408-note-main/Drawing 2023-11-26 17.41.13.excalidraw.md"
+                "file": "02-Code/npee-408-note-main/NAT进行IP互联.md"
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f97e224a7ac1a7c8",
@@ -97,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/npee-408-note-main/Drawing 2023-11-26 17.41.13.excalidraw.md",
+                "file": "02-Code/npee-408-note-main/NAT进行IP互联.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/npee-408-note-main/Drawing 2023-11-26 17.41.13.excalidraw.md",
+                "file": "02-Code/npee-408-note-main/NAT进行IP互联.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/npee-408-note-main/Drawing 2023-11-26 17.41.13.excalidraw.md"
+                "file": "02-Code/npee-408-note-main/NAT进行IP互联.md"
               }
             }
           },
@@ -180,10 +176,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "7c1f6d47ea3dabe4",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/npee-408-note-main/README.md",
     "02-Code/npee-408-note-main/计算机网络.md",
-    "02-Code/npee-408-note-main/Drawing 2023-11-26 17.41.13.excalidraw.md",
+    "02-Code/npee-408-note-main/NAT进行IP互联.md",
     "02-Code/npee-408-note-main/操作系统/操作系统.md",
     "02-Code/npee-408-note-main/操作系统/单元一.md",
     "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
