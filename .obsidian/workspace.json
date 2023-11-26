@@ -11,9 +11,11 @@
             "id": "8f497470289b96c4",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/月看板.md",
+                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/月看板.md",
+                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md"
               }
             }
           },
@@ -167,8 +169,9 @@
   },
   "active": "8f497470289b96c4",
   "lastOpenFiles": [
-    "Diary/2023-11-25-学习obsidian.md",
+    "02-Code/操作系统/1/1.4_p13_计算机体系结构及内存分层体系.md",
     "Task/月看板.md",
+    "Diary/2023-11-25-学习obsidian.md",
     "template/TODO.md",
     "Task/月-规划.md",
     "01-笔记使用/01a1-Obsidian插件.md",
