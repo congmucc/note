@@ -51,7 +51,7 @@
 	网络层是解决发到哪的问题
 	很多协议中容易将后三层合并为1层即5层协议
 	在p009-p015这之中[封包与解包 - 《Python零基础到全栈系列》](https://www.bilibili.com/video/BV1TM411k7Ju/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)讲的挺好的，是数据在OSI模型中如何进行传输
-## 04-NAT-p015
+## 04-NAT&&内网网段-p015
 介绍： 
 	NAT（Network Address Translation，网络地址转换）：将一些地址划分为私有地址（内网IP）和公有地址（公网IP），进行IP通信时，**内网IP通过网关进行nat转换为公网IP**。以此解决IP地址不够用问题。
 	**内网IP**：局域网IP，可以在不同局域网内通用
@@ -68,3 +68,6 @@
 > 举个例子，如果你被攻击了，查看 对方的IP地址，如果是公网IP不多赘述，如果是内网IP就说明有内鬼或者是你公司内部的机器被渗透了，对方以此作为攻击。
 
 学习地址：[NAT技术 - 《Python零基础到全栈系列》_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1KD4y1v7sr/)
+
+子网掩码：
+	用于划分广播域的。
