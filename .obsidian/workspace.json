@@ -11,14 +11,11 @@
             "id": "8382c355d18d5dc7",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
-                "viewState": {
-                  "x": -37.25,
-                  "y": 8.520832061767578,
-                  "zoom": 1
-                }
+                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/assets/assets/Pasted image 20231126183808.png",
+                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/assets/assets/Pasted image 20231126183808.png",
+                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/assets/assets/Pasted image 20231126183808.png"
+                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md"
               }
             }
           },
@@ -173,10 +170,10 @@
   },
   "active": "8382c355d18d5dc7",
   "lastOpenFiles": [
-    "02-Code/基础/计算机网络实战（Python）/assets/assets/Pasted image 20231126183808.png",
-    "02-Code/基础/计算机网络实战（Python）/assets/assets",
+    "02-Code/基础/计算机网络实战（Python）/assets/Pasted image 20231126183808.png",
     "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
+    "02-Code/基础/计算机网络实战（Python）/assets/assets",
     "02-Code/基础/计算机网络实战（Python）/assets",
     "02-Code/基础/计算机网络实战（Python）",
     "02-Code/npee-408-note-main/assets/NAT进行IP互联.md",
