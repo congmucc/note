@@ -1,6 +1,6 @@
 >视频地址：[CS架构与BS架构 - 《Python零基础到全栈系列](https://www.bilibili.com/video/BV1Cd4y1b7kz/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 
-## 01-CS架构 BS架构
+## 01-CS架构 BS架构-p001
 - CS架构
   >    客户端（Client）与服务端（Server）交互
   >    Client            <======>        Server
@@ -15,7 +15,7 @@
   >    浏览器（Browser）和服务端（Server）交互
   >    Browser         <======>        Server
 
-## 02-物理介质连接
+## 02-物理介质连接-p002
 >讲述了光猫、交换机、路由器等物理介质的运行方式
 
 ![[assets/Pasted image 20231126183808.png]]
@@ -32,7 +32,7 @@
 > 		电信机房通过光缆连接电信设备箱，电信设备箱再通过光纤来连接路由器。
 
 
-## 03-OSI七层网络模型
+## 03-OSI七层网络模型-p003
 - 物理层：信号转换的问题 0101-电信号（光信号）
 - 数据链路层：mac地址    全世界唯一    身份证号
 - 网络层：ip地址
@@ -50,7 +50,8 @@
     数据链路层是解决发给谁的问题
 	网络层是解决发到哪的问题
 	很多协议中容易将后三层合并为1层即5层协议
-## NAT
+	在p009-p015这之中[封包与解包 - 《Python零基础到全栈系列》](https://www.bilibili.com/video/BV1TM411k7Ju/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)讲的挺好的，是数据在OSI模型中如何进行传输
+## 04-NAT-p015
 介绍： 
 	NAT（Network Address Translation，网络地址转换）：将一些地址划分为私有地址（内网IP）和公有地址（公网IP），进行IP通信时，**内网IP通过网关进行nat转换为公网IP**。以此解决IP地址不够用问题。
 	**内网IP**：局域网IP，可以在不同局域网内通用
