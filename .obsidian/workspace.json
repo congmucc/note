@@ -11,11 +11,9 @@
             "id": "8382c355d18d5dc7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
-                "mode": "source",
-                "source": false
+                "file": "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png"
               }
             }
           }
@@ -69,8 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f97e224a7ac1a7c8",
@@ -86,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
+                "file": "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
+                "file": "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md"
+                "file": "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png"
               }
             }
           },
@@ -169,11 +166,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "8382c355d18d5dc7",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
-    "Task/月看板.md",
     "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
-    "02-Code/基础/计算机网络实战（Python）/assets/Pasted image 20231126183808.png",
+    "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
+    "Task/月看板.md",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/assets",
     "02-Code/基础/计算机网络实战（Python）/assets",
