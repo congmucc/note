@@ -1,5 +1,25 @@
+>视频地址：[CS架构与BS架构 - 《Python零基础到全栈系列](https://www.bilibili.com/video/BV1Cd4y1b7kz/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 
-**NAT：**
+## 01-CS架构 BS架构
+- CS架构
+  >    客户端（Client）与服务端（Server）交互
+  >    Client            <======>        Server
+  >    虽然如此，但是他们本质上是硬件的交互
+  >    抖音app                                    抖音音服务器
+  >    操作系统                                   操作系统
+  >    计算机硬件   <======>        计算机硬件
+  >    例如： A想要B电脑的电影资源，没有网络的情况下u盘拷贝
+  >    有网络的情况下是进行CS交互
+
+- BS架构（本质上也是CS架构）
+  >    浏览器（Browser）和服务端（Server）交互
+  >    Browser         <======>        Server
+
+## 02-物理介质连接
+>讲述了光猫、交换机、路由器等物理介质的运行方式
+>
+
+## NAT
 介绍： 
 	NAT（Network Address Translation，网络地址转换）：将一些地址划分为私有地址（内网IP）和公有地址（公网IP），进行IP通信时，**内网IP通过网关进行nat转换为公网IP**。以此解决IP地址不够用问题。
 	**内网IP**：局域网IP，可以在不同局域网内通用

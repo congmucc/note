@@ -8,41 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8f497470289b96c4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Code/npee-408-note-main/计算机网络.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "8382c355d18d5dc7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/npee-408-note-main/计算机网络.md",
+                "file": "02-Code/npee-408-note-main/计算机网络实战（Python版本）.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
-          {
-            "id": "7c1f6d47ea3dabe4",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "02-Code/npee-408-note-main/assets/NAT进行IP互联.md"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -108,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/npee-408-note-main/计算机网络.md",
+                "file": "02-Code/npee-408-note-main/计算机网络实战（Python版本）.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/npee-408-note-main/计算机网络.md",
+                "file": "02-Code/npee-408-note-main/计算机网络实战（Python版本）.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/npee-408-note-main/计算机网络.md"
+                "file": "02-Code/npee-408-note-main/计算机网络实战（Python版本）.md"
               }
             }
           },
@@ -195,7 +172,7 @@
   "lastOpenFiles": [
     "02-Code/npee-408-note-main/assets/NAT进行IP互联.md",
     "02-Code/npee-408-note-main/assets",
-    "02-Code/npee-408-note-main/计算机网络.md",
+    "02-Code/npee-408-note-main/计算机网络实战（Python版本）.md",
     "02-Code/npee-408-note-main/README.md",
     "02-Code/npee-408-note-main/操作系统/操作系统.md",
     "02-Code/npee-408-note-main/操作系统/单元一.md",
