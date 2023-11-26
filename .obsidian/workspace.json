@@ -4,16 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "b2ac9e6a98fa6b93",
+        "id": "91340dec11fa8755",
         "type": "tabs",
         "children": [
           {
-            "id": "c6912cedf2340b3d",
+            "id": "72dc7f713156cd0b",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "Task/月看板.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -165,11 +167,12 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "c6912cedf2340b3d",
+  "active": "72dc7f713156cd0b",
   "lastOpenFiles": [
-    "Task/月-规划.md",
     "Task/月看板.md",
     "Diary/2023-11-25-学习obsidian.md",
+    "template/TODO.md",
+    "Task/月-规划.md",
     "01-笔记使用/01a1-Obsidian插件.md",
     "01-笔记使用/01a-Obsidian基本使用.md",
     "01-笔记使用/笔记目录.md",
