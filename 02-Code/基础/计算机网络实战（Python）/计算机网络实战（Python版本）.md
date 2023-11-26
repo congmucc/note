@@ -103,4 +103,8 @@
 
 ## 06-arp欺骗-p024：
 
-arp 
+什么是arp：
+
+​	arp是可以将mac地址和IP地址进行转换，生成对应的arp表
+
+可以使用在windows窗口使用命令 `arp -a` 查看arp表中信息。
