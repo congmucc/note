@@ -84,6 +84,8 @@
 
 学习地址：[NAT技术 - 《Python零基础到全栈系列》_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1KD4y1v7sr/)
 
+p25-SNAT作者讲了内网IP如何访问其他公网IP的一个简化流程
+
 ## 05-子网掩码-p019：
 	用于划分不同的网段或者划分不同的局域网。
 子网掩码实例：
