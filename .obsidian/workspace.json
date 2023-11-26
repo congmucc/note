@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
+                "file": "02-Code/npee-408-note-main/计算机网络.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f97e224a7ac1a7c8",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
+                "file": "02-Code/npee-408-note-main/计算机网络.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
+                "file": "02-Code/npee-408-note-main/计算机网络.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/npee-408-note-main/computer-networking/SUMMARY.md"
+                "file": "02-Code/npee-408-note-main/计算机网络.md"
               }
             }
           },
@@ -152,7 +153,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,7 +171,11 @@
   },
   "active": "8f497470289b96c4",
   "lastOpenFiles": [
-    "02-Code/操作系统/1/1.4_p13_计算机体系结构及内存分层体系.md",
+    "02-Code/npee-408-note-main/操作系统/操作系统.md",
+    "02-Code/npee-408-note-main/计算机网络.md",
+    "02-Code/npee-408-note-main/操作系统/单元一.md",
+    "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
+    "02-Code/npee-408-note-main/操作系统/1/1.4_p13_计算机体系结构及内存分层体系.md",
     "Task/月看板.md",
     "Diary/2023-11-25-学习obsidian.md",
     "template/TODO.md",
