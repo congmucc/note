@@ -36,6 +36,9 @@ tags: [excalidraw]
 
 内网IP ^xu12rN5n
 
+内网IP通过网关转换为公网IP进行访问到对方
+对方通过网关将数据转换到自己的内网IP ^w2dTg36a
+
 %%
 # Drawing
 ```json
@@ -1266,6 +1269,43 @@ tags: [excalidraw]
 			},
 			"startArrowhead": null,
 			"endArrowhead": "arrow"
+		},
+		{
+			"id": "w2dTg36a",
+			"type": "text",
+			"x": -297.4985447740552,
+			"y": 523.0115381876626,
+			"width": 408.2399597167969,
+			"height": 50,
+			"angle": 0,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 0,
+			"opacity": 100,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"seed": 21599507,
+			"version": 287,
+			"versionNonce": 818814259,
+			"isDeleted": false,
+			"boundElements": null,
+			"updated": 1700992346026,
+			"link": null,
+			"locked": false,
+			"text": "内网IP通过网关转换为公网IP进行访问到对方\n对方通过网关将数据转换到自己的内网IP",
+			"rawText": "内网IP通过网关转换为公网IP进行访问到对方\n对方通过网关将数据转换到自己的内网IP",
+			"fontSize": 20,
+			"fontFamily": 1,
+			"textAlign": "left",
+			"verticalAlign": "top",
+			"baseline": 42,
+			"containerId": null,
+			"originalText": "内网IP通过网关转换为公网IP进行访问到对方\n对方通过网关将数据转换到自己的内网IP",
+			"lineHeight": 1.25
 		},
 		{
 			"id": "Fqjnuzji",
