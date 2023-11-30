@@ -13,7 +13,7 @@
 #### 例如Spring Boot父工程（版本自己修改）
 
 ```
-    <!--    父工程-->
+    <!-- 父工程 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
