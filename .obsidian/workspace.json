@@ -11,8 +11,10 @@
             "id": "8382c355d18d5dc7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "kanban",
+              "state": {
+                "file": "Task/未命名看板.md"
+              }
             }
           }
         ]
@@ -81,6 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Task/未命名看板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Task/未命名看板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +122,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Task/未命名看板.md"
+              }
             }
           },
           {
@@ -162,6 +168,9 @@
   },
   "active": "8382c355d18d5dc7",
   "lastOpenFiles": [
+    "Task/dui'y.md",
+    "Task/未命名看板.md",
+    "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/计算机网络实战（Python）/assets/NAT进行IP互联.md",
     "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
     "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
@@ -176,7 +185,6 @@
     "02-Code/npee-408-note-main/操作系统/单元一.md",
     "02-Code/npee-408-note-main/computer-networking/SUMMARY.md",
     "02-Code/npee-408-note-main/操作系统/1/1.4_p13_计算机体系结构及内存分层体系.md",
-    "Diary/2023-11-25-学习obsidian.md",
     "template/TODO.md",
     "Task/月-规划.md",
     "01-笔记使用/01a1-Obsidian插件.md",
