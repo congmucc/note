@@ -13,7 +13,7 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "Task/计算机计划.md"
               }
             }
           }
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "Task/计算机计划.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "Task/计算机计划.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "Task/计算机计划.md"
               }
             }
           },
@@ -166,10 +166,12 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "8382c355d18d5dc7",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "Task/未命名看板 1.md",
+    "Task/计算机计划.md",
+    "README.md",
     "Task/月看板.md",
-    "Task/未命名看板.md",
     "Task/dui'y.md",
     "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/计算机网络实战（Python）/assets/NAT进行IP互联.md",
