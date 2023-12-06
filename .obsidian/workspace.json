@@ -13,7 +13,7 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "Task/月看板.md"
               }
             }
           }
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "Task/月看板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "Task/月看板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "Task/月看板.md"
               }
             }
           },
@@ -168,9 +168,9 @@
   },
   "active": "8382c355d18d5dc7",
   "lastOpenFiles": [
-    "Task/月看板.md",
-    "Task/未命名看板.md",
     "Task/计算机计划.md",
+    "Task/软件工程作业.md",
+    "Task/月看板.md",
     "02-Code/基础/基本语法/Java/17_线程/assets/image-20231205190532976.png",
     "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
