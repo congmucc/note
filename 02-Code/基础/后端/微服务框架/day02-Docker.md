@@ -581,19 +581,19 @@ ls -l /var/lib/docker/volumes/29524ff09715d3688eae3f99803a2796558dbd00ca584a25a4
 
 在课前资料中已经准备好了mysql的`init`目录和`conf`目录：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MjEwMzU0MmNlMDcxMGJjOWUzODgwMTQxM2Y1N2ZhZWVfSE91OEdxWkVtUlFrN2N0TzNJa2JVV0JhYWN3ak5WNUNfVG9rZW46S1BENWJ0SlExb1lOSjB4NERxbmM3QWpDbjdnXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img1](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MjEwMzU0MmNlMDcxMGJjOWUzODgwMTQxM2Y1N2ZhZWVfSE91OEdxWkVtUlFrN2N0TzNJa2JVV0JhYWN3ak5WNUNfVG9rZW46S1BENWJ0SlExb1lOSjB4NERxbmM3QWpDbjdnXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
 
 以及对应的初始化SQL脚本和配置文件：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQ1ZDhjMDA4ZDIzMmY0MmMwMDM2MjBlYjYzM2EzZTFfODZ5NEFWY1ZaVkF3UEFDVzh3VGNCWHJpWEhHZFBXMmpfVG9rZW46TUMzWGI3Z2NZbzNJQWl4NXdITWNmZEltbktkXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img3](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQ1ZDhjMDA4ZDIzMmY0MmMwMDM2MjBlYjYzM2EzZTFfODZ5NEFWY1ZaVkF3UEFDVzh3VGNCWHJpWEhHZFBXMmpfVG9rZW46TUMzWGI3Z2NZbzNJQWl4NXdITWNmZEltbktkXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NzJhMTRkYTMxNTU1NDAyN2E0MmQwY2Y1NDczMGJjNmNfMXhJZDdaVG9aZGVBMmNjazczRFBXV0xoMjg4WGJOREpfVG9rZW46VFdwUWJYbDZ3b2Q5cFZ4YzBpUmN0cENpblVoXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![im3g](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NzJhMTRkYTMxNTU1NDAyN2E0MmQwY2Y1NDczMGJjNmNfMXhJZDdaVG9aZGVBMmNjazczRFBXV0xoMjg4WGJOREpfVG9rZW46VFdwUWJYbDZ3b2Q5cFZ4YzBpUmN0cENpblVoXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
 
 其中，hm.cnf主要是配置了MySQL的默认编码，改为utf8mb4；而hmall.sql则是后面我们要用到的黑马商城项目的初始化SQL脚本。
 
 我们直接将整个mysql目录上传至虚拟机的`/root`目录下：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=OGRhNWQ2YTRhZTBhYTI4NTk0ZDFlYmUwMWRiY2U3YWRfSUx3NkI0a1BwejdrMEM2dGUyb1czMjlRcXlDSzFzaGlfVG9rZW46UFpOQmJicERFb0sxZkN4STB5Z2NYYlVmbkdiXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img2](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=OGRhNWQ2YTRhZTBhYTI4NTk0ZDFlYmUwMWRiY2U3YWRfSUx3NkI0a1BwejdrMEM2dGUyb1czMjlRcXlDSzFzaGlfVG9rZW46UFpOQmJicERFb0sxZkN4STB5Z2NYYlVmbkdiXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
 
 接下来，我们演示本地目录挂载：
 
