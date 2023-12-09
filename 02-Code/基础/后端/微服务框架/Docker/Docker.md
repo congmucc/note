@@ -585,9 +585,9 @@ ls -l /var/lib/docker/volumes/29524ff09715d3688eae3f99803a2796558dbd00ca584a25a4
 
 以及对应的初始化SQL脚本和配置文件：
 
-![img3](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQ1ZDhjMDA4ZDIzMmY0MmMwMDM2MjBlYjYzM2EzZTFfODZ5NEFWY1ZaVkF3UEFDVzh3VGNCWHJpWEhHZFBXMmpfVG9rZW46TUMzWGI3Z2NZbzNJQWl4NXdITWNmZEltbktkXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQ1ZDhjMDA4ZDIzMmY0MmMwMDM2MjBlYjYzM2EzZTFfODZ5NEFWY1ZaVkF3UEFDVzh3VGNCWHJpWEhHZFBXMmpfVG9rZW46TUMzWGI3Z2NZbzNJQWl4NXdITWNmZEltbktkXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
 
-![im3g](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NzJhMTRkYTMxNTU1NDAyN2E0MmQwY2Y1NDczMGJjNmNfMXhJZDdaVG9aZGVBMmNjazczRFBXV0xoMjg4WGJOREpfVG9rZW46VFdwUWJYbDZ3b2Q5cFZ4YzBpUmN0cENpblVoXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NzJhMTRkYTMxNTU1NDAyN2E0MmQwY2Y1NDczMGJjNmNfMXhJZDdaVG9aZGVBMmNjazczRFBXV0xoMjg4WGJOREpfVG9rZW46VFdwUWJYbDZ3b2Q5cFZ4YzBpUmN0cENpblVoXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
 
 其中，hm.cnf主要是配置了MySQL的默认编码，改为utf8mb4；而hmall.sql则是后面我们要用到的黑马商城项目的初始化SQL脚本。
 

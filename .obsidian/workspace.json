@@ -13,11 +13,63 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md",
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
                 "mode": "source",
                 "source": false
               }
+            },
+            "group": "baf23d8fb4be5813"
+          },
+          {
+            "id": "dfbd34ab41e4adf1",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
             }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "92a9dd76c9960e18",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "737339897a43ff33",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              }
+            },
+            "group": "baf23d8fb4be5813"
           }
         ]
       }
@@ -85,7 +137,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +153,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +174,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md"
-              }
+              "state": {}
             }
           },
           {
@@ -167,17 +215,18 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "8382c355d18d5dc7",
+  "active": "dfbd34ab41e4adf1",
   "lastOpenFiles": [
-    "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
-    "02-Code/基础/后端/微服务框架/day02-Docker.md",
-    "02-Code/基础/后端/微服务框架/assets/image-20231121004335179.png",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/MQ/mq.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
     "02-Code/基础/后端/微服务框架/Untitled.md",
-    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
-    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/springcloud.md",
-    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/assets/image-20210410103253355.png",
-    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
-    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/assets/image-20231208194301713.png",
+    "02-Code/基础/后端/微服务框架/day02-Docker.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/springcloud.md",
+    "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
+    "02-Code/基础/后端/微服务框架/assets/image-20231121004335179.png",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/assets/image-20210410103253355.png",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/assets/image-20231208194301713.png",
     "Nacos集群搭建/nacos集群搭建.md",
     "Nacos集群搭建",
     "Task/软件工程作业.md",
