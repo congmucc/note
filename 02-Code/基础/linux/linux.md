@@ -37,6 +37,8 @@
    > cd network-scipts 进入network-scripts目录
    > vi ifcfg-ens33    编辑ifcfg-ens33文件
    > 
+   > vi /etc/sysconfig/network-scripts/ifcfg-ens33
+   > 
    > i进入编辑区
    > 将ONBOOT=no改为yes
    > [esc] :wq保存退出
@@ -79,7 +81,7 @@
 
 ## 2 linux常用命令： 
 
-![image-20231116204344565](image-20231116204344565-1700138635093-1.png)
+![image-20231116204344565](./assets/image-20231116204344565-1700138635093-1.png)
 
 ### 2.1 Linux命令初体验
 
@@ -92,7 +94,7 @@
 | 5    | mkdir [目录名] | make directory       |         创建目录         |
 | 6    | rm [文件名]    | remove               |       删除指定文件       |
 
-![image-20231116205238944](image-20231116205238944.png)
+![image-20231116205238944](./assets/image-20231116205238944.png)
 
 
 
@@ -105,33 +107,33 @@
 
 - **文件目录操作命令**
 
-  ![image-20231116220331581](image-20231116220331581.png)
+  ![image-20231116220331581](./assets/image-20231116220331581.png)
 
-  ![image-20231116220659431](image-20231116220659431.png)
+  ![image-20231116220659431](./assets/image-20231116220659431.png)
 
-  ![cat](image-20231116220819679.png)
+  ![cat](./assets/image-20231116220819679.png)
 
-  ![more](image-20231116220905695.png)
+  ![more](./assets/image-20231116220905695.png)
 
-  ![tail](image-20231116220940891.png)
+  ![tail](./assets/image-20231116220940891.png)
 
-  ![mkdir](image-20231116221029727.png)
+  ![mkdir](./assets/image-20231116221029727.png)
 
-  ![rmdir](image-20231116221145181.png)
+  ![rmdir](./assets/image-20231116221145181.png)
 
-  ![rm](image-20231116221214570.png)
+  ![rm](./assets/image-20231116221214570.png)
 
 ### 2.2 拷贝移动命令
 
-![cp](image-20231116221335374.png)
+![cp](./assets/image-20231116221335374.png)
 
-![mv](image-20231116221501296.png)
+![mv](./assets/image-20231116221501296.png)
 
 ### 2.3 打包压缩命令
 
 >  这里常用命令为：zxvf解压缩    zcvf压缩
 
-![tar](image-20231116221546514.png)
+![tar](./assets/image-20231116221546514.png)
 
 ### 2.4 文本编辑命令
 
@@ -139,21 +141,21 @@
 >
 > ​	Contos中，安装vim，yum install vim
 
-![vim](image-20231116221949241.png)
+![vim](./assets/image-20231116221949241.png)
 
-![image-20231116222415943](image-20231116222415943.png)
+![image-20231116222415943](./assets/image-20231116222415943.png)
 
-![image-20231116222447244](image-20231116222447244.png)
+![image-20231116222447244](./assets/image-20231116222447244.png)
 
-![image-20231116222504295](image-20231116222504295.png)
+![image-20231116222504295](./assets/image-20231116222504295.png)
 
 ![image-20231116222523455](./assets/image-20231116222523455.png)
 
 ### 2.5 查找命令
 
-![find](image-20231116223005238.png)
+![find](./assets/image-20231116223005238.png)
 
-![grep](image-20231116223033784.png)
+![grep](./assets/image-20231116223033784.png)
 
 ## 3 软件安装
 
@@ -194,7 +196,7 @@
 >
 > 5. 检查安装是否成功，命令为**java -version**
 
-### 3.3 安装Tomcat
+### 3.3 安装Tomcat && 防火墙
 
 > 操作步骤:
 >
@@ -222,7 +224,7 @@
    >   - “|”在Linux中称为管道符，可以将前一个命令的结果输出给后一个命令作为输入
    >   - 使用ps命令查看进程时，经常配合管道符和查找命令 grep 一起使用，来查看特定进程
 
-   ![验证tomcat](image-20231116232004755.png)
+   ![验证tomcat](./assets/image-20231116232004755.png)
 
 3. **关闭防火墙**
 
@@ -244,7 +246,7 @@
    > 2、`firewall-cmd`是Linux中专门用于控制防火墙的命令
    > 3、为了保证系统安全，服务器的防火墙不建议关闭
 
-   ![防火墙](image-20231116233121923.png)
+   ![防火墙](./assets/image-20231116233121923.png)
 
 4. **停止Tomcat**
 

@@ -78,23 +78,15 @@ https://www.aliyun.com/
 
 在首页的产品中，找到阿里云的**容器镜像服务**：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGE4ZmQxZDk2ZTExM2Q1MGJiZmJiZjVjYTE2NWUyMTNfSGlzV2VaOW5CN2NaSUJ6N3BUSExsc3libGNxVmN6MFBfVG9rZW46Tzk1UWJQSlk1b1RQemF4dE8zaGNKaVlYbkJkXzE3MDA0MDY3NTQ6MTcwMDQxMDM1NF9WNA)
-
 点击后进入控制台：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NzlkZWIyYjlmYTMwYTU0ZTBlMTE2NmI3NDUyNWM0NDJfQWF6bm92WU5LOWJibm1SbjE5YnpDQWVhMUNERDUzZVBfVG9rZW46UXJjUmJIakxQb3hsaWp4NEZRVmNTUTRVbk1jXzE3MDA0MDY3NTQ6MTcwMDQxMDM1NF9WNA)
 
 首次可能需要选择立刻开通，然后进入控制台。
 
 ## 5.3.配置镜像加速
 
-找到**镜像工具**下的**镜像****加速器**：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YTlkNjhjOThhMjZhNzk1Nzc3YzFkYThhMWE5NDYwZThfdUFCNVN3djJVSTc0SjJEc2tPbEVCelBpWEpGYUFxV3lfVG9rZW46RWJnUmJBaFdHbzlOdlR4Y3NHcGNjb0phbjlkXzE3MDA0MDY3NTQ6MTcwMDQxMDM1NF9WNA)
+找到**镜像工具**下的**镜像** **加速器**：
 
 页面向下滚动，即可找到配置的文档说明：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWQ5MTgxOGQ2MzRjNTU2YzdkYTU3ODQyYjRiMDk3YmNfYVc1R0NSa3E2VUFMbHRxUnhqOHdVdXV0U2VPNkljNWxfVG9rZW46QUNxOWJIem1nb0hrQ2p4TjBwamN2TFVFbmxjXzE3MDA0MDY3NTQ6MTcwMDQxMDM1NF9WNA)
 
 具体命令如下：
 
