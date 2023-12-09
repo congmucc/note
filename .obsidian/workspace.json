@@ -4,44 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "15feb46b751950c3",
+        "id": "36716427ced521a8",
         "type": "tabs",
         "children": [
           {
-            "id": "8382c355d18d5dc7",
+            "id": "ce287732fc70c2b0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
                 "mode": "source",
                 "source": false
               }
             },
-            "group": "baf23d8fb4be5813"
-          },
-          {
-            "id": "dfbd34ab41e4adf1",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
+            "group": "0629a587f6ffe8d5"
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "92a9dd76c9960e18",
+        "id": "ca20eeea3f28282f",
         "type": "tabs",
         "children": [
           {
-            "id": "737339897a43ff33",
+            "id": "77dab19ebbc830d6",
             "type": "leaf",
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -69,7 +60,7 @@
                 }
               }
             },
-            "group": "baf23d8fb4be5813"
+            "group": "0629a587f6ffe8d5"
           }
         ]
       }
@@ -137,6 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,6 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +167,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md"
+              }
             }
           },
           {
@@ -215,11 +210,12 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "dfbd34ab41e4adf1",
+  "active": "ce287732fc70c2b0",
   "lastOpenFiles": [
-    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/MQ/mq.md",
-    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
     "02-Code/基础/后端/微服务框架/Untitled.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/MQ/mq.md",
     "02-Code/基础/后端/微服务框架/day02-Docker.md",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/springcloud.md",
     "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
@@ -254,7 +250,6 @@
     "02-Code/npee-408-note-main/操作系统/1/1.4_p13_计算机体系结构及内存分层体系.md",
     "template/TODO.md",
     "Task/月-规划.md",
-    "01-笔记使用/01a1-Obsidian插件.md",
-    "01-笔记使用/01a-Obsidian基本使用.md"
+    "01-笔记使用/01a1-Obsidian插件.md"
   ]
 }
