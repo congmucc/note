@@ -1274,6 +1274,7 @@ public class AuthorizeFilter implements GlobalFilter {
 > 1. exchange在这里是上下文的意思
 > 2. 在4放行中的时候，他调用的是回调。可以用gpt看看
 > 3. 在5的拦截中setComplete()就是结束的意思。
+> 4. 上面有个注解`@Order`是指定过滤器的顺序的。值越小，优先级越高，这里也可以通过实现order接口进行设置，但是都一样。
 
 - 测试
 
@@ -1283,5 +1284,88 @@ public class AuthorizeFilter implements GlobalFilter {
 
 
 
-•跨域问题
 
+
+
+
+### 6.6 过滤器执行顺序
+
+1. 每一个过滤器都必须指定一个int类型的order值，**order** **值越小，优先级越高，执行顺序越靠前。**
+2. GlobalFilter通过实现Ordered接口，或者添加@Order注解来指定order值，由我们自己指定
+3. 路由过滤器和defaultFilter的order由Spring指定，默认是按照声明顺序从1递增。
+4. 当过滤器的order值一样时，会按照 defaultFilter > 路由过滤器 > GlobalFilter的顺序执行
+
+
+
+### 6.7 跨域问题
+
+跨域：域名不一致就是跨域，主要包括：
+
+- 域名不同： www.taobao.com 和 www.taobao.org 和 www.jd.com 和 miaosha.jd.com
+- 域名相同，端口不同：localhost:8080和localhost8081
+
+跨域问题：浏览器禁止请求的发起者与服务端发生跨域ajax请求，请求被浏览器拦截的问题
+
+解决方案：CORS
+
+
+
+添加配置即可
+
+````
+spring:
+  cloud:
+    gateway:      #
+      globalcors: # 全局的跨域处理
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: # 允许哪些网站的跨域请求
+              - "http://localhost:8090"
+              - "http://www.leyou.com"
+            allowedMethods: # 允许的跨域ajax的请求方式
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            allowedHeaders: "*" # 允许在请求中携带的头信息
+            allowCredentials: true # 是否允许携带cookie
+            maxAge: 360000 # 这次跨域检测的有效期
+````
+
+> 这个是gateway下面的一层，跟router同层
+
+
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios CORS Test</title>
+    <!-- 引入 Axios 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<script>
+    // 发送 GET 请求
+    axios.get('http://localhost:10010/user/1?authorization=admin')
+        .then(response => {
+            // 请求成功处理
+            console.log('Response:', response.data);
+        })
+        .catch(error => {
+            // 请求失败处理
+            console.error('Error:', error);
+        });
+</script>
+
+</body>
+</html>
+```
+
+> 测试代码如上
