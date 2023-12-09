@@ -259,7 +259,7 @@
    >   注意:
    >   kill命令是Linux提供的用于结束进程的命令，-9表示强制结束
 
-   ![停止Tomcat](image-20231116234236909.png)
+   ![停止Tomcat](./assets/image-20231116234236909.png)
 
 ### 3.4 安装MySQL
 
