@@ -29,57 +29,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/微服务.md",
+                "file": "02-Code/基础/linux/linux.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "f8a18cb92cfc9bec"
+            }
           }
         ],
         "currentTab": 2
-      },
-      {
-        "id": "b2dfa92afc277347",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ad4957405612488f",
-            "type": "leaf",
-            "state": {
-              "type": "localgraph",
-              "state": {
-                "file": "02-Code/基础/后端/微服务框架/微服务.md",
-                "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
-                  "localBacklinks": true,
-                  "localForelinks": true,
-                  "localInterlinks": false,
-                  "showTags": false,
-                  "showAttachments": false,
-                  "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
-                  "collapse-display": true,
-                  "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
-                  "lineSizeMultiplier": 1,
-                  "collapse-forces": true,
-                  "centerStrength": 0.518713248970312,
-                  "repelStrength": 10,
-                  "linkStrength": 1,
-                  "linkDistance": 250,
-                  "scale": 1.6600228795504786,
-                  "close": false
-                }
-              }
-            },
-            "group": "f8a18cb92cfc9bec"
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -145,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/微服务.md",
+                "file": "02-Code/基础/linux/linux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -162,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/微服务.md",
+                "file": "02-Code/基础/linux/linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -185,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/微服务.md"
+                "file": "02-Code/基础/linux/linux.md"
               }
             }
           },
@@ -211,7 +168,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -226,8 +184,9 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "ad4957405612488f",
+  "active": "3f9c07ae12a12a27",
   "lastOpenFiles": [
+    "02-Code/基础/后端/QT/p002_按钮.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
     "02-Code/基础/后端/微服务框架/微服务.md",
@@ -269,7 +228,6 @@
     "02-Code/基础/计算机网络实战（Python）/assets",
     "02-Code/基础/计算机网络实战（Python）",
     "02-Code/npee-408-note-main/assets",
-    "02-Code/npee-408-note-main/README.md",
-    "02-Code/npee-408-note-main/操作系统/操作系统.md"
+    "02-Code/npee-408-note-main/README.md"
   ]
 }
