@@ -1,4 +1,4 @@
-# Springcloud
+# Springcloud基础
 
 两种分
 
@@ -719,7 +719,7 @@ spring:
 
 ### 4.6 Nacos集群搭建
 
-看视频p29，然后查看笔记[Nacos集群搭建](02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/nacos集群搭建.md)
+看视频p29，然后查看笔记[Nacos集群搭建](./Nacos集群搭建/nacos集群搭建.md)
 
 
 
@@ -1369,3 +1369,7 @@ spring:
 ```
 
 > 测试代码如上
+
+
+
+# SpringCloud高级

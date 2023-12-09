@@ -19,12 +19,8 @@
             "id": "dff44eed7400f472",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             },
             "group": "829d0c8222b0cd84"
           },
@@ -34,7 +30,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
+                "file": "02-Code/基础/后端/微服务框架/微服务.md",
                 "mode": "source",
                 "source": false
               }
@@ -53,7 +49,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -149,7 +144,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
+                "file": "02-Code/基础/后端/微服务框架/微服务.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -166,7 +161,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
+                "file": "02-Code/基础/后端/微服务框架/微服务.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -189,7 +184,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md"
+                "file": "02-Code/基础/后端/微服务框架/微服务.md"
               }
             }
           },
@@ -211,8 +206,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -233,8 +227,8 @@
   },
   "active": "d03da2614f5d2a01",
   "lastOpenFiles": [
-    "02-Code/基础/后端/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
     "02-Code/基础/后端/微服务框架/微服务.md",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/assets/image-20231208194301713.png",
