@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/springcloud.md",
+                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/springcloud.md",
+                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/springcloud.md",
+                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/springcloud.md"
+                "file": "02-Code/基础/后端/微服务框架/day02-Docker.md"
               }
             }
           },
@@ -148,12 +148,11 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,6 +169,17 @@
   },
   "active": "8382c355d18d5dc7",
   "lastOpenFiles": [
+    "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
+    "02-Code/基础/后端/微服务框架/day02-Docker.md",
+    "02-Code/基础/后端/微服务框架/assets/image-20231121004335179.png",
+    "02-Code/基础/后端/微服务框架/Untitled.md",
+    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
+    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/springcloud.md",
+    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/assets/image-20210410103253355.png",
+    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
+    "02-Code/基础/后端/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/assets/image-20231208194301713.png",
+    "Nacos集群搭建/nacos集群搭建.md",
+    "Nacos集群搭建",
     "Task/软件工程作业.md",
     "Task/月看板.md",
     "Task/计算机计划.md",
@@ -196,13 +206,6 @@
     "template/TODO.md",
     "Task/月-规划.md",
     "01-笔记使用/01a1-Obsidian插件.md",
-    "01-笔记使用/01a-Obsidian基本使用.md",
-    "01-笔记使用/笔记目录.md",
-    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
-    "01-笔记使用/01b-Markdown语法规则.md",
-    "01-笔记使用/01b2-LaTeX.md",
-    "01-笔记使用/01d-卢曼卡片盒笔记.md",
-    "01-笔记使用/01c个人知识管理.md",
-    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md"
+    "01-笔记使用/01a-Obsidian基本使用.md"
   ]
 }
