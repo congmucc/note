@@ -184,8 +184,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "3f9c07ae12a12a27",
+  "active": "d03da2614f5d2a01",
   "lastOpenFiles": [
+    "02-Code/基础/基本语法/Java/17_多线程/17.1_进程和线程.md",
+    "02-Code/基础/Git/命令.md",
+    "02-Code/基础/linux/linux.md",
     "02-Code/基础/后端/QT/p002_按钮.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
@@ -220,14 +223,11 @@
     "Task/未命名看板 1.md",
     "README.md",
     "Task/dui'y.md",
-    "02-Code/基础/计算机网络实战（Python）/assets/NAT进行IP互联.md",
     "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
-    "02-Code/基础/计算机网络实战（Python）/计算机网络实战（Python版本）.md",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/assets",
     "02-Code/基础/计算机网络实战（Python）/assets",
     "02-Code/基础/计算机网络实战（Python）",
-    "02-Code/npee-408-note-main/assets",
-    "02-Code/npee-408-note-main/README.md"
+    "02-Code/npee-408-note-main/assets"
   ]
 }
