@@ -29,7 +29,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/linux/linux.md",
+                "file": "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
                 "mode": "source",
                 "source": false
               }
@@ -102,8 +102,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/linux/linux.md",
-                "collapseAll": false,
+                "file": "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -119,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/linux/linux.md",
+                "file": "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/linux/linux.md"
+                "file": "02-Code/基础/全栈（Python）/全栈（Python版本）.md"
               }
             }
           },
@@ -168,8 +168,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -186,8 +185,10 @@
   },
   "active": "d03da2614f5d2a01",
   "lastOpenFiles": [
-    "02-Code/基础/Git/命令.md",
+    "02-Code/基础/基本语法/Java/21_网络编程/网络编程总结.md",
+    "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/linux/linux.md",
+    "02-Code/基础/Git/命令.md",
     "02-Code/基础/基本语法/Java/17_多线程/17.1_进程和线程.md",
     "02-Code/基础/后端/QT/p002_按钮.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
@@ -218,11 +219,9 @@
     "Task/计算机计划.md",
     "02-Code/基础/基本语法/Java/17_线程/assets/image-20231205190532976.png",
     "Diary/2023-11-25-学习obsidian.md",
-    "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/全栈（Python）/assets/07-四次挥手.png",
     "Task/未命名看板 1.md",
     "README.md",
-    "Task/dui'y.md",
     "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/assets",
