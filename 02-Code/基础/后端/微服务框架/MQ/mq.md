@@ -543,7 +543,7 @@ public void listenDirectQueue2(String msg) throws InterruptedException {
 
 
 
-## 2.6 Topic交换机
+### 2.6 Topic交换机
 
 #### 2.6.1 说明
 
@@ -603,13 +603,383 @@ BindingKey` 一般都是有一个或多个单词组成，多个单词之间以`.
 
 #### 2.6.3 消息发送
 
+- 在publisher服务的SpringAmqpTest类中添加测试方法：
 
+```java
+@Test
+public void testTopicQueue() {
+    // 交换机名称
+    String exchangeName = "root.topic";
+    String message = "hello, china.weather";
+    rabbitTemplate.convertAndSend(exchangeName, "china.weather", message);
+    message = "hello, china.news";
+    rabbitTemplate.convertAndSend(exchangeName, "china.news", message);
+    message = "hello, japan.news";
+    rabbitTemplate.convertAndSend(exchangeName, "japan.news", message);
+}
+```
 
 
 
 #### 2.6.4 消息接收
 
+- 在consumer服务的SpringRabbitListener中添加方法：
 
+```java
+@RabbitListener(queues = "topic.queue1")
+public void listenTopicQueue1(String msg) throws InterruptedException {
+    System.err.println("消费者1........接收到topic消息：【" + msg + "】" + LocalTime.now());
+}
+
+@RabbitListener(queues = "topic.queue2")
+public void listenTopicQueue2(String msg) throws InterruptedException {
+    System.err.println("消费者2........接收到topic消息：【" + msg + "】" + LocalTime.now());
+}
+```
+
+
+
+结果如下：
+
+```java
+消费者2........接收到topic消息：【hello, china.news】01:14:44.393
+消费者1........接收到topic消息：【hello, china.weather】01:14:44.393
+消费者2........接收到topic消息：【hello, japan.news】01:14:44.394
+消费者1........接收到topic消息：【hello, china.news】01:14:44.394
+```
+
+
+
+
+
+
+
+### 2.7 利用java声明队列和交换机
+
+在之前我们都是基于RabbitMQ控制台来创建队列、交换机。但是在实际开发时，队列和交换机是程序员定义的，将来项目上线，又要交给运维去创建。那么程序员就需要把程序中运行的所有队列和交换机都写下来，交给运维。在这个过程中是很容易出现错误的。
+
+因此推荐的做法是由程序启动时检查队列和交换机是否存在，如果不存在自动创建。
+
+#### 2.7.1 基本API
+
+SpringAMQP提供了一个Queue类，用来创建队列：
+
+![img](./assets/1702142876506-4.png)
+
+SpringAMQP还提供了一个Exchange接口，来表示所有不同类型的交换机：
+
+![img](./assets/1702142876501-1.png)
+
+我们可以自己创建队列和交换机，不过SpringAMQP还提供了ExchangeBuilder来简化这个过程：
+
+![img](./assets/1702142876502-2.png)
+
+而在绑定队列和交换机时，则需要使用BindingBuilder来创建Binding对象：
+
+![img](./assets/1702142876502-3.png)
+
+#### 2.7.2 fanout示例
+
+在consumer中创建一个类，声明队列和交换机：
+
+```Java
+package com.itheima.consumer.config;
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class FanoutConfig {
+    /**
+     * 声明交换机
+     * @return Fanout类型交换机
+     */
+    @Bean
+    public FanoutExchange fanoutExchange(){
+        return new FanoutExchange("hmall.fanout");
+    }
+
+    /**
+     * 第1个队列
+     */
+    @Bean
+    public Queue fanoutQueue1(){
+        return new Queue("fanout.queue1");
+    }
+
+    /**
+     * 绑定队列和交换机
+     */
+    @Bean
+    public Binding bindingQueue1(Queue fanoutQueue1, FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(fanoutQueue1).to(fanoutExchange);
+    }
+
+    /**
+     * 第2个队列
+     */
+    @Bean
+    public Queue fanoutQueue2(){
+        return new Queue("fanout.queue2");
+    }
+
+    /**
+     * 绑定队列和交换机
+     */
+    @Bean
+    public Binding bindingQueue2(Queue fanoutQueue2, FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(fanoutQueue2).to(fanoutExchange);
+    }
+}
+```
+
+#### 2.7.3 direct示例
+
+direct模式由于要绑定多个KEY，会非常麻烦，每一个Key都要编写一个binding：
+
+```Java
+package com.itheima.consumer.config;
+
+import org.springframework.amqp.core.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class DirectConfig {
+
+    /**
+     * 声明交换机
+     * @return Direct类型交换机
+     */
+    @Bean
+    public DirectExchange directExchange(){
+        return ExchangeBuilder.directExchange("hmall.direct").build();
+    }
+
+    /**
+     * 第1个队列
+     */
+    @Bean
+    public Queue directQueue1(){
+        return new Queue("direct.queue1");
+    }
+
+    /**
+     * 绑定队列和交换机
+     */
+    @Bean
+    public Binding bindingQueue1WithRed(Queue directQueue1, DirectExchange directExchange){
+        return BindingBuilder.bind(directQueue1).to(directExchange).with("red");
+    }
+    /**
+     * 绑定队列和交换机
+     */
+    @Bean
+    public Binding bindingQueue1WithBlue(Queue directQueue1, DirectExchange directExchange){
+        return BindingBuilder.bind(directQueue1).to(directExchange).with("blue");
+    }
+
+    /**
+     * 第2个队列
+     */
+    @Bean
+    public Queue directQueue2(){
+        return new Queue("direct.queue2");
+    }
+
+    /**
+     * 绑定队列和交换机
+     */
+    @Bean
+    public Binding bindingQueue2WithRed(Queue directQueue2, DirectExchange directExchange){
+        return BindingBuilder.bind(directQueue2).to(directExchange).with("red");
+    }
+    /**
+     * 绑定队列和交换机
+     */
+    @Bean
+    public Binding bindingQueue2WithYellow(Queue directQueue2, DirectExchange directExchange){
+        return BindingBuilder.bind(directQueue2).to(directExchange).with("yellow");
+    }
+}
+```
+
+#### 2.7.4 基于注解声明
+
+基于@Bean的方式声明队列和交换机比较麻烦，Spring还提供了基于注解方式来声明。
+
+例如，我们同样声明Direct模式的交换机和队列：
+
+- 这个是在消费者的监听器定义的
+
+```Java
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = "direct.queue1"),
+    exchange = @Exchange(name = "hmall.direct", type = ExchangeTypes.DIRECT),
+    key = {"red", "blue"}
+))
+public void listenDirectQueue1(String msg){
+    System.out.println("消费者1接收到direct.queue1的消息：【" + msg + "】");
+}
+
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = "direct.queue2"),
+    exchange = @Exchange(name = "hmall.direct", type = ExchangeTypes.DIRECT),
+    key = {"red", "yellow"}
+))
+public void listenDirectQueue2(String msg){
+    System.out.println("消费者2接收到direct.queue2的消息：【" + msg + "】");
+}
+```
+
+
+
+**Topic模式：**
+
+```Java
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = "topic.queue1"),
+    exchange = @Exchange(name = "hmall.topic", type = ExchangeTypes.TOPIC),
+    key = "china.#"
+))
+public void listenTopicQueue1(String msg){
+    System.out.println("消费者1接收到topic.queue1的消息：【" + msg + "】");
+}
+
+@RabbitListener(bindings = @QueueBinding(
+    value = @Queue(name = "topic.queue2"),
+    exchange = @Exchange(name = "hmall.topic", type = ExchangeTypes.TOPIC),
+    key = "#.news"
+))
+public void listenTopicQueue2(String msg){
+    System.out.println("消费者2接收到topic.queue2的消息：【" + msg + "】");
+}
+```
+
+
+
+
+
+### 2.8 消息转换器
+
+Spring的消息发送代码接收的消息体是一个Object：
+
+而在数据传输时，它会把你发送的消息序列化为字节发送给MQ，接收消息的时候，还会把字节反序列化为Java对象。
+
+只不过，默认情况下Spring采用的序列化方式是JDK序列化。众所周知，JDK序列化存在下列问题：
+
+- 数据体积过大
+- 有安全漏洞
+- 可读性差
+
+
+
+#### 2.8.1 测试默认转换器
+
+1）创建测试队列
+
+首先，我们在consumer服务中声明一个新的配置类：
+
+![img](./assets/1702143697739-13.png)
+
+利用@Bean的方式创建一个队列，
+
+具体代码：
+
+```Java
+package com.itheima.consumer.config;
+
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MessageConfig {
+
+    @Bean
+    public Queue objectQueue() {
+        return new Queue("object.queue");
+    }
+}
+```
+
+注意，这里我们先不要给这个队列添加消费者，我们要查看消息体的格式。
+
+重启consumer服务以后，该队列就会被自动创建出来了：
+
+![img](./assets/1702143697739-14.png)
+
+2）发送消息
+
+我们在publisher模块的SpringAmqpTest中新增一个消息发送的代码，发送一个Map对象：
+
+```Java
+@Test
+public void testSendMap() throws InterruptedException {
+    // 准备消息
+    Map<String,Object> msg = new HashMap<>();
+    msg.put("name", "柳岩");
+    msg.put("age", 21);
+    // 发送消息
+    rabbitTemplate.convertAndSend("object.queue", msg);
+}
+```
+
+发送消息后查看控制台：
+
+![img](./assets/1702143697739-15.png)
+
+可以看到消息格式非常不友好。
+
+#### 2.8.2 配置JSON转换器
+
+显然，JDK序列化方式并不合适。我们希望消息体的体积更小、可读性更高，因此可以使用JSON方式来做序列化和反序列化。
+
+在`publisher`和`consumer`两个服务中都引入依赖：
+
+```XML
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.9.10</version>
+</dependency>
+```
+
+注意，如果项目中引入了`spring-boot-starter-web`依赖，则无需再次引入`Jackson`依赖。
+
+配置消息转换器，在`publisher`和`consumer`两个服务的启动类中添加一个Bean即可：
+
+```Java
+@Bean
+public MessageConverter messageConverter(){
+    // 1.定义消息转换器
+    Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
+    // 2.配置自动创建消息id，用于识别不同消息，也可以在业务中基于ID判断是否是重复消息
+    jackson2JsonMessageConverter.setCreateMessageIds(true);
+    return jackson2JsonMessageConverter;
+}
+```
+
+消息转换器中添加的messageId可以便于我们将来做幂等性判断。
+
+此时，我们到MQ控制台**删除**`object.queue`中的旧的消息。然后再次执行刚才的消息发送的代码，到MQ的控制台查看消息结构：
+
+![img](./assets/1702143697739-16.png)
+
+#### 2.8.3 消费者接收Object
+
+我们在consumer服务中定义一个新的消费者，publisher是用Map发送，那么消费者也一定要用Map接收，格式如下：
+
+```Java
+@RabbitListener(queues = "object.queue")
+public void listenSimpleQueueMessage(Map<String, Object> msg) throws InterruptedException {
+    System.out.println("消费者接收到object.queue消息：【" + msg + "】");
+}
+```
 
 
 
