@@ -11,11 +11,9 @@
             "id": "b917cac4161086d0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "03-英语/笔记：.md",
-                "mode": "source",
-                "source": false
+                "file": "Task/月看板.md"
               }
             }
           }
@@ -85,8 +83,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "03-英语/笔记：.md",
-                "collapseAll": true,
+                "file": "Task/月看板.md",
+                "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "03-英语/笔记：.md",
+                "file": "Task/月看板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03-英语/笔记：.md"
+                "file": "Task/月看板.md"
               }
             }
           },
@@ -151,7 +149,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -166,8 +165,10 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "b917cac4161086d0",
+  "active": "3f9c07ae12a12a27",
   "lastOpenFiles": [
+    "Task/软件工程作业.md",
+    "Task/计算机计划.md",
     "03-英语/笔记：.md",
     "03-英语",
     "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
@@ -199,9 +200,7 @@
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/assets/image-20231208194301713.png",
     "Nacos集群搭建/nacos集群搭建.md",
     "Nacos集群搭建",
-    "Task/软件工程作业.md",
     "Task/月看板.md",
-    "Task/计算机计划.md",
     "02-Code/基础/基本语法/Java/17_线程/assets/image-20231205190532976.png",
     "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/全栈（Python）/assets/07-四次挥手.png",
