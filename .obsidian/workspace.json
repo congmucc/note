@@ -11,9 +11,11 @@
             "id": "b917cac4161086d0",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "01-笔记使用/笔记目录.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/月看板.md",
+                "file": "01-笔记使用/笔记目录.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/月看板.md",
+                "file": "01-笔记使用/笔记目录.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/月看板.md"
+                "file": "01-笔记使用/笔记目录.md"
               }
             }
           },
@@ -165,22 +167,28 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "3f9c07ae12a12a27",
+  "active": "b917cac4161086d0",
   "lastOpenFiles": [
-    "Task/软件工程作业.md",
+    "01-笔记使用/01d-卢曼卡片盒笔记.md",
+    "01-笔记使用/01c个人知识管理.md",
+    "01-笔记使用/01a-Obsidian基本使用.md",
+    "01-笔记使用/01a1-Obsidian插件.md",
+    "02-Code/基础/后端/微服务框架/微服务.md",
+    "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
+    "02-Code/基础/后端/微服务框架/Docker/Docker.md",
+    "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
     "Task/计算机计划.md",
+    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+    "Task/月看板.md",
+    "Task/软件工程作业.md",
     "03-英语/笔记：.md",
     "03-英语",
-    "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/基本语法/Java/21_网络编程/网络编程总结.md",
     "02-Code/基础/linux/linux.md",
     "02-Code/基础/Git/命令.md",
     "02-Code/基础/基本语法/Java/17_多线程/17.1_进程和线程.md",
     "02-Code/基础/后端/QT/p002_按钮.md",
-    "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
-    "02-Code/基础/后端/微服务框架/微服务.md",
-    "02-Code/基础/后端/微服务框架/Docker/Docker.md",
     "02-Code/基础/后端/微服务框架/MQ/MQ.md",
     "02-Code/基础/后端/微服务框架/SpringCloud/springcloud.md",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
@@ -192,19 +200,13 @@
     "02-Code/基础/后端/微服务框架/Untitled.md",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/MQ/mq.md",
-    "02-Code/基础/后端/微服务框架/day02-Docker.md",
-    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/springcloud.md",
     "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
     "02-Code/基础/后端/微服务框架/assets/image-20231121004335179.png",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/assets/image-20210410103253355.png",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/assets/image-20231208194301713.png",
-    "Nacos集群搭建/nacos集群搭建.md",
     "Nacos集群搭建",
-    "Task/月看板.md",
     "02-Code/基础/基本语法/Java/17_线程/assets/image-20231205190532976.png",
-    "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/全栈（Python）/assets/07-四次挥手.png",
-    "Task/未命名看板 1.md",
     "02-Code/基础/计算机网络实战（Python）/assets/Pasted-image-20231126183808.png",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/assets",
