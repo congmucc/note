@@ -11,9 +11,11 @@
             "id": "b917cac4161086d0",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/软件工程作业.md"
+                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/软件工程作业.md",
+                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/软件工程作业.md",
+                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/软件工程作业.md"
+                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md"
               }
             }
           },
@@ -167,9 +169,11 @@
   },
   "active": "b917cac4161086d0",
   "lastOpenFiles": [
+    "Task/软件工程作业.md",
+    "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
+    "04-情商",
     "Task/月看板.md",
     "Task/计算机计划.md",
-    "Task/软件工程作业.md",
     "03-英语/笔记：.md",
     "01-笔记使用/笔记目录.md",
     "01-笔记使用/01d-卢曼卡片盒笔记.md",
@@ -197,7 +201,6 @@
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式",
     "02-Code/基础/后端/微服务框架/MQ/mq.md",
     "02-Code/基础/后端/微服务框架/Untitled.md",
-    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式.md",
     "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
     "02-Code/基础/后端/微服务框架/assets/image-20231121004335179.png",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/assets/image-20210410103253355.png",
