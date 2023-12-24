@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,8 +85,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
-                "collapseAll": false,
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md"
+                "file": "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md"
               }
             }
           },
@@ -151,8 +151,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -167,10 +166,10 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "b917cac4161086d0",
+  "active": "3f9c07ae12a12a27",
   "lastOpenFiles": [
-    "Task/软件工程作业.md",
     "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
+    "Task/软件工程作业.md",
     "04-情商",
     "Task/月看板.md",
     "Task/计算机计划.md",
