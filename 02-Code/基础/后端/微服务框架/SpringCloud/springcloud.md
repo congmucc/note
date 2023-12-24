@@ -1505,25 +1505,7 @@ spring:
 
 重启`cart-service`，然后访问查询购物车接口，sentinel的客户端就会将服务访问的信息提交到`sentinel-dashboard`控制台。并展示出统计信息
 
-## 1.3.请求限流
-
-在簇点链路后面点击流控按钮，即可对其做限流配置：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDk4MTUyYTgwMzFmZWFhMDQzMjEzZGQ2Yzg1M2VkY2VfTUpndENaTk9JelZTeG9OUE9maEVCaHBvNlFzWGlKT3BfVG9rZW46SUFTdmJidkk4bzYzUk54dktPQ2NBaUI4bmxnXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
-
-在弹出的菜单中这样填写：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YzFmNTMwM2NiMjYyNjUwODJiODc5YzUzNmMyM2I3YTFfeG5YVVo2NlBDYjJsc3NxTmVzTVJMMXhucUk4WTJGUkpfVG9rZW46Vk9VYmJxT2x1b25hdnF4M1drU2N5NERiblViXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
-
-这样就把查询购物车列表这个簇点资源的流量限制在了每秒6个，也就是最大QPS为6.
-
-我们利用Jemeter做限流测试，我们每秒发出10个请求：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MGFhY2VlMzM4NjY5ZDc4MDQ3NWFjMzI0YjJmYjgyZmNfWkNaTjhhQUhiR0RwUExnQjBjSU5FSTNIdHlTN0Faa01fVG9rZW46V3hrQWIxUHNSbzFmcTV4eThWbmNvWmUybjdlXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
-
-最终监控结果如下：
-
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YjM0MDBkMzJlZTVmOWE5NmRkYzM3YWJmZjdmZjJkYWNfR2NrYmxvTGF3bHdxTWNzOEkzZ3owaTNXbHZPcUhrdUVfVG9rZW46WWJqMGJJekRFbzNNbTV4RjR4WWNsV2g1bk5jXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418594068-163.png)
 
 可以看出`GET:/carts`这个接口的通过QPS稳定在6附近，而拒绝的QPS在4附近，符合我们的预期。
 
@@ -1533,11 +1515,15 @@ spring:
 
 比如，查询购物车的时候需要查询商品，为了避免因商品服务出现故障导致购物车服务级联失败，我们可以把购物车业务中查询商品的部分隔离起来，限制可用的线程资源：
 
-暂时无法在飞书文档外展示此内容
+
 
 这样，即便商品服务出现故障，最多导致查询购物车业务故障，并且可用的线程资源也被限定在一定范围，不会导致整个购物车服务崩溃。
 
 所以，我们要对查询商品的FeignClient接口做线程隔离。
+
+![img](./assets/1703418615863-166.png)
+
+导致最终的平局响应时间较长。
 
 ### 1.4.1.OpenFeign整合Sentinel
 
@@ -1551,35 +1537,35 @@ feign:
 
 然后重启cart-service服务，可以看到查询商品的FeignClient自动变成了一个簇点资源：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MDE2OTg5ZjE4NGMyYjRjNzU1MTZiMzc0MjU4MjI0NWNfSTJaMkkwR1VTakxNeXZJSWNvcmIwYVo2TGNuMW1nRzNfVG9rZW46UFVzVGJBVDJ2b2pMVVl4QjNySWM2Vmo1bkVoXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-181.png)
 
 ### 1.4.2.配置线程隔离
 
 接下来，点击查询商品的FeignClient对应的簇点资源后面的流控按钮：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjA2NGYzYjEyMGE1ZTM1ZjY4MWFlNjE2OTc5NGQwYzBfOVp5ZVZiNVFMRzI4VVJISzhoMUN5YXRjYUExWWppeG5fVG9rZW46QzI2Z2JJZVMzb201VjJ4dW5KZmNERGYxbnFmXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-182.png)
 
 在弹出的表单中填写下面内容：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MDBkODI5NjgzMzQwODU2NGNmYTgyYTQwOGQxMGUzOTRfWjBNWGJpcW9OdG9tTlJ4TFJjdmc2SkZPVjA2c1B5MTFfVG9rZW46S2FGcWJDdlIwb29DVzB4a0Rtd2NWREV2bkllXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-183.png)
 
 注意，这里勾选的是并发线程数限制，也就是说这个查询功能最多使用5个线程，而不是5QPS。如果查询商品的接口每秒处理2个请求，则5个线程的实际QPS在10左右，而超出的请求自然会被拒绝。
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MzFmNDFjNGYzMjA3NGQ1MDcxNzE2OWUwYjQ3NDk3MDdfMENTMmZFNWxOajZubFdVc0JWUmp0cFhCcUxydGJiWEFfVG9rZW46UVFDd2I0QmZIb1Vqc0h4aUNQcWNudHhBbk5jXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-184.png)
 
 我们利用Jemeter测试，每秒发送100个请求：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MjhkOTNkZjljZWI2OGI0OTQyZTYyNjU1NDU3NGZjNTBfVWZHeTFPQ3RsaTc0cThmaWFCZkUydUZVb2I2R3ZGakdfVG9rZW46S05VdWJScmg3b21JM1J4ZmNrb2NrS0Rrbml1XzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-185.png)
 
 最终测试结果如下：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2RjNWRjOTcxODlkYjRmYTUwZmE0MzJkNjhmMzI2OGVfY0p2YXV2NjUwVlMwVDJlNFF2S1lwbXo4TzJ4UE8zNmFfVG9rZW46RVdCQ2Jya3l3b0prbVZ4cjB6b2M0RGxibmZoXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-186.png)
 
 进入查询购物车的请求每秒大概在100，而在查询商品时却只剩下每秒10左右，符合我们的预期。
 
 此时如果我们通过页面访问购物车的其它接口，例如添加购物车、修改购物车商品数量，发现不受影响：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGNhMDUzN2ZjNjc3NmNhYjU4NjQ4ZmQ4NTQwNDZiMjZfUkFXSDVwd2VFTTg0cFJTY04yYWllSWxoM3FzaFNjQXdfVG9rZW46UVZlUGJ4Qklxb0t0NEl4bnhIZGNoa2xQbmJiXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-187.png)
 
 响应时间非常短，这就证明线程隔离起到了作用，尽管查询购物车这个接口并发很高，但是它能使用的线程资源被限制了，因此不会影响到其它接口。
 
@@ -1591,7 +1577,7 @@ feign:
 
 第二，由于查询商品的延迟较高（模拟的500ms），从而导致查询购物车的响应时间也变的很长。这样不仅拖慢了购物车服务，消耗了购物车服务的更多资源，而且用户体验也很差。对于商品服务这种不太健康的接口，我们应该直接停止调用，直接走降级逻辑，避免影响到当前服务。也就是将商品查询接口**熔断**。
 
-### 1.5.1.编写降级逻辑
+### 1.5.1.编写降级逻辑Fallback
 
 触发限流或熔断后的请求不一定要直接报错，也可以返回一些默认数据或者友好提示，用户体验会更好。
 
@@ -1604,7 +1590,7 @@ feign:
 
 **步骤一**：在hm-api模块中给`ItemClient`定义降级处理类，实现`FallbackFactory`：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MTM0NTg2NTg1MWRlN2MxMzcyMzQyNDU2MWJiZDk5NWFfc2ZzcWZSa3hTOEMwQmZBQ0NOUzA1dUlueld3c2h0bklfVG9rZW46UVFFZmJwY3Nkb05kcGl4NTlkVGNIRjFYbnlnXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-188.png)
 
 代码如下：
 
@@ -1646,19 +1632,19 @@ public class ItemClientFallback implements FallbackFactory<ItemClient> {
 
 **步骤二**：在`hm-api`模块中的`com.hmall.api.config.DefaultFeignConfig`类中将`ItemClientFallback`注册为一个`Bean`：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NjE3ZjFmMjMyN2JjNjRkM2E2ZDMzMzJhZDEyZjc5ZWZfTER2eko1ZVFCSW1DN2tiZEY4SmUxOGNDSGwzY1Q5T1pfVG9rZW46WVFlV2JrUzRWb0RoOGJ4bFp0emNYTGZibk9iXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-189.png)
 
 **步骤三**：在`hm-api`模块中的`ItemClient`接口中使用`ItemClientFallbackFactory`：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ODExNmFjZjgwNTdiODAxMTE0ZmM0YjBjZjg3NDdkMDNfUnpzYm54ZEt1SjVyS2VySmcyMG9qNG9qbmZxYzFrWHNfVG9rZW46WVlqZWJjZkttbzlhZ2F4VEp5U2NPTmRMbjFnXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-190.png)
 
 重启后，再次测试，发现被限流的请求不再报错，走了降级逻辑：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MzU4MjUxYjUzOTJlN2Q4YjMyZGFlOTJjOTM4MDUyNjVfRzVaMWs3dWpuSVdib25JQjM0czZUMVVkMXhkUDhDOUlfVG9rZW46QlBqdmJGYVZKb0E2RE14OExNZWNRMEJQbnVkXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-191.png)
 
 但是未被限流的请求延时依然很高：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YWU4MDJjMzNiZTMwYzNlZDNkNjI2MGZjMTk1MjMwMWVfWHVIaVJzd0lCbmNTbTNGcXdYR2tvVXRBcGlrQlk2Q2ZfVG9rZW46Q2t4eWJqYlZBb05KUld4ZFhIcWM3UGkwbmVkXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418687650-192.png)
 
 导致最终的平局响应时间较长。
 
@@ -1684,11 +1670,11 @@ Sentinel中的断路器不仅可以统计某个接口的**慢请求比例**，�
 
 我们可以在控制台通过点击簇点后的**`熔断`**按钮来配置熔断策略：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjJhZDRhYjkyNzAwMDBiNDk3YTM0ODU4MjQxNDVkZTNfME9YZHloZTY3RVJKU2F4VTY2d0doR0FXQkROcVNJMkVfVG9rZW46UFc5SWJhb2t0b2dabEN4OG9waGNHNFY3bkNrXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418629288-169.png)
 
 在弹出的表格中这样填写：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2RhODMyNGVmZDU0NWFkZGUwODVjZmU1MDFmYTU1NmVfaDYzTmVENUFTZ3B5WEdvNFZrQTlpZG1MUk5tdnE4eFdfVG9rZW46SlZTbWJUSW9Ib2JZdGh4ZjdjOWNwdE1vbk1kXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418629288-170.png)
 
 这种是按照慢调用比例来做熔断，上述配置的含义是：
 
@@ -1698,12 +1684,14 @@ Sentinel中的断路器不仅可以统计某个接口的**慢请求比例**，�
 
 配置完成后，再次利用Jemeter测试，可以发现：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=OGY5NzJkNThhN2E1MGE2NDgyYTc4ZWI0ODBiZjU5NGRfTDA3UGo1NFJtbDI5Y2RJTFI1U1p1R0VidEU4RndVdHFfVG9rZW46U3dBNWIyU3VFb0lQRk54N3c4Z2NWbjhrbk5HXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418629288-171.png)
 
 在一开始一段时间是允许访问的，后来触发熔断后，查询商品服务的接口通过QPS直接为0，所有请求都被熔断了。而查询购物车的本身并没有受到影响。
 
 此时整个购物车查询服务的平均RT影响不大：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MTM0ZDJmNWE4MmNmZDg4YzBiMDA2YzNkZjYxZGY0OWFfY1FrOW5sSmNwRXo1SzVRd3FZd0tWdFNWVzFtMjYyc3BfVG9rZW46QXVBUGJ4bWNKb3pwSE94UzYxRWMzaDg4bkxlXzE3MDM0MTc2OTI6MTcwMzQyMTI5Ml9WNA)
+![img](./assets/1703418629288-172.png)
 
 # 2.分布式事务
+
+首先我们看看项目中的下单业务整体流程：
