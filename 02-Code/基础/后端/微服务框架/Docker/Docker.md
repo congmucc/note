@@ -213,7 +213,7 @@ Docker本身包含一个后台服务，我们可以利用Docker命令告诉Docke
 
 用一幅图标示如下：
 
-![image-20231121004426475](image-20231121004426475.png)
+![image-20231121004426475](./assets/image-20231121004426475.png)
 
 暂时无法在飞书文档外展示此内容
 
@@ -276,7 +276,7 @@ https://docs.docker.com/engine/reference/commandline/cli/
 | docker start   | 启动指定容器                   | [docker start](https://docs.docker.com/engine/reference/commandline/start/) |
 | docker restart | 重新启动容器                   | [docker restart](https://docs.docker.com/engine/reference/commandline/restart/) |
 | docker rm      | 删除指定容器                   | [docs.docker.com](https://docs.docker.com/engine/reference/commandline/rm/) |
-| docker ps      | 查看容器                       | [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) |
+| docker ps -a   | 查看所有容器                   | [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) |
 | docker logs    | 查看容器运行日志               | [docker logs](https://docs.docker.com/engine/reference/commandline/logs/) |
 | docker exec    | 进入容器                       | [docker exec](https://docs.docker.com/engine/reference/commandline/exec/) |
 | docker save    | 保存镜像到本地压缩文件         | [docker save](https://docs.docker.com/engine/reference/commandline/save/) |
@@ -285,7 +285,7 @@ https://docs.docker.com/engine/reference/commandline/cli/
 
 用一副图来表示这些命令的关系：
 
-![image-20231121004335179](image-20231121004335179.png)
+![image-20231121004335179](./assets/image-20231121004335179.png)
 
 暂时无法在飞书文档外展示此内容
 
@@ -1353,12 +1353,14 @@ nginx               nginx               "/docker-entrypoint.…"   nginx        
     >    > ```
     >    > # 主库数据源
     >    > master:
-    >    >     url: jdbc:mysql://mysql:3306/ry-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    >    >     username: root
-    >    >     password: 123456
+    >    >  url: jdbc:mysql://mysql:3306/ry-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    >    >  username: root
+    >    >  password: 123456
     >    > ```
     >    >
     >    > > 这里 `jdbc:mysql://localhost:3306`修改为` jdbc:mysql://mysql:3306` `mysql`是运行的容器名
+    >    > >
+    >    > > 也可以使用 `docker inspect id`来查看ip地址，记得是"IPAddress"，假设为127.0.0.2的话这个为：`jdbc:mysql://127.0.0.2:3306/ry-vue`
     >
     > 2. redis
     >

@@ -14,7 +14,7 @@
 
 **1.下载安装 HbuilderX 编辑器**
 
-![下载安装 HbuilderX 编辑器](uniapp_picture_1.png)
+![下载安装 HbuilderX 编辑器](./assets/uniapp_picture_1.png)
 
 **2.通过 HbuilderX 创建 uni-app vue3 项目**
 
@@ -346,7 +346,7 @@ git clone -b vite-ts https://gitee.com/dcloud/uni-preset-vue.git
 ![HbuilderX 和 微信开发者工具 关系](uniapp_picture_7.png)
 
 **VS Code 和 微信开发者工具 关系**
-![VS Code 和 微信开发者工具 关系](uniapp_picture_8.png)
+![VS Code 和 微信开发者工具 关系](./asset/uniapp_picture_8.png)
 
 ## 用 VS Code 开发课后练习
 
