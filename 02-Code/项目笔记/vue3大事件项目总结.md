@@ -380,3 +380,31 @@ const onPublish = async (state) => {
 
 
 
+这里需要增加的一个是：
+
+前端添加一个params的时候，我们请求体中的属性的值是null的时候，此时不会将此属性添加到params中，
+
+例如：
+
+```
+const articlelist = async () =>{
+  const params ={
+    pageNum:pageNum.value,
+    pagesize: pagesize.value,
+    //如果为空字符串，可以这样写
+    categoryId:categoryId.value ？ categoryId.value :null,
+    state: state.value ? state.value :null
+  }
+const result = await articleListService(paralis);
+
+
+
+export const articleListService =(params) =>{
+return request.get（url:/article',config:{params})
+}
+
+```
+
+> 这里如果categoryId是null的情况下，此时url中不含categoryId这个参数，如果是''的话，此时url含有这个参数。
+>
+> js中 空字符串''、 0、 都是false
