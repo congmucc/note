@@ -11,8 +11,12 @@
             "id": "b917cac4161086d0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "02-Code/基础/后端/Java/微服务框架/微服务.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "02-Code/基础/后端/Java/微服务框架/微服务.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "02-Code/基础/后端/Java/微服务框架/微服务.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "02-Code/基础/后端/Java/微服务框架/微服务.md"
+              }
             }
           },
           {
@@ -158,7 +166,7 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "3f9c07ae12a12a27",
+  "active": "b917cac4161086d0",
   "lastOpenFiles": [
     "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
     "Task/软件工程作业.md",
