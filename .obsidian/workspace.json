@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05-穿搭/材质篇.md",
+                "file": "05-穿搭/店铺&物品.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "05-穿搭/材质篇.md",
+                "file": "05-穿搭/店铺&物品.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "05-穿搭/材质篇.md",
+                "file": "05-穿搭/店铺&物品.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "05-穿搭/材质篇.md"
+                "file": "05-穿搭/店铺&物品.md"
               }
             }
           },
@@ -169,6 +169,7 @@
   },
   "active": "c559101bf662040f",
   "lastOpenFiles": [
+    "05-穿搭/材质篇.md",
     "05-穿搭/店铺&物品.md",
     "05-穿搭/0穿搭目录.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
@@ -201,7 +202,6 @@
     "02-Code/基础/后端/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/基础/后端/微服务框架/Docker/Docker.md",
     "02-Code/基础/全栈（Python）/全栈（Python版本）.md",
-    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "03-英语",
     "02-Code/基础/后端/微服务框架/SpringCloud/assets/image-20231208194301713.png",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建",
