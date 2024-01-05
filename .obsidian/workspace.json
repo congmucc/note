@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "template/TaskName.md",
+                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "template/TaskName.md",
+                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "template/TaskName.md",
+                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "template/TaskName.md"
+                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md"
               }
             }
           },
@@ -169,15 +169,19 @@
   },
   "active": "c559101bf662040f",
   "lastOpenFiles": [
-    "template/TODO.md",
+    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
+    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+    "01-笔记使用/01a1-Obsidian插件.md",
+    "01-笔记使用/01b-Markdown语法规则.md",
+    "01-笔记使用/01b2-LaTeX.md",
     "template/TaskName.md",
+    "template/TODO.md",
     "template/Diary-Time.md",
     "template/Diary-Thing.md",
     "Diary/2023-11-25-学习obsidian.md",
     "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
-    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "05-穿搭/店铺&物品.md",
     "05-穿搭/材质篇.md",
@@ -197,11 +201,7 @@
     "02-Code/基础/后端/Java/ssm项目笔记/images/image-20221009153619861.png",
     "02-Code/基础/后端/Java/ssm项目笔记/images/4.用户管理/image-20220602112919875.png",
     "02-Code/基础/后端/Java/ssm项目笔记/images/2.前端基础知识/image-20220225153946727.png",
-    "02-Code/基础/后端/Java/ssm项目笔记/2.前端基础知识.md",
     "04-情商",
-    "03-英语/笔记：.md",
-    "01-笔记使用/笔记目录.md",
-    "01-笔记使用/01d-卢曼卡片盒笔记.md",
     "03-英语",
     "02-Code/基础/后端/微服务框架/SpringCloud/assets/image-20231208194301713.png",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建",
