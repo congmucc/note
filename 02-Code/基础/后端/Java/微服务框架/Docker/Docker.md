@@ -78,15 +78,23 @@ https://www.aliyun.com/
 
 在首页的产品中，找到阿里云的**容器镜像服务**：
 
+![img](./assets/1704995665976-55.png)
+
 点击后进入控制台：
+
+![img](./assets/1704995665976-56.png)
 
 首次可能需要选择立刻开通，然后进入控制台。
 
 ## 5.3.配置镜像加速
 
-找到**镜像工具**下的**镜像** **加速器**：
+找到**镜像工具**下的**镜像****加速器**：
+
+![img](./assets/1704995665976-57.png)
 
 页面向下滚动，即可找到配置的文档说明：
+
+![img](./assets/1704995665976-58.png)
 
 具体命令如下：
 
@@ -107,10 +115,6 @@ systemctl daemon-reload
 # 重启Docker
 systemctl restart docker
 ```
-
-
-
-
 
 
 
@@ -171,7 +175,7 @@ docker run -d \
 
 运行效果如图：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ODMyMGVkNzA1MDE4MWU5MTRhNThmM2FjMDQ3YmFmNzVfcDY3ZmMzSFIyRnViQ2RMUHJhR20weHZscUdjak15ZTBfVG9rZW46VXhLMmJlSTByb3M4TzF4ZjJJSmNXTXZRblZiXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995173611-13.png)
 
 MySQL安装完毕！通过任意客户端工具即可连接到MySQL.
 
@@ -286,8 +290,6 @@ https://docs.docker.com/engine/reference/commandline/cli/
 用一副图来表示这些命令的关系：
 
 ![image-20231121004335179](./assets/image-20231121004335179.png)
-
-暂时无法在飞书文档外展示此内容
 
 补充：
 
@@ -409,7 +411,7 @@ source /root/.bashrc
 
 但遗憾的是，容器运行的Nginx所有的文件都在容器内部。所以我们必须利用数据卷将两个目录与宿主机目录关联，方便我们操作。如图：
 
-暂时无法在飞书文档外展示此内容
+![image-20240112014710461](./assets/image-20240112014710461.png)
 
 在上图中：
 
@@ -421,14 +423,14 @@ source /root/.bashrc
 
 **小提示**：
 
-`/var/lib/docker/volumes`这个目录就是默认的存放所有容器数据卷的目录，其下再根据数据卷名称创建新目录，格式为`/数据卷名/_data`。
-
-**为什么不让容器目录直接指向****宿主机****目录呢**？
-
-- 因为直接指向宿主机目录就与宿主机强耦合了，如果切换了环境，宿主机目录就可能发生改变了。由于容器一旦创建，目录挂载就无法修改，这样容器就无法正常工作了。
-- 但是容器指向数据卷，一个逻辑名称，而数据卷再指向宿主机目录，就不存在强耦合。如果宿主机目录发生改变，只要改变数据卷与宿主机目录之间的映射关系即可。
-
-不过，我们通过由于数据卷目录比较深，不好寻找，通常我们也**允许让容器直接与****宿主机****目录挂载而不使用数据卷**，具体参考2.2.3小节。
+> `/var/lib/docker/volumes`这个目录就是默认的存放所有容器数据卷的目录，其下再根据数据卷名称创建新目录，格式为`/数据卷名/_data`。
+>
+> **为什么不让容器目录直接指向****宿主机****目录呢**？
+>
+> - 因为直接指向宿主机目录就与宿主机强耦合了，如果切换了环境，宿主机目录就可能发生改变了。由于容器一旦创建，目录挂载就无法修改，这样容器就无法正常工作了。
+> - 但是容器指向数据卷，一个逻辑名称，而数据卷再指向宿主机目录，就不存在强耦合。如果宿主机目录发生改变，只要改变数据卷与宿主机目录之间的映射关系即可。
+>
+> 不过，我们通过由于数据卷目录比较深，不好寻找，通常我们也**允许让容器直接与****宿主机****目录挂载而不使用数据卷**，具体参考2.2.3小节。
 
 ### 2.2.2.数据卷命令
 
@@ -573,19 +575,19 @@ ls -l /var/lib/docker/volumes/29524ff09715d3688eae3f99803a2796558dbd00ca584a25a4
 
 在课前资料中已经准备好了mysql的`init`目录和`conf`目录：
 
-![img1](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MjEwMzU0MmNlMDcxMGJjOWUzODgwMTQxM2Y1N2ZhZWVfSE91OEdxWkVtUlFrN2N0TzNJa2JVV0JhYWN3ak5WNUNfVG9rZW46S1BENWJ0SlExb1lOSjB4NERxbmM3QWpDbjdnXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995116304-4.png)
 
 以及对应的初始化SQL脚本和配置文件：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQ1ZDhjMDA4ZDIzMmY0MmMwMDM2MjBlYjYzM2EzZTFfODZ5NEFWY1ZaVkF3UEFDVzh3VGNCWHJpWEhHZFBXMmpfVG9rZW46TUMzWGI3Z2NZbzNJQWl4NXdITWNmZEltbktkXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995116299-1.png)
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NzJhMTRkYTMxNTU1NDAyN2E0MmQwY2Y1NDczMGJjNmNfMXhJZDdaVG9aZGVBMmNjazczRFBXV0xoMjg4WGJOREpfVG9rZW46VFdwUWJYbDZ3b2Q5cFZ4YzBpUmN0cENpblVoXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995116300-2.png)
 
 其中，hm.cnf主要是配置了MySQL的默认编码，改为utf8mb4；而hmall.sql则是后面我们要用到的黑马商城项目的初始化SQL脚本。
 
 我们直接将整个mysql目录上传至虚拟机的`/root`目录下：
 
-![img2](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=OGRhNWQ2YTRhZTBhYTI4NTk0ZDFlYmUwMWRiY2U3YWRfSUx3NkI0a1BwejdrMEM2dGUyb1czMjlRcXlDSzFzaGlfVG9rZW46UFpOQmJicERFb0sxZkN4STB5Z2NYYlVmbkdiXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995116300-3.png)
 
 接下来，我们演示本地目录挂载：
 
@@ -712,7 +714,7 @@ show tables;
 
 例如，第一步中需要的Linux运行环境，通用性就很强，所以Docker官方就制作了这样的只包含Linux运行环境的镜像。我们在制作java镜像时，就无需重复制作，直接使用Docker官方提供的CentOS或Ubuntu镜像作为基础镜像。然后再搭建其它层即可，这样逐层搭建，最终整个Java项目的镜像结构如图所示：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YTVlMTQzODkwMWM5M2NhZDc5OTI4YjkzZGVmMzZkNjlfa1FvNGNUaHBGY0pzbFFJVzFIVGFWZHYwRkUzTElid1pfVG9rZW46SE1Fa2JYTVJ5b1ZDWTl4azdLZWMzUXF1bk9kXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![image-20240112014957376](./assets/image-20240112014957376.png)
 
 ### 2.3.2.Dockerfile
 
@@ -783,11 +785,11 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 在课前资料中，我们准备好了一个demo项目及对应的Dockerfile：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YjIwMjJiY2MyM2JhY2Q3ZDVhY2Y2M2M2MDE1NTJjNDNfTFVzZ1J3ZlN2V3pFS2lLQVJrMTh5QklLU2tlbHd2WnFfVG9rZW46SWFYWGJSeXJ1b2ZzeXF4a1h5M2N1SkJpbnVmXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995463338-16.png)
 
 首先，我们将课前资料提供的`docker-demo.jar`包以及`Dockerfile`拷贝到虚拟机的`/root/demo`目录：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=OWE2OTQzNzk2ODllYThmMTgxNzA4OGJiMTI2OWI4ZTRfVmFkazhuNDlMQjNYV0JLTExhbk9WdkxQTlBZQ0NySE5fVG9rZW46RGFOeGJ3Tjg0bzdtRWx4N3A0OGNRU1NTbnJlXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995463339-17.png)
 
 然后，执行命令，构建镜像：
 
@@ -813,7 +815,7 @@ docker build -t docker-demo:1.0 .
 
 结果：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YTQ1YzA3ZDRmMDdmYWZiMTFiNWNiMjMxNWNiOTllMzZfR0ZXZ2kyNzJTdGJEbldRT281ZHlUZ05WTGZHMjFYUWxfVG9rZW46R0RqMmJzeDFzb0Q0eXV4N3hLWmNXcHoxbmhlXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995463339-18.png)
 
 查看镜像列表：
 
@@ -971,35 +973,35 @@ mysql容器中已经准备好了商城的数据，所以就不再删除了。
 
 `hmall`项目是一个maven聚合项目，使用IDEA打开`hmall`项目，查看项目结构如图：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MDc0MjdjOTU1M2U3ZGM4YmM1ODI2OWFjYzk0MzEzMDhfWDVrMnNkalU4bm5OcGNWRE5kMjZIaXo1RHB5ZFRqdE1fVG9rZW46VjdNeWJ1YUhpb2pMT1d4c2xnSGNvS0xVbjVnXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995492018-25.png)
 
 我们要部署的就是其中的`hm-service`，其中的配置文件采用了多环境的方式：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGYzNzc5MTQ3YWU1YjBiN2UyM2RhNTk1MzYyMWEzMzRfbmVDaEhHRUp3UTdMSXhkMnlKOFd6T015cUR4QUVjeExfVG9rZW46Vk5UOGIzNUZQb0xUUkR4VVZDQ2NuYWpJbnFnXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995492018-26.png)
 
 其中的`application-dev.yaml`是部署到开发环境的配置，`application-local.yaml`是本地运行时的配置。
 
 查看application.yaml，你会发现其中的JDBC地址并未写死，而是读取变量：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ODQ2YzkyOWIyN2NkZmI0NGJhYjc3NzZjYzU4MWM0MzlfTjZBRGhwb0lZN3pEc3BxRGhJV2JlTzZWUEhJTHdvbzRfVG9rZW46SXlCZ2JFYWFjb1VmTml4RXlGMWM1anJGbnZiXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995492018-27.png)
 
 这两个变量在`application-dev.yaml`和`application-local.yaml`中并不相同：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MzFhMGI2Y2ZlZDBkZWQzMmJhZTRhMjE3YWE0NjkxNTNfUUVoZ2pCR2xpVXJ0RHh1cXpkWVVJS1hYRnBXYWlkUnFfVG9rZW46T3RlaGJCQXpXb3FibUx4YTFHM2NIUjBablplXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995492018-28.png)
 
 在dev开发环境（也就是Docker部署时）采用了mysql作为地址，刚好是我们的mysql容器名，只要两者在一个网络，就一定能互相访问。
 
 我们将项目打包：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NGJmNjI3ZTNjN2Y5NjU4YmM5NTM1MzA0YTc2ZTk1NTFfckIyVnFrREg2U3FSZWNKZTNhSElWeDdqU2ZzcHpodFNfVG9rZW46THhtS2JLRlFTb2EyTFB4bHpzcGNCVnlsbmVkXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995492018-29.png)
 
 结果：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=MTQzMGEzMzU0ODQ3M2E0ZDA4MWNiNWZjNDAwNTEyOGRfNzNRajF0MVJjUVo0c2pqR3hPVXZlUmJYRk05N2MySUhfVG9rZW46QVhCRmJZWEJCb0FVcXN4cDBRRWNUckh5bllnXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995492018-30.png)
 
 将`hm-service`目录下的`Dockerfile`和`hm-service/target`目录下的`hm-service.jar`一起上传到虚拟机的`root`目录：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=YzdiZGQ4ZDAyZGY3NDQ1YTI4ZmNiM2M4OWQzZGM2ZTZfcmQzSFI3NTdmYWFqeHNLd2poUlU1N2l1QXNGakRrODVfVG9rZW46UGNnTGIzMWZBbzRxb254aTJ3SmNJaTZwbkVjXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995503389-43.png)
 
 部署项目：
 
@@ -1026,7 +1028,7 @@ docker run -d --name hmall --network hmall -p 8080:8080 hmall
 
 `hmall-portal`和`hmall-admin`是前端代码，需要基于nginx部署。在课前资料中已经给大家提供了nginx的部署目录：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjkxYjBkZTlhMmJkMTk5YzljNTE0NzAxNzk2NmFiMDZfYUpOb1p0WEJNMnl6eTdhOWx2WkpIcnNDeTJSaGZyZFhfVG9rZW46WFRuUGJ5T0RabzdDOER4TXI5Y2N3Qkdnbk9oXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995524000-46.png)
 
 其中：
 
@@ -1035,7 +1037,7 @@ docker run -d --name hmall --network hmall -p 8080:8080 hmall
 
 我们现在要做的就是把整个nginx目录上传到虚拟机的`/root`目录下：
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTAxYTRmOGI0NzE5YTQyYmFmMTE4OWQzOGI1NmE2ZWRfZW4zSlNUOTNUdlVwUFBHSkxEU2R4N1cwZUlxSFdtc3VfVG9rZW46V0dMbmJQSWtKb0hOc2x4NnRuRGN0QXZLbnBmXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995524000-47.png)
 
 然后创建nginx容器并完成两个挂载：
 
@@ -1062,7 +1064,7 @@ docker run -d \
 
 测试，通过浏览器访问：http://你的虚拟机ip:18080
 
-![img](https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=NGFhZTZjZDQ2MDk4M2VlYzRhNzUzNTRmNzY1YjU5NDFfY3VEZzE0UXNNbVprSUd3ZTFxd00zWHVGNWNqVHR3TnpfVG9rZW46VG5tU2JlZEZnb2o0SzJ4VVI0UmNma0libm9mXzE3MDA0MDgxNTU6MTcwMDQxMTc1NV9WNA)
+![img](./assets/1704995524000-48.png)
 
 ## 3.3.DockerCompose
 
@@ -1434,9 +1436,7 @@ nginx               nginx               "/docker-entrypoint.…"   nginx        
     >   >
     >   > > -v 进行挂载了，这里直接将宿主机下载的复制到子容器中了
     >
-    >   
-    >
-    > - 使用`docker logs -f ruoyijava` 查看他的日志
+    >   - 使用`docker logs -f ruoyijava` 查看他的日志
     
     
 

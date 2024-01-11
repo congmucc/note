@@ -13,11 +13,54 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "a852f84a16c345da"
+          }
+        ]
+      },
+      {
+        "id": "40907949d4b340fe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "91253cb7a6c15632",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              }
+            },
+            "group": "a852f84a16c345da"
           }
         ]
       }
@@ -85,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,8 +145,8 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
-                "linksCollapsed": false,
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
+                "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
             }
@@ -125,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md"
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md"
               }
             }
           },
@@ -167,8 +210,14 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "c559101bf662040f",
+  "active": "9c64785934be1fa0",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
+    "02-Code/基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
+    "assets/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LqaIOeRnw==,size_20,color_FFFFFF,t_70,g_se,x_16.md",
+    "assets",
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
+    "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
     "01-笔记使用/01a1-Obsidian插件.md",
@@ -182,7 +231,6 @@
     "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
-    "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "05-穿搭/店铺&物品.md",
     "05-穿搭/材质篇.md",
     "05-穿搭/0穿搭目录.md",
@@ -191,10 +239,6 @@
     "02-Code/基础/后端/Java/微服务框架/微服务.md",
     "02-Code/JavaWeb开发规范.md",
     "02-Code/基础/linux/linux.md",
-    "04-情商/【艾跃进】口才艺术与社交礼仪笔记.md",
-    "02-Code/基础/后端/Java/ssm项目笔记/6-1.权限管理.md",
-    "02-Code/基础/后端/ssm项目笔记/images/4.用户管理/image-20220602095058457.png.md",
-    "02-Code/基础/后端/Java/ssm项目笔记/4.用户管理.md",
     "02-Code/基础/后端/ssm项目笔记/images/4.用户管理",
     "02-Code/基础/后端/ssm项目笔记/images",
     "02-Code/基础/后端/ssm项目笔记",
@@ -214,7 +258,6 @@
     "Nacos集群搭建",
     "02-Code/基础/基本语法/Java/17_线程/assets/image-20231205190532976.png",
     "02-Code/基础/全栈（Python）/assets/07-四次挥手.png",
-    "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas",
-    "02-Code/基础/计算机网络实战（Python）/assets/assets"
+    "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
   ]
 }
