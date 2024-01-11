@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md"
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md"
               }
             }
           },
@@ -169,8 +169,8 @@
   },
   "active": "c559101bf662040f",
   "lastOpenFiles": [
-    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
     "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
     "01-笔记使用/01a1-Obsidian插件.md",
     "01-笔记使用/01b-Markdown语法规则.md",
     "01-笔记使用/01b2-LaTeX.md",
