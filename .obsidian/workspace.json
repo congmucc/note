@@ -91,7 +91,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "定时删除",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +108,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -210,7 +211,7 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "9c64785934be1fa0",
+  "active": "ff17a40e34515f2a",
   "lastOpenFiles": [
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "02-Code/基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
