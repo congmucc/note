@@ -73,3 +73,134 @@
 > 2. 缓存的过期时间除非比较严格，要不考虑设置一个波动随机值，比如理论十分钟，那这类key的缓存时间都加上一个1-3分钟，过期时间在7-13分钟内波动，有效防止都在同一个时间点上大量过期。
 > 3. 方法1避免了有效过期的情况，但是要是所有的热点数据在一台redis服务器上，也是极其危险的，如果网络有问题，或者redis服务器挂了，那么所有的热点数据也会雪崩（查询不到），因此将热点数据打散分不到不同的机房中，也可以有效减少这种情况。
 > 4. 也可以考虑双缓存的方式，数据库数据同步到缓存A和B，A设置过期时间，B不设置过期时间，如果A为空的时候去读B，同时异步去更新缓存，但是更新的时候需要同时更新两个缓存。
+
+
+
+## 事务和锁机制 
+
+> - Redis的事务是一个单独的隔离操作:事务中所有的命令都会序列化、按顺序执行，执行过程中不会被其他客户端发来的请求所打断
+>
+> - Redis事务的主要作用就是串联多个命令防止别的命令插队
+>
+> - Redis事务中有三个命令：Multi，Exec，discard
+>
+> - Multi命令用于组队，将命令都送入队列，但不会执行
+>
+> - Exec命令用于执行已送入的命令
+>
+> - discard用于在组队过程中放弃组队
+>
+>   - 组队的时候报错会直接放弃组队
+>   -  执行的时候报错只会影响报错命令
+>
+> - Redis不保证原子性！一条命令失败，别的照常执行，不会回滚
+
+### 事务冲突 
+
+> - 结合淘宝购物机制，解决方案就是上锁
+> - 锁有两种
+>   - 悲观锁
+>   - 乐观锁
+
+### 悲观锁 
+
+> 就是每次操作之前先上锁，别人都无法操作，解锁后才可以
+
+### 乐观锁 
+
+> - 乐观锁是在数据上加一个版本号，操作以后就更新这个版本号(v1.0->v1.1)
+> - 谁都可以得到这个版本的数据，谁先操作完就会更新这个版本号，每次操作都会校验版本是否是最新的
+> - 如果版本号不一致，则需重新获取版本号进行数据操作
+> - 乐观锁适用于多读的应用类型，这样可以提高吞吐量
+>   - 比如1000个人去抢1张票，但支付的时候只有一个人
+> - 演示如下
+>   - 交替执行
+>   - 最后一个exec输出为nil
+
+
+
+### 分布式锁 
+
+> - 下面案例中的一人一单在分布式的情况下就会失效，所以需要分布式锁
+>
+> - 分布式锁：满足分布式系统或集群模式下多进程可见并且互斥的锁
+> - 实现
+>   - MySQL
+>   - Redis
+>   - Zookeeper
+
+![image.png](./assets/1683684262698-5d50a3b5-0bcb-473e-b96f-9afa8baaf7be.png)
+
+- 基于Redis
+  - 结合一人一单问题看
+
+ ### Redisson 
+
+> - 使用setnx有些许问题
+>   - 同一线程对于同一把锁，不可重入
+>   - 不可重试(获取锁只获取一次就返回false)
+>   - 超时释放(如果业务没执行完毕？)
+>   - Redis主从一致满足不了
+> - Redisson是一个在Redis的基础上实现的Java驻内存数据网格。不仅提供一系列分布式的Java常用对象，还提供需要分布式服务(比如分布式锁)
+> - 使用
+>   - 导依赖
+>   - 写配置
+>   - 使用
+> - 详情：TODO
+
+- pom
+
+```xml
+<dependency>
+    <groupId>org.redisson</groupId>
+    <artifactId>redisson</artifactId>
+    <version>3.13.6</version>
+</dependency>
+```
+
+- java配置文件
+
+```java
+@Configuration
+public class RedisConfig {
+
+    @Bean
+    public RedissonClient redissonClient() {
+        Config config = new Config();
+        config.useSingleServer().setAddress("redis://192.168.212.166:6379").setPassword("123456");
+
+        return Redisson.create(config);
+    }
+}
+```
+
+- 测试案例
+
+```java
+ong userId = UserHolder.getUser().getId();
+// SimpleRedisLock lock = new SimpleRedisLock("order:"+userId, stringRedisTemplate);  // 自定义实现
+RLock lock = this.redissonClient.getLock("lock:order:" + userId);
+boolean isLock = lock.tryLock();
+
+lock.unlock();
+```
+
+
+
+
+
+### 消息队列 
+
+> - Redis是一个缓存中间件，但是也可以变相的当消息队列使用
+>   - 使用List模拟
+>   - PubSub(发布订阅)实现
+>   - Stream模式
+> - PubSub
+>   - 订阅频道 - SUBSCRIBE channelName
+>   - 发布消息 - PUBLISH channelName message
+>   - 缺点：
+>     - 不支持数据持久化
+>     - 无法避免消息丢失
+>     - 消息堆积有上限，超出时数据丢失
+> - Stream - 5.0以后引入的全新的数据类型
+>   - TODO
