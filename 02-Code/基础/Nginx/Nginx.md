@@ -143,7 +143,7 @@ Nginx配置文件`conf/nginx.conf`
 > 注意: http块中可以配置多个Server块，每个Server块中可以
 > 配置多个location块。
 
-![image-20231117224500495](image-20231117224500495.png)
+![image-20231117224500495](./assets/image-20231117224500495.png)
 
 ## 4 Nginx具体应用
 
@@ -160,14 +160,36 @@ Nginx配置文件`conf/nginx.conf`
 >
 > ```
 > server {
->   listen 80;                             #监听端口
->   server_name localhost;                 服务器名称
->   location / {                           #匹配客户端请求url
->     root html;                           #指定静态资源根目录
->     index index.html;                    #指定默认首页
->   }
+>     listen 80;                             #监听端口
+>     server_name localhost;                 服务器名称
+>     location / {                           #匹配客户端请求url
+>          root html;                           #指定静态资源根目录
+>          index index.html;                    #指定默认首页
+>     }
 > }
 > ```
+>
+> > 这里root的路径是从根目录作为绝对目录的
+> > ├─conf
+> > │  └─eason.conf
+> > ├─docs
+> > ├─html
+> > │  └─app-web
+> > ├─logs
+> > └─temp
+> >
+> > 假设前端的静态资源是在html中的app-web，
+> >
+> > 可以写成
+> >
+> > ```
+> > 	location / {
+> > 		root html/app-web;
+> > 		index index.html;
+> > 	}
+> > ```
+> >
+> > 也可以在之后的`app-web`后面加一个`/`，即`root html/app-web/`
 
 步骤： 
 
