@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -170,6 +169,8 @@
   },
   "active": "c559101bf662040f",
   "lastOpenFiles": [
+    "第1章 项目介绍&环境搭建v3.1.md",
+    "02-Code/项目笔记/构建项目.md",
     "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
@@ -195,8 +196,6 @@
     "05-穿搭/材质篇.md",
     "05-穿搭/0穿搭目录.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
-    "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
-    "02-Code/基础/后端/Java/微服务框架/微服务.md",
     "02-Code/基础/后端/ssm项目笔记/images/4.用户管理",
     "02-Code/基础/后端/ssm项目笔记/images",
     "02-Code/基础/后端/ssm项目笔记",
