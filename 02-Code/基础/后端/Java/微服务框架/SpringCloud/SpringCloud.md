@@ -1795,12 +1795,12 @@ Seata支持多种存储模式，但考虑到持久化的需要，我们一般选
 docker run --name seata \
 -p 8099:8099 \
 -p 7099:7099 \
--e SEATA_IP=192.168.150.101 \
+-e SEATA_IP=192.168.47.128 \
 -v ./seata:/seata-server/resources \
 --privileged=true \
---network hmall \
+--restart=always \
 -d \
-seataio/seata-server:1.5.2
+seataio/seata-server:1.3.0
 ```
 
 如果镜像下载困难，也可以把课前资料提供的镜像上传到虚拟机并加载：
