@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+                "file": "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+                "file": "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+                "file": "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-笔记使用/01a2-设计区块链MOC的大纲结构.md"
+                "file": "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md"
               }
             }
           },
@@ -169,6 +169,7 @@
   },
   "active": "c559101bf662040f",
   "lastOpenFiles": [
+    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
@@ -181,7 +182,6 @@
     "assets/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LqaIOeRnw==,size_20,color_FFFFFF,t_70,g_se,x_16.md",
     "assets",
     "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
-    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
     "01-笔记使用/01a1-Obsidian插件.md",
     "01-笔记使用/01b-Markdown语法规则.md",
