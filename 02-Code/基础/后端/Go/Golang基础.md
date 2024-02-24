@@ -1,4 +1,6 @@
-# 1介绍
+# 1 介绍
+
+> 相关文档[6.6. 递归函数 | 第六章. 函数（function） |《Go 入门指南》| Go 技术论坛 (learnku.com)](https://learnku.com/docs/the-way-to-go/recursive-function/3604)
 
 ## 1.1 Go的特点
 
@@ -287,3 +289,801 @@ func main() {
   - 空指针为 `nil`。
   - 查看占用字节数：`unsafe.Sizeof(var)`。
   - 不同数据类型的变量进行运算必须将类型转换成一样。
+
+
+
+### 2.4.1 数组类型
+
+```go
+func main() {
+	// 显示声明并赋值
+	var studentLists1 [3]int = [3]int{1, 2, 3}
+
+	// 直接声明
+	studentLists2 := [3]int{1, 2, 3}
+
+	// 不指定类型直接声明
+	var studentLists3 = [3]int{1, 2, 3}
+
+	// 不指定元素个数
+	var studentLists4 = [...]int{1, 2, 3}
+
+	// 后续遍历进行赋值
+	var studentLists5 [...]int
+
+    //正常遍历
+    for i := 0; i < len(myArray1); i++ {
+		fmt.Println(myArray1[i])	
+	}
+    
+    // 带有index的遍历
+	for index, value := range myArray2 {
+		fmt.Println("index = ", index, ", value = ", value)
+	}
+}
+```
+
+> 1、数组的长度是固定的
+>
+> 2、在go中，**数组类型**在函数中的传递是值传递 **切片类型**是引用传递，一般来说表示数组使用**切片类型**
+
+### 2.4.2 结构体类型（类）
+
+```go
+package main
+
+import "fmt"
+
+//声明一种行的数据类型 myint， 是int的一个别名
+type myint int
+
+//定义一个结构体
+type Book struct {
+	title string
+	auth  string
+}
+
+func changeBook(book Book) {
+	//传递一个book的副本
+	book.auth = "666"
+}
+
+func changeBook2(book *Book) {
+	//指针传递
+	// 这里是go做了优化，所以可以不使用*book，不然就需要使用了 为后续类做铺垫
+	book.auth = "777"
+}
+
+func main() {
+	/*
+		var a myint = 10
+		fmt.Println("a = ", a)
+		fmt.Printf("type of a = %T\n", a)
+	*/
+
+	var book1 Book
+	book1.title = "Golang"
+	book1.auth = "zhang3"
+
+	changeBook(book1)
+
+
+	changeBook2(&book1)
+
+}
+```
+
+2.4.3 切片类型（动态数组）
+
+```go
+package main
+
+import "fmt"
+
+func printArray(myArray []int) {
+	//引用传递
+	// _ 表示匿名的变量
+	for _, value := range myArray {
+		fmt.Println("value = ", value)
+	}
+
+	myArray[0] = 100
+}
+
+func main() {
+	myArray := []int{1,2,3,4} // 动态数组，切片 slice
+	printArray(myArray)
+
+	for _, value := range myArray {
+		fmt.Println("value = ", value)
+	}
+}
+```
+
+> 这个是引用传递
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//声明slice1是一个切片，并且初始化，默认值是1，2，3。 长度len是3
+	slice1 := []int{1, 2, 3}
+
+	//声明slice1是一个切片，但是并没有给slice分配空间
+	var slice1 []int
+    
+    
+	slice1 = make([]int, 3) //开辟3个空间 ，默认值是0
+
+	//声明slice1是一个切片，同时给slice分配空间，3个空间，初始化值是0
+	var slice1 []int = make([]int, 3)
+
+    
+	//声明slice1是一个切片，同时给slice分配空间，3个空间，初始化值是0, 通过:=推导出slice是一个切片
+	slice1 := make([]int, 3)
+
+	//判断一个silce是否为0
+	if slice1 == nil {
+		fmt.Println("slice1 是一个空切片")
+	} else {
+		fmt.Println("slice1 是有空间的")
+	}
+}
+```
+
+> 使用make语句进行分配空间
+
+```go
+	var numbers = make([]int, 3, 5)
+
+	fmt.Printf("len = %d, cap = %d, slice = %v\n", len(numbers), cap(numbers), numbers)
+
+	//向numbers切片追加一个元素1, numbers len = 4， [0,0,0,1], cap = 5
+	numbers = append(numbers, 1)
+
+	//向numbers切片追加一个元素2, numbers len = 5， [0,0,0,1,2], cap = 5
+	numbers = append(numbers, 2)
+
+	fmt.Printf("len = %d, cap = %d, slice = %v\n", len(numbers), cap(numbers), numbers)
+
+	//向一个容量cap已经满的slice 追加元素，会开辟一个原cap的容量，即2*cap=10
+	numbers = append(numbers, 3)
+```
+
+> `append`扩容关键字 `len` 长度，`cap`容量
+
+```go
+func main() {
+	s := []int{1, 2, 3} //len = 3, cap = 3, [1,2,3]
+
+	//[0, 2)
+	s1 := s[0:2] // [1, 2]
+
+	fmt.Println(s1)
+
+	s1[0] = 100
+
+	fmt.Println(s)
+	fmt.Println(s1)
+
+	//copy 可以将底层数组的slice一起进行拷贝
+	s2 := make([]int, 3) //s2 = [0,0,0]
+
+	//将s中的值 依次拷贝到s2中
+	copy(s2, s)
+	fmt.Println(s2)
+
+}
+```
+
+> 注意一下，如果进行copy，需要这样做，第一个打印s和s1都会被修改，底层是这样做的。
+
+### 2.4.4 映射类型（map）
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//===> 第一种声明方式
+
+	//声明myMap1是一种map类型 key是string， value是string
+	var myMap1 map[string]string
+	if myMap1 == nil {
+		fmt.Println("myMap1 是一个空map")
+	}
+
+	//在使用map前， 需要先用make给map分配数据空间
+	myMap1 = make(map[string]string, 10)
+
+	myMap1["one"] = "java"
+	myMap1["two"] = "c++"
+	myMap1["three"] = "python"
+
+	fmt.Println(myMap1)
+
+	//===> 第二种声明方式
+	myMap2 := make(map[int]string)
+	myMap2[1] = "java"
+	myMap2[2] = "c++"
+	myMap2[3] = "python"
+
+	fmt.Println(myMap2)
+
+	//===> 第三种声明方式
+	myMap3 := map[string]string{
+		"one":   "php",
+		"two":   "c++",
+		"three": "python",
+	}
+	fmt.Println(myMap3)
+}
+
+```
+
+> 三种声明方式，如果不用make进行分配，将会为nil
+
+```go
+func printMap(cityMap map[string]string) {
+	//cityMap 是一个引用传递
+	for key, value := range cityMap {
+		fmt.Println("key = ", key)
+		fmt.Println("value = ", value)
+	}
+}
+
+func ChangeValue(cityMap map[string]string) {
+	cityMap["England"] = "London"
+}
+
+func main() {
+	cityMap := make(map[string]string)
+
+	//添加
+	cityMap["China"] = "Beijing"
+	cityMap["Japan"] = "Tokyo"
+	cityMap["USA"] = "NewYork"
+
+	//遍历
+	printMap(cityMap)
+
+	//删除
+	delete(cityMap, "China")
+
+	//修改
+	cityMap["USA"] = "DC"
+	ChangeValue(cityMap)
+
+	fmt.Println("-------")
+
+	//遍历
+	printMap(cityMap)
+}
+
+```
+
+> map 的增删改查
+>
+> 引用传递
+
+### 2.4.5 管道类型
+
+### 2.4.6 接口类型
+
+#  3 语言进阶
+
+
+
+## 3.1 函数
+
+### 3.1.1 基本使用
+
+
+
+### 3.1.2 多返回值
+
+- Go提供多返回值函数，定义方式如下：
+- 调用多返回值的函数时，如不想接收某个返回值，可采用 `_` 进行占位。
+
+````
+package main
+
+import "fmt"
+
+//返回多个返回值， 有形参名称的
+func foo3(a string, b int) (r1 int, r2 int) {
+	fmt.Println("---- foo3 ----")
+	fmt.Println("a = ", a)
+	fmt.Println("b = ", b)
+
+
+
+	//r1 r2 属于foo3的形参，  初始化默认的值是0
+	//r1 r2 作用域空间 是foo3 整个函数体的{}空间
+	fmt.Println("r1 = ", r1)
+	fmt.Println("r2 = ", r2)
+
+
+	//给有名称的返回值变量赋值
+	r1 = 1000
+	r2 = 2000
+
+	return
+}
+
+func show() (string, int, string) {
+	fmt.Println("执行了show()")
+	return "Aomsir", 20, "info@say521.cn"
+}
+
+func main() {
+    // 函数调用
+	name, age, _ := show()
+	ret1, ret2 = foo3("foo3", 333)
+
+	fmt.Println(name, age)
+	fmt.Println("ret1 = ", ret1, " ret2 = ", ret2)
+}
+````
+
+> 对于第六行，因为返回值中两个参数都是int，可以只写后面一个，形参中也同理，假设都是int
+>
+> `func foo3(a, b int) (r1, r2 int) {`
+
+
+
+### 3.1.3 init函数与import导包
+
+![image-20240222213520795](./assets/image-20240222213520795.png)
+
+```go
+package main
+
+import (
+	_ "GolangStudy/5-init/lib1"
+	mylib2 "GolangStudy/5-init/lib2"
+	//. "GolangStudy/5-init/lib2"
+)
+
+func main() {
+	//lib1.lib1Test()
+
+	//lib2.Lib2Test()
+	mylib2.Lib2Test()
+	//Lib2Test()
+}
+
+```
+
+
+
+> 1、需要注意，导包需要首字母大写
+>
+> 2、可以使用`_`关键字仅导入而不使用
+>
+> 3、可以使用`.`关键字直接使用导入包中函数，而不使用`包.函数`形式
+>
+> 4、前面加字符串是起别名
+
+
+
+
+
+### 3.1.4 defer延迟函数
+
+- Go语言提供延迟函数，用于将一个函数的执行推迟到当前函数返回之前。
+- 延迟函数通常用于释放资源、清理状态等操作。
+- 延迟函数通过 `defer` 关键字操作。
+- 延迟函数的执行是按书写顺序的逆序执行的（FIFO）。
+- 注意：不要将它们嵌套或者递归，会影响程序的性能。
+
+```go
+package main
+
+import "fmt"
+
+func test() String {
+	defer fmt.Println("defer test")
+
+	return "return test"
+}
+
+func main() {
+	//写入defer关键字
+	defer fmt.Println("main end1")
+	defer fmt.Println("main end2")
+
+
+	fmt.Println("main::hello go 1")
+	fmt.Println("main::hello go 2")
+}
+```
+
+> defer就是一个栈，先进后出，所以对于main函数中先打印main end2，在打印main end1， test函数中先打印defer test，后打印return test。类似c++虚构函数。
+
+
+
+
+
+## 3.2 指针
+
+> 和c++指针一样
+
+
+
+# 4 面向对象
+
+> go中的类是通过结构体来构建
+
+## 4.1 封装
+
+> - Go通过属性与方法大小写控制访问权限
+> - 属性名/方法名首字母大写代表Public，别的包则可以访问，否则无法直接访问
+
+```go
+package main
+
+import "fmt"
+
+//如果类名首字母大写，表示其他包也能够访问
+type Hero struct {
+	//如果说类的属性首字母大写, 表示该属性是对外能够访问的，否则的话只能够类的内部访问
+	Name  string
+	Ad    int
+	level int
+}
+
+/*
+func (this Hero) SetName(newName string) {
+	//this 是调用该方法的对象的一个副本（拷贝）
+	this.Name = newName
+}
+*/
+func (this *Hero) Show() {
+	fmt.Println("Name = ", this.Name)
+	fmt.Println("Ad = ", this.Ad)
+	fmt.Println("Level = ", this.level)
+}
+
+func (this *Hero) GetName() string {
+	return this.Name
+}
+
+func (this *Hero) SetName(newName string) {
+	this.Name = newName
+}
+
+func main() {
+	//创建一个对象
+	hero := Hero{Name: "zhang3", Ad: 100}
+	hero.Show()
+	hero.SetName("li4")
+	hero.Show()
+}
+
+```
+
+> 1、go中没有类，只有结构体，可以自己整个类
+>
+> 2、this这个不是java和c++中的this，go中没有this，这个就是个形参名，改什么都行
+>
+> 3、当**变量名**和**函数名**的**首字母大写**的时候表示其他包也能够访问
+>
+> 4、类的属性**首字母大写**, 表示该属性是对外能够访问的，否则的话只能够类的内部访问
+>
+> 5、当写get和set的时候，我们应该使用指针。因为结构体是**拷贝**
+>
+> 6、 如何创建一个对象
+
+## 4.2 继承
+
+> - 匿名属性如下，不能够出现两个同类型的匿名属性
+> - Go的继承可以通过两种方式实现
+>   - 嵌入结构体
+>   - 组合类型
+>   - 使用接口 - 放下一小章节
+
+
+
+- 嵌入结构体（继承本质）
+
+```go
+type Human struct {
+	name string
+	sex  string
+}
+
+func (this *Human) Eat() {
+	fmt.Println("Human.Eat()...")
+}
+
+type SuperMan struct {
+	Human //SuperMan类继承了Human类的方法  嵌入结构体
+	level int
+}
+
+//重定义父类的方法Eat()
+func (this *SuperMan) Eat() {
+	fmt.Println("SuperMan.Eat()...")
+}
+```
+
+> 继承
+>
+> 子类直接在结构体中直接添加父类（父结构体）名称
+
+- 匿名属性
+
+```go
+type People struct {
+	string // 匿名属性
+	int
+}
+
+func main() {
+	people := People{"Aomsir", 20}
+	fmt.Println(people.string) // 调用属性类型
+	fmt.Println(people.int)
+}
+```
+
+- 组合类型
+
+```go
+type People struct {
+	name string
+	age  int
+}
+
+type Teacher struct {
+	classroom string
+	people    People   // 组合
+}
+
+func main() {
+	teacher := Teacher{"2006", People{"Aomsir", 20}}
+	fmt.Println(teacher)
+	fmt.Println(teacher.people.name, teacher.people)
+}
+```
+
+
+
+## 4.3 多态
+
+> go中的多态是通过`interface`关键字来集成的
+
+```go
+package main
+
+import "fmt"
+
+//本质是一个指针
+type AnimalIF interface {
+	Sleep()
+	GetColor() string //获取动物的颜色
+	GetType() string  //获取动物的种类
+}
+
+//具体的类
+type Cat struct {
+	color string //猫的颜色
+}
+
+func (this *Cat) Sleep() {
+	fmt.Println("Cat is Sleep")
+}
+
+func (this *Cat) GetColor() string {
+	return this.color
+}
+
+func (this *Cat) GetType() string {
+	return "Cat"
+}
+
+//具体的类
+type Dog struct {
+	color string
+}
+
+func (this *Dog) Sleep() {
+	fmt.Println("Dog is Sleep")
+}
+
+func (this *Dog) GetColor() string {
+	return this.color
+}
+
+func (this *Dog) GetType() string {
+	return "Dog"
+}
+
+func showAnimal(animal AnimalIF) {
+	animal.Sleep() //多态 这里是向下转型 和c++类似
+	fmt.Println("color = ", animal.GetColor())
+	fmt.Println("kind = ", animal.GetType())
+}
+
+func main() {
+
+	var animal AnimalIF //接口的数据类型， 父类指针
+	animal = &Cat{"Green"} // 这里使用&是因为父对象指向子类地址
+
+	animal.Sleep() //调用的就是Cat的Sleep()方法 , 多态的现象
+
+	animal = &Dog{"Yellow"}
+
+	animal.Sleep() // 调用Dog的Sleep方法，多态的现象
+
+	cat := Cat{"Green"}
+	dog := Dog{"Yellow"}
+
+	showAnimal(&cat)
+	showAnimal(&dog)
+}
+
+```
+
+> 多态
+>
+> 1、父类使用interface关键字
+>
+> 2、当子类实现父类的接口时候，我们应该使用`&`来进行定义，例`	animal = &Cat{"Green"} // 这里使用&是因为父对象指向子类地址`
+
+
+
+## 4.4 断言（pair）
+
+> - Go当中，断言是一种非常重要的类型转换手段。类似**泛型**
+> - 断言允许我们在运行的过程中将一个接口类型变量转换为其底层的具体操作。
+> - 语法形式为 `x.(T)`。
+
+```go
+func main() {
+	demo(456)   // 参数是int类型
+	demo(456.9) // 参数是float类型
+	demo(true)  // 参数类型不确定
+}
+
+
+// 参数为一个空接口类型变量
+func demo(i interface{}) {
+    // 断言语法将i转换为int类型，第一个返回值是值，第二个代表是否是整型
+	_, response := i.(int)  
+	if response == true {
+		fmt.Println("参数是int类型")
+		return
+	}
+
+	_, response = i.(float64)
+	if response == true {
+		fmt.Println("参数是float类型")
+		return
+	}
+
+	fmt.Println("参数类型不确定")
+	return
+}
+```
+
+- pair
+
+> 详细的看5.1反射机制
+
+```go
+package main
+
+import "fmt"
+
+type Reader interface {
+	ReadBook()
+}
+
+type Writer interface {
+	WriteBook()
+}
+
+//具体类型
+type Book struct {
+}
+
+func (this *Book) ReadBook() {
+	fmt.Println("Read a Book")
+}
+
+func (this *Book) WriteBook() {
+	fmt.Println("Write a Book")
+}
+
+func main() {
+	//b: pair<type:Book, value:book{}地址>
+	b := &Book{}
+
+	//r: pair<type:, value:>
+	var r Reader
+	//r: pair<type:Book, value:book{}地址>
+	r = b
+
+	r.ReadBook()
+
+	var w Writer
+	//r: pair<type:Book, value:book{}地址>
+	w = r.(Writer) //此处的断言为什么会成功？ 因为w r 具体的type是一致
+
+	w.WriteBook()
+}
+
+```
+
+> `pair<type: , value: >`   `type`表示类型，`value`表示地址。这里面想突出的是`interface{}`断言的原理是这样，判断变量的pair中的type类型是否一样。
+
+
+
+
+
+# 5 高级应用
+
+## 5.1 反射机制
+
+变量结构：
+
+![image-20240224141553576](./assets/image-20240224141553576.png)
+
+- Go语言提供反射机制，方便在运行的过程中可以动态地获取信息。
+
+- Go语言的反射机制主要由 `reflect` 提供支持，常用函数如下：
+
+  - `TypeOf(v interface{}) Type` - 获取一个变量的类型对象。
+  - `ValueOf(v interface{}) Value` - 获取一个变量的值对象。
+  - `NumField() int` - 获取一个结构体类型的字段数量。
+  - `Field(i int) Value` - 获取结构体类型的第i个字段的值对象。
+  - `Kind() Kind` - 获取一个值对象的类型分类。
+
+- 使用如下：
+
+```go
+type People struct {
+	Name    string
+	Address string
+}
+
+func main() {
+	a := 1.5
+
+    // float64，反射获取变量的类型
+	fmt.Println(reflect.TypeOf(a))
+
+    // 1.5，反射获取变量的值
+	fmt.Println(reflect.ValueOf(a))
+
+	// 获取值
+	people := People{"Aomsir", "Wuhan"}
+	fmt.Println(reflect.TypeOf(people))                        // main.people
+	fmt.Println(reflect.ValueOf(people))                       // {Aomsir Wuhan}
+	fmt.Println(reflect.TypeOf(people).NumField())             // 属性个数
+	fmt.Println(reflect.TypeOf(people).FieldByIndex([]int{1})) //{address main string  16 [1] false}
+
+
+    // 修改值案例
+    peo := new(People)
+	peo.Name = "Aomsir"
+
+	// 反射获取peo对象中的值(peo是指针对象,所以需要调用Elem()方法)
+	v := reflect.ValueOf(peo).Elem()
+	fmt.Println(v) // {Aomsir}
+
+	// 使用反射修改peo结构体(属性名必须是可访问的)
+	content := "Name"
+	ok := v.FieldByName(content).CanSet()
+	if ok {
+		v.FieldByName(content).SetString("Jewix")
+		fmt.Println(*peo) //  {Jewix}
+	}
+
+}
+```
+
