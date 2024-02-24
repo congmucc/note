@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/Git/命令.md",
+                "file": "02-Code/基础/后端/Go/Golang基础.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Git/命令.md",
+                "file": "02-Code/基础/后端/Go/Golang基础.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Git/命令.md",
+                "file": "02-Code/基础/后端/Go/Golang基础.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/Git/命令.md"
+                "file": "02-Code/基础/后端/Go/Golang基础.md"
               }
             }
           },
@@ -157,6 +157,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -166,8 +168,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "9c64785934be1fa0",
+  "active": "c559101bf662040f",
   "lastOpenFiles": [
+    "02-Code/基础/Git/命令.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/后端/Go/未命名.md",
     "02-Code/基础/后端/Go",
@@ -195,7 +198,6 @@
     "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
-    "05-穿搭/店铺&物品.md",
     "02-Code/基础/后端/ssm项目笔记/images/4.用户管理",
     "02-Code/基础/后端/ssm项目笔记/images",
     "02-Code/基础/后端/ssm项目笔记",

@@ -571,6 +571,10 @@ func main() {
 
 ### 2.4.5 管道类型
 
+> 底层是队列
+
+
+
 ### 2.4.6 接口类型
 
 #  3 语言进阶
@@ -706,11 +710,110 @@ func main() {
 
 
 
+### 3.1.5 匿名函数
+
+```go
+func add(x, y int) int {
+	return x + y
+}
+
+func main() {
+	// 定义一个名为 f 的函数变量，并将 add 函数赋值给它
+	var f func(int, int) int = add
+
+	// 使用函数变量来调用函数
+	result := f(1, 2)
+	fmt.Println(result) // 输出：3
+
+
+    // 定义一个名为 f 的函数变量，并将一个匿名函数赋值给它
+    f1 := func(x, y int) int {
+        return x + y
+    }
+    // 定义一个直接执行的匿名函数
+    func(a ,b int) {
+        fmt.Println("匿名函数")
+    }(10, 20)
+    
+    // 使用函数变量来调用函数
+    result1 := f1(1, 2)
+    fmt.Println(result) // 输出：3
+}
+```
+
+> 19-21行，第一个括号是参数的意思，第二个括号是对匿名函数的调用
+
 
 
 ## 3.2 指针
 
 > 和c++指针一样
+
+
+
+## 3.3 tag序列化
+
+- Go中，结构体属性可以通过序列化的方式转换为一系列字节流或者JSON字符串。
+
+- 注意：
+  - 结构体属性值必须是公有（不使用tag标签的情况）。
+  - 使用**tag**标签的情况下不需要，可以保证属性的私密性。
+  - 结构体属性类型必须是JSON支持的数据类型之一。
+
+```go
+type Student struct {
+	name string `json:"name"`
+	age  int    `json:"age"`
+}
+```
+
+> 这里`json`是键，`name`是值，命名非固定，为`key value`结构
+>
+> 这里可以通过反射进行取出相应的tag标签的值
+
+实例如下：
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Movie struct {
+	Title  string   `json:"title"`
+	Year   int      `json:"year"`
+	Price  int      `json:"rmb"`
+	Actors []string `json:"actors"`
+}
+
+func main() {
+	movie := Movie{"喜剧之王", 2000, 10, []string{"xingye", "zhangbozhi"}}
+
+	//编码的过程  结构体---> json
+	jsonStr, err := json.Marshal(movie)
+	if err != nil {
+		fmt.Println("json marshal error", err)
+		return
+	}
+
+	fmt.Printf("jsonStr = %s\n", jsonStr)
+
+	//解码的过程 jsonstr ---> 结构体
+	//jsonStr = {"title":"喜剧之王","year":2000,"rmb":10,"actors":["xingye","zhangbozhi"]}
+	myMovie := Movie{}
+	err = json.Unmarshal(jsonStr, &myMovie)
+	if err != nil {
+		fmt.Println("json unmarshal error ", err)
+		return
+	}
+
+	fmt.Printf("%v\n", myMovie)
+}
+```
+
+
 
 
 
@@ -1085,5 +1188,52 @@ func main() {
 	}
 
 }
+```
+
+
+
+## 5.2 goroutine
+
+> 这个关键字可以写成并发的格式
+>
+> 关键字`go`表示创建一个进程，`runtime.Goexit()`表示退出进程
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+
+	/*
+		//用go创建承载一个形参为空，返回值为空的一个函数
+		go func() {
+			defer fmt.Println("A.defer")
+
+			func() {
+				defer fmt.Println("B.defer")
+				//退出当前goroutine
+				runtime.Goexit()
+				fmt.Println("B")
+			}()
+
+			fmt.Println("A")
+		}()
+
+	go func(a int, b int) bool {
+		fmt.Println("a = ", a, ", b = ", b)
+		return true
+	}(10, 20)
+
+	//死循环
+	for {
+		time.Sleep(1 * time.Second)
+	}
+
+}
+
 ```
 
