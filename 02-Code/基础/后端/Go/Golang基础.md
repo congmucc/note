@@ -571,15 +571,106 @@ func main() {
 
 ### 2.4.5 管道类型
 
-> 底层是队列
+> 底层是队列，分有缓存和无缓存，无缓存阻塞情况严重
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//定义一个无缓存channel
+	c := make(chan int)
+
+    //定义一个有缓存channel
+	c := make(chan int, 3)
+
+    
+	go func() {
+		defer fmt.Println("goroutine结束")
+
+		fmt.Println("goroutine 正在运行...")
+
+		c <- 666 //将666 发送给c
+	}()
+
+	num := <-c //从c中接受数据，并赋值给num 此时会发生阻塞
+
+	fmt.Println("num = ", num)
+	fmt.Println("main goroutine 结束...")
+}
+
+```
+
+```go
+func main() {
+	c := make(chan int)
+
+	go func() {
+		for i := 0; i < 5; i++ {
+			c <- i
+			//close可以关闭一个channel
+			close(c)
+		}
+	}()
+
+	for {
+		//ok如果为true表示channel没有关闭，如果为false表示channel已经关闭
+		if data, ok := <-c; ok {
+			fmt.Println(data)
+		} else {
+			break
+		}
+	}
+    
+    //可以使用range来迭代不断操作channel
+	for data := range c {
+		fmt.Println(data)
+	}
+
+}
+```
+
+```go
+select {
+	case <-chan1:
+		//如果chan1成功读到数据，则进行该case处理语句
+	case chan2<- 1:
+		//如果成功向chan2写入数据，则进行该case处理语句
+	default:
+		//如果上面都没有成功，则进入default处理流程
+}
+```
 
 
+
+
+
+> 1、这个是通过`<-`符号进行**管道**使用   存值和取值，18行和21行
+>
+> 2、使用`close(T)`来关闭**管道**
+>
+> 3、使用**range**来遍历操作**channel**
+>
+> 4、使用**select**来进行操作多条件
+>
+> - channel不像文件一样需要经常去关闭，只有当你确实没有任何发送数据了，或者你想显式的结束range循环之类的，才去关闭channel;
+>
+> - 关闭channel后，无法向channel再发送数据（引l发panic错误后导致接收立即返回零值）；
+>
+> - 关闭channel后，可以继续从channel接收数据；
+>
+> - 对于nilchannel，无论收发都会被阻塞。
 
 ### 2.4.6 接口类型
 
+> 看[4.3多态](# 4.3 多态)就行了
+
+
+
+
+
 #  3 语言进阶
-
-
 
 ## 3.1 函数
 
@@ -814,6 +905,38 @@ func main() {
 ```
 
 
+
+## 3.4 泛型
+
+> 泛型函数，泛型切片，泛型map，
+
+```go
+package main
+
+import "fmt"
+
+// 泛型函数
+func PrintSliceTypeSlice[T int | int64 | string](slice []T) {
+  fmt.Printf("%T\n", slice)
+  for _, v := range slice {
+    fmt.Printf("%T  %v\n", v, v)
+  }
+}
+
+func main() {
+
+  PrintSliceTypeSlice([]int{1, 2, 3, 4, 5})
+  PrintSliceTypeSlice([]int64{1, 2, 3, 4, 5})
+  PrintSliceTypeSlice([]string{"hello"})
+  
+  // 标准写法
+  PrintSliceTypeSlice[int]([]int{1, 2, 3, 4, 5})
+  PrintSliceTypeSlice[int64]([]int64{1, 2, 3, 4, 5})
+  PrintSliceTypeSlice[string]([]string{"hello"})
+
+}
+
+```
 
 
 
@@ -1192,7 +1315,7 @@ func main() {
 
 
 
-## 5.2 goroutine
+## 5.2 goroutine（协程）
 
 > 这个关键字可以写成并发的格式
 >
@@ -1237,3 +1360,351 @@ func main() {
 
 ```
 
+
+
+## 5.3 线程安全（Mutex&WaitGroup）
+
+> WaitGroup 是 Go 内置的 sync 包解决任务编排的并发原语。WaitGroup 直译是“等待组”，翻译成大白话就是等待一组协程完成任务。如果没有完成，就阻塞。
+
+```go
+package main
+
+import (
+    "fmt"
+    "math"
+    "sync"
+)
+
+// 计算1000个数的和
+func compute(m *sync.Mutex, wg *sync.WaitGroup, s, e int, count *int) {
+    sum := 0
+    for i := s; i < e; i++ {
+        sum += i
+    }
+    m.Lock()
+    *count += sum
+    m.Unlock()
+    wg.Done()
+}
+
+func main() {
+
+    var m sync.Mutex
+    var wg sync.WaitGroup
+
+    var count int
+    wg.Add(1000)
+    for i := 0; i < 1000; i++ {
+        go compute(&m, &wg, i*1000+1, (i+1)*1000+1, &count)
+    }
+    wg.Wait()
+    fmt.Println(math.Sqrt(float64(count)))
+    return
+}package main
+
+import (
+    "fmt"
+    "math"
+    "sync"
+)
+
+// 计算1000个数的和
+func compute(m *sync.Mutex, wg *sync.WaitGroup, s, e int, count *int) {
+    sum := 0
+    for i := s; i < e; i++ {
+        sum += i
+    }
+    m.Lock()
+    *count += sum
+    m.Unlock()
+    wg.Done()
+}
+
+func main() {
+
+    var m sync.Mutex
+    var wg sync.WaitGroup
+
+    var count int
+    wg.Add(1000)
+    for i := 0; i < 1000; i++ {
+        go compute(&m, &wg, i*1000+1, (i+1)*1000+1, &count)
+    }
+    wg.Wait()
+    fmt.Println(math.Sqrt(float64(count)))
+    return
+}
+```
+
+> 计算100万个数之和再开根号
+
+
+
+
+
+## 5.4 异常处理
+
+- Go提供了对异常和错误的处理。
+
+- 错误处理：
+  - 出现错误则返回错误信息，没有则第二个参数为nil。
+
+- 异常处理：
+  - 异常抛出：`panic("异常信息")`，遇到就会终止后续代码执行（之前的defer还是会执行）。
+  - 程序恢复：使用`recover`函数，通常与`defer`一起使用，可以接收panic的消息。
+    - 如果程序抛出panic，有defer与recover的话，后续代码可以继续执行。
+
+> 向上抛
+>
+> 中断程序（panic）
+>
+> 恢复程序（recover）
+
+- 向上抛
+
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+
+func demo(i, k int) (r int, e error) {
+	if k == 0 {
+		e = errors.New("除数不能为0")
+		return
+	} else {
+		r = i / k
+		return
+	}
+}
+
+func main() {
+	result, error := demo(6, 2)
+	fmt.Println(result, error) // 3 <nil>
+
+	result, error = demo(6, 0)
+	fmt.Println(result, error) // 0 除数不能为0
+}
+
+```
+
+> 将error直接抛出即可
+
+- 中断程序（panic）
+
+```go
+// 执行结果: 111111111->遇到panic->defer的执行
+func main() {
+	defer fmt.Println("defer的执行")
+	fmt.Println("1111111111")
+	panic("遇到panic")
+	fmt.Println("2222222222")
+}
+```
+
+- 恢复程序（recover）
+
+```go
+func main() {
+	fmt.Println("main程序开始")
+	demo1()
+	fmt.Println("main程序结束")
+}
+
+func demo1() {
+	fmt.Println("demo1上半部分")
+	demo2()
+	fmt.Println("demo1下半部分")
+}
+
+func demo2() {
+	defer func() {
+		recover()
+	}()
+	fmt.Println("demo2上半部分")
+	demo3()
+	fmt.Println("demo2下半部分")
+}
+
+func demo3() {
+
+	fmt.Println("demo3上半部分")
+	panic("demo3中出现panic")
+	fmt.Println("demo3下半部分")
+}
+
+// main程序开始
+// demo1上半部分
+// demo2上半部分
+// demo3上半部分
+// demo1下半部分
+// main程序结束
+```
+
+
+
+## 5.5 IO流
+
+### 5.5.1 文件夹与文件
+
+- 使用os库进行创建文件夹
+
+```go
+func main() {
+
+    // 要求创建的文件夹不存在,但是父目录必须存在
+	error := os.Mkdir("文件夹目录", os.ModeDir)   
+
+    // 没有什么限制,父目录没有就帮忙创建
+	error = os.MkdirAll("文件夹目录", os.ModeDir) 
+	if error != nil {
+		fmt.Println("文件夹创建失败", error)
+		return
+	} else {
+		fmt.Println("文件夹创建成功")
+	}
+
+	// 创建文件
+	file, error := os.Create("demo.go")
+	if error != nil {
+		fmt.Println("文件创建失败", error)
+		return
+	} else {
+		fmt.Println(file.Name(), "文件创建成功")
+	}
+
+	// 重命名文件夹
+	os.Rename("oldpath", "newpath")
+
+	// 获取文件信息
+	file, error = os.Open("demo.go")
+	if error != nil {
+		fmt.Println("文件获取失败", error)
+		return
+	}
+	fileInfo, error := file.Stat() // 获取文件状态
+	if error != nil {
+		fmt.Println("文件信息获取失败", error)
+		return
+	} else {
+		fmt.Println(fileInfo.Size())
+	}
+
+	// 删除文件夹/文件 - Remove/RemoveAll - 规则和上面的一致
+	error = os.Remove("demo.go")
+	if error != nil {
+		fmt.Println("删除失败", error)
+		return
+	} else {
+		fmt.Println("删除成功")
+	}
+}
+```
+
+### 5.5.2 输入流
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	file, _ := os.Open("main.go") // 读取文件
+	fileInfo, _ := file.Stat()    // 获取文件的信息
+
+	buffer := make([]byte, fileInfo.Size()) // 创建buffer缓冲区
+
+	file.Read(buffer) // 将文件里面的内容读取到buffer里面
+	fmt.Println("文件中的内容为:", string(buffer))
+}
+```
+
+
+
+### 5.5.3 输出流
+
+```go
+	if error != nil {
+		file, _ = os.Create(filePath)
+	}
+	file.Write([]byte("package srfffffc"))
+	file.WriteString("Hello\n\thhhhh")
+}
+```
+
+
+
+### 5.5.4 ioutil工具类
+
+> - ioutil是Go提供的一个工具包，方便我们对IO进行操作
+> - 使用如下，还有更多拓展使用
+
+```go
+func main() {
+    // 下面两种方式等价
+    // 作用：获取文件输入流，将文件中的所有内容读到缓冲区
+	file, _ := os.Open("go.txt")
+	buffer, _ := ioutil.ReadAll(file)
+	fmt.Println(string(buffer))
+
+	buffer, _ = ioutil.ReadFile("go.txt")
+	fmt.Println(string(buffer))
+}
+```
+
+
+
+## 5.6 日志处理
+
+- Go原生提供对日志的支持，不需要三方依赖，三种级别如下
+  - Print()- 输出日志信息
+  - Panic()- 打印日志信息，并触发panic
+  - Fatal()- 打印日志信息后调用os.Exit(0)
+
+```go
+func main() {
+	// log.Println("打印日志信息")
+	// log.Panicln("打印fatal信息")
+	// log.Fatalln("error")
+
+	logFilePath := "golog.log"
+	file, _ := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_RDWR, os.ModePerm)
+	defer file.Close()
+	logger := log.New(file, "[INFO]\t", log.Ltime)
+	logger.Println("打印日志信息")
+}
+```
+
+
+
+
+
+## 5.7 数据库操作
+
+- Go语言可以对数据库进行操作，和Java一样，需要驱动。
+
+- 操作：
+  - 获取依赖：`go get github.com/go-sql-driver/mysql`。
+
+- 注意：
+  - macOS的bug：`CGO_ENABLED=0 go run main.go`。
+  - Go原生的数据库操作是通过`database/sql`操作的，但需要mysql驱动支持，程序中没有显示使用mysql驱动，所以需要空导入。
+  - Go原生对数据库的操作与JDBC基本一致。
+
+### 
+
+
+
+
+
+
+
+# 6 GoModels
+
+![image-20240224234247758](./assets/image-20240224234247758.png)
