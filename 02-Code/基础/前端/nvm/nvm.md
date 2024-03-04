@@ -153,6 +153,10 @@ npm config get registry
 npm config set registry https://registry.npm.taobao.org/
 ```
 
+```
+npm config set registry http://registry.npmmirror.com
+```
+
 
 
 #### 2、设置官方镜像源
