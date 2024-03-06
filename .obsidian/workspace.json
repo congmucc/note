@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+                "file": "02-Code/基础/后端/SQL/MongoDB/MongoDB.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "分布式锁",
+                "query": "mongo",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+                "file": "02-Code/基础/后端/SQL/MongoDB/MongoDB.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+                "file": "02-Code/基础/后端/SQL/MongoDB/MongoDB.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis导学.md"
+                "file": "02-Code/基础/后端/SQL/MongoDB/MongoDB.md"
               }
             }
           },
@@ -170,6 +169,12 @@
   },
   "active": "3220441e8013eecd",
   "lastOpenFiles": [
+    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
+    "02-Code/基础/后端/SQL/MongoDB/MongoDB.md",
+    "02-Code/基础/后端/SQL/MongoDB",
+    "02-Code/基础/后端/Java/JavaWeb/ssm/新版ssm/五、框架实战：SSM整合原理和实战/五、框架实战：SSM整合原理和实战.md",
+    "02-Code/面试/简历/简历讲解.md",
+    "02-Code/基础/后端/SQL/Redis/Redis导学.md",
     "02-Code/面试/简历/~WRL0833.tmp",
     "02-Code/面试/简历/~WRD0822.tmp",
     "02-Code/面试/简历/~WRL2851.tmp",
@@ -179,11 +184,7 @@
     "02-Code/面试/简历/~WRL3752.tmp",
     "02-Code/面试/简历/~WRD3740.tmp",
     "02-Code/面试/简历/~WRL3433.tmp",
-    "02-Code/面试/简历/~WRD3421.tmp",
-    "02-Code/面试/简历/~WRL1426.tmp",
-    "02-Code/面试/简历/简历讲解.md",
     "02-Code/面试/简历/Untitled.md",
-    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/项目笔记/闻讯头条/assets/clip_image002.gif",
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
@@ -205,8 +206,6 @@
     "assets/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LqaIOeRnw==,size_20,color_FFFFFF,t_70,g_se,x_16.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
-    "01-笔记使用/01a1-Obsidian插件.md",
-    "01-笔记使用/01b-Markdown语法规则.md",
     "02-Code/基础/后端/Java/ssm项目笔记/images/image-20221009153619861.png",
     "02-Code/基础/后端/Java/ssm项目笔记/images/4.用户管理/image-20220602112919875.png",
     "02-Code/基础/后端/Java/ssm项目笔记/images/2.前端基础知识/image-20220225153946727.png",
