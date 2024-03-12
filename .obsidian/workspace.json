@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/1.搭建环境.md",
+                "file": "02-Code/项目笔记/uniapp小鲜兔/uni-app/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "PathVariable",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/1.搭建环境.md",
+                "file": "02-Code/项目笔记/uniapp小鲜兔/uni-app/index.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/1.搭建环境.md",
+                "file": "02-Code/项目笔记/uniapp小鲜兔/uni-app/index.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/1.搭建环境.md"
+                "file": "02-Code/项目笔记/uniapp小鲜兔/uni-app/index.md"
               }
             }
           },
@@ -170,8 +169,11 @@
   },
   "active": "3220441e8013eecd",
   "lastOpenFiles": [
-    "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/4.用户管理.md",
+    "02-Code/项目笔记/uniapp小鲜兔/rabbit-shop/01-项目起步.md",
+    "02-Code/项目笔记/uniapp小鲜兔/uni-app/index.md",
+    "02-Code/项目笔记/小鲜兔vue3/1. Vue3入门.md",
     "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/1.搭建环境.md",
+    "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/4.用户管理.md",
     "02-Code/基础/后端/Java/JavaWeb/ssm/新版ssm/五、框架实战：SSM整合原理和实战/五、框架实战：SSM整合原理和实战.md",
     "02-Code/基础/后端/Java/JavaWeb/ssm/新版ssm/三、MyBatis实践：提高持久层数据处理效率/三、MyBatis实践：提高持久层数据处理效率.md",
     "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/7.其他功能.md",
@@ -205,9 +207,6 @@
     "02-Code/基础/后端/Go/未命名.md",
     "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
-    "02-Code/基础/后端/Java/JavaWeb/ssm/新版ssm/七、MyBatis-Plus高级用法：最优化持久层开发/七、MyBatis-Plus高级用法：最优化持久层开发.md",
-    "02-Code/项目笔记/构建项目.md",
-    "第1章 项目介绍&环境搭建v3.1.md",
     "02-Code/基础/后端/Java/ssm项目笔记/images/image-20221009153619861.png",
     "02-Code/基础/后端/Java/ssm项目笔记/images/4.用户管理/image-20220602112919875.png",
     "02-Code/基础/后端/Java/ssm项目笔记/images/2.前端基础知识/image-20220225153946727.png",
