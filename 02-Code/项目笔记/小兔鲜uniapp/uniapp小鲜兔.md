@@ -1,3 +1,7 @@
+# 0 项目搭建
+
+[uniapp搭建笔记](../../基础/前端/uniapp/uniapp.md)
+
 # 1 小鲜兔项目笔记
 
 ## 1.1 使用pinia
@@ -1248,7 +1252,7 @@ interface Data<T> {
 >
 > 实例： 
 >
-> ​	推荐封装的时候含有一个分页类型（已经封装）和一个string类型，由于这只用一次，可以直接进行接惨即可
+> ​	推荐封装的时候含有一个分页类型（已经封装）和一个string类型，由于这只用一次，可以直接进行加参即可
 
 ```ts
 type HotParams = PageParams & { subType?: string }
