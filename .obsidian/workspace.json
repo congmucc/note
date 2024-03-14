@@ -11,9 +11,12 @@
             "id": "3220441e8013eecd",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md"
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -83,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md"
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md"
               }
             }
           },
@@ -165,12 +168,19 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "3220441e8013eecd",
   "lastOpenFiles": [
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
+    "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+    "02-Code/基础/后端/SQL/Redis/Redis高级.md",
+    "02-Code/面试/面试目录.md",
+    "02-Code/基础/后端/Go/assets/image-20240222213520795.png",
+    "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
+    "05-穿搭/淘宝店铺.md",
+    "assets/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LqaIOeRnw==,size_20,color_FFFFFF,t_70,g_se,x_16.md",
+    "Task/2024-3-14-技术学习大纲.md",
     "Task/未命名看板.md",
-    "Task/2024-3-14-技术学习大纲.md",
     "Task/计算机计划.md",
-    "Task/2024-3-14-技术学习大纲.md",
     "Task/月看板.md",
     "未命名.canvas",
     "Diary/2024-03-14.md",
@@ -189,14 +199,8 @@
     "02-Code/基础/后端/Java/JavaWeb/ssm/新版ssm/五、框架实战：SSM整合原理和实战/五、框架实战：SSM整合原理和实战.md",
     "02-Code/基础/后端/Java/JavaWeb/ssm/新版ssm/三、MyBatis实践：提高持久层数据处理效率/三、MyBatis实践：提高持久层数据处理效率.md",
     "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/7.其他功能.md",
-    "02-Code/基础/后端/Java/JavaWeb/ssm项目笔记/6-1.权限管理.md",
-    "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/面试/简历/02简历讲解/assets/image-20240127105258178.png",
-    "02-Code/基础/后端/SQL/MongoDB/MongoDB.md",
-    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/基础/后端/SQL/MongoDB",
-    "02-Code/面试/简历/简历讲解.md",
-    "02-Code/基础/后端/SQL/Redis/Redis导学.md",
     "02-Code/面试/简历/~WRL0833.tmp",
     "02-Code/面试/简历/~WRD0822.tmp",
     "02-Code/面试/简历/~WRL2851.tmp",
@@ -214,7 +218,6 @@
     "02-Code/基础/后端/微服务框架/assets/image-20231121004426475.png",
     "02-Code/基础/后端/微服务框架/assets/image-20231121004335179.png",
     "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/Nacos集群搭建/assets/image-20210410103253355.png",
-    "02-Code/基础/后端/微服务框架/SpringCloud+RabbitMQ+Docker+Redis+搜索+分布式/SpringCloud/assets/image-20231208194301713.png",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
   ]
 }
