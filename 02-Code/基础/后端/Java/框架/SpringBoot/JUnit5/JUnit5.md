@@ -1,11 +1,5 @@
 ## 一、前言
 
-前几个月我跳槽，入职了一家软件[外包](https://so.csdn.net/so/search?q=外包&spm=1001.2101.3001.7020)公司。虽然薪资很低，但好在不用加班。项目是个外国的，给我最大的感觉就是老外很重视UT，覆盖率要80%以上。所以开发工作中写UT也是很重要的工作。
-
-由于我之前待过的几家公司是民企，对UT并不重视，而且我个人也没有特地学UT。虽然从大学就接触JUnit了，但是只停留在会用@Test这个水平，现在是时候学习下JUnit了。因为目前新的SpringBoot用的JUnit5，所以直接看JUnit5，JUnit4和JUnit5有不少差异。
-
-当然UT工具不仅仅是JUnit，SpringBoot还集成了mockito、hamcrest等工具。
-
 ### 1. 引入test包
 
 现在的项目基本使用SpringBoot，所以直接引入spring-boot-starter-test，
