@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "原子",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -168,7 +169,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "3220441e8013eecd",
+  "active": "ff17a40e34515f2a",
   "lastOpenFiles": [
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_picture_8.png",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_picture_7.png",
