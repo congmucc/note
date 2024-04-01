@@ -33,7 +33,7 @@ File和IO流的区别是IO流不仅可以操作本地文件，还可以操作网
 
 字节流有两个
 
-- 写 ：FileOutputStream 
+- 写 ：FileOutputStream
 - 读 ：FileInputStream
 
 一个复制文件的例子

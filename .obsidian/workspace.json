@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
+                "file": "02-Code/项目笔记/后台管理系统项目总结.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
+                "file": "02-Code/项目笔记/后台管理系统项目总结.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
+                "file": "02-Code/项目笔记/后台管理系统项目总结.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md"
+                "file": "02-Code/项目笔记/后台管理系统项目总结.md"
               }
             }
           },
@@ -169,8 +168,14 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ff17a40e34515f2a",
+  "active": "3220441e8013eecd",
   "lastOpenFiles": [
+    "02-Code/项目笔记/vue3大事件项目总结.md",
+    "02-Code/项目笔记/后台管理系统项目总结.md",
+    "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
+    "02-Code/面试/简历/简历0.3.pdf",
+    "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_picture_8.png",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_picture_7.png",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_picture_6.png",
@@ -181,7 +186,6 @@
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_picture_1.png",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_case_2.png",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets/uniapp_case_1.png",
-    "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop/assets/sku_picture_2.png",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/index.md",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app/assets",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop/assets",
@@ -211,12 +215,7 @@
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/08-地址模块.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/07-用户模块.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/06-登录模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/05-详情模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/04-分类模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/03-推荐模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/02-首页模块.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/在线笔记-长期更新【推荐】.txt",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
