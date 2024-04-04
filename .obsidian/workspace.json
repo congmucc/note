@@ -11,9 +11,12 @@
             "id": "3220441e8013eecd",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md"
+                "file": "02-Code/基础/Nginx/Nginx.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -46,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "原子",
+                "query": "tag:#upstream指令可以定义一组服务器",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -63,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -83,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md",
+                "file": "02-Code/基础/Nginx/Nginx.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md",
+                "file": "02-Code/基础/Nginx/Nginx.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/2024-3-14-技术学习大纲.md"
+                "file": "02-Code/基础/Nginx/Nginx.md"
               }
             }
           },
@@ -146,12 +150,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -166,8 +169,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "9c64785934be1fa0",
+  "active": "ff17a40e34515f2a",
   "lastOpenFiles": [
+    "02-Code/基础/CICD/Docker/Docker.md",
+    "02-Code/基础/CICD/CICD.md",
+    "Task/2024-3-14-技术学习大纲.md",
     "Task/计算机计划.md",
     "Task/月看板.md",
     "Task/软件工程作业.md",
@@ -210,9 +216,6 @@
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app/assets",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/assets",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/12-项目打包.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/11-订单模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/10-购物车模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/09-SKU模块.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/在线笔记-长期更新【推荐】.txt",
     "未命名.canvas",
     "Task/未命名.canvas",
