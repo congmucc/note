@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "file": "02-Code/基础/linux/linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -100,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "file": "02-Code/基础/linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "file": "02-Code/基础/linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md"
+                "file": "02-Code/基础/linux/linux.md"
               }
             }
           },
@@ -184,8 +184,9 @@
   },
   "active": "e39a157c92e73f25",
   "lastOpenFiles": [
-    "02-Code/基础/linux/linux.md",
+    "02-Code/基础/Nginx/Nginx.md",
     "02-Code/基础/CICD/Docker/Docker.md",
+    "02-Code/基础/linux/linux.md",
     "02-Code/基础/CICD/CICD.md",
     "Task/2024-3-14-技术学习大纲.md",
     "Task/计算机计划.md",
@@ -226,7 +227,6 @@
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app/index.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app/assets",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/assets",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/在线笔记-长期更新【推荐】.txt",
