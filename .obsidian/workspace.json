@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e39a157c92e73f25",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -49,8 +63,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#upstream指令可以定义一组服务器",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -66,8 +80,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Nginx/Nginx.md",
+                "file": "02-Code/基础/CICD/Docker/Docker.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Nginx/Nginx.md",
+                "file": "02-Code/基础/CICD/Docker/Docker.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/Nginx/Nginx.md"
+                "file": "02-Code/基础/CICD/Docker/Docker.md"
               }
             }
           },
@@ -169,8 +182,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ff17a40e34515f2a",
+  "active": "e39a157c92e73f25",
   "lastOpenFiles": [
+    "02-Code/基础/linux/linux.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/CICD/CICD.md",
     "Task/2024-3-14-技术学习大纲.md",
@@ -215,7 +229,6 @@
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app/index.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app/assets",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/assets",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/12-项目打包.md",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/在线笔记-长期更新【推荐】.txt",
     "未命名.canvas",
     "Task/未命名.canvas",
