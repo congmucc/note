@@ -692,8 +692,12 @@ const onScrolltolower = () => {
 
 > 这里主要是ref定义的时候guessRef这个需要定义类型
 >
-> ref<XtxGuessInstance>() 然后进行2. **定义组件实例**
->
+> 
+
+```ts
+ref<XtxGuessInstance>()  然后进行2. **定义组件实例**
+```
+
 > 难点主要是ts如何ref的定义类型
 
 
@@ -703,12 +707,12 @@ const onScrolltolower = () => {
 > 背景： 
 >
 > 	这个背景是在高光显示这里的：
-> 					
+> 						
 > 	本笔记中这里可以进行查看，为多个界面，有这段代码的背景解释
 > 	[1.10 关于v-for(item, index) && 切换页面高亮显示 && v-show]( ##1.10 关于v-for(item, index) && 切换页面高亮显示 && v-show)
-> 					
+> 						
 > 	源代码： 
-> 					
+> 						
 > 	[源代码](官方笔记/rabbit-shop/03-推荐模块.md)
 
 
@@ -1092,7 +1096,7 @@ const emit = defineEmits<{
 > 背景：
 >
 > 	分包可以减少小程序的加载时间，可以进行分包预下载提升启动速度。    经验： 
-> 					
+> 						
 > 	分包一般按照项目的业务模块划分，如会员模块分包，订单模块分包等
 >
 > 步骤： 
@@ -1176,9 +1180,9 @@ interface Data<T> {
           })
 ```
 
-> 这段代码中，as Data<T>的作用就是对编译器说res.data的类型是Data
+> 这段代码中，`as Data<T>`的作用就是对编译器说res.data的类型是Data
 >
-> 这段代码如果没有Data<T>可以改成
+> 这段代码如果没有`Data<T>`可以改成
 >
 > ```
 > uni.showToast({
