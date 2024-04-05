@@ -2,7 +2,7 @@
 
 [uniapp搭建笔记](../../基础/前端/uniapp/uniapp.md)
 
-# 1 小鲜兔项目笔记
+# 1 项目笔记
 
 ## 1.1 使用pinia
 
@@ -716,7 +716,7 @@ const onScrolltolower = () => {
 >
 > ​	源代码： 
 >
-> ​	[源代码](03-推荐模块.md)
+> ​	[源代码](官方笔记/rabbit-shop/03-推荐模块.md)
 
 
 
