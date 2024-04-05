@@ -571,7 +571,6 @@ export const getHomeGoodsGuessLikeAPI = (data?: PageParams) => {
 4. **页面进行使用**
 
    1. **添加分页参数**
-
    ```ts
    // 分页参数
    const pageParams: Required<PageParams> = {
@@ -580,7 +579,7 @@ export const getHomeGoodsGuessLikeAPI = (data?: PageParams) => {
    }
    ```
 
-   2.  **定义类型**
+   3.  **定义类型**
 
       > 这个定义类型在开始的1.  **添加分页属性全局的type到src\types\global.d.ts**中已经添加了PageParams
       >
