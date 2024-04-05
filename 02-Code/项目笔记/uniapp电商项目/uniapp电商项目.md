@@ -51,139 +51,140 @@ docker run --env MODE=standalone --name nacos --restart=always  -d -p 8848:8848
 
 4. logback.xml
 
-   ```{0}```
-   ```{0}1
-   ```{0}<?xml version="1.0" encoding="UTF-8"?>
-   ```{0}2
-   ```{0}​
-   ```{0}3
-   ```{0}<configuration>
-   ```{0}4
-   ```{0} <!--定义日志文件的存储地址,使用绝对路径-->
-   ```{0}5
-   ```{0} <property name="LOG_HOME" value="e:/logs"/>
-   ```{0}6
-   ```{0}​
-   ```{0}7
-   ```{0} <!-- Console 输出设置 -->
-   ```{0}8
-   ```{0} <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-   ```{0}9
-   ```{0}     <encoder>
-   ```{0}10
-   ```{0}         <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-   ```{0}11
-   ```{0}         <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-   ```{0}12
-   ```{0}         <charset>utf8</charset>
-   ```{0}13
-   ```{0}     </encoder>
-   ```{0}14
-   ```{0} </appender>
-   ```{0}15
-   ```{0}​
-   ```{0}16
-   ```{0} <!-- 按照每天生成日志文件 -->
-   ```{0}17
-   ```{0} <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-   ```{0}18
-   ```{0}     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-   ```{0}19
-   ```{0}         <!--日志文件输出的文件名-->
-   ```{0}20
-   ```{0}         <fileNamePattern>${LOG_HOME}/leadnews.%d{yyyy-MM-dd}.log</fileNamePattern>
-   ```{0}21
-   ```{0}     </rollingPolicy>
-   ```{0}22
-   ```{0}     <encoder>
-   ```{0}23
-   ```{0}         <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-   ```{0}24
-   ```{0}     </encoder>
-   ```{0}25
-   ```{0} </appender>
-   ```{0}26
-   ```{0}​
-   ```{0}27
-   ```{0} <!-- 异步输出 -->
-   ```{0}28
-   ```{0} <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
-   ```{0}29
-   ```{0}     <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
-   ```{0}30
-   ```{0}     <discardingThreshold>0</discardingThreshold>
-   ```{0}31
-   ```{0}     <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
-   ```{0}32
-   ```{0}     <queueSize>512</queueSize>
-   ```{0}33
-   ```{0}     <!-- 添加附加的appender,最多只能添加一个 -->
-   ```{0}34
-   ```{0}     <appender-ref ref="FILE"/>
-   ```{0}35
-   ```{0} </appender>
-   ```{0}36
-   ```{0}​
-   ```{0}37
-   ```{0}​
-   ```{0}38
-   ```{0} <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="false">
-   ```{0}39
-   ```{0}     <appender-ref ref="CONSOLE"/>
-   ```{0}40
-   ```{0} </logger>
-   ```{0}41
-   ```{0} <logger name="org.springframework.boot" level="debug"/>
-   ```{0}42
-   ```{0} <root level="info">
-   ```{0}43
-   ```{0}     <!--<appender-ref ref="ASYNC"/>-->
-   ```{0}44
-   ```{0}     <appender-ref ref="FILE"/>
-   ```{0}45
-   ```{0}     <appender-ref ref="CONSOLE"/>
-   ```{0}46
-   ```{0} </root>
-   ```{0}47
-   ```{0}</configuration>
-   ```{0}```
-   ```{0}
-   ```{0}这里配置的是logback文件，有两个注意点
-   ```{0}
-   ```{0}1. 输出
-   ```{0}
-   ```{0}   ```{0}```
-   ```{0}   ```{0}<!--定义日志文件的存储地址,使用绝对路径-->
-   ```{0}   ```{0}<property name="LOG_HOME" value="e:/logs"/>
-   ```{0}   ```{0}```
-   ```{0}
-   ```{0}2. 开发的时候尽量使用debug
-   ```{0}
-   ```{0}   ```
-   ```{0}   <logger name="org.springframework.boot" level="debug"/>
-   ```{0}   ```
+   ``````
+   ```````{0}1
+   ```<?xml version="1.0" encoding="UTF-8"?>
+   ```2
+   ```​
+   ```3
+   ```<configuration>
+   ```4
+   ``` <!--定义日志文件的存储地址,使用绝对路径-->
+   ```5
+   ``` <property name="LOG_HOME" value="e:/logs"/>
+   ```6
+   ```​
+   ```7
+   ``` <!-- Console 输出设置 -->
+   ```8
+   ``` <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+   ```9
+   ```     <encoder>
+   ```
+   ```         <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+   ```11
+   ```         <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+   ```12
+   ```         <charset>utf8</charset>
+   ```13
+   ```     </encoder>
+   ```14
+   ``` </appender>
+   ```15
+   ```​
+   ```16
+   ``` <!-- 按照每天生成日志文件 -->
+   ```17
+   ``` <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+   ```18
+   ```     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+   ```19
+   ```         <!--日志文件输出的文件名-->
+   ```20
+   ```         <fileNamePattern>${LOG_HOME}/leadnews.%d{yyyy-MM-dd}.log</fileNamePattern>
+   ```21
+   ```     </rollingPolicy>
+   ```22
+   ```     <encoder>
+   ```23
+   ```         <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+   ```24
+   ```     </encoder>
+   ```25
+   ``` </appender>
+   ```26
+   ```​
+   ```27
+   ``` <!-- 异步输出 -->
+   ```28
+   ``` <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+   ```29
+   ```     <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+   ```30
+   ```     <discardingThreshold>0</discardingThreshold>
+   ```31
+   ```     <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+   ```32
+   ```     <queueSize>512</queueSize>
+   ```33
+   ```     <!-- 添加附加的appender,最多只能添加一个 -->
+   ```34
+   ```     <appender-ref ref="FILE"/>
+   ```35
+   ``` </appender>
+   ```36
+   ```​
+   ```37
+   ```​
+   ```38
+   ``` <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="false">
+   ```39
+   ```     <appender-ref ref="CONSOLE"/>
+   ```40
+   ``` </logger>
+   ```41
+   ``` <logger name="org.springframework.boot" level="debug"/>
+   ```42
+   ``` <root level="info">
+   ```43
+   ```     <!--<appender-ref ref="ASYNC"/>-->
+   ```44
+   ```     <appender-ref ref="FILE"/>
+   ```45
+   ```     <appender-ref ref="CONSOLE"/>
+   ```46
+   ``` </root>
+   ```47
+   ```</configuration>
+   ``````
+   ```
+   ```这里配置的是logback文件，有两个注意点
+   ```
+   ```1. 输出
+   ```
+   ```   ``````
+   ```   ```<!--定义日志文件的存储地址,使用绝对路径-->
+   ```   ```<property name="LOG_HOME" value="e:/logs"/>
+   ```
+   ```2. 开发的时候尽量使用debug
+   ```
+   ```   ```
+   ```   <logger name="org.springframework.boot" level="debug"/>
+   ```   ```
 
 
 
-> 
+> Spring Boot 使用自动配置（auto-configuration）来简化应用程序的搭建过程。自动配置是通过在类路径下的 `META-INF/spring.factories` 文件中列出的配置类来实现的。Spring Boot 在启动时会扫描这个文件，加载配置类，并应用相应的配置。
+> `EnableAutoConfiguration` 注解标记了一个类，告诉 Spring Boot 在运行时自动应用这个类中的配置。配置类通常包含一些注解，以及配置应用程序所需的各种组件，例如数据源、消息队列等。
+> src/main/resources/META-INF/spring.factories地址是这个，
+>
+> 它可以在springboot扫描的时候进行扫面一般来说是一些配置类如下：
+>
+> ## 
 
-{0}. Spring Boot 使用自动配置（auto-configuration）来简化应用程序的搭建过程。自动配置是通过在类路径下的 `META-INF/spring.factories` 文件中列出的配置类来实现的。Spring Boot 在启动时会扫描这个文件，加载配置类，并应用相应的配置。
-{0}.
-{0}. `EnableAutoConfiguration` 注解标记了一个类，告诉 Spring Boot 在运行时自动应用这个类中的配置。配置类通常包含一些注解，以及配置应用程序所需的各种组件，例如数据源、消息队列等。
-{0}.
-{0}. src/main/resources/META-INF/spring.factories地址是这个，它可以在springboot扫描的时候进行扫面一般来说是一些配置类如下：
-{0}.
-{0}. > ## 
-{0}. > org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-{0}. > com.heima.common.exception.ExceptionCatch,\
-{0}. > com.heima.common.swagger.SwaggerConfiguration
-{0}. > ##
+> org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+
+> com.heima.common.exception.ExceptionCatch,\
+
+> com.heima.common.swagger.SwaggerConfiguration
+
+> ##
 
 
 
 ### 1.1.4 创建nacos和gatway完整步骤
 
-{0}. [2.2.2 服务进行的步骤（从创建到完整的模块）](# 2.2.2 服务进行的步骤（从创建到完整的模块）)
+[2.2.2 服务进行的步骤（从创建到完整的模块）](# 2.2.2 服务进行的步骤（从创建到完整的模块）)
 
 
 
@@ -313,7 +314,7 @@ spring:
 
 1. **引入依赖**
 
-   {0}. 在搭建的时候已经导入过了（注意是gateway父工程，），jwt的依赖即可
+   . 在搭建的时候已经导入过了（注意是gateway父工程，），jwt的依赖即可
 
 2. **创建全局过滤器并进行过滤**
 
@@ -394,15 +395,15 @@ spring:
 
 ## 1.3 整合Knife4j
 
-{0}. 这个就结合了1.1.3的spring.factories
-{0}.
-{0}. 步骤：
-{0}.
-{0}. ```1导入依赖
-{0}.
-{0}. ```2创建配置文件
-{0}.
-{0}. ```3在Spring.factories中新增配置
+. 这个就结合了1.1.3的spring.factories
+.
+. 步骤：
+.
+. ```1导入依赖
+.
+. ```2创建配置文件
+.
+. ```3在Spring.factories中新增配置
 
 1. **导入依赖**
 
@@ -487,39 +488,39 @@ spring:
 
 ## 1.4 Feign在业务中使用
 
-{0}. 背景：步骤如下：
-{0}.
-{0}. ![image-20210505010938575](./assets/image-20210505010938575.png)
-{0}.
-{0}. **定义feign接口：**
-{0}.
-{0}. [app端文章保存接口](# 2.6 app端文章保存接口)
-{0}.
-{0}. 步骤（以文章为例）：
-{0}.
-{0}. 1. 在feign模块定义相应接口，
-{0}. 2. 在文章微服务中定义新的包feign，编写类实现feign模块中的接口，实现时候直接使用service层的函数即可，
-{0}.
-{0}. **远程调用feign接口方式：**
-{0}.
-{0}. 在heima-leadnews-wemedia服务中已经依赖了heima-leadnews-feign-apis工程，只需要在自媒体（wemedia）的引导类中开启feign的远程调用即可
-{0}.
-{0}. 注解为：`@EnableFeignClients(basePackages = "com.heima.apis")` 需要指向apis这个包
+. 背景：步骤如下：
+.
+. ![image-20210505010938575](./assets/image-20210505010938575.png)
+.
+. **定义feign接口：**
+.
+. [app端文章保存接口](# 2.6 app端文章保存接口)
+.
+. 步骤（以文章为例）：
+.
+. 1. 在feign模块定义相应接口，
+. 2. 在文章微服务中定义新的包feign，编写类实现feign模块中的接口，实现时候直接使用service层的函数即可，
+.
+. **远程调用feign接口方式：**
+.
+. 在heima-leadnews-wemedia服务中已经依赖了heima-leadnews-feign-apis工程，只需要在自媒体（wemedia）的引导类中开启feign的远程调用即可
+.
+. 注解为：`@EnableFeignClients(basePackages = "com.heima.apis")` 需要指向apis这个包
 
-```{0}**服务降级处理：**
-```{0}
-```{0}1. 在heima-leadnews-feign-api编写降级逻辑
-```{0}2. 在自媒体微服务（消费者）中添加类，扫描降级代码类的包
-```{0}
-```{0}3. 远程接口中指向降级代码
-```{0}4. 客户端开启降级heima-leadnews-wemedia
-```{0}5. 测试
-```{0}
-```{0}**开启异步调用：**
-```{0}
-```{0}①：在自动审核的方法上加上@Async注解（标明要异步调用）
-```{0}
-```{0}③：在自媒体（消费者）引导类中使用@EnableAsync注解开启异步调用
+````{0}**服务降级处理：**
+```
+```1. 在heima-leadnews-feign-api编写降级逻辑
+```2. 在自媒体微服务（消费者）中添加类，扫描降级代码类的包
+```
+```3. 远程接口中指向降级代码
+```4. 客户端开启降级heima-leadnews-wemedia
+```5. 测试
+```
+```**开启异步调用：**
+```
+```①：在自动审核的方法上加上@Async注解（标明要异步调用）
+```
+```③：在自媒体（消费者）引导类中使用@EnableAsync注解开启异步调用
 
 1. **在heima-leadnews-feign-api编写降级逻辑**
 
@@ -543,7 +544,7 @@ spring:
            return ResponseResult.errorResult(AppHttpCodeEnum.SERVER_ERROR,"获取数据失败");
        }
    }
-```
+````
 
    
 
@@ -630,13 +631,13 @@ spring:
 >
 > ```{0}用户注册：密码+生成的字符串（salt）进行md5加密
 >
-> ```{0}用户登录：先通过用户名进行查询salt字段和输入密码进行md5加密后对比数据库md5密码。
+> ```用户登录：先通过用户名进行查询salt字段和输入密码进行md5加密后对比数据库md5密码。
 
 ### 2.1.2 游客登录
 
-```{0}1，用户输入了用户名和密码进行登录，校验成功后返回jwt(基于当前用户的id生成)
-```{0}
-```{0}2，用户游客登录，生成jwt返回(基于默认值0生成)
+````{0}1，用户输入了用户名和密码进行登录，校验成功后返回jwt(基于当前用户的id生成)
+```
+```2，用户游客登录，生成jwt返回(基于默认值0生成)
 
 
 
@@ -722,7 +723,7 @@ spring:
 
 2. **添加nacos配置和boostrap文件**
 
-    {0}. **nacos**
+    . **nacos**
 
          > 
          spring:
@@ -738,7 +739,7 @@ spring:
            type-aliases-package: com.eason.model.article.pojos
          > 
 
-    {0}. **boostrap**
+    . **boostrap**
 
          ```yaml
          server:
@@ -753,7 +754,7 @@ spring:
                config:
                  server-addr: 192.168.47.128:8848
                  file-extension: yml
-```
+````
 
          > 这里面基本一样，引入nacos，name是命名，自定义的模块名
 
