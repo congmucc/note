@@ -13,8 +13,27 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
                 "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "b76eb4fd6b191567",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "585dcf73430ae7bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
+                "mode": "preview",
                 "backlinks": true,
                 "source": false
               }
@@ -70,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f97e224a7ac1a7c8",
@@ -86,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md"
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md"
               }
             }
           },
@@ -153,7 +173,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -168,8 +189,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "7fee06cd2c389ad2",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/01-项目起步.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/09-SKU模块.md",
@@ -213,7 +235,6 @@
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/05-详情模块.md",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/04-分类模块.md",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/03-推荐模块.md",
-    "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/01-项目起步.md",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/在线笔记-长期更新【推荐】.txt",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/uni-app",
     "未命名.canvas",

@@ -571,15 +571,16 @@ export const getHomeGoodsGuessLikeAPI = (data?: PageParams) => {
 4. **页面进行使用**
 
    1. **添加分页参数**
-   ```ts
-   // 分页参数
-   const pageParams: Required<PageParams> = {
-     page: 1,
-     pageSize: 10,
-   }
-   ```
 
-   3.  **定义类型**
+        ```ts
+       // 分页参数
+       const pageParams: Required<PageParams> = {
+         page: 1,
+         pageSize: 10,
+       }
+        ```
+
+   2. **定义类型**
 
       > 这个定义类型在开始的1.  **添加分页属性全局的type到src\types\global.d.ts**中已经添加了PageParams
       >
@@ -587,56 +588,55 @@ export const getHomeGoodsGuessLikeAPI = (data?: PageParams) => {
 
    3. **调用程序api**
 
-   ```ts
-   // 分页参数
-   const pageParams: Required<PageParams> = {
-     page: 1,
-     pageSize: 10,
-   }
-   
-   // 猜你喜欢列表
-   const guessList = ref<GuessItem[]>([])
-   // 已结束标记
-   const finish = ref(false)
-   // 获取猜你喜欢数据
-   const gethomeGoodsGuessLikeData = async () => {
-     // 退出判断
-     if (finish.value === true) {
-       console.log('退出')
-       return uni.showToast({
-         icon: 'none',
-         title: '没有更多数据',
-       })
-     }
-     const res = await getHomeGoodsGuessLikeAPI(pageParams)
-     console.log('猜你喜欢API： ', res)
-     // guessList.value = res.result.items
-     // 数组追加
-     guessList.value.push(...res.result.items)
-     if (pageParams.page < res.result.pages) {
-       // 页码的累加
-       pageParams.page++
-     } else {
-       finish.value = true
-     }
-   }
-   ```
+         ```ts
+      // 分页参数
+      const pageParams: Required<PageParams> = {
+        page: 1,
+        pageSize: 10,
+      }
+      
+      // 猜你喜欢列表
+      const guessList = ref<GuessItem[]>([])
+      // 已结束标记
+      const finish = ref(false)
+      // 获取猜你喜欢数据
+      const gethomeGoodsGuessLikeData = async () => {
+        // 退出判断
+        if (finish.value === true) {
+          console.log('退出')
+          return uni.showToast({
+            icon: 'none',
+            title: '没有更多数据',
+          })
+        }
+        const res = await getHomeGoodsGuessLikeAPI(pageParams)
+        console.log('猜你喜欢API： ', res)
+        // guessList.value = res.result.items
+        // 数组追加
+        guessList.value.push(...res.result.items)
+        if (pageParams.page < res.result.pages) {
+          // 页码的累加
+          pageParams.page++
+        } else {
+          finish.value = true
+        }
+      }
+         ```
 
-   > 这里说一下，逻辑上调用api的时候传入这pageParams，这个是在request中进行的封装，可以看3. **封装api**中的，data是一个属性，这个可以看uni官网
-   >
-   > 
-   >
-   > 数组追加的时候需要展开数组也就是
-   >
-   > ```ts
-   > // 数组追加
-   > guessList.value.push(...res.result.items)
-   > ```
-   >
-   > 这里逻辑包含调用api传参-> 数组追加->页面累加
+         > 这里说一下，逻辑上调用api的时候传入这pageParams，这个是在request中进行的封装，可以看3. **封装api**中的，data是一个属性，这个可以看uni官网
+         >
+         > 
+         >
+         > 数组追加的时候需要展开数组也就是
 
-   
+       ```ts
+        // 数组追加
+      guessList.value.push(...res.result.items)
+       ```
 
+         >这里逻辑包含调用api传参-> 数组追加->页面累加
+
+         
 ### 1.6.2 ref组件实例-父组件调用子组件
 
 > 场景： 
@@ -708,12 +708,12 @@ const onScrolltolower = () => {
 > 背景： 
 >
 > 	这个背景是在高光显示这里的：
-> 		
+> 			
 > 	本笔记中这里可以进行查看，为多个界面，有这段代码的背景解释
 > 	[1.10 关于v-for(item, index) && 切换页面高亮显示 && v-show]( ##1.10 关于v-for(item, index) && 切换页面高亮显示 && v-show)
-> 		
+> 			
 > 	源代码： 
-> 		
+> 			
 > 	[源代码](官方笔记/rabbit-shop/03-推荐模块.md)
 
 
@@ -1097,7 +1097,7 @@ const emit = defineEmits<{
 > 背景：
 >
 > 	分包可以减少小程序的加载时间，可以进行分包预下载提升启动速度。    经验： 
-> 		
+> 			
 > 	分包一般按照项目的业务模块划分，如会员模块分包，订单模块分包等
 >
 > 步骤： 
