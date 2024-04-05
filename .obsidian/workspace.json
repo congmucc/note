@@ -11,8 +11,13 @@
             "id": "7fee06cd2c389ad2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "02-Code/项目笔记/小鲜兔uniapp/小鲜兔uniapp.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
         ]
@@ -81,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/项目笔记/小鲜兔uniapp/小鲜兔uniapp.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/项目笔记/小鲜兔uniapp/小鲜兔uniapp.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md"
+                "file": "02-Code/项目笔记/小鲜兔uniapp/小鲜兔uniapp.md"
               }
             }
           },
@@ -165,7 +170,7 @@
   },
   "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
-    "02-Code/基础/Tool/Git/git.md",
+    "02-Code/基础/Tool/Git/Git.md",
     "02-Code/基础/Tool",
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/CICD/Docker/Docker.md",
