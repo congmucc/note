@@ -1,89 +1,85 @@
-[TOC]
-
-# Centos7学习笔记
+# Centos7 学习笔记
 
 ## 1 前置条件
 
-> 背景： 
+> 背景：
 >
-> ​	安装Vmware下载Centos7
+> ​ 安装 Vmware 下载 Centos7
 >
-> 视频： [3天搞定Linux，1天搞定Shell，清华学神带你通关](https://www.bilibili.com/video/BV1WY4y1H7d3/?p=11&share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
+> 视频： [3 天搞定 Linux，1 天搞定 Shell，清华学神带你通关](https://www.bilibili.com/video/BV1WY4y1H7d3/?p=11&share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 >
-> 文章：[超详细的CentOS7的下载安装配置教程_centos7下载_秃头披风侠.的博客-CSDN博客](https://blog.csdn.net/m0_51545690/article/details/123238360)
+> 文章：[超详细的 CentOS7 的下载安装配置教程*centos7 下载*秃头披风侠.的博客-CSDN 博客](https://blog.csdn.net/m0_51545690/article/details/123238360)
 >
-> 这里分配的处理器数量：2个
+> 这里分配的处理器数量：2 个
 >
-> 每个处理器的内核数量为：4个
+> 每个处理器的内核数量为：4 个
 >
 > 这里面的**配置分区**选择自动分配
 >
-> 步骤： 
+> 步骤：
 >
-> 1. 安装Linux
+> 1. 安装 Linux
 > 2. 网卡设置
-> 3. 安装SSH连接工具
+> 3. 安装 SSH 连接工具
 
-1. **安装Linux**
+1.  **安装 Linux**
 
-2. **网卡设置**
+2.  **网卡设置**
 
-   > 修改网络初始化配置，设定网卡在系统启动时ip初始化
-   >
-   > ```
-   > cd /              进入根目录
-   > cd etc            进入etc目录
-   > cd sysconfig      进入sysconfig目录
-   > cd network-scipts 进入network-scripts目录
-   > vi ifcfg-ens33    编辑ifcfg-ens33文件
-   > 
-   > vi /etc/sysconfig/network-scripts/ifcfg-ens33
-   > 
-   > i进入编辑区
-   > 将ONBOOT=no改为yes
-   > [esc] :wq保存退出
-   > ```
-   >
-   > 然后进行重启，使用`ip addr`查看ip地址
+    > 修改网络初始化配置，设定网卡在系统启动时 ip 初始化
+    >
+    > ```
+    > cd /              进入根目录
+    > cd etc            进入etc目录
+    > cd sysconfig      进入sysconfig目录
+    > cd network-scipts 进入network-scripts目录
+    > vi ifcfg-ens33    编辑ifcfg-ens33文件
+    >
+    > vi /etc/sysconfig/network-scripts/ifcfg-ens33
+    >
+    > i进入编辑区
+    > 将ONBOOT=no改为yes
+    > [esc] :wq保存退出
+    > ```
+    >
+    > 然后进行重启，使用`ip addr`查看 ip 地址
 
-3. **安装SSH连接工具**
+3.  **安装 SSH 连接工具**
 
-   > 背景： 
-   >
-   > ​	SSH，建立在应用层基础上的安全协议
-   >
-   > 常用的SSH连接工具
-   >
-   > - putty
-   > - secureCRT
-   > - xshell
-   > - finalshell
-   >
-   > ​    通过SSH连接工具就可以实现从本地连接到远程的linux服务器
-   >
-   > 步骤： 
-   >
-   > 	1. 下载
-   > 	1. 进行ip地址连接
+    > 背景：
+    >
+    > ​ SSH，建立在应用层基础上的安全协议
+    >
+    > 常用的 SSH 连接工具
+    >
+    > - putty
+    > - secureCRT
+    > - xshell
+    > - finalshell
+    >
+    > ​ 通过 SSH 连接工具就可以实现从本地连接到远程的 linux 服务器
+    >
+    > 步骤：
+    >
+    >     1. 下载
+    >     1. 进行ip地址连接
 
     1. **下载**
 
-       > [FinalShell官网 (hostbuf.com)](https://www.hostbuf.com/)
+       > [FinalShell 官网 (hostbuf.com)](https://www.hostbuf.com/)
 
-    2. **进行ip地址连接**
+    2. **进行 ip 地址连接**
 
-       > 1. 选择SSH连接
-       > 2. 主机是linux的ip地址，端口默认22
+       > 1. 选择 SSH 连接
+       > 2. 主机是 linux 的 ip 地址，端口默认 22
        > 3. 用户名和密码是自己设置的
        > 4. 接收并保存
 
-
-
-## 2 linux常用命令： 
+## 2 linux 常用命令：
 
 ![image-20231116204344565](./assets/image-20231116204344565-1700138635093-1.png)
 
-### 2.1 Linux命令初体验
+### 2.1 Linux 命令初体验
 
 | 序号 | 命令           | 对应英文             |           作用           |
 | ---- | -------------- | -------------------- | :----------------------: |
@@ -96,14 +92,12 @@
 
 ![image-20231116205238944](./assets/image-20231116205238944.png)
 
+- Linux 命令使用技巧：
 
-
-- Linux命令使用技巧：
-
-  > - Tab键自动补全
-  > - 连续两次Tab键，给出操作提示
+  > - Tab 键自动补全
+  > - 连续两次 Tab 键，给出操作提示
   > - 使用上下箭头快速调出曾经使用过的命令
-  > - 使用clear命令或者Ctrl+[快捷键实现清屏
+  > - 使用 clear 命令或者 Ctrl+[快捷键实现清屏
 
 - **文件目录操作命令**
 
@@ -131,15 +125,15 @@
 
 ### 2.3 打包压缩命令
 
->  这里常用命令为：zxvf解压缩    zcvf压缩
+> 这里常用命令为：zxvf 解压缩 zcvf 压缩
 
 ![tar](./assets/image-20231116221546514.png)
 
 ### 2.4 文本编辑命令
 
-> 前置： 
+> 前置：
 >
-> ​	Contos中，安装vim，yum install vim
+> ​ Contos 中，安装 vim，yum install vim
 
 ![vim](./assets/image-20231116221949241.png)
 
@@ -165,70 +159,69 @@
 
   > 软件已经针对具体平台编译打包发布，只要解压，修改配置即可
 
-- rpm安装
+- rpm 安装
 
-  > 软件已经按照redhat的包管理规范进行打包，使用rpm命令进行安装，不能自行解决库依赖问题
+  > 软件已经按照 redhat 的包管理规范进行打包，使用 rpm 命令进行安装，不能自行解决库依赖问题
 
-- yum安装
+- yum 安装
 
-  > 一种在线软件安装方式，本 质上还是rpm安装，自动下载安装包并安装，安装过程中自动解决库依赖问题
+  > 一种在线软件安装方式，本 质上还是 rpm 安装，自动下载安装包并安装，安装过程中自动解决库依赖问题
   >
   > ```text
   > yum -y list java*
   > ```
   >
-  > > 这个是列出java的版本
+  > > 这个是列出 java 的版本
 
 - 源码编译安装
 
   > 软件以源码工程的形式发布，需要自己编译打包
 
-### 3.2 安装jdk
+### 3.2 安装 jdk
 
 > 操作步骤:
 >
-> 1. 使用FinalShell自带的上传工具将jdk的二进制发布包上传到Linux  **jdk-8u171-inux-x64.tar.gz**
+> 1. 使用 FinalShell 自带的上传工具将 jdk 的二进制发布包上传到 Linux **jdk-8u171-inux-x64.tar.gz**
 >
 > 2. 解压安装包，命令为**tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/local**
 >
-> 3. 配置环境变量，使用vim命令修改/etc/profile文件，在文件末尾加入如下配置
+> 3. 配置环境变量，使用 vim 命令修改/etc/profile 文件，在文件末尾加入如下配置
 >
 >    ```
 >            JAVA_HOME=/usr/local/jdk1.8.0 171
 >            PATH=$JAVA_HOME/bin:$PATH
 >    ```
 >
-> 4. 重新加载profile文件，使更改的配置立即生效，命令为**source /etc/profile**
+> 4. 重新加载 profile 文件，使更改的配置立即生效，命令为**source /etc/profile**
 >
 > 5. 检查安装是否成功，命令为**java -version**
 
-### 3.3 安装Tomcat && 防火墙
+### 3.3 安装 Tomcat && 防火墙
 
 > 操作步骤:
 >
-> 1. 安装Tomcat
-> 2. 验证Tomcat
+> 1. 安装 Tomcat
+> 2. 验证 Tomcat
 > 3. 关闭防火墙
-> 4. 停止Tomcat
+> 4. 停止 Tomcat
 
-1. **安装Tomcat**
+1. **安装 Tomcat**
 
-   > 1. 使用FinalShell自带的上传工具将Tomcat的二进制发布包上传到Linux `apache-tomcat-7.0.57.tar.gz`
+   > 1. 使用 FinalShell 自带的上传工具将 Tomcat 的二进制发布包上传到 Linux `apache-tomcat-7.0.57.tar.gz`
    > 2. 解压安装包，命令为`tar -zxvf apache-tomcat-7.0.57.tar.gz -C /usr/local`
-   > 3. 进入Tomcat的bin目录启动服务，命令为`sh startup.sh`或者`./startup.sh`
+   > 3. 进入 Tomcat 的 bin 目录启动服务，命令为`sh startup.sh`或者`./startup.sh`
 
-2. **验证Tomcat**
+2. **验证 Tomcat**
 
-   > 验证Tomcat启动是否成功，有多种方式:
+   > 验证 Tomcat 启动是否成功，有多种方式:
    >
    > - 查看启动日志
-   >   `more /usr/local/apache-tomcat-7.0.57/logs/catalina.out`
-   >   `tail -50 /usr/local/apache-tomcat-7.0.57/logs/catalina.out`
+   >   `more /usr/local/apache-tomcat-7.0.57/logs/catalina.out` > `tail -50 /usr/local/apache-tomcat-7.0.57/logs/catalina.out`
    > - 查看进程 `ps -ef | grep tomcat`
    >   注意:
-   >   - ps命令是linux下非常强大的进程查看命令，通过ps-ef可以查看当前运行的所有进程的详细信息
-   >   - “|”在Linux中称为管道符，可以将前一个命令的结果输出给后一个命令作为输入
-   >   - 使用ps命令查看进程时，经常配合管道符和查找命令 grep 一起使用，来查看特定进程
+   >   - ps 命令是 linux 下非常强大的进程查看命令，通过 ps-ef 可以查看当前运行的所有进程的详细信息
+   >   - “|”在 Linux 中称为管道符，可以将前一个命令的结果输出给后一个命令作为输入
+   >   - 使用 ps 命令查看进程时，经常配合管道符和查找命令 grep 一起使用，来查看特定进程
 
    ![验证tomcat](./assets/image-20231116232004755.png)
 
@@ -248,47 +241,45 @@
    > - 查看开放的端口(`firewall-cmd --zone=public --list-ports`)
    >
    > 注意:
-   > 1、`systemctl`是管理Linux中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作
-   > 2、`firewall-cmd`是Linux中专门用于控制防火墙的命令
+   > 1、`systemctl`是管理 Linux 中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作
+   > 2、`firewall-cmd`是 Linux 中专门用于控制防火墙的命令
    > 3、为了保证系统安全，服务器的防火墙不建议关闭
 
    ![防火墙](./assets/image-20231116233121923.png)
 
-4. **停止Tomcat**
+4. **停止 Tomcat**
 
-   > 停止Tomcat服务的方式:
+   > 停止 Tomcat 服务的方式:
    >
-   > - 运行Tomcat的bin目录中提供的停止服务的脚本文件`shutdown.sh`
-   >   `sh shutdown.sh`
-   >   `./shutdown.sh`
-   > - 结束Tomcat进程
-   >   查看Tomcat进程，获得进程id       `ps -ef | grep tomcat`
+   > - 运行 Tomcat 的 bin 目录中提供的停止服务的脚本文件`shutdown.sh` > `sh shutdown.sh` > `./shutdown.sh`
+   > - 结束 Tomcat 进程
+   >   查看 Tomcat 进程，获得进程 id `ps -ef | grep tomcat`
    >   执行命令结束进程 `kill -9 进程号`
    >   注意:
-   >   kill命令是Linux提供的用于结束进程的命令，-9表示强制结束
+   >   kill 命令是 Linux 提供的用于结束进程的命令，-9 表示强制结束
 
    ![停止Tomcat](./assets/image-20231116234236909.png)
 
-### 3.4 安装MySQL
+### 3.4 安装 MySQL
 
 > 背景：
 >
-> ​	把步骤的前两步做了，之后跟着知乎来就行了，其实前两步都不用，但是这个流程是对的
+> ​ 把步骤的前两步做了，之后跟着知乎来就行了，其实前两步都不用，但是这个流程是对的
 >
-> ​        [CentOS / Linux 安装MySQL（超简单详细） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623778183)
+> ​ [CentOS / Linux 安装 MySQL（超简单详细） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623778183)
 >
-> 步骤： 
+> 步骤：
 >
-> 1. 检测当前系统中是否安装MySQL数据库
+> 1. 检测当前系统中是否安装 MySQL 数据库
 > 1. 卸载已经安装的冲突软件
-> 1. 安装MySQL
-> 1. 启动mysql
-> 1. 登录MySQL数据库，查阅临时密码
-> 1. 登录MySQL，修改密码，开放访问权限（mysql8.0和低版本不同，还有3306端口开放）
+> 1. 安装 MySQL
+> 1. 启动 mysql
+> 1. 登录 MySQL 数据库，查阅临时密码
+> 1. 登录 MySQL，修改密码，开放访问权限（mysql8.0 和低版本不同，还有 3306 端口开放）
 
-1. **检测当前系统中是否安装MySQL数据库**
+1. **检测当前系统中是否安装 MySQL 数据库**
 
-   > 检测当前系统中是否安装MySQL数据库
+   > 检测当前系统中是否安装 MySQL 数据库
    >
    > ```
    > rpm -qa                         查询当前系统中安装的所有软件
@@ -296,13 +287,11 @@
    > rpm -qa|grep mariadb            查询当前系统中安装的名称带mariadb的软件
    > ```
    >
-   >    RPM (Red-Hat Package Manager) RPM软件包管理器，是红帽Linux用于管理和安装软件的工具
-   >    
-   > 
+   > RPM (Red-Hat Package Manager) RPM 软件包管理器，是红帽 Linux 用于管理和安装软件的工具
    >
    > 注意事项:
-   >    	如果当前系统中已经安装有MySOL数据库，安装将失败。CentOs7自带mariadb，与MySOL数据库冲突
-   
+   > 如果当前系统中已经安装有 MySOL 数据库，安装将失败。CentOs7 自带 mariadb，与 MySOL 数据库冲突
+
 2. **卸载已经安装的冲突软件**
 
    ```
@@ -310,34 +299,33 @@
    rpm -e --nodeps mariadb-libs-5.5.60-1.l7 5x86 64
    ```
 
-3. 将MySQL安装包上传到Linux并解压
+3. 将 MySQL 安装包上传到 Linux 并解压
 
    ```
    mkdir /usr/local/mysql
    tar -zxvf mysql-5.7.25-1.el7.x86_64.rpm-bundle.tar.gz -C /usr/local/mysql
    ```
 
-   > 如果是tar结尾的用命令：
+   > 如果是 tar 结尾的用命令：
    >
    > ` tar xvf mysql-8.0.35-1.el7.x86_64.rpm-bundle.tar  -C /usr/local/mysql`
    >
-   > 解压之后得到6个rpm的安装包文件
+   > 解压之后得到 6 个 rpm 的安装包文件
 
    > 使用这个来安装，记得选路径：
    >
-   > [CentOS / Linux 安装MySQL（超简单详细） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623778183)
+   > [CentOS / Linux 安装 MySQL（超简单详细） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623778183)
    >
-   > [【MySQL 8入门之安装篇】CentOS 7系统离线下安装MySQL 8 - 掘金 (juejin.cn)](https://juejin.cn/post/7110209311824936991)
+   > [【MySQL 8 入门之安装篇】CentOS 7 系统离线下安装 MySQL 8 - 掘金 (juejin.cn)](https://juejin.cn/post/7110209311824936991)
 
-4. 启动mysql
+4. 启动 mysql
 
    > ```
    > systemctl status mysqld        查看mysql服务状态
    > systemctl start mysqld         启动mysql服务
    > ```
    >
-   >
-   > 说明:可以设置开机时启动mysql服务，避免每次开机启动mysql
+   > 说明:可以设置开机时启动 mysql 服务，避免每次开机启动 mysql
    >
    > ```
    > systemctl enable mysqld        开机启动mysql服务
@@ -346,11 +334,11 @@
    > ```
    > netstat -tunlp                 查看已经启动的服务
    > netstat -tunlp|grep mysql
-   > 
+   >
    > ps -ef|grep mysql              查看mysql进程
    > ```
 
-5. 登录MySQL数据库，查阅临时密码
+5. 登录 MySQL 数据库，查阅临时密码
 
    > ```
    > cat /var/log/mysqld.log                 查看文件内容
@@ -361,7 +349,7 @@
    > 注意事项
    > 冒号后面的是密码，注意空格
 
-6. 登录MySQL，修改密码，开放访问权限
+6. 登录 MySQL，修改密码，开放访问权限
 
    > ```
    > mysgl -uroot -p                           登录mysql(使用临时密码登录)
@@ -369,110 +357,104 @@
    > set global validate_password_length=4;    设置密码长度最低位数
    > set global validate_password_policy=LOW;  设置密码安全等级低，便于密码可以修改成123456
    > set password = password('123456');          设置密码为123456
-   > 
+   >
    > #开启访问权限
    > grant all on *.* to 'root'@'%' identified by 'root';
    > flush privileges;
    > ```
    >
-   > 如果是Mysql8.0 需要先改密码然后才能设置长度和等级,且语句不同
-   >
-   > 
+   > 如果是 Mysql8.0 需要先改密码然后才能设置长度和等级,且语句不同
    >
    > ```
    > 设置密码校验策略为：0（只验证密码长度）
    > set global validate.password_policy=0;
-   > 
+   >
    > 设置密码最低长度=N，例如设置密码最低长度=6，也就是密码最少要设置6个字符及以上
    > set global validate.password_length=6;
-   > 
+   >
    > ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
-   > 
-   > 
-   > 
+   >
+   >
+   >
    > # 登录
    > mysql -u root -p'密码'
-   > 
+   >
    > # 如果你的数据库是 mysql 8 及以上
    > # 1、进入数据库
    > use mysql
    > # 2、修改user表
    > update user set host='%' where user='root';
-   > 
-   > 
-   > 
+   >
+   >
+   >
    > # 重载授权表
    > FLUSH PRIVILEGES;
-   > 
+   >
    > # 再执行授权语句
    > GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'WITH GRANT OPTION;
-   > 
+   >
    > # 退出
    > exit
-   > 
+   >
    > # 重启
    > systemctl restart mysqld
    > ```
    >
-   >  
-   >
-   > 这里需要开放3306端口
+   > 这里需要开放 3306 端口
 
-### 3.5 安装lrzsz
+### 3.5 安装 lrzsz
 
-> 背景： 
+> 背景：
 >
-> ​	这个lrzsz是将文件上传到linux的一个包   上传命令为`rz`
+> ​ 这个 lrzsz 是将文件上传到 linux 的一个包 上传命令为`rz`
 >
 > 操作步骤:
 >
-> 1. 搜索lrzsz安装包，命令为`yum list lrzsz`
+> 1. 搜索 lrzsz 安装包，命令为`yum list lrzsz`
 >
-> 2. 使用yum命令在线安装，命令为`yum install lrzsz.x86 64`
+> 2. 使用 yum 命令在线安装，命令为`yum install lrzsz.x86 64`
 >    注意事项
->    Yum(全称为 Yellow dog Updater, Modified)是一个在Fedora和RedHat以及Cent0s中的Shell前端软件包管理器。基于
->    RPM包管理，能够从指定的服务器自动下载RPM包并目安装，可以自动处理依赖关系，并且一次安装所有依赖的软件包，无须
+>    Yum(全称为 Yellow dog Updater, Modified)是一个在 Fedora 和 RedHat 以及 Cent0s 中的 Shell 前端软件包管理器。基于
+>    RPM 包管理，能够从指定的服务器自动下载 RPM 包并目安装，可以自动处理依赖关系，并且一次安装所有依赖的软件包，无须
 >    繁琐地一次次下载、安装
 
-### 3.6 安装Nginx
+### 3.6 安装 Nginx
 
 [Nginx](Nginx.md)
 
-## 4 项目部署 
+## 4 项目部署
 
 ### 4.1 手动部署项目
 
 > 步骤:
 >
-> 1. 在IDEA中开发SpringBoot项目并打成jar包
-> 2. 将jar包上传到Linux服务器
-> 3. 启动SpringBoot程序
-> 4. 检查防火墙，确保8080端口对外开放，访问SpringBoot项目
-> 5. 改为后台运行SpringBoot程序，并将日志输出到日志文件
-> 6. 停止SpringBoot程序
+> 1. 在 IDEA 中开发 SpringBoot 项目并打成 jar 包
+> 2. 将 jar 包上传到 Linux 服务器
+> 3. 启动 SpringBoot 程序
+> 4. 检查防火墙，确保 8080 端口对外开放，访问 SpringBoot 项目
+> 5. 改为后台运行 SpringBoot 程序，并将日志输出到日志文件
+> 6. 停止 SpringBoot 程序
 
-1. **在IDEA中开发SpringBoot项目并打成jar包**
+1. **在 IDEA 中开发 SpringBoot 项目并打成 jar 包**
 
-2. **将jar包上传到Linux服务器**
+2. **将 jar 包上传到 Linux 服务器**
 
-3. **启动SpringBoot程序**
+3. **启动 SpringBoot 程序**
 
-   > 使用命令： `java -jar 文件名`  来启动项目
+   > 使用命令： `java -jar 文件名` 来启动项目
 
-4. **检查防火墙，确保8080端口对外开放，访问SpringBoot项目**
+4. **检查防火墙，确保 8080 端口对外开放，访问 SpringBoot 项目**
 
-   > 这里jar包自带tomcat， 需要将linux中的tomcat进程关闭
+   > 这里 jar 包自带 tomcat， 需要将 linux 中的 tomcat 进程关闭
    >
-   > 访问的时候使用linux的ip
+   > 访问的时候使用 linux 的 ip
 
-5. **改为后台运行SpringBoot程序，并将日志输出到日志文件**
+5. **改为后台运行 SpringBoot 程序，并将日志输出到日志文件**
 
    > 目前程序运行的问题:
    >
    > - 线上程序不会采用控制台霸屏的形式运行程序，而是将程序在后台运行
    > - 线上程序不会将日志输出到控制台，而是输出到日志文件，方便运维查阅信息
-   >
-   > 
    >
    > nohup 命令: 英文全称 no hang up(不挂起)，用于不挂断地运行指定命令，出终端不会影响程序的运行
    > 语法格式: nohup Command [Arg ...] [&]
@@ -481,50 +463,48 @@
    > Arg : 一些参数，可以指定输出文件
    > & : 让命令在后台运行
    > 举例:
-   > `nohup java -jar boot工程.jar  &> hello.log &`          后台运行java -jar命令，并将日志输出到hello.log文件
+   > `nohup java -jar boot工程.jar  &> hello.log &` 后台运行 java -jar 命令，并将日志输出到 hello.log 文件
 
-6. **停止SpringBoot程序**
+6. **停止 SpringBoot 程序**
 
    > `ps -ef | grep 'java -jar'`
 
+#### 部署的一些话：
 
+1. **安装 redis**
 
-#### 部署的一些话： 
-
-1. **安装redis**
-
-   > 安装redis可以看这个[【centos安装redis】（超详细）_centos 安装redis_AlanDreamer的博客-CSDN博客](https://blog.csdn.net/qq_39187538/article/details/126485922)
+   > 安装 redis 可以看这个[【centos 安装 redis】（超详细）\_centos 安装 redis_AlanDreamer 的博客-CSDN 博客](https://blog.csdn.net/qq_39187538/article/details/126485922)
    >
-   > **一定要注意，这里面2 说的默认安装到了/usr/local/bin/目录**
+   > **一定要注意，这里面 2 说的默认安装到了/usr/local/bin/目录**
    >
    > 这个很麻烦，所以说可以自动安装
 
-2. **安装nginx**
+2. **安装 nginx**
 
    > ```text
    > worker_processes  1;
-   > 
+   >
    > events {
    >     worker_connections  1024;
    > }
-   > 
+   >
    > http {
    >     include       mime.types;
    >     default_type  application/octet-stream;
    >     sendfile        on;
    >     keepalive_timeout  65;
-   > 
+   >
    >     server {
    >         listen       80;
    >         server_name  localhost;
    > 		charset utf-8;
-   > 
+   >
    > 		location / {
    >             root   /home/ruoyi/projects/dist;
    > 			try_files $uri $uri/ /index.html;
    >             index  index.html index.htm;
    >         }
-   > 		
+   >
    > 		location /prod-api/ {
    > 			proxy_set_header Host $http_host;
    > 			proxy_set_header X-Real-IP $remote_addr;
@@ -532,7 +512,7 @@
    > 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
    > 			proxy_pass http://localhost:8080/;
    > 		}
-   > 
+   >
    >         error_page   500 502 503 504  /50x.html;
    >         location = /50x.html {
    >             root   html;
@@ -542,42 +522,29 @@
    > ```
    >
    > 1. 修改：
-   >    - 15行中的`server_name  localhost;`     localhost改为自己的公网ip即可
-   >    - 19行中的`root   /home/ruoyi/projects/dist;`          root后面的改为自己存放dist的linux目录
+   >    - 15 行中的`server_name  localhost;` localhost 改为自己的公网 ip 即可
+   >    - 19 行中的`root   /home/ruoyi/projects/dist;` root 后面的改为自己存放 dist 的 linux 目录
    >
-   > 不用直接改nginx.conf,路径 `/etc/nginx/conf.d` 是 Nginx 的配置文件夹，它通常用于存放额外的配置文件。在默认的 Nginx 主配置文件中，会有如下的语句：
+   > 不用直接改 nginx.conf,路径 `/etc/nginx/conf.d` 是 Nginx 的配置文件夹，它通常用于存放额外的配置文件。在默认的 Nginx 主配置文件中，会有如下的语句：
    >
    > ```
    > include /etc/nginx/conf.d/*.conf;
    > ```
    >
-   > 这个好像用链接下载才可以，使用tar解压好像就不行
+   > 这个好像用链接下载才可以，使用 tar 解压好像就不行
 
 3. **总结**
 
-   > 对于这个， 总体是前端使用nginx占用80端口显示页面，后端使用tomcat占用8080端口，还有redis和mysql
+   > 对于这个， 总体是前端使用 nginx 占用 80 端口显示页面，后端使用 tomcat 占用 8080 端口，还有 redis 和 mysql
    >
-   > 最主要的还是是否能看懂nginx的配置
+   > 最主要的还是是否能看懂 nginx 的配置
 
-
-
-
-
-
-
-### 4.2 通过Shell脚本自动部署项目
+### 4.2 通过 Shell 脚本自动部署项目
 
 > 步骤:
 >
-> 1. 在Linux中安装Git
-> 2. 在Linux中安装maven
-> 3. 编写Shell脚本(拉取代码、编译、打包、启动)
-> 4. 为用户授予执行Shell脚本的权限
-> 5. 执行shell脚本
-
-
-
-
-
-
-
+> 1. 在 Linux 中安装 Git
+> 2. 在 Linux 中安装 maven
+> 3. 编写 Shell 脚本(拉取代码、编译、打包、启动)
+> 4. 为用户授予执行 Shell 脚本的权限
+> 5. 执行 shell 脚本
