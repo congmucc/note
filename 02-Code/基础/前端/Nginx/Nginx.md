@@ -143,7 +143,7 @@ Nginx配置文件`conf/nginx.conf`
 > 注意: http块中可以配置多个Server块，每个Server块中可以
 > 配置多个location块。
 
-![image-20231117224500495](./assets/image-20231117224500495.png)
+![image-20231117224500495](assets/image-20231117224500495.png)
 
 ## 4 Nginx具体应用
 
@@ -222,7 +222,7 @@ Nginx配置文件`conf/nginx.conf`
 
 > 就是修改上面这个，可以根据苍穹外卖来，这个反向代理
 
-![image-20231208233005025](./assets/image-20231208233005025.png)
+![image-20231208233005025](assets/image-20231208233005025.png)
 
 ### 4.3 负载均衡
 

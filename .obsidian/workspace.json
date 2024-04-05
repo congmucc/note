@@ -4,37 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "02f165b0b4c605ab",
+        "id": "600266c04abda049",
         "type": "tabs",
         "children": [
           {
-            "id": "3220441e8013eecd",
+            "id": "184051fa31dd43f8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/Nginx/Nginx.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e39a157c92e73f25",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Code/基础/linux/linux.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -100,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/linux/linux.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/linux/linux.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/linux/linux.md"
+                "file": "02-Code/基础/Tool/Linux/linux.md"
               }
             }
           },
@@ -182,9 +168,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e39a157c92e73f25",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
-    "02-Code/基础/Nginx/Nginx.md",
+    "02-Code/基础/Tool/Git/git.md",
+    "02-Code/基础/Tool",
+    "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/linux/linux.md",
     "02-Code/基础/CICD/CICD.md",
@@ -222,14 +210,12 @@
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop/04-分类模块.md",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop/03-推荐模块.md",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop/02-首页模块.md",
-    "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop/01-项目起步.md",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/在线笔记-长期更新【推荐】.txt",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/uni-app",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔/rabbit-shop",
     "02-Code/项目笔记/小兔鲜uniapp/官方小鲜兔",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/uni-app/assets",
     "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/rabbit-shop/assets",
-    "02-Code/项目笔记/小兔鲜uniapp/uniapp小鲜兔/在线笔记-长期更新【推荐】.txt",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
