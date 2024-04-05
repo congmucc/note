@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "600266c04abda049",
+        "id": "53403c42136e009d",
         "type": "tabs",
         "children": [
           {
-            "id": "184051fa31dd43f8",
+            "id": "7fee06cd2c389ad2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
