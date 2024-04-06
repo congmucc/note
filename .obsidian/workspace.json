@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md"
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md"
               }
             }
           },
@@ -171,6 +171,8 @@
   },
   "active": "7fee06cd2c389ad2",
   "lastOpenFiles": [
+    "02-Code/项目笔记/党务修改.md",
+    "02-Code/项目笔记/构建项目.md",
     "02-Code/项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/assets/image-20240406151614842.png",
     "02-Code/项目笔记/assets",
@@ -178,7 +180,6 @@
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/vue3快速上手.md",
-    "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/TOC.md",
     "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/01-项目起步.md",
