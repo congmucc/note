@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md"
+                "file": "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md"
               }
             }
           },
@@ -153,8 +153,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,6 +170,7 @@
   },
   "active": "7fee06cd2c389ad2",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
