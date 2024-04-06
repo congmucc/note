@@ -18,14 +18,13 @@
 
 ## 2 element-plus以及vue3语法
 
-> 对于element-plus使用来说，我们应该先用`<template>`中的代码，js代码应该自己书写，而不是完全使用
+> 对于element-plus使用来说，我们应该先用<template>中的代码，js代码应该自己书写，而不是完全使用
 
 
 ### 2.1 ElMessageBox使用&&表格
 
 #### 2.1.1 ElMessageBox使用
 
->对于这个，这个可以使用在js中，是个比较新颖的写法
 
 ```ts
 const onCommand = async (command) => {
