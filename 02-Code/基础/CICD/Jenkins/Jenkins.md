@@ -476,8 +476,9 @@ stop：这个在 mvn integration-test 阶段，进行 Spring Boot 应用生命�
 下边测试验证码服务：
 
 进入验证码服务的target目录，cmd运行：
-
+```java
 java -Dfile.encoding=utf-8 -jar xuecheng-plus-checkcode-0.0.1-SNAPSHOT.jar 
+```
 
 如下图：
 
@@ -494,8 +495,11 @@ java -Dfile.encoding=utf-8 -jar xuecheng-plus-checkcode-0.0.1-SNAPSHOT.jar
 将打成的jar包拷贝到Linux，生成镜像，并创建容器。
 
 1、编写Dockerfile文件
-
+```java
   JavaScript   FROM  java:8u20   MAINTAINER docker_maven docker_maven@email.com   WORKDIR /ROOT   ADD xuecheng-plus-checkcode-0.0.1-SNAPSHOT.jar xuecheng-plus-checkcode.jar   CMD ["java", "-version"]   ENTRYPOINT ["java",  "-Dfile.encoding=utf-8","-jar",  "xuecheng-plus-checkcode.jar"]   EXPOSE 63075        
+```
+
+
 
 2、创建镜像
 
