@@ -1,4 +1,4 @@
-[TOC]
+
 
 # vue3大事件项目总结
 
@@ -10,44 +10,40 @@
 
 ## 1 对于创建项目
 
-### 1.1 Eslint $prettier 进行代码风格
-
-> 
+### 1.1 Eslint $prettier 进行代码风格 
 
 ### 1.2 vue-router4 + pinia
 
 > 对于router4，正常就行，pinia 需要进行创建两个
 
-
-
-
-
 ## 2 element-plus以及vue3语法
 
-> 对于element-plus使用来说，我们应该先用<template>中的代码，js代码应该自己书写，而不是完全使用
+> 对于element-plus使用来说，我们应该先用`<template>`中的代码，js代码应该自己书写，而不是完全使用
+
 
 ### 2.1 ElMessageBox使用&&表格
 
 #### 2.1.1 ElMessageBox使用
 
-> 对于这个，这个可以使用在js中，是个比较新颖的写法
-> ```
-> const onCommand = async (command) => {
->   if (command === 'logout') {
->     await ElMessageBox.confirm('你确认退出大事件吗？', '温馨提示', {
->       type: 'warning',
->       confirmButtonText: '确认',
->       cancelButtonText: '取消'
->     })
->     userStore.removeToken()
->     userStore.setUser({})
->     router.push(`/login`)
->   } else {
->     router.push(`/user/${command}`)
->   }
-> }
-> ```
->
+>对于这个，这个可以使用在js中，是个比较新颖的写法
+
+```ts
+const onCommand = async (command) => {
+if (command === 'logout') {
+ await ElMessageBox.confirm('你确认退出大事件吗？', '温馨提示', {
+   type: 'warning',
+   confirmButtonText: '确认',
+   cancelButtonText: '取消'
+ })
+ userStore.removeToken()
+ userStore.setUser({})
+ router.push(`/login`)
+} else {
+ router.push(`/user/${command}`)
+}
+}
+```
+
 > 这个ElMessageBox就写在了js中，可以学习一下。
 
 
@@ -101,7 +97,7 @@ const onDelChannel = (row) => {
 
 > 这个封装到components下的组件应该详细看看，这个非常好
 >
-> 利用<slot>来进行父子间传递文中有相应代码
+> 利用`<slot>`来进行父子间传递文中有相应代码
 
 对于这个文件有三个注意点：
 
@@ -200,7 +196,7 @@ const emit = defineEmits(['update:modelValue'])
 
 
 
-1. 在子组件中的<template>中使用
+1. 在子组件中的`<template>`中使用
 
 ````
     :modelValue="modelValue"
