@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/构建项目.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/构建项目.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/构建项目.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md"
+                "file": "02-Code/项目笔记/构建项目.md"
               }
             }
           },
@@ -171,13 +171,15 @@
   },
   "active": "7fee06cd2c389ad2",
   "lastOpenFiles": [
+    "02-Code/项目笔记/前端项目笔记.md",
+    "02-Code/项目笔记/assets/image-20240406151614842.png",
+    "02-Code/项目笔记/assets",
     "02-Code/项目笔记/vue3大事件项目总结.md",
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/vue3快速上手.md",
     "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/TOC.md",
-    "02-Code/项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/01-项目起步.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/09-SKU模块.md",
@@ -194,7 +196,6 @@
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_2.png",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_1.png",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_case_2.png",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_case_1.png",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/index.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/assets",
@@ -214,9 +215,7 @@
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/12-项目打包.md",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/11-订单模块.md",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/10-购物车模块.md",
-    "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/09-SKU模块.md",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/在线笔记-长期更新【推荐】.txt",
-    "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/uni-app",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
