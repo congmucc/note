@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "README.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "README.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "README.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md"
+                "file": "README.md"
               }
             }
           },
@@ -170,11 +170,14 @@
   },
   "active": "7fee06cd2c389ad2",
   "lastOpenFiles": [
+    "README.md",
+    "02-Code/基础/后端/Go/Golang基础.md",
+    "02-Code/基础/区块链/Basic/基础知识.md",
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Mysql/Mysql.md",
     "02-Code/基础/后端/SQL/Mysql/优化问题.md",
     "02-Code/基础/后端/SQL/Mysql/面试问题.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
-    "02-Code/基础/区块链/Basic/基础知识.md",
     "02-Code/基础/CICD/Jenkins/Jenkins.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
@@ -198,9 +201,6 @@
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/前端/nvm/nvm.md",
     "02-Code/基础/前端/vue/配置代理的方式.md",
-    "02-Code/基础/前端/vue/四种组件数据传输.md",
-    "02-Code/基础/前端/vue/eslint.md",
-    "02-Code/基础/前端/vue/vue.md",
     "02-Code/项目笔记/assets/image-20240406151614842.png",
     "02-Code/项目笔记/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_8.png",
