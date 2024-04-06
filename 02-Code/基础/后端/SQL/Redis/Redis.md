@@ -161,8 +161,8 @@ Spring Cache 提供了一层抽象，底层可以切换不同的缓存实现，�
 [3.4 通过redis来将数据存到内存中 p87](#3.4 通过redis来将数据存到内存中 p87)
 
 - @Cacheable例子（第九行）
-
-  /**
+```java
+ /**
 
    * 条件查询
      *
@@ -183,6 +183,8 @@ Spring Cache 提供了一层抽象，底层可以切换不同的缓存实现，�
      return Result.success(list);
      }
 
+```
+ 
 - @CacheEvict
 
 ```

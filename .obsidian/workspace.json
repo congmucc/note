@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Mysql/Mysql.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Mysql/Mysql.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Mysql/Mysql.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Mysql/Mysql.md"
+                "file": "02-Code/基础/后端/SQL/Redis/Redis.md"
               }
             }
           },
@@ -170,8 +170,8 @@
   },
   "active": "7fee06cd2c389ad2",
   "lastOpenFiles": [
-    "02-Code/基础/后端/SQL/Mysql/优化问题.md",
     "02-Code/基础/后端/SQL/Mysql/Mysql.md",
+    "02-Code/基础/后端/SQL/Mysql/优化问题.md",
     "02-Code/基础/后端/SQL/Mysql/面试问题.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
     "02-Code/基础/区块链/Basic/基础知识.md",
