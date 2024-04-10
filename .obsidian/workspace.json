@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md",
+                "file": "02-Code/项目笔记/前端项目笔记.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md",
+                "file": "02-Code/项目笔记/前端项目笔记.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md",
+                "file": "02-Code/项目笔记/前端项目笔记.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md"
+                "file": "02-Code/项目笔记/前端项目笔记.md"
               }
             }
           },
@@ -170,6 +170,8 @@
   },
   "active": "fda1501ba224189a",
   "lastOpenFiles": [
+    "02-Code/面试/简历/Java开发工程师简历模板.md",
+    "01-笔记使用/01b-Markdown语法规则.md",
     "02-Code/项目笔记/前端项目笔记.md",
     "02-Code/基础/Tool/Git/Git.md",
     "02-Code/项目笔记/构建项目.md",
@@ -195,11 +197,9 @@
     "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
-    "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829099748.png",
-    "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/image-20230621104118318.png",
     "02-Code/基础/后端/SQL/Redis/assets/1683684262698-5d50a3b5-0bcb-473e-b96f-9afa8baaf7be.png",
     "02-Code/项目笔记/assets/image-20240406151614842.png",
