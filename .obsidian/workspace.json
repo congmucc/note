@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记.md"
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md"
               }
             }
           },
@@ -170,8 +170,16 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004547.png",
+    "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004507.png",
+    "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004415.png",
+    "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004311.png",
+    "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004145.png",
+    "02-Code/项目笔记/前端项目笔记/assets",
+    "02-Code/项目笔记/前端项目笔记",
+    "02-Code/基础/Tool/Git/Git.md",
+    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/基础/区块链/Basic/基础知识.md",
-    "02-Code/项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/image-20230706010110393.png",
     "02-Code/项目笔记/苍穹外卖.md",
@@ -183,7 +191,6 @@
     "02-Code/基础/后端/Go/Golang基础.md",
     "02-Code/面试/简历/Java开发工程师简历模板.md",
     "01-笔记使用/01b-Markdown语法规则.md",
-    "02-Code/基础/Tool/Git/Git.md",
     "02-Code/基础/后端/Java/JavaSE/10_面向对象的高级教程/10.4_单例模式/P0391Single.md",
     "02-Code/npee-408-note-main/operating-system/2/1.md",
     "02-Code/npee-408-note-main/operating-system/4/1.md",
@@ -201,11 +208,7 @@
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829099748.png",
     "02-Code/基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/image-20230621104118318.png",
-    "02-Code/基础/后端/SQL/Redis/assets/1683684262698-5d50a3b5-0bcb-473e-b96f-9afa8baaf7be.png",
-    "02-Code/项目笔记/assets/image-20240406151614842.png",
     "02-Code/项目笔记/assets",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_8.png",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_7.png",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/在线笔记-长期更新【推荐】.txt",
@@ -213,8 +216,6 @@
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop",
     "02-Code/项目笔记/uniapp电商项目/官方笔记",
     "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/uni-app/assets",
-    "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/rabbit-shop/assets",
-    "02-Code/项目笔记/小鲜兔uniapp/官方小兔鲜/在线笔记-长期更新【推荐】.txt",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
