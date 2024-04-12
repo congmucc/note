@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "b8559c7eb91eb9be",
+        "id": "270a07079e00dfd6",
         "type": "tabs",
         "children": [
           {
-            "id": "fda1501ba224189a",
+            "id": "62a93d4a804a01de",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/苍穹外卖.md",
+                "file": "02-Code/项目笔记/前端项目笔记.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/苍穹外卖.md",
+                "file": "02-Code/项目笔记/前端项目笔记.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/苍穹外卖.md",
+                "file": "02-Code/项目笔记/前端项目笔记.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/苍穹外卖.md"
+                "file": "02-Code/项目笔记/前端项目笔记.md"
               }
             }
           },
@@ -169,14 +168,15 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ff17a40e34515f2a",
+  "active": "62a93d4a804a01de",
   "lastOpenFiles": [
-    "01-笔记使用/01a1-Obsidian插件.md",
+    "02-Code/项目笔记/党务修改.md",
+    "02-Code/项目笔记/SpringBoot+vue分离式/image-20230706010110393.png",
     "02-Code/项目笔记/苍穹外卖.md",
+    "01-笔记使用/01a1-Obsidian插件.md",
     "02-Code/JavaWeb开发规范.md",
     "02-Code/项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/构建项目.md",
-    "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/vue3大事件项目总结.md",
     "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
     "02-Code/基础/区块链/Basic/基础知识.md",
@@ -197,7 +197,6 @@
     "02-Code/基础/后端/SQL/Mysql/优化问题.md",
     "02-Code/基础/后端/SQL/Mysql/面试问题.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
-    "02-Code/基础/CICD/Jenkins/Jenkins.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829099748.png",
@@ -207,7 +206,6 @@
     "02-Code/项目笔记/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_8.png",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_7.png",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets/uniapp_picture_6.png",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/在线笔记-长期更新【推荐】.txt",
