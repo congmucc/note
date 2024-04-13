@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
+                "file": "02-Code/基础/前端/vue/vue2-3/day05/day05.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -100,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
+                "file": "02-Code/基础/前端/vue/vue2-3/day05/day05.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
+                "file": "02-Code/基础/前端/vue/vue2-3/day05/day05.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md"
+                "file": "02-Code/基础/前端/vue/vue2-3/day05/day05.md"
               }
             }
           },
@@ -184,8 +184,11 @@
   },
   "active": "a0f0b12d2de73f39",
   "lastOpenFiles": [
-    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
+    "02-Code/基础/前端/vue/vue2-3/day04/day04.md",
+    "02-Code/基础/前端/vue/vue2-3/day03/day03.md",
+    "02-Code/基础/前端/vue/vue2-3/day06/day06.md",
     "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
+    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/基础/前端/vue/四种组件数据传输.md",
     "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/构建项目.md",
@@ -215,9 +218,6 @@
     "02-Code/面试/简历/Java开发工程师简历模板.md",
     "01-笔记使用/01b-Markdown语法规则.md",
     "02-Code/基础/后端/Java/JavaSE/10_面向对象的高级教程/10.4_单例模式/P0391Single.md",
-    "02-Code/npee-408-note-main/operating-system/2/1.md",
-    "02-Code/npee-408-note-main/operating-system/4/1.md",
-    "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
