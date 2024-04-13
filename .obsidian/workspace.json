@@ -13,14 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a0f0b12d2de73f39",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
+                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
+                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md"
+                "file": "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md"
               }
             }
           },
@@ -168,11 +182,22 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "62a93d4a804a01de",
+  "active": "a0f0b12d2de73f39",
   "lastOpenFiles": [
     "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
-    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
+    "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
+    "02-Code/基础/前端/vue/四种组件数据传输.md",
+    "02-Code/项目笔记/党务修改.md",
+    "02-Code/项目笔记/构建项目.md",
     "02-Code/项目笔记/苍穹外卖.md",
+    "02-Code/项目笔记/vue3大事件项目总结.md",
+    "02-Code/基础/前端/vue/vue3快速上手.md",
+    "02-Code/基础/前端/vue/eslint.md",
+    "02-Code/基础/前端/vue/vue.md",
+    "02-Code/基础/前端/vue/配置代理的方式.md",
+    "02-Code/基础/前端/vue/vue2-3/day07/day07.md",
+    "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
+    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004547.png",
     "02-Code/项目笔记/前端项目笔记/[Geeker-Admin.md",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004507.png",
@@ -183,13 +208,9 @@
     "02-Code/项目笔记/前端项目笔记",
     "02-Code/基础/Tool/Git/Git.md",
     "02-Code/基础/区块链/Basic/基础知识.md",
-    "02-Code/项目笔记/党务修改.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/image-20230706010110393.png",
     "01-笔记使用/01a1-Obsidian插件.md",
     "02-Code/JavaWeb开发规范.md",
-    "02-Code/项目笔记/构建项目.md",
-    "02-Code/项目笔记/vue3大事件项目总结.md",
-    "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
     "02-Code/基础/后端/Go/Golang基础.md",
     "02-Code/面试/简历/Java开发工程师简历模板.md",
     "01-笔记使用/01b-Markdown语法规则.md",
@@ -197,14 +218,7 @@
     "02-Code/npee-408-note-main/operating-system/2/1.md",
     "02-Code/npee-408-note-main/operating-system/4/1.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
-    "02-Code/基础/CICD/Docker/Docker.md",
-    "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
-    "README.md",
-    "02-Code/基础/后端/SQL/Redis/Redis.md",
-    "02-Code/基础/后端/SQL/Mysql/Mysql.md",
-    "02-Code/基础/后端/SQL/Mysql/优化问题.md",
-    "02-Code/基础/后端/SQL/Mysql/面试问题.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829099748.png",

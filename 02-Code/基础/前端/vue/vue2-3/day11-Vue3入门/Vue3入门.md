@@ -313,7 +313,7 @@ onMounted(()=>{
 
 ![image.png](02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/assets/9.png)
 ## 2. defineExpose
-> 默认情况下在 <script setup>语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问
+> 默认情况下在 `<script setup>`语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问
 > 说明：指定testMessage属性可以被访问到
 
 ![image.png](02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/assets/10.png)
@@ -347,17 +347,17 @@ onMounted(()=>{
 
 背景说明：
 
-有 <script setup> 之前，如果要定义 props, emits 可以轻而易举地添加一个与 setup 平级的属性。 
+有 `<script setup>` 之前，如果要定义 props, emits 可以轻而易举地添加一个与 setup 平级的属性。 
 
-但是用了 <script setup> 后，就没法这么干了 setup 属性已经没有了，自然无法添加与其平级的属性。
+但是用了 `<script setup>` 后，就没法这么干了 setup 属性已经没有了，自然无法添加与其平级的属性。
 
 ---
 
-为了解决这一问题，引入了 defineProps 与 defineEmits 这两个宏。但这只解决了 props 与 emits 这两个属性。
+为了解决这一问题，引入了 `defineProps` 与 `defineEmits` 这两个宏。但这只解决了 `props` 与 `emits` 这两个属性。
 
-如果我们要定义组件的 name 或其他自定义的属性，还是得回到最原始的用法——再添加一个普通的 <script> 标签。
+如果我们要定义组件的 name 或其他自定义的属性，还是得回到最原始的用法——再添加一个普通的 `<script>` 标签。
 
-这样就会存在两个 <script> 标签。让人无法接受。
+这样就会存在两个 `<script>` 标签。让人无法接受。
 
 ---
 
@@ -371,7 +371,7 @@ onMounted(()=>{
 
 # Vue3.3新特性-defineModel
 
-在Vue3中，自定义组件上使用v-model, 相当于传递一个modelValue属性，同时触发 update:modelValue 事件
+在Vue3中，自定义组件上使用v-model, 相当于传递一个modelValue属性，同时触发 `update:modelValue` 事件
 
 ![image-20230704083027349](02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/assets/image-20230704083027349.png)
 
