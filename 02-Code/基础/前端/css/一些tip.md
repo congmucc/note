@@ -109,3 +109,13 @@ margin-top: 负的高度一半;
 [CSS中实现元素居中的七种方法总结，轻松搞定居中！！ - 掘金 (juejin.cn)](https://juejin.cn/post/7234337275345387581)
 
 在尚硅谷css2中搜索居中也行
+
+
+# Body
+
+```css
+body {
+  margin: 0;
+  padding: 0;
+}
+```
