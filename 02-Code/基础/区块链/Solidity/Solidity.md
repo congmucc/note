@@ -1,223 +1,8 @@
-# 0 介绍
+# 1 Solidity
 
-> 1、[js版本区块链学习地址](https://github.com/smartcontractkit/full-blockchain-solidity-course-js?tab=readme-ov-file)
-> 2、[一些概念 (zhihu.com)](https://zhuanlan.zhihu.com/p/101417295)
+## 1.1 基本语法
 
-## 0.1 建议
-
-> 三个黑客松，Chainlink、ETHGlobal、Devfolio
-
-> 以太坊问题的三个论坛：Stack Exchange Ethereum 、Stack Exchange Eth、 Ethereum Stack Exchange 
-
-
-
-## 0.2 什么是web3
-
-Web 3，又称为去中心化的互联网，是一种新兴的网络范式，旨在解决Web 2时代的中心化和隐私问题。它基于区块链和分布式技术，旨在实现更开放、透明和用户主导的网络体验。
-
-**重点特点：**
-- **去中心化（这也是围绕在这份知识库的核心理念）：** Web 3的核心概念是去中心化，它不依赖于单一的中心化服务器，而是通过分布式网络节点共同维护和处理数据。
-- **区块链技术（我们将会在下面详细介绍）：** 区块链是Web 3的基石，它提供了安全的分布式账本，确保数据的透明性和防篡改性。
-- **加密货币：** 加密货币作为交易媒介在Web 3中发挥重要作用，它们使得去中心化的价值交换成为可能。
-- **智能合约：** 智能合约是自动执行的代码，能够在不需要中介的情况下进行交易和协议执行。
-- **用户数据控制：** Web 3强调用户对自己数据的控制权，用户可以选择共享数据，并从中获益，而不是被中心化平台收集和操控。
-- **身份验证与隐私：** Web 3提供了更安全和隐私保护的身份验证方式，确保用户在互联网上的匿名性和隐私。
-- **开放协议：** Web 3鼓励开放协议的使用，使不同应用能够相互连接和互操作，从而创造更多样化的网络生态系统。
-
-**重要部分：**
-
-- 区块链技术 是实现Web 3去中心化特性的基础，它确保了数据的安全性和可信性。
-- 智能合约让无需第三方干预的可编程交易和协议成为可能，推动了去中心化应用的发展。
-- 加密货币 作为Web 3的经济基础，支持用户之间的价值交换，打破了传统金融的壁垒。
-- 用户对于个人数据的控制权 强调了隐私保护的重要性，将数据从中心化平台转移到用户手中。
-- 开放协议 促进了不同应用的协同工作，创造出更加丰富和创新的网络生态。
-
-## 0.3 Web2与Web3的区别与联系
-
-**区别：**
-
-- **中心化 vs. 去中心化：** Web2是中心化的互联网，由少数大型平台掌控用户数据和内容分发。而Web3则是去中心化的，基于区块链技术，数据和控制权分散在网络参与者之间。
-- **数据控制：** Web2时代，用户数据通常由平台收集和控制，而Web3强调用户对个人数据的控制权，数据可以被加密并分散存储，从而保护用户隐私。
-- **隐私和安全：** Web2平台存在数据泄露和隐私问题，而Web3使用加密技术保护用户隐私，提供更安全的身份验证和数据传输。
-- **价值交换：** Web2中，大多数内容和服务是免费的，平台通过广告获利。而在Web3中，加密货币和智能合约使得用户能够直接交换价值，内容创作者可以通过更直接的方式获得报酬。
-- **中介与智能合约：** Web2需要中介机构处理交易，而Web3通过智能合约自动执行交易，减少了中介的需求。
-
-**联系：**
-
-- **区块链技术：** Web3的基础是区块链技术，它确保了数据的安全性和可信性，使得去中心化的网络成为可能。
-- **智能合约：** 智能合约是Web3的重要组成部分，它在两者中都起到关键作用，但在Web3中更广泛使用，使得自动化交易和协议成为可能。
-- **用户主导：** Web3强调用户对网络的控制，这与Web2时代用户产生内容和互动的趋势相呼应，但Web3赋予了用户更大的控制权。
-- **数据隐私：** Web3通过加密技术和去中心化存储保护用户的隐私，这与Web2中隐私问题相对比。
-- **开放协议：** Web3鼓励开放协议的使用，使不同应用能够相互连接和互操作，这也反映了Web2时代开放API和互操作性的趋势。
-
-
-
-# 1 区块链基础知识
-
-
-
-## 1.1 区块链
-
-> 区块链是在计算机网络节点之间共享的分布式数据库或账本。它们以其在加密货币系统中的关键作用而闻名，以维护安全和去中心化的交易记录，但它们不仅限于加密货币的用途。区块链可用于使任何行业的数据不可变，该术语用于描述无法更改。
-
-- 去中心化
-- 分布式账本
-- 不可篡改性
-- 可溯源性
-- 加密保护
-
-
-## 1.2 智能合约 && 以太坊
-### 1.2.1 智能合约
-
-> 智能合约是通过去中心化的方式来执行一些列的指令，在这些指令执行中，并不需要中心化或者第三方的中介。
->
-> 
-
-
-### 1.2.2 以太坊
-> 建立在区块链技术之上， 去中心化应用平台
-
-## 1.3 预言机
-
-> 任何可以向区块链输入数据或者进行链下计算的设备
-
-> [常用Chainlink Documentation](https://docs.chain.link/)
->
-> Chainlink data feed：是从现实世界中存取定价信息或其他数据的方法
->
-> Chainlink VRF：是一种将可证明的随机数从现实世界获取到智能合约中的方法
->
-> Chainlink Keepers：是一种去中心化驱动事件的方法，设置一些触发器，触发器触发做某事。
->
-> Chainlink Any API 是Chainlink节点的终极机制，链接到任何事物。
-
-## 1.4 gas
-
-> gas是一个计算量单位，要使用更多的计算资源，就需要支付更多的gas
-
-### 1.4.1 介绍
-
-**youtube上gas总结、交易过程讲解**
-
-*[https://youtu.be/gyMwXuJrbJQ?t=5804](https://youtu.be/gyMwXuJrbJQ?t=5422)*
-
-
-
-### 1.4.2 降低gas
-
-1、 **constant**
-
-> 用于将变量设置为**常量**，并且不再占用存储空间；
->
-> 通常变量大写
-
-2、**immutable**
-
-> 用于声明不可变的状态变量
->
-> 命名方式通常是`i_变量名`
-
-> 1和2两者减少gas的原理是存储到合约的字节码中
-
-
-
-3、**Custom Error**
-
-> 在合约外面定义一个error并调用它即可
->
-> ```solidity
-> error NotOwner();
-> contract Test{
->     function testF() public {
->     // require(false, "testRequire")
->     	if (true) {revert NotOwner();}
->     }
-> }
-> ```
->
-> > 这个调用会代替require(),因为require的字符串中的每个字符都要被单独存储
-
-
-
-## 1.5 区块链原理
-
-> - 哈希
-> - 区块
-> - 签名
-
-**区块链是如何工作的**：
-
-- [Blockchain Demo (andersbrownworth.com)](https://andersbrownworth.com/blockchain/)
-
-**签名交易**：
-
-*[⌨️ (01:22:55) Signing Transactions
-⌨️ （01：22：55） 签署事务](https://youtu.be/gyMwXuJrbJQ?t=4975)*
-
-- [Public / Private Keys
-  公钥/私钥](https://andersbrownworth.com/blockchain/public-private-keys/keys)
-- [Layer 2 and Rollups
-  第 2 层和汇总](https://ethereum.org/en/developers/docs/scaling/layer-2-rollups/)
-- [Decentralized Blockchain Oracles
-  去中心化区块链预言机](https://blog.chain.link/what-is-the-blockchain-oracle-problem/)
-
-
-
-## 1.6 高级区块链基础知识
-
-- [Consensus 共识](https://wiki.polkadot.network/docs/learn-consensus)
-  - [Proof of Stake 权益证明](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/)
-  - [Proof of Work 工作量证明](https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/)
-
-> 共识可分为 
->
-> - 1、Chain Selection   
-> - 2、Sybil Resistance
-
-> 对于2 在以太坊2.0时代，工作量证明是2的机制，来找到谁挖出了区块，哪一个节点，才是做了运算，然后挖出区块的节点。最终防止用户使用大量的假身份，然后影响区块链中的数据的对错。
-
-以太坊2.0   使用的是权益证明和分片
-
-TODO
-
-
-
-## 1.7 区块链发送
-
-**Nonce**: tx count for the account
-
-**Gas Price**: price per unit of gas (in wei)
-
-**Gas Limit**: max gas that this tx can use
-
-**To**: address that the tx is sent to
-
-**Value**: amount of wei to send
-
-**Data**: what to send to the To address
-
-**v, r, s**: components of tx signature
-
-
-
-发送其他合约的方法：
-
-- transfer
-- send
-- call
-
-> 实例请看[3.1 04发送一个合约交易](# 3.1 04发送一个合约交易)
->
-> 注意，这里除了transfer都需要require来进行回退。
-
-
-
-# 2 Solidity
-
-## 2.1 基本语法
-
-### 2.1.1 数据类型
+### 1.1.1 数据类型
 
 1、**boolean**
 
@@ -283,7 +68,7 @@ TODO
 >     }
 > ```
 
-### 2.1.2 功能可见性说明符
+### 1.1.2 功能可见性说明符
 
 - `public` ：在外部和内部可见（为存储/状态变量**创建 getter 函数**）
 - `private` ：仅在当前合约中可见
@@ -292,7 +77,7 @@ TODO
 
 
 
-### 2.1.3 修饰符(关键字)
+### 1.1.3 修饰符(关键字)
 
 - `pure` for functions：不允许修改或访问状态。
 - `view` for functions：不允许修改状态。
@@ -313,7 +98,7 @@ TODO
 
 
 
-### 2.1.4 可存储数据
+### 1.1.4 可存储数据
 
 1、**Stack**
 
@@ -337,7 +122,7 @@ TODO
 
 
 
-### 2.1.5 库Library
+### 1.1.5 库Library
 
 > 场景是将自己写的函数作为别的函数库
 >
@@ -419,7 +204,7 @@ contract FundMe {
 
 
 
-### 2.1.6 modifier 
+### 1.1.6 modifier 
 
 ```solidity
 
@@ -442,9 +227,9 @@ contract FundMe {
 
 
 
-### 2.1.7 函数相关
+### 1.1.7 函数相关
 
-#### 2.1.7.1 receive & fallback
+#### 1.1.7.1 receive & fallback
 
 1、**receive**
 
@@ -485,13 +270,13 @@ contract FundMe {
 
 
 
-## 2.2 面向对象
+## 1.2 面向对象
 
 > 合约的关键字是`contract`， 类似java的`calss`
 
 
 
-### 2.2.1 封装
+### 1.2.1 封装
 
 ```solidity
 // I'm a comment!
@@ -534,9 +319,9 @@ contract SimpleStorage {
 
 
 
-### 2.2.2 继承
+### 1.2.2 继承
 
-#### 2.2.2.1 继承
+#### 1.2.2.1 继承
 
 ```solidity
 import "./SimpleStorage.sol";
@@ -548,7 +333,7 @@ contract ExtraStorage is SimpleStorage{
 
 > 关键词是`is`，使用前需要导入
 
-#### 2.2.2.2 重载
+#### 1.2.2.2 重载
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -587,9 +372,9 @@ contract ExtraStorage is SimpleStorage{
 
 
 
-##  2.3 高级
+##  1.3 高级
 
-### 2.3.1 chainlink的使用
+### 1.3.1 chainlink的使用
 
 在实战3.1中，需要同故宫chainlink获取ETH和USD汇率转换需要使用Data Feed
 
@@ -601,9 +386,9 @@ contract ExtraStorage is SimpleStorage{
 
 
 
-## 2.4 实战
+## 1.4 实战
 
-### 2.4.1 04发送一个合约交易
+### 1.4.1 04发送一个合约交易
 
 ```solidity
 // SPDX-License-Indentifitier: MIT
@@ -658,15 +443,15 @@ contract FundMe {
 >
 > 4、网站：
 >
-> [Data feed的使用](# 2.3.1 chainlink的使用)
+> [Data feed的使用](# 1.3.1 chainlink的使用)
 >
 > 5、优化：
 >
 > [1.4.2 降低gas](# 1.4.2 降低gas)
 >
-> [2.1.7.1 receive & fallback](# 2.1.7.1 receive & fallback)
+> [2.1.7.1 receive & fallback](# 1.1.7.1 receive & fallback)
 
-### 2.4.2 使用vscode编译合约
+### 1.4.2 使用vscode编译合约
 
 > 1. 使用yarn
 > 2. 导入依赖solc编译
@@ -754,12 +539,3 @@ contract FundMe {
    
 
    
-
-# 4 Hardhat
-
-
-
-
-
-
-
