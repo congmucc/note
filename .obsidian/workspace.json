@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md"
+                "file": "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md"
               }
             }
           },
@@ -170,6 +170,7 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/基础/前端/vue/vue2-3/day11-Vue3入门/Vue3入门.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p08_Vue框架快速上手.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p09_Vue组件开发.md",
@@ -179,7 +180,6 @@
     "02-Code/项目笔记/SpringBoot+vue分离式/p13_状态管理VueX.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p18_阿里云服务器使用.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p16_JWT跨域认证.md",
-    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/仿12306/仿12306.md",
     "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
     "02-Code/项目笔记/构建项目.md",
