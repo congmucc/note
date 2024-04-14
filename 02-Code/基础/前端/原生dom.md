@@ -3,9 +3,7 @@
 #### 场景1：获取原生DOM事件的事件对象
 
 在DOM事件的[回调函数](https://so.csdn.net/so/search?q=回调函数&spm=1001.2101.3001.7020)中传入参数`$event`，可以获取到该事件的事件对象
-
-<template> 
-    <button @click="getData($event)">按钮</button> </template> 
+```ts
 <script> export default {    
     setup() {
         const getData = (e) => { 
@@ -17,6 +15,9 @@
     } 
 } 
 </script>
+```
+<template> 
+    <button @click="getData($event)">按钮</button> </template> 
 
 当我们点击button按钮时，可以看到控制台打印出的事件对象，例如常用的e.target.value
 
