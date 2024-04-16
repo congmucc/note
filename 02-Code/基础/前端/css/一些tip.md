@@ -64,7 +64,8 @@
 
 ## 居中问题
 
-### 定位居中
+### 1  定位居中
+
 
 方案一：
 
@@ -111,7 +112,35 @@ margin-top: 负的高度一半;
 在尚硅谷css2中搜索居中也行
 
 
-# Body
+### 2 水平垂直居中布局
+#### 2.1 flex布局
+
+```css
+    <div class="container">
+      <div class="test"></div>
+    </div>
+
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; // 一定要有，不然会出现没有高度导致只有水平居中
+      }
+      .test {
+        background-color: aqua;
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+```
+
+#### 2.2 position布局
+
+
+
+
+# Body的初始化
 
 ```css
 body {
