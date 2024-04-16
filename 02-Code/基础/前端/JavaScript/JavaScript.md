@@ -2,7 +2,7 @@
 ## 1 闭包
 ### 1.1 概念：
 
-**闭包函数**：闭包函数声明在一个函数中的函数，叫做闭包函数。 
+[10分钟带你深入理解JavaScript的执行上下文和闭包机制-CSDN博客](https://blog.csdn.net/qq_48652579/article/details/132848583)
 
 [闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)：闭包让开发者可以**从内部函数访问外部函数的作用域**。在 JavaScript 中，闭包会随着函数的创建而被同时创建。
 
