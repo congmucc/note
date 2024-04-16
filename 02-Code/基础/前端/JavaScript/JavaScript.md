@@ -68,3 +68,8 @@ fetchData('https://api.example.com/data', processData);
 ### 1.4 扩展
 > 关键词：词法作用域  
 > 加分项：执行上下文机制 V8垃圾回收机制
+
+
+# 2 作用域和执行上下文机制
+
+## 2.1 作用域
