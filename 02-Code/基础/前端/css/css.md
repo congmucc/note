@@ -60,6 +60,7 @@
 
 
 ## 居中问题
+#### 1 正常居中
 1. 行内元素、行内块元素，可以被父元素当做文本处理。 
    > 即：可以像处理文本对齐一样，去处理：行内、行内块在父元素中的对齐。 
    > 例如： text-align 、 line-height 、 text-indent 等。`text-align:center`
@@ -71,7 +72,6 @@
    - 若子元素为**行内元素**、**行内块元素**： 让父元素的 `height = line-height`，每个子元素都加上： `vertical-align:middle;` 。
     补充：若想绝对垂直居中，父元素 `font-size `设置为 `0` 。
 
-### 总结
 
 [CSS中实现元素居中的七种方法总结，轻松搞定居中！！ - 掘金 (juejin.cn)](https://juejin.cn/post/7234337275345387581)
 
