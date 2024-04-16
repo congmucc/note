@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/css/一些tip.md",
+                "file": "02-Code/基础/前端/css/css.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/css/一些tip.md",
+                "file": "02-Code/基础/前端/css/css.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/css/一些tip.md",
+                "file": "02-Code/基础/前端/css/css.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/css/一些tip.md"
+                "file": "02-Code/基础/前端/css/css.md"
               }
             }
           },
@@ -171,13 +171,13 @@
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
     "02-Code/基础/前端/JavaScript/JavaScript.md",
+    "02-Code/基础/前端/css/css.md",
     "02-Code/基础/前端/JavaScript/原生dom.md",
     "02-Code/基础/前端/JavaScript",
     "02-Code/基础/前端/uniapp/uniapp.md",
     "02-Code/基础/前端/vue/vue.md",
     "02-Code/基础/前端/nvm/nvm.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
-    "02-Code/基础/前端/css/一些tip.md",
     "02-Code/基础/前端/Ajax/Ajax.md",
     "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
     "02-Code/基础/AI大模型/Ai大模型.md",

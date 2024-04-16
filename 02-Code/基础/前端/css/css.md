@@ -1,14 +1,12 @@
-[TOC]
+
 
 
 
 ## 对于text文本
 
-### 1. 无法改变文本的高度（margin不能用了）即行内元素的移动
+### 1. 无法改变文本的高度（margin-top不能用了）即行内元素的移动
 
 [(9条消息) 微信小程序中＜text＞标签无法使用margin控制边距以及无法调整字体大小问题_小程序 margin_ES·Lad的博客-CSDN博客](https://blog.csdn.net/weixin_46671666/article/details/117086650)
-
-
 
 
 
@@ -16,16 +14,15 @@
 
 ### margin塌陷问题，加子类的margin，移动父类的
 
-解决：这是margin塌陷问题，这个可以看尚硅谷的视频。(使用第三个)
+**什么是 margin 塌陷？** 
 
-[尚硅谷前端html+css零基础教程,margin塌陷问题]( https://www.bilibili.com/video/BV1p84y1P7Z5/?p=124&share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
+>第一个子元素的上 margin 会作用在父元素上，最后一个子元素的下 margin 会作用在父元素上。
 
-```
-1, 给父类加个border，随便设置
-2, 给父类加个padding，随便设置
-3, overflow: hidden;
-```
+**如何解决 margin 塌陷？** 
 
+>方案一： 给父元素设置不为 0 的 `padding` 。 
+>方案二： 给父元素设置宽度不为 0 的 `border` 。
+>方案三： 给父元素设置 css 样式 `overflow:hidden`
 
 
 
@@ -63,6 +60,8 @@
 
 
 ## 居中问题
+
+
 
 ### 1  定位居中
 
