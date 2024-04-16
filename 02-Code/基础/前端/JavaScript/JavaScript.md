@@ -71,5 +71,12 @@ fetchData('https://api.example.com/data', processData);
 
 
 # 2 作用域和执行上下文机制
-
+[js执行上下文与作用域](https://www.bilibili.com/video/BV1wD4y1D7Pp/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 ## 2.1 作用域
+
+
+## 2.2  执行上下文机制
+
+
+前置： 
+var是被挂载到window上面，不易写多，容易内存溢出
