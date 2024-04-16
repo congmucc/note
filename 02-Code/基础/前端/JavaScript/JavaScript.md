@@ -6,26 +6,24 @@
 
 [闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)：闭包让开发者可以**从内部函数访问外部函数的作用域**。在 JavaScript 中，闭包会随着函数的创建而被同时创建。
 
+
 ```js
-function makeAdder(x) {
-  return function (y) { // 闭包
-    return x + y;
-  };
+function outerFunction(outerVariable) {
+  function innerFunction() {
+    console.log(outerVariable);
+  }
+  return innerFunction;
 }
-
-var add5 = makeAdder(5);
-var add10 = makeAdder(10);
-
-console.log(add5(2)); // 7
-console.log(add10(2)); // 12
-
+ 
+var inner = outerFunction('Hello Closure');
+inner(); // 输出 'Hello Closure'
 ```
 
-> 在这个示例中，我们定义了 `makeAdder(x)` 函数，它接受一个参数 `x` ，并返回一个新的函数。返回的函数接受一个参数 `y`，并返回`x+y`的值。
-> 
-> 从本质上讲，`makeAdder` 是一个函数工厂 — 他创建了将指定的值和它的参数相加求和的函数。在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。
-> 
-> `add5` 和 `add10` 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。在 `add5` 的环境中，`x` 为 5。而在 `add10` 中，`x` 则为 10。
+> 在这个例子中，`outerFunction`是一个外部函数，接受一个参数`outerVariable`。它包含一个内部函数`innerFunction`，这个内部函数没有自己的参数或局部变量，但却引用了外部函数的变量`outerVariable`。所以，我们说`innerFunction`是一个闭包，而`outerVariable`就是它的自由变量。
+
+> 需要注意的是，由于JavaScript的垃圾回收机制，如果一个变量离开了它的作用域，那么这个变量就会被回收。但是，由于`innerFunction`是一个闭包，它引用了`outerVariable`，所以即使`outerFunction`执行完毕，`outerVariable`离开了它的作用域，但仍然不会被垃圾回收机制回收。
+
+
 
 
 ### 1.2 闭包的作用
