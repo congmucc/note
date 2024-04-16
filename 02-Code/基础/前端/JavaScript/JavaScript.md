@@ -23,8 +23,16 @@ inner(); // 输出 'Hello Closure'
 
 > 需要注意的是，由于JavaScript的垃圾回收机制，如果一个变量离开了它的作用域，那么这个变量就会被回收。但是，由于`innerFunction`是一个闭包，它引用了`outerVariable`，所以即使`outerFunction`执行完毕，`outerVariable`离开了它的作用域，但仍然不会被垃圾回收机制回收。
 
+> 再者，每次调用外部函数，都会为内部的闭包创建一个新的作用域。例如：
 
+```js
+var inner1 = outerFunction('Hello Closure 1');
+var inner2 = outerFunction('Hello Closure 2');
+inner1(); // 输出 'Hello Closure 1'
+inner2(); // 输出 'Hello Closure 2'
+```
 
+> 这里，`inner1`和`inner2`是两个不同的闭包。他们分别有自己的作用域，储存了不同的`outerVariable`。
 
 ### 1.2 闭包的作用
 
