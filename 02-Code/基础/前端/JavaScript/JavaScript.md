@@ -41,6 +41,29 @@ inner2(); // 输出 'Hello Closure 2'
 
 > 一个Ajax请求的成功回调，一个事件绑定的回调方法，一个setTimeout的延时回调，或者一个函数内部返回另一个匿名函数
 
+> 具体场景可以看1.1中的CSDN博客
+
+
+```js
+function fetchData(url, callback) {
+  fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    callback(data);
+  });
+}
+ 
+function processData(data) {
+  console
+ 
+.log(data);
+}
+ 
+fetchData('https://api.example.com/data', processData);
+```
+
+> 在这个例子中，`fetchData`函数通过闭包捕获了`processData`函数作为回调函数。当异步操作完成时，它会调用回调函数并传递数据给它。闭包保持了回调函数的上下文，使得回调函数可以访问外部的`processData`函数。
+
 
 ### 1.4 扩展
 > 关键词：词法作用域  
