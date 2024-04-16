@@ -137,7 +137,28 @@ margin-top: 负的高度一半;
 
 #### 2.2 position布局
 
-
+```css
+    <div class="container">
+      <div class="test"></div>
+    </div>
+    
+    <style>
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* 如果需要垂直居中，可以设置容器的高度 */
+      }
+      .test {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: aqua;
+        height: 300px;
+        width: 300px;
+      }
+    </style>
+```
 
 
 # Body的初始化
