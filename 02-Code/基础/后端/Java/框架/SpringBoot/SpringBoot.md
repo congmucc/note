@@ -1,9 +1,16 @@
 ## 1.1 SpringBoot启动
 ```java
 @SpringBootApplication
-public static ConfigurableApplicationContext run(Class<?>[] primarySources, String[] args) {
-  return (new SpringApplication(primarySources)).run(args);
+public class SearchApplication {  
+    public static void main(String[] args) {  
+        SpringApplication.run(SearchApplication.class,args);  
+    }  
 }
+```
+
+```java
+public static ConfigurableApplicationContext run(Class<?>[] primarySources, String[] args) {
+  return (new SpringApplication(primarySources)).run(args); }
 ```
 - 首先从`main`找到`run()`方法，在执行run()方法之前new一个`SpringApplication`对象
 - 进入`run()`方法，创建应用监听器`SpringApplicationRunListeners`开始监听
