@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md"
+                "file": "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md"
               }
             }
           },
@@ -170,11 +170,12 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/前端/JavaScript/JavaScript.md",
+    "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
     "02-Code/基础/前端/css/css.md",
     "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
     "02-Code/面试/简历/02简历讲解/02简历讲解.md",
-    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/JavaScript/原生dom.md",
     "02-Code/基础/前端/JavaScript",
     "02-Code/基础/前端/uniapp/uniapp.md",
@@ -198,7 +199,6 @@
     "02-Code/面试/面试目录.md",
     "02-Code/目录.md",
     "02-Code/JavaWeb开发规范.md",
-    "02-Code/项目笔记/vue3大事件项目总结.md",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004547.png",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004507.png",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004415.png",
