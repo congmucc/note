@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md"
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md"
               }
             }
           },
@@ -170,8 +170,9 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/05-详情模块.md",
+    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/基础/Tool/Linux/linux.md",
+    "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/05-详情模块.md",
     "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/JavaScript/assets/Pasted image 20240416233137.png",
     "02-Code/基础/前端/JavaScript/assets",
@@ -183,7 +184,6 @@
     "02-Code/基础/前端/vue/配置代理的方式.md",
     "02-Code/基础/前端/Ajax/Ajax.md",
     "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
-    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
     "02-Code/面试/简历/02简历讲解/02简历讲解.md",
     "02-Code/基础/前端/JavaScript/原生dom.md",
