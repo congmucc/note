@@ -1,6 +1,8 @@
+# 1 闭包
 
-## 1 闭包
-### 1.1 概念：
+[web前端面试 - 面试官系列 (vue3js.cn)](https://vue3js.cn/interview/)
+
+## 1.1 概念：
 
 [10分钟带你深入理解JavaScript的执行上下文和闭包机制-CSDN博客](https://blog.csdn.net/qq_48652579/article/details/132848583)
 
@@ -34,10 +36,10 @@ inner2(); // 输出 'Hello Closure 2'
 
 > 这里，`inner1`和`inner2`是两个不同的闭包。他们分别有自己的作用域，储存了不同的`outerVariable`。
 
-### 1.2 闭包的作用
+## 1.2 闭包的作用
 
 
-### 1.3 闭包的场景
+## 1.3 闭包的场景
 
 > 一个Ajax请求的成功回调，一个事件绑定的回调方法，一个setTimeout的延时回调，或者一个函数内部返回另一个匿名函数
 
@@ -65,8 +67,8 @@ fetchData('https://api.example.com/data', processData);
 > 在这个例子中，`fetchData`函数通过闭包捕获了`processData`函数作为回调函数。当异步操作完成时，它会调用回调函数并传递数据给它。闭包保持了回调函数的上下文，使得回调函数可以访问外部的`processData`函数。
 
 
-### 1.4 扩展
-> 关键词：词法作用域  
+## 1.4 扩展
+> 关键词：词法作用域 
 > 加分项：执行上下文机制 V8垃圾回收机制
 
 
@@ -74,9 +76,124 @@ fetchData('https://api.example.com/data', processData);
 [js执行上下文与作用域](https://www.bilibili.com/video/BV1wD4y1D7Pp/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 ## 2.1 作用域
 
+### 2.1.1 变量提升和函数提升
+
+1. 变量提升
+   ![](assets/Pasted%20image%2020240416233137.png)
+
+   > 这里可以看到代码顺序中执行的结果是`undefined`因为是变量提升导致提前定义了a这个变量。仅`var`
+   >
+   > 因为：let和const存在暂时性死区TDZ(TemporalDeadZone）变量提升没有意义
+
+2. 函数提升
+
+   ![image-20240416233408713](./assets/image-20240416233408713.png)
+
+   > 这里将`fa()`提升到前面，导致可以输出`fa`代码顺序
+
+### 2.1.2 作用域
+
+1. 全局作用域
+
+   > 创建的全局变量如`var`执行上下文机制有相应解释。
+
+2. 函数作用域
+
+   > 函数内部声明的函数只能在函数内部进行访问
+
+3. 块级作用域
+
+   ```js
+   {
+     var a = "var可以被访问";
+     let b = "let可以被访问";
+     const c = "const可以被访问";
+   }
+   console.log("a :>> ", a); // var可以被访问
+   console.log("b :>> ", b); // underfined
+   console.log("c :>> ", c); // underfined
+   ```
+
+   > 使用`let`和`const`声明的变量是块级作用域，只能在块中进行访问
+   >
+   > 如 `if`、`while`、`for`等大括号包含的代码
+
+
+
+### 2.1.3 var和let和const
+
+>（使用`let`代替`var`）：
+
+- `let`定义的变量名不可以重复
+- 因为`var`是创建在全局对象中，写多了容易内存溢出
+- `var`和`let` 可以先声明后赋值，`const`必须声明和赋值
+
+
 
 ## 2.2  执行上下文机制
 
+> `var`和`function`声明创建在全局对象(`window`)中，而`let`、`const`、`class`声明的变量创建在全局`scope`中。
 
-前置： 
-var是被挂载到window上面，不易写多，容易内存溢出
+### 2.2.1 概念
+
+- 全局执行上下文：只有一个，浏览器中的全局对象就是 `window`对象，`this` 指向这个全局对象
+- 函数执行上下文：存在无数个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文
+- Eval 函数执行上下文： 指的是运行在 `eval` 函数中的代码，很少用而且不建议使用
+
+
+
+JavaScript在执行语句前，为代码创建了一个执行上下文栈
+
+4种情况会创建新的执行上下文
+
+- 进入全局代码
+- 进入`function`函数体代码
+- 进入`eval`函数参数指定的代码
+- 进入`module`代码
+
+
+
+### 2.2.2 实例
+
+[深入 JavaScript 执行上下文栈](https://www.bilibili.com/video/BV1Gr4y1b7PT/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
+
+```js
+var scope = "global scope"
+function checkscop() {
+    var scop = "local scope";
+    function f() {
+        return scope;
+    }
+    return f();
+}
+checkscope()
+```
+
+
+
+这里面的执行上下文栈的详情是：
+
+```js
+ECStack.push(globalcontext); // scope压入执行上下文栈
+CStack.push(<checkscope> functionContext); // 
+ECStack.push(<f> functionContext);
+ECStack.pop();/// <f> functionContext
+ECStack.pop();// <checkscope> functionContext
+```
+
+
+
+### 2.2.3 面试
+
+[面试官：JavaScript中执行上下文和执行栈是什么？ | web前端面试 - 面试官系列 (vue3js.cn)](https://vue3js.cn/interview/JavaScript/context_stack.html#一、执行上下文)
+
+
+
+个人：
+
+> 首先解释一下变量提升/函数提升和作用域
+>
+> 然后说一下闭包和执行上下文栈的相关联系 可以看[2.2.2 实例](# 2.2.2 实例)
+>
+> 
+
