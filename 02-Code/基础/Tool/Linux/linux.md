@@ -150,8 +150,9 @@
 ![find](assets/image-20231116223005238.png)
 
 ![grep](assets/image-20231116223033784.png)
-查看日志： `tail -f log | grep "内容"`
-查看正在运行的进程： `ps -ef | grep "进程名字"`
+>   `tail -f log | grep "内容"`      查看日志
+ >  `ps -ef | grep "进程名字"`          查看正在运行的进程：
+   >`rpm -qa|grep mysql`              查询当前系统中安装的名称带mysql的软件
 ## 3 软件安装
 
 ### 3.1 软件安装方式
