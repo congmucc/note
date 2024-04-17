@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tail",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md"
+                "file": "02-Code/基础/Tool/Linux/linux.md"
               }
             }
           },
@@ -170,6 +170,9 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/05-详情模块.md",
+    "02-Code/基础/Tool/Linux/linux.md",
+    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/JavaScript/assets/Pasted image 20240416233137.png",
     "02-Code/基础/前端/JavaScript/assets",
     "02-Code/基础/前端/css/css.md",
@@ -178,7 +181,6 @@
     "02-Code/基础/前端/vue/四种组件数据传输.md",
     "02-Code/基础/前端/uniapp/uniapp.md",
     "02-Code/基础/前端/vue/配置代理的方式.md",
-    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/Ajax/Ajax.md",
     "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
     "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
@@ -199,7 +201,6 @@
     "02-Code/基础/区块链/基础知识/基础知识.md",
     "02-Code/基础/区块链/Solidity/Solidity.md",
     "02-Code/基础/区块链/Solidity",
-    "02-Code/面试/面试目录.md",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004547.png",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004507.png",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004415.png",
@@ -211,7 +212,6 @@
     "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
-    "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829099748.png",
     "02-Code/项目笔记/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/assets",
