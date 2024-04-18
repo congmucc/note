@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/tip/面试.md",
+                "file": "02-Code/基础/前端/Interview/Interview.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/tip/面试.md",
+                "file": "02-Code/基础/前端/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/tip/面试.md",
+                "file": "02-Code/基础/前端/Interview/Interview.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/tip/面试.md"
+                "file": "02-Code/基础/前端/Interview/Interview.md"
               }
             }
           },
@@ -168,12 +168,17 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "62a93d4a804a01de",
   "lastOpenFiles": [
-    "02-Code/基础/前端/tip",
-    "02-Code/面试/简历/Java开发工程师简历模板.md",
-    "02-Code/基础/前端/tip/面试.md",
+    "02-Code/基础/后端/Interview/Interview.md",
+    "02-Code/简历/简历/简历0.3.pdf",
+    "02-Code/简历/简历/Java开发工程师简历模板.md",
+    "02-Code/简历/简历/02简历讲解/02简历讲解.md",
+    "02-Code/简历/面试目录.md",
     "02-Code/面试/笔记/面试.md",
+    "02-Code/基础/后端/Interview",
+    "02-Code/基础/前端/Interview/Interview.md",
+    "02-Code/基础/前端/Interview",
     "02-Code/基础/前端/vue/vue.md",
     "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
@@ -192,13 +197,10 @@
     "02-Code/基础/前端/vue/配置代理的方式.md",
     "02-Code/基础/前端/Ajax/Ajax.md",
     "02-Code/基础/后端/Java/框架/SpringBoot/SpringBoot.md",
-    "02-Code/面试/简历/02简历讲解/02简历讲解.md",
     "02-Code/基础/前端/JavaScript/原生dom.md",
     "02-Code/基础/前端/JavaScript",
     "02-Code/基础/前端/nvm/nvm.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
-    "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
-    "02-Code/基础/AI大模型/Ai大模型.md",
     "02-Code/基础/前端/vue/vue2-3/vue3",
     "02-Code/基础/区块链/Solidity",
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004547.png",
@@ -213,9 +215,6 @@
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
     "02-Code/项目笔记/assets",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/uni-app/assets",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/assets",
-    "02-Code/项目笔记/uniapp电商项目/官方笔记/在线笔记-长期更新【推荐】.txt",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
