@@ -20,62 +20,36 @@
 
 以下是我的学习文件夹目录结构
 
-```
+```txt
 ├─基础
+│  ├─AI大模型
 │  ├─CICD
 │  │  ├─Docker
 │  │  │  └─assets
 │  │  ├─Jenkins
 │  │  │  └─assets
 │  │  └─K8s
-│  ├─Git
-│  ├─linux
-│  │  └─assets
-│  ├─Nginx
-│  │  └─assets
+│  ├─Tool
+│  │  ├─Git
+│  │  └─Linux
+│  │      └─assets
 │  ├─前端
-│  │  ├─Ajax
-│  │  │  └─代码
-│  │  │      ├─1-HTTP
-│  │  │      ├─2-express框架
-│  │  │      ├─3-原生AJAX
-│  │  │      ├─4-jQuery中的AJAX
-│  │  │      ├─5-axios-AJAX
-│  │  │      ├─6-fetch-AJAX
-│  │  │      └─7-AJAX跨域问题
-│  │  │          ├─1-同源策略
-│  │  │          ├─2-JSONP
-│  │  │          │  └─js
-│  │  │          └─3-CORS
 │  │  ├─css
+│  │  ├─JavaScript
+│  │  │  └─assets
+│  │  ├─Nginx
+│  │  │  └─assets
 │  │  ├─nvm
 │  │  ├─uniapp
 │  │  └─vue
 │  │      └─vue2-3
-│  │          ├─day01
-│  │          │  └─assets
-│  │          ├─day02
-│  │          │  └─assets
-│  │          ├─day03
-│  │          │  └─assets
-│  │          ├─day04
-│  │          │  └─assets
-│  │          ├─day05
-│  │          │  └─assets
-│  │          ├─day06
-│  │          │  └─assets
-│  │          ├─day07
-│  │          │  └─assets
-│  │          ├─day08-day10-智慧商城项目
-│  │          │  └─assets
 │  │          ├─day11-Vue3入门
 │  │          │  └─assets
-│  │          ├─day12-day14-大事件管理系统
-│  │          │  └─assets
-│  │          └─day12-Pinia
+│  │          └─day12-day14-大事件管理系统
 │  │              └─assets
 │  ├─区块链
-│  │  └─Basic
+│  │  ├─Solidity
+│  │  └─基础知识
 │  └─后端
 │      ├─c++
 │      │  ├─C++
@@ -102,37 +76,7 @@
 │      │  │  └─8_面向对象的中级教程
 │      │  │      └─多态
 │      │  ├─JavaWeb
-│      │  │  ├─ssm
-│      │  │  │  └─新版ssm
-│      │  │  │      ├─一、高效构建Java应用：Maven入门和进阶
-│      │  │  │      │  ├─file
-│      │  │  │      │  └─image
-│      │  │  │      ├─七、MyBatis-Plus高级用法：最优化持久层开发
-│      │  │  │      │  └─image
-│      │  │  │      ├─三、MyBatis实践：提高持久层数据处理效率
-│      │  │  │      │  └─image
-│      │  │  │      ├─二、SpringFramework实战指南
-│      │  │  │      │  └─image
-│      │  │  │      ├─五、框架实战：SSM整合原理和实战
-│      │  │  │      │  ├─file
-│      │  │  │      │  └─image
-│      │  │  │      ├─八、终极实战：SpringBoot版微头条实战
-│      │  │  │      │  ├─file
-│      │  │  │      │  └─image
-│      │  │  │      ├─六、快速启动框架：SpringBoot3实战
-│      │  │  │      │  └─image
-│      │  │  │      └─四、SpringMVC实战：构建高效表述层框架
-│      │  │  │          └─image
-│      │  │  └─ssm项目笔记
-│      │  │      └─images
-│      │  │          ├─1.搭建环境
-│      │  │          ├─2.前端基础知识
-│      │  │          ├─3.角色管理
-│      │  │          ├─4.用户管理
-│      │  │          ├─5.菜单管理
-│      │  │          ├─6.权限管理
-│      │  │          ├─7.其他功能
-│      │  │          └─前端
+│      │  │  └─ssm
 │      │  ├─微服务框架
 │      │  │  ├─Elasticsearch
 │      │  │  │  ├─assets
@@ -179,17 +123,18 @@
 │      └─02简历讲解
 │          └─assets
 └─项目笔记
-    ├─assets
     ├─SpringBoot+vue分离式
-    ├─仿12306
-    │  └─assets
-    ├─小鲜兔uniapp
-    │  └─官方小鲜兔
+    ├─uniapp电商项目
+    │  └─官方笔记
     │      ├─rabbit-shop
     │      │  └─assets
     │      └─uni-app
     │          └─assets
-    ├─小鲜兔vue3
+    ├─仿12306
+    │  └─assets
+    ├─前端项目笔记
+    │  └─assets
+    ├─后台管理系统项目总结
     └─闻讯头条
         └─assets
 ```
