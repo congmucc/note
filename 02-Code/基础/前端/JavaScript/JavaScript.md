@@ -67,9 +67,27 @@ fetchData('https://api.example.com/data', processData);
 > 在这个例子中，`fetchData`函数通过闭包捕获了`processData`函数作为回调函数。当异步操作完成时，它会调用回调函数并传递数据给它。闭包保持了回调函数的上下文，使得回调函数可以访问外部的`processData`函数。
 
 
+```js
+let foo = function () {
+  var i = 0;
+  return function () {
+    console.log(i++);
+ 
+  }
+}
+ 
+let f1 = foo(); // 每次调用foo，都被 return 一个新的函数
+let f2 = foo();
+f1();  // 0
+f2();  // 0
+f1();  // 1
+```
+
+> 这里之所以是001的原因是
 ## 1.4 扩展
 > 关键词：词法作用域 
 > 加分项：执行上下文机制 V8垃圾回收机制
+
 
 
 # 2 作用域和执行上下文机制
