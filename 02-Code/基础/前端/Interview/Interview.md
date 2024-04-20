@@ -18,5 +18,6 @@
 17.深拷贝和浅拷贝的区别，深拷贝有什么问题，手写一个深拷贝（说思路），josn.parse
 18.url渲染到浏览器上的过程
 19.https的原理
-20 pinia与vuex的区别。
-21 闭包
+20.pinia与vuex的区别。
+21.闭包
+22.proxy比defineproperty好在哪里
