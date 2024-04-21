@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md",
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md",
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md",
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md"
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md"
               }
             }
           },
@@ -170,10 +170,11 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/区块链/Solidity/Solidity.md",
+    "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/后端/Interview/Interview.md",
     "02-Code/基础/前端/JavaScript/JavaScript.md",
-    "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/简历/简历/简历0.3.pdf",
     "02-Code/简历/简历/Java开发工程师简历模板.md",
     "02-Code/简历/简历/02简历讲解/02简历讲解.md",
