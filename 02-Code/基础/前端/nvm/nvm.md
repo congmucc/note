@@ -43,8 +43,14 @@ nvm下载地址：https://github.com/coreybutler/nvm-windows/releases 点击最�
 
 
 **(6)、修改settings.txt** 在你安装的nvm目录下找到settings.txt文件，打开settings.txt文件后，加上下面两行代码：
-node_mirror: https://npm.taobao.org/mirrors/node/
-npm_mirror: https://npm.taobao.org/mirrors/npm/
+
+```
+node_mirror: https://npmmirror.com/mirrors/node/
+npm_mirror: https://npmmirror.com/mirrors/npm/
+```
+
+
+
 目的是将npm镜像改为淘宝的镜像，可以提高下载速度
 
 ![img](https://pic3.zhimg.com/v2-442296568d4b58bc76c09966c422508e_r.jpg)
@@ -114,8 +120,15 @@ nvm root [path]： 设置 nvm 存储node.js不同版本的目录 ,如果未设�
 
 由于nvm默认的下载地址[http://nodejs.org/dist/](https://link.jianshu.com?t=http%3A%2F%2Fnodejs.org%2Fdist%2F)是外国外服务器，国内很慢可以使用淘宝的镜像
 
->  node_mirror: https://npm.taobao.org/mirrors/node/
->  npm_mirror: https://npm.taobao.org/mirrors/npm/
+```
+# 配置node镜像：
+node_mirror: https://npmmirror.com/mirrors/node/
+
+# 配置npm镜像：
+npm_mirror: https://npmmirror.com/mirrors/npm/
+```
+
+
 
 打nvm的安装路径把上面的镜像地址复制到settings.txt中就OK了。
 
@@ -124,7 +137,7 @@ nvm root [path]： 设置 nvm 存储node.js不同版本的目录 ,如果未设�
 ### npm切换淘宝源镜像
 
 ```
-npm config set registry https://registry.npm.taobao.org/
+npm config set registry https://registry.npmmirror.com
 ```
 
 ### npm切换官方源镜像
@@ -148,10 +161,6 @@ npm config get registry
 ### 一、通过命令配置
 
 #### 1、设置淘宝镜像源
-
-```
-npm config set registry https://registry.npm.taobao.org/
-```
 
 ```
 npm config set registry http://registry.npmmirror.com
