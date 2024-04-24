@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
+                "file": "02-Code/基础/区块链/Interview/Interview.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
+                "file": "02-Code/基础/区块链/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
+                "file": "02-Code/基础/区块链/Interview/Interview.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md"
+                "file": "02-Code/基础/区块链/Interview/Interview.md"
               }
             }
           },
@@ -170,9 +170,12 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "Diary/2023-11-25-学习obsidian.md",
+    "02-Code/基础/区块链/Interview/Interview.md",
+    "02-Code/基础/区块链/Interview",
+    "02-Code/基础/区块链/基础知识/基础知识.md",
     "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/区块链/Solidity/Solidity.md",
-    "02-Code/基础/区块链/基础知识/基础知识.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/CICD/Jenkins/Jenkins.md",
     "02-Code/基础/前端/vue/vue.md",
@@ -199,8 +202,6 @@
     "02-Code/基础/前端/JavaScript/assets/Pasted image 20240416233137.png",
     "02-Code/基础/前端/JavaScript/assets",
     "02-Code/基础/前端/vue/eslint.md",
-    "02-Code/基础/前端/vue/四种组件数据传输.md",
-    "02-Code/基础/前端/uniapp/uniapp.md",
     "02-Code/基础/前端/JavaScript",
     "02-Code/基础/前端/vue/vue2-3/vue3",
     "02-Code/基础/区块链/Solidity",
@@ -215,7 +216,6 @@
     "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829198240.png",
-    "02-Code/项目笔记/assets",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
