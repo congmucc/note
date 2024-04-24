@@ -35,5 +35,21 @@ dapp learning: https://dapplearning.org/hiring
 > 
 > 2、[TinTinLand_社区_web3学院](https://tintinland.com/)
 > 3、[Sui_社区](https://sui.io/)
-> 4、
-> 
+
+
+登链社区账号19954054823 密码 allinweb3
+作业文档:
+https://grayjiang.notion.site/All-In-Web3-d595d9e5cff74c2a88b32d197a787158?pvs=4
+
+nexts 教程(前端) https://s.juejin.cn/ds/iFNc8Mkn/
+
+ethersjs 教程(前端，i法):https://github.com/WTFAcademy/WTF-Ethers
+
+新版参考
+https://mirror.xyz/rbtree.eth/B20ZSszixD3Bf107WOuAFzzrACilxvZcqb09GYdMgng
+
+solidity 教程(后端必须全部学习，前端学习基础语法即可):https://github.com/AmazingAng/WTF-Solidity
+
+实战方向(前置条件 wtf solidity 基础语法学完)【【4K中字】B站最新Solidity智能合约Foundry框架零基础教程1-12课(已完结)-哔哩哩)
+https://b23.tv/kX1W6RD
+前后端都看的部分:开头到1.9
