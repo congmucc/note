@@ -33,5 +33,7 @@ dapp learning: https://dapplearning.org/hiring
 > 1、[Solana](https://solana.com/zh)
 > > Solana是一个开源项目，实现了一个新的、高性能的、无需许可的区块链。索拉纳基金会总部设在瑞士日内瓦，负责维护开源项目。
 > 
-> 2、[TinTinLand | 社区](https://tintinland.com/)
-> 3、
+> 2、[TinTinLand_社区_web3学院](https://tintinland.com/)
+> 3、[Sui_社区](https://sui.io/)
+> 4、
+> 
