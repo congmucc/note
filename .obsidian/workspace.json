@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "nft",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -168,7 +169,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "62a93d4a804a01de",
+  "active": "ff17a40e34515f2a",
   "lastOpenFiles": [
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/CICD/Jenkins/Jenkins.md",
