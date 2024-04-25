@@ -21,4 +21,7 @@
 20.pinia与vuex的区别。
 21.闭包
 22.proxy比defineproperty好在哪里
-23.cookie与sieeion
+23.本地存储：cookie与session与sessionStorage
+
+
+24.react平常喜欢用什么hooks
