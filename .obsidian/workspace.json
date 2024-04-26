@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md",
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/Interview/Interview.md"
+                "file": "02-Code/项目笔记/前端项目笔记/前端项目笔记.md"
               }
             }
           },
@@ -170,15 +170,15 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/前端/Interview/Interview.md",
+    "02-Code/基础/前端/react/react.md",
     "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/基础/前端/uniapp/uniapp.md",
-    "02-Code/基础/前端/react/react.md",
     "02-Code/基础/前端/nvm/nvm.md",
     "02-Code/基础/前端/react",
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/JavaScript/原生dom.md",
-    "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/前端/css/css.md",
     "02-Code/基础/前端/Interview/assets/010 5885 1881_20240418160401.m4a..mp3",
     "02-Code/基础/前端/Interview/assets/6d88c207037ce95bfd8b4d775bedc80.jpg",
