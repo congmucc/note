@@ -1,0 +1,1 @@
+1. 严格模式`<React.StrictMode></React.StrictMode>`会导致api请求发送两次。
