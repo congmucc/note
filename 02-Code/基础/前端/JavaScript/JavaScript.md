@@ -237,7 +237,7 @@ ECStack.pop();// <checkscope> functionContext
 ### 2.1.1 Cookie
 
  由于**HTTP是一种无状态的协议**，服务器单从网络连接上是无法知道客户身份的。这时候服务器就需要给客户端颁发一个cookie，用来确认用户的身份。一般情况下，浏览器会自动将相应域名下的 Cookie 包含在 HTTP 请求头中发送给服务器
-
+**介绍**：
 > 主要是为了解决HTTP无状态，在客户端用于保存用户信息的一种机制。
 
 可以设置过期时间。
@@ -248,9 +248,11 @@ ECStack.pop();// <checkscope> functionContext
 
 Session是另一种记录客户状态的机制，保存在服务器上。
 
+**介绍**：
 Session保存在服务器端。为了获得更高的存取速度，服务器一般把Session放在内存里。每个用户都会有一个独立的Session。
 
-
+**生命周期**：
+session在用户第一次访问服务器的时候自动创建。session生成后，只要用户继续访问，服务器就会更新Session的最后访问时间，并维护该session。
 
 
 ## 2.2 cookie、localStorage、sessionStorage
