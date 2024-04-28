@@ -6,6 +6,18 @@
    - 事件可能具有不需要的浏览器默认行为。调用 `e.preventDefault()` 来阻止这种情况。
    - `<button onClick={handleClick()}/>`这里调用的话不应该加`()`，加了之后就是在渲染过程中 _调用_ 了 `handleClick` 函数。
 5. `Hooks` 只能在组件函数的顶层调用 [State：组件的记忆 – React 中文文档](https://zh-hans.react.dev/learn/state-a-components-memory#meet-your-first-hook)
-6. 对于useEffect()
+6. Effect称之为副作用（[副作用：（不符合）预期的后果](https://zh-hans.react.dev/learn/keeping-components-pure#side-effects-unintended-consequences)），函数组件的主要目的，是为了渲染生成html元素除了这个主要功能以外，管理状态，fetch数据.等等之外的功能，都可以称之为副作用。useXxx打头的一系列方法，都是为副作用而生的，在react中把它们称为Hooks
+7. 对于useEffect()
    在真正渲染html之前会执行它。
-   - 没有
+   - 没有依赖项，代表每次执行组件函数时都会执行副作用函数。
+   - [], 代表副作用函数只会执行一次
+   - [依赖项]，依赖项变化时，副作用函数会执行
+```js
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId, serverUrl]); // 依赖项为[roomId]
+```
