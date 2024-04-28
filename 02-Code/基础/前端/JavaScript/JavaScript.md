@@ -233,7 +233,7 @@ ECStack.pop();// <checkscope> functionContext
 
 # 2 本地存储
 ## 2.1 cookie和session
-[理解cookie、session、localStorage、sessionStorage关系与区别 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/88499420)
+[前端 - Cookie、Session、localStorage、sessionStorage区别和用法 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000039670664#item-2-6)
 ### 2.1.1 Cookie
 
  由于**HTTP是一种无状态的协议**，服务器单从网络连接上是无法知道客户身份的。这时候服务器就需要给客户端颁发一个cookie，用来确认用户的身份。一般情况下，浏览器会自动将相应域名下的 Cookie 包含在 HTTP 请求头中发送给服务器
@@ -248,6 +248,9 @@ ECStack.pop();// <checkscope> functionContext
 
 Session是另一种记录客户状态的机制，保存在服务器上。
 
-Session保存在服务器端。为了获得更高的存取速度，服务器一般把Session放在内存里。每个用户都会有一个独立的Session。如果Session内容过于复杂，当大量客户访问服务器时可能会导致内存溢出。因此，Session里的信息应该尽量精简。
+Session保存在服务器端。为了获得更高的存取速度，服务器一般把Session放在内存里。每个用户都会有一个独立的Session。
+
+
+
 
 ## 2.2 cookie、localStorage、sessionStorage
