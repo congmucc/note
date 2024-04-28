@@ -254,5 +254,17 @@ Session保存在服务器端。为了获得更高的存取速度，服务器一�
 **生命周期**：
 session在用户第一次访问服务器的时候自动创建。session生成后，只要用户继续访问，服务器就会更新Session的最后访问时间，并维护该session。
 
+**区别**：
+- cookie数据存放在客户的浏览器上，session数据放在服务器上
+- session会在一定时间内保存在服务器上，当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie
+- 单个cookie保存的数*据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie
+- session中保存的是对象，cookie中保存的是字符串
+**结合应用**：
 
+![](assets/Pasted%20image%2020240428221917.png)
+左边是客户端，右边是服务端。
+过程：
+1、客户端发送了用户名和密码，在服务端创建一个sessionId
+2、然后通过服务端Set-Cookie发送cookie到客户端
+3、浏览器拿到sessionId生成Cookie在下次请求中发送给服务端
 ## 2.2 cookie、localStorage、sessionStorage
