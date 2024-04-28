@@ -231,3 +231,13 @@ ECStack.pop();// <checkscope> functionContext
 
 
 
+# 2 本地存储
+## 2.1 cookie和session
+
+Cookie： 由于**HTTP是一种无状态的协议**，服务器单从网络连接上是无法知道客户身份的。这时候服务器就需要给客户端颁发一个cookie，用来确认用户的身份。
+
+> 主要是为了解决HTTP无状态，在客户端用于保存用户信息的一种机制。
+
+
+
+## 2.2 cookie、localStorage、sessionStorage
