@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/Interview/Interview.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/Interview/Interview.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md"
+                "file": "02-Code/基础/前端/Interview/Interview.md"
               }
             }
           },
@@ -170,8 +170,8 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
-    "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/前端/JavaScript/JavaScript.md",
+    "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/前端/css/css.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/前端/uniapp/uniapp.md",

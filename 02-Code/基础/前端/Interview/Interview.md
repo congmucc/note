@@ -21,7 +21,7 @@
 20.pinia与vuex的区别。
 21.闭包
 22.proxy比defineproperty好在哪里
-23.本地存储：cookie与session与sessionStorage
+23.本地存储：cookie与sessionStorage与localStorage
 
 
 24.常用hooks
