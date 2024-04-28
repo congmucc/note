@@ -279,6 +279,9 @@ sessionStorage 的所有性质基本上与 localStorage 一致，唯一的不同
 
 sessionStorage 的有效期是页面会话持续，如果页面会话（session）结束（关闭页面或浏览器后），sessionStorage 就会消失。而 localStorage 则会一直存在。
 
+
+跟session（记录客户状态的机制）没关系，sessionStorage是一个本地存储，
+
 ### 2.2.3 locaStorage
 
 localStorage 是 HTML5 提供的一个 API，他本质上是一个hash（哈希表），是一个存在于浏览器上的 hash（哈希表）。

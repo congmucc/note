@@ -6,4 +6,6 @@
    - 事件可能具有不需要的浏览器默认行为。调用 `e.preventDefault()` 来阻止这种情况。
    - `<button onClick={handleClick()}/>`这里调用的话不应该加`()`，加了之后就是在渲染过程中 _调用_ 了 `handleClick` 函数。
 5. `Hooks` 只能在组件函数的顶层调用 [State：组件的记忆 – React 中文文档](https://zh-hans.react.dev/learn/state-a-components-memory#meet-your-first-hook)
-6. 
+6. 对于useEffect()
+   在真正渲染html之前会执行它。
+   - 没有

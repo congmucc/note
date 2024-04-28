@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/react/react.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/react/react.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/react/react.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md"
+                "file": "02-Code/基础/前端/react/react.md"
               }
             }
           },
@@ -170,10 +170,10 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/JavaScript/assets/Pasted image 20240428221917.png",
     "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/前端/vue/vue.md",
-    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/css/css.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/前端/uniapp/uniapp.md",
@@ -215,7 +215,6 @@
     "02-Code/项目笔记/前端项目笔记/assets/Pasted image 20240413004145.png",
     "02-Code/项目笔记/SpringBoot+vue分离式/image-20230706010110393.png",
     "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
-    "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets/1533829307389.png",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
