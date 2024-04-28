@@ -235,7 +235,7 @@ ECStack.pop();// <checkscope> functionContext
 ## 2.1 cookie和session
 [前端 - Cookie、Session、localStorage、sessionStorage区别和用法 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000039670664#item-2-6)
 ### 2.1.1 Cookie
-
+Cookie实际上是**一小段的文本信息**（key-value格式）。 不超过4K
  由于**HTTP是一种无状态的协议**，服务器单从网络连接上是无法知道客户身份的。这时候服务器就需要给客户端颁发一个cookie，用来确认用户的身份。一般情况下，浏览器会自动将相应域名下的 Cookie 包含在 HTTP 请求头中发送给服务器
 **介绍**：
 > 主要是为了解决HTTP无状态，在客户端用于保存用户信息的一种机制。
@@ -246,10 +246,8 @@ ECStack.pop();// <checkscope> functionContext
 
 ### 2.1.2 Session
 
-Session是另一种记录客户状态的机制，保存在服务器上。
-
 **介绍**：
-Session保存在服务器端。为了获得更高的存取速度，服务器一般把Session放在内存里。每个用户都会有一个独立的Session。
+Session是另一种记录客户状态的机制，保存在服务器上。
 
 **生命周期**：
 session在用户第一次访问服务器的时候自动创建。session生成后，只要用户继续访问，服务器就会更新Session的最后访问时间，并维护该session。
@@ -259,6 +257,8 @@ session在用户第一次访问服务器的时候自动创建。session生成后
 - session会在一定时间内保存在服务器上，当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie
 - 单个cookie保存的数*据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie
 - session中保存的是对象，cookie中保存的是字符串
+
+
 **结合应用**：
 
 ![](assets/Pasted%20image%2020240428221917.png)
@@ -267,4 +267,33 @@ session在用户第一次访问服务器的时候自动创建。session生成后
 1、客户端发送了用户名和密码，在服务端创建一个sessionId
 2、然后通过服务端Set-Cookie发送cookie到客户端
 3、浏览器拿到sessionId生成Cookie在下次请求中发送给服务端
-## 2.2 cookie、localStorage、sessionStorage
+对于不支持cookie的手机浏览器，有另一种解决方案：URL地址重写。**URL地址重写的原理是将该用户session的id信息重写到URL地址中，服务器能够解析重写后的URL获取session的id**。这样即使客户端不支持cookie，也可以使用session来记录用户状态。
+## 2.2 cookie、sessionStorage、localStorage
+
+### 2.2.1 cookie
+如上
+
+### 2.2.2 sessionStorage
+
+sessionStorage 的所有性质基本上与 localStorage 一致，唯一的不同区别在于：
+
+sessionStorage 的有效期是页面会话持续，如果页面会话（session）结束（关闭页面或浏览器后），sessionStorage 就会消失。而 localStorage 则会一直存在。
+
+### 2.2.3 locaStorage
+
+localStorage 是 HTML5 提供的一个 API，他本质上是一个hash（哈希表），是一个存在于浏览器上的 hash（哈希表）。
+
+localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。
+
+
+```js
+localStorage.setItem("key","value");	//以“key”为名称存储一个值“value”
+localStorage.getItem("key");	//获取名称为“key”的值
+localStorage.removeItem("key");	//删除名称为“key”的信息。
+localStorage.clear();	//清空localStorage中所有信息
+```
+
+特点：
+- 只有相同域名的页面才能互相读取 localStorage，同源策略与 cookie 一致
+- 不同的浏览器，对每个域名 localStorage 的最大存储量的规定不一样，超出存储量会被拒绝。最大存5M 超过5M的数据就会丢失。而 Chrome 10MB 左右
+- localStorage 理论上永久有效，除非用户清理缓存
