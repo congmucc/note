@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/css/css.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/css/css.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md",
+                "file": "02-Code/基础/前端/css/css.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/JavaScript/JavaScript.md"
+                "file": "02-Code/基础/前端/css/css.md"
               }
             }
           },
@@ -170,6 +170,8 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/前端/JavaScript/原生dom.md",
+    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/react/react.md",
     "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
@@ -179,7 +181,6 @@
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/07-用户模块.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/03-推荐模块.md",
     "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/02-首页模块.md",
-    "02-Code/基础/前端/JavaScript/JavaScript.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/前端/nvm/nvm.md",
     "02-Code/基础/前端/uniapp/uniapp.md",
@@ -188,7 +189,6 @@
     "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
     "02-Code/项目笔记/党务修改.md",
     "02-Code/基础/前端/react",
-    "02-Code/基础/前端/JavaScript/原生dom.md",
     "02-Code/基础/前端/css/css.md",
     "02-Code/基础/前端/Interview/assets/010 5885 1881_20240418160401.m4a..mp3",
     "02-Code/基础/前端/Interview/assets/6d88c207037ce95bfd8b4d775bedc80.jpg",
