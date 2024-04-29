@@ -51,3 +51,8 @@ function Button({ children }) {
 }
 
 ```
+
+
+
+
+用法：如果是使用变量定义一个对象的key的情况需要`[变量]: value`格式。
