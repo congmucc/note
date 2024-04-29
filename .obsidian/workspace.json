@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/前端/react/react.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "请求",
+                "query": "布隆",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -86,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/前端/react/react.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/前端/react/react.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/前端/react/react.md"
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md"
               }
             }
           },
@@ -170,9 +171,9 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/前端/react/react.md",
     "02-Code/基础/前端/Interview/Interview.md",
     "02-Code/基础/前端/JavaScript/JavaScript.md",
-    "02-Code/基础/前端/react/react.md",
     "02-Code/基础/前端/JavaScript/assets/Pasted image 20240428221917.png",
     "02-Code/基础/前端/vue/vue.md",
     "02-Code/基础/前端/css/css.md",
