@@ -42,10 +42,12 @@ export default function MyApp() {
 
 function Panel({ title, children }) {
   const theme = useContext(ThemeContext);
+  {children}
 }
 
 function Button({ children }) {
   const theme = useContext(ThemeContext);
+  {children}
 }
 
 ```
