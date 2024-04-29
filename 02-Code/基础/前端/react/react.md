@@ -32,18 +32,12 @@ const ThemeContext = createContext(null);
 export default function MyApp() {
   return (
     <ThemeContext.Provider value="dark">
-      <Form />
+      <Panel title="Welcome">
+        <Button>Sign up</Button>
+        <Button>Log in</Button>
+      </Panel>
     </ThemeContext.Provider>
   )
-}
-
-function Form() {
-  return (
-    <Panel title="Welcome">
-      <Button>Sign up</Button>
-      <Button>Log in</Button>
-    </Panel>
-  );
 }
 
 function Panel({ title, children }) {
