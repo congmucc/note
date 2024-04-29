@@ -21,4 +21,37 @@
     };
   }, [roomId, serverUrl]); // 依赖项为[roomId]
 ```
-8. 
+8. `useContext` 是一个 React Hook，可以让你读取和订阅组件中的 [context](https://zh-hans.react.dev/learn/passing-data-deeply-with-context)。
+   主要作用是为深层组件传递值。
+   `ThemeContext.Provider`的值`value`是一个设置上下文值得标签
+```js
+import { createContext, useContext } from 'react';
+
+const ThemeContext = createContext(null);
+
+export default function MyApp() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <Form />
+    </ThemeContext.Provider>
+  )
+}
+
+function Form() {
+  return (
+    <Panel title="Welcome">
+      <Button>Sign up</Button>
+      <Button>Log in</Button>
+    </Panel>
+  );
+}
+
+function Panel({ title, children }) {
+  const theme = useContext(ThemeContext);
+}
+
+function Button({ children }) {
+  const theme = useContext(ThemeContext);
+}
+
+```
