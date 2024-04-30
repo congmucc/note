@@ -2,7 +2,7 @@
 1.自我介绍
 2.vue2和vue3的区别
 3.compositon api
-3.minxin是如何做到抽离的
+3.mixin是如何做到抽离的
 5.hooks的实现原理
 6.vue3为什么要用Proxy取代Object.defineProperty吗？
 7.proxy的api
