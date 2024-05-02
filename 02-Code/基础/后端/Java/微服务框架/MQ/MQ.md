@@ -54,22 +54,22 @@ RabbitMQ中的几个概念：
 
 - virtual host：虚拟主机，是对queue、exchange等资源的逻辑分组
 
-| English Term         | 中文术语   | Definition                                                   |
-| -------------------- | ---------- | ------------------------------------------------------------ |
-| RabbitMQ             | RabbitMQ   | RabbitMQ 是一个开源的消息队列系统，用于在应用程序之间传递消息，并实现解耦和异步通信。 |
-| Exchange             | 交换机     | Exchange 用于接收发布到 RabbitMQ 的消息，并将其路由到一个或多个队列中。 |
-| Queue                | 队列       | 队列用于存储发送到 RabbitMQ 的消息，等待消费者（Consumer）来消费。 |
-| Producer             | 生产者     | 生产者（Producer）是向 RabbitMQ 发布消息的客户端应用程序，它负责生产并发送消息。 |
-| Consumer             | 消费者     | 消费者（Consumer）是从 RabbitMQ 队列订阅并消费消息的客户端应用程序，它负责接收和处理消息。 |
-| Binding              | 绑定       | 绑定（Binding）用于将交换机和队列关联起来，指定消息从交换机路由到哪个队列。 |
-| Routing Key          | 路由键     | 路由键（Routing Key）是在发布消息时与消息一起发送的关键字，用于将消息路由到特定的队列。 |
-| Connection           | 连接       | 连接（Connection）是生产者或消费者与 RabbitMQ 服务器之间的 TCP 连接，用于发送或接收消息。 |
-| Channel              | 通道       | 通道（Channel）是在连接内打开的一个虚拟连接，用于进行消息的发送和接收。 |
-| Acknowledgment (Ack) | 确认消息   | Acknowledgment（简称 Ack）是消费者接收到消息并成功处理后，向 RabbitMQ 发送的确认消息，表示消息已经被消费。 |
-| Dead Letter Exchange | 死信交换机 | Dead Letter Exchange 用于接收无法被消费者处理的消息，并将这些消息重新路由到指定的队列中，以备后续处理。 |
-| TTL (Time-To-Live)   | 生存时间   | TTL（Time-To-Live）是消息在队列中存活的最大时间，超过这个时间后消息会被丢弃或进入死信队列。 |
-| Dead Letter Exchange | 死信交换机 | 死信交换机（Dead Letter Exchange）用于重新路由未能被消费者处理的消息，通常用于处理消息消费失败或超时的情况。 |
-| Message | 消息 | 消息是在生产者和消费者之间传递的数据单元，它包含要传输的有效负载以及相关的元数据。 |
+| English Term         | 中文术语     | Definition                                                          |
+| -------------------- | -------- | ------------------------------------------------------------------- |
+| RabbitMQ             | RabbitMQ | RabbitMQ 是一个开源的消息队列系统，用于在应用程序之间传递消息，并实现解耦和异步通信。                     |
+| Exchange             | 交换机      | Exchange 用于接收发布到 RabbitMQ 的消息，并将其路由到一个或多个队列中。                       |
+| Queue                | 队列       | 队列用于存储发送到 RabbitMQ 的消息，等待消费者（Consumer）来消费。                          |
+| Producer             | 生产者      | 生产者（Producer）是向 RabbitMQ 发布消息的客户端应用程序，它负责生产并发送消息。                   |
+| Consumer             | 消费者      | 消费者（Consumer）是从 RabbitMQ 队列订阅并消费消息的客户端应用程序，它负责接收和处理消息。              |
+| Binding              | 绑定       | 绑定（Binding）用于将交换机和队列关联起来，指定消息从交换机路由到哪个队列。                           |
+| Routing Key          | 路由键      | 路由键（Routing Key）是在发布消息时与消息一起发送的关键字，用于将消息路由到特定的队列。                   |
+| Connection           | 连接       | 连接（Connection）是生产者或消费者与 RabbitMQ 服务器之间的 TCP 连接，用于发送或接收消息。           |
+| Channel              | 通道       | 通道（Channel）是在连接内打开的一个虚拟连接，用于进行消息的发送和接收。                             |
+| Acknowledgment (Ack) | 确认消息     | Acknowledgment（简称 Ack）是消费者接收到消息并成功处理后，向 RabbitMQ 发送的确认消息，表示消息已经被消费。 |
+| Dead Letter Exchange | 死信交换机    | Dead Letter Exchange 用于接收无法被消费者处理的消息，并将这些消息重新路由到指定的队列中，以备后续处理。      |
+| TTL (Time-To-Live)   | 生存时间     | TTL（Time-To-Live）是消息在队列中存活的最大时间，超过这个时间后消息会被丢弃或进入死信队列。               |
+| Dead Letter Exchange | 死信交换机    | 死信交换机（Dead Letter Exchange）用于重新路由未能被消费者处理的消息，通常用于处理消息消费失败或超时的情况。    |
+| Message              | 消息       | 消息是在生产者和消费者之间传递的数据单元，它包含要传输的有效负载以及相关的元数据。                           |
 
 以上是 RabbitMQ 的一些基本概念及其中文术语的对应关系。
 
