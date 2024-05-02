@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/11-订单模块.md",
-                "mode": "preview",
+                "file": "02-Code/入职必知必会/Java用法.md",
+                "mode": "source",
                 "backlinks": true,
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/11-订单模块.md",
+                "file": "02-Code/入职必知必会/Java用法.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/11-订单模块.md",
+                "file": "02-Code/入职必知必会/Java用法.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/11-订单模块.md"
+                "file": "02-Code/入职必知必会/Java用法.md"
               }
             }
           },
@@ -170,6 +170,13 @@
   },
   "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/项目笔记/Java用法",
+    "02-Code/项目笔记/苍穹外卖.md",
+    "02-Code/入职必知必会/Java用法.md",
+    "02-Code/目录.md",
+    "02-Code/入职必知必会/开发流程以及开发中的术语.md",
+    "02-Code/入职必知必会/动态sql的使用.md",
+    "02-Code/项目笔记/uniapp电商项目/官方笔记/rabbit-shop/11-订单模块.md",
     "02-Code/入职必知必会/后端",
     "02-Code/入职必知必会/新建文件夹",
     "02-Code/入职必知必会/图片/部署项目流程图.png",
@@ -189,13 +196,11 @@
     "02-Code/入职必知必会/线程池的使用.md",
     "02-Code/入职必知必会/根据需求如何设计数据库表.md",
     "02-Code/入职必知必会/微服务中的开发.md",
-    "02-Code/入职必知必会/开发流程以及开发中的术语.md",
     "02-Code/入职必知必会/工作中redis的使用.md",
     "02-Code/入职必知必会/如何部署项目.md",
     "02-Code/入职必知必会/如何本地把项目跑起来.md",
     "02-Code/入职必知必会/如何对接第三方系统.md",
     "02-Code/入职必知必会/如何写一个接口.md",
-    "02-Code/入职必知必会/动态sql的使用.md",
     "02-Code/入职必知必会/stream流的使用.md",
     "02-Code/入职必知必会/rabbitmq的使用.md",
     "02-Code/入职必知必会/nacos的使用.md",
@@ -207,15 +212,10 @@
     "02-Code/项目笔记/uniapp电商项目/uniapp电商项目.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/基础/CICD/Jenkins/Jenkins.md",
-    "02-Code/基础/CICD/Docker/Docker.md",
-    "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
-    "02-Code/基础/前端/Interview/Interview.md",
-    "02-Code/基础/前端/react/react.md",
     "02-Code/基础/前端/react",
     "02-Code/基础/前端/Interview/assets/010 5885 1881_20240418160401.m4a..mp3",
     "02-Code/基础/前端/Interview/assets",
     "02-Code/基础/区块链/Interview",
-    "02-Code/简历/简历/简历0.3.pdf",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
