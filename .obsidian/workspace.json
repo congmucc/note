@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/入职必知必会/Java用法.md",
+                "file": "02-Code/项目笔记/苍穹外卖.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/入职必知必会/Java用法.md",
+                "file": "02-Code/项目笔记/苍穹外卖.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/入职必知必会/Java用法.md",
+                "file": "02-Code/项目笔记/苍穹外卖.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/入职必知必会/Java用法.md"
+                "file": "02-Code/项目笔记/苍穹外卖.md"
               }
             }
           },
@@ -168,11 +168,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/项目笔记/Java用法/Java用法.md",
     "02-Code/项目笔记/Java用法",
     "02-Code/项目笔记/苍穹外卖.md",
-    "02-Code/入职必知必会/Java用法.md",
     "02-Code/目录.md",
     "02-Code/入职必知必会/开发流程以及开发中的术语.md",
     "02-Code/入职必知必会/动态sql的使用.md",
@@ -215,7 +215,6 @@
     "02-Code/基础/前端/react",
     "02-Code/基础/前端/Interview/assets/010 5885 1881_20240418160401.m4a..mp3",
     "02-Code/基础/前端/Interview/assets",
-    "02-Code/基础/区块链/Interview",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
