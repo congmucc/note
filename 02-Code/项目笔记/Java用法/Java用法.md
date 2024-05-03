@@ -88,7 +88,7 @@ public void save(EmployeeDTO employeeDTO) {
 
 
 
-# 2 一些小tip
+# 2 JavaSE使用
 
 ## 2.1 Java8的使用
 
@@ -110,14 +110,13 @@ public void save(EmployeeDTO employeeDTO) {
 
 > 在Java中，`Map`和`Collection`接口（后者通过各种类如`ArrayList`、`HashSet`等实现）都是用来存储数据的结构。在遍历这些结构的过程中（例如，使用for-each循环或迭代器遍历），如果尝试直接修改集合（如添加、删除、修改（只能修改内部可以修改的）元素），则可能会引发`ConcurrentModificationException`。这个异常是Java的一种失败快速机制，用来防止在集合结构被更改时仍然进行遍历，因为这种操作可能导致不可预测的结果。
 >
->
-> 快速失败机制：
->
-> 这是因为迭代器内部维护了一个计数器，用于检测在遍历过程中集合是否被修改，如果计数器检测到集合结构发生了变化，就会抛出ConcurrentModificationException。
->
-> 这个其实就是并发异常。
+>**快速失败机制：**
+> 
+>这是因为迭代器内部维护了一个计数器，用于检测在遍历过程中集合是否被修改，如果计数器检测到集合结构发生了变化，就会抛出ConcurrentModificationException。
+> 
+>这个其实就是并发异常。
 
-#### 2.1.2.2 安全删除list元素
+#### 2.1.2.2安全删除list元素
 
 [【JAVA】普普通通的List，写起来遇到的坑还不少！](https://www.bilibili.com/video/BV18Y4y1B7fR/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 
