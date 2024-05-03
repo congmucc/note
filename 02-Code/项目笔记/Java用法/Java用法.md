@@ -248,3 +248,12 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 
 > - on: 在生成临时表时使用的条件，不管on中的条件是否为真，都会返回主表的记录
 > - where: 在临时表生成之后，对新的临时表进行过滤
+
+> 场景： 需要将两张表中`is_delete != 0`的数据进行整合
+
+```sql
+select * from user left join address
+on user.id =address.user_id and address.is_deleted=0
+where user.is deleted=0
+```
+
