@@ -162,6 +162,14 @@ public void save(EmployeeDTO employeeDTO) {
 
 ```
 
+4、**使用lambda表达式（推荐）**
+
+```java
+list.removeIf(item -> item.equals("Banana"));
+```
+
+> 本质上就是迭代器删除
+
 
 
 ### 2.1.3 遍历map集合
