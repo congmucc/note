@@ -116,7 +116,9 @@ public void save(EmployeeDTO employeeDTO) {
 > 
 >这个其实就是并发异常。
 
-#### 2.1.2.2安全删除list元素
+#### 2.1.2.2 安全删除list元素
+
+> 4、**使用lambda表达式（推荐）**
 
 [【JAVA】普普通通的List，写起来遇到的坑还不少！](https://www.bilibili.com/video/BV18Y4y1B7fR/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 
@@ -171,6 +173,8 @@ list.removeIf(item -> item.equals("Banana"));
 > 本质上就是迭代器删除
 
 #### 2.1.2.3 遍历map集合
+
+> 3、 forEach + lambda  最推荐
 
 ```java
         Map<String, String> map = new HashMap<>();
