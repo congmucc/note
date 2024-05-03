@@ -219,14 +219,18 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 
 
 
-## 2.3 小信息
+## 2.3 常用的方法
 
 ### 2.3.1 相等
 
 - equal
-- start
+- startsWith
+- contains
 
+### 2.3.2 判断不为空
 
+- isnotblank
+- isempty
 
 
 
