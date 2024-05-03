@@ -263,8 +263,8 @@ where user.is deleted=0
 >
 > 结论：
 >
-> - `left join on`：左表的过滤在where中进行，右表的过滤在`on`中进行
-> - `right join on`：与left相反
+> - `left join on`：左表(`user`)的过滤在where中进行，右表（`address`）的过滤在`on`中进行
+> - `right join on`：与left相反（左右表不会变，其实**本质上就是附表条件在on中过滤**）
 > - `inner join on`：没有区别
 >
 > 
