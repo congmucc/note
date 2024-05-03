@@ -198,9 +198,7 @@ list.removeIf(item -> item.equals("Banana"));
         map.forEach((k, v) -> System.out.println(k + v));
 ```
 
-
-
-## 2.2 Steam流用法
+### 2.1.3 Steam流用法
 
 > 背景:
 >
@@ -221,7 +219,12 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 
 
 
-关于相等：
+## 2.3 小信息
+
+### 2.3.1 相等
+
+- equal
+- start
 
 
 
