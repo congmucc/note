@@ -100,9 +100,9 @@ public void save(EmployeeDTO employeeDTO) {
 
 
 
-### 2.1.2 增强for（foreach）&& 安全删除list元素
+### 2.1.2 集合相关
 
-- **增强for**
+#### 2.1.2.1 增强for（foreach）
 
 > 增强for其实本质上就是迭代器进行遍历。
 >
@@ -117,7 +117,7 @@ public void save(EmployeeDTO employeeDTO) {
 >
 > 这个其实就是并发异常。
 
-- 安全删除list元素
+#### 2.1.2.2 安全删除list元素
 
 [【JAVA】普普通通的List，写起来遇到的坑还不少！](https://www.bilibili.com/video/BV18Y4y1B7fR/?share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 
