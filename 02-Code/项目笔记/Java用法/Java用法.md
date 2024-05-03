@@ -260,3 +260,11 @@ where user.is deleted=0
 >
 > - on: 在生成临时表时使用的条件，不管on中的条件是否为真，都会返回主表的记录
 > - where: 在临时表生成之后，对新的临时表进行过滤
+>
+> 结论：
+>
+> - `left join on`：左表的过滤在where中进行，右表的过滤在`on`中进行
+> - `right join on`：与left相反
+> - `inner join on`：没有区别
+>
+> 
