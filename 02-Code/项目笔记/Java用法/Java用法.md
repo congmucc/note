@@ -92,7 +92,7 @@ public void save(EmployeeDTO employeeDTO) {
 
 ## 2.1 Java8的使用
 
-### 2.1.1 localDatatime
+### 2.1.1 时间类
 
 
 
@@ -170,9 +170,7 @@ list.removeIf(item -> item.equals("Banana"));
 
 > 本质上就是迭代器删除
 
-
-
-### 2.1.3 遍历map集合
+#### 2.1.2.3 遍历map集合
 
 ```java
         Map<String, String> map = new HashMap<>();
@@ -198,8 +196,6 @@ list.removeIf(item -> item.equals("Banana"));
 
 
 
-
-
 ## 2.2 Steam流用法
 
 > 背景:
@@ -218,6 +214,10 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 > 在 Java 8 的 Stream 类中，collect 方法通常与 Collectors 类一起使用，该类提供了一系列工厂方法来创建不同的收集器（collector），用于实现对流元素的各种聚合操作
 >
 > 转换为集合：`如 Collectors.toList()、Collectors.toSet()` 或 `Collectors.toCollection(Supplier<C>)`
+
+
+
+关于相等：
 
 
 
