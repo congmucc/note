@@ -244,3 +244,7 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 
 # 4 SQL应用
 
+## 4.1 where和on的区别
+
+> - on: 在生成临时表时使用的条件，不管on中的条件是否为真，都会返回主表的记录
+> - where: 在临时表生成之后，对新的临时表进行过滤
