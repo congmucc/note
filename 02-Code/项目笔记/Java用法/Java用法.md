@@ -246,10 +246,7 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 
 ## 4.1 where和on的区别
 
-> - on: 在生成临时表时使用的条件，不管on中的条件是否为真，都会返回主表的记录
-> - where: 在临时表生成之后，对新的临时表进行过滤
-
-> 场景： 需要将两张表中`is_delete != 0`的数据进行整合
+> 场景： 需要将两张表中`is_delete = 0`的数据进行整合
 
 ```sql
 select * from user left join address
@@ -257,3 +254,9 @@ on user.id =address.user_id and address.is_deleted=0
 where user.is deleted=0
 ```
 
+> 正确的写法是被`left join on`的数据库条件写在`on`中，主表的过滤条件写在`where`中，解释如下：
+>
+> 数据库在关联多张表的时候需要生成一张中间临时表。
+>
+> - on: 在生成临时表时使用的条件，不管on中的条件是否为真，都会返回主表的记录
+> - where: 在临时表生成之后，对新的临时表进行过滤
