@@ -190,7 +190,7 @@ list.removeIf(item -> item.equals("Banana"));
         map.entrySet().stream().forEach(entry ->
                 System.out.println(entry.getKey() + entry.getValue())
         );
-        // 2、 entry并行处理 记得并行不会影响逻辑
+        // 2、 entry并行处理 注意线程安全
         map.entrySet().parallelStream().forEach(entry ->
                 System.out.println(entry.getKey() + entry.getValue())
         );
