@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "02-Code/基础/CICD/Docker/Docker.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "02-Code/基础/CICD/Docker/Docker.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "02-Code/基础/CICD/Docker/Docker.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md"
+                "file": "02-Code/基础/CICD/Docker/Docker.md"
               }
             }
           },
@@ -170,6 +170,8 @@
   },
   "active": "62a93d4a804a01de",
   "lastOpenFiles": [
+    "02-Code/基础/CICD/CICD.md",
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
     "02-Code/项目笔记/Java用法/Java用法.md",
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
@@ -210,8 +212,6 @@
     "02-Code/入职必知必会/rabbitmq的使用.md",
     "02-Code/入职必知必会/nacos的使用.md",
     "02-Code/入职必知必会/maven的基本使用.md",
-    "02-Code/入职必知必会/Linux常用指令.md",
-    "02-Code/入职必知必会/kafka的使用.md",
     "02-Code/入职必知必会",
     "02-Code/基础/前端/react",
     "02-Code/基础/前端/Interview/assets/010 5885 1881_20240418160401.m4a..mp3",
