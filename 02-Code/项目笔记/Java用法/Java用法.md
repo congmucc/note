@@ -14,7 +14,7 @@
 </dependency>
 ```
 
-1. 将map对象转化为string并用逗号相隔开(`StringUtils.join()`)
+1. 将map对象转化为string并用逗号相隔开(**StringUtils.join()**)
 
    ```java
            List<LocalDate> dateList = new ArrayList<>();
@@ -28,14 +28,10 @@
            // 将list集合中每个元素转化成以逗号分割的字符串
            String string = StringUtils.join(dateList, ',');
    ```
-   
+
 2. `isNotBlank()`
-   > 检查字符串是否不为空且不只包含空格字符
-   > 如果字符串不为 null 且长度大于 0，并且去除两端空格后不为空字符串，则返回 true；否则返回 false。
-   > 总体来说相比于`isEmpty()`多了个判断是否为空格。
-3. `isEmpty()`
-   > 检查字符串是否为空的方法
-   > 字符串为 null 或长度为 0，则返回 true；否则返回 false。它只检查字符串的长度是否为 0，不考虑字符串中的空格字符。
+
+3. 
 
 
 
@@ -59,7 +55,8 @@
  </dependency>
 ```
 
-1.  `BeanUtils.copyProperties()`
+1.  对于实体类和DTO数据转换(**BeanUtils.copyProperties()**)
+
 ```java
 public void save(EmployeeDTO employeeDTO) {
     Employee employee = new Employee();
@@ -68,7 +65,7 @@ public void save(EmployeeDTO employeeDTO) {
     employeeMapper.save(employeeDTO);
 }
 ```
-> 将对象的值拷贝到另一个对象。
+
 
 
 
@@ -80,20 +77,19 @@ public void save(EmployeeDTO employeeDTO) {
 >
 > ​	需要将**数据库中的salt+用户输入的password**字符串拼接后进行md5加密然后和数据库中的密码进行对比
 
-- pom依赖
-```xml
-
-```
+- pom依赖：`springframework`
 
 - 场景
 1、对字符串进行加密处理。
 ```java
-     String salt = dbUser.getSalt();
-     String password = dto.getPassword();
-     String pswd = DigestUtils.md5DigestAsHex((password + salt).getBytes());
-     if (pswd.equals(dbUser.getPassword())) {
-         return ResponseResult.errorResult(AppHttpCodeEnum.LOGIN_PASSWORD_ERROR);
-     }
+import org.springframework.util.DigestUtils;
+
+String salt = dbUser.getSalt();
+String password = dto.getPassword();
+String pswd = DigestUtils.md5DigestAsHex((password + salt).getBytes());
+if (pswd.equals(dbUser.getPassword())) {
+ return ResponseResult.errorResult(AppHttpCodeEnum.LOGIN_PASSWORD_ERROR);
+}
 ```
 
 >  这里的salt是数据库中的，password是用户输入的，dbUser是数据库中的
@@ -218,10 +214,8 @@ list.removeIf(item -> item.equals("Banana"));
 > 这是实时计算的时候将数据存入redis中，这里是通过stream流进行处理数据
 
 ```java
-hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArticleVo::getS            //如果缓存中不存在，查询缓存中分值最小的一条数据，进行分值的比较，如果当前文章的分值大于缓存中的数据，就替换
-            if (flag) {
-                if (hotArticleVoList.size() >= 30) {
-                    hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArticleVo::getScore).reversed()).collect(Collectors.toList());
+//如果缓存中不存在，查询缓存中分值最小的一条数据，进行分值的比较，如果当前文章的分值大于缓存中的数据，就替换
+hotArticleVoList.stream().sorted(Comparator.comparing(HotArticleVo::getScore).reversed()).collect(Collectors.toList());
 ```
 
 > 上述代码片段中使用了Comparator.comparing(...).reversed()来创建一个降序排列的比较器，用于根据HotArticleVo类中的score字段值对列表进行排序。
@@ -235,21 +229,11 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 ## 2.3 常用的方法
 
 ### 2.3.1 相等
-- `equals` ：用于检查两个字符串是否相等。
-```java
-	String str = "hello";
-	if ("hello".equals(str)) return true;
-```
-- `startsWith`： 用于检查字符串是否以指定的前缀开始。
-```java
-    String str = "hello";
-	str.startsWith("hello"); // true
-```
-- `contains`： 用于检查字符串是否包含指定的子字符串。
-```java
-	String str = "hello";
-	str.contains("hello"); // true
-```
+
+- equal
+- startsWith
+- contains
+
 ### 2.3.2 判断不为空
 
 - isnotblank
