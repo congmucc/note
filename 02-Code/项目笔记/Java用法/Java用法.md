@@ -14,7 +14,7 @@
 </dependency>
 ```
 
-1. 将map对象转化为string并用逗号相隔开(**StringUtils.join()**)
+1. 将map对象转化为string并用逗号相隔开(`StringUtils.join()`)
 
    ```java
            List<LocalDate> dateList = new ArrayList<>();
@@ -30,6 +30,12 @@
    ```
    
 2. `isNotBlank()`
+   > 检查字符串是否不为空且不只包含空格字符
+   > 如果字符串不为 null 且长度大于 0，并且去除两端空格后不为空字符串，则返回 true；否则返回 false。
+   > 总体来说相比于`isEmpty()`多了个判断是否为空格。
+3. `isEmpty()`
+   > 检查字符串是否为空的方法
+   > 字符串为 null 或长度为 0，则返回 true；否则返回 false。它只检查字符串的长度是否为 0，不考虑字符串中的空格字符。
 
 
 
@@ -53,8 +59,7 @@
  </dependency>
 ```
 
-1.  对于实体类和DTO数据转换(**BeanUtils.copyProperties()**)
-
+1.  `BeanUtils.copyProperties()`
 ```java
 public void save(EmployeeDTO employeeDTO) {
     Employee employee = new Employee();
@@ -63,7 +68,7 @@ public void save(EmployeeDTO employeeDTO) {
     employeeMapper.save(employeeDTO);
 }
 ```
-
+> 将对象的值拷贝到另一个对象。
 
 
 
@@ -230,11 +235,21 @@ hotArticleVoList = hotArticleVoList.stream().sorted(Comparator.comparing(HotArti
 ## 2.3 常用的方法
 
 ### 2.3.1 相等
-
-- equal
-- startsWith
-- contains
-
+- `equals` ：用于检查两个字符串是否相等。
+```java
+	String str = "hello";
+	if ("hello".equals(str)) return true;
+```
+- `startsWith`： 用于检查字符串是否以指定的前缀开始。
+```java
+    String str = "hello";
+	str.startsWith("hello"); // true
+```
+- `contains`： 用于检查字符串是否包含指定的子字符串。
+```java
+	String str = "hello";
+	str.contains("hello"); // true
+```
 ### 2.3.2 判断不为空
 
 - isnotblank
