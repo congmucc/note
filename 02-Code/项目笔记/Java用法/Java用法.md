@@ -1,5 +1,5 @@
 # 1 工具类：
-## 1.1  StringUtils
+## 1.1  StringUtils__commons-lang
 
 > `String`的进行操作的工具类
 > 
@@ -29,17 +29,28 @@
            String string = StringUtils.join(dateList, ',');
    ```
 
-2. `isNotBlank()`
+2. `isNotBlank()` 不仅检查字符串是否为空，还会去除字符串两端的空格后再进行判断，只有当去除空格后的字符串不为空时才返回 true。
 
-3. 
+   ```java
+   ```
+
+   
+
+3. `isEmpty()` ，不会去除空格字符，也不会判断字符串中是否只包含空格字符，只有当字符串为 null 或为空字符串时才返回 true。集合是通过判断长度是否为0；
+
+   ```java
+       public static boolean isEmpty(@Nullable Object str) {
+           return str == null || "".equals(str);
+       }
+   ```
+
+   
 
 
 
 
 
-
-
-## 1.2 BeanUtils
+## 1.2 BeanUtils__commons-beanutils
 
 > 对于类的相关操作的工具类
 > 
@@ -69,7 +80,7 @@ public void save(EmployeeDTO employeeDTO) {
 
 
 
-## 1.3 DigestUtils
+## 1.3 DigestUtils__springframework
 - 介绍
 > `Spring`的加密工具类
 >
@@ -124,6 +135,8 @@ if (pswd.equals(dbUser.getPassword())) {
 >这是因为迭代器内部维护了一个计数器，用于检测在遍历过程中集合是否被修改，如果计数器检测到集合结构发生了变化，就会抛出ConcurrentModificationException。
 > 
 >这个其实就是并发异常。
+
+
 
 #### 2.1.2.2 安全删除list元素
 
@@ -230,16 +243,54 @@ hotArticleVoList.stream().sorted(Comparator.comparing(HotArticleVo::getScore).re
 
 ### 2.3.1 相等
 
-- equal
-- startsWith
-- contains
+- `equals` 用于检查两个字符串是否相等。
+
+  ```java
+  String str = "hello";
+  if ("hello".equals(str)) // true
+  ```
+- `startsWith` 用于检查字符串是否以指定的前缀开始。
+
+  ```java
+  String str = "hello";
+  str.startsWith("hello"); // ture
+  ```
+
+- `contains` 用于检查字符串是否包含指定的子字符串。
+
+  ```java
+  String str = "hello world";
+  str.contains("hello"); // true
+  ```
+
+  
 
 ### 2.3.2 判断不为空
 
-- isnotblank
-- isempty
+- `isNotBlank()` 不仅检查字符串是否为空，还会去除字符串两端的空格后再进行判断，只有当去除空格后的字符串不为空时才返回 true。
 
+  ```java
+              if(StringUtils.isNotBlank(task_json)){
+                  task = JSON.parseObject(task_json, Task.class);
+                  //更新数据库信息
+                  updateDb(task.getTaskId(),ScheduleConstants.EXECUTED);
+              }
+  ```
 
+  
+
+- `isEmpty()` ，不会去除空格字符，也不会判断字符串中是否只包含空格字符，只有当字符串为 null 或为空字符串时才返回 true。集合是通过判断长度是否为0；
+
+  ```java
+  List<String> materials;
+  if (materials != null && !materials.isEmpty()) 
+  ```
+
+  > 这里面是个集合，所以说这里需要判断是否为`null`，更安全。
+  >
+  > 这里分集合的和工具类`StringUtils`的`isEmpty()`  如果是集合的，就是上面的情况，如果是工具类的话直接一个就行了
+
+  
 
 
 
