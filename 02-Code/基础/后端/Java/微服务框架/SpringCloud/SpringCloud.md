@@ -523,11 +523,19 @@ ribbon:
 > ​	希望Order集群调用的时候优先调用本地集群，这就需要设置将Ordervice和一个UserService在一个HZ集群中，将UserService2放在另一个SH集群中
 >
 > 步骤：
->
-> 1. 修改order-service中的application.yml，设置集群为HZ：
-> 2. 然后在order-service中设置负载均衡的IRule为NacosRule，这个规则优先会寻找与自己同集群的服务
+> 新版本将ribbon改为了SpringCloudLoadBalancer
+> 
+> 1. 依赖导入和添加注解
+> 2. 修改order-service中的application.yml，设置集群为HZ：
+> 3. 然后在order-service中设置负载均衡的IRule为NacosRule，这个规则优先会寻找与自己同集群的服务
 
-1. **修改order-service中的application.yml，设置集群为HZ：**
+
+
+1. **依赖导入和添加注解**
+```xml
+
+```
+2. **修改order-service中的application.yml，设置集群为HZ：**
 
    ```
    spring:
@@ -538,9 +546,8 @@ ribbon:
            cluster-name: HZ # 配置集群名称
    ```
 
-   
 
-2. **然后在order-service中设置负载均衡的IRule为NacosRule，这个规则优先会寻找与自己同集群的服务**
+3. **然后在order-service中设置负载均衡的IRule为NacosRule，这个规则优先会寻找与自己同集群的服务**
 
    ```
    serservice: # 要做配置的微服务名称
