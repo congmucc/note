@@ -532,9 +532,21 @@ ribbon:
 
 
 1. **依赖导入和添加注解**
-```xml
 
-```
+     ```xml
+     <!--OpenFeign-->
+     <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-openfeign</artifactId>
+     </dependency>
+     <!--负载均衡-->
+     <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+     </dependency>
+     ```
+
+     > 还需要在使用的时候添加`@过@EnableFeignClients`注解，启用OpenFeign功能
 2. **修改order-service中的application.yml，设置集群为HZ：**
 
    ```
