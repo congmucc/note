@@ -1094,13 +1094,13 @@ networks:
 
 对比如下：
 
-| **docker run 参数** | **docker compose 指令** | **说明**   |
-| :------------------ | :---------------------- | :--------- |
-| --name              | container_name          | 容器名称   |
-| -p                  | ports                   | 端口映射   |
-| -e                  | environment             | 环境变量   |
-| -v                  | volumes                 | 数据卷配置 |
-| --network           | networks                | 网络       |
+| **docker run 参数** | **docker compose 指令** | **说明** |
+| :---------------- | :-------------------- | :----- |
+| --name            | container_name        | 容器名称   |
+| -p                | ports                 | 端口映射   |
+| -e                | environment           | 环境变量   |
+| -v                | volumes               | 数据卷配置  |
+| --network         | networks              | 网络     |
 
 明白了其中的对应关系，相信编写`docker-compose`文件应该难不倒大家。
 
