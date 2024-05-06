@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/JavaWeb开发规范.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/JavaWeb开发规范.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/JavaWeb开发规范.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/JavaWeb开发规范.md"
+                "file": "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md"
               }
             }
           },
@@ -170,8 +170,10 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
-    "02-Code/项目笔记/vue3大事件项目总结.md",
+    "02-Code/基础/Tool/Linux/linux.md",
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/JavaWeb开发规范.md",
+    "02-Code/项目笔记/vue3大事件项目总结.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p10_第三方组件element-ui.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p02_idea下的SpringBoot使用.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p03_Controller详解.md",
@@ -185,12 +187,10 @@
     "02-Code/基础/后端/Java/微服务框架/微服务.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ-高级篇.md",
-    "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/入职必知必会/如何部署项目.md",
     "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/基础/CICD/CICD.md",
-    "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
     "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/项目笔记/党务修改.md",

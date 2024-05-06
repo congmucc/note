@@ -730,6 +730,11 @@ spring:
 
 ### 4.5 多环境配置共享
 
+微服务启动时候会读取两个
+`name-profile.yaml` : `username-dev.yaml`
+`name.yaml`: `username.yaml`
+不管如何，`username.yaml`都会被读取，所以说在这里添加一些共享的即可。
+
 ![image-20231208194301713](./assets/image-20231208194301713.png)
 
 > 这里是名字改变了，少了环境，是一个全局的配置
