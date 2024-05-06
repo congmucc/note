@@ -669,7 +669,7 @@ spring:
 ### 4.3 配置拉取
 
 > 1. 引入Nacos的配置管理客户端依赖：
-> 2. 在userservice中的resource目录添加一个bootstrap.yml文件，这个文件是引导文件，优先级高于application.yml：
+> 2. 在userservice中的resource目录添加一个bootstrap.yml文件，这个文件是引导文件，优先级高于application.yml： 
 > 3. 测试
 
 1. **引入Nacos的配置管理客户端依赖：**
@@ -731,9 +731,11 @@ spring:
 ### 4.5 多环境配置共享
 
 微服务启动时候会读取两个
-`name-profile.yaml` : `username-dev.yaml`
-`name.yaml`: `username.yaml`
-不管如何，`username.yaml`都会被读取，所以说在这里添加一些共享的即可。
+- `name-profile.yaml` : `username-dev.yaml`
+- `name.yaml`: `username.yaml`
+1、不管如何，`username.yaml`都会被读取，所以说在这里添加一些共享的即可。
+2、关于优先级问题：
+	服务名-profile.yaml>服务名称.yaml>本地配置
 
 ![image-20231208194301713](./assets/image-20231208194301713.png)
 
