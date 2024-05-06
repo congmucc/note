@@ -1000,6 +1000,8 @@ public void listenSimpleQueueMessage(Map<String, Object> msg) throws Interrupted
 
 
 
+
+
 # MQ高级
 
 # 1.发送者的可靠性
