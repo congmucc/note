@@ -1,6 +1,9 @@
 [TOC]
 # [Markdown+Typora/VSCode 超全教程] 给大一新生安利的文本神器
 
+
+[Markdown 语法手册 - 经验分享 - Obsidian 中文论坛](https://forum-zh.obsidian.md/t/topic/25240)
+
 Sakiyary 2022/7/16
 
 ## 😂 简要介绍
