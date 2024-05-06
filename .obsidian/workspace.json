@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/Java用法/Java用法.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/Java用法/Java用法.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/Java用法/Java用法.md",
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/Java用法/Java用法.md"
+                "file": "02-Code/项目笔记/闻讯头条/闻讯头条.md"
               }
             }
           },
@@ -170,6 +170,7 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
+    "02-Code/项目笔记/Java用法/Java用法.md",
     "01-笔记使用/01b-Markdown语法规则.md",
     "01-笔记使用/01a1-Obsidian插件.md",
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
@@ -185,7 +186,6 @@
     "02-Code/基础/CICD/CICD.md",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
-    "02-Code/项目笔记/Java用法/Java用法.md",
     "02-Code/项目笔记/vue3大事件项目总结.md",
     "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/项目笔记/党务修改.md",
