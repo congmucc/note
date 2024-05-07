@@ -54,7 +54,9 @@ docker run \
  rabbitmq:3-management
 ```
 
-
+```docker
+docker run -d --name=rabbitmq -p 5672:5672 -p 15672:15672  -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin rabbitmq:management
+```
 
 > 浏览器地址为`部署ip:5672`
 >
