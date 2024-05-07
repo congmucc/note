@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md"
+                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md"
               }
             }
           },
@@ -170,8 +170,10 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
-    "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
+    "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "02-Code/入职必知必会/rabbitmq的使用.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ-高级篇.md",
     "02-Code/基础/CICD/Docker/Docker.md",
@@ -194,8 +196,6 @@
     "02-Code/入职必知必会/如何部署项目.md",
     "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/基础/CICD/CICD.md",
-    "02-Code/基础/后端/SQL/Redis/Redis导学.md",
-    "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/项目笔记/Java用法",
     "02-Code/入职必知必会/后端",
     "02-Code/入职必知必会/新建文件夹",
