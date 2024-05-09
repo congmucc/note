@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md"
+                "file": "02-Code/基础/Tool/Linux/linux.md"
               }
             }
           },
@@ -170,9 +170,9 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
-    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
     "02-Code/基础/后端/Java/微服务框架/MQ/MQ.md",
     "02-Code/入职必知必会/rabbitmq的使用.md",
