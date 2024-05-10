@@ -215,7 +215,17 @@
     
     ```
 
-    
+
+### 10.5 使用mybatis-plus进行分页
+1、添加mybatis-plus配置文件和注解
+2、以下是一个例子
+```java
+IPage<UserAccount> pagination = new Page<>(request.getPageNum(), request.getPageSize());  
+LambdaQueryWrapper<UserAccount> queryWrapper = new LambdaQueryWrapper<>();  
+queryWrapper.eq(StringUtils.isNotEmpty(request.getUserType()), UserAccount::getRoleCode, request.getUserType());  
+queryWrapper.like(StringUtils.isNotEmpty(request.getUserName()), UserAccount::getUserName, request.getUserName());  
+return (Page<UserAccount>)page(pagination, queryWrapper);
+```
 
 
 
