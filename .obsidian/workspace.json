@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md",
+                "file": "02-Code/实习经历/航天宏图.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md",
+                "file": "02-Code/实习经历/航天宏图.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md",
+                "file": "02-Code/实习经历/航天宏图.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/项目笔记/构建项目.md"
+                "file": "02-Code/实习经历/航天宏图.md"
               }
             }
           },
@@ -170,10 +170,13 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
+    "02-Code/基础/Tool/Linux/linux.md",
+    "02-Code/实习经历/航天宏图.md",
+    "02-Code/实习经历",
+    "02-Code/项目笔记/构建项目.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p02_idea下的SpringBoot使用.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p03_Controller详解.md",
     "02-Code/项目笔记/Java用法/Java用法.md",
-    "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/Elasticsearch导学.md",
     "02-Code/基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
@@ -194,8 +197,6 @@
     "02-Code/项目笔记/SpringBoot+vue分离式/p04_文件上传+拦截器.md",
     "01-笔记使用/01b-Markdown语法规则.md",
     "01-笔记使用/01a1-Obsidian插件.md",
-    "02-Code/入职必知必会/如何部署项目.md",
-    "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/项目笔记/Java用法",
     "02-Code/入职必知必会/后端",
     "02-Code/入职必知必会/新建文件夹",
@@ -215,7 +216,6 @@
     "02-Code/入职必知必会",
     "02-Code/基础/前端/react",
     "02-Code/基础/前端/Interview/assets/010 5885 1881_20240418160401.m4a..mp3",
-    "02-Code/基础/前端/Interview/assets",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
