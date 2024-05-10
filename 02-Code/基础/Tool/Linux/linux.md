@@ -4,7 +4,7 @@
 
 > 背景：
 >
-> ​ 安装 Vmware 下载 Centos7
+>  安装 Vmware 下载 Centos7
 >
 > 视频： [3 天搞定 Linux，1 天搞定 Shell，清华学神带你通关](https://www.bilibili.com/video/BV1WY4y1H7d3/?p=11&share_source=copy_web&vd_source=a9e0245042931de24eb0a8f018fa0eae)
 >
@@ -48,7 +48,7 @@
 
     > 背景：
     >
-    > ​ SSH，建立在应用层基础上的安全协议
+    >  SSH，建立在应用层基础上的安全协议
     >
     > 常用的 SSH 连接工具
     >
@@ -57,7 +57,7 @@
     > - xshell
     > - finalshell
     >
-    > ​ 通过 SSH 连接工具就可以实现从本地连接到远程的 linux 服务器
+    >  通过 SSH 连接工具就可以实现从本地连接到远程的 linux 服务器
     >
     > 步骤：
     >
@@ -133,7 +133,7 @@
 
 > 前置：
 >
-> ​ Contos 中，安装 vim，yum install vim
+>  Contos 中，安装 vim，yum install vim
 
 ![vim](assets/image-20231116221949241.png)
 
@@ -160,10 +160,13 @@
 
 #### 2.6.2 生成日志
 
-- `>`生成日志
+- `> | >>`生成日志
+```bash
+docker logs -f id > test.log
 ```
-
-```
+>  注意`>`和`>>`的区别
+`>`写入，覆盖掉原有的
+`>>`继续添加，原来的还有
 - 
 
 ## 3 软件安装
@@ -281,9 +284,9 @@
 
 > 背景：
 >
-> ​ 把步骤的前两步做了，之后跟着知乎来就行了，其实前两步都不用，但是这个流程是对的
+>  把步骤的前两步做了，之后跟着知乎来就行了，其实前两步都不用，但是这个流程是对的
 >
-> ​ [CentOS / Linux 安装 MySQL（超简单详细） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623778183)
+>  [CentOS / Linux 安装 MySQL（超简单详细） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623778183)
 >
 > 步骤：
 >
@@ -423,7 +426,7 @@
 
 > 背景：
 >
-> ​ 这个 lrzsz 是将文件上传到 linux 的一个包 上传命令为`rz`
+>  这个 lrzsz 是将文件上传到 linux 的一个包 上传命令为`rz`
 >
 > 操作步骤:
 >
