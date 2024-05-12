@@ -1,5 +1,12 @@
 # JavaSE
 
+## java基础
+![](assets/java基础.png)
+
+## 多线程和并发
+![](assets/多线程和并发.png)
+
+
 ## Integer和int的区别
 
 > 1. Integer的初始值是null，int的初始值是0
