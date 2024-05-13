@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/实习/航天宏图.md"
+                "file": "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md"
               }
             }
           },
@@ -168,10 +168,14 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "988b106534880c66",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
-    "02-Code/入职必知必会/线程池的使用.md",
+    "02-Code/基础/后端/Java/JavaWeb/ssm/ssm.md",
+    "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
+    "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus",
+    "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "02-Code/实习/航天宏图.md",
+    "02-Code/入职必知必会/线程池的使用.md",
     "02-Code/项目笔记/苍穹外卖.md",
     "02-Code/基础/后端/Java/Interview/assets/多线程和并发.png",
     "02-Code/基础/后端/Java/Interview/Interview.md",
@@ -180,7 +184,6 @@
     "02-Code/基础/后端/Java/JavaSE/目录.md",
     "02-Code/基础/后端/Java/JavaWeb/javaweb.md",
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
-    "02-Code/基础/后端/Java/JavaWeb/ssm/ssm.md",
     "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/实习经历/航天宏图.md",
     "02-Code/实习经历",
@@ -199,7 +202,6 @@
     "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
     "02-Code/基础/后端/Java/微服务框架/微服务.md",
     "02-Code/基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
-    "02-Code/基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
     "02-Code/项目笔记/Java用法",
     "02-Code/入职必知必会/后端",
     "02-Code/入职必知必会/新建文件夹",
@@ -215,7 +217,6 @@
     "02-Code/入职必知必会/code/rabbitmq-demo.zip",
     "02-Code/入职必知必会/code",
     "02-Code/入职必知必会",
-    "02-Code/基础/前端/react",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
