@@ -27,7 +27,7 @@ Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kuber
 > 概念：
 > - **Ingress** ： 是一种用于外网络访问 Kubernetes 服务的规则集。它提供了一种统一的方式来定义和管理入站流量，允许外部客户端通过 HTTP 或 HTTPS 协议访问内部的服务。Ingress 不是一个独立的实体，而是依赖于 Ingress 控制器来实现其功能。常见的 Ingress 控制器有 Nginx、Traefik 和 Contour 等。
 > 
-> - **Service** 是 Kubernetes 中的一种抽象，它定义了一个逻辑集合的 Pod，并提供了稳定的服务发现和负载均衡的方法。Service 使用标签选择器（label selector）来找到一组具有特定标签的 Pod，并创建一个虚拟 IP（ClusterIP）来代表这些 Pod，这个 IP 对于集群内部是固定的。
+> - **Service** 是 Kubernetes 中的一种抽象，它定义了一个逻辑集合的 Pod，并提供了稳定的服务发现和负载均衡的方法。Kubernetes 中 Service 是 将运行在一个或一组 [Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 上的网络应用程序公开为网络服务的方法
 > 
 > - **Deployment** 是一种控制器，用于声明式地管理 Pod 的创建、更新和删除。
 > 
