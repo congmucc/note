@@ -167,7 +167,13 @@ docker logs -f id > test.log
 >  注意`>`和`>>`的区别
 `>`写入，覆盖掉原有的
 `>>`继续添加，原来的还有
-- 
+
+
+## 2.7 查看网卡速率
+
+> 首先使用命令`ip addr`获取所有网卡，`eth0`是本机网卡
+> 其次使用命令`ethtool  eth0`获取本机网卡情况即可
+> 使用命令`cat /etc/sysconfig/network-scripts/ifcfg-eth0`
 
 ## 3 软件安装
 
