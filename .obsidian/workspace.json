@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/CICD/K8s/K8s.md",
+                "file": "02-Code/基础/CICD/Devops/Devops.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/CICD/K8s/K8s.md",
+                "file": "02-Code/基础/CICD/Devops/Devops.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/CICD/K8s/K8s.md",
+                "file": "02-Code/基础/CICD/Devops/Devops.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/CICD/K8s/K8s.md"
+                "file": "02-Code/基础/CICD/Devops/Devops.md"
               }
             }
           },
@@ -170,10 +170,16 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
+    "02-Code/基础/CICD/CICD.md",
+    "02-Code/基础/CICD/Devops/Devops.md",
+    "02-Code/基础/CICD/Devops",
+    "02-Code/基础/CICD/未命名.md",
+    "02-Code/基础/CICD/Jenkins/Jenkins.md",
+    "02-Code/基础/CICD/Docker/Docker.md",
+    "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214327.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214252.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214223.png",
-    "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/基础/CICD/K8s/assets",
     "02-Code/项目笔记/Java用法/Java用法.md",
     "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
@@ -184,8 +190,6 @@
     "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/JavaWeb开发规范.md",
     "02-Code/目录.md",
-    "02-Code/基础/CICD/Docker/Docker.md",
-    "02-Code/基础/CICD/CICD.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/后端/Java/框架/Hibernate/Hibernate.md",
     "02-Code/基础/后端/Java/框架/Hibernate",
@@ -204,8 +208,6 @@
     "02-Code/实习经历",
     "02-Code/项目笔记/构建项目.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p02_idea下的SpringBoot使用.md",
-    "02-Code/项目笔记/SpringBoot+vue分离式/p03_Controller详解.md",
-    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "02-Code/项目笔记/Java用法",
     "02-Code/入职必知必会/后端",
     "02-Code/入职必知必会/新建文件夹",
@@ -214,9 +216,7 @@
     "02-Code/入职必知必会/图片/未命名文件 (3).png",
     "02-Code/入职必知必会/图片/未命名文件 (1).png",
     "02-Code/入职必知必会/图片/开发流程.png",
-    "02-Code/入职必知必会/图片/Maven.png",
     "02-Code/入职必知必会/图片",
-    "02-Code/入职必知必会/code/rabbitmq-demo.zip",
     "未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
