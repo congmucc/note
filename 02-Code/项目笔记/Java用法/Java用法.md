@@ -106,7 +106,7 @@ if (pswd.equals(dbUser.getPassword())) {
 >  这里的salt是数据库中的，password是用户输入的，dbUser是数据库中的
 
 
-
+1.4 
 
 # 2 JavaSE使用
 
