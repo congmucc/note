@@ -1,4 +1,5 @@
 - [Kubernetes 中文文档](https://kubernetes.io/zh-cn/docs/home/)
+## 1.1 特性
 kubernetes具有以下特性：  
 - **服务发现和负载均衡**
     Kubernetes 可以使用 DNS 名称或自己的 IP 地址来暴露容器。 如果进入容器的流量很大， Kubernetes 可以负载均衡并分配网络流量，从而使部署稳定。
@@ -18,3 +19,12 @@ kubernetes具有以下特性：
 - **为可扩展性设计** 在不改变上游源代码的情况下为你的 Kubernetes 集群添加功能。 
   
 Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kubernetes 会满足你的扩展要求、故障转移、部署模式等。 例如，Kubernetes 可以轻松管理系统的 Canary 部署。
+
+## 1.2 流程
+
+![](assets/Pasted%20image%2020240514214327.png)
+
+> 概念：
+> **Ingress** ： 是一种用于外部网络访问 Kubernetes 服务的规则集。它提供了一种统一的方式来定义和管理入站流量，允许外部客户端通过 HTTP 或 HTTPS 协议访问内部的服务。Ingress 不是一个独立的实体，而是依赖于 Ingress 控制器来实现其功能。常见的 Ingress 控制器有 Nginx、Traefik 和 Contour 等。
+> Service：
+> 流程是用户访问域名，域名通过访问ingress
