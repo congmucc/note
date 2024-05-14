@@ -106,7 +106,17 @@ if (pswd.equals(dbUser.getPassword())) {
 >  这里的salt是数据库中的，password是用户输入的，dbUser是数据库中的
 
 
-1.4 
+## 1.4 NumberUtils__cn.hutool.core.util
+> 可以进行double类型的相加减
+
+```java
+NumberUtil.add(totalArea, vo.getArea()) // 对项目进行增加。
+vo.setRate(NumberUtil.div(vo.getArea(), totalArea)); // 求vo中的Area占所有Area的比例
+```
+
+
+
+
 
 # 2 JavaSE使用
 
