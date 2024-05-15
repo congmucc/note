@@ -185,7 +185,7 @@ docker logs -f id > test.log
 
 - `df -h 路径`：查看磁盘占用率，这里是不写路径默认是`/`
 
-- 
+- `df -i 路径`: 查看iNode磁盘占用率
 
 
 
