@@ -187,8 +187,6 @@ docker logs -f id > test.log
 
 - `df -i 路径`: 查看iNode磁盘占用率
 
-
-
 ## 3 软件安装
 
 ### 3.1 软件安装方式

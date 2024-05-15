@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/基础/CICD/K8s/K8s.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/基础/CICD/K8s/K8s.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
+                "file": "02-Code/基础/CICD/K8s/K8s.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md"
+                "file": "02-Code/基础/CICD/K8s/K8s.md"
               }
             }
           },
@@ -170,9 +170,9 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
+    "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/实习/航天宏图.md",
     "02-Code/基础/CICD/Docker/Docker.md",
-    "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/基础/CICD/Jenkins/Jenkins.md",
     "02-Code/基础/CICD/Devops/Devops.md",
