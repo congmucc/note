@@ -46,4 +46,17 @@ Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kuber
 
 ## 2.2 命令
 
-### 2.2.1 命令空间
+### 2.2.1 命令空间 `nameplace`
+
+查询所有的命名空间：
+
+```
+# 查询所有的命名空间
+kubectl get namespace
+
+# 生成命令空间
+kubectl create ns hello
+
+# 删除命名空间
+kubectl delete ns hello
+```
