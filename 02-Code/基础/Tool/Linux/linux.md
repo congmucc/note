@@ -301,10 +301,13 @@ docker logs -f id > test.log
    > - 开启防火墙(`systemctl start firewalld`)
    > - 开放指定端口(`firewall-cmd --zone=public --add-port=8080/tcp --permanent`)
    > - 关闭指定端口(`firewall-cmd --zone=public --remove-port=8080/tcp --permanent`)
+
    > - **立即生效**(`firewall-cmd --reload`)
    > - 查看开放的端口(`firewall-cmd --zone=public --list-ports`)
    > - 查看防火墙状态(`firewall-cmd --list-all`)
-   
+
+- 端口
+
 
    > 注意:
    > 1、`systemctl`是管理 Linux 中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作
