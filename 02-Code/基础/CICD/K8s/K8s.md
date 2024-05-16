@@ -50,7 +50,7 @@ Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kuber
 
 查询所有的命名空间：
 
-```
+```shell
 # 查询所有的命名空间
 kubectl get namespace
 
@@ -60,3 +60,13 @@ kubectl create ns hello
 # 删除命名空间
 kubectl delete ns hello
 ```
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello
+```
+两者效果一样
+
+
