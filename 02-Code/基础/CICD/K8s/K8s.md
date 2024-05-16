@@ -67,6 +67,6 @@ kind: Namespace
 metadata:
   name: hello
 ```
-两者效果一样
+两者效果一样，这里需要注意的是，yaml文件修改完要apply一下。
 
 
