@@ -196,12 +196,71 @@ docker logs -f id > test.log
 `>`写入，覆盖掉原有的
 `>>`继续添加，原来的还有
 
+## 2.7 防火墙
 
-## 2.7 查看网卡速率
+- **服务配置**
 
-> 首先使用命令`ip addr`获取所有网卡，`eth0`是本机网卡
-> 其次使用命令`ethtool  eth0`获取本机网卡情况即可
-> 使用命令`cat /etc/sysconfig/network-scripts/ifcfg-eth0`
+  - 启动服务：`systemctl start firewalld`
+  - 关闭服务：`systemctl stop firewalld`
+
+  - 重启服务：`systemctl restart firewalld`
+
+  - 查看服务状态：`systemctl status firewalld`
+
+  - 开机自启服务：`systemctl enable firewalld`
+
+  - 开机禁用服务：`systemctl disable firewalld`
+
+  - 查看是否开机自启：`systemctl is-enable firewalld`
+
+  - 查看已启动的服务列表：`systemctl list-unit-files | grep enabled`
+
+  - 查看启动失败的服务列表：`systemctl --failed`
+
+- **规则配置**
+
+  - 查看版本：`firewall-cmd --version`
+
+  - 查看帮助：`firewall-cmd --help`
+
+  - 查看状态：`firewall-cmd --state`
+
+  - 查看所有打开的端口：`firewall-cmd --list-ports`
+
+  - 查看所有规则：`firewall-cmd --list-all`
+
+  - **重载规则(每次执行之后都要重新)**：`firewall-cmd --reload`
+
+  - 查看区域信息：`firewall-cmd --get-active-zones`
+
+  - 查看指定接口所属区域： `firewall-cmd --get-zone-of-interface=enp4s0`
+
+  - 拒绝所有包：`firewall-cmd --panic-on`
+
+  - 取消拒绝所有包： `firewall-cmd --panic-off`
+
+  - 查看是否拒绝： `firewall-cmd --query-panic`
+
+- **端口规则**
+
+  - 添加端口：`firewall-cmd --add-port=80/tcp --permanent`
+  - 移除端口：`firewall-cmd --remove-port=80/tcp --permanent`
+  - 查看端口状态：`firewall-cmd --zone=public --query-port=80/tcp`
+
+- **端口转发**
+
+  - 开启防火墙伪装:`firewall-cmd --add-masquerade --permanent`//开启后才能转发端口
+  - **将本机80端口转发到192.168.1.1的8080端口上**
+  - 添加转发规则：`firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=192.168.1.1 --permanent`
+  - 删除转发规则：`firewall-cmd --remove-forward-port=port=80:proto=tcp:toport=8080:toaddr=192.168.1.1 --permanent`
+
+![防火墙](assets/image-20231116233121923.png)
+
+
+   > 注意:
+   > 1、`systemctl`是管理 Linux 中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作
+   > 2、`firewall-cmd`是 Linux 中专门用于控制防火墙的命令
+   > 3、为了保证系统安全，服务器的防火墙不建议关闭
 
 ## 2.8 其他命令
 
@@ -214,6 +273,14 @@ docker logs -f id > test.log
 - `df -h 路径`：查看磁盘占用率，这里是不写路径默认是`/`
 
 - `df -i 路径`: 查看iNode磁盘占用率
+
+### 2.8.3 网卡操作
+
+首先使用命令`ip addr`获取所有网卡，`eth0`是本机网卡
+其次使用命令`ethtool  eth0`获取本机网卡情况即可
+使用命令`cat /etc/sysconfig/network-scripts/ifcfg-eth0`
+
+
 
 # 3 软件安装
 
@@ -290,29 +357,6 @@ docker logs -f id > test.log
    ![验证tomcat](assets/image-20231116232004755.png)
 
 3. **关闭防火墙**
-
-   > 防火墙操作:
-   >
-   > **开启/关闭防火墙之后要进行立即生效命令**
-   >
-   > - 查看防火墙状态(`systemctl status firewalld、firewall-cmd --state`)
-   > - 暂时关闭防火墙(`systemctl stop firewalld`)
-   > - 禁止开机启动防火墙(`systemctl disable firewalld`)
-   > - 开启防火墙(`systemctl start firewalld`)
-   > - 开放指定端口(`firewall-cmd --zone=public --add-port=8080/tcp --permanent`)
-   > - 关闭指定端口(`firewall-cmd --zone=public --remove-port=8080/tcp --permanent`)
-
-   > - **立即生效**(`firewall-cmd --reload`)
-   > - 查看开放的端口(`firewall-cmd --zone=public --list-ports`)
-   > - 查看防火墙状态(`firewall-cmd --list-all`)
-
-- 端口
-
-
-   > 注意:
-   > 1、`systemctl`是管理 Linux 中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作
-   > 2、`firewall-cmd`是 Linux 中专门用于控制防火墙的命令
-   > 3、为了保证系统安全，服务器的防火墙不建议关闭
 
    ![防火墙](assets/image-20231116233121923.png)
 
