@@ -1,6 +1,6 @@
 # Centos7 学习笔记
 
-## 1 前置条件
+# 1 前置条件
 
 > 背景：
 >
@@ -24,25 +24,27 @@
 
 1.  **安装 Linux**
 
-2.  **网卡设置**
+2. **网卡设置**
 
-    > 修改网络初始化配置，设定网卡在系统启动时 ip 初始化
-    >
-    > ```
-    > cd /              进入根目录
-    > cd etc            进入etc目录
-    > cd sysconfig      进入sysconfig目录
-    > cd network-scipts 进入network-scripts目录
-    > vi ifcfg-ens33    编辑ifcfg-ens33文件
-    >
-    > vi /etc/sysconfig/network-scripts/ifcfg-ens33
-    >
-    > i进入编辑区
-    > 将ONBOOT=no改为yes
-    > [esc] :wq保存退出
-    > ```
-    >
-    > 然后进行重启，使用`ip addr`查看 ip 地址
+   > 修改网络初始化配置，设定网卡在系统启动时 ip 初始化
+   >
+   > ```
+   > cd /              进入根目录
+   > cd etc            进入etc目录
+   > cd sysconfig      进入sysconfig目录
+   > cd network-scipts 进入network-scripts目录
+   > vi ifcfg-ens33    编辑ifcfg-ens33文件
+   > 
+   > vi /etc/sysconfig/network-scripts/ifcfg-ens33
+   > 
+   > i进入编辑区
+   > 将ONBOOT=no改为yes
+   > [esc] :wq保存退出
+   > ```
+   >
+   > `systemctl restart network`
+   >
+   > 然后进行重启，使用`ip addr`查看 ip 地址
 
 3.  **安装 SSH 连接工具**
 
@@ -75,11 +77,11 @@
        > 3. 用户名和密码是自己设置的
        > 4. 接收并保存
 
-## 2 linux 常用命令：
+# 2 linux 常用命令：
 
 ![image-20231116204344565](assets/image-20231116204344565-1700138635093-1.png)
 
-### 2.1 Linux 命令初体验
+## 2.1 Linux 命令初体验 
 
 | 序号 | 命令           | 对应英文             |           作用           |
 | ---- | -------------- | -------------------- | :----------------------: |
@@ -117,19 +119,19 @@
 
   ![rm](assets/image-20231116221214570.png)
 
-### 2.2 拷贝移动命令
+## 2.2 拷贝移动命令 cp mv
 
 ![cp](assets/image-20231116221335374.png)
 
 ![mv](assets/image-20231116221501296.png)
 
-### 2.3 打包压缩命令
+## 2.3 打包压缩命令 tar
 
 > 这里常用命令为：zxvf 解压缩 zcvf 压缩
 
 ![tar](assets/image-20231116221546514.png)
 
-### 2.4 文本编辑命令
+## 2.4 文本编辑命令 vim
 
 > 前置：
 >
@@ -145,20 +147,46 @@
 
 ![image-20231116222523455](assets/image-20231116222523455.png)
 
-### 2.5 查找命令
+### 2.5.1 全局替换
+
+```shell
+%s/aaa/bbb/g
+```
+
+`s` 替换
+`%` 全文
+`$` 最后一行
+`1` 第一行
+`g` global 就是在前面指定的行中替换所有匹配的字符串，如果不加这个就只匹配每一行中的第一个，此处还可以用`c` `p`
+`c` 每次替换前会确认
+
+### 2.5.2 搜索
+
+- `/`: **从光标向下搜索**，按下`n`，光标跳到下一个匹配的单词，按下`N`（`shift+n`）光标会跳到上一个匹配的单词。
+
+- `?`：与`/`相反，键入该符号后**反向向上搜索**
+- `*`：搜索当前光标所在单词，例如：如果当前光标所在单词是`set`，则相当于键入`/\<set\>`
+- `#`：搜索当前光标所在单词，相当于键入`?\<set\>`
+
+`/name`+enter即可
+
+
+
+
+## 2.5 查找命令 find grep
 
 ![find](assets/image-20231116223005238.png)
 
 ![grep](assets/image-20231116223033784.png)
-### 2.6 日志
+## 2.6 日志
 
-#### 2.6.1 查看日志
+### 2.6.1 查看日志
 
 >   `tail -f log | grep "内容"`      查看日志
  >  `ps -ef | grep "进程名字"`          查看正在运行的进程：
    >`rpm -qa|grep mysql`              查询当前系统中安装的名称带mysql的软件
 
-#### 2.6.2 生成日志
+### 2.6.2 生成日志
 
 - `> | >>`生成日志
 ```bash
@@ -179,7 +207,7 @@ docker logs -f id > test.log
 
 ### 2.8.1 查看目录的真实大小
 
-- `du -sh 路径`: 查看目录的真实大小
+- `du -sh 路径`: 看当前目录下的所有文件的真实大小
 
 ### 2.8.2 查看磁盘占用率
 
@@ -187,9 +215,9 @@ docker logs -f id > test.log
 
 - `df -i 路径`: 查看iNode磁盘占用率
 
-## 3 软件安装
+# 3 软件安装
 
-### 3.1 软件安装方式
+## 3.1 软件安装方式
 
 - 二进制发布包安装
 
@@ -213,7 +241,7 @@ docker logs -f id > test.log
 
   > 软件以源码工程的形式发布，需要自己编译打包
 
-### 3.2 安装 jdk
+## 3.2 安装 jdk
 
 > 操作步骤:
 >
@@ -232,7 +260,7 @@ docker logs -f id > test.log
 >
 > 5. 检查安装是否成功，命令为**java -version**
 
-### 3.3 安装 Tomcat && 防火墙
+## 3.3 安装 Tomcat && 防火墙
 
 > 操作步骤:
 >
@@ -269,7 +297,7 @@ docker logs -f id > test.log
    >
    > - 查看防火墙状态(`systemctl status firewalld、firewall-cmd --state`)
    > - 暂时关闭防火墙(`systemctl stop firewalld`)
-   > - 永久关闭防火墙(`systemctl disable firewalld`)
+   > - 禁止开机启动防火墙(`systemctl disable firewalld`)
    > - 开启防火墙(`systemctl start firewalld`)
    > - 开放指定端口(`firewall-cmd --zone=public --add-port=8080/tcp --permanent`)
    > - 关闭指定端口(`firewall-cmd --zone=public --remove-port=8080/tcp --permanent`)
@@ -298,7 +326,7 @@ docker logs -f id > test.log
 
    ![停止Tomcat](assets/image-20231116234236909.png)
 
-### 3.4 安装 MySQL
+## 3.4 安装 MySQL
 
 > 背景：
 >
@@ -440,7 +468,7 @@ docker logs -f id > test.log
    >
    > 这里需要开放 3306 端口
 
-### 3.5 安装 lrzsz
+## 3.5 安装 lrzsz
 
 > 背景：
 >
@@ -456,13 +484,13 @@ docker logs -f id > test.log
 >    RPM 包管理，能够从指定的服务器自动下载 RPM 包并目安装，可以自动处理依赖关系，并且一次安装所有依赖的软件包，无须
 >    繁琐地一次次下载、安装
 
-### 3.6 安装 Nginx
+## 3.6 安装 Nginx
 
 [Nginx](../../前端/Nginx/Nginx.md)
 
-## 4 项目部署
+# 4 项目部署
 
-### 4.1 手动部署项目
+## 4.1 手动部署项目
 
 > 步骤:
 >
@@ -507,7 +535,7 @@ docker logs -f id > test.log
 
    > `ps -ef | grep 'java -jar'`
 
-#### 部署的一些话：
+### 部署的一些话：
 
 1. **安装 redis**
 
@@ -577,7 +605,7 @@ docker logs -f id > test.log
    >
    > 最主要的还是是否能看懂 nginx 的配置
 
-### 4.2 通过 Shell 脚本自动部署项目
+## 4.2 通过 Shell 脚本自动部署项目
 
 > 步骤:
 >
