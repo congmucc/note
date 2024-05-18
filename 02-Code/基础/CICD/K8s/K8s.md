@@ -18,18 +18,20 @@ kubernetes具有以下特性：
 - **IPv4/IPv6 双栈** 为 Pod（容器组）和 Service（服务）分配 IPv4 和 IPv6 地址。
 - **为可扩展性设计** 在不改变上游源代码的情况下为你的 Kubernetes 集群添加功能。 
   
+
 Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kubernetes 会满足你的扩展要求、故障转移、部署模式等。 例如，Kubernetes 可以轻松管理系统的 Canary 部署。
 
-## 1.2 流程
+## 1.2 流程和概念
 
 ![](assets/Pasted%20image%2020240514214327.png)
 
 > 概念：
+
 > - **Ingress** ： 是一种用于外网络访问 Kubernetes 服务的规则集。它提供了一种统一的方式来定义和管理入站流量，允许外部客户端通过 HTTP 或 HTTPS 协议访问内部的服务。Ingress 不是一个独立的实体，而是依赖于 Ingress 控制器来实现其功能。常见的 Ingress 控制器有 Nginx、Traefik 和 Contour 等。
 > 
 > - **Service** 是 Kubernetes 中的一种抽象，它定义了一个逻辑集合的 Pod，并提供了稳定的服务发现和负载均衡的方法。Kubernetes 中 Service 是 将运行在一个或一组 [Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 上的网络应用程序公开为网络服务的方法
 > 
-> - **Deployment** 是一种控制器，用于声明式地管理 Pod 的创建、更新和删除。
+> - **Deployment** 是一种控制器，用于声明式地管理 Pod 的创建、更新和删除。 
 > 
 > - **Pod** 是 Kubernetes 中的最小部署单元，它可以包含一个或多个紧密相关的容器。这些容器共享同一个网络命名空间，这意味着它们共享同一个 IP 地址和端口范围。Pod 保证了容器的运行环境，包括卷（volumes）、存储资源、网络配置等。
 
@@ -39,8 +41,26 @@ Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kuber
 
 ## 2.1 安装
 
+### 2.1.1 安装
+
 正常安装比较繁琐，可以使用github开源安装教程[K8S安装_管理界面](https://kuboard.cn/)
 > 注意，1.19以上的将docker舍弃了，需要下载低版本的。
+
+
+
+### 2.1.2 镜像站
+
+[Hub · DaoCloud](https://hub.daocloud.io/)
+
+安装如下：
+
+```shell
+kubectl run nginx --image=daocloud.io/library/nginx:1.9.1 -n test
+```
+
+> 创建一个名为nginx的pod，从daocloud镜像站，并且命名空间为test
+
+
 
 
 
@@ -70,3 +90,55 @@ metadata:
 两者效果一样，这里需要注意的是，yaml文件修改完要apply一下。
 
 
+### 2.2.2 Pod
+
+```shell
+# 运行一个名为nginx版本为latest的docker镜像到pod
+kubectl run mynginx --image=nginx
+
+# 查看default名称空间的Pod
+kubectl get pods  -A
+# -A : 查看所有namespace下的所有pod
+# -n namespace : 查看指定容器内的pod
+
+
+# 描述
+kubectl describe pod 你自己的Pod名字 (-n nameplace)
+
+# 删除
+kubectl delete pod Pod名字
+
+# 查看Pod的运行日志
+kubectl logs Pod名字 (-n nameplace)
+
+# 进入pod中的nginx容器内
+kubectl exec -it nginx -n nameplace --bash
+
+# 每个Pod - k8s都会分配一个ip
+kubectl get pod -owide
+
+# 使用Pod的ip+pod里面运行容器的端口
+curl 192.168.169.136
+```
+
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: myapp
+  name: myapp
+  nameplcae: myapp
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+  - image: tomcat:8.5.68
+    name: tomcat
+```
+
+> 创建一个命名为myapp的pod，里面有nginx和tomcat的docker容器
+>
+> 记得apply一下
