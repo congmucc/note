@@ -17,7 +17,7 @@
 
 # 数据库
 
-## 1 MySql常见的存储引擎及区别
+## 2.1 MySql常见的存储引擎及区别
 
 > 一、InnoDB
 >
@@ -47,3 +47,9 @@
 >
 > - InnoDB用于事务处理，具有ACID事务支持等特性，如果在应用中执行大量insert和update操作，应该选择InnoDB
 
+## 2.2 Redis
+
+### 2.2.1双写一致性问题
+> 这个是redis和mysql同步的问题
+
+[后端面试反复问的缓存双写一致性问题_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Jz421e7an/)

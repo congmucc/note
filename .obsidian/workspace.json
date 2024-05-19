@@ -11,9 +11,12 @@
             "id": "988b106534880c66",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "02-Code/基础/后端/Java/Interview/Interview.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -46,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "原子",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -63,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -83,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "02-Code/基础/后端/Java/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "02-Code/基础/后端/Java/Interview/Interview.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "02-Code/基础/后端/Java/Interview/Interview.md"
               }
             }
           },
@@ -165,8 +169,12 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "988b106534880c66",
+  "active": "ff17a40e34515f2a",
   "lastOpenFiles": [
+    "02-Code/基础/后端/SQL/Redis/Redis高级.md",
+    "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
+    "Task/未命名看板.md",
     "02-Code/简历/简历/~WRL0005.tmp",
     "02-Code/简历/简历/~WRD0004.tmp",
     "02-Code/简历/简历/~WRL0003.tmp",
@@ -175,7 +183,6 @@
     "02-Code/简历/简历/~WRD0000.tmp",
     "02-Code/简历/简历/~$后端简历.docx",
     "Task/2024-3-14-技术学习大纲.md",
-    "Task/未命名看板.md",
     "Task/月看板.md",
     "Task/学习大纲.md",
     "Task/软件工程作业.md",
@@ -203,10 +210,7 @@
     "02-Code/基础/CICD/K8s/assets",
     "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
     "02-Code/基础/后端/Java/JavaWeb/javaweb.md",
-    "02-Code/基础/后端/Java/微服务框架/微服务.md",
-    "02-Code/项目笔记/闻讯头条/闻讯头条.md",
     "02-Code/基础/后端/Java/框架/Hibernate",
-    "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "02-Code/基础/后端/Java/Interview/assets/多线程和并发.png",
     "02-Code/基础/后端/Java/Interview/assets/java基础.png",
