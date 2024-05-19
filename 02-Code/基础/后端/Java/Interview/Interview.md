@@ -53,3 +53,4 @@
 > 这个是redis和mysql同步的问题
 
 [后端面试反复问的缓存双写一致性问题_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Jz421e7an/)
+> 双写一致，

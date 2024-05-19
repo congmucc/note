@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "原子",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -169,10 +168,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ff17a40e34515f2a",
+  "active": "988b106534880c66",
   "lastOpenFiles": [
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+    "02-Code/基础/后端/Java/Interview/Interview.md",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
     "Task/未命名看板.md",
     "02-Code/简历/简历/~WRL0005.tmp",
@@ -209,7 +209,6 @@
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214223.png",
     "02-Code/基础/CICD/K8s/assets",
     "02-Code/基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
-    "02-Code/基础/后端/Java/JavaWeb/javaweb.md",
     "02-Code/基础/后端/Java/框架/Hibernate",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "02-Code/基础/后端/Java/Interview/assets/多线程和并发.png",
