@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/Interview/Interview.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/Interview/Interview.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/Interview/Interview.md",
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/Interview/Interview.md"
+                "file": "02-Code/基础/后端/SQL/Redis/Redis高级.md"
               }
             }
           },
@@ -170,10 +170,10 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
-    "02-Code/简历/简历/02简历讲解/02简历讲解.md",
-    "02-Code/基础/后端/Java/Interview/Interview.md",
-    "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+    "02-Code/基础/后端/Java/Interview/Interview.md",
+    "02-Code/简历/简历/02简历讲解/02简历讲解.md",
+    "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
     "Task/未命名看板.md",
     "02-Code/简历/简历/~WRL0005.tmp",
