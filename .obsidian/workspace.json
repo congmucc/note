@@ -11,9 +11,12 @@
             "id": "988b106534880c66",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "Diary/2024-5-22-学习minio源码.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -83,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "Diary/2024-5-22-学习minio源码.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/未命名看板.md",
+                "file": "Diary/2024-5-22-学习minio源码.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/未命名看板.md"
+                "file": "Diary/2024-5-22-学习minio源码.md"
               }
             }
           },
@@ -167,8 +170,10 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
-    "Task/月看板.md",
     "Diary/2023-11-25-学习obsidian.md",
+    "Diary/2024-5-22-学习minio源码.md",
+    "Task/未命名看板.md",
+    "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
     "Task/2024-3-14-技术学习大纲.md",
@@ -177,7 +182,6 @@
     "02-Code/基础/后端/Java/Interview/Interview.md",
     "02-Code/简历/简历/02简历讲解/02简历讲解.md",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
-    "Task/未命名看板.md",
     "02-Code/简历/简历/~WRL0005.tmp",
     "02-Code/简历/简历/~WRD0004.tmp",
     "02-Code/简历/简历/~WRL0003.tmp",
@@ -200,7 +204,6 @@
     "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/实习/航天宏图.md",
     "02-Code/基础/CICD/Jenkins/Jenkins.md",
-    "02-Code/基础/CICD/Devops/Devops.md",
     "02-Code/基础/CICD/Devops",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214327.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214252.png",
