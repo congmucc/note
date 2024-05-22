@@ -13,7 +13,21 @@
 > 2. Integer存储在堆内存，int类型是直接存储在栈空间
 > 3. Integer是对象类型，它封装了很多的方法和属性，我们在使用的时候更加灵活
 
+## 多线程
 
+> ConcurrentHashMap、ConcurrentLinkedQueue、ConcurrentSkipListSet和CopyOnWriteArrayList
+
+
+
+**CopyOnWriteArrayList**：是一个线程安全的可变数组实现，适用于读多写少的场景。它通过在每次修改操作时创建列表的副本来实现线程安全。写操作（如 `add`、`remove` 等）代价较高
+
+**Collections.synchronizedList(new ArrayList<>())**：就是将所有的方法加了`synchronized`锁，每次访问或修改列表时，都需要获取锁，这确保了在同一时刻只有一个线程可以访问列表。
+
+- **读操作远多于写操作**：使用 `CopyOnWriteArrayList`。
+- **需要高并发处理的键值对存储**：使用 `ConcurrentHashMap`。
+- **需要高并发处理的队列**：使用 `ConcurrentLinkedQueue` 或 `BlockingQueue` 实现。
+- **需要双端队列**：使用 `ConcurrentLinkedDeque`。
+- **需要简单的同步包装**：使用 `Collections.synchronizedList`，但要注意手动同步块。
 
 # 数据库
 
