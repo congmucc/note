@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "lua",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -86,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md",
+                "file": "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md"
+                "file": "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md"
               }
             }
           },
@@ -170,8 +171,8 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
-    "Diary/2023-11-25-学习obsidian.md",
     "Diary/2024-5-22-学习minio源码.md",
+    "Diary/2023-11-25-学习obsidian.md",
     "Task/未命名看板.md",
     "Task/月看板.md",
     "Task/软件工程作业.md",
