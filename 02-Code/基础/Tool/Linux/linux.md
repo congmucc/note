@@ -287,25 +287,25 @@ docker logs -f id > test.log
 > 可以直接在linux服务器上面用 telnet IP 端口 命令看看端口通不通，或者用curl命令看看url地址能不能访问
 
 ```shell
- curl -X POST http://192.168.1.1:8083/kfpt/openapi/getApiToken
+curl -X POST http://192.168.1.1:8083/kfpt/openapi/getApiToken
 ```
 
 > 这个curl具体搜搜一下就行了
 
 ```shell
- curl http://192.168.1.1/OneMapServer/rest/services/sat_2013/MapServer
+curl http://192.168.1.1/OneMapServer/rest/services/sat_2013/MapServer
 ```
 
 
 
 ```shell
- ping 192.168.1.1
+ping 192.168.1.1
 ```
 
 
 
 ```shell
- telnet 192.168.1.1 80
+telnet 192.168.1.1 80
 ```
 
 

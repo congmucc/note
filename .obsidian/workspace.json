@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
+                "file": "Diary/2024-5-22-学习minio源码.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "隔离性",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
+                "file": "Diary/2024-5-22-学习minio源码.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
+                "file": "Diary/2024-5-22-学习minio源码.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md"
+                "file": "Diary/2024-5-22-学习minio源码.md"
               }
             }
           },
@@ -171,6 +170,7 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
     "Diary/2024-5-22-学习minio源码.md",
     "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
@@ -204,7 +204,6 @@
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/CICD/CICD.md",
     "02-Code/基础/Tool/Linux/linux.md",
-    "02-Code/实习/航天宏图.md",
     "02-Code/基础/CICD/Devops",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214327.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214252.png",
