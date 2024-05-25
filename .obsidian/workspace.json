@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md",
+                "file": "02-Code/实习/航天宏图.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md",
+                "file": "02-Code/实习/航天宏图.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md",
+                "file": "02-Code/实习/航天宏图.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Diary/2024-5-22-学习minio源码.md"
+                "file": "02-Code/实习/航天宏图.md"
               }
             }
           },
@@ -158,6 +158,7 @@
   "left-ribbon": {
     "hiddenItems": {
       "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-kanban:创建新看板": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
@@ -170,8 +171,8 @@
   },
   "active": "988b106534880c66",
   "lastOpenFiles": [
-    "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
     "Diary/2024-5-22-学习minio源码.md",
+    "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
     "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
     "Task/未命名看板.md",
