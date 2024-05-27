@@ -4,22 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "b90da2e47302ff1d",
+        "id": "fd0286c6a7330289",
         "type": "tabs",
         "children": [
           {
-            "id": "988b106534880c66",
+            "id": "59fee54228855ccd",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false
-                  ]
-                }
+                "file": "02-Code/入职必知必会/如何写一个接口.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -52,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "foreac",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -89,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md",
+                "file": "02-Code/入职必知必会/如何写一个接口.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md",
+                "file": "02-Code/入职必知必会/如何写一个接口.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -129,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md"
+                "file": "02-Code/入职必知必会/如何写一个接口.md"
               }
             }
           },
@@ -172,15 +170,18 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "988b106534880c66",
+  "active": "59fee54228855ccd",
   "lastOpenFiles": [
+    "02-Code/入职必知必会/动态sql的使用.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
+    "Task/2024-5-20-学习任务.md",
+    "setting_back/~$简历.docx",
     "Task/2024-3-14-技术学习大纲.md",
     "02-Code/实习/航天宏图.md",
     "Diary/2024-5-22-学习minio源码.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
     "Diary/2023-11-25-学习obsidian.md",
     "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
-    "Task/2024-5-20-学习任务.md",
     "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
@@ -206,14 +207,11 @@
     "02-Code/项目笔记/构建项目.md",
     "02-Code/项目笔记/党务修改.md",
     "02-Code/基础/CICD/K8s/K8s.md",
-    "02-Code/基础/CICD/Docker/Docker.md",
-    "02-Code/基础/CICD/CICD.md",
     "02-Code/基础/CICD/Devops",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214327.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214252.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214223.png",
     "02-Code/基础/CICD/K8s/assets",
-    "02-Code/基础/后端/Java/框架/Hibernate",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "02-Code/基础/后端/Java/Interview/assets/多线程和并发.png",
     "02-Code/基础/后端/Java/Interview/assets/java基础.png",

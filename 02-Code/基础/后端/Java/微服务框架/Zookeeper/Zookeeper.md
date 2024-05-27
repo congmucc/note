@@ -877,6 +877,28 @@ public static void main(String[] args) throws IOException, InterruptedException 
 
 
 
+## 常用命令
+
+```shell
+1. 创建节点：create /path data
+2. 创建临时节点：create -e /path data
+3. 创建顺序节点：create -s /path data
+4. 创建临时顺序节点：create -e -s /path data
+5. 获取节点数据：get /path
+6. 获取节点子节点列表：ls /path
+7. 更新节点数据：set /path data
+8. 删除节点：delete /path
+9. 删除节点及其子节点：deleteall /path
+10. 监听节点变化：get -w /path
+11. 查看节点状态：stat /path
+12. 查看节点ACL权限：getAcl /path
+13. 设置节点ACL权限：setAcl /path acl
+14. 查看节点子节点数量：count /path
+15. 查看节点子节点数量并监听变化：count -w /path
+```
+
+
+
 ### 事件监听机制
 
 **watcher概念**
