@@ -27,7 +27,29 @@
 - **需要高并发处理的键值对存储**：使用 `ConcurrentHashMap`。
 - **需要高并发处理的队列**：使用 `ConcurrentLinkedQueue` 或 `BlockingQueue` 实现。
 - **需要双端队列**：使用 `ConcurrentLinkedDeque`。
-- **需要简单的同步包装**：使用 `Collections.synchronizedList`，但要注意手动同步块。
+- **需要简单的同步包装**：使用 `Collections.synchronizedList`，但要注意手动同步块
+
+
+
+### ThreadLocal内存泄漏：
+
+key是弱引用，value是强引用。如果弱引用被回收了，此时value就是内存泄漏了。手动remove是一个手动将value进行清除，此时就不会发生内存泄露了。
+
+> 强引用：使用最普遍的引用，一个对象具有强引用，不会被垃圾器回收，当内存不足时，java虚拟机宁愿抛出作物使程序终止，也不回收对象。
+>
+> 如果想取消强引用，显示的将引用赋值为null，这样可以使JVM在合适的时间回收该对象。
+>
+> 弱引用：JVM进行垃圾回收时，无论内存是否充足，都会回收被弱引用相关联的对象。
+
+
+
+
+
+
+
+
+
+
 
 # 数据库
 

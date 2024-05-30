@@ -907,6 +907,8 @@ OK，现在无需记住IP地址也可以实现容器互联了。
 - 在自定义网络中，可以给容器起多个别名，默认的别名是容器名本身
 - 在同一个自定义网络中的容器，可以通过别名互相访问
 
+
+
 # 3.项目部署
 
 好了，我们已经熟悉了Docker的基本用法，接下来可以尝试部署项目了。
@@ -1240,6 +1242,120 @@ nginx               nginx               "/docker-entrypoint.…"   nginx        
 打开浏览器，访问：http://yourIp:8080
 
 
+
+
+
+## 3.4将镜像发布到私人仓库
+
+1. **创建目录**
+
+   配置Docker私有仓库：
+
+   - 创建一个用于存储仓库数据的目录，例如/data/docker-registry。
+   - 创建一个名为docker-compose.yml的文件，并在其中定义Docker私有仓库的配置。示例配置如下：
+
+   ```dockerfile
+   version: '3'
+   services:
+     registry:
+       container_name:docker-registry
+       image: registry:2
+       ports:
+         - 5000:5000
+       volumes:
+         - /data/docker-registry:/var/lib/registry
+   ```
+
+   使用命令
+
+   ```shell
+   docker compose [-f xxx.yml] up -d
+   ```
+
+   > 如果文件名字不是docker-compose.yml 那就使用括号里面得命令
+
+2. **设置私有仓库的用户名和密码**
+
+   1、使用httpd-tools软件包中的htpasswd工具来生成加密密码
+
+   ```shell
+   yum install httpd-tools
+   # 生成密码文件
+   htpasswd -Bc auth.htpasswd <用户名>
+   ```
+
+   > 这里是登录的用户名
+
+   2、访问方式：（第三方服务器）
+
+   ```shell
+   docker login 192.168.65.78:5000
+   ```
+
+   > 之后输入用户名和密码就行了。
+   >
+   > 端口是上面定义的镜像5000端口，ip是部署registry的服务器ip。
+
+   3、配置 Docker Daemon:（这个是需要在部署registry的服务器配的）
+
+   ```shell
+   vim /etc/docker/daemon.json
+   # 将<私有仓库地址〉替换为实际的私有仓库地址
+   
+   {
+   	"registry-mirrors": ["https://jbw52uwf.mirror.aliyuncs.com"],"insecure-registries": ["192.168.65.78:5000"]
+   }
+   ```
+
+   > 和上面的一样，自己的ip和端口
+
+   4、重启 Docker Daemon:
+
+   ```shell
+   systemctl daemon-reload && systemctl restart docker
+   
+   # 还需要重启registry服务
+   docker restart registry:2 # 这里镜像名字是上面设置的
+   ```
+
+3. **将镜像上传到私有仓库**
+
+   两种方式
+
+   > 这里都是第三方服务器下上传的
+   >
+   > - compose打包的时候就指定仓库地址
+   >
+   > - login然后再进行改名字提交
+
+   1、第一种compose打包的时候就指定仓库地址
+
+   ```shell
+   docker login 192.168.65.78:5000
+   
+   docker build -t 192.168.65.78:5000/mall-member:0.0.5 .
+   
+   docker push 192.168.65.78:5000/mall-member:0.0.5 
+   ```
+
+   
+
+   2、第二种然后再进行改名字提交
+
+   ```shell
+   docker login 192.168.65.78:5000
+   
+   
+   # 这里是将 server/security-auth-service:v1 改为192.168.65.78:5000/server/security-auth-service:v1
+   # 也就是将名字改为 ip:port/镜像名字:版本
+   docker tag server/security-auth-service:v1 192.168.65.78:5000/server/security-auth-service:v1
+   
+   
+   docker push 192.168.65.78:5000/server/security-auth-service:v1
+   
+   ```
+
+   
 
 
 

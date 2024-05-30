@@ -31,7 +31,7 @@ Kubernetes 为你提供了一个可弹性运行分布式系统的框架。 Kuber
 > 
 > - **Service** 是 Kubernetes 中的一种抽象，它定义了一个逻辑集合的 Pod，并提供了稳定的服务发现和负载均衡的方法。Kubernetes 中 Service 是 将运行在一个或一组 [Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 上的网络应用程序公开为网络服务的方法
 > 
-> - **Deployment** 是一种控制器，用于声明式地管理 Pod 的创建、更新和删除。 
+> - **Deployment** 是一种控制器，用于声明式地管理 Pod 的创建、更新和删除，使Pod拥有多副本，自愈，扩缩容等能力。
 > 
 > - **Pod** 是 Kubernetes 中的最小部署单元，它可以包含一个或多个紧密相关的容器。这些容器共享同一个网络命名空间，这意味着它们共享同一个 IP 地址和端口范围。Pod 保证了容器的运行环境，包括卷（volumes）、存储资源、网络配置等。
 
@@ -66,7 +66,7 @@ kubectl run nginx --image=daocloud.io/library/nginx:1.9.1 -n test
 
 ## 2.2 命令
 
-### 2.2.1 命令空间 `nameplace`
+### 2.2.1 nameplace
 
 查询所有的命名空间：
 
@@ -142,3 +142,7 @@ spec:
 > 创建一个命名为myapp的pod，里面有nginx和tomcat的docker容器
 >
 > 记得apply一下
+
+
+
+### 2.2.3 

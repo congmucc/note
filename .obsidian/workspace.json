@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "fd0286c6a7330289",
+        "id": "fef83590e5a3eda1",
         "type": "tabs",
         "children": [
           {
-            "id": "59fee54228855ccd",
+            "id": "144cfa48b6505b0a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/入职必知必会/如何写一个接口.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "foreac",
+                "query": "boolean",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/入职必知必会/如何写一个接口.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/入职必知必会/如何写一个接口.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/入职必知必会/如何写一个接口.md"
+                "file": "02-Code/基础/Tool/Linux/linux.md"
               }
             }
           },
@@ -170,23 +169,29 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "59fee54228855ccd",
+  "active": "144cfa48b6505b0a",
   "lastOpenFiles": [
-    "02-Code/入职必知必会/动态sql的使用.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
-    "Task/2024-5-20-学习任务.md",
-    "setting_back/~$简历.docx",
-    "Task/2024-3-14-技术学习大纲.md",
-    "02-Code/实习/航天宏图.md",
-    "Diary/2024-5-22-学习minio源码.md",
-    "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
-    "Diary/2023-11-25-学习obsidian.md",
-    "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
+    "Diary/未命名.md",
     "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎02.md",
+    "02-Code/基础/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
+    "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
+    "02-Code/实习/航天宏图.md",
+    "Task/2024-5-20-学习任务.md",
+    "Diary/2024-5-22-学习minio源码.md",
+    "Diary/2023-11-25-学习obsidian.md",
+    "Task/2024-3-14-技术学习大纲.md",
+    "02-Code/基础/后端/SQL/Mysql/Mysql.md",
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "02-Code/基础/后端/SQL/Redis/Redis导学.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/仿12306/仿12306.md",
+    "02-Code/入职必知必会/动态sql的使用.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
+    "setting_back/~$简历.docx",
+    "02-Code/基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
     "02-Code/基础/后端/Java/Interview/Interview.md",
     "02-Code/简历/简历/02简历讲解/02简历讲解.md",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
@@ -201,12 +206,6 @@
     "未命名.canvas",
     "02-Code/项目笔记/SpringBoot+vue分离式/p06_MyBatisPlus_Mysql.md",
     "02-Code/项目笔记/SpringBoot+vue分离式/p07_MyBatisPlus多表查询及分页查询.md",
-    "02-Code/项目笔记/后台管理系统项目总结/后台管理系统项目总结.md",
-    "02-Code/项目笔记/Java用法/Java用法.md",
-    "02-Code/项目笔记/前端项目笔记/前端项目笔记.md",
-    "02-Code/项目笔记/构建项目.md",
-    "02-Code/项目笔记/党务修改.md",
-    "02-Code/基础/CICD/K8s/K8s.md",
     "02-Code/基础/CICD/Devops",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214327.png",
     "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214252.png",
