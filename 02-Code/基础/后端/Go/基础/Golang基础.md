@@ -505,7 +505,7 @@ import "fmt"
 func main() {
 	//===> 第一种声明方式
 
-	//声明myMap1是一种map类型 key是string， value是string
+	//声明myMap1是一种map类型 key是括号的string， value是string
 	var myMap1 map[string]string
 	if myMap1 == nil {
 		fmt.Println("myMap1 是一个空map")
@@ -1346,7 +1346,7 @@ import (
 
 func main() {
 
-	/*
+
 		//用go创建承载一个形参为空，返回值为空的一个函数
 		go func() {
 			defer fmt.Println("A.defer")
@@ -1383,39 +1383,6 @@ func main() {
 
 ```go
 package main
-
-import (
-    "fmt"
-    "math"
-    "sync"
-)
-
-// 计算1000个数的和
-func compute(m *sync.Mutex, wg *sync.WaitGroup, s, e int, count *int) {
-    sum := 0
-    for i := s; i < e; i++ {
-        sum += i
-    }
-    m.Lock()
-    *count += sum
-    m.Unlock()
-    wg.Done()
-}
-
-func main() {
-
-    var m sync.Mutex
-    var wg sync.WaitGroup
-
-    var count int
-    wg.Add(1000)
-    for i := 0; i < 1000; i++ {
-        go compute(&m, &wg, i*1000+1, (i+1)*1000+1, &count)
-    }
-    wg.Wait()
-    fmt.Println(math.Sqrt(float64(count)))
-    return
-}package main
 
 import (
     "fmt"
@@ -1571,7 +1538,7 @@ func demo3() {
 func main() {
 
     // 要求创建的文件夹不存在,但是父目录必须存在
-	error := os.Mkdir("文件夹目录", os.ModeDir)   
+	error := os.Mkdir("文件夹目录", os.ModeDir)
 
     // 没有什么限制,父目录没有就帮忙创建
 	error = os.MkdirAll("文件夹目录", os.ModeDir) 
