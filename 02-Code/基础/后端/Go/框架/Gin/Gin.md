@@ -2012,3 +2012,62 @@ func (con ArticleController) Index(c *gin.Context) {
 一个分类下面有很多个文章，article_cate 和 article 之间是 1 对多的关系。 文章表中的 cate_id 保存着文章分类的 id。 
 
 如果我们想查询文章分类的时候获取分类下面的文章，这个时候就涉及到一对多的关联查询。
+
+**ArticleCate**
+
+```go
+package models
+
+type ArticleCate struct {
+    Id int `json:"id"` 
+    Title string `json:"title"` 
+    State int `json:"state"` 
+    Article []Article `gorm:"foreignKey:CateId"` 
+}
+
+func (ArticleCate) TableName() string {
+	return "article_cate"
+}
+```
+
+
+
+**Article**
+
+```go
+package models
+type Article struct {
+    Id int `json:"id"` 
+    Title string `json:"title"` 
+    Description int `json:"description"` 
+    CateId string `json:"cate_id"` 
+    State int `json:"state"` 
+}
+
+func (Article) TableName() string {
+	return "article"
+}
+```
+
+
+
+
+
+**1、查找所有分类以及分类下面的文章信息**
+
+```go
+func (con ArticleController) Index(c *gin.Context) {
+    var articleCateList []models.ArticleCate
+    models.DB.Preload("Article").Find(&articleCateList)
+    c.JSON(200, gin.H{ "result": articleCateList, })
+}
+```
+
+
+
+
+
+
+
+
+
