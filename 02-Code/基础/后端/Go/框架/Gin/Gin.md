@@ -1908,8 +1908,8 @@ func (con UserController) DeleteAll(c *gin.Context) {
 
 ```go
 func init() {
-    dsn :=
-    "root:123456@tcp(192.168.0.6:3306)/gin?charset=utf8mb4&parseTime=True&loc=Local" DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
+    dsn := "root:123456@tcp(192.168.0.6:3306)/gin?charset=utf8mb4&parseTime=True&loc=Local" 
+    DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
         QueryFields: true, 
     })
     // DB.Debug()
