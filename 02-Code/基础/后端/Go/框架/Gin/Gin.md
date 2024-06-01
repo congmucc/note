@@ -1904,5 +1904,38 @@ func (con UserController) DeleteAll(c *gin.Context) {
 }
 ```
 
+## 13.4、Gin GORM 查看执行的 sql
+
+```go
+func init() {
+    dsn :=
+    "root:123456@tcp(192.168.0.6:3306)/gin?charset=utf8mb4&parseTime=True&loc=Local" DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
+        QueryFields: true, 
+    })
+    // DB.Debug()
+    if err != nil {
+        fmt.Println(err)
+    }
+}
+```
+
+
+
+# 14、原生SQl和SQl生成器
+
+1、使用原生 sql 删除 user 表中的一条数
+
+```go
+result := models.DB.Exec("delete from user where id=?", 3)
+fmt.Println(result.RowsAffected)
+```
+
+2、使用原生 sql 修改 user 表中的一条数据
+
+```go
+result := models.DB.Exec("update user set username=? where id=2", "哈哈")
+fmt.Println(result.RowsAffected)
+```
+
 
 
