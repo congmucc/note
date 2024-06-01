@@ -1941,3 +1941,58 @@ fmt.Println(result.RowsAffected)
 
 
 
+# 15、Gin 中使用 GORM 实现表关联查询
+
+## 15.1、一对一
+
+如上图所示，一个文章只有一个分类，article 和 article_cate 之间是 1 对 1 的关系。 文章表中的 cate_id 保存着文章分类的 id。 如果我们想查询文章的时候同时获取文章分类，就涉及到 1 对 1 的关联查询。
+
+**foreignkey** 指定当前表的外键、**references** 指定关联表中和外键关联的字段
+
+**Article**
+
+```go
+package models
+
+type Article struct {
+    Id int `json:"id"` 
+    Title string `json:"title"` 
+    Description int `json:"description"` 
+    CateId string `json:"cate_id"` 
+    State int `json:"state"` 
+    ArticleCate ArticleCate `gorm:"foreignKey:CateId;references:Id"` 
+}
+
+func (Article) TableName() string {
+    return "article"
+}
+```
+
+**ArticleCate**
+
+```go
+package models
+
+//ArticleCate 的结构体
+type ArticleCate struct {
+    Id int `json:"id"` 
+    Title string `json:"title"` 
+    State int `json:"state"` 
+}
+
+func (ArticleCate) TableName() string {
+	return "article_cate"
+}
+```
+
+**1、查询所有文章以及文章对应的分类信息：**
+
+```go
+func (con ArticleController) Index(c *gin.Context) {
+    var articleList []models.Article
+    models.DB.Preload("ArticleCate").Limit(2).Find(&articleList)
+    c.JSON(200, gin.H{ "result": articleList, })
+}
+```
+
+**注意**：Preload("ArticleCate")里面的 ArticleCate 为 Article struct 中定义的属性 ArticleCate
