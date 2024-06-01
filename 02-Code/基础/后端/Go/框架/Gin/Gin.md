@@ -1996,3 +1996,19 @@ func (con ArticleController) Index(c *gin.Context) {
 ```
 
 **注意**：Preload("ArticleCate")里面的 ArticleCate 为 Article struct 中定义的属性 ArticleCate
+
+
+
+
+
+## 15.2、一对多
+
+1 对多在实际项目中用的非常多 
+
+比如一个点餐系统：有菜品分类、有菜品。 菜品分类和菜品之间就是一对多的关系 
+
+订单表和订单商品表：订单表和订单商品表之间也是一对多的关系 
+
+一个分类下面有很多个文章，article_cate 和 article 之间是 1 对多的关系。 文章表中的 cate_id 保存着文章分类的 id。 
+
+如果我们想查询文章分类的时候获取分类下面的文章，这个时候就涉及到一对多的关联查询。
