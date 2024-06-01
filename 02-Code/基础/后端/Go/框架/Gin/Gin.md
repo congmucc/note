@@ -1935,9 +1935,13 @@ fmt.Println(result.RowsAffected)
 2、使用原生 sql 修改 user 表中的一条数据
 
 ```go
-result := models.DB.Exec("update user set username=? where id=2", "哈哈")
+result := models.DB.Raw("update user set username=? where id=2", "哈哈")
 fmt.Println(result.RowsAffected)
 ```
+
+
+
+
 
 
 
