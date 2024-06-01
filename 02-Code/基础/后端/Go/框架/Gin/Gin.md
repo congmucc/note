@@ -1947,8 +1947,6 @@ fmt.Println(result.RowsAffected)
 
 如上图所示，一个文章只有一个分类，article 和 article_cate 之间是 1 对 1 的关系。 文章表中的 cate_id 保存着文章分类的 id。 如果我们想查询文章的时候同时获取文章分类，就涉及到 1 对 1 的关联查询。
 
-**foreignkey** 指定当前表的外键、**references** 指定关联表中和外键关联的字段
-
 **Article**
 
 ```go
@@ -1967,6 +1965,10 @@ func (Article) TableName() string {
     return "article"
 }
 ```
+
+> **foreignkey** 指定当前表的外键、**references** 指定关联表中和外键关联的字段
+>
+> 上面的意思是Article表的外键是CateId，对应子表ArticleCate的字段是Id
 
 **ArticleCate**
 
@@ -2080,4 +2082,280 @@ unc (con ArticleController) Index(c *gin.Context) {
 
 
 
+
+## 15.3、多对多
+
+**1、定义学生 课程 学生课程表 model 如果想根据课程获取选学本门课程的学生，这个时候就在 Lesson 里面关联 Student**
+
+**Lesson**
+
+```go
+package models
+type Lesson struct {
+    Id int `json:"id"` 
+    Name string `json:"name"` 
+    Student []*Student `gorm:"many2many:lesson_student"` 
+}
+func (Lesson) TableName() string {
+	return "lesson"
+}
+```
+
+**Student**
+
+```go
+package models
+type Student struct {
+    Id int
+    Number string
+    Password string
+    ClassId int
+    Name string
+    Lesson []*Lesson `gorm:"many2many:lesson_student"` 
+}
+func (Student) TableName() string {
+    return "student"
+}
+```
+
+**LessonStudent**
+
+```go
+package models
+type LessonStudent struct {
+    LessonId int
+    StudentId int
+}
+func (LessonStudent) TableName() string {
+    return "lesson_student"
+}
+```
+
+**2、获取学生信息 以及课程信息**
+
+```go
+studentList := []models.Student{}
+models.DB.Find(&studentList)
+c.JSON(http.StatusOK, studentList)
+lessonList := []models.Lesson{}
+models.DB.Find(&lessonList)
+c.JSON(http.StatusOK, 
+```
+
+**3、查询学生信息的时候获取学生的选课信息**
+
+```go
+studentList := []models.Student{}
+models.DB.Preload("Lesson").Find(&studentList)
+c.JSON(http.StatusOK, studentList)
+```
+
+**4、查询张三选修了哪些课程**
+
+```go
+studentList := []models.Student{}
+models.DB.Preload("Lesson").Where("id=1").Find(&studentList)
+c.JSON(http.StatusOK, studentList)
+```
+
+# 16、GORM 中使用事务
+
+## 16.1、禁用默认事务
+
+为了确保数据一致性，GORM 会在事务里执行写入操作（创建、更新、删除）。如果没有 这方面的要求，您可以在初始化时禁用它，这将获得大约 30%+ 性能提升
+
+```go
+func init() {
+    dsn := "root:123456@tcp(192.168.0.6:3306)/gin?charset=utf8mb4&parseTime=True&loc=Local"
+    DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
+        SkipDefaultTransaction: true, 
+})
+    DB.Debug()
+    if err != nil {
+        fmt.Println(err)
+    }
+}
+```
+
+> `SkipDefaultTransaction: true,`
+
+GORM 默认会将单个的 create, update, delete 操作封装在事务内进行处理，以确保数据的完 整性。
+
+如果你想把多个 create, update, delete 操作作为一个原子操作，Transaction 就是用来完成 这个的。
+
+
+
+## 16.2、事务
+
+**1、事务执行流程**
+
+```go
+db.Transaction(func(tx *gorm.DB) error {
+    // 在事务中执行一些 db 操作（从这里开始，您应该使用 'tx' 而不是 'db'）
+    if err := tx.Create(&Animal{Name: "Giraffe"}).Error; err != nil {
+        // 返回任何错误都会回滚事务
+        return er
+    }
+    if err := tx.Create(&Animal{Name: "Lion"}).Error; err != nil {
+        return err
+    }
+    // 返回 nil 提交事务
+    return nil
+})
+```
+
+**2、事务（手动控制）**
+
+```go
+// 开启事务
+tx := db.Begin()
+// 在事务中做一些数据库操作 (这里应该使用 'tx' ，而不是 'db')
+tx.Create(...)
+// ... // 有错误时，手动调用事务的 Rollback()
+tx.Rollback()
+// 无错误时，手动调用事务的 Commit()
+tx.Commit()
+```
+
+
+
+```go
+func (con TransitionController) Index(c *gin.Context) {
+    tx := models.DB.Begin()
+    defer func() {
+        if r := recover(); r != nil {
+            tx.Rollback()
+            con.error(c)
+        }
+    }()
+    
+    if err := tx.Error; err != nil {
+        fmt.Println(err)
+        con.error(c)
+    }
+    
+    // 张三账户减去 100
+    u1 := models.Bank{Id: 1}
+    tx.Find(&u1)
+    u1.Balance = u1.Balance - 100
+    if err := tx.Save(&u1).Error; err != nil {
+        tx.Rollback()
+        con.error(c)
+    }
+    // panic("遇到了错误")
+    // 李四账户增加 100
+    u2 := models.Bank{Id: 2}
+    tx.Find(&u2)
+    u2.Balance = u2.Balance + 100
+    // panic("失败")
+    if err := tx.Save(&u2).Error; err != nil {
+        tx.Rollback()
+        con.error(c)
+    }
+    tx.Commit()
+    con.success(c)
+}
+```
+
+# 17、Gin 中使用 go-ini 加载.ini 配置文件
+
+## 17.1、go-ini 介绍 
+
+go-ini 官方介绍，go-ini 是地表 最强大、最方便 和 最流行 的 Go 语言 INI 文件操作库。 
+
+Github 地址：https://github.com/go-ini/ini 
+
+官方文档:https://ini.unknwon.io/
+
+## 17.2、go-ini 使用
+
+1、新建 conf/app.ini
+
+现在，我们编辑 my.ini 文件并输入以下内容
+
+```go
+app_name = itying gin
+# possible values: DEBUG, INFO, WARNING, ERROR, FATAL
+log_level = DEBUG
+[mysql]
+ip = 192.168.0.6
+port = 3306
+user = root
+password = 123456
+database = gin
+[redis]
+ip = 127.0.0.1
+port = 637
+```
+
+很好，接下来我们需要编写 main.go 文件来操作刚才创建的配置
+
+```go
+package main
+
+import ( 
+    "fmt"
+    "os"
+    "gopkg.in/ini.v1"
+)
+
+func main() {
+    cfg, err := ini.Load("./conf/app.ini")
+    if err != nil {
+        fmt.Printf("Fail to read file: %v", err)
+        os.Exit(1)
+    }
+    
+    // 典型读取操作，默认分区可以使用空字符串表示
+    fmt.Println("App Mode:", cfg.Section("").Key("app_name").String())
+    fmt.Println("Data Path:", cfg.Section("mysql").Key("ip").String())
+    // 差不多了，修改某个值然后进行保存
+    cfg.Section("").Key("app_name").SetValue("itying gin")
+    cfg.SaveTo("./conf/app.ini")
+}
+
+
+```
+
+
+
+## 17.3、从.ini 中读取 mysql 配置
+
+```go
+package models
+//https://gorm.io/zh_CN/docs/connecting_to_the_database.html
+
+import ( 
+    "fmt"
+    "os"
+    "gopkg.in/ini.v1"
+    "gorm.io/driver/mysql"
+    "gorm.io/gorm"
+)
+
+var DB *gorm.DB
+var err error
+
+func init() {
+    cfg, err := ini.Load("./conf/app.ini")
+    if err != nil {
+        fmt.Printf("Fail to read file: %v", err)
+        os.Exit(1)
+    }
+    ip := cfg.Section("mysql").Key("ip").String()
+    port := cfg.Section("mysql").Key("port").String()
+    user := cfg.Section("mysql").Key("user").String()
+    password := cfg.Section("mysql").Key("password").String()
+    database := cfg.Section("mysql").Key("database").String()
+    dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local ", user, password, ip, port, database)
+    fmt.Println(dsn)
+    DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
+        QueryFields: true, //打印 sql
+        //SkipDefaultTransaction: true, //禁用事务
+    })
+    if err != nil {
+        fmt.Println(err)
+    }
+}
+```
 
