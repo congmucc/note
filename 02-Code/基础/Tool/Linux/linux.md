@@ -296,7 +296,13 @@ curl -X POST http://192.168.1.1:8083/kfpt/openapi/getApiToken
 curl http://192.168.1.1/OneMapServer/rest/services/sat_2013/MapServer
 ```
 
+```sh
+curl -X POST http://localhost:8080/upload \
+  -F "file=@/Users/appleboy/test.zip" \
+  -H "Content-Type: multipart/form-data"
+```
 
+> 这个可以上传一个文件
 
 ```shell
 ping 192.168.1.1

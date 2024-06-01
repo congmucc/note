@@ -745,7 +745,7 @@ func main() {
 
 
 
-### 3.1.3 init函数与import导包
+### 3.1.3 import导包与init函数
 
 ![image-20240222213520795](./assets/image-20240222213520795.png)
 
@@ -778,7 +778,38 @@ func main() {
 >
 > 4、前面加字符串是起别名
 
+**init函数：**
 
+> init函数的主要特点和用途包括：
+>
+> - 自动执行：无需显式调用，当包被导入时，其所有的init函数会自动执行。
+> - 初始化顺序：在程序启动时，Go会按照依赖关系顺序调用所有包中的init函数。首先调用依赖包的init，然后是当前包的init，这保证了如果包A依赖于包B，B的init会在A的init之前执行。
+> - 常用于：设置默认配置、注册全局变量、打开数据库连接、验证环境变量、初始化日志系统等一次性且在整个程序生命周期中只需要执行一次的操作。
+> - 不可见性：init函数对包外是不可见的，不能被外部代码直接调用。
+
+入在导入数据库的时候
+
+```go
+package models
+import (
+  "gorm.io/driver/mysql"
+  "gorm.io/gorm"
+)
+
+var DB *gorm.DB
+var err error
+
+func init() {
+  // 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
+  dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+  DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+  if err != nil {
+	fmt.Println(err)
+  }
+}
+```
+
+> 这样就直接自动连接数据库了，使用`var DB *gorm.DB`是为了让db导出
 
 
 
