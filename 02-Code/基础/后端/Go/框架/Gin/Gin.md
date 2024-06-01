@@ -1888,3 +1888,21 @@ func (con UserController) Delete(c *gin.Context) {
 }
 ```
 
+5、批量删除
+
+```go
+db.Where("email LIKE ?", "%jinzhu%").Delete(Email{})
+// DELETE from emails where email LIKE "%jinzhu%";
+
+db.Delete(Email{}, "email LIKE ?", "%jinzhu%")
+// DELETE from emails where email LIKE "%jinzhu%";
+
+func (con UserController) DeleteAll(c *gin.Context) {
+    user := models.User{}
+    models.DB.Where("id>9").Delete(&user)
+    c.String(http.StatusOK, "DeleteAll")
+}
+```
+
+
+
