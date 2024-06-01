@@ -2065,6 +2065,16 @@ func (con ArticleController) Index(c *gin.Context) {
 
 
 
+**2、查找所有分类以及分类下面的文章信息 指定条件**
+
+```go
+unc (con ArticleController) Index(c *gin.Context) {
+    var articleCateList []models.ArticleCate
+    models.DB.Preload("Article").Where("id>0").Offset(1).Limit(1).Find(&articleCateList)
+    c.JSON(200, gin.H{ "result": articleCateList, })
+}
+```
+
 
 
 
