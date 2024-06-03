@@ -73,7 +73,7 @@ etcdctl get --prefix name
 etcdctl del name
 // 监听键的变化
 etcdctl watch name
-CopyErrorOK!
+
 ```
 
 ## 参考文档
@@ -88,7 +88,7 @@ etcdctl指令 https://www.jianshu.com/p/67cbef492812
 
 
 
-# 微服务demo
+# 4、微服务demo
 
 这个demo是一个用户微服务，一个视频微服务
 
@@ -96,7 +96,7 @@ etcdctl指令 https://www.jianshu.com/p/67cbef492812
 
 那么用户微服务就要提供一个方法，根据用户id返回用户信息
 
-## 1 编写rpc的proto文件
+## 4.1、编写rpc的proto文件
 
 > 注意路径问题，都是在最外层目录下执行的
 >
@@ -138,3 +138,164 @@ service User {
 执行命令：`go mod tidy`安装全部依赖
 
 执行命令：`go run user.go`运行脚本，注意路径，这里应该使用`go run user/rpc/user.go`
+
+```shell
+go run user\rpc\user.go -f user\rpc\etc\user.yaml
+```
+
+> 这里面有可能遇见配置文件找不到，这里可以使用-f进行指定配置文件，或者进入go文件目录下进行启动。
+
+
+
+## 4.2、编写api文件
+
+video/api/video.api
+
+```go
+type (
+	VideoReq {
+		Id string `path:"id"`
+	}
+	VideoRes {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+)
+
+service video {
+	@handler getVideo
+	get /api/videos/:id (VideoReq) returns (VideoRes)
+}
+
+
+```
+
+> 相关文档请看：[api 语法 | go-zero Documentation](https://go-zero.dev/docs/tasks/dsl/api)
+
+**运行**
+
+```shell
+goctl api go -api video/api/video.api -dir video/api/
+```
+
+> 相关文档请看：[goctl api | go-zero Documentation](https://go-zero.dev/docs/tutorials/cli/api)
+
+
+
+
+
+1. **添加user rpc配置**
+
+因为要在video里面调用user的rpc服务
+
+video/api/internal/config/config.go
+
+```go
+package config
+
+import (
+  "github.com/zeromicro/go-zero/rest"
+  "github.com/zeromicro/go-zero/zrpc"
+)
+
+type Config struct {
+  rest.RestConf
+  UserRpc zrpc.RpcClientConf
+}
+
+```
+
+- **完善服务依赖**
+
+video/api/internal/svc/servicecontext.go
+
+```go
+package svc
+
+import (
+  "github.com/zeromicro/go-zero/zrpc"
+  "go_test/user/rpc/userclient"
+  "go_test/video/api/internal/config"
+)
+
+type ServiceContext struct {
+  Config  config.Config
+  UserRpc userclient.User
+}
+
+func NewServiceContext(c config.Config) *ServiceContext {
+  return &ServiceContext{
+    Config:  c,
+    UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
+  }
+}
+
+```
+
+> 这里添加的为11行：`  UserRpc userclient.User`和17，添加的目的是通过配置文件找到etcd的ip，其中这个类型是编译器自动生成的。然后之后进行配置，如yaml，和服务依赖，都需要添加。
+
+- **添加yaml配置**
+
+video/api/etc/video.yaml
+
+```YAML
+Name: video
+Host: 0.0.0.0
+Port: 8888
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+```
+
+- **完善服务依赖**
+
+video/api/internal/logic/getvideologic.go
+
+```go
+func (l *GetVideoLogic) GetVideo(req *types.VideoReq) (resp *types.VideoRes, err error) {
+  // todo: add your logic here and delete this line
+  user1, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
+    Id: "1",
+  })
+  if err != nil {
+    return nil, err
+  }
+  return &types.VideoRes{
+    Id:   req.Id,
+    Name: user1.Name,
+  }, nil
+}
+
+```
+
+
+
+**运行**
+
+`go mod tidy`
+
+`go run video.go`
+
+
+
+
+
+## 知识回顾
+
+回顾一下，我们做了哪些操作
+
+1. 编写用户微服务的rpc服务的proto文件
+2. 生成代码
+3. 添加自己的逻辑
+4. 编写视频微服务的api服务的api文件
+5. 生成代码
+6. 完善依赖，配置
+7. 添加自己的逻辑
+
+> 这就是使用go-zero的好处，让我们专注于业务的开发
+
+生成并修改之后的目录
+
+![img](./assets/20231026152242.png)
