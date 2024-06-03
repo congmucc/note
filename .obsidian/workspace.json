@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md",
+                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/SQL/Redis/Redis.md"
+                "file": "02-Code/基础/Tool/Linux/linux.md"
               }
             }
           },
@@ -153,8 +153,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -172,6 +171,8 @@
   },
   "active": "144cfa48b6505b0a",
   "lastOpenFiles": [
+    "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
+    "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/简历/简历/~WRL0005.tmp",
     "02-Code/简历/简历/~WRD0004.tmp",
     "02-Code/简历/简历/~WRL0003.tmp",
@@ -179,7 +180,6 @@
     "02-Code/简历/简历/~WRL0001.tmp",
     "02-Code/简历/简历/~WRD0000.tmp",
     "02-Code/简历/简历/~$后端简历.docx",
-    "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "02-Code/基础/Tool/Linux/linux.md",
     "Diary/未命名.md",
