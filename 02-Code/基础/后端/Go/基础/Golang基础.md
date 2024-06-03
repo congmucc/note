@@ -104,7 +104,86 @@ func main() {
 }
 ```
 
-## 1.6 Go与Java对比
+## 1.6 安装与配置
+
+下载：
+
+[The Go Programming Language](https://go.dev/)
+
+配置：
+
+这里面需要配置四个环境变量-go会自动配置一个，所以需要修改一下，一般在用户
+
+1、GOROOT（这个只需要有即可，不需要配置）
+
+2、GOPATH（配置这个是为了配置go env中的gopath，go会自动读取环境变量中名字为GOPATH的内容为go env的gopath）
+
+3、GOPATH\bin（配置这个和第一个一样）
+
+4、GOROOT\bin
+
+
+
+[golang环境详细安装、配置_golang安装-CSDN博客](https://blog.csdn.net/qq_44830881/article/details/123457805)
+
+
+
+主要是第三个不要忘了
+
+GOPATH如果是自己创建的新的最好先创建目录，1.3 项目管理这里面有GOPATH目录的子文件夹，这里需要注意的是，bin之所以加在环境目录是因为在使用go install的时候，系统会自动将下载之后的文件编译成功的exe执行文件放入bin中。
+
+
+
+```shell
+#开启mod模式（项目管理需要用到）
+go env -w GO111MODULE=on
+#重新设置成七牛镜像源（推荐）或阿里镜像源（用原有的会比较慢）
+go env -w GOPROXY=https://goproxy.cn,direct
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy
+
+#关闭包的MD5校验
+go env -w GOSUMDB=off
+
+#查看环境变量
+go env
+```
+
+
+
+
+
+运行文件
+
+新建main.go
+
+```go
+package main
+func main() {}
+```
+
+
+
+```go
+go mod init 项目名字
+```
+
+
+
+```go
+go mod tidy
+```
+
+
+
+```go
+go run mian.go
+```
+
+
+
+
+
+## 1.7 Go与Java对比
 
 | #                         | Java                                                         | golang                                                       |
 | :------------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -1719,5 +1798,16 @@ func main() {
 
 
 # 6 GoModels
+
+| 命令            | 作用                                          |
+| --------------- | --------------------------------------------- |
+| go mod download | 下载依赖包到本地 (默认为 GOPATH/pkg/mod 目录) |
+| go mod edit     | 编辑 go.mod 文件                              |
+| go mod graph    | 打印模块依赖图                                |
+| go mod init     | 初始化当前文件夹，创建 go.mod 文件            |
+| go mod tidy     | 增加缺少的包，删除无用的包                    |
+| go mod vendor   | 将依赖复制到 vendor 目录下                    |
+| go mod verify   | 校验依赖                                      |
+| go mod why      | 解释为什么需要依赖                            |
 
 ![image-20240224234247758](./assets/image-20240224234247758.png)
