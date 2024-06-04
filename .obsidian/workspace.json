@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "fef83590e5a3eda1",
+        "id": "4a1f144befe504ae",
         "type": "tabs",
         "children": [
           {
-            "id": "144cfa48b6505b0a",
+            "id": "1984e503fe90a724",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "02-Code/基础/Tool/Linux/linux.md"
-              }
+              "state": {}
             }
           },
           {
@@ -169,8 +160,10 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "144cfa48b6505b0a",
+  "active": "1984e503fe90a724",
   "lastOpenFiles": [
+    "02-Code/基础/区块链/Interview/Interview.md",
+    "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/简历/简历/~WRL0005.tmp",
@@ -181,7 +174,6 @@
     "02-Code/简历/简历/~WRD0000.tmp",
     "02-Code/简历/简历/~$后端简历.docx",
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
-    "02-Code/基础/Tool/Linux/linux.md",
     "Diary/未命名.md",
     "Task/月看板.md",
     "Task/软件工程作业.md",
@@ -218,7 +210,6 @@
     "02-Code/入职必知必会/图片/未命名文件.png",
     "02-Code/入职必知必会/图片/未命名文件 (3).png",
     "02-Code/入职必知必会/图片/未命名文件 (1).png",
-    "02-Code/入职必知必会/图片/开发流程.png",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
   ]

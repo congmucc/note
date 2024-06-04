@@ -302,7 +302,7 @@ func (l *GetVideoLogic) GetVideo(req *types.VideoReq) (resp *types.VideoRes, err
 
 
 
-# 响应封装
+# 5、响应封装
 
 不把code，data，msg写在api里面，我们通过封装统一响应
 
@@ -329,7 +329,7 @@ service users {
 }
 
 // goctl api go -api v1.api -dir .
-CopyErrorOK!
+
 ```
 
 在common/response/enter.go中
@@ -372,15 +372,17 @@ func Response(r *http.Request, w http.ResponseWriter, resp interface{}, err erro
   })
 
 }
-CopyErrorOK!
+
 ```
+
+
 
 修改一下handler的响应逻辑
 
 ```go
 l := logic.NewLoginLogic(r.Context(), svcCtx)
 resp, err := l.Login(&req)
-response.Response(r, w, resp, err)CopyErrorOK!
+response.Response(r, w, resp, err)
 ```
 
 然后完善逻辑即可
@@ -391,10 +393,10 @@ func (l *LoginLogic) Login(req *types.LoginRequest) (resp string, err error) {
   fmt.Println(req.UserName, req.Password)
   return "xxxx.xxxx.xxx", nil
 }
-CopyErrorOK!
+
 ```
 
-## 模板定制化
+## 5.1、板定制化
 
 当然官方提供了修改模板的方式，避免每次生成都要去改
 
@@ -405,7 +407,7 @@ https://go-zero.dev/docs/tutorials/customization/template
 如果没有就先用这个命令生成
 
 ```go
-goctl template initCopyErrorOK!
+goctl template init
 ```
 
 修改为：
@@ -433,10 +435,10 @@ func {{.HandlerName}}(svcCtx *svc.ServiceContext) http.HandlerFunc {
         {{if .HasResp}}response.Response(r, w, resp, err){{else}}response.Response(r, w, nil, err){{end}}
 
     }
-}CopyErrorOK!
+}
 ```
 
-# api前缀
+# 6、api前缀
 
 对于用户服务而言，api的前缀都是 /api/users
 
@@ -451,10 +453,10 @@ service users {
     @handler userInfo
     get /info returns (UserInfoResponse)
 }
-CopyErrorOK!
+
 ```
 
-# jwt及验证
+# 7、jwt及验证
 
 ```go
 type LoginRequest {
@@ -484,7 +486,7 @@ service users {
 service users {
   @handler userInfo
   get /info returns (UserInfoResponse)
-}CopyErrorOK!
+}
 ```
 
 转换之后，修改配置文件
@@ -497,7 +499,7 @@ Host: 0.0.0.0
 Port: 8888
 Auth:
   AccessSecret: duerueudfnd235sdh
-  AccessExpire: 3600CopyErrorOK!
+  AccessExpire: 3600
 ```
 
 jwt公共代码
@@ -551,7 +553,7 @@ func ParseToken(tokenStr string, accessSecret string, expires int64) (*CustomCla
   return nil, errors.New("invalid token")
 }
 
-CopyErrorOK!
+
 ```
 
 在登录成功之后签发jwt
@@ -573,7 +575,7 @@ func (l *LoginLogic) Login(req *types.LoginRequest) (resp string, err error) {
   return token, err
 }
 
-CopyErrorOK!
+
 ```
 
 然后在userinfologic里面加上必要的逻辑
@@ -593,7 +595,7 @@ func (l *UserInfoLogic) UserInfo() (resp *types.UserInfoResponse, err error) {
   }, nil
 }
 
-CopyErrorOK!
+
 ```
 
 userinfo这个接口就已经自动加上jwt的验证了
@@ -603,7 +605,7 @@ userinfo这个接口就已经自动加上jwt的验证了
 ```go
 headers:{
   Authorization: "Bearer token"
-}CopyErrorOK!
+}
 ```
 
 没有通过jwt的响应是401，这个需要留意一下
@@ -634,10 +636,14 @@ func JwtUnauthorizedResult(w http.ResponseWriter, r *http.Request, err error) {
   fmt.Println(err) // 具体的错误，没带token，token过期？伪造token？
   httpx.WriteJson(w, http.StatusOK, response.Body{10087, "鉴权失败", nil})
 }
-CopyErrorOK!
+
 ```
 
-# 生成api文档
+> 这里就是添加了一个回调函数，其中添加的为18-21，回调函数放在第7行
+
+
+
+# 8、生成api文档
 
 后端对外的api，肯定要和前端进行对接
 
@@ -646,7 +652,7 @@ CopyErrorOK!
 1. 安装goctl-swagger
 
 ```go
-go install github.com/zeromicro/goctl-swagger@latestCopyErrorOK!
+go install github.com/zeromicro/goctl-swagger@latest
 ```
 
 1. 生成app.json
@@ -654,14 +660,14 @@ go install github.com/zeromicro/goctl-swagger@latestCopyErrorOK!
 如果没有doc目录，需要创建
 
 ```go
-goctl api plugin -plugin goctl-swagger="swagger -filename app.json -host localhost:8888 -basepath /" -api v1.api -dir ./docCopyErrorOK!
+goctl api plugin -plugin goctl-swagger="swagger -filename app.json -host localhost:8888 -basepath /" -api v1.api -dir ./doc
 ```
 
 1. 使用docker，查看这个swagger页面
 
 ```go
 docker run -d --name swag -p 8087:8080 -e SWAGGER_JSON=/opt/app.json -v D:\IT\go_project3\go_test\v1\api\doc\:/opt swaggerapi/swagger-ui
-CopyErrorOK!
+
 ```
 
 可以再完善下api信息
@@ -688,7 +694,7 @@ service users {
   )
   @handler userInfo
   get /info returns (UserInfoResponse)
-}CopyErrorOK!
+}
 ```
 
 改为再重新生成一下 json
@@ -702,3 +708,637 @@ service users {
 团队项目的话，也可以用apifox
 
 所以，个人用swagger的话，凑活着用也不是不行
+
+# 9、连接数据库
+
+## 9.1、go-zero原生操作mysql
+
+v1/model/user.sql
+
+```sql
+CREATE TABLE user
+(
+    id        bigint AUTO_INCREMENT,
+    username  varchar(36) NOT NULL,
+    password  varchar(64) default '',
+    UNIQUE name_index (username),
+    PRIMARY KEY (id)
+) ENGINE = InnoDB COLLATE utf8mb4_general_ci;
+```
+
+生成go代码
+
+```go
+goctl model mysql ddl --src user.sql --dir .
+```
+
+生成的go代码，自动为我们生成了增删改查的代码
+
+我们如何使用呢？
+
+### 9.1.1、代码使用
+
+在config里面写上mysql配置
+
+```go
+package config
+
+import "github.com/zeromicro/go-zero/rest"
+
+type Config struct {
+  rest.RestConf
+  Mysql struct {
+    DataSource string
+  }
+  Auth struct {
+    AccessSecret string
+    AccessExpire int64
+  }
+}
+
+```
+
+配置文件
+
+```go
+Name: users
+Host: 0.0.0.0
+Port: 8888
+Mysql:
+  DataSource: root:root@tcp(127.0.0.1:3306)/zero_db?charset=utf8mb4&parseTime=True&loc=Local
+Auth:
+  AccessSecret: dfff1234
+  AccessExpire: 3600
+```
+
+先在依赖注入的地方创建连接
+
+v1/api/internal/svc/servicecontext.go
+
+```go
+package svc
+
+import (
+  "github.com/zeromicro/go-zero/core/stores/sqlx"
+  "go_test/v1/api/internal/config"
+  "go_test/v1/model"
+)
+
+type ServiceContext struct {
+  Config     config.Config
+  UsersModel model.UserModel
+}
+
+func NewServiceContext(c config.Config) *ServiceContext {
+  mysqlConn := sqlx.NewMysql(c.Mysql.DataSource)
+  return &ServiceContext{
+    Config:     c,
+    UsersModel: model.NewUserModel(mysqlConn),
+  }
+}
+
+```
+
+> 为了简单，我就直接在登录逻辑里面，写逻辑了
+
+```go
+func (l *LoginLogic) Login(req *types.LoginRequest) (resp string, err error) {
+  // 增
+  l.svcCtx.UsersModel.Insert(context.Background(), &model.User{
+    Username: "枫枫",
+    Password: "123456",
+  })
+
+  // 查
+  user, err := l.svcCtx.UsersModel.FindOne(context.Background(), 1)
+  fmt.Println(user, err)
+  // 查
+  user, err = l.svcCtx.UsersModel.FindOneByUsername(context.Background(), "枫枫")
+  fmt.Println(user, err)
+
+  // 改
+  l.svcCtx.UsersModel.Update(context.Background(), &model.User{
+    Username: "枫枫1",
+    Password: "1234567",
+    Id:       1,
+  })
+  user, err = l.svcCtx.UsersModel.FindOne(context.Background(), 1)
+  fmt.Println(user, err)
+  // 删
+  l.svcCtx.UsersModel.Delete(context.Background(), 1)
+  user, err = l.svcCtx.UsersModel.FindOne(context.Background(), 1)
+  fmt.Println(user, err)
+  return
+}
+```
+
+## 9.2、结合gorm
+
+以上情况，差不多是直接使用原生sql进行查询的
+
+其实大部分场景，结合gorm会更加高效
+
+当然也可以使用其他的orm
+
+直接编写model文件
+
+因为直接编写sql文件再转换，会有些地方有问题
+
+```go
+package model
+
+import "gorm.io/gorm"
+
+type UserModel struct {
+  gorm.Model
+  Username string `gorm:"size:32" json:"username"`
+  Password string `gorm:"size:64" json:"password"`
+}
+
+```
+
+在common里面写上gorm的连接语句
+
+common/init_db/init_gorm.go
+
+```go
+package init_db
+
+import (
+  "fmt"
+  "gorm.io/driver/mysql"
+  "gorm.io/gorm"
+)
+
+// InitGorm gorm初始化
+func InitGorm(MysqlDataSource string) *gorm.DB {
+  db, err := gorm.Open(mysql.Open(MysqlDataSource), &gorm.Config{})
+  if err != nil {
+    panic("连接mysql数据库失败, error=" + err.Error())
+  } else {
+    fmt.Println("连接mysql数据库成功")
+  }
+  return db
+}
+
+```
+
+然后在context里面进行注入
+
+```go
+package svc
+
+import (
+  "go_test/common/init_db"
+  "go_test/v1/api/internal/config"
+  "go_test/v1/model"
+  "gorm.io/gorm"
+)
+
+type ServiceContext struct {
+  Config config.Config
+  DB     *gorm.DB
+}
+
+func NewServiceContext(c config.Config) *ServiceContext {
+  mysqlDb := init_db.InitGorm(c.Mysql.DataSource)
+  mysqlDb.AutoMigrate(&model.User{})
+  return &ServiceContext{
+    Config: c,
+    DB:     mysqlDb,
+  }
+}
+
+```
+
+使用就很简单了，和gorm是一模一样的
+
+```go
+func (l *LoginLogic) Login(req *types.LoginRequest) (resp string, err error) {
+  var user models.UserModel
+  err = l.svcCtx.DB.Take(&user, "username = ? and password = ?", req.Username, req.Password).Error
+  if err != nil {
+    return "", errors.New("登录失败")
+  }
+  return user.Username, nil
+}
+```
+
+sqlx使用 https://blog.csdn.net/Mr_XiMu/article/details/131658247
+
+
+
+# 10、RPC
+
+## 10.1、单rpc服务模式
+
+我们编写一个proto文件
+
+提供两个服务，一个是获取用户信息方法，一个是用户添加的方法
+
+user.proto
+
+```Protocol
+syntax = "proto3";
+
+package user;
+option go_package = "./user";
+
+message UserInfoRequest {
+  uint32 user_id = 1;
+}
+
+message UserInfoResponse {
+  uint32 user_id = 1;
+  string username = 2;
+}
+
+
+message UserCreateRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UserCreateResponse {
+
+}
+
+service Users {
+  rpc UserInfo(UserInfoRequest) returns(UserInfoResponse);
+  rpc UserCreate(UserCreateRequest) returns(UserCreateResponse);
+}
+
+
+// goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
+
+```
+
+> 和传统grpc不一样的是，go-zero里面的proto文件不能外部引入message
+
+在logic种完善对应的逻辑
+
+```go
+func (l *UserInfoLogic) UserInfo(in *user.UserInfoRequest) (*user.UserInfoResponse, error) {
+  fmt.Println(in.UserId)
+  return &user.UserInfoResponse{
+    UserId:   in.UserId,
+    Username: "枫枫",
+  }, nil
+}
+
+func (l *UserCreateLogic) UserCreate(in *user.UserCreateRequest) (*user.UserCreateResponse, error) {
+  fmt.Println(in.Username, in.Password)
+
+  return &user.UserCreateResponse{}, nil
+}
+
+```
+
+使用apifox调用grpc
+
+![img](./assets/20231028004216.png)
+
+![img](./assets/20231028004259.png)
+
+## 10.2、服务分组
+
+默认情况下，一个proto文件里面只能有一个service
+
+有多个的话，转换会报错
+
+如果一个rpc服务，有很多方法，转换之后的目录就很不直观了
+
+我们可以在转换的时候，使用-m参数指定服务分组
+
+```Protocol
+syntax = "proto3";
+
+package user;
+option go_package = "./user";
+
+message UserInfoRequest {
+  uint32 user_id = 1;
+}
+
+message UserInfoResponse {
+  uint32 user_id = 1;
+  string username = 2;
+}
+
+
+message UserCreateRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UserCreateResponse {
+
+}
+
+service UserCreate {
+  rpc UserCreate(UserCreateRequest) returns(UserCreateResponse);
+}
+
+
+service UserInfo {
+  rpc UserInfo(UserInfoRequest) returns(UserInfoResponse);
+}
+
+
+// goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=. -m
+```
+
+![img](./assets/20231028005856.png)
+
+## 10.3、结合gorm
+
+```Protocol
+syntax = "proto3";
+
+package user;
+
+option go_package = "./user";
+
+
+message UserInfoRequest {
+  uint32 user_id = 1;
+}
+message UserInfoResponse {
+  uint32 user_id = 1;
+  string username = 2;
+}
+
+
+message UserCreateRequest {
+  string username = 1;
+  string password = 2;
+}
+message UserCreateResponse {
+  uint32 user_id = 1;
+  string err = 2;
+}
+
+
+service user{
+  rpc UserInfo(UserInfoRequest)returns(UserInfoResponse);
+  rpc UserCreate(UserCreateRequest)returns(UserCreateResponse);
+}
+
+
+// goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
+
+```
+
+models定义
+
+rpc_study/user_gorm/models/user_model.go
+
+```go
+package models
+
+import "gorm.io/gorm"
+
+type UserModel struct {
+  gorm.Model
+  Username string `gorm:"size:32" json:"username"`
+  Password string `gorm:"size:64" json:"password"`
+}
+
+```
+
+配置文件，添加mysql的相关配置
+
+rpc_study/user_gorm/rpc/etc/user.yaml
+
+```YAML
+Name: user.rpc
+ListenOn: 0.0.0.0:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: user.rpc
+Mysql:
+  DataSource: root:root@tcp(127.0.0.1:3307)/zero_db?charset=utf8mb4&parseTime=True&loc=
+```
+
+填写对应的配置映射
+
+rpc_study/user_gorm/rpc/internal/config/config.go
+
+```go
+package config
+
+import "github.com/zeromicro/go-zero/zrpc"
+
+type Config struct {
+  zrpc.RpcServerConf
+  Mysql struct {
+    DataSource string
+  }
+}
+
+```
+
+在服务依赖的地方，进入注入
+
+rpc_study/user_gorm/rpc/internal/svc/servicecontext.go
+
+```go
+package svc
+
+import (
+  "gorm.io/gorm"
+  "zero_study/common/init_gorm"
+  "zero_study/rpc_study/user_gorm/models"
+  "zero_study/rpc_study/user_gorm/rpc/internal/config"
+)
+
+type ServiceContext struct {
+  Config config.Config
+  DB     *gorm.DB
+}
+
+func NewServiceContext(c config.Config) *ServiceContext {
+  db := init_gorm.InitGorm(c.Mysql.DataSource)
+  db.AutoMigrate(&models.UserModel{})
+  return &ServiceContext{
+    Config: c,
+    DB:     db,
+  }
+}
+
+```
+
+创建逻辑
+
+```go
+func (l *UserCreateLogic) UserCreate(in *user.UserCreateRequest) (pd *user.UserCreateResponse, err error) {
+
+  pd = new(user.UserCreateResponse)
+  var model models.UserModel
+  err = l.svcCtx.DB.Take(&model, "username = ?", in.Username).Error
+  if err == nil {
+    pd.Err = "该用户名已存在"
+    return
+  }
+  model = models.UserModel{
+    Username: in.Username,
+    Password: in.Password,
+  }
+  err = l.svcCtx.DB.Create(&model).Error
+  if err != nil {
+    logx.Error(err)
+    pd.Err = err.Error()
+    err = nil
+    return
+  }
+  pd.UserId = uint32(model.ID)
+  return
+}
+```
+
+查询逻辑
+
+```go
+func (l *UserInfoLogic) UserInfo(in *user.UserInfoRequest) (*user.UserInfoResponse, error) {
+  var model models.UserModel
+  err := l.svcCtx.DB.Take(&model, in.UserId).Error
+  if err != nil {
+    return nil, errors.New("用户不存在")
+  }
+  return &user.UserInfoResponse{
+    UserId:   uint32(model.ID),
+    Username: model.Username,
+  }, nil
+}
+
+```
+
+## 10.4、结合api
+
+api
+
+```go
+type UserCreateRequest {
+  Username string `json:"username"`
+  Password string `json:"password"`
+}
+
+type UserInfoRequest {
+  ID uint `path:"id"`
+}
+
+type UserInfoResponse {
+  UserId   uint   `json:"user_id"`
+  Username string `json:"username"`
+}
+
+@server(
+  prefix: /api/users
+)
+service users {
+  @handler userInfo
+  get /:id (UserInfoRequest) returns (UserInfoResponse)
+  @handler userCreate
+  post / (UserCreateRequest) returns (string )
+}
+
+// goctl api go -api user.api -dir .
+```
+
+在配置文件里面填写rpc服务的key
+
+```YAML
+Name: users
+Host: 0.0.0.0
+Port: 8888
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+```
+
+填写配置文件
+
+```go
+package config
+
+import (
+  "github.com/zeromicro/go-zero/rest"
+  "github.com/zeromicro/go-zero/zrpc"
+)
+
+type Config struct {
+  rest.RestConf
+  UserRpc zrpc.RpcClientConf
+}
+
+```
+
+依赖注入，初始化rpc的客户端
+
+```go
+package svc
+
+import (
+  "github.com/zeromicro/go-zero/zrpc"
+  "zero_study/rpc_study/user_api_rpc/api/internal/config"
+  "zero_study/rpc_study/user_api_rpc/rpc/userclient"
+)
+
+type ServiceContext struct {
+  Config  config.Config
+  UserRpc userclient.User
+}
+
+func NewServiceContext(c config.Config) *ServiceContext {
+  return &ServiceContext{
+    Config:  c,
+    UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
+  }
+}
+
+```
+
+创建用户
+
+```go
+func (l *UserCreateLogic) UserCreate(req *types.UserCreateRequest) (resp string, err error) {
+
+  response, err := l.svcCtx.UserRpc.UserCreate(l.ctx, &user.UserCreateRequest{
+    Username: req.Username,
+    Password: req.Password,
+  })
+  if err != nil {
+    return "", err
+  }
+  if response.Err != "" {
+    return "", errors.New(response.Err)
+  }
+  return
+}
+
+```
+
+用户信息
+
+```go
+func (l *UserInfoLogic) UserInfo(req *types.UserInfoRequest) (resp *types.UserInfoResponse, err error) {
+
+  response, err := l.svcCtx.UserRpc.UserInfo(l.ctx, &user.UserInfoRequest{
+    UserId: uint32(req.ID),
+  })
+
+  if err != nil {
+    return nil, err
+  }
+
+  return &types.UserInfoResponse{UserId: uint(response.UserId), Username: response.Username}, nil
+}
+
+```
+
+
+
+服务分组 https://go-zero.dev/docs/tutorials/proto/services/group
