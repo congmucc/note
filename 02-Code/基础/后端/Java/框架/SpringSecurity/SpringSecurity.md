@@ -1,4 +1,4 @@
-功能
+# 功能
 
 **身份认证**：·身份认证是验证谁正在访问系统资源，判断用户是否为合法用户。认证用户的常见方式是要求用户输入用户名和密码
 
@@ -12,6 +12,8 @@
 - HTTP Requests
 
 
+
+# 介绍
 
 SpringSecurity的原理其实就是一个过滤器链，内部包含了提供各种功能的过滤器。这里我们可以看看入门案例中的过滤器。
 
@@ -49,15 +51,26 @@ SpringSecurity的原理其实就是一个过滤器链，内部包含了提供各
 
 2. 需要添加一个配置类，具体去[spring官网](https://docs.spring.io/spring-security/reference/servlet/configuration/java.html)上进行配置类配置。
 
-3. 基于数据库的用户认证流程实现。
+3. 基于数据库的用户认证流程实现。即实现UserDetailsService
 
 4. 
 
 
 
-1. 
+1. **添加依赖**
 
-**2、需要添加一个配置类**
+   ```xml
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-oauth2-client</artifactId>
+           </dependency>
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-security</artifactId>
+           </dependency>
+   ```
+
+2. **需要添加一个配置类,具体去[spring官网](https://docs.spring.io/spring-security/reference/servlet/configuration/java.html)上进行配置类配置。**
 
 ```java
 @Configuration
