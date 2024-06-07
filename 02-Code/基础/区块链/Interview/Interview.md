@@ -29,10 +29,13 @@ dapp learning: https://dapplearning.org/hiring
 > 4、黑客松，看基础知识。
 > 5、[学习道路1](https://www.wtf.academy/)
 > 6、[登链社区的学习目标](https://learnblockchain.cn/article/7990)
+>
+> 7、[基础知识学习，web3从入门开始](https://www.hackquest.io/zh/ugc/Web3 基础知识/learn/77dba865-713b-4896-8c7d-0ba464663221?menu=learningTrack&learningTrackId=bfb79b36-d8cc-44a4-98f4-89ace4c880f1&menuCourseId=1c7557b1-2dbc-4092-9ea2-a0c349e6f17c&lessonId=77dba865-713b-4896-8c7d-0ba464663221&documentationId=null)
 
 > 1、[Solana](https://solana.com/zh)
+>
 > > Solana是一个开源项目，实现了一个新的、高性能的、无需许可的区块链。索拉纳基金会总部设在瑞士日内瓦，负责维护开源项目。
-> 
+>
 > 2、[TinTinLand_社区_web3学院](https://tintinland.com/)
 > 3、[Sui_社区](https://sui.io/)
 
