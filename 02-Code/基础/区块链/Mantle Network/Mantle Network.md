@@ -33,7 +33,7 @@ L0是数据传输层，指的就是区块链最基础的底层协议，也就是
 
 **实例：**
 
-Polkadot、cosmos、Avalanche、Cardano
+Polkadot、Cosmos、Avalanche、Cardano
 
 
 
