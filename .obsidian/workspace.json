@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "4a1f144befe504ae",
+        "id": "830f950d043ab881",
         "type": "tabs",
         "children": [
           {
-            "id": "1984e503fe90a724",
+            "id": "73a16028a6709f8c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "02-Code/基础/区块链/基础知识/基础知识.md"
-              }
+              "state": {}
             }
           },
           {
@@ -169,8 +160,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "1984e503fe90a724",
+  "active": "73a16028a6709f8c",
   "lastOpenFiles": [
+    "02-Code/基础/区块链/基础知识/基础知识.md",
     "02-Code/简历/简历/~WRL0234.tmp",
     "02-Code/简历/简历/~WRD0215.tmp",
     "02-Code/简历/简历/~WRL0140.tmp",
@@ -181,7 +173,6 @@
     "02-Code/简历/简历/~WRD0674.tmp",
     "02-Code/简历/简历/~$前端简历.docx",
     "02-Code/简历/简历/~WRL0059.tmp",
-    "02-Code/简历/简历/~WRD0036.tmp",
     "02-Code/基础/后端/Java/框架/SpringSecurity/SpringSecurity.md",
     "02-Code/实习/航天宏图.md",
     "02-Code/实习/assets/OAuth.png",
