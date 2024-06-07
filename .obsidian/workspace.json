@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/实习/航天宏图.md"
+                "file": "02-Code/基础/区块链/基础知识/基础知识.md"
               }
             }
           },
@@ -171,11 +171,11 @@
   },
   "active": "1984e503fe90a724",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Java/框架/SpringSecurity/SpringSecurity.md",
+    "02-Code/实习/航天宏图.md",
     "02-Code/实习/assets/OAuth.png",
     "02-Code/实习/assets/image-20240604104820562.png",
     "02-Code/实习/assets/image-20240604155351043.png",
-    "02-Code/实习/航天宏图.md",
-    "02-Code/基础/后端/Java/框架/SpringSecurity/SpringSecurity.md",
     "02-Code/实战笔记/Java用法/Java用法.md",
     "02-Code/基础/Tool/Linux/linux.md",
     "02-Code/基础/后端/Java/框架/SpringSecurity/assets/image-20240604174153000.png",
@@ -217,7 +217,6 @@
     "02-Code/入职必知必会/动态sql的使用.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
     "未命名.canvas",
-    "02-Code/基础/CICD/K8s/assets/Pasted image 20240514214327.png",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
     "02-Code/基础/计算机网络实战（Python）/assets/未命名.canvas"
