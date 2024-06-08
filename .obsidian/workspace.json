@@ -13,14 +13,25 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/区块链/Geth/Geth.md",
+                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
+          },
+          {
+            "id": "0083d2771d8ab141",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.2"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/区块链/Geth/Geth.md",
+                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/区块链/Geth/Geth.md",
+                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/区块链/Geth/Geth.md"
+                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md"
               }
             }
           },
@@ -169,8 +180,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "73a16028a6709f8c",
+  "active": "0083d2771d8ab141",
   "lastOpenFiles": [
+    "02-Code/基础/区块链/基础知识/Mantle Network/Mantle Network.md",
+    "02-Code/基础/区块链/基础知识/WEB3入门/WEB3入门.md",
+    "02-Code/基础/区块链/Geth/Geth.md",
     "02-Code/基础/区块链/Untitled Folder",
     "02-Code/基础/区块链/Mantle Network/Mantle Network.md",
     "02-Code/基础/区块链/Mantle Network/Untitled.md",
@@ -214,8 +228,6 @@
     "Task/2024-5-20-学习任务.md",
     "Diary/2024-5-22-学习minio源码.md",
     "Diary/2023-11-25-学习obsidian.md",
-    "Task/2024-3-14-技术学习大纲.md",
-    "02-Code/基础/后端/SQL/Mysql/Mysql.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
