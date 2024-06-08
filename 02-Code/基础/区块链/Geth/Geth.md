@@ -88,3 +88,149 @@ EVM 解释和执行智能合约代码时，会处理消息调用（Message Call�
 
 1. 基于 `go-ethereum` 代码库中的代码，我们可以编译出 `geth` 客户端程序。
 2. 通过运行 `geth` 客户端程序我们可以启动一个 Ethereum 的节点。
+
+
+
+
+
+# 实战
+
+环境：
+
+这里geth版本因为1.20不支持pow了，所以说需要1.20以下的。
+
+go的话随意
+
+- 创建创世区块genesis.json
+
+```json
+{
+  "config": {
+    "chainId": 2024,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "ethash": {}
+  },
+  "nonce": "0x0",
+  "timestamp": "0x647fd8e0", 
+  "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "gasLimit": "0x47b760",
+  "difficulty": "0x20000", 
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0x1234567890abcdef1234567890abcdef12345678": { "balance": "0x56bc75e2d63100000" },  
+    "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd": { "balance": "0x56bc75e2d63100000" }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
+
+```
+
+使用命令初始化：
+
+```cmd
+geth --datadir "data" init genesis.json
+```
+
+使用命令进行创建私链：
+
+```cmd
+geth --http --http.addr='0.0.0.0' --http.corsdomain=* --http.vhosts "*" --nodiscover --maxpeers '5' --networkid 12345 --datadir '/eth/data/node1' --http.api "db,net,eth,web3,personal,miner,debug,admin" --snapshot=false --allow-insecure-unlock console
+```
+
+
+
+之后在go中进行创建账户
+
+这里需要安装
+
+```go
+go get github.com/ethereum/go-ethereum
+```
+
+使用ethereum包下的rpc
+
+main.go
+
+```go
+package main
+
+import (
+	"demo/geth/cli"
+	"fmt"
+	"github.com/ethereum/go-ethereum/rpc"
+)
+
+func main() {
+	dial, err := rpc.Dial("http://127.0.0.1:8545")
+	if err != nil {
+		fmt.Printf("错误是 %s\n", err)
+	}
+	defer dial.Close()
+	account, accountErr := cli.NewAccount(dial, "123456")
+	if accountErr != nil {
+		fmt.Printf("错误是 %s\n", accountErr)
+	}
+	fmt.Printf("创建的账户是 %s\n", account)
+}
+
+```
+
+
+
+account.go
+
+```go
+package cli
+
+import (
+    "fmt"
+    "github.com/ethereum/go-ethereum/rpc"
+)
+
+func NewAccount(client *rpc.Client, pass string) (string, error) {
+    var res string
+    err := client.Call(&res, "personal_newAccount", pass)
+
+    if err != nil {
+       fmt.Println()
+    }
+    return res, nil
+}
+```
+
+运行结果如下
+
+```go
+创建的账户是 0x8ced2e07d3b81fd22447648270b720fd65e61dfb
+```
+
+> 这里面有两点注意：
+>
+> 1、使用的命令是web3.js的，详情可以去看一下
+>
+> 2、`client.Call(&res, "personal_newAccount", pass)`这个就是使用，注意，这里将`.`代替为了`_`。
+
+
+
+- rpc.Dial:
+  **用途**: 此函数直接通过RPC协议与以太坊节点建立连接。它提供了更底层的访问方式，允许你调用任何公开的RPC方法，不仅仅是针对以太坊的。
+  **返回值**: 返回一个*rpc.Client实例。这个客户端可以用来调用任何节点支持的RPC方法，你需要自己处理JSON-RPC请求的具体结构和响应。
+  **适用场景**: 当你需要直接与以太坊节点的RPC接口交互，执行非标准或自定义的RPC调用时。
+- ethclient.Dial:
+  **用途**: 这是ethclient包提供的一个便捷函数，专为与以太坊区块链交互设计。它内部也是基于rpc.Dial来实现，但是进一步封装了以太坊相关的功能，提供了更高层次、更易用的API。
+  **返回值**: 返回一个*ethclient.Client实例。这个客户端包含了多种针对以太坊特定操作的方法，如查询账户余额、发送交易、获取区块信息等，使用起来更加方便和直观。
+  **适用场景**: 当你的应用主要关注于执行标准的以太坊操作，比如读取账户状态、交易发送等，使用ethclient.Dial会更加高效和直接，因为它已经为你实现了这些操作的细节。
+- **总结来说**，如果你需要进行更底层或非标准的RPC调用，可以选择使用rpc.Dial。而如果是为了进行常见的以太坊区块链操作，ethclient.Dial提供了更为便捷和针对性的接口。
