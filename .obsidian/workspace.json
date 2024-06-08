@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
+                "file": "02-Code/基础/区块链/Geth/Geth.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "boolean",
+                "query": "geth",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
+                "file": "02-Code/基础/区块链/Geth/Geth.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
+                "file": "02-Code/基础/区块链/Geth/Geth.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/区块链/基础知识/以太坊/以太坊.md"
+                "file": "02-Code/基础/区块链/Geth/Geth.md"
               }
             }
           },
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "73a16028a6709f8c",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
     "02-Code/基础/区块链/基础知识/以太坊/assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006.webp",
     "02-Code/基础/区块链/基础知识/以太坊/assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006-1717824104431-3.webp",
     "02-Code/基础/区块链/基础知识/Mantle Network/Mantle Network.md",
@@ -204,7 +205,6 @@
     "02-Code/实习/assets/image-20240604174153000.png",
     "02-Code/实习/assets/image-20240604174043250.png",
     "02-Code/实习/assets/image-20240604174040750.png",
-    "02-Code/实习/assets/image-20240604174037853.png",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "Diary/未命名.md",
