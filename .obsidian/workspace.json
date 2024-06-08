@@ -19,19 +19,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "0083d2771d8ab141",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.6.2"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -180,8 +169,10 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "0083d2771d8ab141",
+  "active": "73a16028a6709f8c",
   "lastOpenFiles": [
+    "02-Code/基础/区块链/基础知识/以太坊/assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006.webp",
+    "02-Code/基础/区块链/基础知识/以太坊/assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006-1717824104431-3.webp",
     "02-Code/基础/区块链/基础知识/Mantle Network/Mantle Network.md",
     "02-Code/基础/区块链/基础知识/WEB3入门/WEB3入门.md",
     "02-Code/基础/区块链/Geth/Geth.md",
@@ -214,7 +205,6 @@
     "02-Code/实习/assets/image-20240604174043250.png",
     "02-Code/实习/assets/image-20240604174040750.png",
     "02-Code/实习/assets/image-20240604174037853.png",
-    "02-Code/基础/Tool/Linux/assets/image-20231116204344565-1700138635093-1.png",
     "02-Code/基础/后端/SQL/Redis/Redis.md",
     "02-Code/基础/后端/SQL/Redis/Redis高级.md",
     "Diary/未命名.md",
@@ -227,7 +217,6 @@
     "02-Code/基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
     "Task/2024-5-20-学习任务.md",
     "Diary/2024-5-22-学习minio源码.md",
-    "Diary/2023-11-25-学习obsidian.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
