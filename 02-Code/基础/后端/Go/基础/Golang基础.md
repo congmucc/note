@@ -867,8 +867,8 @@ func main() {
 > 4、前面加字符串是起别名
 >
 > 5、在package上面的以 _（下划线）开头的包名暗示这个包的主要目的不是为了被直接导入和使用，而是为了导出一些常量、变量或函数供其他包（通过导入语句）来初始化或使用。
->
-> 
+
+
 
 **init函数：**
 
@@ -971,6 +971,76 @@ func main() {
 ```
 
 > 19-21行，第一个括号是参数的意思，第二个括号是对匿名函数的调用
+
+
+
+
+
+### 3.1.6 函数的声明周期
+
+```go
+package _chan
+
+import (
+	"fmt"
+	"testing"
+	"time"
+)
+
+// stop goroutine 退出函数。
+func stop(stopCh chan struct{}, fn func()) {
+	for {
+		select {
+		// stopCh，close掉了，然后读到值
+		case <-stopCh:
+			return
+		case <-time.After(1 * time.Second):
+			fmt.Println("begin running fn()")
+			fn()
+		}
+	}
+}
+
+func Test_Stop(t *testing.T) {
+	stopCh := make(chan struct{})
+
+	fn := func() {
+		fmt.Println("fn run")
+	}
+
+	// 模拟3s之后停止
+	go func(stopCh chan struct{}) {
+		select {
+		case <-time.After(3 * time.Second):
+			close(stopCh)
+			fmt.Println("stopCh closed")
+		}
+	}(stopCh)
+
+	stop(stopCh, fn)
+}
+
+```
+
+question:
+
+我这里面有几个问题，1、stopCh是在Test_Stop定义的，所以说当主函数调用stop的时候就将一个固定的值传了过去了吧？所以说stop不应该接受一个固定的stopCh吗？为什么还可以一直监听stopCh，这个测试类当进行到 stop(stopCh, fn)这个函数的时候应该是已经被回收了把，然后里面的协程是等三秒运行完毕的
+
+answer：
+
+您的疑问集中在 stopCh 通道的生命周期、如何在 stop 函数中持续监听它，以及 Test_Stop 函数的执行流程上。让我们逐一解析：
+
+1. **stopCh 的生命周期与传递**：stopCh 在 Test_Stop 函数中定义，然后作为参数传递给了 stop 函数。这里传递的并不是一个固定的值，而是通道的引用（或者说地址）。在 Go 语言中，通道是一种引用类型，当作为参数传递时，传递的是该通道的引用，而不是通道内容的拷贝。因此，stop 函数能够直接访问和操作原始的 stopCh 通道，包括监听其上的变化。
+
+2. **持续监听 stopCh**：尽管 stop(stopCh, fn) 这一行代码很快执行完毕，但是 stop 函数内部启动了一个无限循环，这个循环不断地使用 select 监听 stopCh 和超时事件。只要 stop 函数没有返回（即没有从 stopCh 收到信号或程序没有主动终止），这个监听就会持续进行。因此，即使调用 stop 的那一刻过去了，stop 函数内的循环还在后台运行，持续监听 stopCh。
+
+3. **Test_Stop 函数的执行与回收**：当执行到 stop(stopCh, fn) 这一行时，Test_Stop 函数并没有立即结束或被回收。Go 语言的运行时会保持 Test_Stop 函数的活跃状态，因为它启动了至少两个 goroutine：一个是直接调用的 stop 函数所在的 goroutine，另一个是在 Test_Stop 内部启动的匿名 goroutine（用于3秒后关闭 stopCh）。这两个 goroutine 都在执行中，因此 Test_Stop 的执行上下文（包括局部变量如 stopCh）会保持有效，直到所有相关 goroutine 都完成。
+
+   总结来说，stop(stopCh, fn) 的调用启动了一个持续监听 stopCh 的过程，而这个过程不会因为 Test_Stop 函数到达这一行而结束，因为 goroutine 的执行是独立的。stopCh 作为引用传递，使得 stop 函数可以持续影响和响应其状态变化，即使在调用点之后。
+
+
+
+
 
 
 
@@ -1865,3 +1935,6 @@ func main() {
 | go mod why      | 解释为什么需要依赖                            |
 
 ![image-20240224234247758](./assets/image-20240224234247758.png)
+
+
+
