@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
+                "file": "02-Code/基础/WEB3/道路/道路.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
+                "file": "02-Code/基础/WEB3/道路/道路.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
+                "file": "02-Code/基础/WEB3/道路/道路.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md"
+                "file": "02-Code/基础/WEB3/道路/道路.md"
               }
             }
           },
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ec75bcc1f2e60218",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Go/框架/Gin/Gin.md",
     "02-Code/基础/后端/Go/框架/GRPC/GRPC.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/WEB3/基础知识/Mantle Network/assets/ff6e5c94-cdac-4465-97ef-fdd25f334bfe.webp",
@@ -190,14 +191,14 @@
     "02-Code/基础/WEB3/基础知识/WEB3入门/assets",
     "02-Code/基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "02-Code/基础/WEB3/基础知识/Geth/Geth.md",
-    "02-Code/基础/WEB3/目录/目录.md",
+    "02-Code/基础/WEB3/道路/道路.md",
     "02-Code/基础/WEB3/基础知识/以太坊",
     "02-Code/基础/WEB3/基础知识/WEB3入门",
     "02-Code/基础/WEB3/基础知识/Mantle Network",
     "02-Code/基础/WEB3/基础知识/Geth",
     "02-Code/基础/WEB3/Solidity/Solidity.md",
     "02-Code/基础/WEB3/Interview/Interview.md",
-    "02-Code/基础/WEB3/目录",
+    "02-Code/基础/WEB3/道路",
     "02-Code/基础/WEB3/基础知识",
     "02-Code/基础/WEB3/Solidity",
     "02-Code/基础/后端/Java/框架/Hibernate/Hibernate.md",
@@ -216,7 +217,6 @@
     "02-Code/基础/后端/Go/框架/GoZero/GoZero.md",
     "02-Code/基础/后端/Java/框架/SpringSecurity/SpringSecurity.md",
     "02-Code/实习/航天宏图.md",
-    "02-Code/实战笔记/Java用法/Java用法.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
