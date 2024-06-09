@@ -175,11 +175,12 @@ func main() {
 **渲染模板**
 
 ```go
-router.GET("/", func(c \*gin.Context) {
+router.GET("/", func(c *gin.Context) {
 	c.HTML(http.StatusOK, "default/index.html", map[string]interface{}{
 		"title": "前台首页"
 	})
 })
+
 ```
 
 # 4、Gin HTML 模板渲染
