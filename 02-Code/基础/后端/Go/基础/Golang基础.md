@@ -70,6 +70,21 @@ Go语言保证了既能到达静态编译语言的安全和性能，又达到了
       ○建议将环境变量GO111MODULE设置为auto，这样就会根据当前工作目录下是否有go.mod决定使用什么进行项目管理
       ○不同版本管理下，go的一系列执行命令都会产生变化
 
+| 命令            | 作用                                          |
+| --------------- | --------------------------------------------- |
+| go mod download | 下载依赖包到本地 (默认为 GOPATH/pkg/mod 目录) |
+| go mod edit     | 编辑 go.mod 文件                              |
+| go mod graph    | 打印模块依赖图                                |
+| go mod init     | 初始化当前文件夹，创建 go.mod 文件            |
+| go mod tidy     | 增加缺少的包，删除无用的包                    |
+| go mod vendor   | 将依赖复制到 vendor 目录下                    |
+| go mod verify   | 校验依赖                                      |
+| go mod why      | 解释为什么需要依赖                            |
+
+
+
+
+
 ## 1.4 常用命令
 
 > - Go有一系列的命令帮助我们去编译、运行、测试等
@@ -676,7 +691,7 @@ func main() {
 	//定义一个无缓存channel
 	c := make(chan int)
 
-    //定义一个有缓存channel
+    //定义一个有缓存channel 容量为3
 	c := make(chan int, 3)
 
     
@@ -735,10 +750,6 @@ select {
 		//如果上面都没有成功，则进入default处理流程
 }
 ```
-
-
-
-
 
 > 1、这个是通过`<-`符号进行**管道**使用   存值和取值，18行和21行
 >
@@ -1175,20 +1186,22 @@ func main() {
 
 
 
-## 3.5 测似类
+## 3.5 测似类 testing
 
 在 Go 中，
 
 1、测试文件必须以 `_test.go` 结尾，
 
-2、测试函数需要以大写的`Test`进行开头，即
+2、测试函数需要以大写的`Test`进行开头，并且使用`(t *testing.T)`作为形参
 
 3、使用命令`go test`进行运行测试类
+
+4、断言函数testing.T提供的Error Errorf Fail FailNow
 
 chan_test.go
 
 ```go
-func TestStop(t *testing.T) {
+func Test_Stop(t *testing.T) {
 	stopCh := make(chan struct{})
 
 	fn := func() {
@@ -1207,6 +1220,10 @@ func TestStop(t *testing.T) {
 	stop(stopCh, fn)
 }
 ```
+
+
+
+
 
 
 
@@ -1591,7 +1608,45 @@ func main() {
 
 
 
-## 5.2 goroutine（协程）
+## 5.2 goroutine（协程）多线程
+
+原理：
+
+- 同步和通信是基于channel进行数据的同步和操作，协调多个goroutine是context，如协程的终止，发送信号。
+
+- 是通过用户态线程进行调度和管理，线程是根据操作系统的内核态。
+
+  > 像java中的thread，是用户态，创建的时候也需要内核态，他的系统调用、等待I/O操作、需要进行上下文切换或访问某些受保护资源是内核态的线程，也就是需要从用户态代码转到内核态，此时消耗很大。当协程代码触发了系统调用或I/O操作，虽然这些操作最终需要在内核态完成，但实际上是由支撑协程运行的基础线程（在Go中，每个goroutine最终由一个或几个操作系统线程支撑）来执行这些操作。上下文切换和访问受保护资源都是在用户态执行的，所以说这也是为什么协程性能高和轻量。
+
+- 基于栈的动态增长，（每个goroutine初始大小只有几KB，需要更多的时候会动态增长）
+
+- 上下文切换是通过多个goroutine协作进行的。
+
+- 调动器 scheduler
+
+- 垃圾回收器 gc，go可以回尽量不会影响，java的gc会阻塞用户线程
+
+**并发调度器 scheduler：**
+
+负责管理和调度goroutine的组件，并发执行。
+
+使用了工作窃取：让空闲的线程去繁忙的线程中去拿任务
+
+java的调度器：
+
+> 操作系统有自己的工作队列，但是调度器存在一个全局的工作队列存放，这里面别搞混，os的thread有自己的工作队列。调度器维护的是全局的工作队列。当os完成了自己的工作队列就会尝试去调度器的全局队列进行窃取任务，从而实现负载均衡和更高的并发性能。
+
+go的调度器：
+
+> go语言的调度器会将goroutine和操作系统的线程绑定在一起形成一个G-M模型。G指goroutine，M指操作系统的线程，调度器会根据当前可用的这个操作系统的线程的数量和负载的情况来决定是否创建新的M，即创建新的goroutine绑定在M上。来实现类似java的调度器的模式，java调度器的模式go也有。
+
+抢占式调度：
+
+> 任何的goroutine在任意时刻都可能被调度器进行中断，这样可以防止goroutine长时间占用资源而导致其他的gorouine无法执行
+
+
+
+
 
 > 这个关键字可以写成并发的格式
 >
@@ -1636,11 +1691,13 @@ func main() {
 
 ```
 
+## 5.3 多线程
 
-
-## 5.3 线程安全（Mutex&WaitGroup）
+### 5.3.1 线程安全（Mutex&WaitGroup）
 
 > WaitGroup 是 Go 内置的 sync 包解决任务编排的并发原语。WaitGroup 直译是“等待组”，翻译成大白话就是等待一组协程完成任务。如果没有完成，就阻塞。
+>
+> 其中atomic包中有一些原子性操作的一些东西。
 
 ```go
 package main
@@ -1683,6 +1740,23 @@ func main() {
 
 
 
+### 5.3.2 sync
+
+1. **Mutex（互斥锁）**:
+   用于保护共享资源，确保同一时间只有一个goroutine可以访问资源。当一个goroutine获得了锁，其他尝试获取该锁的goroutine将会阻塞，直到锁被释放。
+2. **RWMutex（读写锁）**:
+   提供了读取者和写入者的区分对待。允许多个goroutine同时读取共享资源（读锁），但写入时会独占资源（写锁），阻止所有读取和写入操作。
+3. **Cond（条件变量**）:
+   用于实现goroutine之间的条件等待与通知机制。配合Mutex使用，可以让一个或多个goroutine等待某个条件满足时再继续执行。
+4. **Once**:
+   保证某个初始化函数（或其他操作）只执行一次，即使面对多goroutine并发请求也是如此。常用于单例模式的实现。
+5. **WaitGroup**:
+   用来等待一组goroutine完成。可以增加计数值来表示要等待的goroutine数量，每个goroutine完成时调用Done()减少计数，其他goroutine可以通过调用Wait()来阻塞直到计数归零，即所有goroutine执行完毕。
+
+
+
+
+
 
 
 ## 5.4 异常处理
@@ -1690,12 +1764,34 @@ func main() {
 - Go提供了对异常和错误的处理。
 
 - 错误处理：
-  - 出现错误则返回错误信息，没有则第二个参数为nil。
+  - 错误返回值error 
 
+  - 自定义 nil
+  
+  - 错误传递传递给上层
+  
+  - 错误日志记录log包
+  
+  - 错误处理函数
+  
+  - 错误类型断言
+  
+  - 错误包装 errors.Wrap
+  
+  - 错误码和错误类型
+  
+    
+  
 - 异常处理：
   - 异常抛出：`panic("异常信息")`，遇到就会终止后续代码执行（之前的defer还是会执行）。
   - 程序恢复：使用`recover`函数，通常与`defer`一起使用，可以接收panic的消息。
     - 如果程序抛出panic，有defer与recover的话，后续代码可以继续执行。
+  
+  > panic能不用就不用
+  >
+  > recover只会影响当前goroutine
+  >
+  > 不要期望一个goroutine中的panic可以被其他的goroutine捕获和处理。
 
 > 向上抛
 >
@@ -1940,28 +2036,161 @@ func main() {
   - Go原生的数据库操作是通过`database/sql`操作的，但需要mysql驱动支持，程序中没有显示使用mysql驱动，所以需要空导入。
   - Go原生对数据库的操作与JDBC基本一致。
 
-### 
 
 
 
 
 
 
+# 6 实战
 
-# 6 GoModels
+## 6.1 Context
 
-| 命令            | 作用                                          |
-| --------------- | --------------------------------------------- |
-| go mod download | 下载依赖包到本地 (默认为 GOPATH/pkg/mod 目录) |
-| go mod edit     | 编辑 go.mod 文件                              |
-| go mod graph    | 打印模块依赖图                                |
-| go mod init     | 初始化当前文件夹，创建 go.mod 文件            |
-| go mod tidy     | 增加缺少的包，删除无用的包                    |
-| go mod vendor   | 将依赖复制到 vendor 目录下                    |
-| go mod verify   | 校验依赖                                      |
-| go mod why      | 解释为什么需要依赖                            |
+> 多个goroutine之间传递请求范围的上下文信息，用于控制goroutine的生命周期、取消操作和超时控制
 
-![image-20240224234247758](./assets/image-20240224234247758.png)
+- 处理并发任务的取消、超时和值传递等问题
+- `context.Background()` 根级别的 `Context`
+- 使用 `context.WithCancel()` `context.WithDeadline()` `context.WithTimeout()`基于现有的 `context` 创建子级`context`
+- `ctx.Done()<-chan structO` 返回一个只读的 channel 用于接收取消信号当 context 被取消时，该通道会收到值
+- `Ctx.ErrOerror`返回context的错误状态
+- context提供了一种简洁且灵活的方式来处理并发任务的取消和超时控制通过将context传递给goroutine我们可以在不同的 goroutine之间传递请求方位的上下文信息并及时取消或超时控制这些任务对于构建高效的并发应用程序和服务非常有用可以提高程序的健壮性和可靠性
+
+使用场景：
+
+- 并发任务的取消和超时控制
+- 链式处理http请求的超时控制
+- 数据库和网络连接的超时控制
+- 并发任务的结果汇总和错误处理
+- 控制并发操作的数量
+- 跨 goroutine 的值传递
+
+
+
+**处理并发任务的取消、超时和值传递等问题**
+
+```go
+package context
+
+import (
+	"context"
+	"time"
+)
+
+func withTimeOut() {
+	myContext := context.Background()
+
+	// 建一个带有取消函数的子级Context，设置超时时间为2秒
+	timeout, cancelFunc := context.WithTimeout(myContext, 2*time.Second)
+	context.WithValue(timeout, "end", "结束了")
+	defer cancelFunc()
+
+	// 在子级 Context 中启动一个 goroutine
+	go doSomething(timeout)
+
+	time.Sleep(3 * time.Second)
+
+	// 调用取消函数，取消子级 Context 中的操作
+	cancelFunc()
+
+	// 阻塞等待一段时间
+	time.Sleep(1 * time.Second)
+}
+
+func doSomething(ctx context.Context) {
+	// 模拟一个耗时操作
+	for {
+		select {
+		case <-ctx.Done():
+			// 如果 Context 被取消，则退出循环
+			ctx.Value("end")
+			return
+		default:
+			// 否则，继续执行耗时操作
+			time.Sleep(1 * time.Second)
+			println("do something")
+		}
+	}
+}
+
+```
+
+> `context.WithTimeout()`
+>
+> 使用`context.WithTimeout(myContext, 2*time.Second)`设置了一个两秒的超时时间，当超过2秒的时候会自动调用`Done()`方法。然后`doSometing()`函数会收到这个，直接return而不会打印。设置三秒阻塞是为了观看效果。
+>
+> `context.WithValue()`
+>
+> 使用`context.WithValue()`来设置一个key-value类型的值，在结束的时候进行跨函数调用，也是解决值传递。
+>
+> 这里面如果不懂生命周期什么的可以去[3.1.6 函数的生命周期](# 3.1.6 函数的生命周期)看一下。
+
+
+
+**基于现有的 `context` 创建子级`context`**
+
+```go
+ctxA := context.Background()
+ctxB := context.WithValue(ctxA,key:"b", val:"B")
+ctxC := context.WithValue(ctxA,key:"c", val:"C")
+ctxF := context.WithValue(ctxC,key:"f", val:"F")
+```
+
+突出3点：
+
+> 1. child context 可以访问 parent context
+> 2. 分支路径上的 context 之间不能互相访问
+> 3. parent context 不能访问 child context 中的值
+
+函数说明
+
+- `context.WithTimeout(parent, timeout)`
+  - **参数**：parent是父上下文，这里是myContext；timeout是要设置的超时时间。
+  - **返回值**：一个新的带有超时特性的子上下文timeout和一个取消函数cancelFunc。
+  - **功能**：当这个新上下文的存活时间超过timeout指定的时间后，会自动调用Done()通道关闭，表明此上下文已过期或被取消。
+- `context.WithCancel(parent)`
+  - **功能**：创建一个新的可取消的子上下文，它继承了父上下文的截止时间（如果有的话）和取消状态。与context.WithTimeout()或context.WithDeadline()不同，它不自动到期，但允许通过返回的cancel函数手动取消上下文。
+  - **参数**：接受一个父上下文parent作为参数。
+  - **返回值**：返回一个新的子上下文以及一个取消函数。调用这个取消函数会关闭子上下文的Done()通道，表明该上下文已经被取消。
+  - **用途**：适用于那些需要根据外部条件（如用户请求取消、错误发生等）手动终止操作的场景。
+- `context.WithDeadline(parent, deadline)`
+    - **功能**：创建一个新的具有绝对截止时间的子上下文。一旦达到deadline指定的时间点，该上下文就会自动到期，就像调用了cancel函数一样。
+    - **参数**：接受一个父上下文parent和一个绝对截止时间deadline（类型为time.Time）。
+    - **返回值**：同样返回一个子上下文和一个取消函数。尽管可以手动取消，但如果deadline先到也会自动取消。
+    - **用途**：适用于需要执行某项操作，但该操作不应超过特定时间限制的场景，比如网络请求、数据库操作等，可以用来防止长时间阻塞。
+      **总结来说**，`context.WithCancel`提供了手动控制上下文取消的能力，而`context.WithDeadline`则是在特定时间点自动取消上下文，两者都可以用来优雅地管理goroutine的生命周期和资源清理。
+
+## 6.2 select
+
+用于处理并发操作的控制结构，它可以在多个通信操作中选择一个可执行的操作进行处理，select语句可以让程序在多个通道操作中进行非阻塞的选择，并执行相应的代码块。 
+
+select case default。
+
+1、如果case有多个条件都符合那就随机挑选一个进行操作
+
+2、如果没有default，且case不符合，那就阻塞
+
+3、如果case不符合，但是又default，那就执行default
+
+使用场景：
+
+- 并发任务的监控和处理
+
+- 超时控制time.After
+
+- select多路复用
+- 与default结合使用实现非阻塞操作
+
+```go
+select {
+case <-stopCh:
+    return
+case <-time.After(3 * time.Second):
+    fmt.Println("begin running fn()")
+    fn()
+}
+```
+
+> 这个，如果三秒内没有stopch的channel进行传值，那就会打印和执行fn()
 
 
 
