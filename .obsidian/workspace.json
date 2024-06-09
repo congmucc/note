@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
+                "file": "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
+                "file": "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
+                "file": "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md"
+                "file": "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md"
               }
             }
           },
@@ -171,6 +171,7 @@
   },
   "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "02-Code/基础/WEB3/道路/道路.md",
     "02-Code/简历/简历/~$区块链简历.docx",
     "02-Code/实战笔记/项目笔记/WEB3/钱包/assets/image-20221212214043557.png",
@@ -195,10 +196,9 @@
     "02-Code/基础/后端/Go/框架/GRPC/GRPC.md",
     "02-Code/基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础/WEB3/基础知识/Mantle Network/assets",
-    "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "02-Code/基础/WEB3/基础知识/Ethereum/assets",
-    "02-Code/基础/WEB3/基础知识/WEB3入门/WEB3入门.md",
-    "02-Code/基础/WEB3/基础知识/WEB3入门/assets",
+    "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "02-Code/基础/WEB3/基础知识/WEB3基础/assets",
     "02-Code/基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "02-Code/基础/WEB3/基础知识/Geth/Geth.md",
     "02-Code/基础/WEB3/Solidity/Solidity.md",
