@@ -1074,6 +1074,45 @@ func main() {
 
 
 
+## 3.5 测似类
+
+在 Go 中，
+
+1、测试文件必须以 `_test.go` 结尾，
+
+2、测试函数需要以大写的`Test_`进行开头，即
+
+3、使用命令`go test`进行运行测试类
+
+chan_test.go
+
+```go
+func Test_Stop(t *testing.T) {
+	stopCh := make(chan struct{})
+
+	fn := func() {
+		fmt.Println("fn run")
+	}
+
+	// 模拟3s之后停止
+	go func(stopCh chan struct{}) {
+		select {
+		case <-time.After(3 * time.Second):
+			close(stopCh)
+			fmt.Println("stopCh closed")
+		}
+	}(stopCh)
+
+	stop(stopCh, fn)
+}
+```
+
+
+
+
+
+
+
 # 4 面向对象
 
 > go中的类是通过结构体来构建
