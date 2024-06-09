@@ -49,7 +49,7 @@ git config --global user.email "2562907972@qq.com"
 2. `git status` 查看本地库状态
 3. `git add 文件名` 添加暂存区 `git rm --cached 文件名` 删除暂存区
 4. `git commit -m "日志信息" 文件名` 提交本地库
-5. `git reflog` 查看日志信息 `git log` 查看详细日志信息
+5. `D` 查看日志信息 `git log` 查看详细日志信息
 6. `git reset --hard 版本号` 版本穿梭
 
 ### linux:
@@ -125,5 +125,6 @@ git config --global user.email "2562907972@qq.com"
 
 1. git stash （不要add）
 
-2. 
-3. 后面如果回来的话可以使用git stash apply
+2. git fetch origin
+3. git pull origin main
+4. 后面如果回来的话可以使用git stash apply
