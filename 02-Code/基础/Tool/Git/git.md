@@ -112,7 +112,7 @@ git config --global user.email "2562907972@qq.com"
 
 - SSH 免密登录
 
-  `ssh-keygen -t rsa -C atguiguyueyue@aliyun.com`
+  `ssh-keygen -t rsa -C congmu@aliyun.com`
 
 - `git fetch` 是一个Git命令，用于从远程仓库中下载最新的数据到本地仓库，但不自动合并到当前工作分支。这个命令使得你能查看远程仓库的最新状态，包括新的分支和标签，而无需直接修改你的工作目录或暂存区的内容。
 
@@ -135,10 +135,10 @@ git config --global user.email "2562907972@qq.com"
 
 `git stash`：会把所有未提交的修改（包括暂存的和非暂存的）都保存起来，用于后续恢复当前工作目录。
 
-`git stash pop`：命令恢复之前缓存的工作目录，这个指令将缓存堆栈中的第一个stash删除。
+`git stash pop [名字]`：命令恢复之前缓存的第一个工作目录，这个指令将缓存堆栈中的第一个stash删除。名字是第几个，默认第一个。
 
-`git stash apply`
+`git stash apply [名字]`：和pop一样，只不过这个不会删除
 
-`git stash list`
+`git stash list`：查看所有的stash
 
-`git stash drop`
+`git stash drop [名字]`：删除指定的stash工作目录
