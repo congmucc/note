@@ -115,3 +115,6 @@ git config --global user.email "2562907972@qq.com"
   `ssh-keygen -t rsa -C atguiguyueyue@aliyun.com`
 
   这个发起人是岳不群,看视频的时候要想明白谁是发起者,谁是组织外的人
+
+
+# 7 实战
