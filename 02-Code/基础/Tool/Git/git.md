@@ -123,6 +123,7 @@ git config --global user.email "2562907972@qq.com"
 
 操作：先暂存起来，然后切换分支进行拉去代码，具体操作为：
 
-1、git stash （不要add）
+1. git stash （不要add）
 
-2、后面如果回来的话可以使用git stash apply
+2. 
+3. 后面如果回来的话可以使用git stash apply
