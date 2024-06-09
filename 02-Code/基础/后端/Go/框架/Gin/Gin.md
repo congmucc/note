@@ -202,7 +202,7 @@ router.GET("/", func(c *gin.Context) {
     <h1>这是一个 html 模板</h1>
     <h3>{{.title}}</h3>
 </body>
-</html
+</html>
 ```
 
 2、Gin 框架中使用 c.HTML 可以渲染模板，渲染模板前需要使用 LoadHTMLGlob()或者 LoadHTMLFiles()方法加载模板
