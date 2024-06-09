@@ -30,7 +30,7 @@ D:\gin_demo>gin run main
 ### 3.2.1、GET
 
 ```go
-r.GET("网址", func(c \*gin.Context) {
+r.GET("网址", func(c *gin.Context) {
 	c.String(200, "Get")
 })
 ```
@@ -38,7 +38,7 @@ r.GET("网址", func(c \*gin.Context) {
 ### 3.2.2、POST
 
 ```go
-r.POST("网址", func(c \*gin.Context) {
+r.POST("网址", func(c *gin.Context) {
 	c.String(200, "POST")
 })
 ```
@@ -46,7 +46,7 @@ r.POST("网址", func(c \*gin.Context) {
 ### 3.2.3、PUT
 
 ```go
-r.PUT("网址", func(c \*gin.Context) {
+r.PUT("网址", func(c *gin.Context) {
 	c.String(200, "PUT")
 })
 ```
@@ -54,7 +54,7 @@ r.PUT("网址", func(c \*gin.Context) {
 ### 3.2.4、DELETE 
 
 ```go
-r.DELETE("网址", func(c \*gin.Context) {
+r.DELETE("网址", func(c *gin.Context) {
 	c.String(200, "DELETE")
 })
 ```
@@ -64,7 +64,7 @@ r.DELETE("网址", func(c \*gin.Context) {
 域名/news?aid=20
 
 ```go
-r.GET("/news", func(c \*gin.Context) {
+r.GET("/news", func(c *gin.Context) {
 	aid := c.Query("aid")
 	c.String(200, "aid=%s", aid)
 })
@@ -75,7 +75,7 @@ r.GET("/news", func(c \*gin.Context) {
 域名/user/20
 
 ```go
-r.GET("/user/:uid", func(c \*gin.Context) {
+r.GET("/user/:uid", func(c *gin.Context) {
 	uid := c.Param("uid")
 	c.String(200, "userID=%s", uid)
 })
@@ -88,7 +88,7 @@ r.GET("/user/:uid", func(c \*gin.Context) {
 **返回一个字符串**
 
 ```go
-r.GET("/news", func(c \*gin.Context) {
+r.GET("/news", func(c *gin.Context) {
 	aid := c.Query("aid")
 	c.String(200, "aid=%s", aid)
 })
@@ -126,7 +126,7 @@ func main() {
 ```go
 func main() {
 	r := gin.Default()
-	r.GET("/JSONP", func(c \*gin.Context) {
+	r.GET("/JSONP", func(c *gin.Context) {
 		data := map[string]interface{}{
 		"foo": "bar",
 	}
@@ -148,12 +148,12 @@ func main() {
 func main() {
 	r := gin.Default()
 	// gin.H 是 map[string]interface{}的缩写
-	r.GET("/someXML", func(c \*gin.Context) {
+	r.GET("/someXML", func(c *gin.Context) {
 		// 方式一：自己拼接 JSON
 		c.XML(http.StatusOK, gin.H{"message": "Hello world!"})
 	})
 
-	r.GET("/moreXML", func(c \*gin.Context) {
+	r.GET("/moreXML", func(c *gin.Context) {
 		// 方法二：使用结构体
 		type MessageRecord struct {
 			Name string

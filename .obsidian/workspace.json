@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/Linux.md",
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/Linux.md",
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/Linux.md",
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/Tool/Linux/Linux.md"
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md"
               }
             }
           },
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "ec75bcc1f2e60218",
   "lastOpenFiles": [
+    "02-Code/基础/Tool/Linux/Linux.md",
     "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
     "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
