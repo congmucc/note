@@ -131,9 +131,9 @@ git config --global user.email "2562907972@qq.com"
 
 相关命令为：
 
-`git stash`：
+`git stash`：会把所有未提交的修改（包括暂存的和非暂存的）都保存起来，用于后续恢复当前工作目录。
 
-`git stash pop`
+`git stash pop`：命令恢复之前缓存的工作目录，这个指令将缓存堆栈中的第一个stash删除。
 
 `git stash apply`
 
