@@ -6,7 +6,7 @@
 
 ## protobuf
 
-### 安装protobuf
+### 先手动下载安装protobuf
 
 ```
 https://github.com/protocolbuffers/protobuf

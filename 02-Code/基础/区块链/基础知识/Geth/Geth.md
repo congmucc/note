@@ -95,6 +95,12 @@ EVM 解释和执行智能合约代码时，会处理消息调用（Message Call�
 
 # 实战
 
+## geth
+
+官方文档：
+
+[JSON-RPC Server| go-Ethereum --- JSON-RPC Server | go-ethereum](https://geth.ethereum.org/docs/interacting-with-geth/rpc)
+
 环境：
 
 这里geth版本因为1.20不支持pow了，所以说需要1.20以下的。
@@ -168,22 +174,45 @@ main.go
 package main
 
 import (
+	"context"
 	"demo/geth/cli"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
+	"math/big"
 )
 
 func main() {
-	dial, err := rpc.Dial("http://127.0.0.1:8545")
+	dial, rpcErr := rpc.Dial("http://127.0.0.1:8545")
+	if rpcErr != nil {
+		fmt.Printf("错误是 %s\n", rpcErr)
+	}
+	defer dial.Close()
+	// 创建账户
+	//account, accountErr := cli.NewAccount(dial, "123456")
+	//if accountErr != nil {
+	//	fmt.Printf("错误是 %s\n", accountErr)
+	//}
+	//fmt.Printf("创建的账户是 %s\n", account)
+
+	number, err := cli.GetBlockNumber(dial)
 	if err != nil {
 		fmt.Printf("错误是 %s\n", err)
 	}
-	defer dial.Close()
-	account, accountErr := cli.NewAccount(dial, "123456")
-	if accountErr != nil {
-		fmt.Printf("错误是 %s\n", accountErr)
+
+	fmt.Println("当前区块高度是 %d\n", number)
+
+	client, ethErr := ethclient.Dial("http://127.0.0.1:8545")
+	if ethErr != nil {
+		fmt.Printf("错误是 %s\n", ethErr)
 	}
-	fmt.Printf("创建的账户是 %s\n", account)
+	defer client.Close()
+	balanceAt, balanceErr := client.BalanceAt(context.Background(), common.HexToAddress("0x8ced2e07d3b81fd22447648270b720fd65e61dfb"), big.NewInt(0))
+	if balanceErr != nil {
+		fmt.Printf("错误是 %s\n", balanceErr)
+	}
+	fmt.Printf("余额是 %s\n", balanceAt)
 }
 
 ```
@@ -234,3 +263,190 @@ func NewAccount(client *rpc.Client, pass string) (string, error) {
   **返回值**: 返回一个*ethclient.Client实例。这个客户端包含了多种针对以太坊特定操作的方法，如查询账户余额、发送交易、获取区块信息等，使用起来更加方便和直观。
   **适用场景**: 当你的应用主要关注于执行标准的以太坊操作，比如读取账户状态、交易发送等，使用ethclient.Dial会更加高效和直接，因为它已经为你实现了这些操作的细节。
 - **总结来说**，如果你需要进行更底层或非标准的RPC调用，可以选择使用rpc.Dial。而如果是为了进行常见的以太坊区块链操作，ethclient.Dial提供了更为便捷和针对性的接口。
+
+
+
+## Abigen
+
+> 部署开发的solidity文件
+
+官方文档：[开发者文档|go-Ethereum --- Go Contract Bindings | go-ethereum](https://geth.ethereum.org/docs/developers/dapp-developer/native-bindings)
+
+
+
+根据官方文档安装，之后在remix中编译一下获取abi
+
+```shell
+abigen --abi SimpleStorage.abi --pkg contract --type SimpleStorage --out SimpleStorage.go
+```
+
+> --abi后跟abi文件地址，pkg是abi文件的包名，type一般是合约名称，out是输出目录
+
+
+
+
+
+这里面需要获取opts，它的是一个div模式，需要读取本地目录
+
+主要是opts获取，这个没什么说的，因为老版本已经不支持了。
+
+```go
+package main
+
+import (
+	"demo/abigen/contract"
+	"fmt"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"math/big"
+	"strings"
+)
+
+const contractAddr = "0xd9145CCE52D386f254917e481eB44e9943F39138"
+
+func main() {
+	// 1 获取一个geth客户端
+	cli, ethErr := ethclient.Dial("http://localhost:8545")
+	if ethErr != nil {
+		fmt.Println("geth client error:", ethErr)
+	}
+	defer cli.Close()
+	// 2 获取合约实例
+	simpleStorage, contractErr := contract.NewSimpleStorage(common.HexToAddress(contractAddr), cli)
+	if contractErr != nil {
+		fmt.Println("get contract error:", contractErr)
+	}
+
+	// 3 通过合约实例调用合约
+	retrieve, retrieveErr := simpleStorage.Retrieve(nil)
+	if retrieveErr != nil {
+		fmt.Println("get contract error:", retrieveErr)
+	}
+	fmt.Println("retrieve:", retrieve)
+
+	// 获取文件内容 这里面就是通过查询本地路径的文件目录然后获取文件内容再使用newReader函数设置一个opts
+	var ks string
+
+	// 获取签名
+	opts, err := bind.NewTransactor(strings.NewReader(ks), "123456")
+	if err != nil {
+		return
+	}
+	simpleStorage.Store(opts, big.NewInt(0))
+}
+
+```
+
+
+
+
+
+## 事件订阅
+
+- 事件订阅使用：ws://localhost:8546
+
+- 事件订阅要开启geth参数的ws
+
+- 事件订阅可以用FilterQuery过滤
+
+```go
+package main
+
+import (
+	"context"
+	"demo/abigen/contract"
+	"fmt"
+	"github.com/ethereum/go-ethereum"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"math/big"
+	"strings"
+	"sync"
+)
+
+const contractAddr = "0xd9145CCE52D386f254917e481eB44e9943F39138"
+
+func main() {
+	// 1 获取一个geth客户端
+	cli, ethErr := ethclient.Dial("http://localhost:8545")
+	if ethErr != nil {
+		fmt.Println("geth client error:", ethErr)
+	}
+	defer cli.Close()
+	// 2 获取合约实例
+	simpleStorage, contractErr := contract.NewSimpleStorage(common.HexToAddress(contractAddr), cli)
+	if contractErr != nil {
+		fmt.Println("get contract error:", contractErr)
+	}
+
+	// 3 通过合约实例调用合约
+	retrieve, retrieveErr := simpleStorage.Retrieve(nil)
+	if retrieveErr != nil {
+		fmt.Println("get contract error:", retrieveErr)
+	}
+	fmt.Println("retrieve:", retrieve)
+
+	// 获取文件内容 这里面就是通过查询本地路径的文件目录然后获取文件内容再使用newReader函数设置一个opts
+	var ks string
+
+	// 获取签名
+	opts, err := bind.NewTransactor(strings.NewReader(ks), "123456")
+	if err != nil {
+		return
+	}
+	simpleStorage.Store(opts, big.NewInt(0))
+
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+		subEvent()
+		defer wg.Done()
+	}()
+	wg.Wait()
+
+}
+
+func subEvent() {
+	// 1 拿到事件订阅客户端
+	subCli, err := ethclient.Dial("ws://localhost:8546")
+	if err != nil {
+		fmt.Println("geth client error:", err)
+	}
+
+	defer subCli.Close()
+
+	// 2 封装过滤条件
+
+	filter := ethereum.FilterQuery{
+		Addresses: []common.Address{common.HexToAddress(contractAddr)},
+		Topics:    [][]common.Hash{{crypto.Keccak256Hash([]byte("StoreEvent(uint256)"))}}, // 这里需要写类型
+	}
+
+	logs := make(chan types.Log)
+	sub, err := subCli.SubscribeFilterLogs(context.Background(), filter, logs)
+	if err != nil {
+		fmt.Println("geth client error:", err)
+	}
+
+	for {
+		select {
+		case err = <-sub.Err():
+			fmt.Println("err")
+			return
+		case vlog := <-logs:
+			json, err := vlog.MarshalJSON()
+			if err != nil {
+				fmt.Println("json出现错误", err)
+			}
+			fmt.Println(string(json))
+			return
+		}
+	}
+}
+
+```
+
