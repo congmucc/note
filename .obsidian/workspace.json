@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "830f950d043ab881",
+        "id": "ff7fa2db3a4b710f",
         "type": "tabs",
         "children": [
           {
-            "id": "73a16028a6709f8c",
+            "id": "1199a3f636af7e7f",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -160,7 +160,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "73a16028a6709f8c",
+  "active": "1199a3f636af7e7f",
   "lastOpenFiles": [
     "02-Code/基础/区块链/基础知识/以太坊/以太坊.md",
     "02-Code/基础/区块链/基础知识/以太坊/assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006.webp",

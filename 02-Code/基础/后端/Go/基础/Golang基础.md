@@ -1038,9 +1038,36 @@ answer：
 
    总结来说，stop(stopCh, fn) 的调用启动了一个持续监听 stopCh 的过程，而这个过程不会因为 Test_Stop 函数到达这一行而结束，因为 goroutine 的执行是独立的。stopCh 作为引用传递，使得 stop 函数可以持续影响和响应其状态变化，即使在调用点之后。
 
+### 3.1.7 函数集合
 
+```go
+// Op 定义对 msg 处理的函数集合。
+type Op func(any) (any, error)
 
+// decode 解码远程消息。
+func decode(msg any) Op {
+    return func(any) (any, error) {
+        // decode msg
+        fmt.Println("decoding ... ", msg)
+        decodedRes := fmt.Sprintf("decoded_%v", msg)
+        fmt.Println("decoded to parameter -> ", decodedRes)
+        return decodedRes, nil
+    }
+}
 
+// opAction 模拟服务提供方处理业务逻辑。
+func opAction(parameter any) Op {
+    return func(any) (any, error) {
+        // decode msg
+        fmt.Println("do opAction ... ", parameter)
+        opRes := fmt.Sprintf("opAction_%v", parameter)
+        fmt.Println("after opAction result -> ", opRes)
+        return opRes, nil
+    }
+}
+```
+
+> 定义一个op，然后再函数的返回值上调用
 
 
 
