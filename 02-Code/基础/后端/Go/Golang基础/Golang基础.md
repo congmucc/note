@@ -846,7 +846,7 @@ func main() {
 
 ### 3.1.3 import导包与init函数
 
-![image-20240222213520795](./assets/image-20240222213520795.png)
+![image-20240222213520795](assets/image-20240222213520795.png)
 
 ```go
 package main
@@ -1550,7 +1550,7 @@ func main() {
 
 变量结构：
 
-![image-20240224141553576](./assets/image-20240224141553576.png)
+![image-20240224141553576](assets/image-20240224141553576.png)
 
 - Go语言提供反射机制，方便在运行的过程中可以动态地获取信息。
 
