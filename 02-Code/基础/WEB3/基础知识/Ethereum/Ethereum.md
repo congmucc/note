@@ -92,7 +92,7 @@
 
 我们首先来看这三颗核心的树：世界状态树，交易树，回执树
 
-![image](./assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp)
+![image](assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp)
 
 
 
@@ -168,7 +168,7 @@
 
 有些人经常把以太坊（Ethereum）和以太币（ ETH）混为一谈。但实际上，以太坊是区块链，以太币是以太坊的原生资产，以 Wei 作为最小单位，其中1 Ether 等于10^18 Wei。它在以太坊生态系统中扮演着至关重要的角色，用于支付交易费用、执行智能合约，以及在过去的工作量证明（PoW）机制下作为矿工的激励机制。随着以太坊转向权益证明（PoS）机制，Ether 同样用于激励验证者（Validators）。
 
-![image](./assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006.webp)
+![image](assets/27f8ec0e-7e78-47b6-9d85-a147c57ef006.webp)
 
 
 
