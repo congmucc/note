@@ -1181,14 +1181,14 @@ func main() {
 
 1、测试文件必须以 `_test.go` 结尾，
 
-2、测试函数需要以大写的`Test_`进行开头，即
+2、测试函数需要以大写的`Test`进行开头，即
 
 3、使用命令`go test`进行运行测试类
 
 chan_test.go
 
 ```go
-func Test_Stop(t *testing.T) {
+func TestStop(t *testing.T) {
 	stopCh := make(chan struct{})
 
 	fn := func() {
