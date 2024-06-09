@@ -128,3 +128,15 @@ git config --global user.email "2562907972@qq.com"
 2. git fetch origin
 3. git pull origin main
 4. 后面如果回来的话可以使用git stash apply
+
+相关命令为：
+
+`git stash`：
+
+`git stash pop`
+
+`git stash apply`
+
+`git stash list`
+
+`git stash drop`
