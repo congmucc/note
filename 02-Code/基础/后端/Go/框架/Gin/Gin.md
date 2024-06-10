@@ -37,7 +37,7 @@ D:\gin_demo>gin run main
 ```
 
   
-  
+
   
 
 # 3、Gin框架中的路由
@@ -161,7 +161,7 @@ r.GET("/user/:uid", func(c *gin.Context) {
 ```
 
   
-  
+
   
 
 ## 3.3、c.String() c.JSON() c.JSONP() c.XML() c.HTML()
@@ -396,7 +396,7 @@ router.GET("/", func(c *gin.Context) {
 
     <h1>这是一个 html 模板</h1>
 
-    <h3>{{.title}}</h3>
+    <h3>{ {.title} }</h3>
 
 </body>
 
@@ -475,7 +475,7 @@ func main() {
 ```
 
   
-  
+
   
 
 ## 4.2、模板放在不同目录里面的配置方法
@@ -496,7 +496,7 @@ Gin 框架中如果不同目录下面有同名模板的话我们需要使用下�
 
 ```go
 
-{{ define "admin/index.html" }}
+{ { define "admin/index.html" } }
 
     <!DOCTYPE html>
 
@@ -518,13 +518,13 @@ Gin 框架中如果不同目录下面有同名模板的话我们需要使用下�
 
             <h1>后台模板</h1>
 
-            <h3>{{.title}}</h3>
+            <h3>{ {.title} }</h3>
 
         </body>
 
     </html>
 
-{{ end }}
+{ { end } }
 
 ```
 
@@ -588,11 +588,11 @@ func main() {
 
   
 
-### 4.3.1、{{.}} 输出数
+### 4.3.1、{ {.} } 输出数
 
   
 
-模板语法都包含在{{和}}中间，其中{{.}}中的点表示当前对象。
+模板语法都包含在{ {和} }中间，其中{ {.} }中的点表示当前对象。
 
   
 
@@ -660,7 +660,7 @@ func main() {
 
 ```html
 
-{{ define "default/index.html" }}
+{ { define "default/index.html" } }
 
 <!DOCTYPE html>
 
@@ -682,17 +682,17 @@ func main() {
 
         <h1>前台模板</h1>
 
-        <h3>{{.title}}</h3>
+        <h3>{ {.title} }</h3>
 
-        <h4>{{.user.Name}}</h4>
+        <h4>{ {.user.Name} }</h4>
 
-        <h4>{{.user.Age}}</h4>
+        <h4>{ {.user.Age} }</h4>
 
     </body>
 
 </html>
 
-{{end}}
+{ {end} }
 
 ```
 
@@ -704,7 +704,7 @@ func main() {
 
 ```go
 
-{{/* a comment */}}
+{ {/* a comment */} }
 
 ```
 
@@ -724,9 +724,9 @@ func main() {
 
 ```html
 
-<h4>{{$obj := .title}}</h4>
+<h4>{ {$obj := .title} }</h4>
 
-<h4>{{$obj}}</h4>
+<h4>{ {$obj} }</h4>
 
 ```
 
@@ -736,19 +736,19 @@ func main() {
 
   
 
-有时候我们在使用模板语法的时候会不可避免的引入一下空格或者换行符，这样模板最终渲 染出来的内容可能就和我们想的不一样，这个时候可以使用{{-语法去除模板内容左侧的所有 空白符号， 使用-}}去除模板内容右侧的所有空白符号。
+有时候我们在使用模板语法的时候会不可避免的引入一下空格或者换行符，这样模板最终渲 染出来的内容可能就和我们想的不一样，这个时候可以使用{ {-语法去除模板内容左侧的所有 空白符号， 使用-} }去除模板内容右侧的所有空白符号。
 
   
 
 ```html
 
-{{- .Name -}}
+{ {- .Name -} }
 
 ```
 
   
 
-**注意**：-要紧挨{{和}}，同时与模板值之间需要使用空格分隔。
+**注意**：-要紧挨{ {和} }，同时与模板值之间需要使用空格分隔。
 
   
 
@@ -798,42 +798,42 @@ ge  如果 arg1 >= arg2 则返回真
 
 ```html
 
-{{if pipeline}} T1 {{end}}
+{ {if pipeline} } T1 { {end} }
 
-{{if pipeline}} T1 {{else}} T0 {{end}}
+{ {if pipeline} } T1 { {else} } T0 { {end} }
 
-{{if pipeline}} T1 {{else if pipeline}} T0 {{end}}
+{ {if pipeline} } T1 { {else if pipeline} } T0 { {end} }
 
-{{if gt .score 60}}
+{ {if gt .score 60} }
 
 及格
 
-{{else}}
+{ {else} }
 
 不及格
 
-{{end}}
+{ {end} }
 
   
 
-{{if gt .score 90}}
+{ {if gt .score 90} }
 
 优秀
 
-{{else if gt .score 60}}
+{ {else if gt .score 60} }
 
 及格
 
-{{else}}
+{ {else} }
 
 不及格
 
-{{end}}
+{ {end} }
 
 ```
 
   
-  
+
   
 
 ### 4.3.7、range
@@ -846,11 +846,11 @@ Go 的模板语法中使用 range 关键字进行遍历，有以下两种写法�
 
 ```html
 
-{{range $key,$value := .obj}}
+{ {range $key,$value := .obj} }
 
-    {{$value}}
+    { {$value} }
 
-{{end}}
+{ {end} }
 
 ```
 
@@ -862,15 +862,15 @@ Go 的模板语法中使用 range 关键字进行遍历，有以下两种写法�
 
 ```html
 
-{{$key,$value := .obj}}
+{ {$key,$value := .obj} }
 
-    {{$value}}
+    { {$value} }
 
-{{else}}
+{ {else} }
 
     pipeline 的值其长度为 0
 
-{{end}}
+{ {end} }
 
 ```
 
@@ -894,11 +894,11 @@ router.GET("/", func(c *gin.Context) {
 
   
 
-{{range $key,$value := .hobby}}
+{ {range $key,$value := .hobby} }
 
-    <p>{{$value}}</p>
+    <p>{ {$value} }</p>
 
-{{end}}
+{ {end} }
 
   
 
@@ -934,11 +934,11 @@ router.GET("/", func(c *gin.Context) {
 
 ```go
 
-<h4>{{.user.Name}}</h4>
+<h4>{ {.user.Name} }</h4>
 
-<h4>{{.user.Gender}}</h4>
+<h4>{ {.user.Gender} }</h4>
 
-<h4>{{.user.Age}}</h4>
+<h4>{ {.user.Age} }</h4>
 
 ```
 
@@ -950,15 +950,15 @@ router.GET("/", func(c *gin.Context) {
 
 ```go
 
-{{with .user}}
+{ {with .user} }
 
-    <h4>姓名：{{.Name}}</h4>
+    <h4>姓名：{ {.Name} }</h4>
 
-    <h4>性别：{{.user.Gender}}</h4>
+    <h4>性别：{ {.user.Gender} }</h4>
 
-    <h4>年龄：{{.Age}}</h4>
+    <h4>年龄：{ {.Age} }</h4>
 
-{{end}}
+{ {end} }
 
 ```
 
@@ -1064,9 +1064,9 @@ router.GET("/", func(c *gin.Context) {
 
   ```go
 
-  {{len .title}}
+  { {len .title} }
 
-  {{index .hobby 2}}
+  { {index .hobby 2} }
 
   ```
 
@@ -1156,11 +1156,11 @@ func main() {
 
 ```go
 
-{{.now | formatDate}}
+{ {.now | formatDate} }
 
 或者
 
-{{formatDate .now }}
+{ {formatDate .now } }
 
 ```
 
@@ -1176,11 +1176,11 @@ func main() {
 
 ```go
 
-{{ define "default/page_header.html" }}
+{ { define "default/page_header.html" } }
 
     <h1>这是一个头部</h1>
 
-{{end}}
+{ {end} }
 
 ```
 
@@ -1204,7 +1204,7 @@ func main() {
 
 ```go
 
-{{template "default/page_header.html" .}}
+{ {template "default/page_header.html" .} }
 
 ```
 
@@ -1214,7 +1214,7 @@ func main() {
 
 <!-- 相当于给模板定义一个名字 define end 成对出现-->
 
-{{ define "default/index.html" }}
+{ { define "default/index.html" } }
 
 <!DOCTYPE html>
 
@@ -1234,13 +1234,13 @@ func main() {
 
 <body>
 
-    {{template "default/page_header.html" .}}
+    { {template "default/page_header.html" .} }
 
 </body>
 
 </html>
 
-{{end}}
+{ {end} }
 
 ```
 
@@ -1335,7 +1335,7 @@ r.GET("/user/:uid", func(c *gin.Context) {
 ```
 
   
-  
+
   
 
 ### 6.1.3、Post 请求传值 获取 form 表单数
@@ -1434,9 +1434,7 @@ router.GET("/", func(c *gin.Context) {
 
   
 
-返回数据 {"user":"zhangsan","password":"123456"}
 
-  
 
 **Post 传值绑定到结构体**
 
@@ -1468,10 +1466,10 @@ router.POST("/doLogin", func(c *gin.Context) {
 
   
 
-返回数据 {"user":"zhangsan","password":"123456"}
+返回数据 `{"user":"zhangsan","password":"123456"}`
 
   
-  
+
   
 
 ### 6.1.5、获取 Post Xml 数据
@@ -1497,7 +1495,7 @@ router.POST("/doLogin", func(c *gin.Context) {
 ```
 
   
-  
+
   
 
 ```go
@@ -1531,7 +1529,7 @@ router.POST("/xml", func(c *gin.Context) {
 ```
 
   
-  
+
   
 
 ## 6.2、简单的路由组
@@ -2205,7 +2203,7 @@ initMiddlewareTwo--2-执行中间件
 initMiddlewareOne--2-执行中间件
 
   
-  
+
   
 
 ## 8.2、全局中间件
@@ -2259,7 +2257,7 @@ func main() {
 ```
 
   
-  
+
   
 
 ## 8.3、在路由分组中配置中间件
@@ -2437,7 +2435,7 @@ func (c UserController) Index(ctx *gin.Context) {
 ```
 
   
-  
+
   
 
 ## 8.5、中间件注意事项
@@ -2495,7 +2493,7 @@ r.GET("/", func(c *gin.Context) {
 ```
 
   
-  
+
   
 
 # 9、Gin 中自定义 Model
@@ -2625,7 +2623,7 @@ day
 ```
 
   
-  
+
   
 
 ## 9.4、调用 Model 注册全局模板函数
@@ -2702,14 +2700,14 @@ func (c UserController) Add(ctx *gin.Context) {
 
 ```html
 
-<h2>{{.now | unixToDate}}</h2>
+<h2>{ {.now | unixToDate} }</h2>
 
 ```
 
   
+
   
-  
-  
+
   
 
 ## 9.5、Golang Md5 加密
@@ -2753,7 +2751,7 @@ fmt.Printf("%x\n", h.Sum(nil))
 ```
 
   
-  
+
   
 
 # 10、Gin 文件上传
@@ -2811,7 +2809,7 @@ func main() {
 ```
 
   
-  
+
   
 
 ## 10.2、多文件上传
@@ -2957,7 +2955,7 @@ func (c UserController) DoAdd(ctx *gin.Context) {
 -  cookie 是存储于访问者计算机的浏览器中。可以让我们用同一个浏览器访问同一个域名 的时候共享数据。
 
   
-  
+
   
 
 ## 11.2、Cookie 能实现的功能
@@ -3093,7 +3091,7 @@ func main() {
 ```
 
   
-  
+
   
 
 ## 11.4 、多个二级域名共享 cookie
@@ -3119,9 +3117,9 @@ c.SetCookie("usrename", "张三", 3600, "/", ".itying.com", false, true)
 ```
 
   
+
   
-  
-  
+
   
 
 # 12、Gin 中的 Session
@@ -3265,7 +3263,7 @@ func main() {
 ```
 
   
-  
+
   
 
 ## 12.5、基于 Redis 存储 Session
@@ -3287,7 +3285,7 @@ go get github.com/gin-contrib/sessions/redis
 ```
 
   
-  
+
   
 
 ```go
@@ -3379,7 +3377,7 @@ GORM 官方支持的数据库类型有： MySQL, PostgreSQL, SQlite, SQL Server
 官方文档：https://gorm.io/zh_CN/docs/index.html
 
   
-  
+
   
 
 ## 13.2、Gin 中使用 GORM
@@ -3553,7 +3551,7 @@ func (User) TableName() string {
 关于更多模型定义的方法参考：https://gorm.io/zh_CN/docs/conventions.html
 
   
-  
+
   
 
 ## 13.3、Gin GORM CURD
@@ -3607,7 +3605,7 @@ user := models.User{
 ```
 
   
-  
+
   
 
 **2、查找**
@@ -3659,7 +3657,7 @@ func (con UserController) Index(c *gin.Context) {
 ```
 
   
-  
+
   
 
 3、修改
@@ -3685,7 +3683,7 @@ func (con UserController) Edit(c *gin.Context) {
 ```
 
   
-  
+
   
 
 4、删除
@@ -3769,7 +3767,7 @@ func init() {
 ```
 
   
-  
+
   
 
 # 14、原生SQl和SQl生成器
@@ -3811,9 +3809,9 @@ fmt.Println(result.RowsAffected)
 Scan一般只用于原始查询
 
   
+
   
-  
-  
+
   
 
 # 15、Gin 中使用 GORM 实现表关联查询
@@ -3931,9 +3929,9 @@ func (con ArticleController) Index(c *gin.Context) {
 **注意**：Preload("ArticleCate")里面的 ArticleCate 为 Article struct 中定义的属性 ArticleCate
 
   
+
   
-  
-  
+
   
 
 ## 15.2、一对多
@@ -3993,7 +3991,7 @@ func (ArticleCate) TableName() string {
 ```
 
   
-  
+
   
 
 **Article**
@@ -4029,9 +4027,9 @@ func (Article) TableName() string {
 ```
 
   
+
   
-  
-  
+
   
 
 **1、查找所有分类以及分类下面的文章信息**
@@ -4053,7 +4051,7 @@ func (con ArticleController) Index(c *gin.Context) {
 ```
 
   
-  
+
   
 
 **2、查找所有分类以及分类下面的文章信息 指定条件**
@@ -4075,11 +4073,11 @@ unc (con ArticleController) Index(c *gin.Context) {
 ```
 
   
+
   
+
   
-  
-  
-  
+
   
 
 ## 15.3、多对多
@@ -4281,7 +4279,7 @@ GORM 默认会将单个的 create, update, delete 操作封装在事务内进行
 如果你想把多个 create, update, delete 操作作为一个原子操作，Transaction 就是用来完成 这个的。
 
   
-  
+
   
 
 ## 16.2、事务
@@ -4347,7 +4345,7 @@ tx.Commit()
 ```
 
   
-  
+
   
 
 ```go
@@ -4538,7 +4536,7 @@ func main() {
 ```
 
   
-  
+
   
 
 ## 17.3、从.ini 中读取 mysql 配置
