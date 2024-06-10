@@ -1,4 +1,4 @@
-项目地址： [congmucc/uni-ts-shop: 这是uniapp+ts的小鲜兔商城前端开发 (github.com)](https://github.com/congmucc/uni-ts-shop)
+项目地址：[congmucc/uni-ts-shop: 这是uniapp+ts的小鲜兔商城前端开发 (github.com)](https://github.com/congmucc/uni-ts-shop)
 
 # 0 项目搭建
 

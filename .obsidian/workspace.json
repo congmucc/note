@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
+                "file": "02-Code/实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
+                "file": "02-Code/实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
+                "file": "02-Code/实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md"
+                "file": "02-Code/实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md"
               }
             }
           },
@@ -169,8 +169,13 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ec75bcc1f2e60218",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/党务修改.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
+    "02-Code/实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
+    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
     "02-Code/基础/后端/Go/框架/Gin/Gin.md",
     "02-Code/基础/Tool/Linux/Linux.md",
     "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
@@ -189,7 +194,6 @@
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212212504003.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/1668092957247-fbe40780-c53d-4df5-b2a5-527d5c04c939.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets",
-    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目",
     "02-Code/实战笔记/项目笔记/WEB3/新建文件夹",
     "02-Code/实战笔记/项目笔记/WEB3/assets",
@@ -213,10 +217,6 @@
     "02-Code/基础/区块链/基础知识/Mantle Network/Mantle Network.md",
     "02-Code/基础/区块链/基础知识/WEB3入门/WEB3入门.md",
     "02-Code/基础/区块链/Geth/Geth.md",
-    "02-Code/基础/区块链/Mantle Network/Mantle Network.md",
-    "02-Code/基础/区块链/Mantle Network/Untitled.md",
-    "02-Code/基础/区块链/Interview/Interview.md",
-    "02-Code/基础/区块链/基础知识/基础知识.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
