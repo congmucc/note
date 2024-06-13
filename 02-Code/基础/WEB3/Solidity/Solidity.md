@@ -1,10 +1,16 @@
-# 1 Solidity
+
 
 [solidity学习-一些基础攻击_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1th4y1V7iG/)
 
-## 1.1 基本语法
+# 0 介绍
 
-### 1.1.1 数据类型
+[中文版 Solidity develop 文档 (solidity-cn.readthedocs.io)](https://solidity-cn.readthedocs.io/zh/develop/introduction-to-smart-contracts.html)
+
+
+
+# 1 基本语法
+
+### 1.1 数据类型
 
 1、**boolean**
 
@@ -28,6 +34,8 @@
 
 5、**bytes**
 
+> 字节数组`bytes`分两种，一种定长（`byte`, `bytes8`, `bytes32`），另一种不定长。定长的属于数值类型，不定长的是引用类型。 定长`bytes`可以存一些数据，消耗`gas`比较少。
+>
 > 同uint特殊。
 >
 > `bytes32 favoriteBytes = "cat";`
@@ -70,7 +78,7 @@
 >     }
 > ```
 
-### 1.1.2 功能可见性说明符
+### 1.2 功能可见性说明符
 
 - `public` ：在外部和内部可见（为存储/状态变量**创建 getter 函数**）
 - `private` ：仅在当前合约中可见
@@ -79,7 +87,7 @@
 
 
 
-### 1.1.3 修饰符(关键字)
+### 1.3 修饰符(关键字)
 
 - `pure` for functions：不允许修改或访问状态。
 - `view` for functions：不允许修改状态。
@@ -100,7 +108,7 @@
 
 
 
-### 1.1.4 可存储数据
+### 1.4 可存储数据
 
 1、**Stack**
 
@@ -124,7 +132,7 @@
 
 
 
-### 1.1.5 库Library
+### 1.5 库Library
 
 > 场景是将自己写的函数作为别的函数库
 >
@@ -206,7 +214,7 @@ contract FundMe {
 
 
 
-### 1.1.6 modifier 
+### 1.6 modifier 
 
 ```solidity
 
@@ -229,9 +237,9 @@ contract FundMe {
 
 
 
-### 1.1.7 函数相关
+### 1.7 函数相关
 
-#### 1.1.7.1 receive & fallback
+#### 1.7.1 receive & fallback
 
 1、**receive**
 
@@ -268,19 +276,19 @@ contract FundMe {
 
 ```
 
-### 1.1.8 EVM
+### 1.8 EVM
 
 
 
 
 
-## 1.2 面向对象
+## 2 面向对象
 
 > 合约的关键字是`contract`， 类似java的`calss`
 
 
 
-### 1.2.1 封装
+### 2.1 封装
 
 ```solidity
 // I'm a comment!
@@ -323,9 +331,9 @@ contract SimpleStorage {
 
 
 
-### 1.2.2 继承
+### 2.2 继承
 
-#### 1.2.2.1 继承
+#### 2.2.1 继承
 
 ```solidity
 import "./SimpleStorage.sol";
@@ -337,7 +345,7 @@ contract ExtraStorage is SimpleStorage{
 
 > 关键词是`is`，使用前需要导入
 
-#### 1.2.2.2 重载
+#### 2.2.2 重载
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -378,7 +386,7 @@ contract ExtraStorage is SimpleStorage{
 
 ##  1.3 高级
 
-### 1.3.1 chainlink的使用
+### 3.1 chainlink的使用
 
 在实战3.1中，需要同故宫chainlink获取ETH和USD汇率转换需要使用Data Feed
 
@@ -390,9 +398,9 @@ contract ExtraStorage is SimpleStorage{
 
 
 
-## 1.4 实战
+## 4 实战
 
-### 1.4.1 04发送一个合约交易
+### 4.1 04发送一个合约交易
 
 ```solidity
 // SPDX-License-Indentifitier: MIT
@@ -443,19 +451,19 @@ contract FundMe {
 >
 > 3、发送其他合约
 >
-> [1.7 区块链发送参数](# 1.7 区块链发送参数)
+> [1.7 区块链发送参数](# 7 区块链发送参数)
 >
 > 4、网站：
 >
-> [Data feed的使用](# 1.3.1 chainlink的使用)
+> [Data feed的使用](# 3.1 chainlink的使用)
 >
 > 5、优化：
 >
-> [1.4.2 降低gas](# 1.4.2 降低gas)
+> [1.4.2 降低gas](# 4.2 降低gas)
 >
-> [2.1.7.1 receive & fallback](# 1.1.7.1 receive & fallback)
+> [2.1.7.1 receive & fallback](# 7.1 receive & fallback)
 
-### 1.4.2 使用vscode编译合约
+### 4.2 使用vscode编译合约
 
 > 1. 使用yarn
 > 2. 导入依赖solc编译
@@ -543,7 +551,7 @@ contract FundMe {
    
 
    
-## 1.5 编译
+## 5 编译
 1. **ABI（Application Binary Interface）**：ABI 描述了合约的外部接口，包括合约的函数、事件等信息。它定义了合约如何与其他合约或者外部调用者进行交互。ABI 在 JSON 文件中以键值对的形式表示，包含了**函数的名称**、**参数类型**、**返回值类型**等信息。
    
 2. **Data（Bytecode）**：这部分数据是合约的字节码（bytecode），它是合约编译后的二进制代码。字节码包含了合约的**实际执行代码**，包括**函数实现**、**变量初始化**等。部署合约时，需要将字节码发送到以太坊网络上，以供网络执行合约部署操作。
