@@ -38,7 +38,12 @@
 >
 > 同uint特殊。
 >
-> `bytes32 favoriteBytes = "cat";`
+> `bytes32 public _byte32 = "MiniSolidity"; `
+>
+> `bytes1 public _byte = _byte32[0]; `
+>
+> `MiniSolidity`变量以字节的方式存储进变量`_byte32`，转换成16进制为：`0x4d696e69536f6c69646974790000000000000000000000000000000000000000`
+> `_byte`变量存储`_byte32`的第一个字节，为`0x4d`
 
 6、**stirng**
 
@@ -77,6 +82,32 @@
 >         nameToFavoriteNumber[_name] = _favoriteNumber;
 >     }
 > ```
+
+10、枚举 enum
+
+> 枚举（`enum`）是`solidity`中用户定义的数据类型。它主要用于为`uint`分配名称，使程序易于阅读和维护。它与`C语言`中的`enum`类似，使用名称来代替从`0`开始的`uint`：
+>
+> ```solidity
+>     // 用enum将uint 0， 1， 2表示为Buy, Hold, Sell
+>     enum ActionSet { Buy, Hold, Sell }
+>     // 创建enum变量 action
+>     ActionSet action = ActionSet.Buy;
+> ```
+>
+> 
+>
+> 它可以显式的和`uint`相互转换，并会检查转换的正整数是否在枚举的长度内，不然会报错：
+>
+> ```solidity
+>     // enum可以和uint显式的转换
+>     function enumToUint() external view returns(uint){
+>         return uint(action);
+>     }
+> ```
+>
+> 
+>
+> `enum`是一个比较冷门的变量，几乎没什么人用。
 
 ### 1.2 功能可见性说明符
 
