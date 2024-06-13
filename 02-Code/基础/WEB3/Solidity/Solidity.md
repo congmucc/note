@@ -12,7 +12,7 @@
 
 ## 1.1 数据类型
 
-### 1.1.3 数据类型
+### 1.1.1 数据类型
 
 1、**boolean**
 
@@ -78,23 +78,36 @@
 8、**数组类型**
 
 > ```solidity
->    People[] public people;
->     //添加数组元素
->     function addPeople(string memory _name, uint256 _favoriteNumber) public {
->         People memory newPeople = People({favoriteNumber: _favoriteNumber, name: _name});
->         people.push(newPeople);
->     }
+> People[] public people;
+>  //添加数组元素
+>  function addPeople(string memory _name, uint256 _favoriteNumber) public {
+>      People memory newPeople = People({favoriteNumber: _favoriteNumber, name: _name});
+>      people.push(newPeople);
+>  }
 > ```
+>
+> 这里如果想要定义，有两种定义：
+>
+> 1、固定长度`uint[10]`：在声明时指定数组的长度
+>
+> 2、动态数组`address[]`：在声明时不指定数组的长度
+>
+> `bytes`比较特殊，是数组，但是不用加`[]`。另外，不能用`byte[]`声明单字节数组，可以使用`bytes`或`bytes1[]`。在gas上，`bytes`比`bytes1[]`便宜。因为`bytes1[]`在`memory`中要增加31个字节进行填充，会产生额外的gas。但是在`storage`中，由于内存紧密打包，不存在字节填充。
 
 9、**映射mapping**
 
 > ```solidity
->     mapping(string => uint256) public nameToFavoriteNumber;
->         //添加数组元素
->     function addPeople(string memory _name, uint256 _favoriteNumber) public {
->         nameToFavoriteNumber[_name] = _favoriteNumber;
->     }
+>  mapping(string => uint256) public nameToFavoriteNumber;
+>      //添加数组元素
+>  function addPeople(string memory _name, uint256 _favoriteNumber) public {
+>      nameToFavoriteNumber[_name] = _favoriteNumber;
+>  }
 > ```
+>
+> - **规则1**：映射的`_Key`只能选择`solidity`默认的类型，比如`uint`，`address`等，不能用自定义的结构体。而`_Value`可以使用自定义的类型。下面这个例子会报错，因为`_Key使用了我们自定义的结构体：
+> - **规则2**：映射通常用于存储大量的键值对数据，映射的存储位置必须是`storage`，因此可以用于合约的状态变量，函数中的`storage`变量，和library函数的参数。不能用于`public`函数的参数或返回结果中，因为`mapping`记录的是一种关系 (key - value pair)。
+> - **规则3**：如果映射声明为`public`，那么`solidity`会自动给你创建一个`getter`函数，可以通过`Key`来查询对应的`Value`。
+> - **规则4**：给映射新增的键值对的语法为`_Var[_Key] = _Value`，其中`_Var`是映射变量名，`_Key`和`_Value`对应新增的键值对。例子
 
 **10、枚举 enum**
 
@@ -126,6 +139,47 @@
 
 **引用类型(Reference Type)**：包括数组（`array`），结构体（`struct`）和映射（`mapping`），这类变量占空间大，赋值时候直接传递地址（类似指针）。由于这类变量比较复杂，占用存储空间大，我们在使用时必须要声明数据存储的位置。
 
+### 1.1.3 变量的初始值
+
+- `boolean`: `false`
+
+- `string`: `""`
+
+- `int`: `0`
+
+- `uint`: `0`
+
+- `enum`: 枚举中的第一个元素
+
+- `address`: `0x0000000000000000000000000000000000000000` (或 `address(0)`)
+
+- ```
+  function
+  ```
+
+  - `internal`: 空白方程
+  - `external`: 空白方程
+
+**`delete`操作符：**
+
+`delete a`会让变量`a`的值变为初始值。
+
+
+
+### 1.1.4 常量
+
+`constant`（常量）和`immutable`（不变量）
+
+> 状态变量声明这个两个关键字之后，不能在合约后更改数值；并且还可以节省`gas`。另外，只有数值变量可以声明`constant`和`immutable`；`string`和`bytes`可以声明为`constant`，但不能为`immutable`。
+
+`constant`变量必须在声明的时候初始化，之后再也不能改变。尝试改变的话，编译不通过。
+
+`immutable`变量可以在声明时或构造函数中初始化，因此更加灵活。
+
+
+
+
+
 ## 1.2 数据存储的位置
 
 ### 1.2.1 存储位置
@@ -141,6 +195,8 @@
 3、**Storage**
 
 > 可以被修改的永久变量，数据在合约的整个生命周期内保持不变，除非显式修改。状态变量默认存储在 `storage` 中。
+>
+> 存储在`storage`中的数据是永久性的，只要智能合约存在，这些数据就会一直保存在区块链上。即使智能合约的函数执行完毕，甚至是合约暂停或销毁（如果有自我销毁机制的话），存储在`storage`中的数据也不会丢失，除非通过合约代码明确地修改或删除
 >
 > 如`uint public value;`
 
@@ -178,7 +234,7 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 
 
 
-### 1.2.2 赋值规则
+### 1.2.2 赋值规则(赋值是否引用)
 
 1. `storage`（合约的状态变量）赋值给本地`storage`（函数里的）时候，会创建引用，改变新变量会影响原变量。例子：
 
@@ -209,6 +265,10 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 
 3. `memory`赋值给`memory`，会创建引用，改变新变量会影响原变量。
 4. 其他情况，变量赋值给`storage`，会创建独立的副本，修改其中一个不会影响另一个。
+
+##作用域
+
+
 
 
 
@@ -291,29 +351,6 @@ contract FundMe {
 ```
 
 > `using PriceConverter for uint256;` 语句将 `PriceConverter` 库中的功能引入了 `uint256` 类型，使得 `uint256` 类型的变量可以直接调用 `PriceConverter` 中定义的函数。
-
-
-
-## 1.6 modifier 
-
-```solidity
-
-    function withdraw() public onlyOwner   {
-        for (uint256 funderIndex=0; funderIndex < funders.length; funderIndex++){
-            address funder = funders[funderIndex];
-            addressToAmountFunded[funder] = 0;
-        }
-        funders = new address[](0);
-        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
-        require(callSuccess, "Call failed");
-    }
-
-    modifier onlyOwner {
-        // require(msg.sender == owner);
-        if (msg.sender != i_owner) revert NotOwner();
-        _; // 表示先运行使用该 modifier的函数，如果这段代码在if之上表示先运行函数后运行if
-    }
-```
 
 
 
@@ -423,7 +460,79 @@ function test() public pure returns (unint256) {
 
 
 
+### 2.1.4 作用域
 
+`Solidity`中变量按作用域划分有三种，分别是状态变量（state variable），局部变量（local variable）和全局变量(global variable)
+
+#### 2.1.4.1. 
+
+状态变量是数据存储在链上的变量，所有合约内函数都可以访问 ，**`gas`消耗高**。状态变量在合约内、函数外声明：
+
+```solidity
+contract Variables {
+    uint public x = 1;
+    uint public y;
+    string public z;
+}
+```
+
+
+
+我们可以在函数里更改状态变量的值：
+
+```solidity
+    function foo() external{
+        // 可以在函数里更改状态变量的值
+        x = 5;
+        y = 2;
+        z = "0xAA";
+    }
+```
+
+
+
+#### 2.1.4.2. 局部变量
+
+局部变量是仅在函数执行过程中有效的变量，函数退出后，变量无效。局部变量的数据存储在内存里，不上链，`gas`低。局部变量在函数内声明：
+
+```solidity
+    function bar() external pure returns(uint){
+        uint xx = 1;
+        uint yy = 3;
+        uint zz = xx + yy;
+        return(zz);
+    }
+```
+
+
+
+#### 2.1.4.3 全局变量
+
+全局变量是全局范围工作的变量，都是`solidity`预留关键字。他们可以在函数内不声明直接使用：
+
+```solidity
+    function global() external view returns(address, uint, bytes memory){
+        address sender = msg.sender;
+        uint blockNum = block.number;
+        bytes memory data = msg.data;
+        return(sender, blockNum, data);
+    }
+```
+
+
+
+在上面例子里，我们使用了3个常用的全局变量：`msg.sender`, `block.number`和`msg.data`，他们分别代表请求发起地址，当前区块高度，和请求数据。下面是一些常用的全局变量，更完整的列表请看这个[链接](https://learnblockchain.cn/docs/solidity/units-and-global-variables.html#special-variables-and-functions)：
+
+- `blockhash(uint blockNumber)`: (`bytes32`)给定区块的哈希值 – 只适用于256最近区块, 不包含当前区块。
+- `block.coinbase`: (`address payable`) 当前区块矿工的地址
+- `block.gaslimit`: (`uint`) 当前区块的gaslimit
+- `block.number`: (`uint`) 当前区块的number
+- `block.timestamp`: (`uint`) 当前区块的时间戳，为unix纪元以来的秒
+- `gasleft()`: (`uint256`) 剩余 gas
+- `msg.data`: (`bytes calldata`) 完整call data
+- `msg.sender`: (`address payable`) 消息发送者 (当前 caller)
+- `msg.sig`: (`bytes4`) calldata的前四个字节 (function identifier)
+- `msg.value`: (`uint`) 当前交易发送的`wei`值
 
 
 
@@ -466,6 +575,198 @@ function test() public pure returns (unint256) {
 
 
 
+## 2.2 构造函数和修饰器
+
+### 2.2.1 构造函数
+
+构造函数（`constructor`）是一种特殊的函数，每个合约可以定义一个，并在部署合约的时候自动运行一次。它可以用来初始化合约的一些参数，例如初始化合约的`owner`地址：
+
+```solidity
+   address owner; // 定义owner变量
+
+   // 构造函数
+   constructor() {
+      owner = msg.sender; // 在部署合约的时候，将owner设置为部署者的地址
+   }
+```
+
+
+
+### 2.2.2 修饰器
+
+修饰器（`modifier`）是`solidity`特有的语法，类似于面向对象编程中的`decorator`，声明函数拥有的特性，并减少代码冗余。它就像钢铁侠的智能盔甲，穿上它的函数会带有某些特定的行为。`modifier`的主要使用场景是运行函数前的检查，例如地址，变量，余额等。
+
+
+
+定义一个叫做onlyOwner的modifier：
+
+```solidity
+   // 定义modifier
+   modifier onlyOwner {
+      require(msg.sender == owner); // 检查调用者是否为owner地址
+      _; // 如果是的话，继续运行函数主体；否则报错并revert交易
+   }
+```
+
+
+
+带有`onlyOwner`修饰符的函数只能被`owner`地址调用，比如下面这个例子：
+
+```solidity
+   function changeOwner(address _newOwner) external onlyOwner{
+      owner = _newOwner; // 只有owner地址运行这个函数，并改变owner
+   }
+```
+
+我们定义了一个`changeOwner`函数，运行他可以改变合约的`owner`，但是由于`onlyOwner`修饰符的存在，只有原先的`owner`可以调用，别人调用就会报错。这也是最常用的控制智能合约权限的方法。
+
+
+
+## 2.3 事件
+
+`Solidity`中的事件（`event`）是`EVM`上日志的抽象，它具有两个特点：
+
+- 响应：应用程序（[`ethers.js`](https://learnblockchain.cn/docs/ethers.js/api-contract.html#id18)）可以通过`RPC`接口订阅和监听这些事件，并在前端做响应。
+- 经济：事件是`EVM`上比较经济的存储数据的方式，每个大概消耗2,000 `gas`；相比之下，链上存储一个新变量至少需要20,000 `gas`。
+
+### 2.3.1 声明事件
+
+事件的声明由`event`关键字开头，接着是事件名称，括号里面写好事件需要记录的变量类型和变量名。以`ERC20`代币合约的`Transfer`事件为例：
+
+```solidity
+event Transfer(address indexed from, address indexed to, uint256 value);
+```
+
+
+
+我们可以看到，`Transfer`事件共记录了3个变量`from`，`to`和`value`，分别对应代币的转账地址，接收地址和转账数量，其中`from`和`to`前面带有`indexed`关键字，他们会保存在以太坊虚拟机日志的`topics`中，方便之后检索。
+
+### 2.3.2 释放事件
+
+我们可以在函数里释放事件。在下面的例子中，每次用`_transfer()`函数进行转账操作的时候，都会释放`Transfer`事件，并记录相应的变量。
+
+```solidity
+    // 定义_transfer函数，执行转账逻辑
+    function _transfer(
+        address from,
+        address to,
+        uint256 amount
+    ) external {
+
+        _balances[from] = 10000000; // 给转账地址一些初始代币
+
+        _balances[from] -=  amount; // from地址减去转账数量
+        _balances[to] += amount; // to地址加上转账数量
+
+        // 释放事件
+        emit Transfer(from, to, amount);
+    }
+```
+
+
+
+## 2.4 日志
+
+使用`indexed`关键字，他们会保存在以太坊虚拟机日志的`topics`中。
+
+以太坊虚拟机（EVM）用日志`Log`来存储`Solidity`事件，每条日志记录都包含主题`topics`和数据`data`两部分。
+
+### 2.4.1 主题 `Topics`
+
+日志的第一部分是主题数组，用于描述事件，长度不能超过`4`。它的第一个元素是事件的签名（哈希）。对于上面的`Transfer`事件，它的签名就是：
+
+```solidity
+keccak256("Transfer(addrses,address,uint256)")
+
+//0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+```
+
+除了事件签名，主题还可以包含至多`3`个`indexed`参数，也就是`Transfer`事件中的`from`和`to`。
+
+`indexed`标记的参数可以理解为检索事件的索引“键”，方便之后搜索。每个 `indexed` 参数的大小为固定的256比特，如果参数太大了（比如字符串），就会自动计算哈希存储在主题中。
+
+### 2.4.2 数据 `Data`
+
+事件中不带 `indexed`的参数会被存储在 `data` 部分中，可以理解为事件的“值”。`data` 部分的变量不能被直接检索，但可以存储任意大小的数据。因此一般 `data` 部分可以用来存储复杂的数据结构，例如数组和字符串等等，因为这些数据超过了256比特，即使存储在事件的 `topic` 部分中，也是以哈希的方式存储。另外，`data` 部分的变量在存储上消耗的gas相比于 `topic` 更少。
+
+
+
+### 2.4.3 在etherscan上查询事件
+
+我们尝试用`_transfer()`函数在`Rinkeby`测试网络上转账100代币，可以在`etherscan`上查询到相应的`tx`：[网址](https://rinkeby.etherscan.io/tx/0x8cf87215b23055896d93004112bbd8ab754f081b4491cb48c37592ca8f8a36c7)。
+
+点击`Logs`按钮，就能看到事件明细：
+
+
+
+## 2.5 异常
+
+三种抛出异常的方法：`error`，`require`和`assert`
+
+写智能合约经常会出`bug`，`solidity`中的异常命令帮助我们`debug`。
+
+### 2.5.1 Error
+
+`error`是`solidity 0.8.4版本`新加的内容，方便且高效（省`gas`）地向用户解释操作失败的原因，同时还可以在抛出异常的同时携带参数，帮助开发者更好地调试。人们可以在`contract`之外定义异常。下面，我们定义一个`TransferNotOwner`异常，当用户不是代币`owner`的时候尝试转账，会抛出错误：
+
+```solidity
+error TransferNotOwner(); // 自定义error
+```
+
+Copy
+
+我们也可以定义一个携带参数的异常，来提示尝试转账的账户地址
+
+```solidity
+error TransferNotOwner(address sender); // 自定义的带参数的error
+```
+
+Copy
+
+在执行当中，`error`必须搭配`revert`（回退）命令使用。
+
+```solidity
+    function transferOwner1(uint256 tokenId, address newOwner) public {
+        if(_owners[tokenId] != msg.sender){
+            revert TransferNotOwner();
+            // revert TransferNotOwner(msg.sender);
+        }
+        _owners[tokenId] = newOwner;
+    }
+```
+
+Copy
+
+我们定义了一个`transferOwner1()`函数，它会检查代币的`owner`是不是发起人，如果不是，就会抛出`TransferNotOwner`异常；如果是的话，就会转账。
+
+### 2.5.2 Require
+
+`require`命令是`solidity 0.8版本`之前抛出异常的常用方法，目前很多主流合约仍然还在使用它。它很好用，唯一的缺点就是`gas`随着描述异常的字符串长度增加，比`error`命令要高。使用方法：`require(检查条件，"异常的描述")`，当检查条件不成立的时候，就会抛出异常。
+
+我们用`require`命令重写一下上面的`transferOwner`函数：
+
+```solidity
+    function transferOwner2(uint256 tokenId, address newOwner) public {
+        require(_owners[tokenId] == msg.sender, "Transfer Not Owner");
+        _owners[tokenId] = newOwner;
+    }
+```
+
+
+
+### 2.5.3 Assert
+
+`assert`命令一般用于程序员写程序`debug`，因为它不能解释抛出异常的原因（比`require`少个字符串）。它的用法很简单，`assert(检查条件）`，当检查条件不成立的时候，就会抛出异常。
+
+我们用`assert`命令重写一下上面的`transferOwner`函数：
+
+```solidity
+    function transferOwner3(uint256 tokenId, address newOwner) public {
+        assert(_owners[tokenId] == msg.sender);
+        _owners[tokenId] = newOwner;
+    }
+```
+
 
 
 
@@ -473,8 +774,6 @@ function test() public pure returns (unint256) {
 # 3 面向对象
 
 > 合约的关键字是`contract`， 类似java的`calss`
-
-
 
 ## 3.1 封装
 
@@ -521,7 +820,18 @@ contract SimpleStorage {
 
 ## 3.2 继承
 
-### 3.2.1 继承
+### 3.2.1 基本
+
+- `virtual`: 父合约中的函数，如果希望子合约重写，需要加上`virtual`关键字。
+- `override`：子合约重写了父合约中的函数，需要加上`override`关键字。
+
+**注意**：用`override`修饰`public`变量，会重写与变量同名的`getter`函数，例如：
+
+```solidity
+mapping(address => uint256) public override balanceOf;
+```
+
+
 
 ```solidity
 import "./SimpleStorage.sol";
@@ -533,52 +843,353 @@ contract ExtraStorage is SimpleStorage{
 
 > 关键词是`is`，使用前需要导入
 
-### 3.2.2 重载
+### 3.2.2 简单继承
+
+我们先写一个简单的爷爷合约`Yeye`，里面包含1个`Log`事件和3个`function`: `hip()`, `pop()`, `yeye()`，输出都是”Yeye”。
 
 ```solidity
-// SPDX-License-Identifier: MIT
+contract Yeye {
+    event Log(string msg);
 
-pragma solidity ^0.8.8;
+    // 定义3个function: hip(), pop(), man()，Log值为Yeye。
+    function hip() public virtual{
+        emit Log("Yeye");
+    }
 
+    function pop() public virtual{
+        emit Log("Yeye");
+    }
 
-contract SimpleStorage {
-
-    uint256 favoriteNumber;
-    function store(uint256 _favoriteNumber) public virtual {
-        favoriteNumber = _favoriteNumber;
+    function yeye() public virtual {
+        emit Log("Yeye");
     }
 }
 ```
 
-> 父类合同  需要加`virtual`关键字
 
 
+我们再定义一个爸爸合约`Baba`，让他继承`Yeye`合约，语法就是`contract Baba is Yeye`，非常直观。在`Baba`合约里，我们重写一下`hip()`和`pop()`这两个函数，加上`override`关键字，并将他们的输出改为`”Baba”`；并且加一个新的函数`baba`，输出也是`”Baba”`。
 
 ```solidity
-pragma solidity ^0.8.7;
+contract Baba is Yeye{
+    // 继承两个function: hip()和pop()，输出改为Baba。
+    function hip() public virtual override{
+        emit Log("Baba");
+    }
 
-import "./SimpleStorage.sol";
+    function pop() public virtual override{
+        emit Log("Baba");
+    }
 
-contract ExtraStorage is SimpleStorage{
-        function store(uint256 _favoriteNumber) public override {
-            favoriteNumber = _favoriteNumber + 5;
-        }
+    function baba() public virtual{
+        emit Log("Baba");
+    }
 }
 ```
 
-> 子类合同  需要加 `override`关键字
+
+
+我们部署合约，可以看到`Baba`合约里有4个函数，其中`hip()`和`pop()`的输出被成功改写成`”Baba”`，而继承来的`yeye()`的输出仍然是`”Yeye”`。
+
+### 3.2.3 多重继承
+
+`solidity`的合约可以继承多个合约。规则：
+
+1. 继承时要按辈分最高到最低的顺序排。比如我们写一个`Erzi`合约，继承`Yeye`合约和`Baba`合约，那么就要写成`contract Erzi is Yeye, Baba`，而不能写成`contract Erzi is Baba, Yeye`，不然就会报错。
+2. 如果某一个函数在多个继承的合约里都存在，比如例子中的`hip()`和`pop()`，在子合约里必须重写，不然会报错。
+3. 重写在多个父合约中都重名的函数时，`override`关键字后面要加上所有父合约名字，例如`override(Yeye, Baba)`。
+
+例子：
+
+```solidity
+contract Erzi is Yeye, Baba{
+    // 继承两个function: hip()和pop()，输出值为Erzi。
+    function hip() public virtual override(Yeye, Baba){
+        emit Log("Erzi");
+    }
+
+    function pop() public virtual override(Yeye, Baba) {
+        emit Log("Erzi");
+    }
+```
+
+
+
+我们可以看到，`Erzi`合约里面重写了`hip()`和`pop()`两个函数，将输出改为`”Erzi”`，并且还分别从`Yeye`和`Baba`合约继承了`yeye()`和`baba()`两个函数。
+
+### 3.2.4 修饰器的继承
+
+`Solidity`中的修饰器（`Modifier`）同样可以继承，用法与函数继承类似，在相应的地方加`virtual`和`override`关键字即可。
+
+```solidity
+contract Base1 {
+    modifier exactDividedBy2And3(uint _a) virtual {
+        require(_a % 2 == 0 && _a % 3 == 0);
+        _;
+    }
+}
+
+contract Identifier is Base1 {
+
+    //计算一个数分别被2除和被3除的值，但是传入的参数必须是2和3的倍数
+    function getExactDividedBy2And3(uint _dividend) public exactDividedBy2And3(_dividend) pure returns(uint, uint) {
+        return getExactDividedBy2And3WithoutModifier(_dividend);
+    }
+
+    //计算一个数分别被2除和被3除的值
+    function getExactDividedBy2And3WithoutModifier(uint _dividend) public pure returns(uint, uint){
+        uint div2 = _dividend / 2;
+        uint div3 = _dividend / 3;
+        return (div2, div3);
+    }
+}
+```
+
+
+
+`Identifier`合约可以直接在代码中使用父合约中的`exactDividedBy2And3`修饰器，也可以利用`override`关键字重写修饰器：
+
+```solidity
+    modifier exactDividedBy2And3(uint _a) override {
+        _;
+        require(_a % 2 == 0 && _a % 3 == 0);
+    }
+```
+
+
+
+### 3.2.5 构造函数的继承
+
+子合约有两种方法继承父合约的构造函数。举个简单的例子，父合约`A`里面有一个状态变量`a`，并由构造函数的参数来确定：
+
+```solidity
+// 构造函数的继承
+abstract contract A {
+    uint public a;
+
+    constructor(uint _a) {
+        a = _a;
+    }
+}
+```
+
+
+
+1. 在继承时声明父构造函数的参数，例如：`contract B is A(1)`
+2. 在子合约的构造函数中声明构造函数的参数，例如：
+
+```solidity
+contract C is A {
+    constructor(uint _c) A(_c * _c) {}
+}
+```
+
+
+
+### 3.2.6 调用父合约的函数
+
+子合约有两种方式调用父合约的函数，直接调用和利用`super`关键字。
+
+1. 直接调用：子合约可以直接用`父合约名.函数名()`的方式来调用父合约函数，例如`Yeye.pop()`。
+
+```solidity
+    function callParent() public{
+        Yeye.pop();
+    }
+```
+
+
+
+1. `super`关键字：子合约可以利用`super.函数名()`来调用最近的父合约函数。`solidity`继承关系按声明时从右到左的顺序是：`contract Erzi is Yeye, Baba`，那么`Baba`是最近的父合约，`super.pop()`将调用`Baba.pop()`而不是`Yeye.pop()`：
+
+```solidity
+    function callParentSuper() public{
+        // 将调用最近的父合约函数，Baba.pop()
+        super.pop();
+    }
+```
+
+
+
+### 3.2.7 钻石继承
+
+在面向对象编程中，钻石继承（菱形继承）指一个派生类同时有两个或两个以上的基类。
+
+在多重+菱形继承链条上使用`super`关键字时，需要注意的是使用`super`会调用继承链条上的每一个合约的相关函数，而不是只调用最近的父合约。
+
+我们先写一个合约`God`，再写`Adam`和`Eve`两个合约继承`God`合约，最后让创建合约`people`继承自`Adam`和`Eve`，每个合约都有`foo`和`bar`两个函数。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
+
+/* 继承树：
+  God
+ /  \
+Adam Eve
+ \  /
+people
+*/
+
+contract God {
+    event Log(string message);
+
+    function foo() public virtual {
+        emit Log("God.foo called");
+    }
+
+    function bar() public virtual {
+        emit Log("God.bar called");
+    }
+}
+
+contract Adam is God {
+    function foo() public virtual override {
+        emit Log("Adam.foo called");
+    }
+
+    function bar() public virtual override {
+        emit Log("Adam.bar called");
+        super.bar();
+    }
+}
+
+contract Eve is God {
+    function foo() public virtual override {
+        emit Log("Eve.foo called");
+        super.foo();
+    }
+
+    function bar() public virtual override {
+        emit Log("Eve.bar called");
+        super.bar();
+    }
+}
+
+contract people is Adam, Eve {
+    function foo() public override(Adam, Eve) {
+        super.foo();
+    }
+
+    function bar() public override(Adam, Eve) {
+        super.bar();
+    }
+}
+```
+
+
+
+在这个例子中，调用合约`people`中的`super.bar()`会依次调用`Eve`、`Adam`，最后是`God`合约。
+
+虽然`Eve`、`Adam`都是`God`的子合约，但整个过程中`God`合约只会被调用一次。原因是Solidity借鉴了Python的方式，强制一个由基类构成的DAG（有向无环图）使其保证一个特定的顺序。更多细节你可以查阅[Solidity的官方文档](https://solidity-cn.readthedocs.io/zh/develop/contracts.html?highlight=继承#index-16)。
 
 
 
 
 
+## 3.3 抽象合约
 
+抽象合约（`abstract`）
 
-# 3.1 chainlink的使用
+如果一个智能合约里至少有一个未实现的函数，即某个函数缺少主体`{}`中的内容，则必须将该合约标为`abstract`，不然编译会报错；另外，未实现的函数需要加`virtual`，以便子合约重写。拿我们之前的[插入排序合约](https://github.com/AmazingAng/WTFSolidity/tree/main/07_InsertionSort)为例，如果我们还没想好具体怎么实现插入排序函数，那么可以把合约标为`abstract`，之后让别人补写上。
 
-在实战3.1中，需要同故宫chainlink获取ETH和USD汇率转换需要使用Data Feed
+```solidity
+abstract contract InsertionSort{
+    function insertionSort(uint[] memory a) public pure virtual returns(uint[] memory);
+}
+```
 
-[ETH / USD | Chainlink界面](https://data.chain.link/streams/arbitrum/mainnet/eth-usd) [Using Data Feeds 开发文档](https://docs.chain.link/data-feeds/using-data-feeds)
+Copy
+
+## 3.4 接口
+
+接口`interface`类似于抽象合约，但它不实现任何功能。接口的规则：
+
+1. 不能包含状态变量
+2. 不能包含构造函数
+3. 不能继承除接口外的其他合约
+4. 所有函数都必须是external且不能有函数体
+5. 继承接口的合约必须实现接口定义的所有功能
+
+虽然接口不实现任何功能，但它非常重要。接口是智能合约的骨架，定义了合约的功能以及如何触发它们：如果智能合约实现了某种接口（比如`ERC20`或`ERC721`），其他Dapps和智能合约就知道如何与它交互。因为接口提供了两个重要的信息：
+
+1. 合约里每个函数的`bytes4`选择器，以及函数签名`函数名(每个参数类型）`。
+2. 接口id（更多信息见[EIP165](https://eips.ethereum.org/EIPS/eip-165)）
+
+另外，接口与合约`ABI`（Application Binary Interface）等价，可以相互转换：编译接口可以得到合约的`ABI`，利用[abi-to-sol工具](https://gnidan.github.io/abi-to-sol/)也可以将`ABI json`文件转换为`接口sol`文件。
+
+我们以`ERC721`接口合约`IERC721`为例，它定义了3个`event`和9个`function`，所有`ERC721`标准的NFT都实现了这些函数。我们可以看到，接口和常规合约的区别在于每个函数都以`;`代替函数体`{ }`结尾。
+
+```solidity
+interface IERC721 is IERC165 {
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+    
+    function balanceOf(address owner) external view returns (uint256 balance);
+
+    function ownerOf(uint256 tokenId) external view returns (address owner);
+
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
+
+    function transferFrom(address from, address to, uint256 tokenId) external;
+
+    function approve(address to, uint256 tokenId) external;
+
+    function getApproved(uint256 tokenId) external view returns (address operator);
+
+    function setApprovalForAll(address operator, bool _approved) external;
+
+    function isApprovedForAll(address owner, address operator) external view returns (bool);
+
+    function safeTransferFrom( address from, address to, uint256 tokenId, bytes calldata data) external;
+}
+```
+
+Copy
+
+### 3.4.1 IERC721事件
+
+`IERC721`包含3个事件，其中`Transfer`和`Approval`事件在`ERC20`中也有。
+
+- `Transfer`事件：在转账时被释放，记录代币的发出地址`from`，接收地址`to`和`tokenid`。
+- `Approval`事件：在授权时释放，记录授权地址`owner`，被授权地址`approved`和`tokenid`。
+- `ApprovalForAll`事件：在批量授权时释放，记录批量授权的发出地址`owner`，被授权地址`operator`和授权与否的`approved`。
+
+### 3.4.2 IERC721函数
+
+- `balanceOf`：返回某地址的NFT持有量`balance`。
+- `ownerOf`：返回某`tokenId`的主人`owner`。
+- `transferFrom`：普通转账，参数为转出地址`from`，接收地址`to`和`tokenId`。
+- `safeTransferFrom`：安全转账（如果接收方是合约地址，会要求实现`ERC721Receiver`接口）。参数为转出地址`from`，接收地址`to`和`tokenId`。
+- `approve`：授权另一个地址使用你的NFT。参数为被授权地址`approve`和`tokenId`。
+- `getApproved`：查询`tokenId`被批准给了哪个地址。
+- `setApprovalForAll`：将自己持有的该系列NFT批量授权给某个地址`operator`。
+- `isApprovedForAll`：查询某地址的NFT是否批量授权给了另一个`operator`地址。
+- `safeTransferFrom`：安全转账的重载函数，参数里面包含了`data`。
+
+### 3.4.3 什么时候使用接口？
+
+如果我们知道一个合约实现了`IERC721`接口，我们不需要知道它具体代码实现，就可以与它交互。
+
+无聊猿`BAYC`属于`ERC721`代币，实现了`IERC721`接口的功能。我们不需要知道它的源代码，只需知道它的合约地址，用`IERC721`接口就可以与它交互，比如用`balanceOf()`来查询某个地址的`BAYC`余额，用`safeTransferFrom()`来转账`BAYC`。
+
+```solidity
+contract interactBAYC {
+    // 利用BAYC地址创建接口合约变量（ETH主网）
+    IERC721 BAYC = IERC721(0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D);
+
+    // 通过接口调用BAYC的balanceOf()查询持仓量
+    function balanceOfBAYC(address owner) external view returns (uint256 balance){
+        return BAYC.balanceOf(owner);
+    }
+
+    // 通过接口调用BAYC的safeTransferFrom()安全转账
+    function safeTransferFromBAYC(address from, address to, uint256 tokenId) external{
+        BAYC.safeTransferFrom(from, to, tokenId);
+    }
+}
+```
 
 
 
@@ -587,6 +1198,14 @@ contract ExtraStorage is SimpleStorage{
 
 
 # 4 实战
+
+
+
+## 3 chainlink的使用
+
+在实战3.1中，需要同故宫chainlink获取ETH和USD汇率转换需要使用Data Feed
+
+[ETH / USD | Chainlink界面](https://data.chain.link/streams/arbitrum/mainnet/eth-usd) [Using Data Feeds 开发文档](https://docs.chain.link/data-feeds/using-data-feeds)
 
 ## 4.1 04发送一个合约交易
 
