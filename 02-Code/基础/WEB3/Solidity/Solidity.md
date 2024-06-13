@@ -10,7 +10,9 @@
 
 # 1 基本语法
 
-### 1.1 数据类型
+## 1.1 数据类型
+
+### 1.1.3 数据类型
 
 1、**boolean**
 
@@ -28,7 +30,18 @@
 
 4、**address**
 
-> 地址，跟metamask中的个人地址一样，类似id这种的唯一标识。
+> 地址
+>
+> 地址类型有两种基本相同的类型：
+>
+> - `address`: 保存一个20字节的值（一个以太坊地址的大小）。
+> - `address payable`: 与 `address` 类型相同，但有额外的方法 `transfer` 和 `send`。
+>
+> 这种区别背后的想法是， `address payable` 是一个您可以发送以太币的地址， 而您不应该发送以太币给一个普通的 `address`，例如，因为它可能是一个智能合约， 而这个合约不是为接受以太币而建立的。
+>
+> 类型转换：
+>
+> 允许从 `address payable` 到 `address` 的隐式转换， 而从 `address` 到 `address payable` 的转换必须通过 `payable(<address>)` 来明确。
 >
 > `address myAddress = 0x1066618d189731Fe13897cC1;`
 
@@ -83,7 +96,7 @@
 >     }
 > ```
 
-10、枚举 enum
+**10、枚举 enum**
 
 > 枚举（`enum`）是`solidity`中用户定义的数据类型。它主要用于为`uint`分配名称，使程序易于阅读和维护。它与`C语言`中的`enum`类似，使用名称来代替从`0`开始的`uint`：
 >
@@ -109,37 +122,13 @@
 >
 > `enum`是一个比较冷门的变量，几乎没什么人用。
 
-### 1.2 功能可见性说明符
+### 1.1.2 Solidity中的引用类型
 
-- `public` ：在外部和内部可见（为存储/状态变量**创建 getter 函数**）
-- `private` ：仅在当前合约中可见
-- `external` ：仅在外部可见（仅对函数） - 即只能通过消息调用（通过 `this.func` ）
-- `internal` ：仅在内部可见
+**引用类型(Reference Type)**：包括数组（`array`），结构体（`struct`）和映射（`mapping`），这类变量占空间大，赋值时候直接传递地址（类似指针）。由于这类变量比较复杂，占用存储空间大，我们在使用时必须要声明数据存储的位置。
 
+## 1.2 数据存储的位置
 
-
-### 1.3 修饰符(关键字)
-
-- `pure` for functions：不允许修改或访问状态。
-- `view` for functions：不允许修改状态。
-
-- `payable` for functioins： 是一个关键字和修饰符，用于指示函数或合约可以接收以太币（Ether）或发送以太币。
-
-> 1、**代码示例**
->
-> ```solidity
->    function getFavoriteNumber() public view returns(uint256) {
->         return favoriteNumber;
->     } 
-> ```
->
-> 2、**注意**
->
-> 1. `pure`和`view`标识的调用不需要消耗gas，因为只有更改状态的时候才支付gas。除非在消耗gas的函数中调用`view`和`pure`标识的函数才会使被标识的函数消耗gas。
-
-
-
-### 1.4 可存储数据
+### 1.2.1 存储位置
 
 1、**Stack**
 
@@ -147,13 +136,21 @@
 
 2、**Memory**
 
-> 可以被修改的临时变量
+> 可以被修改的临时变量，数据在函数调用结束后会被清除。
 
 3、**Storage**
 
-> 可以被修改的永久变量
+> 可以被修改的永久变量，数据在合约的整个生命周期内保持不变，除非显式修改。状态变量默认存储在 `storage` 中。
+>
+> 如`uint public value;`
 
 4、**Calldata**
+
+> 不能被修改的临时数据。
+>
+> **作用**: 函数参数的只读存储位置，特别是对于 `external` 函数。
+>
+> **用途**: 传递函数调用中的参数数据，特别适用于传递较大的数组或字符串。
 
 5、**Code**
 
@@ -163,7 +160,59 @@
 
 
 
-### 1.5 库Library
+solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同存储位置的`gas`成本不同。`storage`类型的数据存在链上，类似计算机的硬盘，消耗`gas`多；`memory`和`calldata`类型的临时存在内存里，消耗`gas`少。大致用法：
+
+1. `storage`：合约里的状态变量默认都是`storage`，存储在链上。
+2. `memory`：函数里的参数和临时变量一般用`memory`，存储在内存中，不上链。
+3. `calldata`：和`memory`类似，存储在内存中，不上链。与`memory`的不同点在于`calldata`变量不能修改（`immutable`），一般用于函数的参数。例子：
+
+```solidity
+    function fCalldata(uint[] calldata _x) public pure returns(uint[] calldata){
+        //参数为calldata数组，不能被修改
+        // _x[0] = 0 //这样修改会报错
+        return(_x);
+    }
+```
+
+
+
+
+
+### 1.2.2 赋值规则
+
+1. `storage`（合约的状态变量）赋值给本地`storage`（函数里的）时候，会创建引用，改变新变量会影响原变量。例子：
+
+   ```solidity
+       uint[] x = [1,2,3]; // 状态变量：数组 x
+   
+       function fStorage() public{
+           //声明一个storage的变量 xStorage，指向x。修改xStorage也会影响x
+           uint[] storage xStorage = x;
+           xStorage[0] = 100;
+       }
+   ```
+
+2. `storage`赋值给`memory`，会创建独立的副本，修改其中一个不会影响另一个；反之亦然。例子：
+
+   ```solidity
+       uint[] x = [1,2,3]; // 状态变量：数组 x
+       
+       function fMemory() public view{
+           //声明一个Memory的变量xMemory，复制x。修改xMemory不会影响x
+           uint[] memory xMemory = x;
+           xMemory[0] = 100;
+           xMemory[1] = 200;
+           uint[] memory xMemory2 = x;
+           xMemory2[0] = 300;
+       }
+   ```
+
+3. `memory`赋值给`memory`，会创建引用，改变新变量会影响原变量。
+4. 其他情况，变量赋值给`storage`，会创建独立的副本，修改其中一个不会影响另一个。
+
+
+
+## 1.5 库Library
 
 > 场景是将自己写的函数作为别的函数库
 >
@@ -245,7 +294,7 @@ contract FundMe {
 
 
 
-### 1.6 modifier 
+## 1.6 modifier 
 
 ```solidity
 
@@ -268,9 +317,117 @@ contract FundMe {
 
 
 
-### 1.7 函数相关
+# 2 高阶
 
-#### 1.7.1 receive & fallback
+## 2.1 函数基础
+
+基于这个例子进行讲解：
+
+```solidity
+function <function name>(<parameter types>) {internal|external|public|private} [pure|view|payable] [returns (<return types>)]
+```
+
+```solidity
+function test() public pure returns (unint256) {
+
+}
+```
+
+
+
+1. `function`：声明函数时的固定用法，想写函数，就要以function关键字开头。
+2. `<function name>`：函数名。
+3. `(<parameter types>)`：圆括号里写函数的参数，也就是要输入到函数的变量类型和名字。
+4. `[returns ()]`：函数返回的变量类型和名称。
+
+### 2.1.1 可见性
+
+`{internal|external|public|private}`：函数可见性说明符，一共4种。没标明函数类型的，默认`public`。合约之外的函数，即"自由函数"，始终具有隐含`internal`可见性。
+
+- `public` ：在外部和内部可见（为存储/状态变量**创建 getter 函数**）
+- `private` ：仅在当前合约中可见
+- `external` ：仅在外部可见（仅对函数） - 即只能通过消息调用（通过 `this.func` ）
+- `internal` ：仅在内部可见
+
+**Note 1**: 没有标明可见性类型的函数，默认为`public`。
+
+**Note 2**: `public|private|internal` 也可用于修饰状态变量。 `public`变量会自动生成同名的`getter`函数，用于查询数值。
+
+**Note 3**: 没有标明可见性类型的状态变量，默认为`internal`。
+
+
+
+### 2.1.2 修饰符（关键字）
+
+- `pure` for functions：不允许修改或访问链上状态。
+- `view` for functions：能看但不允许修改状态。
+
+- `payable` for functioins： 是一个关键字和修饰符，用于指示函数或合约可以接收以太币（Ether）或发送以太币。
+
+> 1、**代码示例**
+>
+> ```solidity
+> function getFavoriteNumber() public view returns(uint256) {
+>      return favoriteNumber;
+>  } 
+> ```
+>
+> 2、**注意**
+>
+> 1. `pure`和`view`标识的调用不需要消耗gas，因为只有更改状态的时候才支付gas。除非在消耗gas的函数中调用`view`和`pure`标识的函数才会使被标识的函数消耗gas。
+
+
+
+### 2.1.3 返回值
+
+`Solidity`有两个关键字与函数输出相关：`return`和`returns`，他们的区别在于：
+
+- `returns`加在函数名后面，用于声明返回的变量类型及变量名；
+- `return`用于函数主体中，返回指定的变量。
+
+
+
+#### 2.1.3.1 命名式返回
+
+我们可以在`returns`中标明返回变量的名称，这样`solidity`会自动给这些变量初始化，并且自动返回这些函数的值，不需要加`return`。
+
+```solidity
+    // 命名式返回
+    function returnNamed() public pure returns(uint256 _number, bool _bool, uint256[3] memory _array){
+        _number = 2;
+        _bool = false; 
+        _array = [uint256(3),2,1];
+    }
+```
+
+#### 2.1.3.2 解构式赋值
+
+`solidity`使用解构式赋值的规则，支持读取函数的全部或部分返回值。
+
+- 读取所有返回值：声明变量，并且将要赋值的变量用`,`隔开，按顺序排列。
+
+```solidity
+        uint256 _number;
+        bool _bool;
+        uint256[3] memory _array;
+        (_number, _bool, _array) = returnNamed();
+```
+
+> 这里，`returnNamed()`这里是上面的函数，就是获取函数返回值。
+
+- 读取部分返回值：声明要读取的返回值对应的变量，不读取的留空。下面这段代码中，我们只读取`_bool`，而不读取返回的`_number`和`_array`：
+
+```solidity
+        (, _bool2, ) = returnNamed();
+```
+
+
+
+
+
+
+
+## 2.2 receive & fallback
 
 1、**receive**
 
@@ -307,19 +464,19 @@ contract FundMe {
 
 ```
 
-### 1.8 EVM
 
 
 
 
 
-## 2 面向对象
+
+# 3 面向对象
 
 > 合约的关键字是`contract`， 类似java的`calss`
 
 
 
-### 2.1 封装
+## 3.1 封装
 
 ```solidity
 // I'm a comment!
@@ -362,9 +519,9 @@ contract SimpleStorage {
 
 
 
-### 2.2 继承
+## 3.2 继承
 
-#### 2.2.1 继承
+### 3.2.1 继承
 
 ```solidity
 import "./SimpleStorage.sol";
@@ -376,7 +533,7 @@ contract ExtraStorage is SimpleStorage{
 
 > 关键词是`is`，使用前需要导入
 
-#### 2.2.2 重载
+### 3.2.2 重载
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -415,9 +572,9 @@ contract ExtraStorage is SimpleStorage{
 
 
 
-##  1.3 高级
 
-### 3.1 chainlink的使用
+
+# 3.1 chainlink的使用
 
 在实战3.1中，需要同故宫chainlink获取ETH和USD汇率转换需要使用Data Feed
 
@@ -429,9 +586,9 @@ contract ExtraStorage is SimpleStorage{
 
 
 
-## 4 实战
+# 4 实战
 
-### 4.1 04发送一个合约交易
+## 4.1 04发送一个合约交易
 
 ```solidity
 // SPDX-License-Indentifitier: MIT
@@ -494,7 +651,7 @@ contract FundMe {
 >
 > [2.1.7.1 receive & fallback](# 7.1 receive & fallback)
 
-### 4.2 使用vscode编译合约
+## 4.2 使用vscode编译合约
 
 > 1. 使用yarn
 > 2. 导入依赖solc编译
@@ -582,7 +739,7 @@ contract FundMe {
    
 
    
-## 5 编译
+# 5 编译
 1. **ABI（Application Binary Interface）**：ABI 描述了合约的外部接口，包括合约的函数、事件等信息。它定义了合约如何与其他合约或者外部调用者进行交互。ABI 在 JSON 文件中以键值对的形式表示，包含了**函数的名称**、**参数类型**、**返回值类型**等信息。
    
 2. **Data（Bytecode）**：这部分数据是合约的字节码（bytecode），它是合约编译后的二进制代码。字节码包含了合约的**实际执行代码**，包括**函数实现**、**变量初始化**等。部署合约时，需要将字节码发送到以太坊网络上，以供网络执行合约部署操作。
