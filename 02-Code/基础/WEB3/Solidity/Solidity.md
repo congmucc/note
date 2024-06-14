@@ -2017,8 +2017,6 @@ BSC链上的PEOPLE地址:
 新地址 = hash("0xFF",创建者地址, salt, bytecode)
 ```
 
-
-
 `CREATE2` 确保，如果创建者使用 `CREATE2` 和提供的 `salt` 部署给定的合约`bytecode`，它将存储在 `新地址` 中。
 
 ### 4.9.3 如何使用`CREATE2`
@@ -2029,13 +2027,11 @@ BSC链上的PEOPLE地址:
 Contract x = new Contract{salt: _salt, value: _value}(params)
 ```
 
-
-
 其中`Contract`是要创建的合约名，`x`是合约对象（地址），`_salt`是指定的盐；如果构造函数是`payable`，可以创建时转入`_value`数量的`ETH`，`params`是新合约构造函数的参数。
 
 ### 4.9.4 极简Uniswap2
 
-跟[上一讲](https://mirror.xyz/dashboard/edit/kojopp2CgDK3ehHxXc_2fkZe87uM0O5OmsEU6y83eJs)类似，我们用`Create2`来实现极简`Uniswap`。
+我们用`Create2`来实现极简`Uniswap`。
 
 #### 4.9.4.1 `Pair`
 
@@ -2057,8 +2053,6 @@ contract Pair{
     }
 }
 ```
-
-
 
 `Pair`合约很简单，包含3个状态变量：`factory`，`token0`和`token1`。
 
