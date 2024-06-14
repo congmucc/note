@@ -1893,7 +1893,7 @@ contract B {
 
 在以太坊链上，用户（外部账户，`EOA`）可以创建智能合约，智能合约同样也可以创建新的智能合约。去中心化交易所`uniswap`就是利用工厂合约（`Factory`）创建了无数个币对合约（`Pair`）。这一讲，我会用简化版的`uniswap`讲如何通过合约创建合约。
 
-### 4.8.1 `create`和`create2`
+### 4.8.1 `create`如何使用
 
 有两种方法可以在合约中创建新合约，`create`和`create2`，这里我们讲`create`，下一讲会介绍`create2`。
 
@@ -1936,8 +1936,6 @@ contract Pair{
     }
 }
 ```
-
-
 
 `Pair`合约很简单，包含3个状态变量：`factory`，`token0`和`token1`。
 
@@ -2003,6 +2001,10 @@ BSC链上的PEOPLE地址:
 ```
 
 创建者地址不会变，但`nonce`可能会随时间而改变，因此用`CREATE`创建的合约地址不好预测。
+
+```solidity
+Contract x = new Contract{value: _value}(params)
+```
 
 ### 4.9.2 CREATE2如何计算地址
 
@@ -2118,14 +2120,8 @@ contract PairFactory2{
                 salt,
                 keccak256(type(Pair).creationCode)
             )))));
-        }
+        
 ```
-
-
-
-我们写了一个`calculateAddr`函数来事先计算`tokenA`和`tokenB`将会生成的`Pair`地址。通过它，我们可以验证我们事先计算的地址和实际地址是否相同。
-
-大家可以部署好`PairFactory2`合约，然后用下面两个地址作为参数调用`createPair2`，看看创建的币对地址是什么，是否与事先计算的地址一样：
 
 ```text
 WBNB地址: 0x2c44b726ADF1963cA47Af88B284C06f30380fC78
@@ -2135,10 +2131,16 @@ BSC链上的PEOPLE地址:
 
 
 
-## create2的实际应用场景
+### 4.9.5 create2的实际应用场景
 
 1. 交易所为新用户预留创建钱包合约地址。
 2. 由 `CREATE2` 驱动的 `factory` 合约，在`uniswapV2`中交易对的创建是在 `Factory`中调用`create2`完成。这样做的好处是: 它可以得到一个确定的`pair`地址, 使得 `Router`中就可以通过 `(tokenA, tokenB)` 计算出`pair`地址, 不再需要执行一次 `Factory.getPair(tokenA, tokenB)` 的跨合约调用。
+
+
+
+
+
+
 
 
 
