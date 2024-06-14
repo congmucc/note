@@ -1,3 +1,5 @@
+# react基础
+
 1. 严格模式`<React.StrictMode></React.StrictMode>`会导致api请求发送两次。
 2. `React`工作原理和`Vue`的工作原理不一样，`React`依靠模板调用函数更新页面，依靠不断的调用函数来进行更新页面。
 3. `React`如果像重新调用组件函数（触发页面更新（渲染））需要`props`或者`state快照`发生改变。
@@ -12,6 +14,7 @@
    - 没有依赖项，代表每次执行组件函数时都会执行副作用函数。
    - [], 代表副作用函数只会执行一次
    - [依赖项]，依赖项变化时，副作用函数会执行
+
 ```js
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
@@ -56,3 +59,15 @@ function Button({ children }) {
 
 
 用法：如果是使用变量定义一个对象的key的情况需要`[变量]: value`格式。
+
+
+
+# redux
+
+
+
+# mobx
+
+
+
+# router
