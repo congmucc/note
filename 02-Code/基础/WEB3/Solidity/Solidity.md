@@ -8,7 +8,7 @@
 
 
 
-# 1 基本语法
+# 1 基础
 
 ## 1.1 数据类型
 
@@ -286,6 +286,54 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 - **默认状态修饰符**: 如果没有显式指定状态修饰符（如 `view`、`pure`、`payable`），函数默认既不是 `view` 也不是 `pure` 或 `payable`。它可以读取和修改状态变量，也不能接收以太币。
 
 
+
+
+
+## 1.4 执行上下文的生命周期
+
+### 1.4.1 合约被调用或交易被发送
+
+当一个合约被外部调用（例如通过交易或消息调用）时，或者一个交易被发送到区块链网络，开始执行该交易中的合约代码时，执行上下文开始初始化。
+
+### 1.4.2 初始化阶段
+
+在初始化阶段，Solidity 运行时会设置执行环境，包括：
+
+- **gas 和 gasprice**: 指定交易可使用的 gas 数量和 gas 的价格。
+- **msg 对象**: 提供关于当前交易或消息的信息，如发送者地址 `msg.sender`、发送的 ETH 数量 `msg.value` 等。
+- **block 对象**: 提供关于当前区块的信息，如区块的哈希值 `blockhash(block.number)`、区块的时间戳 `block.timestamp` 等。
+
+### 1.4.3 函数调用
+
+当执行到合约中的函数调用时，会创建一个新的执行上下文（Execution Context），并且在调用堆栈中推入一个新的帧（frame）。这个帧包含了函数调用的参数、局部变量、返回地址等信息。
+
+### 1.4.4 执行函数体
+
+在函数执行期间，Solidity 引擎会按照函数的逻辑执行代码。在函数内部可以访问到：
+
+- **状态变量**：存储在合约存储中的数据。
+- **局部变量**：在函数调用期间可用的临时变量，通常存储在内存中。
+- **函数参数**：调用函数时传入的参数值。
+
+### 1.4.5 gas 和 gas 消耗
+
+在执行函数体的过程中，会消耗 gas。每个操作（如算术运算、存储读写、事件触发等）都有对应的 gas 成本。如果 gas 用尽或者遇到异常，执行会中断，并且已消耗的 gas 不会退还。
+
+### 1.4.6 完成函数调用
+
+当函数执行完毕时，会从调用堆栈中弹出当前的执行帧，返回到上一个调用帧中继续执行。如果函数有返回值，它将被存储在调用帧中，并且可以被上层调用函数访问。
+
+### 1.4.7 事件记录
+
+如果在函数执行期间触发了事件（使用 `emit` 关键字触发），事件数据将被记录在交易日志中，可以被区块链浏览器或其他工具查看。
+
+### 1.4.8 完成交易或调用
+
+当交易或消息调用完成所有的函数调用并执行完所有的操作后，执行上下文会被销毁。这包括对 gas 的最终结算、状态变更的最终确认（如果有）等操作。
+
+### 1.4.9 总结
+
+执行上下文的生命周期涵盖了从合约被调用到执行完毕的整个过程，包括初始化、函数调用、gas 消耗、事件记录和最终结算等阶段。理解这些阶段对于编写和理解 Solidity 合约非常重要，尤其是在优化 gas 使用和确保合约行为正确性方面。
 
 
 
@@ -717,6 +765,10 @@ error TransferNotOwner(address sender); // 自定义的带参数的error
 3. **`assert`方法`gas`消耗**：24473
 
 我们可以看到，`error`方法`gas`最少，其次是`assert`，`require`方法消耗`gas`最多！因此，`error`既可以告知用户抛出异常的原因，又能省`gas`，大家要多用！（注意，由于部署测试时间的不同，每个函数的`gas`消耗会有所不同，但是比较结果会是一致的。）
+
+
+
+
 
 
 
@@ -1439,8 +1491,6 @@ function callETH(address payable _to, uint256 amount) external payable{
 
 
 
-
-
 ### 4.4.4 总结
 
 这一讲，我们介绍`solidity`三种发送`ETH`的方法：`transfer`，`send`和`call`。
@@ -1490,7 +1540,7 @@ contract OtherContract {
 }
 ```
 
-Copy
+
 
 这个合约包含一个状态变量`_x`，一个事件`Log`在收到`ETH`时触发，三个函数：
 
@@ -1498,11 +1548,245 @@ Copy
 - `setX()`: `external payable`函数，可以设置`_x`的值，并向合约发送`ETH`。
 - `getX()`: 读取`_x`的值。
 
-### 4.5.3 调用`OtherContract`合约
+### 4.5.3 调用合约
 
 我们可以利用合约的地址和合约代码（或接口）来创建合约的引用：`_Name(_Address)`，其中`_Name`是合约名，`_Address`是合约地址。然后用合约的引用来调用它的函数：`_Name(_Address).f()`，其中`f()`是要调用的函数。
 
+调用`OtherContract`合约步骤如下：
+
+
+
 下面我们介绍4个调用合约的例子，在remix中编译合约后，分别部署`OtherContract`和`CallContract`：
+
+
+
+#### 4.5.3.1 传入合约地址
+
+我们可以在函数里传入目标合约地址，生成目标合约的引用，然后调用目标函数。以调用`OtherContract`合约的`setX`函数为例，我们在新合约中写一个`callSetX`函数，传入已部署好的`OtherContract`合约地址`_Address`和`setX`的参数`x`：
+
+```solidity
+    function callSetX(address _Address, uint256 x) external{
+        OtherContract(_Address).setX(x);
+    }
+```
+
+复制`OtherContract`合约的地址，填入`callSetX`函数的参数中，成功调用后，调用`OtherContract`合约中的`getX`验证`x`变为123
+
+#### 4.5.3.2 传入合约变量
+
+我们可以直接在函数里传入合约的引用，只需要把上面参数的`address`类型改为目标合约名，比如`OtherContract`。下面例子实现了调用目标合约的`getX()`函数。
+
+**注意**该函数参数`OtherContract _Address`底层类型仍然是`address`，生成的`ABI`中、调用`callGetX`时传入的参数都是`address`类型
+
+```solidity
+    function callGetX(OtherContract _Address) external view returns(uint x){
+        x = _Address.getX();
+    }
+```
+
+复制`OtherContract`合约的地址，填入`callGetX`函数的参数中，调用后成功获取`x`的值
+
+
+
+#### 4.5.3.3 创建合约变量
+
+我们可以创建合约变量，然后通过它来调用目标函数。下面例子，我们给变量`oc`存储了`OtherContract`合约的引用：
+
+```solidity
+    function callGetX2(address _Address) external view returns(uint x){
+        OtherContract oc = OtherContract(_Address);
+        x = oc.getX();
+    }
+```
+
+复制`OtherContract`合约的地址，填入`callGetX2`函数的参数中，调用后成功获取`x`的值
+
+
+
+#### 4.5.3.4 调用合约并发送`ETH`
+
+如果目标合约的函数是`payable`的，那么我们可以通过调用它来给合约转账：`_Name(_Address).f{value: _Value}()`，其中`_Name`是合约名，`_Address`是合约地址，`f`是目标函数名，`_Value`是要转的`ETH`数额（以`wei`为单位）。
+
+`OtherContract`合约的`setX`函数是`payable`的，在下面这个例子中我们通过调用`setX`来往目标合约转账。
+
+```solidity
+    function setXTransferETH(address otherContract, uint256 x) payable external{
+        OtherContract(otherContract).setX{value: msg.value}(x);
+    }
+```
+
+复制`OtherContract`合约的地址，填入`setXTransferETH`函数的参数中，并转入10ETH
+
+> 这里发送合约的原因是：
+>
+> 尽管没有显式使用 `address.transfer` 或 `address.send`，但是 Solidity 的函数调用机制中，当调用一个 `payable` 函数并指定 `{value: msg.value}` 时，实质上是执行了低级别的 `CALL` 操作，将 ETH 转发到了目标合约的函数。
+>
+> `OtherContract(otherContract).setX{value: msg.value}(x);`:
+>
+> - `OtherContract` 是目标合约的类型（假设 `OtherContract` 是一个定义好的合约接口）。
+> - `otherContract` 是目标合约的地址。
+> - `setX` 是目标合约中的函数。
+> - `{value: msg.value}`：将当前合约接收到的 ETH（`msg.value`）传递给目标合约的 `setX` 函数。
+> - `(x)`：传递参数 `x` 给目标合约的 `setX` 函数。
+>
+> ```solidity
+> (bool success, ) = otherContract.call{value: msg.value}(abi.encodeWithSignature("setX(uint256)", x));
+> require(success, "Call failed");
+> ```
+>
+> 这两个是相等的
+
+
+
+## 4.6 Call
+
+`call` 是`address`类型的低级成员函数，它用来与其他合约交互。它的返回值为`(bool, data)`，分别对应`call`是否成功以及目标函数的返回值。
+
+- `call`是`solidity`官方推荐的通过触发`fallback`或`receive`函数发送`ETH`的方法。
+- 不推荐用`call`来调用另一个合约，因为当你调用不安全合约的函数时，你就把主动权交给了它。推荐的方法仍是声明合约变量后调用函数，见[第21讲：调用其他合约](https://github.com/AmazingAng/WTFSolidity/tree/main/21_CallContract)
+- 当我们不知道对方合约的源代码或`ABI`，就没法生成合约变量；这时，我们仍可以通过`call`调用对方合约的函数。
+
+### 4.6.1 `call`的使用规则
+
+`call`的使用规则如下：
+
+```text
+目标合约地址.call(二进制编码);
+```
+
+其中`二进制编码`利用结构化编码函数`abi.encodeWithSignature`获得：
+
+```text
+abi.encodeWithSignature("函数签名", 逗号分隔的具体参数)
+```
+
+`函数签名`为`"函数名（逗号分隔的参数类型)"`。例如`abi.encodeWithSignature("f(uint256,address)", _x, _addr)`。
+
+另外`call`在调用合约时可以指定交易发送的`ETH`数额和`gas`：
+
+```text
+目标合约地址.call{value:发送数额, gas:gas数额}(二进制编码);
+```
+
+看起来有点复杂，下面我们举个`call`应用的例子。
+
+### 4.6.2 目标合约
+
+我们先写一个简单的目标合约`OtherContract`并部署，多了`fallback`
+
+```solidity
+contract OtherContract {
+    uint256 private _x = 0; // 状态变量x
+    // 收到eth的事件，记录amount和gas
+    event Log(uint amount, uint gas);
+    
+    fallback() external payable{}
+
+    // 返回合约ETH余额
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+
+    // 可以调整状态变量_x的函数，并且可以往合约转ETH (payable)
+    function setX(uint256 x) external payable{
+        _x = x;
+        // 如果转入ETH，则释放Log事件
+        if(msg.value > 0){
+            emit Log(msg.value, gasleft());
+        }
+    }
+
+    // 读取x
+    function getX() external view returns(uint x){
+        x = _x;
+    }
+}
+```
+
+这个合约包含一个状态变量`x`，一个在收到`ETH`时触发的事件`Log`，三个函数：
+
+- `getBalance()`: 返回合约`ETH`余额。
+- `setX()`: `external payable`函数，可以设置`x`的值，并向合约发送`ETH`。
+- `getX()`: 读取`x`的值。
+
+### 4.6.3 利用`call`调用目标合约
+
+**1. Response事件**
+
+我们写一个`Call`合约来调用目标合约函数。首先定义一个`Response`事件，输出`call`返回的`success`和`data`，方便我们观察返回值。
+
+```solidity
+// 定义Response事件，输出call返回的结果success和data
+event Response(bool success, bytes data);
+```
+
+
+
+**2. 调用setX函数**
+
+我们定义`callSetX`函数来调用目标合约的`setX()`，转入`msg.value`数额的`ETH`，并释放`Response`事件输出`success`和`data`：
+
+```solidity
+function callSetX(address payable _addr, uint256 x) public payable {
+    // call setX()，同时可以发送ETH
+    (bool success, bytes memory data) = _addr.call{value: msg.value}(
+        abi.encodeWithSignature("setX(uint256)", x)
+    );
+
+    emit Response(success, data); //释放事件
+}
+```
+
+
+
+接下来我们调用`callSetX`把状态变量`_x`改为5，参数为`OtherContract`地址和`5`，由于目标函数`setX()`没有返回值，因此`Response`事件输出的`data`为`0x`，也就是空。
+
+**3. 调用getX函数**
+
+下面我们调用`getX()`函数，它将返回目标合约`_x`的值，类型为`uint256`。我们可以利用`abi.decode`来解码`call`的返回值`data`，并读出数值。
+
+```solidity
+function callGetX(address _addr) external returns(uint256){
+    // call getX()
+    (bool success, bytes memory data) = _addr.call(
+        abi.encodeWithSignature("getX()")
+    );
+
+    emit Response(success, data); //释放事件
+    return abi.decode(data, (uint256));
+}
+```
+
+
+
+从`Response`事件的输出，我们可以看到`data`为`0x0000000000000000000000000000000000000000000000000000000000000005`。而经过`abi.decode`，最终返回值为`5`。
+
+**4. 调用不存在的函数**
+
+如果我们给`call`输入的函数不存在于目标合约，那么目标合约的`fallback`函数会被触发。
+
+```solidity
+function callNonExist(address _addr) external{
+    // call getX()
+    (bool success, bytes memory data) = _addr.call(
+        abi.encodeWithSignature("foo(uint256)")
+    );
+
+    emit Response(success, data); //释放事件
+}
+```
+
+
+
+上面例子中，我们`call`了不存在的`foo`函数。`call`仍能执行成功，并返回`success`，但其实调用的目标合约`fallback`函数。
+
+### 4.6.4 总结
+
+这一讲，我们介绍了如何用`call`这一低级函数来调用其他合约。`call`不是调用合约的推荐方法，因为不安全。但他能让我们在不知道源代码和`ABI`的情况下调用目标合约，很有用。
+
+
+
+
 
 
 
