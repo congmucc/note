@@ -208,9 +208,7 @@
 >
 > **用途**: 传递函数调用中的参数数据，特别适用于传递较大的数组或字符串。
 
-5、**Code**
-
-6、**Logs**
+7、**Logs**
 
 > **结构体**、**映射**和**数组**在作为参数被添加到不同函数时需要给定一个`memory`或`calldata`关键字
 
@@ -218,7 +216,7 @@
 
 solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同存储位置的`gas`成本不同。`storage`类型的数据存在链上，类似计算机的硬盘，消耗`gas`多；`memory`和`calldata`类型的临时存在内存里，消耗`gas`少。大致用法：
 
-1. `storage`：合约里的状态变量默认都是`storage`，存储在链上。
+1. `storage`：合约里的**状态变量默认都是**`storage`，存储在链上。
 2. `memory`：函数里的参数和临时变量一般用`memory`，存储在内存中，不上链。
 3. `calldata`：和`memory`类似，存储在内存中，不上链。与`memory`的不同点在于`calldata`变量不能修改（`immutable`），一般用于函数的参数。例子：
 
@@ -354,7 +352,7 @@ contract FundMe {
 
 
 
-# 2 高阶
+# 2 提升
 
 ## 2.1 函数基础
 
@@ -403,15 +401,38 @@ function test() public pure returns (unint256) {
 
 > 1、**代码示例**
 >
+> 我们在合约里定义一个状态变量 `number = 5`。
+>
 > ```solidity
-> function getFavoriteNumber() public view returns(uint256) {
->      return favoriteNumber;
->  } 
+>     // SPDX-License-Identifier: MIT
+>     pragma solidity ^0.8.4;
+>     contract FunctionTypes{
+>         uint256 public number = 5;
 > ```
+>
+> 定义一个`add()`函数，每次调用，每次给`number + 1`。
+>
+> ```solidity
+>     // 默认
+>     function add() external{
+>         number = number + 1;
+>     }
+> ```
+>
+> 如果`add()`包含了`pure`关键字，例如 `function add() external pure`，就会报错。因为`pure`（纯纯牛马）是不配读取合约里的状态变量的，更不配改写。那`pure`函数能做些什么？举个例子，你可以给函数传递一个参数 `_number`，然后让他返回 `_number+1`。
+>
+> ```solidity
+>     // pure: 纯纯牛马
+>     function addPure(uint256 _number) external pure returns(uint256 new_number){
+>         new_number = _number + 1;
+>     }
+> ```
+>
+> 这里面可以在项目中使用pure进行运算，这样是不花费gas的。
 >
 > 2、**注意**
 >
-> 1. `pure`和`view`标识的调用不需要消耗gas，因为只有更改状态的时候才支付gas。除非在消耗gas的函数中调用`view`和`pure`标识的函数才会使被标识的函数消耗gas。
+> 比较难理解的是`pure`和`view`，在其他语言中没出现过。`solidity`引入`pure`和`view`关键字主要是为了节省`gas`和控制函数权限：如果用户直接调用`pure`/`view`方程是不消耗`gas`的（合约中非`pure`/`view`函数调用它们则会改写链上状态，需要付gas）。
 
 
 
@@ -466,7 +487,7 @@ function test() public pure returns (unint256) {
 
 #### 2.1.4.1. 
 
-状态变量是数据存储在链上的变量，所有合约内函数都可以访问 ，**`gas`消耗高**。状态变量在合约内、函数外声明：
+状态变量是数据存储在链上的变量，所有合约内函数都可以访问 ，**`gas`消耗高**。状态变量在**合约内、函数外声明**：
 
 ```solidity
 contract Variables {
@@ -536,43 +557,6 @@ contract Variables {
 
 
 
-## 2.2 receive & fallback
-
-1、**receive**
-
-> 发送交易的时候只要没有与该交易相关的数据，将被触发
->
-> 当向合约发送以太币时，或者调用合约不存在的函数时，就会调用 `receive` 函数来处理这些以太币。
-
-2、**fallback**
-
-> 用于处理向合约发送以太币时没有匹配到任何其他函数调用的情况。
->
-> 从 Solidity 0.6.0 版本开始，`fallback` 函数被标记为已弃用，不建议继续使用。
-
-```solidity
-    fallback() external payable {
-        fund();
-    }
-
-    receive() external payable {
-        fund();
-    }
-    
-    // Explainer from: https://solidity-by-example.org/fallback/
-    // Ether is sent to contract
-    //      is msg.data empty?
-    //          /   \ 
-    //         yes  no
-    //         /     \
-    //    receive()?  fallback() 
-    //     /   \ 
-    //   yes   no
-    //  /        \
-    //receive()  fallback()
-
-```
-
 
 
 ## 2.2 构造函数和修饰器
@@ -629,6 +613,8 @@ contract Variables {
 - 响应：应用程序（[`ethers.js`](https://learnblockchain.cn/docs/ethers.js/api-contract.html#id18)）可以通过`RPC`接口订阅和监听这些事件，并在前端做响应。
 - 经济：事件是`EVM`上比较经济的存储数据的方式，每个大概消耗2,000 `gas`；相比之下，链上存储一个新变量至少需要20,000 `gas`。
 
+事件可以通知链外的监听者合约中发生的特定操作。例如，用户成功完成某个交易或者操作可以通过事件通知前端。
+
 ### 2.3.1 声明事件
 
 事件的声明由`event`关键字开头，接着是事件名称，括号里面写好事件需要记录的变量类型和变量名。以`ERC20`代币合约的`Transfer`事件为例：
@@ -667,7 +653,13 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 ## 2.4 日志
 
-使用`indexed`关键字，他们会保存在以太坊虚拟机日志的`topics`中。
+```solidity
+event Transfer(address indexed from, address indexed to, uint256 value);
+```
+
+我们可以看到，`Transfer`事件共记录了3个变量`from`，`to`和`value`，分别对应代币的转账地址，接收地址和转账数量，其中`from`和`to`前面带有`indexed`关键字，他们会保存在以太坊虚拟机日志的`topics`中，方便之后检索。
+
+
 
 以太坊虚拟机（EVM）用日志`Log`来存储`Solidity`事件，每条日志记录都包含主题`topics`和数据`data`两部分。
 
@@ -688,8 +680,6 @@ keccak256("Transfer(addrses,address,uint256)")
 ### 2.4.2 数据 `Data`
 
 事件中不带 `indexed`的参数会被存储在 `data` 部分中，可以理解为事件的“值”。`data` 部分的变量不能被直接检索，但可以存储任意大小的数据。因此一般 `data` 部分可以用来存储复杂的数据结构，例如数组和字符串等等，因为这些数据超过了256比特，即使存储在事件的 `topic` 部分中，也是以哈希的方式存储。另外，`data` 部分的变量在存储上消耗的gas相比于 `topic` 更少。
-
-
 
 ### 2.4.3 在etherscan上查询事件
 
@@ -713,15 +703,13 @@ keccak256("Transfer(addrses,address,uint256)")
 error TransferNotOwner(); // 自定义error
 ```
 
-Copy
-
 我们也可以定义一个携带参数的异常，来提示尝试转账的账户地址
 
 ```solidity
 error TransferNotOwner(address sender); // 自定义的带参数的error
 ```
 
-Copy
+
 
 在执行当中，`error`必须搭配`revert`（回退）命令使用。
 
@@ -735,7 +723,7 @@ Copy
     }
 ```
 
-Copy
+
 
 我们定义了一个`transferOwner1()`函数，它会检查代币的`owner`是不是发起人，如果不是，就会抛出`TransferNotOwner`异常；如果是的话，就会转账。
 
@@ -768,6 +756,16 @@ Copy
 ```
 
 
+
+### 2.5.4 三种方法的gas比较
+
+我们比较一下三种抛出异常的`gas`消耗，通过remix控制台的Debug按钮，能查到每次函数调用的`gas`消耗分别如下： （使用0.8.17版本编译）
+
+1. **`error`方法`gas`消耗**：24457 (**加入参数后`gas`消耗**：24660)
+2. **`require`方法`gas`消耗**：24755
+3. **`assert`方法`gas`消耗**：24473
+
+我们可以看到，`error`方法`gas`最少，其次是`assert`，`require`方法消耗`gas`最多！因此，`error`既可以告知用户抛出异常的原因，又能省`gas`，大家要多用！（注意，由于部署测试时间的不同，每个函数的`gas`消耗会有所不同，但是比较结果会是一致的。）
 
 
 
@@ -1099,7 +1097,7 @@ abstract contract InsertionSort{
 }
 ```
 
-Copy
+
 
 ## 3.4 接口
 
@@ -1146,7 +1144,7 @@ interface IERC721 is IERC165 {
 }
 ```
 
-Copy
+
 
 ### 3.4.1 IERC721事件
 
@@ -1190,6 +1188,317 @@ contract interactBAYC {
     }
 }
 ```
+
+
+
+# 4 高阶
+
+## 4.1 函数重载
+
+`solidity`中允许函数进行重载（`overloading`），即名字相同但输入参数类型不同的函数可以同时存在，他们被视为不同的函数。注意，`solidity`不允许修饰器（`modifier`）重载。
+
+### 4.1.1 函数重载
+
+举个例子，我们可以定义两个都叫`saySomething()`的函数，一个没有任何参数，输出`"Nothing"`；另一个接收一个`string`参数，输出这个`string`。
+
+```solidity
+function saySomething() public pure returns(string memory){
+    return("Nothing");
+}
+
+function saySomething(string memory something) public pure returns(string memory){
+    return(something);
+}
+```
+
+最终重载函数在经过编译器编译后，由于不同的参数类型，都变成了不同的函数选择器（selector）。关于函数选择器的具体内容可参考[Solidity极简入门: 29. 函数选择器Selector](https://github.com/AmazingAng/WTFSolidity/tree/main/29_Selector)。
+
+### 4.1.2 实参匹配
+
+在调用重载函数时，会把输入的实际参数和函数参数的变量类型做匹配。 如果出现多个匹配的重载函数，则会报错。下面这个例子有两个叫`f()`的函数，一个参数为`uint8`，另一个为`uint256`：
+
+```solidity
+    function f(uint8 _in) public pure returns (uint8 out) {
+        out = _in;
+    }
+
+    function f(uint256 _in) public pure returns (uint256 out) {
+        out = _in;
+    }
+```
+
+
+
+我们调用`f(50)`，因为`50`既可以被转换为`uint8`，也可以被转换为`uint256`，因此会报错。
+
+
+
+## 4.2 库合约（library）
+
+### 4.2.1 库函数
+
+库函数是一种特殊的合约，为了提升`solidity`代码的复用性和减少`gas`而存在。库合约一般都是一些好用的函数合集（`库函数`），由大神或者项目方创作，咱们站在巨人的肩膀上，会用就行了。
+
+他和普通合约主要有以下几点不同：
+
+1. 不能存在状态变量
+2. 不能够继承或被继承
+3. 不能接收以太币
+4. 不可以被销毁
+
+### 4.2.2 String库合约
+
+`String库合约`是将`uint256`类型转换为相应的`string`类型的代码库
+
+他主要包含两个函数，`toString()`将`uint256`转为`string`，`toHexString()`将`uint256`转换为`16进制`，再转换为`string`。
+
+### 4.2.3 如何使用库合约
+
+我们用String库函数的toHexString()来演示两种使用库合约中函数的办法。
+
+**1. 利用using for指令**
+
+指令`using A for B;`可用于附加库函数（从库 A）到任何类型（B）。添加完指令后，库`A`中的函数会自动添加为`B`类型变量的成员，可以直接调用。注意：在调用的时候，这个变量会被当作第一个参数传递给函数：
+
+```solidity
+    // 利用using for指令
+    using Strings for uint256;
+    function getString1(uint256 _number) public pure returns(string memory){
+        // 库函数会自动添加为uint256型变量的成员
+        return _number.toHexString();
+    }
+```
+
+
+
+**2. 通过库合约名称调用库函数**
+
+```solidity
+    // 直接通过库合约名调用
+    function getString2(uint256 _number) public pure returns(string memory){
+        return Strings.toHexString(_number);
+    }
+```
+
+### 4.2.4 常用的库合约
+
+这一讲，我们用`ERC721`的引用的库函数`String`为例介绍`solidity`中的库函数（`Library`）。99%的开发者都不需要自己去写库合约，会用大神写的就可以了。我们只需要知道什么情况该用什么库合约。常用的有：
+
+1. [String](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/Strings.sol)：将`uint256`转换为`String`
+2. [Address](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/Address.sol)：判断某个地址是否为合约地址
+3. [Create2](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/Create2.sol)：更安全的使用`Create2 EVM opcode`
+4. [Arrays](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/utils/Arrays.sol)：跟数组相关的库函数
+
+
+
+## 4.3 接收ETH receive & fallback
+
+`Solidity`支持两种特殊的回调函数，`receive()`和`fallback()`，他们主要在两种情况下被使用：
+
+1. 接收ETH
+2. 处理合约中不存在的函数调用（代理合约proxy contract）
+
+注意⚠️：在solidity 0.6.x版本之前，语法上只有 `fallback()` 函数，用来接收用户发送的ETH时调用以及在被调用函数签名没有匹配到时，来调用。 0.6版本之后，solidity才将 `fallback()` 函数拆分成 `receive()` 和 `fallback()` 两个函数。
+
+我们这一讲主要讲接收ETH的情况。
+
+### 4.3.1 接收ETH函数 receive
+
+`receive()`只用于处理接收`ETH`。一个合约最多有一个`receive()`函数，声明方式与一般函数不一样，不需要`function`关键字：`receive() external payable { ... }`。`receive()`函数不能有任何的参数，不能返回任何值，必须包含`external`和`payable`。
+
+当合约接收ETH的时候，`receive()`会被触发。`receive()`最好不要执行太多的逻辑因为如果别人用`send`和`transfer`方法发送`ETH`的话，`gas`会限制在`2300`，`receive()`太复杂可能会触发`Out of Gas`报错；如果用`call`就可以自定义`gas`执行更复杂的逻辑。
+
+我们可以在`receive()`里发送一个`event`，例如：
+
+```solidity
+    // 定义事件
+    event Received(address Sender, uint Value);
+    // 接收ETH时释放Received事件
+    receive() external payable {
+        emit Received(msg.sender, msg.value);
+    }
+```
+
+
+
+有些恶意合约，会在`receive()` 函数（老版本的话，就是 `fallback()` 函数）嵌入恶意消耗`gas`的内容或者使得执行故意失败的代码，导致一些包含退款和转账逻辑的合约不能正常工作，因此写包含退款等逻辑的合约时候，一定要注意这种情况。
+
+### 4.3.1 回退函数 fallback
+
+`fallback()`函数会在调用合约不存在的函数时被触发。可用于接收ETH，也可以用于代理合约`proxy contract`。`fallback()`声明时不需要`function`关键字，必须由`external`修饰，一般也会用`payable`修饰，用于接收ETH:`fallback() external payable { ... }`。
+
+我们定义一个`fallback()`函数，被触发时候会释放`fallbackCalled`事件，并输出`msg.sender`，`msg.value`和`msg.data`:
+
+```solidity
+    // fallback
+    fallback() external payable{
+        emit fallbackCalled(msg.sender, msg.value, msg.data);
+    }
+```
+
+
+
+### 4.3.3 总结
+
+1、**receive**
+
+> 发送交易的时候只要没有与该交易相关的数据，将被触发
+>
+> 当向合约发送以太币时，或者调用合约不存在的函数时，就会调用 `receive` 函数来处理这些以太币。
+
+2、**fallback**
+
+> 用于处理向合约发送以太币时没有匹配到任何其他函数调用的情况。
+>
+> 从 Solidity 0.6.0 版本开始，`fallback` 函数被标记为已弃用，不建议继续使用。
+
+```solidity
+    fallback() external payable {
+        fund();
+    }
+
+    receive() external payable {
+        fund();
+    }
+    
+    // Explainer from: https://solidity-by-example.org/fallback/
+    // Ether is sent to contract
+    //      is msg.data empty?
+    //          /   \ 
+    //         yes  no
+    //         /     \
+    //    receive()?  fallback() 
+    //     /   \ 
+    //   yes   no
+    //  /        \
+    //receive()  fallback()
+
+```
+
+## 4.4 发送ETH
+
+`Solidity`有三种方法向其他合约发送`ETH`，他们是：`transfer()`，`send()`和`call()`，其中`call()`是被鼓励的用法。
+
+**接收ETH合约**
+
+我们先部署一个接收`ETH`合约`ReceiveETH`。`ReceiveETH`合约里有一个事件`Log`，记录收到的`ETH`数量和`gas`剩余。还有两个函数，一个是`receive()`函数，收到`ETH`被触发，并发送`Log`事件；另一个是查询合约`ETH`余额的`getBalance()`函数。
+
+```solidity
+contract ReceiveETH {
+    // 收到eth事件，记录amount和gas
+    event Log(uint amount, uint gas);
+    
+    // receive方法，接收eth时被触发
+    receive() external payable{
+        emit Log(msg.value, gasleft());
+    }
+    
+    // 返回合约ETH余额
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+}
+```
+
+部署`ReceiveETH`合约后，运行`getBalance()`函数，可以看到当前合约的`ETH`余额为`0`。
+
+**发送ETH合约**
+
+我们将实现三种方法向`ReceiveETH`合约发送`ETH`。首先，先在发送ETH合约`SendETH`中实现`payable`的`构造函数`和`receive()`，让我们能够在部署时和部署后向合约转账。
+
+```solidity
+contract SendETH {
+    // 构造函数，payable使得部署的时候可以转eth进去
+    constructor() payable{}
+    // receive方法，接收eth时被触发
+    receive() external payable{}
+}
+```
+
+
+
+### 4.4.1 transfer
+
+- 用法是`接收方地址.transfer(发送ETH数额)`。
+- `transfer()`的`gas`限制是`2300`，足够用于转账，但对方合约的`fallback()`或`receive()`函数不能实现太复杂的逻辑。
+- `transfer()`如果转账失败，会自动`revert`（回滚交易）。
+
+代码样例，注意里面的`_to`填`ReceiveETH`合约的地址，`amount`是`ETH`转账金额：
+
+```solidity
+// 用transfer()发送ETH
+function transferETH(address payable _to, uint256 amount) external payable{
+    _to.transfer(amount);
+}
+```
+
+部署`SendETH`合约后，对`ReceiveETH`合约发送ETH，此时`amount`为10，`value`为0，`amount`>`value`，转账失败，发生`revert`。
+
+
+
+
+
+### 4.4.2 send
+
+- 用法是`接收方地址.send(发送ETH数额)`。
+- `send()`的`gas`限制是`2300`，足够用于转账，但对方合约的`fallback()`或`receive()`函数不能实现太复杂的逻辑。
+- `send()`如果转账失败，不会`revert`。
+- `send()`的返回值是`bool`，代表着转账成功或失败，需要额外代码处理一下。
+
+代码样例：
+
+```solidity
+// send()发送ETH
+function sendETH(address payable _to, uint256 amount) external payable{
+    // 处理下send的返回值，如果失败，revert交易并发送error
+    bool success = _to.send(amount);
+    if(!success){
+        revert SendFailed();
+    }
+}
+```
+
+对`ReceiveETH`合约发送ETH，此时`amount`为10，`value`为0，`amount`>`value`，转账失败，因为经过处理，所以发生`revert`。
+
+
+
+### 4.4.3 call
+
+- 用法是`接收方地址.call{value: 发送ETH数额}("")`。
+- `call()`没有`gas`限制，可以支持对方合约`fallback()`或`receive()`函数实现复杂逻辑。
+- `call()`如果转账失败，不会`revert`。
+- `call()`的返回值是`(bool, data)`，其中`bool`代表着转账成功或失败，需要额外代码处理一下。
+
+代码样例：
+
+```solidity
+// call()发送ETH
+function callETH(address payable _to, uint256 amount) external payable{
+    // 处理下call的返回值，如果失败，revert交易并发送error
+    (bool success,) = _to.call{value: amount}("");
+    if(!success){
+        revert CallFailed();
+    }
+}
+```
+
+对`ReceiveETH`合约发送ETH，此时`amount`为10，`value`为0，`amount`>`value`，转账失败，因为经过处理，所以发生`revert`。
+
+
+
+
+
+
+
+### 4.4.4 总结
+
+这一讲，我们介绍`solidity`三种发送`ETH`的方法：`transfer`，`send`和`call`。
+
+- `call`没有`gas`限制，最为灵活，是最提倡的方法；
+- `transfer`有`2300 gas`限制，但是发送失败会自动`revert`交易，是次优选择；
+- `send`有`2300 gas`限制，而且发送失败不会自动`revert`交易，几乎没有人用它。
+
+
 
 
 

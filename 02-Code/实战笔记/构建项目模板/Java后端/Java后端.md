@@ -61,7 +61,7 @@ public class Main {
 
 ## 2.1 lombok-Slf4j
 
-```
+```java
 <!-- lombok -->
 <dependency>
   <groupId>org.projectlombok</groupId>
@@ -911,18 +911,36 @@ public class WebLogAspect {
       </dependency>
   ```
 
+  ```yaml
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-annotation</artifactId>
+        <version>3.5.7</version>
+      </dependency>
+  ```
+
+  
+
 - yml
 
-  ```java
-  # mybatis配置
+  ```yaml
   mybatis:
     mapper-locations: classpath:mapper/*.xml    # mapper映射文件位置
     type-aliases-package: com.gouggou.shardingtable.entity    # 实体类所在的位置
     configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   #用于控制台打印sql语句
   ```
-
+  
   > 日常使用第一个即可
+  
+  ```yaml
+  mybatis-plus:
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  ```
+  
+  
 
 ## 4.3 Redis
 
