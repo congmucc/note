@@ -264,91 +264,28 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 3. `memory`赋值给`memory`，会创建引用，改变新变量会影响原变量。
 4. 其他情况，变量赋值给`storage`，会创建独立的副本，修改其中一个不会影响另一个。
 
-##作用域
 
 
+## 1.3 默认类型和存储位置
+
+### 1.3.1 变量的默认类型和存储位置
+
+#### 1.3.1.1 状态变量
+
+- **默认存储位置**: 状态变量默认存储在 `storage` 中。
+- **默认可见性**: 如果没有显式指定可见性修饰符（如 `public`、`internal`、`private`），状态变量的默认可见性是 `internal`。
+
+#### 1.3.1.2 局部变量
+
+- **默认存储位置**: 局部变量默认存储在 `memory` 中。局部变量是函数内部声明的变量。
+- **默认可见性**: 局部变量不涉及可见性修饰符，因为它们只能在声明它们的函数内部访问。
+
+### 1.3.2 函数的默认可见性和修饰符
+
+- **默认可见性**: 如果没有显式指定可见性修饰符（如 `public`、`internal`、`private`、`external`），函数的默认可见性是 `internal`。
+- **默认状态修饰符**: 如果没有显式指定状态修饰符（如 `view`、`pure`、`payable`），函数默认既不是 `view` 也不是 `pure` 或 `payable`。它可以读取和修改状态变量，也不能接收以太币。
 
 
-
-## 1.5 库Library
-
-> 场景是将自己写的函数作为别的函数库
->
-> 例如将ETH和USD转换封装成库，使用msg.value.getConversionRate()调用
->
-> 步骤：
->
-> 1、将**转换的函数**以及**相关导入**创建一个`library`封装起来，记得函数可见性改为`internal`
->
-> 2、主合约导入库，并使用语句`using A for B`来进行调用
-
-1、
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
-
-import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-
-
-library PriceConverter {
-    
-    function getPrice() internal view returns (uint256) {
-        // ABI
-        // Address  0x694AA1769357215DE4FAC081bf1f309aDC325306
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-        (,int256 price, , , ) = priceFeed.latestRoundData();
-        // // ETH in terms of usd
-        
-        return uint256(uint256(price) * (10*(18 - uint(priceFeed.decimals()))));
-    }
-
-    function getVersion() internal view returns (uint256) {
-        AggregatorV3Interface priceV = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-        return priceV.version();
-    }
-
-    function getConversionRate(uint256 ethAmount) internal view returns (uint256) {
-        uint256 ethPrice = getPrice();
-        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1e18;
-        return ethAmountInUsd;
-    }
-}
-```
-
-2、
-
-```
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.8;
-
-import "./PriceConverter.sol";
-
-contract FundMe {
-
-    using PriceConverter for uint256;
-
-    uint256 public minimumUsd = 50 * 1e18;
-
-
-    address[] public funders;
-
-    mapping(address => uint256) public addressToAmountFunded;
-
-    function fund() public payable  {
-        // number = 5; // 如果require出现error了，这段代码也会被回退
-        // require(getConversionRate(msg.value) >= minimumUsd, "Didn't send enough"); // 1e18 == 1 * 10 ** 18
-        require(msg.value.getConversionRate() >= minimumUsd, "Didn't send enough"); // 1e18 == 1 * 10 ** 18
-        funders.push(msg.sender);
-        addressToAmountFunded[msg.sender] = msg.value;
-    }
-
-
-    // function withdraw() {}
-}
-```
-
-> `using PriceConverter for uint256;` 语句将 `PriceConverter` 库中的功能引入了 `uint256` 类型，使得 `uint256` 类型的变量可以直接调用 `PriceConverter` 中定义的函数。
 
 
 
@@ -381,8 +318,8 @@ function test() public pure returns (unint256) {
 
 - `public` ：在外部和内部可见（为存储/状态变量**创建 getter 函数**）
 - `private` ：仅在当前合约中可见
-- `external` ：仅在外部可见（仅对函数） - 即只能通过消息调用（通过 `this.func` ）
-- `internal` ：仅在内部可见
+- `external` ： `external` 函数可以被外部调用，包括其他合约和交易。内部调用时需要通过 `this`。
+- `internal` ：`internal` 函数只能在当前合约及其继承合约中调用。
 
 **Note 1**: 没有标明可见性类型的函数，默认为`public`。
 
@@ -433,6 +370,20 @@ function test() public pure returns (unint256) {
 > 2、**注意**
 >
 > 比较难理解的是`pure`和`view`，在其他语言中没出现过。`solidity`引入`pure`和`view`关键字主要是为了节省`gas`和控制函数权限：如果用户直接调用`pure`/`view`方程是不消耗`gas`的（合约中非`pure`/`view`函数调用它们则会改写链上状态，需要付gas）。
+
+完整的修改器：
+
+- `pure` 修饰函数时：不允许修改或访问状态。
+- `view` 修饰函数时：不允许修改状态。
+- `payable` 修饰函数时：允许从调用中接收以太币。
+- `constant` 修饰状态变量时：不允许赋值（除初始化以外），不会占据 存储插槽（storage slot）。
+- `immutable` 修饰状态变量时：在构造时允许有一个确切的赋值，之后是恒定的。被存储在代码中。
+- `anonymous` 修饰事件时：不把事件签名作为 topic 存储。
+- `indexed` 修饰事件参数时：将参数作为 topic 存储。
+- `virtual` 修饰函数和修改时：允许在派生合约中改变函数或修改器的行为。
+- `override` 表示该函数、修改器或公共状态变量改变了基类合约中的函数或修改器的行为。
+
+
 
 
 
@@ -1502,7 +1453,56 @@ function callETH(address payable _to, uint256 amount) external payable{
 
 
 
+## 4.5 调用其他合约
 
+### 4.5.1 调用已部署合约
+
+开发者写智能合约来调用其他合约，这让以太坊网络上的程序可以复用，从而建立繁荣的生态。很多`web3`项目依赖于调用其他合约，比如收益农场（`yield farming`）。这一讲，我们介绍如何在已知合约代码（或接口）和地址情况下调用目标合约的函数。
+
+### 4.5.2 目标合约
+
+我们先写一个简单的合约`OtherContract`来调用。
+
+```solidity
+contract OtherContract {
+    uint256 private _x = 0; // 状态变量_x
+    // 收到eth的事件，记录amount和gas
+    event Log(uint amount, uint gas);
+    
+    // 返回合约ETH余额
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+
+    // 可以调整状态变量_x的函数，并且可以往合约转ETH (payable)
+    function setX(uint256 x) external payable{
+        _x = x;
+        // 如果转入ETH，则释放Log事件
+        if(msg.value > 0){
+            emit Log(msg.value, gasleft());
+        }
+    }
+
+    // 读取_x
+    function getX() external view returns(uint x){
+        x = _x;
+    }
+}
+```
+
+Copy
+
+这个合约包含一个状态变量`_x`，一个事件`Log`在收到`ETH`时触发，三个函数：
+
+- `getBalance()`: 返回合约`ETH`余额。
+- `setX()`: `external payable`函数，可以设置`_x`的值，并向合约发送`ETH`。
+- `getX()`: 读取`_x`的值。
+
+### 4.5.3 调用`OtherContract`合约
+
+我们可以利用合约的地址和合约代码（或接口）来创建合约的引用：`_Name(_Address)`，其中`_Name`是合约名，`_Address`是合约地址。然后用合约的引用来调用它的函数：`_Name(_Address).f()`，其中`f()`是要调用的函数。
+
+下面我们介绍4个调用合约的例子，在remix中编译合约后，分别部署`OtherContract`和`CallContract`：
 
 
 
