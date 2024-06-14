@@ -1994,7 +1994,7 @@ BSC链上的PEOPLE地址:
 
 `CREATE2` 操作码使我们在智能合约部署在以太坊网络之前就能预测合约的地址。`Uniswap`创建`Pair`合约用的就是`CREATE2`而不是`CREATE`。这一讲，我将介绍`CREATE2`的用法
 
-#### 4.9.1 CREATE如何计算地址
+### 4.9.1 CREATE如何计算地址
 
 智能合约可以由其他合约和普通账户利用`CREATE`操作码创建。 在这两种情况下，新合约的地址都以相同的方式计算：创建者的地址(通常为部署的钱包地址或者合约地址)和`nonce`(该地址发送交易的总数,对于合约账户是创建的合约总数,每创建一个合约nonce+1))的哈希。
 
@@ -2004,7 +2004,7 @@ BSC链上的PEOPLE地址:
 
 创建者地址不会变，但`nonce`可能会随时间而改变，因此用`CREATE`创建的合约地址不好预测。
 
-### CREATE2如何计算地址[](https://www.wtf.academy/docs/solidity-102/Create2/#create2如何计算地址)
+### 4.9.2 CREATE2如何计算地址
 
 `CREATE2`的目的是为了让合约地址独立于未来的事件。不管未来区块链上发生了什么，你都可以把合约部署在事先计算好的地址上。用`CREATE2`创建的合约地址由4个部分决定：
 
@@ -2021,7 +2021,7 @@ BSC链上的PEOPLE地址:
 
 `CREATE2` 确保，如果创建者使用 `CREATE2` 和提供的 `salt` 部署给定的合约`bytecode`，它将存储在 `新地址` 中。
 
-## 如何使用`CREATE2`[](https://www.wtf.academy/docs/solidity-102/Create2/#如何使用create2)
+### 4.9.3 如何使用`CREATE2`
 
 `CREATE2`的用法和之前讲的`Create`类似，同样是`new`一个合约，并传入新合约构造函数所需的参数，只不过要多传一个`salt`参数：
 
@@ -2033,11 +2033,11 @@ Contract x = new Contract{salt: _salt, value: _value}(params)
 
 其中`Contract`是要创建的合约名，`x`是合约对象（地址），`_salt`是指定的盐；如果构造函数是`payable`，可以创建时转入`_value`数量的`ETH`，`params`是新合约构造函数的参数。
 
-## 极简Uniswap2[](https://www.wtf.academy/docs/solidity-102/Create2/#极简uniswap2)
+### 4.9.4 极简Uniswap2
 
 跟[上一讲](https://mirror.xyz/dashboard/edit/kojopp2CgDK3ehHxXc_2fkZe87uM0O5OmsEU6y83eJs)类似，我们用`Create2`来实现极简`Uniswap`。
 
-### `Pair`[](https://www.wtf.academy/docs/solidity-102/Create2/#pair)
+#### 4.9.4.1 `Pair`
 
 ```solidity
 contract Pair{
@@ -2064,7 +2064,7 @@ contract Pair{
 
 构造函数`constructor`在部署时将`factory`赋值为工厂合约地址。`initialize`函数会在`Pair`合约创建的时候被工厂合约调用一次，将`token0`和`token1`更新为币对中两种代币的地址。
 
-### `PairFactory2`[](https://www.wtf.academy/docs/solidity-102/Create2/#pairfactory2)
+#### 4.9.4.2 `PairFactory2`
 
 ```solidity
 contract PairFactory2{
@@ -2108,7 +2108,7 @@ contract PairFactory2{
 
 
 
-### 事先计算`Pair`地址[](https://www.wtf.academy/docs/solidity-102/Create2/#事先计算pair地址)
+#### 4.9.4.3 事先计算`Pair`地址
 
 ```solidity
         // 提前计算pair合约地址
