@@ -54,6 +54,8 @@ https://mirror.xyz/rbtree.eth/B20ZSszixD3Bf107WOuAFzzrACilxvZcqb09GYdMgng
 
 solidity 教程(后端必须全部学习，前端学习基础语法即可):https://github.com/AmazingAng/WTF-Solidity
 
+社区：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy/)
+
 实战方向(前置条件 wtf solidity 基础语法学完)【【4K中字】B站最新Solidity智能合约Foundry框架零基础教程1-12课(已完结)-哔哩哩)
 https://b23.tv/kX1W6RD
 前后端都看的部分:开头到1.9
