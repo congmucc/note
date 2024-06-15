@@ -40,6 +40,7 @@ dapp learning: https://dapplearning.org/hiring
 > 3、[Sui_社区](https://sui.io/)
 
 
+
 登链社区账号19954054823 密码 allinweb3
 作业文档:
 https://grayjiang.notion.site/All-In-Web3-d595d9e5cff74c2a88b32d197a787158?pvs=4
@@ -56,4 +57,13 @@ solidity 教程(后端必须全部学习，前端学习基础语法即可):https
 实战方向(前置条件 wtf solidity 基础语法学完)【【4K中字】B站最新Solidity智能合约Foundry框架零基础教程1-12课(已完结)-哔哩哩)
 https://b23.tv/kX1W6RD
 前后端都看的部分:开头到1.9
+
+
+
+
+
+框架：
+wagmi
+
+rainbowkit
 

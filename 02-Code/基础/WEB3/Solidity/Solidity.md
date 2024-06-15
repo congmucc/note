@@ -2629,170 +2629,236 @@ contract DeleteContract {
 
 
 
+# 5 实战
 
+## 5.1 IERC20
 
-# 4 实战
+`IERC20`是`ERC20`代币标准的接口合约，规定了`ERC20`代币需要实现的函数和事件。 之所以需要定义接口，是因为有了规范后，就存在所有的`ERC20`代币都通用的函数名称，输入参数，输出参数。 在接口函数中，只需要定义函数名称，输入参数，输出参数，并不关心函数内部如何实现。 由此，函数就分为内部和外部两个内容，一个重点是实现，另一个是对外接口，约定共同数据。 这就是为什么需要`ERC20.sol`和`IERC20.sol`两个文件实现一个合约。
 
+### 5.1.1 事件
 
-
-## 3 chainlink的使用
-
-在实战3.1中，需要同故宫chainlink获取ETH和USD汇率转换需要使用Data Feed
-
-[ETH / USD | Chainlink界面](https://data.chain.link/streams/arbitrum/mainnet/eth-usd) [Using Data Feeds 开发文档](https://docs.chain.link/data-feeds/using-data-feeds)
-
-## 4.1 04发送一个合约交易
+`IERC20`定义了`2`个事件：`Transfer`事件和`Approval`事件，分别在转账和授权时被释放
 
 ```solidity
-// SPDX-License-Indentifitier: MIT
-pragma solidity ^0.8.8;
+    /**
+     * @dev 释放条件：当 `value` 单位的货币从账户 (`from`) 转账到另一账户 (`to`)时.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
-contract FundMe {
-
-    uint256 public minimumUsd = 50;
-
-    function fund() public payable  {
-        // number = 5; // 如果require出现error了，这段代码也会被回退
-        
-        require(msg.value >= minimumUsd, "Didn't send enough"); // 1e18 == 1 * 10 ** 18
-    }
-
-        function withdraw() public payable  {
-        for (uint256 funderIndex=0; funderIndex < funders.length; funderIndex++){
-            address funder = funders[funderIndex];
-            addressToAmountFunded[funder] = 0;
-        }
-        funders = new address[](0);
-        // 三种发送比特币的方式
-        // transfer
-        // payable(msg.sender).transfer(address(this).balance);
-        // // send
-        // bool sendSuccess = payable(msg.sender).send(address(this).balance);
-        // require(sendSuccess, "Send failed");  //必须要有，防止不回退
-        // call
-        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
-        require(callSuccess, "Call failed");
-    }
-}
+    /**
+     * @dev 释放条件：当 `value` 单位的货币从账户 (`owner`) 授权给另一账户 (`spender`)时.
+     */
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 ```
 
-> 功能：
->
-> 1、payable
->
-> 2、msg.value
->
-> > 这个意思是获取发送合约时的`value`
->
-> 3、`require(A,B)`
->
-> > 这是一个用于判断的函数，如果A == false 则控制台报错B
-> >
-> > 并且会回退前面的代码，如`number = 5`
->
-> 3、发送其他合约
->
-> [1.7 区块链发送参数](# 7 区块链发送参数)
->
-> 4、网站：
->
-> [Data feed的使用](# 3.1 chainlink的使用)
->
-> 5、优化：
->
-> [1.4.2 降低gas](# 4.2 降低gas)
->
-> [2.1.7.1 receive & fallback](# 7.1 receive & fallback)
 
-## 4.2 使用vscode编译合约
 
-> 1. 使用yarn
-> 2. 导入依赖solc编译
-> 3. 使用ganache
-> 4. ethers和fs-extra
+### 5.1.2 函数
 
-1. **使用yarn**
+`IERC20`定义了`6`个函数，提供了转移代币的基本功能，并允许代币获得批准，以便其他链上第三方使用。
 
-   ```
-   npm install -g yarn
-   ```
+- `totalSupply()`返回代币总供给
 
-2. **导入依赖solc编译**
+```solidity
+    /**
+     * @dev 返回代币总供给.
+     */
+    function totalSupply() external view returns (uint256);
+```
 
-   ````
-   yarn add solc@0.8.8
-   ````
 
-   ```
-   "scripts" : {
-   	"compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
-   }
-   ```
 
-   
+- `balanceOf()`返回账户余额
 
-   > 这是以太坊编译的一个文件 solc需要使用fixed（固定）版本
-   >
-   > 在package.json中添加命令，用于编译
+```solidity
+    /**
+     * @dev 返回账户`account`所持有的代币数.
+     */
+    function balanceOf(address account) external view returns (uint256);
+```
 
-3. **使用ganache**
 
-   > 下载ganache，然后使用其中的虚拟RPC,虚拟钱包
 
-4. **ethers和fs-extra**
+- `transfer()`转账
 
-   ```
-   yarn add ethers
-   yarn add fs-extra
-   ```
+```solidity
+    /**
+     * @dev 转账 `amount` 单位代币，从调用者账户到另一账户 `to`.
+     *
+     * 如果成功，返回 `true`.
+     *
+     * 释放 {Transfer} 事件.
+     */
+    function transfer(address to, uint256 amount) external returns (bool);
+```
 
-   > ethers 是获取一个虚拟的钱包
-   >
-   > fs-extra是读取2.编译之后的文件
 
-   ```
-   const fs = require("fs-extra");
-   
-   
-   
-   async function main() {
-       // http://127.0.0.1:7545
-       const provider = new ethers.JsonRpcProvider("http://127.0.0.1:7545");
-       const wallet = new ethers.Wallet(
-           "0x77a3f487dc5af1fc7b590818cf21fc4161e1184928aa7250efed67184588d18f",
-           provider
-       )
-       const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8");
-       const binary = fs.readFileSync(
-           "./SimpleStorage_sol_SimpleStorage.bin",
-           "utf8"
-       );
-   
-       // deploy a contract
-       const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
-       const contract = await contractFactory.deploy()
-       console.log("contract: ", contract);
-   
-   }
-   
-   main()
-       .then(() => process.exit(0))
-       .catch((error) => {
-           console.error(error);
-           process.exit(1);
-       })
-   ```
 
-   > 这是一个基本的合约
+- `allowance()`返回授权额度
 
-5. 
+```solidity
+    /**
+     * @dev 返回`owner`账户授权给`spender`账户的额度，默认为0。
+     *
+     * 当{approve} 或 {transferFrom} 被调用时，`allowance`会改变.
+     */
+    function allowance(address owner, address spender) external view returns (uint256);
+```
 
-6. 
 
-   
 
-   
-# 5 编译
+- `approve()`授权
+
+```solidity
+    /**
+     * @dev 调用者账户给`spender`账户授权 `amount`数量代币。
+     *
+     * 如果成功，返回 `true`.
+     *
+     * 释放 {Approval} 事件.
+     */
+    function approve(address spender, uint256 amount) external returns (bool);
+```
+
+
+
+- `transferFrom()`授权转账
+
+```solidity
+    /**
+     * @dev 通过授权机制，从`from`账户向`to`账户转账`amount`数量代币。转账的部分会从调用者的`allowance`中扣除。
+     *
+     * 如果成功，返回 `true`.
+     *
+     * 释放 {Transfer} 事件.
+     */
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) external returns (bool);
+```
+
+
+
+### 5.1.3 实现ERC20
+
+现在我们写一个`ERC20`，将`IERC20`规定的函数简单实现。
+
+#### 5.1.3.1 状态变量
+
+我们需要状态变量来记录账户余额，授权额度和代币信息。其中`balanceOf`, `allowance`和`totalSupply`为`public`类型，会自动生成一个同名`getter`函数，实现`IERC20`规定的`balanceOf()`, `allowance()`和`totalSupply()`。而`name`, `symbol`, `decimals`则对应代币的名称，代号和小数位数。
+
+**注意**：用`override`修饰`public`变量，会重写继承自父合约的与变量同名的`getter`函数，比如`IERC20`中的`balanceOf()`函数。
+
+```solidity
+    mapping(address => uint256) public override balanceOf;
+
+    mapping(address => mapping(address => uint256)) public override allowance;
+
+    uint256 public override totalSupply;   // 代币总供给
+
+    string public name;   // 名称
+    string public symbol;  // 代号
+    
+    uint8 public decimals = 18; // 小数位数
+```
+
+
+
+#### 5.1.3.2 函数
+
+- 构造函数：初始化代币名称、代号。
+
+```solidity
+    constructor(string memory name_, string memory symbol_){
+        name = name_;
+        symbol = symbol_;
+    }
+```
+
+
+
+- `transfer()`函数：实现`IERC20`中的`transfer`函数，代币转账逻辑。调用方扣除`amount`数量代币，接收方增加相应代币。土狗币会魔改这个函数，加入税收、分红、抽奖等逻辑。
+
+```solidity
+    function transfer(address recipient, uint amount) external override returns (bool) {
+        balanceOf[msg.sender] -= amount;
+        balanceOf[recipient] += amount;
+        emit Transfer(msg.sender, recipient, amount);
+        return true;
+    }
+```
+
+
+
+- `approve()`函数：实现`IERC20`中的`approve`函数，代币授权逻辑。被授权方`spender`可以支配授权方的`amount`数量的代币。`spender`可以是EOA账户，也可以是合约账户：当你用`uniswap`交易代币时，你需要将代币授权给`uniswap`合约。
+
+```solidity
+    function approve(address spender, uint amount) external override returns (bool) {
+        allowance[msg.sender][spender] = amount;
+        emit Approval(msg.sender, spender, amount);
+        return true;
+    }
+```
+
+
+
+- `transferFrom()`函数：实现`IERC20`中的`transferFrom`函数，授权转账逻辑。被授权方将授权方`sender`的`amount`数量的代币转账给接收方`recipient`。
+
+```solidity
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint amount
+    ) external override returns (bool) {
+        allowance[sender][msg.sender] -= amount;
+        balanceOf[sender] -= amount;
+        balanceOf[recipient] += amount;
+        emit Transfer(sender, recipient, amount);
+        return true;
+    }
+```
+
+
+
+- `mint()`函数：铸造代币函数，不在`IERC20`标准中。这里为了教程方便，任何人可以铸造任意数量的代币，实际应用中会加权限管理，只有`owner`可以铸造代币：
+
+```solidity
+    function mint(uint amount) external {
+        balanceOf[msg.sender] += amount;
+        totalSupply += amount;
+        emit Transfer(address(0), msg.sender, amount);
+    }
+```
+
+
+
+- `burn()`函数：销毁代币函数，不在`IERC20`标准中。
+
+```solidity
+    function burn(uint amount) external {
+        balanceOf[msg.sender] -= amount;
+        totalSupply -= amount;
+        emit Transfer(msg.sender, address(0), amount);
+    }
+```
+
+
+
+### 5.1.4 发行`ERC20`代币
+
+有了`ERC20`标准后，在`ETH`链上发行代币变得非常简单。现在，我们发行属于我们的第一个代币。
+
+在`Remix`上编译好`ERC20`合约，在部署栏输入构造函数的参数，`name_`和`symbol_`都设为`WTF`，然后点击`transact`键进行部署。
+
+
+
+
+
+
+
+# 6 编译
 1. **ABI（Application Binary Interface）**：ABI 描述了合约的外部接口，包括合约的函数、事件等信息。它定义了合约如何与其他合约或者外部调用者进行交互。ABI 在 JSON 文件中以键值对的形式表示，包含了**函数的名称**、**参数类型**、**返回值类型**等信息。
    
 2. **Data（Bytecode）**：这部分数据是合约的字节码（bytecode），它是合约编译后的二进制代码。字节码包含了合约的**实际执行代码**，包括**函数实现**、**变量初始化**等。部署合约时，需要将字节码发送到以太坊网络上，以供网络执行合约部署操作。
