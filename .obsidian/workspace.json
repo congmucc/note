@@ -19,21 +19,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "9c64785934be1fa0",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "02-Code/实战笔记/构建项目模板/Vue前端/Vue前端.md",
-                "linksCollapsed": true,
-                "unlinkedCollapsed": true
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -147,6 +134,18 @@
             "state": {
               "type": "calendar",
               "state": {}
+            }
+          },
+          {
+            "id": "bab168e69ff05614",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "02-Code/实战笔记/构建项目模板/Vue前端/Vue前端.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
             }
           }
         ],
