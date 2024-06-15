@@ -62,8 +62,9 @@ https://b23.tv/kX1W6RD
 
 
 
-框架：
+## 3.1 前端框架
 wagmi
 
-rainbowkit
+[RainbowKit](https://www.rainbowkit.com/zh-CN)
 
+[开始使用 ·维姆 --- Getting Started · Viem](https://viem.sh/docs/getting-started.html)
