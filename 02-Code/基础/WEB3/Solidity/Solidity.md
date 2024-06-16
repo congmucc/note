@@ -5761,7 +5761,496 @@ contract TokenVesting {
 
 ## 5.14 代币锁
 
-任务：讲解流动性提供者`LP`代币，为什么要锁定流动性，并写一个简单的`ERC20`代币锁合约。
+代币锁(Token Locker)是一种简单的时间锁合约，它可以把合约中的代币锁仓一段时间，受益人在锁仓期满后可以取走代币。代币锁一般是用来锁仓流动性提供者`LP`代币的。
+
+
+
+### 5.14.1 什么是`LP`代币？
+
+区块链中，用户在去中心化交易所`DEX`上交易代币，例如`Uniswap`交易所。`DEX`和中心化交易所(`CEX`)不同，去中心化交易所使用自动做市商(`AMM`)机制，需要用户或项目方提供资金池，以使得其他用户能够即时买卖。简单来说，用户/项目方需要质押相应的币对（比如`ETH/DAI`）到资金池中，作为补偿，`DEX`会给他们铸造相应的流动性提供者`LP`代币凭证，证明他们质押了相应的份额，供他们收取手续费。
+
+
+
+### 5.14.2 为什么要锁定流动性？
+
+如果项目方毫无征兆的撤出流动性池中的`LP`代币，那么投资者手中的代币就无法变现，直接归零了。这种行为也叫`rug-pull`，仅2021年，各种`rug-pull`骗局从投资者那里骗取了价值超过28亿美元的加密货币。
+
+但是如果`LP`代币是锁仓在代币锁合约中，在锁仓期结束以前，项目方无法撤出流动性池，也没办法`rug pull`。因此代币锁可以防止项目方过早跑路（要小心锁仓期满跑路的情况）。
+
+
+
+### 5.14.3 代币锁合约
+
+下面，我们就写一个锁仓`ERC20`代币的合约`TokenLocker`。它的逻辑很简单：
+
+- 开发者在部署合约时规定锁仓的时间，受益人地址，以及代币合约。
+- 开发者将代币转入`TokenLocker`合约。
+- 在锁仓期满，受益人可以取走合约里的代币。
+
+
+
+#### 5.14.3.1 事件
+
+`TokenLocker`合约中共有`2`个事件。
+
+- `TokenLockStart`：锁仓开始事件，在合约部署时释放，记录受益人地址，代币地址，锁仓起始时间，和结束时间。
+- `Release`：代币释放事件，在受益人取出代币时释放，记录记录受益人地址，代币地址，释放代币时间，和代币数量。
+
+```
+    // 事件
+    event TokenLockStart(address indexed beneficiary, address indexed token, uint256 startTime, uint256 lockTime);
+    event Release(address indexed beneficiary, address indexed token, uint256 releaseTime, uint256 amount);
+```
+
+
+
+#### 5.14.3.2 状态变量
+
+`TokenLocker`合约中共有`4`个状态变量。
+
+- `token`：锁仓代币地址。
+- `beneficiary`：受益人地址。
+- `locktime`：锁仓时间(秒)。
+- `startTime`：锁仓起始时间戳(秒)。
+
+```
+    // 被锁仓的ERC20代币合约
+    IERC20 public immutable token;
+    // 受益人地址
+    address public immutable beneficiary;
+    // 锁仓时间(秒)
+    uint256 public immutable lockTime;
+    // 锁仓起始时间戳(秒)
+    uint256 public immutable startTime;
+```
+
+
+
+#### 5.14.3.3 函数
+
+`TokenLocker`合约中共有`2`个函数。
+
+- 构造函数：初始化代币合约，受益人地址，以及锁仓时间。
+- `release()`：在锁仓期满后，将代币释放给受益人。需要受益人主动调用`release()`函数提取代币。
+
+```
+    /**
+     * @dev 部署时间锁合约，初始化代币合约地址，受益人地址和锁仓时间。
+     * @param token_: 被锁仓的ERC20代币合约
+     * @param beneficiary_: 受益人地址
+     * @param lockTime_: 锁仓时间(秒)
+     */
+    constructor(
+        IERC20 token_,
+        address beneficiary_,
+        uint256 lockTime_
+    ) {
+        require(lockTime_ > 0, "TokenLock: lock time should greater than 0");
+        token = token_;
+        beneficiary = beneficiary_;
+        lockTime = lockTime_;
+        startTime = block.timestamp;
+
+        emit TokenLockStart(beneficiary_, address(token_), block.timestamp, lockTime_);
+    }
+
+    /**
+     * @dev 在锁仓时间过后，将代币释放给受益人。
+     */
+    function release() public {
+        require(block.timestamp >= startTime+lockTime, "TokenLock: current time is before release time");
+
+        uint256 amount = token.balanceOf(address(this));
+        require(amount > 0, "TokenLock: no tokens to release");
+
+        token.transfer(beneficiary, amount);
+
+        emit Release(msg.sender, address(token), block.timestamp, amount);
+    }
+```
+
+
+
+## 5.15 时间锁
+
+时间锁（Timelock）是银行金库和其他高安全性容器中常见的锁定机制。它是一种计时器，旨在防止保险箱或保险库在预设时间之前被打开，即便开锁的人知道正确密码。
+
+在区块链，时间锁被`DeFi`和`DAO`大量采用。它是一段代码，他可以将智能合约的某些功能锁定一段时间。它可以大大改善智能合约的安全性，举个例子，假如一个黑客黑了`Uniswap`的多签，准备提走金库的钱，但金库合约加了2天锁定期的时间锁，那么黑客从创建提钱的交易，到实际把钱提走，需要2天的等待期。在这一段时间，项目方可以找应对办法，投资者可以提前抛售代币减少损失。
+
+### 5.15.1 时间锁合约
+
+下面，我们介绍一下时间锁`Timelock`合约。它的逻辑并不复杂：
+
+- 在创建`Timelock`合约时，项目方可以设定锁定期，并把合约的管理员设为自己。
+- 时间锁主要有三个功能：
+  - 创建交易，并加入到时间锁队列。
+  - 在交易的锁定期满后，执行交易。
+  - 后悔了，取消时间锁队列中的某些交易。
+- 项目方一般会把时间锁合约设为重要合约的管理员，例如金库合约，再通过时间锁操作他们。
+- 时间锁合约的管理员一般为项目的多签钱包，保证去中心化。
+
+#### 5.15.1.1 事件
+
+`Timelock`合约中共有`4`个事件。
+
+- `QueueTransaction`：交易创建并进入时间锁队列的事件。
+- `ExecuteTransaction`：锁定期满后交易执行的事件。
+- `CancelTransaction`：交易取消事件。
+- `NewAdmin`：修改管理员地址的事件。
+
+```
+    // 事件
+    // 交易取消事件
+    event CancelTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint executeTime);
+    // 交易执行事件
+    event ExecuteTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint executeTime);
+    // 交易创建并进入队列 事件
+    event QueueTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature, bytes data, uint executeTime);
+    // 修改管理员地址的事件
+    event NewAdmin(address indexed newAdmin);
+```
+
+#### 5.15.1.2 状态变量
+
+`Timelock`合约中共有`4`个状态变量。
+
+- `admin`：管理员地址。
+- `delay`：锁定期。
+- `GRACE_PERIOD`：交易过期时间。如果交易到了执行的时间点，但在`GRACE_PERIOD`没有被执行，就会过期。
+- `queuedTransactions`：进入时间锁队列交易的标识符`txHash`到`bool`的映射，记录所有在时间锁队列中的交易。
+
+```
+    // 状态变量
+    address public admin; // 管理员地址
+    uint public constant GRACE_PERIOD = 7 days; // 交易有效期，过期的交易作废
+    uint public delay; // 交易锁定时间 （秒）
+    mapping (bytes32 => bool) public queuedTransactions; // txHash到bool，记录所有在时间锁队列中的交易
+```
+
+#### 5.15.1.3 修饰器
+
+`Timelock`合约中共有`2`个`modifier`。
+
+- `onlyOwner()`：被修饰的函数只能被管理员执行。
+- `onlyTimelock()`：被修饰的函数只能被时间锁合约执行。
+
+```
+    // onlyOwner modifier
+    modifier onlyOwner() {
+        require(msg.sender == admin, "Timelock: Caller not admin");
+        _;
+    }
+
+    // onlyTimelock modifier
+    modifier onlyTimelock() {
+        require(msg.sender == address(this), "Timelock: Caller not Timelock");
+        _;
+    }
+```
+
+#### 5.15.1.4 函数
+
+`Timelock`合约中共有`7`个函数。
+
+- 构造函数：初始化交易锁定时间（秒）和管理员地址。
+
+- `queueTransaction()`：创建交易并添加到时间锁队列中。参数比较复杂，因为要描述一个完整的交易：
+
+  - `target`：目标合约地址
+  - `value`：发送ETH数额
+  - `signature`：调用的函数签名（function signature）
+  - `data`：交易的call data
+  - `executeTime`：交易执行的区块链时间戳。
+
+  调用这个函数时，要保证交易预计执行时间`executeTime`大于当前区块链时间戳+锁定时间`delay`。交易的唯一标识符为所有参数的哈希值，利用`getTxHash()`函数计算。进入队列的交易会更新在`queuedTransactions`变量中，并释放`QueueTransaction`事件。
+
+- `executeTransaction()`：执行交易。它的参数与`queueTransaction()`相同。要求被执行的交易在时间锁队列中，达到交易的执行时间，且没有过期。执行交易时用到了`solidity`的低级成员函数`call`，在[第22讲](https://github.com/AmazingAng/WTF-Solidity/blob/main/22_Call/readme.md)中有介绍。
+
+- `cancelTransaction()`：取消交易。它的参数与`queueTransaction()`相同。它要求被取消的交易在队列中，会更新`queuedTransactions`并释放`CancelTransaction`事件。
+
+- `changeAdmin()`：修改管理员地址，只能被`Timelock`合约调用。
+
+- `getBlockTimestamp()`：获取当前区块链时间戳。
+
+- `getTxHash()`：返回交易的标识符，为很多交易参数的`hash`。
+
+```
+    /**
+     * @dev 构造函数，初始化交易锁定时间 （秒）和管理员地址
+     */
+    constructor(uint delay_) {
+        delay = delay_;
+        admin = msg.sender;
+    }
+
+    /**
+     * @dev 改变管理员地址，调用者必须是Timelock合约。
+     */
+    function changeAdmin(address newAdmin) public onlyTimelock {
+        admin = newAdmin;
+
+        emit NewAdmin(newAdmin);
+    }
+
+    /**
+     * @dev 创建交易并添加到时间锁队列中。
+     * @param target: 目标合约地址
+     * @param value: 发送eth数额
+     * @param signature: 要调用的函数签名（function signature）
+     * @param data: call data，里面是一些参数
+     * @param executeTime: 交易执行的区块链时间戳
+     *
+     * 要求：executeTime 大于 当前区块链时间戳+delay
+     */
+    function queueTransaction(address target, uint256 value, string memory signature, bytes memory data, uint256 executeTime) public onlyOwner returns (bytes32) {
+        // 检查：交易执行时间满足锁定时间
+        require(executeTime >= getBlockTimestamp() + delay, "Timelock::queueTransaction: Estimated execution block must satisfy delay.");
+        // 计算交易的唯一识别符：一堆东西的hash
+        bytes32 txHash = getTxHash(target, value, signature, data, executeTime);
+        // 将交易添加到队列
+        queuedTransactions[txHash] = true;
+
+        emit QueueTransaction(txHash, target, value, signature, data, executeTime);
+        return txHash;
+    }
+
+    /**
+     * @dev 取消特定交易。
+     *
+     * 要求：交易在时间锁队列中
+     */
+    function cancelTransaction(address target, uint256 value, string memory signature, bytes memory data, uint256 executeTime) public onlyOwner{
+        // 计算交易的唯一识别符：一堆东西的hash
+        bytes32 txHash = getTxHash(target, value, signature, data, executeTime);
+        // 检查：交易在时间锁队列中
+        require(queuedTransactions[txHash], "Timelock::cancelTransaction: Transaction hasn't been queued.");
+        // 将交易移出队列
+        queuedTransactions[txHash] = false;
+
+        emit CancelTransaction(txHash, target, value, signature, data, executeTime);
+    }
+
+    /**
+     * @dev 执行特定交易。
+     *
+     * 要求：
+     * 1. 交易在时间锁队列中
+     * 2. 达到交易的执行时间
+     * 3. 交易没过期
+     */
+    function executeTransaction(address target, uint256 value, string memory signature, bytes memory data, uint256 executeTime) public payable onlyOwner returns (bytes memory) {
+        bytes32 txHash = getTxHash(target, value, signature, data, executeTime);
+        // 检查：交易是否在时间锁队列中
+        require(queuedTransactions[txHash], "Timelock::executeTransaction: Transaction hasn't been queued.");
+        // 检查：达到交易的执行时间
+        require(getBlockTimestamp() >= executeTime, "Timelock::executeTransaction: Transaction hasn't surpassed time lock.");
+        // 检查：交易没过期
+       require(getBlockTimestamp() <= executeTime + GRACE_PERIOD, "Timelock::executeTransaction: Transaction is stale.");
+        // 将交易移出队列
+        queuedTransactions[txHash] = false;
+
+        // 获取call data
+        bytes memory callData;
+        if (bytes(signature).length == 0) {
+            callData = data;
+        } else {
+            callData = abi.encodePacked(bytes4(keccak256(bytes(signature))), data);
+        }
+        // 利用call执行交易
+        (bool success, bytes memory returnData) = target.call{value: value}(callData);
+        require(success, "Timelock::executeTransaction: Transaction execution reverted.");
+
+        emit ExecuteTransaction(txHash, target, value, signature, data, executeTime);
+
+        return returnData;
+    }
+
+    /**
+     * @dev 获取当前区块链时间戳
+     */
+    function getBlockTimestamp() public view returns (uint) {
+        return block.timestamp;
+    }
+
+    /**
+     * @dev 将一堆东西拼成交易的标识符
+     */
+    function getTxHash(
+        address target,
+        uint value,
+        string memory signature,
+        bytes memory data,
+        uint executeTime
+    ) public pure returns (bytes32) {
+        return keccak256(abi.encode(target, value, signature, data, executeTime));
+    }
+```
+
+
+
+## 5.16 代理合约
+
+### 5.16.1 代理模式
+
+`Solidity`合约部署在链上之后，代码是不可变的（immutable）。这样既有优点，也有缺点：
+
+- 优点：安全，用户知道会发生什么（大部分时候）。
+- 坏处：就算合约中存在bug，也不能修改或升级，只能部署新合约。但是新合约的地址与旧的不一样，且合约的数据也需要花费大量gas进行迁移。
+
+有没有办法在合约部署后进行修改或升级呢？答案是有的，那就是**代理模式**。
+
+[![代理模式](./assets/46-1.png)](https://github.com/AmazingAng/WTF-Solidity/blob/main/46_ProxyContract/img/46-1.png)
+
+代理模式将合约数据和逻辑分开，分别保存在不同合约中。我们拿上图中简单的代理合约为例，数据（状态变量）存储在代理合约中，而逻辑（函数）保存在另一个逻辑合约中。代理合约（Proxy）通过[delegatecall](# 4.7 Delegatecall)，将函数调用全权委托给逻辑合约（Implementation）执行，再把最终的结果返回给调用者（Caller）。
+
+代理模式主要有两个好处：
+
+1. 可升级：当我们需要升级合约的逻辑时，只需要将代理合约指向新的逻辑合约。
+2. 省gas：如果多个合约复用一套逻辑，我们只需部署一个逻辑合约，然后再部署多个只保存数据的代理合约，指向逻辑合约。
+
+### 5.16.2 代理合约
+
+
+
+下面我们介绍一个简单的代理合约，它由OpenZeppelin的[Proxy合约](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/Proxy.sol)简化而来。它有三个部分：代理合约`Proxy`，逻辑合约`Logic`，和一个调用示例`Caller`。它的逻辑并不复杂：
+
+- 首先部署逻辑合约`Logic`。
+- 创建代理合约`Proxy`，状态变量`implementation`记录`Logic`合约地址。
+- `Proxy`合约利用回调函数`fallback`，将所有调用委托给`Logic`合约
+- 最后部署调用示例`Caller`合约，调用`Proxy`合约。
+- **注意**：`Logic`合约和`Proxy`合约的状态变量存储结构相同，不然`delegatecall`会产生意想不到的行为，有安全隐患。
+
+#### 5.16.2.1 代理合约`Proxy`
+
+
+
+`Proxy`合约不长，但是用到了内联汇编，因此比较难理解。它只有一个状态变量，一个构造函数，和一个回调函数。状态变量`implementation`，在构造函数中初始化，用于保存`Logic`合约地址。
+
+```
+contract Proxy {
+    address public implementation; // 逻辑合约地址。implementation合约同一个位置的状态变量类型必须和Proxy合约的相同，不然会报错。
+
+    /**
+     * @dev 初始化逻辑合约地址
+     */
+    constructor(address implementation_){
+        implementation = implementation_;
+    }
+```
+
+
+
+`Proxy`的回调函数将外部对本合约的调用委托给 `Logic` 合约。这个回调函数很别致，它利用内联汇编（inline assembly），让本来不能有返回值的回调函数有了返回值。其中用到的内联汇编操作码：
+
+- `calldatacopy(t, f, s)`：将calldata（输入数据）从位置`f`开始复制`s`字节到mem（内存）的位置`t`。
+- `delegatecall(g, a, in, insize, out, outsize)`：调用地址`a`的合约，输入为`mem[in..(in+insize))` ，输出为`mem[out..(out+outsize))`， 提供`g`wei的以太坊gas。这个操作码在错误时返回`0`，在成功时返回`1`。
+- `returndatacopy(t, f, s)`：将returndata（输出数据）从位置`f`开始复制`s`字节到mem（内存）的位置`t`。
+- `switch`：基础版`if/else`，不同的情况`case`返回不同值。可以有一个默认的`default`情况。
+- `return(p, s)`：终止函数执行, 返回数据`mem[p..(p+s))`。
+- `revert(p, s)`：终止函数执行, 回滚状态，返回数据`mem[p..(p+s))`。
+
+```
+/**
+* @dev 回调函数，将本合约的调用委托给 `implementation` 合约
+* 通过assembly，让回调函数也能有返回值
+*/
+fallback() external payable {
+    address _implementation = implementation;
+    assembly {
+        // 将msg.data拷贝到内存里
+        // calldatacopy操作码的参数: 内存起始位置，calldata起始位置，calldata长度
+        calldatacopy(0, 0, calldatasize())
+
+        // 利用delegatecall调用implementation合约
+        // delegatecall操作码的参数：gas, 目标合约地址，input mem起始位置，input mem长度，output area mem起始位置，output area mem长度
+        // output area起始位置和长度位置，所以设为0
+        // delegatecall成功返回1，失败返回0
+        let result := delegatecall(gas(), _implementation, 0, calldatasize(), 0, 0)
+
+        // 将return data拷贝到内存
+        // returndata操作码的参数：内存起始位置，returndata起始位置，returndata长度
+        returndatacopy(0, 0, returndatasize())
+
+        switch result
+        // 如果delegate call失败，revert
+        case 0 {
+            revert(0, returndatasize())
+        }
+        // 如果delegate call成功，返回mem起始位置为0，长度为returndatasize()的数据（格式为bytes）
+        default {
+            return(0, returndatasize())
+        }
+    }
+}
+```
+
+
+
+#### 5.16.2.2 逻辑合约`Logic`
+
+
+
+这是一个非常简单的逻辑合约，只是为了演示代理合约。它包含`2`个变量，`1`个事件，`1`个函数：
+
+- `implementation`：占位变量，与`Proxy`合约保持一致，防止插槽冲突。
+- `x`：`uint`变量，被设置为`99`。
+- `CallSuccess`事件：在调用成功时释放。
+- `increment()`函数：会被`Proxy`合约调用，释放`CallSuccess`事件，并返回一个`uint`，它的`selector`为`0xd09de08a`。如果直接调用`increment()`回返回`100`，但是通过`Proxy`调用它会返回`1`，大家可以想想为什么？
+
+```
+/**
+ * @dev 逻辑合约，执行被委托的调用
+ */
+contract Logic {
+    address public implementation; // 与Proxy保持一致，防止插槽冲突
+    uint public x = 99; 
+    event CallSuccess(); // 调用成功事件
+
+    // 这个函数会释放CallSuccess事件并返回一个uint。
+    // 函数selector: 0xd09de08a
+    function increment() external returns(uint) {
+        emit CallSuccess();
+        return x + 1;
+    }
+}
+```
+
+
+
+#### 5.16.2.3 调用者合约`Caller`
+
+
+
+`Caller`合约会演示如何调用一个代理合约，它也非常简单。但是要理解它，你需要先学习本教程的[第22讲 Call](https://github.com/AmazingAng/WTF-Solidity/tree/main/22_Call/readme.md)和[第27讲 ABI编码](https://github.com/AmazingAng/WTF-Solidity/tree/main/27_ABIEncode/readme.md)。
+
+它有`1`个变量，`2`个函数：
+
+- `proxy`：状态变量，记录代理合约地址。
+- 构造函数：在部署合约时初始化`proxy`变量。
+- `increase()`：利用`call`来调用代理合约的`increment()`函数，并返回一个`uint`。在调用时，我们利用`abi.encodeWithSignature()`获取了`increment()`函数的`selector`。在返回时，利用`abi.decode()`将返回值解码为`uint`类型。
+
+```
+/**
+ * @dev Caller合约，调用代理合约，并获取执行结果
+ */
+contract Caller{
+    address public proxy; // 代理合约地址
+
+    constructor(address proxy_){
+        proxy = proxy_;
+    }
+
+    // 通过代理合约调用increment()函数
+    function increment() external returns(uint) {
+        ( , bytes memory data) = proxy.call(abi.encodeWithSignature("increment()"));
+        return abi.decode(data,(uint));
+    }
+}
+```
+
+
+
+
 
 
 
