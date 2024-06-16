@@ -6099,7 +6099,7 @@ contract TokenVesting {
 
 有没有办法在合约部署后进行修改或升级呢？答案是有的，那就是**代理模式**。
 
-[![代理模式](./assets/46-1.png)](https://github.com/AmazingAng/WTF-Solidity/blob/main/46_ProxyContract/img/46-1.png)
+![代理模式](./assets/46-1.png)
 
 代理模式将合约数据和逻辑分开，分别保存在不同合约中。我们拿上图中简单的代理合约为例，数据（状态变量）存储在代理合约中，而逻辑（函数）保存在另一个逻辑合约中。代理合约（Proxy）通过[delegatecall](# 4.7 Delegatecall)，将函数调用全权委托给逻辑合约（Implementation）执行，再把最终的结果返回给调用者（Caller）。
 
@@ -6221,7 +6221,7 @@ contract Logic {
 
 
 
-`Caller`合约会演示如何调用一个代理合约，它也非常简单。但是要理解它，你需要先学习本教程的[第22讲 Call](https://github.com/AmazingAng/WTF-Solidity/tree/main/22_Call/readme.md)和[第27讲 ABI编码](https://github.com/AmazingAng/WTF-Solidity/tree/main/27_ABIEncode/readme.md)。
+`Caller`合约会演示如何调用一个代理合约，它也非常简单。但是要理解它，你需要先学习本教程的[4.6 Call](https://github.com/AmazingAng/WTF-Solidity/tree/main/22_Call/readme.md)和[4.11 ABI编码解码](https://github.com/AmazingAng/WTF-Solidity/tree/main/27_ABIEncode/readme.md)。
 
 它有`1`个变量，`2`个函数：
 
@@ -6250,17 +6250,128 @@ contract Caller{
 
 
 
+## 5.17 可升级合约
+
+可升级合约。它就是一个可以更改逻辑合约的代理合约。
+
+![可升级模式](./assets/47-1.png)
+
+### 5.17.1 简单实现
+
+下面我们实现一个简单的可升级合约，它包含`3`个合约：代理合约，旧的逻辑合约，和新的逻辑合约。
+
+### 5.17.2 代理合约
+
+这个代理合约比代理合约中的简单。我们没有在它的`fallback()`函数中使用`内联汇编`，而仅仅用了`implementation.delegatecall(msg.data);`。因此，回调函数没有返回值，但足够教学使用了。
+
+它包含`3`个变量：
+
+- `implementation`：逻辑合约地址。
+- `admin`：admin地址。
+- `words`：字符串，可以通过逻辑合约的函数改变。
+
+它包含`3`个函数
+
+- 构造函数：初始化admin和逻辑合约地址。
+- `fallback()`：回调函数，将调用委托给逻辑合约。
+- `upgrade()`：升级函数，改变逻辑合约地址，只能由`admin`调用。
+
+```
+// SPDX-License-Identifier: MIT
+// wtf.academy
+pragma solidity ^0.8.21;
+
+// 简单的可升级合约，管理员可以通过升级函数更改逻辑合约地址，从而改变合约的逻辑。
+// 教学演示用，不要用在生产环境
+contract SimpleUpgrade {
+    address public implementation; // 逻辑合约地址
+    address public admin; // admin地址
+    string public words; // 字符串，可以通过逻辑合约的函数改变
+
+    // 构造函数，初始化admin和逻辑合约地址
+    constructor(address _implementation){
+        admin = msg.sender;
+        implementation = _implementation;
+    }
+
+    // fallback函数，将调用委托给逻辑合约
+    fallback() external payable {
+        (bool success, bytes memory data) = implementation.delegatecall(msg.data);
+    }
+
+    // 升级函数，改变逻辑合约地址，只能由admin调用
+    function upgrade(address newImplementation) external {
+        require(msg.sender == admin);
+        implementation = newImplementation;
+    }
+}
+```
 
 
 
+### 5.17.3 旧逻辑合约
 
 
 
+这个逻辑合约包含`3`个状态变量，与保持代理合约一致，防止插槽冲突。它只有一个函数`foo()`，将代理合约中的`words`的值改为`"old"`。
+
+```
+// 逻辑合约1
+contract Logic1 {
+    // 状态变量和proxy合约一致，防止插槽冲突
+    address public implementation; 
+    address public admin; 
+    string public words; // 字符串，可以通过逻辑合约的函数改变
+
+    // 改变proxy中状态变量，选择器： 0xc2985578
+    function foo() public{
+        words = "old";
+    }
+}
+```
 
 
 
+### 5.17.4 新逻辑合约
+
+这个逻辑合约包含`3`个状态变量，与保持代理合约一致，防止插槽冲突。它只有一个函数`foo()`，将代理合约中的`words`的值改为`"new"`。
+
+```
+// 逻辑合约2
+contract Logic2 {
+    // 状态变量和proxy合约一致，防止插槽冲突
+    address public implementation; 
+    address public admin; 
+    string public words; // 字符串，可以通过逻辑合约的函数改变
+
+    // 改变proxy中状态变量，选择器：0xc2985578
+    function foo() public{
+        words = "new";
+    }
+}
+```
 
 
+
+## 5.18 透明代理
+
+介绍代理合约的选择器冲突（Selector Clash），以及这一问题的解决方案：透明代理（Transparent Proxy）。教学代码由`OpenZeppelin`的[TransparentUpgradeableProxy](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/TransparentUpgradeableProxy.sol)简化而成，不应用于生产。
+
+## 选择器冲突
+
+
+
+智能合约中，函数选择器（selector）是函数签名的哈希的前4个字节。例如`mint(address account)`的选择器为`bytes4(keccak256("mint(address)"))`，也就是`0x6a627842`。更多关于选择器的内容见[WTF Solidity极简教程第29讲：函数选择器](https://github.com/AmazingAng/WTF-Solidity/blob/main/29_Selector/readme.md)
+
+由于函数选择器仅有4个字节，范围很小，因此两个不同的函数可能会有相同的选择器，例如下面两个函数：
+
+```
+// 选择器冲突的例子
+contract Foo {
+    function burn(uint256) external {}
+    function collate_propagate_storage(bytes16) external {}
+}
+```
 
 
 
