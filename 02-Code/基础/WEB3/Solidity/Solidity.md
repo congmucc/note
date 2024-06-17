@@ -67,13 +67,15 @@
 > 结构体
 >
 > ```solidity
->     People public people = People({favoriteNumber: 2, name: "congmu"});
+>  People public people = People({favoriteNumber: 2, name: "congmu"});
 > 
->     struct People {
->         uint256 favoriteNumber;
->         string name;
->     }
+>  struct People {
+>      uint256 favoriteNumber;
+>      string name;
+>  }
 > ```
+>
+> 结构体属性的定义与状态变量的定义相同，只是没有作用域这个概念。
 
 8、**数组类型**
 
@@ -554,7 +556,13 @@ contract Variables {
 - `msg.sig`: (`bytes4`) calldata的前四个字节 (function identifier)
 - `msg.value`: (`uint`) 当前交易发送的`wei`值
 
+### 2.1.4 调用函数并发送eth
 
+调用 **convert** 函数，并附加*10* wei 的 ETH 
+
+```solidity
+convert{value: 10}();
+```
 
 
 
