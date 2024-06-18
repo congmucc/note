@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
+                "file": "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
+                "file": "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md"
+                "file": "02-Code/基础/后端/Go/Golang基础/Golang基础.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
+                "file": "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,8 +169,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e2e95db7a15f4e50",
+  "active": "ec75bcc1f2e60218",
   "lastOpenFiles": [
+    "02-Code/基础/后端/Go/框架/GoMicro/GoMicro.md",
+    "02-Code/基础/后端/Go/框架/Gin/Gin.md",
+    "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
     "02-Code/基础/Tool/Linux/Linux.md",
     "02-Code/实战笔记/构建项目模板/Vue前端/Vue前端.md",
     "02-Code/基础/前端/react/react.md",
@@ -186,14 +189,12 @@
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
-    "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/仿12306/仿12306.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/党务修改.md",
     "02-Code/实战笔记/Java用法/Java用法.md",
     "02-Code/目录.md",
-    "02-Code/基础/后端/Go/框架/Gin/Gin.md",
     "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
     "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "02-Code/基础/WEB3/基础知识/Ethereum/Ethereum.md",
@@ -216,7 +217,6 @@
     "02-Code/基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "02-Code/基础/WEB3/基础知识/Geth/Geth.md",
     "02-Code/基础/WEB3/Solidity/Solidity.md",
-    "02-Code/基础/WEB3/Interview/Interview.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
