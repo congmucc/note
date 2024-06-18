@@ -339,6 +339,10 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 
 
 
+
+
+
+
 # 2 提升
 
 ## 2.1 函数基础
@@ -583,11 +587,11 @@ convert{value: 10}();
 
 
 
-### 2.2.2 修饰器(合约权限)
+### 2.2.2 修饰器(合约权限)`modifier`
 
 修饰器（`modifier`）是`solidity`特有的语法，类似于面向对象编程中的`decorator`，声明函数拥有的特性，并减少代码冗余。`modifier`的主要使用场景是运行函数前的检查，例如地址，变量，余额等。
 
-
+*modifier* 的执行是在函数执行之前的。**_;** 表示继续执行被修饰的函数
 
 定义一个叫做onlyOwner的modifier：
 
@@ -1333,10 +1337,6 @@ contract interactBAYC {
 
 
 
-# 5 实战
-
-[实战](./实战)
-
 
 
 
@@ -1477,7 +1477,7 @@ function saySomething(string memory something) public pure returns(string memory
 
 ### 4.3.1 回退函数 fallback
 
-`fallback()`函数会在调用合约不存在的函数时被触发。可用于接收ETH，也可以用于代理合约`proxy contract`。`fallback()`声明时不需要`function`关键字，必须由`external`修饰，一般也会用`payable`修饰，用于接收ETH:`fallback() external payable { ... }`。
+`fallback()`函数会在调用合约不存在的函数时被触发。可用于接收ETH，也可以用于代理合约`proxy contract`。`fallback()`声明时不需要`function`关键字，**必须由`external`修饰**，一般也会用`payable`修饰，用于接收ETH:`fallback() external payable { ... }`。
 
 我们定义一个`fallback()`函数，被触发时候会释放`fallbackCalled`事件，并输出`msg.sender`，`msg.value`和`msg.data`:
 
@@ -2024,6 +2024,8 @@ contract B {
 ```
 
 而`delegatecallSetVars`函数通过`delegatecall`来调用`setVars`。与上面的`callSetVars`函数相同，有两个参数`_addr`和`_num`，分别对应合约`C`的地址和`setVars`的参数。
+
+
 
 ```solidity
     // 通过delegatecall来调用C的setVars()函数，将改变合约B里的状态变量
@@ -2654,6 +2656,10 @@ bytes32 hash = keccak256(abi.encodePacked(_account, _tokenId));
 
 
 
+
+# 5 实战
+
+[实战](./实战)
 
 
 
