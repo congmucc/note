@@ -2615,7 +2615,7 @@ import (
 
 )
 
-day
+day := model.GetDay()
 
 ```
 
