@@ -2661,7 +2661,7 @@ func UnixToDate(timestamp int64) string {
 
 r := gin.Default()
 
-r.SetFuncMap(template.FuncMap{
+r.SetFuncMap(template.FuncMap{ 
 
     "unixToDate": models.UnixToDate,
 
