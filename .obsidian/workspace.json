@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "71a4c23209dd4786",
+        "id": "a0691ed27ab6e48e",
         "type": "tabs",
         "children": [
           {
-            "id": "ec75bcc1f2e60218",
+            "id": "190e5d1c4e1cd50b",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "02-Code/基础/项目经理/基础/assets/image-20240620203208642.png"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -166,7 +164,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ec75bcc1f2e60218",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
     "02-Code/基础/后端/Go/Golang基础/assets/image-20240224141553576.png",
     "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
