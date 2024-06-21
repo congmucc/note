@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/实习/航天宏图.md"
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/实习/航天宏图.md",
+                "file": "02-Code/基础/后端/Go/框架/Gin/Gin.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,8 +171,8 @@
   },
   "active": "190e5d1c4e1cd50b",
   "lastOpenFiles": [
-    "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/实习/航天宏图.md",
+    "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/后端/Go/框架/Gin/Gin.md",
     "02-Code/简历/简历/~WRL0001.tmp",
     "02-Code/简历/简历/~WRD0000.tmp",
