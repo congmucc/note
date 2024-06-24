@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/go/go.md",
+                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/go/go.md",
+                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/go/go.md"
+                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/实战笔记/项目笔记/go/go.md",
+                "file": "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,9 +171,10 @@
   },
   "active": "190e5d1c4e1cd50b",
   "lastOpenFiles": [
-    "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
-    "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
     "02-Code/基础/后端/Go/框架/Gin/Gin.md",
+    "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
+    "02-Code/实战笔记/项目笔记/go/go.md",
+    "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
     "02-Code/简历/简历/~$区块链简历.docx",
     "02-Code/实习/航天宏图.md",
     "02-Code/基础/CICD/Docker/Docker.md",
