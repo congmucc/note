@@ -19,19 +19,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "751e76722f580ae8",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.6.5"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -180,7 +169,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "751e76722f580ae8",
+  "active": "190e5d1c4e1cd50b",
   "lastOpenFiles": [
     "02-Code/基础/后端/Go/框架/Gin/Gin.md",
     "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
