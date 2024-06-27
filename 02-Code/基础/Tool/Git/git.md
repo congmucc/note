@@ -116,7 +116,31 @@ git config --global user.email "2562907972@qq.com"
 
 - `git fetch` 是一个Git命令，用于从远程仓库中下载最新的数据到本地仓库，但不自动合并到当前工作分支。这个命令使得你能查看远程仓库的最新状态，包括新的分支和标签，而无需直接修改你的工作目录或暂存区的内容。
 
-- 
+
+
+在Windows平台上，git默认的core.autocrlf是true，可以通过`git config --list`命令查看。
+
+Git可以在你提交时自动地把行结束符CRLF转换成LF，而在签出代码时把LF转换成CRLF。用`core.autocrlf`来打开此项功能， 如果是在Windows系统上，把它设置成`true`（默认配置），这样当签出代码时，LF会被转换成CRLF：
+
+```csharp
+git config --global core.autocrlf true
+```
+
+Linux或Mac系统使用LF作为行结束符，因此你不想Git在签出文件时进行自动的转换；当一个以CRLF为行结束符的文件不小心被引入时你肯定想进行修正， 把`core.autocrlf`设置成input来告诉Git在提交时把CRLF转换成LF，签出时不转换：
+
+```verilog
+git config --global core.autocrlf input
+```
+
+这样会在Windows系统上的签出文件中保留CRLF，会在Mac和Linux系统上，包括仓库中保留LF。
+
+如果你是Windows程序员，且正在开发仅运行在Windows上的项目，可以设置`false`取消此功能，把回车符记录在库中：
+
+```csharp
+git config --global core.autocrlf false
+```
+
+
 
 # 7 实战
 
