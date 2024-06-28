@@ -13,12 +13,10 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md",
+                "file": "Task/计算机计划.md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
-                  "list-collapse": [
-                    false
-                  ]
+                  "list-collapse": []
                 }
               }
             }
@@ -89,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md",
+                "file": "Task/计算机计划.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md"
+                "file": "Task/计算机计划.md"
               }
             }
           },
@@ -145,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/2024-5-20-学习任务.md",
+                "file": "Task/计算机计划.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,8 +172,8 @@
   },
   "active": "b8da787bc32a2469",
   "lastOpenFiles": [
-    "Task/2024-3-14-技术学习大纲.md",
     "Task/2024-5-20-学习任务.md",
+    "Task/2024-3-14-技术学习大纲.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
     "Task/月看板.md",
