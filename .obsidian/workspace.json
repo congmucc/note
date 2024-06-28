@@ -11,13 +11,12 @@
             "id": "b8da787bc32a2469",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Task/计算机计划.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": []
-                }
+                "file": "01-笔记使用/笔记目录.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task/计算机计划.md",
+                "file": "01-笔记使用/笔记目录.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task/计算机计划.md"
+                "file": "01-笔记使用/笔记目录.md"
               }
             }
           },
@@ -143,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task/计算机计划.md",
+                "file": "01-笔记使用/笔记目录.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,11 +171,15 @@
   },
   "active": "b8da787bc32a2469",
   "lastOpenFiles": [
-    "Task/2024-5-20-学习任务.md",
-    "Task/2024-3-14-技术学习大纲.md",
+    "template/TODO.md",
+    "template/TaskName.md",
+    "template/Diary-Time.md",
+    "template/Diary-Thing.md",
+    "Task/月看板.md",
     "Task/软件工程作业.md",
     "Task/计算机计划.md",
-    "Task/月看板.md",
+    "Task/2024-5-20-学习任务.md",
+    "Task/2024-3-14-技术学习大纲.md",
     "Diary/2023-11-25-学习obsidian.md",
     "Diary/2024-5-22-学习minio源码.md",
     "01-笔记使用/笔记目录.md",
@@ -198,10 +201,6 @@
     "05-穿搭/assets/image-20231229132648925.png",
     "05-穿搭/assets/image-20231229132601625.png",
     "04-礼仪/().md",
-    "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
-    "03-英语/笔记：.md",
-    "01-笔记使用/01b1-Mermaid.md",
-    "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/思想/架构/assets/road-map-230624-01.png",
     "02-Code/简历/简历/~$区块链简历.docx",
     "02-Code/简历/简历/~WRL0001.tmp",
