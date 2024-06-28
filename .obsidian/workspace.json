@@ -13,14 +13,25 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md",
+                "file": "05-穿搭/0穿搭目录.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
+          },
+          {
+            "id": "b8da787bc32a2469",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "05-穿搭/assets/image-20231229134859470.png"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md",
+                "file": "05-穿搭/assets/image-20231229134859470.png",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md"
+                "file": "05-穿搭/assets/image-20231229134859470.png"
               }
             }
           },
@@ -142,7 +153,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-笔记使用/01b-Markdown语法规则.md",
+                "file": "05-穿搭/assets/image-20231229134859470.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,12 +180,24 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "190e5d1c4e1cd50b",
+  "active": "b8da787bc32a2469",
   "lastOpenFiles": [
+    "05-穿搭/assets/image-20231229132919216.png",
+    "05-穿搭/assets/image-20231229134859470.png",
+    "05-穿搭/0穿搭目录.md",
+    "05-穿搭/店铺&物品.md",
+    "05-穿搭/淘宝店铺.md",
+    "05-穿搭/上衣.md",
+    "05-穿搭/材质篇.md",
+    "05-穿搭/assets/image-20231229132648925.png",
+    "05-穿搭/assets/image-20231229132601625.png",
+    "04-礼仪/().md",
+    "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
+    "01-笔记使用/01b-Markdown语法规则.md",
+    "03-英语/笔记：.md",
     "01-笔记使用/01b1-Mermaid.md",
     "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
     "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
-    "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/Tool/Git/Git.md",
     "02-Code/基础/Tool/Linux/Linux.md",
@@ -196,25 +219,13 @@
     "02-Code/基础/项目经理/基础/assets/image-20240620203146004.png",
     "02-Code/简历/简历/~$后端简历.docx",
     "02-Code/基础/后端/Go/框架/GoMicro/GoMicro.md",
-    "02-Code/实战笔记/构建项目模板/Vue前端/Vue前端.md",
-    "02-Code/基础/前端/react/react.md",
     "02-Code/简历/简历/~WRL0005.tmp",
     "02-Code/简历/简历/~WRD0004.tmp",
     "02-Code/简历/简历/~WRL0003.tmp",
     "02-Code/简历/简历/~WRD0002.tmp",
-    "02-Code/实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md",
-    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/仿12306/仿12306.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212214043557.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包/assets/image-20221212214043557-1717955232204-1.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212221505979.png",
-    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212214355382.png",
-    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212214148279.png",
-    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212214003856.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目",
     "未命名.canvas",
