@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-笔记使用/笔记目录.md",
+                "file": "02-Code/目录.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-笔记使用/笔记目录.md",
+                "file": "02-Code/目录.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-笔记使用/笔记目录.md"
+                "file": "02-Code/目录.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-笔记使用/笔记目录.md",
+                "file": "02-Code/目录.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "b8da787bc32a2469",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "01-笔记使用/笔记目录.md",
     "template/TODO.md",
     "template/TaskName.md",
     "template/Diary-Time.md",
@@ -182,7 +183,6 @@
     "Task/2024-3-14-技术学习大纲.md",
     "Diary/2023-11-25-学习obsidian.md",
     "Diary/2024-5-22-学习minio源码.md",
-    "01-笔记使用/笔记目录.md",
     "01-笔记使用/01c个人知识管理.md",
     "01-笔记使用/01b2-LaTeX.md",
     "01-笔记使用/01b-Markdown语法规则.md",
