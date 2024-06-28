@@ -8,30 +8,22 @@
         "type": "tabs",
         "children": [
           {
-            "id": "190e5d1c4e1cd50b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "05-穿搭/0穿搭目录.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "b8da787bc32a2469",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "kanban",
               "state": {
-                "file": "05-穿搭/assets/image-20231229134859470.png"
+                "file": "Task/2024-5-20-学习任务.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false
+                  ]
+                }
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -97,7 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "05-穿搭/assets/image-20231229134859470.png",
+                "file": "Task/2024-5-20-学习任务.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "05-穿搭/assets/image-20231229134859470.png"
+                "file": "Task/2024-5-20-学习任务.md"
               }
             }
           },
@@ -153,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "05-穿搭/assets/image-20231229134859470.png",
+                "file": "Task/2024-5-20-学习任务.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -182,50 +174,50 @@
   },
   "active": "b8da787bc32a2469",
   "lastOpenFiles": [
+    "Task/2024-3-14-技术学习大纲.md",
+    "Task/2024-5-20-学习任务.md",
+    "Task/软件工程作业.md",
+    "Task/计算机计划.md",
+    "Task/月看板.md",
+    "Diary/2023-11-25-学习obsidian.md",
+    "Diary/2024-5-22-学习minio源码.md",
+    "01-笔记使用/笔记目录.md",
+    "01-笔记使用/01c个人知识管理.md",
+    "01-笔记使用/01b2-LaTeX.md",
+    "01-笔记使用/01b-Markdown语法规则.md",
+    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
+    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+    "01-笔记使用/01a-Obsidian基本使用.md",
+    "01-笔记使用/01a1-Obsidian插件.md",
+    "01-笔记使用/01d-卢曼卡片盒笔记.md",
+    "05-穿搭/材质篇.md",
+    "05-穿搭/店铺&物品.md",
+    "05-穿搭/上衣.md",
+    "05-穿搭/淘宝店铺.md",
+    "05-穿搭/0穿搭目录.md",
     "05-穿搭/assets/image-20231229132919216.png",
     "05-穿搭/assets/image-20231229134859470.png",
-    "05-穿搭/0穿搭目录.md",
-    "05-穿搭/店铺&物品.md",
-    "05-穿搭/淘宝店铺.md",
-    "05-穿搭/上衣.md",
-    "05-穿搭/材质篇.md",
     "05-穿搭/assets/image-20231229132648925.png",
     "05-穿搭/assets/image-20231229132601625.png",
     "04-礼仪/().md",
     "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
-    "01-笔记使用/01b-Markdown语法规则.md",
     "03-英语/笔记：.md",
     "01-笔记使用/01b1-Mermaid.md",
-    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
-    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
     "02-Code/基础/CICD/Docker/Docker.md",
-    "02-Code/基础/Tool/Git/Git.md",
-    "02-Code/基础/Tool/Linux/Linux.md",
-    "02-Code/基础/WEB3/Interview/Interview.md",
-    "02-Code/基础/前端/Nginx/Nginx.md",
-    "02-Code/基础/后端/Go/框架/Gin/Gin.md",
-    "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
-    "02-Code/基础/思想/架构/DDD架构.md",
     "02-Code/基础/思想/架构/assets/road-map-230624-01.png",
-    "02-Code/实战笔记/项目笔记/go/go.md",
-    "02-Code/实战笔记/构建项目模板/Java后端/Java后端.md",
     "02-Code/简历/简历/~$区块链简历.docx",
-    "02-Code/实习/航天宏图.md",
     "02-Code/简历/简历/~WRL0001.tmp",
     "02-Code/简历/简历/~WRD0000.tmp",
-    "02-Code/基础/项目经理/基础/基础.md",
     "02-Code/基础/后端/Go/Golang基础/assets/image-20240224141553576.png",
     "02-Code/基础/项目经理/基础/assets/image-20240620203208642.png",
     "02-Code/基础/项目经理/基础/assets/image-20240620203146004.png",
     "02-Code/简历/简历/~$后端简历.docx",
-    "02-Code/基础/后端/Go/框架/GoMicro/GoMicro.md",
     "02-Code/简历/简历/~WRL0005.tmp",
     "02-Code/简历/简历/~WRD0004.tmp",
     "02-Code/简历/简历/~WRL0003.tmp",
     "02-Code/简历/简历/~WRD0002.tmp",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212214043557.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包/assets/image-20221212214043557-1717955232204-1.png",
-    "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212221505979.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目",
     "未命名.canvas",
