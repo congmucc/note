@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "README.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "README.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Rust/Rust.md"
+                "file": "README.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,9 +171,12 @@
   },
   "active": "fc526c6249bb0e31",
   "lastOpenFiles": [
-    "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
-    "README.md",
     "02-Code/基础/前端.md",
+    "README.md",
+    "实战笔记/项目笔记/Go/模板搭建/模板搭建.md",
+    "实战笔记/项目笔记/Go/模板搭建",
+    "基础/后端/Rust/Rust.md",
+    "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础",
     "02-Code",
     "基础/后端/Java/JavaWeb开发规范.md",
@@ -202,7 +205,6 @@
     "基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
     "基础/后端/Java/微服务框架/分布式/分布式缓存/assets",
     "基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
-    "基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets",
     "基础/后端/Java/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
     "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
     "基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
@@ -215,8 +217,6 @@
     "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.7_接口/接口多态.md",
     "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.7_接口/接口.md",
     "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.6_抽象类/abstract.md",
-    "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.5_final/P0393_final.md",
-    "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.3_代码块/P0386_代码块的使用细节.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
