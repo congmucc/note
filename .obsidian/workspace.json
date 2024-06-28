@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
+                "file": "01-笔记使用/01b-Markdown语法规则.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
+                "file": "01-笔记使用/01b-Markdown语法规则.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md"
+                "file": "01-笔记使用/01b-Markdown语法规则.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
+                "file": "01-笔记使用/01b-Markdown语法规则.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,6 +171,10 @@
   },
   "active": "190e5d1c4e1cd50b",
   "lastOpenFiles": [
+    "01-笔记使用/01b1-Mermaid.md",
+    "01-笔记使用/01a2-用Obsidian实现Zettelkasten.md",
+    "01-笔记使用/01a2-设计区块链MOC的大纲结构.md",
+    "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
     "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/Tool/Git/Git.md",
     "02-Code/基础/Tool/Linux/Linux.md",
@@ -205,10 +209,6 @@
     "02-Code/实战笔记/项目笔记/Java+Vue/仿12306/仿12306.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
     "02-Code/实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
-    "02-Code/实战笔记/项目笔记/Java+Vue/党务修改.md",
-    "02-Code/实战笔记/Java用法/Java用法.md",
-    "02-Code/目录.md",
-    "02-Code/基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212214043557.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包/assets/image-20221212214043557-1717955232204-1.png",
     "02-Code/实战笔记/项目笔记/WEB3/钱包项目/assets/image-20221212221505979.png",
