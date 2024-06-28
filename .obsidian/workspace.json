@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md"
+                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02-Code/基础/CICD/Docker/Docker.md",
+                "file": "04-礼仪/【艾跃进】口才艺术与社交礼仪笔记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,10 +171,10 @@
   },
   "active": "190e5d1c4e1cd50b",
   "lastOpenFiles": [
+    "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/Tool/Git/Git.md",
     "02-Code/基础/Tool/Linux/Linux.md",
     "02-Code/基础/WEB3/Interview/Interview.md",
-    "02-Code/基础/CICD/Docker/Docker.md",
     "02-Code/基础/前端/Nginx/Nginx.md",
     "02-Code/基础/后端/Go/框架/Gin/Gin.md",
     "02-Code/基础/后端/Go/Golang基础/Golang基础.md",
