@@ -4,15 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "a0691ed27ab6e48e",
+        "id": "9be153acc0e0b17a",
         "type": "tabs",
         "children": [
           {
-            "id": "b8da787bc32a2469",
+            "id": "fc526c6249bb0e31",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Code/目录.md"
+                "file": "README.md"
               }
             }
           },
@@ -136,6 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,8 +169,12 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "fc526c6249bb0e31",
   "lastOpenFiles": [
+    "02-Code/基础/前端.md",
+    "README.md",
+    "02-Code/基础",
+    "02-Code",
     "基础/后端/Java/JavaWeb开发规范.md",
     "实习/assets/OAuth.png",
     "实习/assets/image-20240628110945338.png",
@@ -192,9 +203,7 @@
     "基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
     "基础/后端/Java/微服务框架/SpringCloud/微服务保护/assets",
     "基础/后端/Java/微服务框架/SpringCloud/Nacos集群搭建/nacos集群搭建.md",
-    "基础/后端/Java/微服务框架/SpringCloud/Nacos集群搭建/assets",
     "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
-    "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/assets",
     "基础/后端/Java/微服务框架/MQ/RabbitMQ安装/RabbitMQ部署指南.md",
     "基础/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ-高级篇.md",
     "基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/P0318_Object.md",
@@ -208,8 +217,6 @@
     "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.5_final/P0393_final.md",
     "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.3_代码块/P0386_代码块的使用细节.md",
     "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.4_单例模式/P0391Single.md",
-    "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.1_静态变量和静态方法/P0378_静态方法.md",
-    "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.2_mian方法解析/mian.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
