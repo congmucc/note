@@ -7,7 +7,11 @@
 1. 具有独一无二的所有权机制，可以防止悬垂引用，并发中产生竞争
 2. 没有垃圾回收，具有高性能
 3. 零成本抽象
-4. 完备的函数式编程，如模式匹配，高阶函数，闭包，迭代
+4. 完备的函数式编程（面向函数，而不是面向对象），如模式匹配，高阶函数，闭包，迭代
+
+
+
+
 
 
 
@@ -139,6 +143,14 @@ git-fetch-with-cli = true
 变量命名：小写下划线`let nice_count = 100;`
 
 
+
+
+
+## 1.7 相比其他语言独特
+
+1. 变量不可变性
+2. 所有权，所有权系统实参进入函数后会被销毁，move和copy
+3. 
 
 
 
@@ -316,6 +328,163 @@ let a = 20; // Shadowing Variables
   - 不可变引用，指向存储在其他地方的 UTF-8编码的字符串数
   - 由指针和长度构成
 
+  
+
+- **注意`String`是具有所有权的，而`&str`并没有**
+  
+- `Struct`中属性推荐使用`String`
+
+  - 对于`&str`，如果不使用显式声明生命周期无法使用`&str`，不只是麻烦，还有更多的隐患，如下：
+
+  ```rust
+  struct Person<'a> {
+      name: &'a str,
+      color: String,
+      age:i32,
+  }
+  ```
+
+> 如果不使用`&str`就不需要标注生命周期
+
+- 函数形参参数推荐使用`&str`（如果不想交出所有权）
+
+  - `&str`为参数，可以传递`&str`和`&String`
+  - `&String`为参数，只能传递`&String`不能传递`&str`
+
+  ```rust
+  // &String &str 两个都可以传输
+  fn print(data: &str) {
+      println!("{}", data);
+  }
+  
+  // &String 只能传输这个
+  fn print_string_borrow(data: &String) {
+      println!("{}", data);
+  }
+  ```
+
+  
+
+- 两者相互转换
+
+  ```rust
+  let strings = String::from("value c++");
+  let str = "rust".to_owned();
+  let str = "rust".to_string();
+  ```
+
+  > 使用`"rust".to_owned()`或者`"rust".to_string(())`将`&str`转化为`String`
+
+
+
+**7、枚举**
+
+枚举（enums）是一种用户自定义的数据类型，用于表示具有一组离散可能值的变量
+
+- 每种可能值都称为"variant"（变体)
+
+- 枚举名::变体名
+
+```rust
+enum Shape {
+    Circle(f64),
+    Rectangle(f64, f64),
+    Square(f64),
+    Unknown, // 表示不知道是否有这个类型，什么类型也不知道
+}
+```
+
+常用枚举
+
+```rust
+pub enum Option<T> {
+    None,
+    Some(T),
+}
+
+pub enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
+枚举的好处
+
+- 可以使你的代码更严谨、更易读
+- More robust programs
+
+常与匹配模式一起使用：
+
+1. match 关键字实现
+
+2. 必须覆盖所有的变体
+3. 可以用`_、..=、三元（if)`等来进行匹配
+
+```rust
+match number {
+    0=> println!("Zero"),
+    1|2 => println!("One or Two"),
+    3..=9 => println!("From Three to Nine"),
+    n if n % 2 == 0 => println!("Even number"),
+    _ => println!("Other"),
+}
+```
+
+
+
+```rust
+enum Color {
+    Red,
+    Yellow,
+    Blue,
+    Block,
+}
+
+fn print_color(my_color: Color) {
+    match my_color {
+        Color::Red => println!("Red"),
+        Color::Yellow => println!("Yellow"),
+        Color::Blue => println!("Blue"),
+        _ => println!("Other"),
+    }
+}
+
+fn main() {
+    print_color(my_color: Color::Yellow);
+}
+```
+
+
+
+```rust
+enum BuildingLocation {
+    Number(i32),
+    Name(String), // 不用&str等来进行匹配
+    Unknown,
+}
+
+impl BuildingLocation {
+    fn print_location(&self) {
+        match self {
+            BuildingLocation::Number(c) => println!("building number{}", c),
+            BuildingLocation::Name(s) => println!("building name{}", s),
+            BuildingLocation::Unknown => println!("unknown"),
+        }
+    }
+}
+
+// 调用
+let house: BuildingLocation = BuildingLocation::Name("fdgd".to_string());
+house.print_location();
+```
+
+> - **`impl BuildingLocation`**: `impl` 关键字用于实现特定类型（这里是 `BuildingLocation`）的方法或trait。这意味着下面定义的函数是属于 `BuildingLocation` 类型的。
+> - **`fn print_location(&self)`**: 定义了一个名为 `print_location` 的方法，它接受一个引用到 `self`（即枚举实例自身）作为参数。`&self` 是 Rust 中的方法自引用的惯用写法，意味着这个方法不会获取 `self` 的所有权，仅借用它来读取数据。
+>
+> 这里面有一个关键的思想就是面向函数式编程，而不是面向对象
+
+
+
 
 
 ## 2.3 引用数据类型
@@ -375,7 +544,7 @@ let y = x.clone();
 1. **字符串 (`String`)**: `String` 类型在堆上分配内存来存储可变长度的字符串数据。当一个 `String` 被赋值给另一个变量或作为参数传递给函数时，所有权会转移。
 2. **向量 (`Vec<T>`)**: `Vec<T>` 类似于动态数组，也在堆上分配内存来存储元素。所有权转移规则同样适用。
 3. **自定义结构体和枚举**: 当结构体或枚举中包含上述可变大小类型或其他所有权类型时，整个结构体会在所有权转移时受到影响。
-4. **Box<T>**: `Box<T>` 是一个智能指针，用于在堆上分配单个值。所有权转移规则适用于 `Box<T>` 实例。
+4. **Box`<T >`**: `Box<T>` 是一个智能指针，用于在堆上分配单个值。所有权转移规则适用于 `Box<T>` 实例。
 5. **其他堆分配类型**: 任何在堆上分配的类型，或者包含堆分配数据的复合类型，都可能涉及所有权的转移。
 
 **copy类型：**
@@ -483,8 +652,6 @@ println!("tup3 {:?}", tup3);
 
 - 所有权系统
 
-1、
-
 ```rust
 fn get_length(s: String) -> usize {
     println!("{}", s);
@@ -536,11 +703,40 @@ fu dangle() -> &str{}
 
 Ownership 与结构体、枚举
 
+## 4.1 结构体
+
+结构体是一种用户定义的数据类型，用于创建自定义的数据结构。
+
+- 每条数据(x和y)称为属性 (字段 field)
+- 通过点(.)来访问结构体中的属性
+
+
+
+**结构体中的方法**
+
+方法是指，通过实例调用（`&self`、`&mut self`、`self`)
+
+```rust
+impl Point {
+    fn distance(&self, other: &Point) -> f64 {
+        let dx = (self.x - other.x) as f64;
+        let dy = (self.y - other.y) as f64;
+        (dx * dx + dy * dy).sqrt()
+    }
+}
+```
+
+这里 `self` 指代的是结构体 `Point` 的实例。在 Rust 中，有三种常见的 `self` 调用方式：
+
+1. `&self`: 表示方法接受一个 `Point` 结构体的只读引用。在这种情况下，方法不能修改 `self` 对象的内容。
+2. `&mut self`: 表示方法接受一个 `Point` 结构体的可变引用。这种方法可以修改 `self` 对象的内容。
+3. `self`: 表示方法接受 `Point` 结构体的所有权。在方法结束后，所有权会转移回调用方。
 
 
 
 
-3.3枚举与匹配模式
+
+
 
 3.4结构体、方法、关联函数、关联变量
 
