@@ -134,7 +134,7 @@ git-fetch-with-cli = true
 
 
 
-## 1.6 规则
+## 1.6 开发规则
 
 变量命名：小写下划线`let nice_count = 100;`
 
@@ -158,7 +158,7 @@ git-fetch-with-cli = true
    let x: i32 = 5; // 显式指定 x 的类型为 i32
    ```
 
-3. 变量名蛇形命名法（Snake Case），而枚举和结构体命名使用帕斯卡命名法（Pascal Case）。如果变量没有用到可以前置下划线，消除警告。
+3. 变量名蛇形命名法（Snake Case）：**小写加下划线**，而枚举和结构体命名使用帕斯卡命名法（Pascal Case）：小驼峰。如果变量没有用到可以前置下划线，消除警告。
 
 4. 强制类型转换 (Casting a Value to a Different Type)：  
 
@@ -234,15 +234,157 @@ let a = 20; // Shadowing Variables
 
 
 
-2.4 元组与数组
 
 
 
 
+## 2.2 Rust基础数据类型
+
+如果不自动设置类型的话，rust默认的类型是i32
+**1、Integer**
+
+- Integer types 默认推断为 i32:
+  - i8、i16、i32、i64、i128
+- Unsigned Integer Types:
+  - u8、u16、u32、u64、u128
+- Platform-Specific Integer Type(由平台决定):
+  - usize
+  - isize
+
+**2、Float**
+
+- Float Types:
+  - f32 与 f64
+  - 尽量用 f64，除非你清楚边界需要空间
+
+**3、Boolean**
+
+- Boolean Values:
+  - true
+  - false
+
+**4、Char**
+
+- Character Types:
+  - Rust 支持 Unicode 字符
+  - 表示 char 类型使用单引号
+
+**5、元组和数组**
+
+- 元组
+
+  > 元组是固定长度的异构集合
+  >
+  > `EmptyTuple()`：为函数默认返回值
+  >
+  > 元组获取元素：`tup.index`没有`len ()`
+
+- 数组
+
+  > 组是固定长度的同构集合
+  >
+  > 创建方式：`[a, b, c]`或者`[value; size]`
+  >
+  > 获取元素：`arr[index]`
+  >
+  > 获取长度：`arr.Ien ()`
+
+- 元组与数组异同
+
+> - 相同点
+>  1. 元组和数组都是Compound Types，而Vec和Map都是Collection Types
+>   2. 元组和数组长度都是固定的
+>   3. 可以设置可变
+> 
+> - Tuples不同类型的数据类型
+>
+> - Arrays 同一类型的数据类型
 
 
 
-## 2.2 输入输出
+**6、String与&str**
+
+- `String`是一个堆分配的可变字符串类型
+
+  源码:
+  ```rust
+  pub struct String {vec: Vec<u8>}
+  ```
+
+- `&str`是指字符串切片引用，是在栈上分配的
+
+  - 不可变引用，指向存储在其他地方的 UTF-8编码的字符串数
+  - 由指针和长度构成
+
+
+
+## 2.3 引用数据类型
+
+
+
+### 2.3.1 move与copy
+
+copy类似值引用，move如下：
+
+在 Rust 编程语言中，`move` 所有权转移是一种机制，当值的所有权从一个变量转移到另一个变量时发生。具体来说，`move` 发生在以下几种情况：
+
+1. **变量赋值**: 当你将一个拥有堆分配数据（如 `String`、`Vec` 或自定义的动态大小类型）的变量赋值给另一个变量时，原始变量的所有权会转移到新变量，原始变量将不再有效。
+
+```
+rust   let s1 = String::from("hello");
+   let s2 = s1; // s1的所有权转移到s2，s1不能再使用
+```
+
+1. **作为参数传递给函数或闭包**: 如果函数或闭包参数采用值传递（即没有 `&` 或 `&mut`），那么调用时传递的变量的所有权会转移到函数内部，函数结束后该值将被清理。
+
+```
+rust   fn take_ownership(s: String) {
+       println!("{}", s);
+   }
+   let s = String::from("hello");
+   take_ownership(s); // s的所有权转移到take_ownership函数内
+```
+
+1. **结构体和枚举的字段**: 当你将拥有堆分配数据的变量放入结构体或枚举时，也会发生所有权转移。
+2. **从函数返回拥有堆数据的值**: 函数返回拥有堆数据的值时，该值的所有权会从函数内部转移到调用者。
+
+```
+rust   fn returns_string() -> String {
+       String::from("hello")
+   }
+   let s = returns_string(); // 返回值的所有权转移到s
+```
+
+`move` 操作的核心在于确保任何时候只有一个变量拥有对某个数据的控制权，这有助于避免数据竞争和内存泄漏，是 Rust 安全和高效内存管理策略的基础。
+
+
+
+**copy类型所有权转移**
+
+```rust
+let x = 5;
+let y = x.clone(); 
+```
+
+> 使用`variable.clone()`函数将copy类型的所有权转移给另一个，上面示例就是将x所有权转移给y
+
+
+
+### 2.3.2 move类型
+
+1. **字符串 (`String`)**: `String` 类型在堆上分配内存来存储可变长度的字符串数据。当一个 `String` 被赋值给另一个变量或作为参数传递给函数时，所有权会转移。
+2. **向量 (`Vec<T>`)**: `Vec<T>` 类似于动态数组，也在堆上分配内存来存储元素。所有权转移规则同样适用。
+3. **自定义结构体和枚举**: 当结构体或枚举中包含上述可变大小类型或其他所有权类型时，整个结构体会在所有权转移时受到影响。
+4. **Box<T>**: `Box<T>` 是一个智能指针，用于在堆上分配单个值。所有权转移规则适用于 `Box<T>` 实例。
+5. **其他堆分配类型**: 任何在堆上分配的类型，或者包含堆分配数据的复合类型，都可能涉及所有权的转移。
+
+**copy类型：**
+
+整数（`i32`, `u8` 等）、浮点数、布尔值和元组（只要元组中的每个元素都是 Copy 类型）
+
+
+
+## 2.4 输入输出
 
 有两种输出
 
@@ -256,27 +398,24 @@ println!("x : {x}");
 
 
 
-## 2.3 Rust基础数据类型
+MAX & MIN 打印方式
 
-如果不自动设置类型的话，rust默认的类型是i32
+```rust
+println!("u32 max: {}", u32::MAX);
+println!("u32 min: {}", i32::MIN);
+println!("isize is {} bytes", std::mem::size_of::<isize>()); // 查看数据的字节数
 
-- Integer types 默认推断为 i32:
-  - i8、i16、i32、i64、i128
-- Unsigned Integer Types:
-  - u8、u16、u32、u64、u128
-- Platform-Specific Integer Type(由平台决定):
-  - usize
-  - isize
-- Float Types:
-  - f32 与 f64
-  - 尽量用 f64，除非你清楚边界需要空间
 
-- Boolean Values:
-  - true
-  - false
-- Character Types:
-  - Rust 支持 Unicode 字符
-  - 表示 char 类型使用单引号
+let f1: f32 = 1.23234
+println!("Float are {:.2}", f1); // 1.23 打印两位
+
+let tup3 = ();
+println!("tup3 {:?}", tup3);
+```
+
+
+
+
 
 
 
@@ -315,7 +454,79 @@ println!("x : {x}");
 
 
 
+## 3.3 Rust的内存管理模型
 
+> 内存分配，内存释放，内存管理单元，堆栈，指针，内存保护，虚拟内存，内存碎片化处理。
+
+> ​	"Stoptheworld"是与垃圾回收（GarbageCollection）相关的术语，它指的是在进行垃圾回收时系统暂停程序的运行。
+>
+> ​	这个术语主要用于描述一种全局性的暂停，即所有应用线程都被停止，以便垃圾回收器能够安全地进行工作。这种全局性的停止会导致一些潜在的问题，特别是对于需要低延迟和高性能的应用程序。
+>
+> ​	需要注意的是，并非所有的垃圾回收算法都需要"stop the world"，有一些现代的垃圾回收器采用了一些技术来减小全局停顿的影响，比如并发垃圾回收和增量垃圾回收
+
+
+
+**模型：**
+
+- 所有权系统（Ownership System)
+
+- 借用（Borrowing)·
+
+  - 不可变引用 (不可变借用)
+  - 可变引用 (可变借用)
+
+- 生命周期（Lifetimes)
+
+- 引用计数 (Reference Counting)
+
+
+
+- 所有权系统
+
+1、
+
+```rust
+fn get_length(s: String) -> usize {
+    println!("{}", s);
+    s.len()
+}
+
+fn main() {
+    let s1 = String::from("vlaue");
+    let s1_len = get_length(s1);
+
+    println!("{}", s1_len);
+}
+```
+
+> 这里面首先和其他语言不同的是s1在get_length()中随着函数被销毁销毁了，类似s1的所有权被传进去了，而不是像其他语言一样创建一个变量啥的，而是直接被销毁了。
+>
+> 通过usize返回值返回。
+
+
+
+```rust
+fu dangle() -> &str{}
+```
+
+> 这个返回一个引用会报错，因为rust的所有权机制，它不知道改引用的生命周期是什么，什么时候销毁。
+>
+> 解决：
+>
+> ```rust
+> fn dangle() -> String{}
+> ```
+>
+> 这个是直接返回一个类型。
+>
+>
+> ```rust
+> fn dangle () -> &'static str {
+>     "hello"
+> }
+> ```
+>
+> 这个不推荐，因为将这个函数设置为了静态的生命周期，污染了全局变量
 
 
 
@@ -325,9 +536,9 @@ println!("x : {x}");
 
 Ownership 与结构体、枚举
 
-3.1Rust的内存管理模型
 
-3.2String与&str
+
+
 
 3.3枚举与匹配模式
 
