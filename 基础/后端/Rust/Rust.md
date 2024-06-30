@@ -150,7 +150,7 @@ git-fetch-with-cli = true
 
 1. 变量不可变性
 2. 所有权，所有权系统实参进入函数后会被销毁，move和copy
-3. 
+3. 不支持继承，和面向对象，而是函数式编程，组合与委托
 
 
 
@@ -158,7 +158,7 @@ git-fetch-with-cli = true
 
 # 2 语言基础
 
-## 2.1 变量与常见数据类型
+## 2.1 变量
 
 ### 2.1.1 变量与不可变性
 
@@ -742,51 +742,6 @@ println!("tup3 {:?}", tup3);
 
 
 
-## 2.6 循环迭代器
-
-基础循环
-
-```rust
-   loop {
-      println!("Hello, world!");
-      std::thread::sleep(std::time::Duration::from_secs(1));)
-   }
-```
-
-> 无限循环
-
-
-
-**遍历数组**
-
-for遍历的一种方式
-
-```rust
-    let numbers = [1, 2, 3, 4, 5].to_vec();
-    for i in 0..numbers.len() {
-        println!("{}", numbers[i]);
-    }
-
-    for i in 0..=numbers.len() {
-        println!("{}", numbers[i]);
-    }
-```
-
-> 注意，一个有`=`，一个没有。
-
-
-
-迭代器遍历数组
-
-```rust
-    let numbers = [1, 2, 3, 4, 5].to_vec();
-    let numbers = numbers.iter().map(|x| x * 2).collect::<Vec<_>>();
-```
-
-
-
-
-
 
 
 
@@ -1102,8 +1057,52 @@ match parse_numbers("d"){
 步骤:
 
 1. 定义错误类型结构体：创建一个结构体来表示你的错误类型，通常包含一些字段来描述错误的详细信息。
-2. 实现`std::fmt::Display trait`：实现这个trait以定义如何展示错误信息。这是为了使错误能够以人类可读的方式打印出来。
-3. 实现`std::error::Error trait`：实现这个 trait以满足Rust 的错误处理机制的要求
+2. 实现`std::fmt::Display` trait：实现这个trait以定义如何展示错误信息。这是为了使错误能够以人类可读的方式打印出来。
+3. 实现`std::error::Error` trait：实现这个 trait以满足Rust 的错误处理机制的要求
+
+```rust
+// 第一步，创建结构体，表示错误类型，描述错误详情
+#[derive(Debug)]
+struct MyError {
+    detail: String,
+}
+
+// 第二步，实现std::fmt::Display特质，实现打印方法
+impl std::fmt::Display for MyError {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "MyError: {}", self.detail)
+    }
+}
+
+// 第三步，实现std::error::Error特质，实现基础机制（包括不限于，错误传递）
+impl std::error::Error for MyError {
+    fn description(&self) -> &str {
+        // 这里&String自动转换成&str
+        &self.detail
+    }
+}
+
+fn do_something() -> Result<(), MyError> {
+    // 这里实现一些操作，可能会返回错误
+    // 如果返回错误，使用MyError来封装错误信息
+    Err(MyError {
+        detail: String::from("Something went wrong"),
+    })
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // 使用match匹配模式
+    match do_something() {
+        Ok(_) => println!("Everything went well"),
+        Err(err) => println!("Error: {}", err),
+    }
+
+    // 或者使用?操作符简化代码
+    do_something()?;
+    Ok(())
+}
+
+```
 
 
 
@@ -1381,66 +1380,874 @@ let boxed_point = Box::new(Point { x: 1, y: 2 });
 
 
 
+## 4.5 继承和多态
+
+继承和多态都需要特质和impl进行结合使用
+
+
+
+
+
+请转到[5.4 特质](# 5.4 特质)，[5.4.5 Trait与多态和继承](# 5.4.5 Trait与多态和继承)，实现的话是impl
+
+
+
 
 
 # 5 高阶应用
 
-## 5.1 Borrowing借用&&Lifetime生命周期
+## 5.1 Borrowing借用
+
+**引用和借用：一个玩意两种描述**
+
+引用（Reference）：
+
+1. 引用是一种变量的别名，通过&符号来创建。(非所有权)
+2. 引用可以是不可变的（&T）或可变的（&mutT）。
+3. 引用允许在不传递所有权的情况下访问数据，它们是安全且低开销的。
+
+借用（Borrowing）：
+
+1. 借用是通过引l用（Reference）来借用（Borrow）数据，从而在一段时间内访问数据而不拥有它。
+2. 借用分为可变借用和不可变借用。可变借用（&mut）允许修改数据，但在生命周期内只能有一个可变借用。不可变借用（&）允许多个同时存在，但不允许修改数据。
 
 
 
-6.1Borrowing&&BorrowChecker&&Lifetime6.2Lifetime与函数6.3Lifetime与 Struct
+**orrow Checker的规则**
 
-
-
-
-
-
-
-## 5.2 泛型 
-
-7.1 Generic Structures
-
-7.2 Generic Function
-
-
-
-## 5.3 特质
-
-8.1 Trait特质
-
-8.2Trait Object与Box
-
-8.3TraitObject与泛型
-
-8.4重载操作符（Operator)
-
-8.5Trait与多态和继承
-
-8.6常见的Trait
-
-
-
-## 5.4 迭代器
-
-9.1选代与循环
-
-9.2Intolterator、Iterator和Iter之间的关系泛型
-
-9.3获取选代器的三种方法iter()、iter_mut()和lnto_iter()
-
-9.4自定义类型实现Iter()、iter_mut()和into_iter()
+1. 不可变引用规则：
+   在任何给定的时间，要么有一个可变引用，要么有多个不可变引用，**但不能同时存在可变引用和不可变引用**。这确保了在同一时间只有一个地方对数据进行修改，或者有多个地方同时读取数据。
+2. 可变引用规则：
+   在任何给定的时间，只能有一个可变引用来访问数据。这防止了并发修改相同数据的问题，从而防止数据竞争。
+3. 生命周期规则：
+   引用的生命周期必须在被引用的数据有效的时间范围内。这防止了悬垂引用，即引用的数据已经被销毁，但引用仍然存在。
+4. 可变引用与不可变引用不互斥：
+   可以同时存在多个不可变引用，因为不可变引用不会修改数据，不会影响到其他引用。但不可变引用与可变引用之间是互斥的
 
 
 
 
 
-## 5.5 闭包
 
-10.1闭包基础概念
 
-10.2闭包获取参数byreference与byvalue特质
+## 5.2 生命周期
 
-10.3闭包是怎么工作的
 
-10.4闭包类型FnOnce、FnMut和Fn做函数参数的实例
+
+### 5.2.1 生命周期与函数
+
+大多数情况下，生命周期是隐式且被推断的
+
+生命周期的主要目的是防止悬垂引用
+
+​	关于“悬垂引用”的概念是指，引用指向的数据在代码结束后被释放，但引用仍然存在。生命周期的引入有助于确保引用的有效性，防止程序在运行时出现悬垂引用的情况。通过生命周期的推断，Rust能够在编译时检查代码，确保引l用的有效性，而不是在运行时出现悬垂引引用的错误
+
+
+
+编译器在没有显式注解的情况下，使用三个规则来推断这些生命周期：
+
+1. 第一个规则是，每个作为引用的参数都会得到它自己的生命周期参数。
+2. 第二个规则是，如果只有一个输入生命周期参数，那么该生命周期将被分配给所有输出生命周期参数（该生命周期将分配给返回值）。
+3. 第三个规则是，如果有多个输入生命周期参数，但其中一个是对self或不可变 self 的引l用时。因为在这种情况下它是一个方法，所以seIf 的生命周期被分配给所有输出生命参数
+
+
+
+```rust
+// 没有返回值，不用标注生命周期
+fn print(s: &str) {
+    println!("s: {}", s)
+}
+
+// 不是引用时，不用标注生命周期
+fn clone(s: &str) -> String {
+    s.to_owned()
+}
+
+// 在返回引用时，只有一个参数和返回值，Rust内部自动帮忙标注隐式生命周期
+fn get(s: &str) -> &str {
+    s
+}
+
+// 不确定返回的引用，使用where来限定，进行对多个生命周期取交集，这种更灵活性能好
+fn long<'a, 'b, 'out>(s1: &'a str, s2: &'b str) -> &'out str
+where
+    'a: 'out,
+    'b: 'out,
+{
+    if s1.len() > s2.len() {
+        s1
+    } else {
+        s2
+    }
+}
+
+// 临时处理，使用静态生命周期'static，这种耗费性能，一般在处理生命周期比较烦的时候又编译不过时临时使用一下
+fn urgent(s1: &'static str, s2: &'static str) -> &'static str {
+    if s1.len() > s2.len() {
+        s1
+    } else {
+        s2
+    }
+}
+
+
+fn main() {
+    // 函数
+    print("hello rust");
+
+    let s = clone("hello rust");
+    println!("s: {}", s);
+
+    let s = get("hello rust");
+    println!("s: {}", s);
+
+    let s = long("hello world", "hello rust");
+    println!("s: {}", s);
+
+    let s = urgent("hello world", "hello rust");
+    println!("s: {}", s);
+}
+
+```
+
+> 这里面有三种写法：
+>
+> 1. 不返回引用或者返回一个引用不用标注生命周期
+> 2. 临时处理，使用静态生命周期'static，这种耗费性能，一般在处理生命周期比较烦的时候又编译不过时临时使用一下
+> 3. 不确定返回的引用，使用where来限定，进行对多个生命周期取交集，这种更灵活性能好
+>
+> ```rust
+> fn long<'a, 'b, 'out>(s1: &'a str, s2: &'b str) -> &'out str
+> where
+>     'a: 'out,
+>     'b: 'out,
+> {
+>     if s1.len() > s2.len() {
+>         s1
+>     } else {
+>         s2
+>     }
+> }
+> ```
+>
+> 可以看作a中包含out，b中包含out
+
+
+
+### 5.2.1 生命周期和结构体
+
+在结构体中的引用需要标注生命周期
+
+结构体的方法（&self等）不需要标注生命周期
+
+
+
+```rust
+// 对比组，与下面Person结构体
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+// 在结构体中，使用了引用，需要标注生命周期
+#[derive(Debug)]
+struct Person<'a> {
+    name: &'a str,
+}
+
+// 关键函数，生命周期标注示例
+impl<'a> Person<'a> {
+    fn get_name(&self) -> &str {
+        // 自动解引用强制特性，self.name = (*self).name
+        self.name
+    }
+}
+
+fn main() {
+
+    // 结构体
+    let name = "danile"; // 引用具有copy特质
+    let p = Person { name: name };
+    println!("p: {:?}, name: {}", p, p.get_name())
+}
+
+```
+
+
+
+
+
+## 5.3 泛型 
+
+**Generic Structures**
+
+```rust
+// 使用一个泛型类型
+#[derive(Debug)]
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+// 使用多个泛型类型
+#[derive(Debug)]
+struct Car<T, E> {
+    name: T,
+    price: E,
+}
+
+fn main() {
+    // 结构体
+    // 隐式写法
+    let point = Point { x: 5, y: 10 };
+    println!("point: {:?}", point);
+    // 显示写法
+    let point = Point::<f64> { x: 1.2, y: 1.3 };
+    println!("point: {:?}", point);
+    
+    // 结构体的方法
+    let p = point.get();
+    print!("point: {:?}", p);
+
+    let car = Car {
+        name: String::from("BYD"),
+        price: 240_000,
+    };
+    println!("car: {:?}", car);
+}
+```
+
+
+
+**Generic Function**
+
+```rust
+// 交换
+fn swap<T>(a: T, b: T) -> (T, T) {
+    (b, a)
+}
+
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Point<T> {
+    fn new(x: T, y: T) -> Self {
+        Point { x, y }
+    }
+    // 方法
+    fn get_coordinates(&self) -> (&T, &T) {
+        (&self.x, &self.y)
+    }
+}
+
+fn main() {
+    let result = swap::<f64>(0.1, 1.0);
+    let result: (f64, f64) = swap(0.1, 1.0);
+    println!("{:?}", result);
+    let str2 = swap("hh", "tt");
+    println!("str2.0 {} str2.1 {}", str2.0, str2.1);
+    let str2 = swap(str2.0, str2.1);
+    println!("str2.0 {} str2.1 {}", str2.0, str2.1);
+
+    let i32_point = Point::new(2, 3);
+    let f64_point = Point::new(2.0, 3.0);
+    let (x1, y1) = i32_point.get_coordinates();
+    let (x2, y2) = f64_point.get_coordinates();
+    println!("i32 point: x= {} y= {}", x1, y1);
+    println!("f64 point: x= {} y= {}", x2, y2);
+    // String 不要用&str
+    let string_point = Point::new("xxx", "yyyy");
+    println!("string point x = {} y = {}", string_point.x, string_point.y);
+}
+
+```
+
+
+
+
+
+
+
+
+
+## 5.4 特质
+
+### 5.4.1 Trait特质
+
+**介绍**：
+
+在Rust中，特质（Traits）是一种定义方法签名的机制
+
+​	特质允许你定义一组方法的签名，但可以不提供具体的实现（也可以提供）。这些方法签名可以包括参数和返回类型，但可以不包括方法的实现代码。
+
+​	任何类型都可以实现特质，只要它们提供了特质中定义的所有方法。这使得你可以为不同类型提供相同的行为
+
+Trait Object 包含了两个部分的“胖指针”：
+
+1. **数据指针**：指向实际存储的数据。
+2. **虚拟表指针（vtable pointer）**：指向一个包含实际类型相关信息和函数指针的表。这个表使得在运行时能够根据对象的实际类型查找并调用正确的函数实现。
+
+**特点：**
+
+1. 内置常量：特质可以内置常量（const），特质中定义的常量在程序的整个生命周期内都是有效的，就是静态的。
+2. 默认实现：特质可以提供默认的方法实现。如果类型没有为特质中的某个方法提供自定义实现，将会使用默认实现。
+3. 多重实现：类型可以实现多个特质，这允许你将不同的行为组合在一起。
+4. 特质边界：在泛型代码中，你可以使用特质作为类型约束。这被称为特质边界，它限制了泛型类型必须实现的特质。
+5. Trait Alias：Rust 还支持 trait alias，允许你为复杂的 trait 组合创建简洁的别名，以便在代码中更轻松地引l用.
+
+
+
+### 5.4.2 Trait Object与Box
+
+**Trait Object介绍**
+
+1. 在运行时动态分配的对象  “运行时泛型”  比泛型要灵活的多
+2. 可以在集合中混入不同的类型对象  更容易处理相似的数据  
+3. 有一些小小的性能损耗
+
+**dyn关键字**
+
+dyn是Rust中的关键字，用于声明特质对象（trait object）的类型。特质对象是实现了特定特质（trait）的类型的实例，但其具体类型在编译时是未知的因此，为了让编译器知道我们正在处理的是特质对象，我们需要在特质名称前面加上 dyn 关键字。
+
+dyn关键字的作用是指示编译器处理特质对象
+
+**Trait Object如何实现数据传输**
+
+- 不可变引用（lmmutable References）
+  `&dyn Trait`
+- 可变引用（Mutable References)
+  `&mut dyn Trait`
+- Move语义所有权转移
+  特质需要用`Box<dyn Trait>`实现Move,如果你需要在函数调用之间传递特质的所有权，并且希望避免在栈上分配大量的内存，可以使用 `Box<dyn Trait>`。
+
+**创建trait Object的三种方式**
+
+第一种  
+
+```rust
+let o = Object{};
+let o_obj: &dyn Object = &o;
+```
+
+第二种
+
+```rust
+let o_obj: &dyn Object = &Object{};
+```
+
+第三种
+
+```rust
+let o_obj: Box<dyn Object> = Box::new(Object{});
+```
+
+第一种和第二种都是创建不可变引用
+
+第三种最常用也最灵活，一般来说会使用Box和特质来组成集合元素
+
+
+
+```rust
+// trait 不可变引用 \ Move
+struct Obj {}
+trait Overview {
+    fn overview(&self) -> String {
+        String::from("overview")
+    }
+}
+
+impl Overview for Obj {
+    fn overview(&self) -> String {
+        String::from("Obj")
+    }
+}
+// 不可变引用
+fn call_obj(item: &impl Overview) {
+    println!("Overview {}", item.overview());
+}
+// Move
+fn call_obj_box(item: Box<dyn Overview>) {
+    println!("Overview {}", item.overview());
+}
+
+// 集合的例子
+trait Sale {
+    fn amount(&self) -> f64;
+}
+
+struct Common(f64);
+impl Sale for Common {
+    fn amount(&self) -> f64 {
+        self.0
+    }
+}
+
+struct TenDiscount(f64);
+impl Sale for TenDiscount {
+    fn amount(&self) -> f64 {
+        self.0 - 10.0
+    }
+}
+
+struct TenPercentDiscount(f64);
+impl Sale for TenPercentDiscount {
+    fn amount(&self) -> f64 {
+        self.0 * 0.9
+    }
+}
+
+fn calculate(sales: &Vec<Box<dyn Sale>>) -> f64 {
+    sales.iter().map(|sale| sale.amount()).sum()
+}
+
+fn main() {
+    let a = Obj {};
+    call_obj(&a);
+    println!("{}", a.overview());
+    let b_a = Box::new(Obj {});
+    call_obj_box(b_a);
+    // println!("{}", b_a.overview());
+    
+    // 集合的例子
+    let c: Box<dyn Sale> = Box::new(Common(100.0));
+    let t1: Box<dyn Sale> = Box::new(TenDiscount(100.0));
+    let t2: Box<dyn Sale> = Box::new(TenPercentDiscount(200.0));
+
+    let sales = vec![c, t1, t2]; // : Vec<Box<dyn Sale>>
+
+    println!("pay {}", calculate(&sales));
+}
+
+```
+
+> 这里面有两个例子，一个object和一个集合的例子
+
+
+
+
+
+### 5.4.3 TraitObject与泛型
+
+**泛型和Impl不同的写法**
+
+`fn call(item1: &impl Trait, item2: &impl Trait);`可以是不同类型(Impl)
+
+`fn call_generic<T: Trait>(item1: &T, item2: &T);`可以是相同类型(泛型)
+
+
+
+**多个trait**
+
+`fn call(item1: & (impl Trait + AnotherTrait));`
+
+`fn call_generic<T: Trait + AnotherTrait>(item1: &T);`常用
+
+
+
+```rust
+trait Overview {
+    fn overview(&self) -> String {
+        String::from("Course")
+    }
+}
+
+trait Another {
+    fn hell(&self) {
+        println!("welcome to hell");
+    }
+}
+
+struct Course {
+    headline: String,
+    author: String,
+}
+
+impl Overview for Course {}
+impl Another for Course {}
+
+struct AnotherCourse {
+    headline: String,
+    author: String,
+}
+
+impl Overview for AnotherCourse {}
+
+// 单个impl写法
+fn call_overview(item: &impl Overview) {
+    println!("Overview {}", item.overview());
+}
+
+// 单个泛型写法
+fn call_overview_generic<T: Overview>(item: &T) {
+    println!("Overview {}", item.overview());
+}
+
+// 单个impl写法 多参 可以传多个参数类型
+fn call_overviewT(item: &impl Overview, item1: &impl Overview) {
+    println!("Overview {}", item.overview());
+    println!("Overview {}", item1.overview());
+}
+
+// 单个泛型写法 多参，泛型的多参只能是一个泛型
+fn call_overviewTT<T: Overview>(item: &T, item1: &T) {
+    println!("Overview {}", item.overview());
+    println!("Overview {}", item1.overview());
+}
+
+// 多特质情况 
+fn call_mul_bind(item: &(impl Overview + Another)) {
+    println!("Overview {}", item.overview());
+    item.hell();
+}
+
+fn call_mul_bind_generic<T>(item: &T)
+where
+    T: Overview + Another,
+{
+    println!("Overview {}", item.overview());
+    item.hell();
+}
+
+fn main() {
+    let c0 = Course {
+        headline: "ff".to_owned(),
+        author: "yy".to_owned(),
+    };
+    let c1 = Course {
+        headline: "ff".to_owned(),
+        author: "yy".to_owned(),
+    };
+
+    let c2 = AnotherCourse {
+        headline: "ff".to_owned(),
+        author: "yz".to_owned(),
+    };
+    // call_overview(&c1);
+    // call_overview_generic(&c1);
+    // call_overviewT(&c1, &c2);
+    // println!("-------------------");
+    // call_overviewTT(&c1, &c0);
+    // call_overviewT(&c1, &c0);
+    call_mul_bind(&c1);
+    call_mul_bind_generic(&c1);
+}
+
+```
+
+
+
+### 5.4.4 重载操作符（Operator)
+
+只需要实现相应的特质
+
+为结构体实现一个加号的例子`use std::ops::Add;`
+
+
+
+```rust
+use std::ops::Add;
+
+// 编译时
+#[derive(Debug)]
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+// T的这样类型 它可以执行相加的操作
+impl<T> Add for Point<T>
+where
+    T: Add<Output = T>,
+{
+    type Output = Self;
+    fn add(self, rhs: Self) -> Self::Output {
+        Point {
+            x: self.x + rhs.x,
+            y: self.y + rhs.y,
+        }
+    }
+}
+
+fn main() {
+    let i1 = Point { x: 1, y: 2 };
+    let i2 = Point { x: 1, y: 3 };
+    let sum = i1 + i2;
+    println!("{:?}", sum);
+    let f1 = Point { x: 1.0, y: 2.2 };
+    let f2 = Point { x: 1.0, y: 3.0 };
+    let sum = f1 + f2;
+    println!("{:?}", sum);
+}
+
+```
+
+
+
+> ```rust
+> where
+>     T: Add<Output = T>,
+> ```
+>
+> 这部分声明说，类型 `T` 必须实现了 `Add` trait，并且该 trait 的 `Output` 类型必须是 `T` 本身。这意味着 `T` 类型的值之间可以相加，并且相加的结果还是 `T` 类型。比如，对于整数类型 `i32`，`i32` 实现了 `Add` trait，其输出也是 `i32`。
+>
+> 接下来的部分是 `Add` trait 的具体实现：
+>
+> Rust
+>
+> ```rust
+> impl<T> Add for Point<T>
+> ```
+>
+> 这里 `Add` 是 Rust 标准库中的一个 trait，它定义了加法操作。`impl Add for Point<T>` 意味着我们正在为 `Point<T>` 类定义加法操作的行为。
+
+
+
+### 5.4.5 Trait与多态和继承
+
+首先，需要说明一下，**rust不支持继承**，不支持面向对象，具体请看
+
+
+
+Rust并不支持传统的继承的概念，但是你可以在特质中通过层级化来完成你的需求
+
+Rust选择了一种**函数式的编程范式**，即"**组合和委托**"而非"继承"
+
+编程语言的大势也是组合优于继承
+
+Rust中多态无处不在
+
+
+
+```rust
+use std::collections::VecDeque;
+// 多态
+trait Driver {
+    fn drive(&self);
+}
+struct Car;
+impl Driver for Car {
+    fn drive(&self) {
+        println!("Car is driving");
+    }
+}
+
+struct SUV;
+impl Driver for SUV {
+    fn drive(&self) {
+        println!("SUV is driving");
+    }
+}
+
+fn road(vehicle: &dyn Driver) {
+    vehicle.drive();
+}
+
+// 继承思想
+// 单向特质
+trait Queue {
+    fn len(&self) -> usize;
+    fn push_back(&mut self, n: i32);
+    fn pop_front(&mut self) -> Option<i32>;
+}
+
+// 双向特质
+trait Deque: Queue {
+    fn push_front(&mut self, n: i32);
+    fn pop_back(&mut self) -> Option<i32>;
+}
+
+#[derive(Debug)]
+struct List {
+    data: VecDeque<i32>,
+}
+
+impl List {
+    fn new() -> Self {
+        let data = VecDeque::<i32>::new();
+        Self { data }
+    }
+}
+
+impl Deque for List {
+    fn push_front(&mut self, n: i32) {
+        self.data.push_front(n)
+    }
+
+    fn pop_back(&mut self) -> Option<i32> {
+        self.data.pop_back()
+    }
+}
+
+impl Queue for List {
+    fn len(&self) -> usize {
+        self.data.len()
+    }
+
+    fn push_back(&mut self, n: i32) {
+        self.data.push_back(n)
+    }
+
+    fn pop_front(&mut self) -> Option<i32> {
+        self.data.pop_front()
+    }
+}
+
+fn main() {
+    // road(&Car);
+    // road(&SUV);
+
+    let mut l = List::new();
+    l.push_back(1);
+    l.push_front(0);
+    println!("{:?}", l);
+    l.push_front(2);
+    println!("{:?}", l);
+    l.push_back(2);
+    println!("{:?}", l);
+    println!("{}", l.pop_back().unwrap());
+    println!("{:?}", l);
+}
+
+```
+
+
+
+### 5.4.6 常见的Trait
+
+Debug Clone Copy PartialEq这几个都是常见的特质。
+
+```rust
+// Debug Clone Copy PartialEq
+// 层级
+#[derive(Debug, Clone, Copy)]
+enum Race {
+    White,
+    Yellow,
+    Black,
+}
+impl PartialEq for Race {
+    fn eq(&self, other: &Self) -> bool {
+        match (self, other) {
+            (Race::White, Race::White) => true,
+            (Race::Yellow, Race::Yellow) => true,
+            (Race::Black, Race::Black) => true,
+            _ => false,
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+struct User {
+    id: u32,
+    name: String,
+    race: Race,
+}
+
+impl PartialEq for User {
+    fn eq(&self, other: &Self) -> bool {
+        self.id == other.id && self.name == other.name && self.race == other.race
+    }
+}
+
+fn main() {
+    let user = User {
+        id: 3,
+        name: "John".to_owned(),
+        race: Race::Yellow,
+    };
+    println!("{:#?}", user);
+    let user2 = user.clone();
+    println!("{:#?}", user2);
+    println!("{}", user == user2);
+}
+
+```
+
+
+
+
+
+## 5.5 迭代器
+
+### 5.5.1 选代与循环
+
+迭代使用场景：适用于需要遍历数据结构中的元素的情况，例如数组、切片、集合等。
+
+
+
+基础循环
+
+```rust
+   loop {
+      println!("Hello, world!");
+      std::thread::sleep(std::time::Duration::from_secs(1));)
+   }
+```
+
+> 无限循环
+
+
+
+**遍历数组**
+
+for遍历的一种方式
+
+```rust
+    let numbers = [1, 2, 3, 4, 5].to_vec();
+    for i in 0..numbers.len() {
+        println!("{}", numbers[i]);
+    }
+
+    for i in 0..=numbers.len() {
+        println!("{}", numbers[i]);
+    }
+```
+
+> 注意，一个有`=`，一个没有。
+
+
+
+迭代器遍历数组
+
+```rust
+    let numbers = [1, 2, 3, 4, 5].to_vec();
+    let numbers = numbers.iter().map(|x| x * 2).collect::<Vec<_>>();
+```
+
+
+
+
+
+
+
+
+
+### 5.5.2 Intolterator、Iterator和Iter之间的关系泛型
+
+
+
+
+
+### 5.5.3 获取选代器的三种方法iter()、iter_mut()和lnto_iter()
+
+
+
+### 5.5.4 自定义类型实现Iter()、iter_mut()和into_iter()
+
+
+
+
+
+
+
+## 5.6 闭包
+
+### 5.6.1 闭包基础概念
+
+### 5.6.2 闭包获取参数byreference与byvalue特质
+
+### 5.6.3 闭包是怎么工作的
+
+### 5.6.4 闭包类型FnOnce、FnMut和Fn做函数参数的实例
