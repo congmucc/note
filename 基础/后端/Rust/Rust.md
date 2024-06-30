@@ -252,6 +252,8 @@ let a = 20; // Shadowing Variables
 
 ## 2.2 Rust基础数据类型
 
+### 2.2.1 基本数据类型
+
 如果不自动设置类型的话，rust默认的类型是i32
 **1、Integer**
 
@@ -450,7 +452,7 @@ fn print_color(my_color: Color) {
 }
 
 fn main() {
-    print_color(my_color: Color::Yellow);
+    print_color(Color::Yellow);
 }
 ```
 
@@ -487,6 +489,126 @@ house.print_location();
 
 
 
+### 2.2.2 集合
+
+
+
+Rust 提供了几种集合类型来存储和操作一系列值，主要包括向量（`Vec<T >`）、哈希映射（`HashMap<K, V>`）、集合（`HashSet<T >`）和链接列表（`LinkedList<T >`）等。下面是对这些集合的基本介绍及使用示例：
+
+#### 2.2.2.1. 向量（`Vec<T >`）
+
+向量是一种动态数组，可以自动调整其大小。它是存储同类型元素序列的最常用方式。
+
+#### 基本使用
+
+```
+rustuse std::vec::Vec;
+
+fn main() {
+    // 创建并初始化向量
+    let mut vec = Vec::new(); // 创建一个空向量
+    vec.push(1); // 添加元素
+    vec.push(2);
+    vec.push(3);
+
+    // 访问元素
+    println!("{:?}", vec[0]); // 输出第一个元素
+
+    // 遍历向量
+    for elem in &vec {
+        println!("{}", elem);
+    }
+
+    // 删除最后一个元素
+    vec.pop();
+
+    // 获取长度
+    println!("Length: {}", vec.len());
+}
+```
+
+#### 2.2.2.2. 哈希映射（`HashMap<K, V>`）
+
+哈希映射是一种键值对的集合，其中键（Key）是唯一的，用于快速查找对应的值（Value）。
+
+#### 基本使用
+
+```
+rustuse std::collections::HashMap;
+
+fn main() {
+    let mut map = HashMap::new();
+    map.insert("one", 1);
+    map.insert("two", 2);
+
+    // 访问值
+    match map.get(&"one") {
+        Some(value) => println!("The value for 'one' is: {}", value),
+        None => println!("No entry found for 'one'"),
+    }
+
+    // 遍历哈希映射
+    for (key, value) in &map {
+        println!("{}: {}", key, value);
+    }
+}
+```
+
+#### 2.2.2.3. 集合`（HashSet<T >）`
+
+集合是一种不包含重复元素的集合类型，常用于成员检查、交集、并集等操作。
+
+#### 基本使用
+
+```
+rustuse std::collections::HashSet;
+
+fn main() {
+    let mut set: HashSet<i32> = HashSet::new();
+    set.insert(1);
+    set.insert(2);
+    set.insert(3);
+
+    // 检查成员
+    if set.contains(&2) {
+        println!("Set contains the number 2");
+    }
+
+    // 遍历集合
+    for &num in &set {
+        println!("{}", num);
+    }
+}
+```
+
+#### 2.2.2.4. 链接列表`（LinkedList<T >）`
+
+链接列表是一种线性集合，其中元素在内存中不是连续存放的，而是通过指针链接起来。它适用于频繁的插入和删除操作。
+
+#### 基本使用
+
+```
+rustuse std::collections::LinkedList;
+
+fn main() {
+    let mut list: LinkedList<i32> = LinkedList::new();
+    list.push_back(1);
+    list.push_back(2);
+    list.push_front(0);
+
+    // 遍历链接列表
+    for elem in &list {
+        println!("{}", elem);
+    }
+}
+```
+
+这些集合类型提供了丰富的API来执行各种操作，包括但不限于添加、删除、查找、遍历等。选择合适的集合类型对于编写高效、清晰的 Rust 代码至关重要。
+
+
+
+
+
 ## 2.3 ‘引用数据类型’
 
 ### 2.3.1 move与copy与clone
@@ -517,21 +639,23 @@ Copy：Copy是在Clone的基础建立的markertrait(Rust中最类似继承的关
 1. **作为参数传递给函数或闭包**: 如果函数或闭包参数采用值传递（即没有 `&` 或 `&mut`），那么调用时传递的变量的所有权会转移到函数内部，函数结束后该值将被清理。
 
 ```rust
-rust   fn take_ownership(s: String) {
-       println!("{}", s);
-   }
-   let s = String::from("hello");
-   take_ownership(s); // s的所有权转移到take_ownership函数内
+fn take_ownership(s: String) {
+   println!("{}", s);
+}
+   
+let s = String::from("hello");
+take_ownership(s); // s的所有权转移到take_ownership函数内
 ```
 
 1. **结构体和枚举的字段**: 当你将拥有堆分配数据的变量放入结构体或枚举时，也会发生所有权转移。
 2. **从函数返回拥有堆数据的值**: 函数返回拥有堆数据的值时，该值的所有权会从函数内部转移到调用者。
 
 ```rust
-rust   fn returns_string() -> String {
-       String::from("hello")
-   }
-   let s = returns_string(); // 返回值的所有权转移到s
+fn returns_string() -> String {
+   String::from("hello")
+}
+
+let s = returns_string(); // 返回值的所有权转移到s
 ```
 
 `move` 操作的核心在于确保任何时候只有一个变量拥有对某个数据的控制权，这有助于避免数据竞争和内存泄漏，是 Rust 安全和高效内存管理策略的基础。
@@ -794,11 +918,194 @@ modify_point(&mut p);
 
 ## 3.2 错误处理
 
-5.1错误处理之：Result、Option以及panic!宏
+### 3.2.1 错误处理之：Result、Option以及panic!宏
 
-5.2错误处理之：unwrap()与'?'
+Rust中的错误可以分为两种
 
-5.3自定义一个Error类型
+- Recoverable error：有返回类型
+  - 返回Result类型
+  - 返回Option类型
+
+- Unrecoverable type：没有返回类型，直接崩溃
+  - panic macro将终止当前线程
+
+**Result、Option处理返回的都是枚举，需要使用match**
+
+
+
+
+
+**Result**
+
+Result是一个枚举类型，有两个变体：Ok和Err。它通常用于表示函数的执行结果，其中ok表示成功的结果，Err表示出现了错误
+
+```rust
+ pub enum Result<T, E> {
+     Ok (T),
+     Err (E),
+}
+```
+
+
+
+```rust
+fn divide(a: i32, b: i32) -> Result<f64, String> {
+    if b == 0 {
+        return Err(String::from("cannot be zero"));
+    }
+
+    let a: f64 = a as f64;
+    let b: f64 = b as f64;
+    Ok(a / b)
+}
+
+fn main() {
+    // result
+    match divide(a: 1, b: 2) {
+        Ok(number) => println!("{}", number),
+        Err(err) => println!("{}", err),
+    }
+}
+```
+
+> 返回的Result是一个枚举，需要使用match进行匹配
+
+
+
+
+
+**Option**
+
+Option也是一个枚举类型，有两个变体：Some和None。它通常用于表示一个可能为空的值
+
+```rust
+pub enum Option<T> {
+    None,
+    Some (T),
+}
+```
+
+
+
+```rust
+fn find_element(array: &[i32], target: i32) -> Option<usize> {
+    for (index, &item) in array.iter().enumerate() {
+        if item == target {
+            return Some(index);
+        }
+    }
+    None
+}
+
+fn main() {
+    let arr = [1, 2, 3, 4, 5];
+
+    match find_element(array: &arr, target: 4) {
+        Some(index) => println!("found at index {}", index),
+        None => println!("None"),
+    }
+}
+```
+
+
+
+**panic!**
+
+当程序遇到无法继续执行的错误时，可以使用`panic!`宏来引发恐慌。恐慌会导致程序立即终止，并显示一条错误消息。
+
+
+
+
+
+```rust
+// 第一种系统自带的
+let arr = vec![1, 2, 3, 4, 5];
+arr[34]; // 数组越界就是
+```
+
+
+
+
+
+
+
+
+
+### 3.2.2 错误处理之：unwrap()与'?'
+
+
+
+**`unwrap()`**
+
+注意：该方法并不安全
+
+`unwrap()`是`Result`和`Option` 类型提供的方法之一。它是一个简便的方法，用于获取` Ok `或 `Some` 的值，如果是 `Err` 或 `None` 则会引发 `panic`
+
+```rust
+fn main() {
+    let result_ok: Result<i32, &str> = Ok(32);
+    let value: i32 = result_ok.unwrap();
+    println!("{}", value);
+
+
+    let result_err: Result<i32, &str> = Err("ff");
+    let value: i32 = result_err.unwrap();
+}
+```
+
+> 注意：使用 unwrap 解包 Err 类型的结果会导致 panic 然后导致程序崩溃
+
+
+
+
+
+**`?`运算符**
+
+`?`用于简化 `Result` 或 `Option`类型的错误传播。它只能用于返回`Result` 或`Option` 的函数中，并且在函数内部可以像使用`unwrap（）`一样访问`Ok` 或 `Some`的值，**但是如果是 `Err` 或 `None` 则会提前返回**
+
+
+
+```rust
+fn test() {
+    let result_ok: Result<i32, &str> = Ok(32);
+    let value: i32 = result_ok?;
+    println!("{}", value);
+}
+```
+
+> 这里如果是`result_ok`为空或者错误的时候会直接返回。下面的打印将不会再执行
+
+
+
+### 3.2.3 传递错误
+
+```rust
+fn parse_numbers(input: &str) -> Result<i32, ParseIntError> {
+    let val= input.parse::<i32>()?;
+    Ok(val);
+}
+
+match parse_numbers("d"){
+    Ok(i） => println!("parsed {}",i),
+        Err(err) => println!("failed to parse: {}", err),
+    }
+```
+
+> 这里面错误传递是在函数中加了`ParseIntError`这个类型，如果
+
+
+
+
+
+### 3.2.4 自定义一个Error类型
+
+步骤:
+
+1. 定义错误类型结构体：创建一个结构体来表示你的错误类型，通常包含一些字段来描述错误的详细信息。
+2. 实现`std::fmt::Display trait`：实现这个trait以定义如何展示错误信息。这是为了使错误能够以人类可读的方式打印出来。
+3. 实现`std::error::Error trait`：实现这个 trait以满足Rust 的错误处理机制的要求
+
+
 
 
 
@@ -873,6 +1180,10 @@ fu dangle() -> &str{}
 > ```
 >
 > 这个不推荐，因为将这个函数设置为了静态的生命周期，污染了全局变量
+
+
+
+
 
 
 
