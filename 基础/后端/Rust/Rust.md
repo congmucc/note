@@ -1135,7 +1135,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 
 
-- 所有权系统
+### 3.3.1 所有权系统
 
 ```rust
 fn get_length(s: String) -> usize {
@@ -1182,9 +1182,41 @@ fu dangle() -> &str{}
 
 
 
+### 3.3.2 借用（Borrowing)
 
+- 不可变引用 (不可变借用)
 
+  > 不可变引用允许你读取数据但不能修改它。不可变引用的语法是使用 `&` 符号。
 
+  ```rust
+  fn main() {
+      let s = String::from("hello");
+      let r1 = &s; // 不可变引用
+      let r2 = &s; // 另一个不可变引用
+  
+      println!("r1: {}, r2: {}", r1, r2); // 可以读取数据
+      // 不能修改 s
+  }
+  ```
+
+  
+
+- 可变引用 (可变借用)
+
+  > 可变引用允许你修改数据。可变引用的语法是使用 `&mut` 符号。
+
+  ```rust
+  fn main() {
+      let mut s = String::from("hello");
+      let r1 = &mut s; // 可变引用
+  
+      r1.push_str(", world"); // 可以修改数据
+  
+      println!("r1: {}", r1);
+  }
+  ```
+
+  
 
 
 
@@ -2044,6 +2076,7 @@ fn road(vehicle: &dyn Driver) {
     vehicle.drive();
 }
 
+
 // 继承思想
 // 单向特质
 trait Queue {
@@ -2053,7 +2086,7 @@ trait Queue {
 }
 
 // 双向特质
-trait Deque: Queue {
+trait Deque: Queue { // 这里就差不多继承
     fn push_front(&mut self, n: i32);
     fn pop_back(&mut self) -> Option<i32>;
 }
@@ -2226,11 +2259,113 @@ for遍历的一种方式
 
 ### 5.5.2 Intolterator、Iterator和Iter之间的关系泛型
 
+**Intolterator**
+
+- `IntoIterator` **用于将一个集合或其他数据结构转换为一个迭代器。**任何实现了 `IntoIterator` 的类型都可以通过调用, 如`vec`， 使用`into_iter` 方法生成一个迭代器。
+
+- 该 Trait 包含一个方法 `into_iter`，该方法返回一个实现了Iterator Trait 的迭代器。
+
+```rust
+let vec = vec![1, 2, 3];
+let iter = vec.into_iter(); // vec 被转换为一个迭代器，vec 本身被消耗
+
+// 这样就可以使用迭代器的函数了
+
+```
+
+> 在这个例子中，`vec` 被转换为一个迭代器 `iter`。`into_iter` 方法消耗了 `vec`，所以在这之后你不能再使用 `vec`。
+
+
+
+
+
+**Iterator** 
+
+- Iterator 是 Rust 标准库中的 Trait，用于定义如何从迭代器中逐个获取元素。**所有的迭代器都实现了 `Iterator` trait。**
+- 它包含了一系列方法，如`next`、`map`、`fiIter`、`sum`等，用于对序列进行不同类型的操作。
+
+```rust
+pub trait Iterator {
+    type Item;
+    fn next(&mut self) -> Option<Self::Item>;
+}
+```
+
+```rust
+let vec = vec![1, 2, 3];
+let iter = vec.iter(); // 获取一个不可变引用的迭代器，vec 本身没有被消耗
+```
+
+> 在这个例子中，`vec.iter()` 返回一个 `Iter` 类型的迭代器，其元素类型为 `&i32`，即不可变引用。原始的 `vec` 并没有被消耗，之后仍然可以使用 `vec`。
+
+
+
+
+
+**Iter**
+
+- `Iter`是`Iterator Trait`的**一个具体实现**，通常用于对集合中的元素进行迭代。
+- 在Rust中，你会经常看到`Iter`，特别是在对数组、切片等集合类型进行迭代时。
+- `Iter` 是一个不可变引用的迭代器，通过调用集合的 `iter` 方法获取。
+
+```rust
+fn main() {
+    // vec
+    let v = vec![1, 2, 3, 4, 5]; // intoIterator 特质 into_iter
+                                 // 转换为迭代器
+    let iter = v.into_iter(); // move 所有权转移 类似ppt中的Iter Iterator的特质对象
+    let sum: i32 = iter.sum();
+    println!("sum: {}", sum);
+    // println!("{:?}", v)
+    // array
+    let array = [1, 2, 3, 4, 5];
+    let iter: std::slice::Iter<'_, i32> = array.iter();
+    let sum: i32 = iter.sum();
+    println!("sum: {}", sum);
+    println!("{:?}", array);
+    // chars
+    let text = "hello, world!";
+    let iter = text.chars();
+    let uppercase = iter.map(|c| c.to_ascii_uppercase()).collect::<String>();
+    println!("uppercase: {}", uppercase);
+    println!("{:?}", text);
+}
+
+```
+
+> 这里需要着重注意，`text.chars();`返回的是一个迭代器并且是不可变引用，最后一段代码可以打印
+
 
 
 
 
 ### 5.5.3 获取选代器的三种方法iter()、iter_mut()和lnto_iter()
+
+**`iter()`**
+
+`iter()`方法返回一个不可变引用的迭代器，用于只读访问集合的元素。
+
+该方法适用于你希望在不修改集合的情况下迭代元素的场景
+
+
+
+**`iter_mut()`**（少用，性能差）
+
+`iter_mut()`方法返回一个可变引用的迭代器，用于允许修改集合中的元素。
+
+该方法适用于你希望在迭代过程中修改集合元素的场景
+
+
+
+**`into_iter()`**
+
+`into_iter()`方法返回一个拥有所有权的迭代器，该迭代器会消耗集合本身，将所有权转移到迭代器。该方法适用于你希望在迭代过程中拥有集合的所有权，以便进行消耗性的操作，如移除元素
+
+
+
+
+
+
 
 
 
@@ -2242,12 +2377,37 @@ for遍历的一种方式
 
 
 
+
+
 ## 5.6 闭包
 
 ### 5.6.1 闭包基础概念
 
-### 5.6.2 闭包获取参数byreference与byvalue特质
+闭包是一种可以捕获其环境中变量的匿名函数
+
+定义闭包的语法类似 (但更简单)
+
+- 在`||`内定义参数
+- 可选地指定参数`/`返回类型
+- 在`{}`内定义闭包体
+
+你可以将闭包分配给一个变量,然后使用该变量，就像它是一个函数名，来调用闭包。
+
+```rust
+```
+
+
+
+
+
+
+
+### 5.6.2 闭包获取参数by reference与by value特质
+
+
 
 ### 5.6.3 闭包是怎么工作的
+
+
 
 ### 5.6.4 闭包类型FnOnce、FnMut和Fn做函数参数的实例
