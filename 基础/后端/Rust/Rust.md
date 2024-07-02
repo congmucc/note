@@ -67,34 +67,9 @@ vscode插件
 
 
 
-## 1.4 项目结构
+## 1.4 项目结构与路径
 
 ![image-20240628000841742](./assets/image-20240628000841742.png)
-
-
-- Package（包）：Cargo的特性，让你构建、测试、共享crate
-- Crate（单元包）：一个模块树，它可产生一个library或可执行文件
-- Module（模块）、Use：让你控制代码的组织、作用域、私有路径
-
-
-对于rand crate需要使用rand进行使用crate
-
-对于module使用 `mod`关键词定义：
-```rust
-mod front_of_house{
-	mod hosting { // mod可以嵌套
-		fn add_to_waitlist(){}
-	}
-}
-
-pub fn eat_at() {
-	crate::front_of_house::hosting::add_to_waitlist(); // 绝对路径
-
-	front_of_house::hosting::add_to_waitlist(); // 相对路径
-}
-```
-
-
 对于Cargo.toml文件：
 
 > package
@@ -107,6 +82,31 @@ pub fn eat_at() {
 > - 设置依赖
 > - [build-dependencies]列出了在构建项目时需要的依赖项
 > - [dev-dependencies]列出了只在开发时需要的依赖项
+
+- Package（包）：Cargo的特性，让你构建、测试、共享crate
+- Crate（单元包）：一个模块树，它可产生一个library或可执行文件
+- Module（模块）、Use：让你控制代码的组织、作用域、私有路径
+
+
+对于rand crate需要使用rand进行使用crate
+
+对于module使用 `mod`关键词定义：
+```rust
+mod front_of_house{ // 注意，如果是根级，可以不加pub
+	pub mod hosting { // mod可以嵌套 注意这个需要使用公有
+		pub fn add_to_waitlist(){} // 注意也需要使用公有
+	}
+}
+
+pub fn eat_at() {
+	crate::front_of_house::hosting::add_to_waitlist(); // 绝对路径
+
+	front_of_house::hosting::add_to_waitlist(); // 相对路径
+}
+```
+
+
+
 
 
 
