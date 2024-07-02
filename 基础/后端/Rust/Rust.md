@@ -77,6 +77,23 @@ vscode插件
 - Module（模块）、Use：让你控制代码的组织、作用域、私有路径
 
 
+对于rand crate需要使用rand进行使用crate
+
+对于module使用 `mod`关键词定义：
+```rust
+mod front_of_house{
+	mod hosting { // mod可以嵌套
+		fn add_to_waitlist(){}
+	}
+}
+
+pub fn eat_at() {
+	crate::front_of_house::hosting::add_to_waitlist(); // 绝对路径
+
+	front_of_house::hosting::add_to_waitlist(); // 相对路径
+}
+```
+
 
 对于Cargo.toml文件：
 
