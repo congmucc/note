@@ -421,7 +421,7 @@ let a = 20; // Shadowing Variables
   `&str`可以借用，但是`String`不可以
 
 
-  
+
 - **`Struct`中属性推荐使用`String`**
 
   - 对于`&str`，如果不使用显式声明生命周期无法使用`&str`，不只是麻烦，还有更多的隐患，如下：
@@ -589,7 +589,7 @@ Rust 提供了几种集合类型来存储和操作一系列值，主要包括向
 
 **基本使用**
 
-```
+```rust
 rustuse std::vec::Vec;
 
 fn main() {
@@ -600,7 +600,11 @@ fn main() {
 
     // 访问元素
     println!("{:?}", vec[0]); // 输出第一个元素
-
+    match vec.get(1) {
+        Some(third) => println!("{:?}", third),
+        None => println!("没有元素"),
+    } // 输出第二个元素 // 返回的是一个Option枚举
+    
     // 遍历向量
     for elem in &vec {
         println!("{}", elem);
@@ -695,12 +699,51 @@ fn main() {
 
 #### 2.2.2.5 String
 
-```rust
-// 初始化
-let s1 = "name".to_string();
-let s2 = String::from("name"); // 这几个差不多
 
-```
+1. 初始化，很多`Vec<T>`的函数都可以用在`String`中
+   ```rust
+   // 初始化
+   let s1 = "name".to_string();
+   let s2 = String::from("name"); 
+   let s3 = String::new();// 这几个差不多
+   ```
+
+2. 更新`String`
+   >- `push_str()`方法：把一个字符串切片附加到 String（例子)
+   >- `push()`方法：把单个字符附加到String(例子)
+   >
+   >连接字符串 (例子)
+   >
+   >- `+`使用了类似这个签名的方法`fn add(self,s:&str)->String{..}`，准库中的add方法使用了泛型，只能把`&str`添加到 String，解引用强制转换（deref coercion），所以说第一个不是引用，剩下的都需要引用符号
+   >- `format!`：连接多个字符串，最后返回一个字符串。
+   
+   ```rust
+   let s1 = String::from("tic");
+   let s2 = String::from（"tac");
+   let s3 = String::from("toe");
+   
+   //let s=s1+"-"+ &s2+ "-"+&s3; // 除了第一个不需要&,剩下的都需要
+   //println!("t",s3);
+   
+   let s=format!("{}-{}-{}",s1,s2,s3);
+   println!("{}",s);
+   ```
+   
+   
+3. 转字符串
+
+   ```rust
+   let s = "name";
+   
+   for b in s.chars() {
+       println!("{}", b); // n a m e
+   }
+   
+   let len = &s[0..1]; // 获取切片 不包含索引1，包含索引0 
+   ```
+
+   
+
 
 
 ## 2.3 move所有权转移
@@ -1218,7 +1261,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 
 
-## 3.3 Rust的内存管理模型
+## 3.3 测试
+
+在函数上面加上`#[test]`就可以将函数变为测试函数
+
+
+
+
+
+ Rust的内存管理模型
 
 > 内存分配，内存释放，内存管理单元，堆栈，指针，内存保护，虚拟内存，内存碎片化处理。
 
@@ -1323,7 +1374,6 @@ fu dangle() -> &str{}
 
   如果想看内存相关的
   
-
 - 可变引用 (借用)
 
   > 可变引用允许你修改数据。可变引用的语法是使用 `&mut` 符号。**并且不会获取所有权**。
@@ -1581,12 +1631,6 @@ Point::PI
 
 ### 4.2.1 所有权机制的规则：
 
-1. Rust 中的每个值都有一个所有者
-
-2. 一次可以有一个所有者
-
-3. 当所有者超出范围时，Values 会自动删除
-
 
 
 
@@ -1601,7 +1645,7 @@ Point::PI
 
 
 
-所有权会涉及到堆栈，请看[4.3 堆与栈](# 4.3 堆与栈)，然后看[2.3 ‘引用数据类型’](# 2.3 ‘引用数据类型’)的move
+所有权会涉及到堆栈，请看[4.3 堆与栈](# 4.3 堆与栈)，然后看[2.3 所有权转移](# move所有权转移)的move
 
 
 
