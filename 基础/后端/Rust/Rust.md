@@ -107,6 +107,7 @@ pub fn eat_at() {
 ```
 
 `super`关键字
+
 > 用来访问父级模块路径中的内容，注意是mod
 ```rust
 fn serve_order() {}
@@ -119,11 +120,34 @@ mod back_of_house {
 }
 ```
 
-`use`
+`use`关键字
+
 >可以使用`use`关键字将路径导入到作用域内 （默认是私有的）
 >- 仍遵循私有性规则
 >注意：`struct`，`enum`，最好指定到本身，而不是mod,举个例子`use std::collections::HashMap;  HashMap::new();`这样
+
+
 ```rust
+// use std::cmp::Ordering
+// use std::io
+use std::{
+	cmp::Ordering,
+	io
+};
+
+
+// use std::io
+// use std::Write
+use std::io::{
+	self,
+	Write
+};
+
+use std::io::*;
+
+
+
+
 mod front_of_house {
 	pub mod hosting {
 		pub fn add_to_waitlist() 
@@ -137,6 +161,16 @@ pub fn eat_at_restaurant() {
 	hosting::add_to_waitlist();
 	hosting::add_to_waitlist();
 }
+```
+
+
+分模块开发
+
+```rust
+mod front_of_house; // 如果后面不是 {} 而是 ; rust会在本mod下面寻找这个mod的名字，如front_of_house.rs
+
+//假设如果还有一个子模块还有文件导入（如mod hosting）的话，可以创建一个名为front_of_house的包，然后再包中创建hosting.rs文件
+
 ```
 
 ## 1.5 如何获取Rust的库和国内源
@@ -552,7 +586,7 @@ Rust 提供了几种集合类型来存储和操作一系列值，主要包括向
 
 向量是一种动态数组，可以自动调整其大小。它是存储同类型元素序列的最常用方式。
 
-#### 基本使用
+**基本使用**
 
 ```
 rustuse std::vec::Vec;
@@ -583,7 +617,7 @@ fn main() {
 
 哈希映射是一种键值对的集合，其中键（Key）是唯一的，用于快速查找对应的值（Value）。
 
-#### 基本使用
+**基本使用**
 
 ```
 rustuse std::collections::HashMap;
@@ -606,11 +640,11 @@ fn main() {
 }
 ```
 
-#### 2.2.2.3. 集合`（HashSet<T >）`
+#### 2.2.2.3. 集合`（HashSet<T>）`
 
 集合是一种不包含重复元素的集合类型，常用于成员检查、交集、并集等操作。
 
-#### 基本使用
+**基本使用**
 
 ```
 rustuse std::collections::HashSet;
@@ -637,7 +671,7 @@ fn main() {
 
 链接列表是一种线性集合，其中元素在内存中不是连续存放的，而是通过指针链接起来。它适用于频繁的插入和删除操作。
 
-#### 基本使用
+**基本使用**
 
 ```
 rustuse std::collections::LinkedList;
@@ -658,6 +692,7 @@ fn main() {
 这些集合类型提供了丰富的API来执行各种操作，包括但不限于添加、删除、查找、遍历等。选择合适的集合类型对于编写高效、清晰的 Rust 代码至关重要。
 
 
+#### 2.2.2.5 String
 
 
 
