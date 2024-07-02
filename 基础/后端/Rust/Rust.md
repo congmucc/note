@@ -2394,15 +2394,114 @@ fn main() {
 你可以将闭包分配给一个变量,然后使用该变量，就像它是一个函数名，来调用闭包。
 
 ```rust
+#[derive(Debug)]
+struct User {
+    name: String,
+    score: u64,
+}
+// sort_by_key
+// fn sort_score(users: &mut Vec<User>) {
+//     users.sort_by_key(sort_helper);
+// }
+
+// fn sort_helper(u: &User) -> u64 {
+//     u.score
+// }
+fn sort_score_closure(users: &mut Vec<User>) {
+    users.sort_by_key(|u| u.score);
+}
+
+fn main() {
+    let f = |a, b| a + b;
+    println!("{}", f(1.0, 2.0));
+
+    let a = User {
+        name: "U1".to_owned(),
+        score: 100,
+    };
+    let b = User {
+        name: "U2".to_owned(),
+        score: 80,
+    };
+    let c = User {
+        name: "U3".to_owned(),
+        score: 40,
+    };
+    let d = User {
+        name: "U4".to_owned(),
+        score: 90,
+    };
+    let mut users = vec![a, b, c, d];
+    // sort_score(&mut users);
+    sort_score_closure(&mut users);
+    println!("{:?}", users);
+}
 ```
 
 
 
 
 
-
-
 ### 5.6.2 闭包获取参数by reference与by value特质
+
+由Rust编译器决定用那种方式获取外部参数
+
+1. 不可变引用`Fn`
+2. 可变引l用`FnMut`
+3. 转移所有权（`Move`） `FnOnce`
+
+`move`关键字强制将所有权转移到闭包
+
+
+
+```rust
+fn main() {
+    // Fn不可变引用获取外部参数
+    let s1 = String::from("1111111111111111111");
+    let s2 = String::from("2222222222222222222");
+    let fn_func = |s| {
+        println!("{s1}");
+        println!("I am {s}");
+        println!("{s1}");
+    };
+    fn_func("yz".to_owned());
+    fn_func("原子".to_owned());
+    println!("{s1} {s2}");
+
+    // FnMut 可变引用获取外部参数
+    let mut s1 = String::from("1111111111111111111");
+    let mut s2 = String::from("2222222222222222222");
+    let mut fn_func = |s| {
+        s1.push_str("😀");
+        s2.push_str("😀");
+        println!("{s1}");
+        println!("I am {s}");
+        println!("{s1}");
+    };
+    fn_func("yz".to_owned());
+    fn_func("原子".to_owned());
+    println!("{s1} {s2}");
+    // 所有权转移 由编译器根据我们的代码来判读
+    let s1 = String::from("1111");
+    let fn_Once_func = || {
+        println!("{s1}");
+        std::mem::drop(s1);
+    };
+    fn_Once_func();
+    // println!("{s1}");
+    let s1 = String::from("1111");
+    let move_fn = move || {
+        println!("{s1}");
+    }; // Fn : FnMut : FnOnce
+    move_fn();
+    // println!("{s1}");
+    let s1 = String::from("1111");
+    std::thread::spawn(move || println!("d  {s1}"));
+}
+
+```
+
+
 
 
 
