@@ -122,8 +122,21 @@ mod back_of_house {
 `use`
 >可以使用`use`关键字将路径导入到作用域内
 >- 仍遵循私有性规则
+>注意：`struct`，`enum`，最好指定到本身，而不是mod,举个例子`use std::collections::HashMap;  HashMap::new();`这样
 ```rust
+mod front_of_house {
+	pub mod hosting {
+		pub fn add_to_waitlist() 
+	}
+}
 
+use crate::front_of_house:hosting; // 这里就是将hosting这个模块引入到当前根，在同一个根内可以直接通过hosting::add_to_waitlist();调用，这个也是绝对路径，
+
+pub fn eat_at_restaurant() {
+	hosting::add_to_waitlist();
+	hosting::add_to_waitlist();
+	hosting::add_to_waitlist();
+}
 ```
 
 ## 1.5 如何获取Rust的库和国内源
