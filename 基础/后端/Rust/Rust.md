@@ -71,6 +71,13 @@ vscode插件
 
 ![image-20240628000841742](./assets/image-20240628000841742.png)
 
+
+- Package（包）：Cargo的特性，让你构建、测试、共享crate
+- Crate（单元包）：一个模块树，它可产生一个library或可执行文件
+- Module（模块）、Use：让你控制代码的组织、作用域、私有路径
+
+
+
 对于Cargo.toml文件：
 
 > package
