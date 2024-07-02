@@ -95,6 +95,7 @@ vscode插件
 mod front_of_house{ // 注意，如果是根级，可以不加pub
 	pub mod hosting { // mod可以嵌套 注意这个需要使用公有
 		pub fn add_to_waitlist(){} // 注意也需要使用公有
+		
 	}
 }
 
@@ -105,7 +106,18 @@ pub fn eat_at() {
 }
 ```
 
+`super`关键字
+> 用来访问父级模块路径中的内容，注意是mod
+```rust
+fn serve_order() {}
 
+mod back_of_house {
+	fn fix_incorrect_order() {
+		super::serve_order(); // 这里面直接跳出了back_of_house这个mod，而不是函数作用域
+		crate::serve_order(); // 绝对路径
+	}
+}
+```
 
 
 
