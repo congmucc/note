@@ -205,10 +205,6 @@ geth --datadir "data" init genesis.json
 geth --datadir data --networkid 8888 console 2>geth.log
 ```
 
-老方式：
-```sh
-
-```
 
 
 
