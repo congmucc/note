@@ -207,6 +207,9 @@ geth --datadir data --networkid 8888 console --nodiscover 2>geth.log
 ```
 
 
+
+
+
 之后在go中进行创建账户
 
 这里需要安装
