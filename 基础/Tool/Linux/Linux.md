@@ -46,16 +46,57 @@
    >
    > 然后进行重启，使用`ip addr`查看 ip 地址
    
-这里如果源失效：[Linux(CentOS) yum源失效，无法下载解决方法。更换CentOS 5,6,7,8 yum源教程_yum源下载-CSDN博客](https://blog.csdn.net/Coin_Collecter/article/details/130071493)
 
-先去阿里云官方下载源，中间使用`wegt`命令可以更换成`curl`，之后按照命令进行更改
-```
+
+```sh
+# 备份系统旧配置文件   
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+# 使用curl下载阿里云yum源
 curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+
+# 清除原有yum缓存
+yum clean all
+    
+# 刷新缓存
+yum makecache
+
+# 更新yum
+yum update -y
+
+# 安装wget
+yum install -y wget
 ```
 
-如果报错
+如果到`yum makecache`总是提示`Connection timed out after 30002 milliseconds') Trying other mirror，`
 
-[修改centos7镜像源为阿里云，总提示‘Connection timed out after 30002 milliseconds‘) Trying other mirror_connection timed out after 30001 milliseconds-CSDN博客](https://blog.csdn.net/humanbeng/article/details/107959334)
+解决方案是设置网络的DNS地址为这个_223.5.5.5：
+```
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+
+DNS1=114.114.114.114
+DNS2=223.5.5.5
+ 
+#重启网络
+service network restart
+
+```
+
+
+镜像站yum源链接
+阿里云
+https://developer.aliyun.com/mirror/centos
+
+腾讯云
+https://mirrors.cloud.tencent.com/help/centos.html
+
+华为云
+https://mirrors.huaweicloud.com/home
+
+网易云
+http://mirrors.163.com/.help/centos.html
+
 
 3.  **安装 SSH 连接工具**
 
