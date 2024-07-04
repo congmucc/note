@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/Geth/Geth.md",
+                "file": "基础/WEB3/Solidity/实战.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/Geth/Geth.md",
+                "file": "基础/WEB3/Solidity/实战.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Geth/Geth.md"
+                "file": "基础/WEB3/Solidity/实战.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/基础知识/Geth/Geth.md",
+                "file": "基础/WEB3/Solidity/实战.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,8 +171,11 @@
   },
   "active": "fc526c6249bb0e31",
   "lastOpenFiles": [
-    "基础/Tool/Linux/Linux.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/WEB3/基础知识/Geth/Geth.md",
+    "基础/Tool/Linux/Linux.md",
     "基础/后端/Rust/Rust.md",
     "README.md",
     "02-Code/基础/前端.md",
@@ -214,9 +217,6 @@
     "基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/P0318_Object.md",
     "基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/P0316_多态的应用.md",
     "基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/P0307_对象的多态.md",
-    "基础/后端/Java/JavaSE/8_面向对象的中级教程/多态/P0314_动态绑定机制.md",
-    "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.8_内部类/内部类介绍.md",
-    "基础/后端/Java/JavaSE/10_面向对象的高级教程/10.7_接口/接口多态.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
