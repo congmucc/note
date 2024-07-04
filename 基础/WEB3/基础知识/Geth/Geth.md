@@ -121,46 +121,75 @@ Linux 安装
 
 这里geth版本因为1.20不支持pow了，所以说需要1.20以下的。
 
-go的话随意
-
-- 创建创世区块genesis.json
-
+检查安装是否成功：
+```geth
+geth --help
+```
+在 /Desktop/blockchain 下新建 ethereum 目录，在其中再建一个 genesis.json  
+文件和一个子目录 /data。  
+PoW 共识版本的 genesis.json 文件内容如下：
 ```json
 {
-  "config": {
-    "chainId": 2024,
-    "homesteadBlock": 0,
-    "eip150Block": 0,
-    "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "eip155Block": 0,
-    "eip158Block": 0,
-    "byzantiumBlock": 0,
-    "constantinopleBlock": 0,
-    "petersburgBlock": 0,
-    "istanbulBlock": 0,
-    "berlinBlock": 0,
-    "londonBlock": 0,
-    "ethash": {}
-  },
-  "nonce": "0x0",
-  "timestamp": "0x647fd8e0", 
-  "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "gasLimit": "0x47b760",
-  "difficulty": "0x20000", 
-  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "coinbase": "0x0000000000000000000000000000000000000000",
-  "alloc": {
-    "0x1234567890abcdef1234567890abcdef12345678": { "balance": "0x56bc75e2d63100000" },  
-    "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd": { "balance": "0x56bc75e2d63100000" }
-  },
-  "number": "0x0",
-  "gasUsed": "0x0",
-  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
-}
+   "config": {
+     "chainId": 1001,
+     "homesteadBlock": 0,
+     "eip150Block": 0,
+     "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+     "eip155Block": 0,
+     "eip158Block": 0,
+     "byzantiumBlock": 0,
+     "constantinopleBlock": 0,
+     "petersburgBlock": 0,
+     "istanbulBlock": 0,
+     "ethash": {}
+   },
+   "nonce": "0x0",
+   "timestamp": "0x5ddf8f3e",
+   "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+   "gasLimit": "0x47b760",
+   "difficulty": "0x00002",
+   "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+   "coinbase": "0x0000000000000000000000000000000000000000",
+   "alloc": { },
+   "number": "0x0",
+   "gasUsed": "0x0",
+   "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+ }
 
 ```
 
-使用命令初始化：
+由于 eth 经历过一次升级从 PoW 改为 PoS，[目前最新版的 geth 已经不再内置 ethash](https://www.odaily.news/newsflash/324601)，因此 PoS 的 genesis.json 和之前的文章会略有不同。下面这个是 PoS 版的 genesis.json 文件：
+```json
+{
+   "config": {
+     "chainId": 8888,
+     "homesteadBlock": 0,
+     "eip150Block": 0,
+     "eip155Block": 0,
+     "eip158Block": 0,
+     "byzantiumBlock": 0,
+     "constantinopleBlock": 0,
+     "petersburgBlock": 0,
+     "istanbulBlock": 0,
+     "berlinBlock": 0,
+     "clique": {
+       "period": 5,
+       "epoch": 30000
+     }
+   },
+   "difficulty": "1",
+   "gasLimit": "8000000",
+   "extradata": "0x0000000000000000000000000000000000000000000000000000000000000000b7e24438A3fe363f46994feEEdfbF5ad5078378d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+   "alloc": {
+     "27883476a0a617d8e6aa40888253608a0e05cfa4": { "balance": "300000" },
+     "b7e24438A3fe363f46994feEEdfbF5ad5078378d": { "balance": "300000" },
+     "87edfb2aed4875144fe1c3b28870284881990418": { "balance": "300000" }
+   }
+ }
+
+```
+
+运行
 
 ```cmd
 geth --datadir "data" init genesis.json
