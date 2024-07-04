@@ -70,6 +70,29 @@ yum install -y wget
 
 如果到`yum makecache`总是提示`Connection timed out after 30002 milliseconds') Trying other mirror，`
 
+```sh
+# 删除yum.repos.d目录下所有文件
+
+rm -f /etc/yum.repos.d/*
+
+# 然后重新下载阿里的：
+
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
+# 清理缓存：
+
+yum clean all
+
+# 测试下载安装：
+
+yum install gcc
+————————————————
+
+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/xuezhe5212/article/details/139095766
+```
+
 解决方案是设置网络的DNS地址为这个_223.5.5.5：
 ```
 vi /etc/sysconfig/network-scripts/ifcfg-ens33
