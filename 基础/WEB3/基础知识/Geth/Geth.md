@@ -97,11 +97,19 @@ EVM 解释和执行智能合约代码时，会处理消息调用（Message Call�
 
 ## 安装
 
+
+Linux 安装
 [CentOS 7 下安装并配置 Homebrew – 陈少文的网站 (chenshaowen.com)](https://www.chenshaowen.com/blog/install-homebrew-in-centos-7.html)
+
+
+[centos7 安装 Homebrew - ramlife - 博客园 (cnblogs.com)](https://www.cnblogs.com/ramlife/p/16575589.html)
+
 
 
 
 [安装 Geth |去以太坊 --- Installing Geth | go-ethereum](https://geth.ethereum.org/docs/getting-started/installing-geth)
+
+
 
 ## geth
 

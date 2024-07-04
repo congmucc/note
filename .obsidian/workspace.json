@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/基础知识/Geth/Geth.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/基础知识/Geth/Geth.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md"
+                "file": "基础/WEB3/基础知识/Geth/Geth.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/基础知识/Geth/Geth.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,8 +171,8 @@
   },
   "active": "fc526c6249bb0e31",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/Geth/Geth.md",
     "基础/Tool/Linux/Linux.md",
+    "基础/WEB3/基础知识/Geth/Geth.md",
     "基础/后端/Rust/Rust.md",
     "README.md",
     "02-Code/基础/前端.md",
