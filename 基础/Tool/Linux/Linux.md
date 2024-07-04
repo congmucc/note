@@ -35,7 +35,7 @@
    > cd network-scipts 进入network-scripts目录
    > vi ifcfg-ens33    编辑ifcfg-ens33文件
    > 
-   > vi /etc/sysconfig/network-scripts/ifcfg-ens33
+   > `vi /etc/sysconfig/network-scripts/ifcfg-ens33`
    > 
    > i进入编辑区
    > 将ONBOOT=no改为yes
