@@ -300,7 +300,7 @@ func NewAccount(client *rpc.Client, pass string) (string, error) {
 
 > 这里面有两点注意：
 >
-> 1、使用的命令是web3.js的，详情可以去看一下
+> 1、使用的命令是类似web3.js的，详情可以去看一下
 >
 > 2、`client.Call(&res, "personal_newAccount", pass)`这个就是使用，注意，这里将`.`代替为了`_`。
 
