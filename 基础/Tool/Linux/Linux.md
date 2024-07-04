@@ -730,9 +730,27 @@ yum install git
 
 
 ```sh
+# 安装所需的软件包
+yum install wget gcc openssl-devel -y
 
+# 下载最新的cURL源–您可以参考其[官方下载页面](https://curl.se/download.html)以了解最新版本
+wget https://curl.se/download/curl-7.76.1.tar.gz
+
+
+# 解压 
+tar -zxvf curl-7.76.1.tar.gz 
+cd curl-7.76.1 
+./configure --with-ssl 
+make 
+make install
 ```
+安装成功了，会被安装在/usr/local/bin/curl中。
 
+检查一下是否安装成功了。
+
+```bash
+curl --version
+```
 # 4 项目部署
 
 ## 4.1 手动部署项目
