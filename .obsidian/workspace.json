@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/Tool/Linux/Linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/Tool/Linux/Linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Rust/Rust.md"
+                "file": "基础/Tool/Linux/Linux.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/Tool/Linux/Linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,11 +171,11 @@
   },
   "active": "fc526c6249bb0e31",
   "lastOpenFiles": [
+    "基础/后端/Rust/Rust.md",
     "README.md",
     "02-Code/基础/前端.md",
     "实战笔记/项目笔记/Go/模板搭建/模板搭建.md",
     "实战笔记/项目笔记/Go/模板搭建",
-    "基础/后端/Rust/Rust.md",
     "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础",
     "02-Code",
