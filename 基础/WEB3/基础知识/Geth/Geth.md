@@ -198,7 +198,7 @@ geth --datadir "data" init genesis.json
 使用命令进行创建私链：
 
 ```cmd
-geth --http --http.addr='0.0.0.0' --http.corsdomain=* --http.vhosts "*" --nodiscover --maxpeers '5' --networkid 12345 --datadir '/eth/data/node1' --http.api "db,net,eth,web3,personal,miner,debug,admin" --snapshot=false --allow-insecure-unlock console
+geth --datadir data --networkid 8888 console 2>geth.log
 ```
 
 
