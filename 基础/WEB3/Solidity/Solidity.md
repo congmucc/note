@@ -366,20 +366,18 @@ function test() public pure returns (unint256) {
 3. `(<parameter types>)`：圆括号里写函数的参数，也就是要输入到函数的变量类型和名字。
 4. `[returns ()]`：函数返回的变量类型和名称。
 
-### 2.1.1 可见性
+### 2.1.1 可见性（权限）
 
 `{internal|external|public|private}`：函数可见性说明符，一共4种。没标明函数类型的，默认`public`。合约之外的函数，即"自由函数"，始终具有隐含`internal`可见性。
 
-- `public` ：在外部和内部可见（为存储/状态变量**创建 getter 函数**）
-- `private` ：仅在当前合约中可见
-- `external` ： `external` 函数可以被外部调用，包括其他合约和交易。内部调用时需要通过 `this`。
-- `internal` ：`internal` 函数只能在当前合约及其继承合约中调用。
+- **public**：只有 public 类型的函数才可以供外部访问，当一个状态变量的权限为 public 类型时，它就会自动生成一个可供外部调用的 get 函数。
+- **private**：只能在当前类中进行访问，子类无法继承，也无法调用或访问。
+- **internal**：子类继承父类，子类可以访问父类的 internal 函数，同时，使用 using for 关键字后，本类可以使用被调用类的 internal 函数。内部调用时需要通过 `this`。
+- **external**：被声明的函数只能在合约外部调用。
 
-**Note 1**: 没有标明可见性类型的函数，默认为`public`。
+**Note 1**: 当函数声明时，它默认为是 public 类型，而状态变量声明时，默认为 internal 类型。
 
 **Note 2**: `public|private|internal` 也可用于修饰状态变量。 `public`变量会自动生成同名的`getter`函数，用于查询数值。
-
-**Note 3**: 没有标明可见性类型的状态变量，默认为`internal`。
 
 
 
@@ -387,8 +385,13 @@ function test() public pure returns (unint256) {
 
 - `pure` for functions：不允许修改或访问链上状态。
 - `view` for functions：能看但不允许修改状态。
-
 - `payable` for functioins： 是一个关键字和修饰符，用于指示函数或合约可以接收以太币（Ether）或发送以太币。
+
+
+- **constant**：被声明为 constant 的状态变量只能使用那些在编译时有确定值的表达式来给它们赋值。任何通过访问内存、区块链数据（例如 now，this.balance 或 block.number）或执行数据（msg.gas）或对外部合约的调用来给它们赋值都是不允许的。不是所有类型的状态变量都支持用 constant 来修饰，当前支持的仅有值类型和字符串。
+- **Storage** 变量是指永久存储在区块链中的变量。
+- **Memory** 变量则是临时的，当外部函数对某合约调用完成时，内存型变量即被移除。
+
 
 > 1、**代码示例**
 >
