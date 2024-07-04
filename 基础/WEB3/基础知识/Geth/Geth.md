@@ -332,7 +332,7 @@ func NewAccount(client *rpc.Client, pass string) (string, error) {
 abigen --abi SimpleStorage.abi --pkg contract --type SimpleStorage --out SimpleStorage.go
 ```
 
-> --abi后跟abi文件地址，pkg是abi文件的包名，type一般是合约名称，out是输出目录
+> --abi后跟abi文件地址，--pkg：强制性 Go 包名称，用于放置 Go 代码，type一般是合约名称，out是输出目录
 
 
 

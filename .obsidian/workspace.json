@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md",
+                "file": "基础/WEB3/基础知识/Geth/Geth.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md",
+                "file": "基础/WEB3/基础知识/Geth/Geth.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md"
+                "file": "基础/WEB3/基础知识/Geth/Geth.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md",
+                "file": "基础/WEB3/基础知识/Geth/Geth.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,11 +169,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "89576b1119517bb5",
+  "active": "e2e95db7a15f4e50",
   "lastOpenFiles": [
+    "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/基础知识/ganache-cli/ganache-cli.md",
     "基础/WEB3/基础知识/Geth/Geth.md",
-    "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/基础知识/ganache-cli",
     "基础/WEB3/基础知识/Geth/未命名.md",
