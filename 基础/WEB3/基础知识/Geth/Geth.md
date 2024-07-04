@@ -198,9 +198,13 @@ geth --datadir "data" init genesis.json
 使用命令进行创建私链：
 
 ```cmd
-geth --datadir data --networkid 8888 console 2>geth.log
+geth --datadir data --networkid 8888 console --nodiscover 2>geth.log
 ```
 
+老方式：
+```sh
+
+```
 
 
 之后在go中进行创建账户
