@@ -86,11 +86,6 @@ yum clean all
 # 测试下载安装：
 
 yum install gcc
-————————————————
-
-                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
-                        
-原文链接：https://blog.csdn.net/xuezhe5212/article/details/139095766
 ```
 
 解决方案是设置网络的DNS地址为这个_223.5.5.5：
@@ -120,6 +115,28 @@ https://mirrors.huaweicloud.com/home
 网易云
 http://mirrors.163.com/.help/centos.html
 
+
+
+```sh
+一般的 Linux 系统都自带了 [cURL](https://curl.se/)，但是版本都不是最新的，有的时候我们可能要用最新的版本，但是使用 `yum update` 的时候又显示没有更新。今天给大家介绍一个 yum repo，可以更新到最新的 cURL 版本。
+
+**1、创建一个 repo 文件：**
+
+vi /etc/yum.repos.d/city-fan.repo
+
+**2、把以下内容复制到找个 repo 文件中：**
+
+[CityFan]
+name=City Fan Repo
+baseurl=http://www.city-fan.org/ftp/contrib/yum-repo/rhel$releasever/$basearch/
+enabled=1
+gpgcheck=0
+
+**3、运行 yum 更新：**
+
+yum clean all
+yum update curl
+```
 
 3.  **安装 SSH 连接工具**
 
