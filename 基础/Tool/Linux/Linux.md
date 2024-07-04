@@ -66,9 +66,6 @@ yum update -y
 
 # 安装wget
 yum install -y wget
-
-# 安装End Point 存储库，这个可以让yum下载新的版本
-yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
 ```
 
 如果到`yum makecache`总是提示`Connection timed out after 30002 milliseconds') Trying other mirror，`
@@ -678,6 +675,23 @@ kill -9 `lsof -t -u tt`
 ## 3.6 安装 Nginx
 
 [Nginx](../../前端/Nginx/Nginx.md)
+
+
+
+## 3.7更新git和curl
+
+```sh
+# 安装End Point 存储库，这个可以让yum下载新的版本
+yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+
+# 安装git
+yum install git
+```
+
+
+```sh
+
+```
 
 # 4 项目部署
 
