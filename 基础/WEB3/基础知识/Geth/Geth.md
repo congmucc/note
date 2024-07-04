@@ -161,32 +161,36 @@ PoW 共识版本的 genesis.json 文件内容如下：
 由于 eth 经历过一次升级从 PoW 改为 PoS，[目前最新版的 geth 已经不再内置 ethash](https://www.odaily.news/newsflash/324601)，因此 PoS 的 genesis.json 和之前的文章会略有不同。下面这个是 PoS 版的 genesis.json 文件：
 ```json
 {
-   "config": {
-     "chainId": 8888,
-     "homesteadBlock": 0,
-     "eip150Block": 0,
-     "eip155Block": 0,
-     "eip158Block": 0,
-     "byzantiumBlock": 0,
-     "constantinopleBlock": 0,
-     "petersburgBlock": 0,
-     "istanbulBlock": 0,
-     "berlinBlock": 0,
-     "clique": {
-       "period": 5,
-       "epoch": 30000
-     }
-   },
-   "difficulty": "1",
-   "gasLimit": "8000000",
-   "extradata": "0x0000000000000000000000000000000000000000000000000000000000000000b7e24438A3fe363f46994feEEdfbF5ad5078378d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-   "alloc": {
-     "27883476a0a617d8e6aa40888253608a0e05cfa4": { "balance": "300000" },
-     "b7e24438A3fe363f46994feEEdfbF5ad5078378d": { "balance": "300000" },
-     "87edfb2aed4875144fe1c3b28870284881990418": { "balance": "300000" }
-   }
- }
-
+  "config": {
+    "chainId": 8888,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0
+  },
+  "alloc": {
+    "0x0000000000000000000000000000000000000001": {
+      "balance": "111111111"
+    },
+    "0x0000000000000000000000000000000000000002": {
+      "balance": "222222222"
+    }
+  },
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "difficulty": "0x20000",
+  "extraData": "",
+  "gasLimit": "0x2fefd8",
+  "nonce": "0x0000000000000042",
+  "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "timestamp": "0x00"
+}
 ```
 
 运行
