@@ -500,6 +500,7 @@ func subEvent() {
 
 
 ## solc
+> 用于编译
 
 安装(最好安装相同的版本)： 
 ```sh
@@ -512,5 +513,6 @@ npm install solc@0.8.20
 
 使用：
 ```sh
-solcjs --bin --include-path node_modules/ --base-path . MainContract.sol
+solcjs --bin --include-path node_modules/ --base-path . -o . MainContract.sol
 ```
+> 再不会就gpt
