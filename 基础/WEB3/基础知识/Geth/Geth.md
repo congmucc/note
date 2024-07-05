@@ -496,3 +496,18 @@ func subEvent() {
 
 ```
 
+
+
+
+## solc
+
+安装： 
+```sh
+npm install -g solc
+```
+
+
+使用：
+```sh
+
+```
