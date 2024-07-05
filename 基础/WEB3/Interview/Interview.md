@@ -38,7 +38,7 @@ dapp learning: https://dapplearning.org/hiring
 >
 > 2、[TinTinLand_社区_web3学院](https://tintinland.com/)
 > 3、[Sui_社区](https://sui.io/)
-
+> 6、万能文章： https://learnblockchain.cn/article/3682
 HackQuestion：
 
 > 这条推介绍了每个咱们社区提交的项目，都有 devfolio 的链接，打开有项目GitHub仓库地址。大家可以看看找找灵感
