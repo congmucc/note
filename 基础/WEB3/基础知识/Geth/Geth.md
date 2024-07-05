@@ -509,5 +509,5 @@ npm install -g solc
 
 使用：
 ```sh
-
+solcjs --bin --include-path node_modules/ --base-path . MainContract.sol
 ```
