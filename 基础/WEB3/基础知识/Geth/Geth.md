@@ -501,11 +501,14 @@ func subEvent() {
 
 ## solc
 
-安装： 
+安装(最好安装相同的版本)： 
 ```sh
 npm install -g solc
 ```
 
+```sh
+npm install solc@0.8.20
+```
 
 使用：
 ```sh
