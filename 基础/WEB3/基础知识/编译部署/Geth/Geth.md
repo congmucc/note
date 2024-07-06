@@ -500,8 +500,18 @@ func subEvent() {
 
 
 
-## 实战
+## 调用
+
+### 正常需要的签名
+
+```go
+	erc20.BalanceOf(nil, common.HexToAddress(account1))
+```
+
+> 这里只需要将第一个参数设置为nil就行了
+
+
 
 ### 交易类方法调用需要签名
 
-
+> 交易类需要传入签名
