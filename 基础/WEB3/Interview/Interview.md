@@ -48,11 +48,6 @@ HackQuestion：
 > 更新的推特链接在这！https://x.com/HackQuest_/status/1807229270617362544?t=cLyswlxXspPENbFwwqbCjA&s=19
 
 
-
-登链社区账号19954054823 密码 allinweb3
-作业文档:
-https://grayjiang.notion.site/All-In-Web3-d595d9e5cff74c2a88b32d197a787158?pvs=4
-
 nexts 教程(前端) https://s.juejin.cn/ds/iFNc8Mkn/
 
 ethersjs 教程(前端，i法):https://github.com/WTFAcademy/WTF-Ethers
