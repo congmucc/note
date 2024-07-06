@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md"
+                "file": "基础/WEB3/Interview/Interview.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,16 +171,17 @@
   },
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/WEB3/道路/道路.md",
+    "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
     "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/Solidity/实战.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
     "基础/WEB3/基础知识/编译部署/目录.md",
     "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
     "基础/WEB3/基础知识/编译部署/Geth",
     "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/WEB3/基础知识/编译部署/Ganache",
     "基础/WEB3/基础知识/Geth/未命名.md",
@@ -216,7 +217,6 @@
     "基础/后端/Java/微服务框架/分布式/分布式事务/assets",
     "基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
     "基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
-    "基础/后端/Java/微服务框架/SpringCloud/微服务保护/微服务保护.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
