@@ -102,7 +102,7 @@
 >  mapping(string => uint256) public nameToFavoriteNumber;
 >      //添加数组元素
 >  function addPeople(string memory _name, uint256 _favoriteNumber) public {
->      nameToFavoriteNumber[_name] = _favoriteNumber;
+>      nameToFavoriteNumber[_name ] = _favoriteNumber;
 >  }
 > ```
 >
