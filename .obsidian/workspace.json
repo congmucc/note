@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/Ethereum/Ethereum.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/Ethereum/Ethereum.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md"
+                "file": "基础/WEB3/基础知识/Ethereum/Ethereum.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/Ethereum/Ethereum.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,17 +169,20 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "89576b1119517bb5",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "基础/思想/设计模式/设计模式.md",
+    "基础/思想/架构/DDD架构.md",
+    "基础/项目经理/基础/基础.md",
+    "基础/WEB3/Solidity/实战.md",
+    "基础/WEB3/Solidity/合约安全.md",
+    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
     "基础/WEB3/Solidity/Solidity.md",
-    "基础/WEB3/Solidity/合约安全.md",
-    "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
     "基础/WEB3/基础知识/编译部署/目录.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/编译部署/Geth",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
@@ -213,10 +216,7 @@
     "基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
     "基础/后端/Java/框架/SpringBoot/JUnit5/assets",
     "基础/后端/Java/框架/Excel/EasyExcel/EasyExcel.md",
-    "基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
     "基础/后端/Java/微服务框架/分布式/分布式事务/assets",
-    "基础/后端/Java/微服务框架/分布式/多级缓存/多级缓存.md",
-    "基础/后端/Java/微服务框架/分布式/分布式缓存/分布式缓存.md",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
