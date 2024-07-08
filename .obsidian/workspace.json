@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/Move/Move.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/Move/Move.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md"
+                "file": "基础/WEB3/Move/Move.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/Move/Move.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,8 +172,11 @@
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
     "基础/WEB3/Solidity/Solidity.md",
-    "基础/WEB3/Solidity/合约安全.md",
+    "基础/WEB3/Move/Move.md",
+    "基础/WEB3/Move",
     "基础/WEB3/Solidity/实战.md",
+    "基础/Tool/Linux/Linux.md",
+    "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
@@ -188,7 +191,6 @@
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/编译部署/Ganache",
     "基础/WEB3/基础知识/Geth/未命名.md",
-    "基础/Tool/Linux/Linux.md",
     "基础/后端/Rust/Rust.md",
     "README.md",
     "02-Code/基础/前端.md",
@@ -215,8 +217,6 @@
     "基础/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ部署指南/assets",
     "基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
     "基础/后端/Java/框架/SpringBoot/JUnit5/assets",
-    "基础/后端/Java/框架/Excel/EasyExcel/EasyExcel.md",
-    "基础/后端/Java/微服务框架/分布式/分布式事务/assets",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
