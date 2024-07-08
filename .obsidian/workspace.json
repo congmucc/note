@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md",
+                "file": "基础/WEB3/道路/道路.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md",
+                "file": "基础/WEB3/道路/道路.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md"
+                "file": "基础/WEB3/道路/道路.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Solidity/Solidity.md",
+                "file": "基础/WEB3/道路/道路.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,16 +171,16 @@
   },
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/思想/设计模式/设计模式.md",
     "基础/思想/架构/DDD架构.md",
     "基础/项目经理/基础/基础.md",
     "基础/WEB3/Solidity/实战.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
-    "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
     "基础/WEB3/基础知识/编译部署/目录.md",
