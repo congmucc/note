@@ -257,7 +257,7 @@ git-fetch-with-cli = true
    let x: i32 = 5; // 显式指定 x 的类型为 i32
    ```
 
-3. 变量名蛇形命名法（Snake Case）：**小写加下划线**，而枚举和结构体命名使用帕斯卡命名法（Pascal Case）：小驼峰。如果变量没有用到可以前置下划线，消除警告。
+3. **变量名**蛇形命名法（Snake Case）：**小写加下划线**，而**枚举**和**结构体**命名使用帕斯卡命名法（Pascal Case）：小驼峰。如果变量没有用到可以前置下划线，消除警告。
 
 4. 强制类型转换 (Casting a Value to a Different Type)：  
 
@@ -728,7 +728,6 @@ fn main() {
    let s=format!("{}-{}-{}",s1,s2,s3);
    println!("{}",s);
    ```
-   
    
 3. 转字符串
 
