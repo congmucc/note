@@ -307,3 +307,161 @@ module std::other_module {  // 声明模块时可以使用命名地址
 vector<T>[]: vector<T>
 vector<T>[e1, ..., en]: vector<T>
 ```
+
+```move
+(vector[]: vector<bool>);
+(vector[0u8, 1u8, 2u8]: vector<u8>);
+(vector<u128>[]: vector<u128>);
+(vector<address>[@0x42, @0x100]: vector<address>);
+```
+
+| 函数                                                       | 描述                                                         | 是否中止?            |
+| ---------------------------------------------------------- | ------------------------------------------------------------ | -------------------- |
+| `vector::empty<T>(): vector<T>`                            | 创建一个可以存储`T`类型值的空向量                            | 从不                 |
+| `vector::singleton<T>(t: T): vector<T>`                    | 创建一个包含`t`的大小为1的向量                               | 从不                 |
+| `vector::push_back<T>(v: &mut vector<T>, t: T)`            | 将`t`添加到`v`的末尾                                         | 从不                 |
+| `vector::pop_back<T>(v: &mut vector<T>): T`                | 移除并返回`v`中的最后一个元素                                | 如果`v`为空          |
+| `vector::borrow<T>(v: &vector<T>, i: u64): &T`             | 返回索引`i`处的`T`的不可变引用                               | 如果`i`不在范围内    |
+| `vector::borrow_mut<T>(v: &mut vector<T>, i: u64): &mut T` | 返回索引`i`处的`T`的可变引用                                 | 如果`i`不在范围内    |
+| `vector::destroy_empty<T>(v: vector<T>)`                   | 删除`v`                                                      | 如果`v`不为空        |
+| `vector::append<T>(v1: &mut vector<T>, v2: vector<T>)`     | 将`v2`中的元素添加到`v1`的末尾                               | 从不                 |
+| `vector::contains<T>(v: &vector<T>, e: &T): bool`          | 如果`e`在向量`v`中返回true。否则,返回false                   | 从不                 |
+| `vector::swap<T>(v: &mut vector<T>, i: u64, j: u64)`       | 交换向量`v`中第`i`和第`j`个索引处的元素                      | 如果`i`或`j`超出范围 |
+| `vector::reverse<T>(v: &mut vector<T>)`                    | 原地反转向量`v`中元素的顺序                                  | 从不                 |
+| `vector::index_of<T>(v: &vector<T>, e: &T): (bool, u64)`   | 如果`e`在索引`i`处的向量`v`中,返回`(true, i)`。否则,返回`(false, 0)` | 从不                 |
+| `vector::remove<T>(v: &mut vector<T>, i: u64): T`          | 移除向量`v`的第`i`个元素,移动所有后续元素。这是O(n)操作,并保持向量中元素的顺序 | 如果`i`超出范围      |
+| `vector::swap_remove<T>(v: &mut vector<T>, i: u64): T`     | 将向量`v`的第`i`个元素与最后一个元素交换,然后弹出该元素。这是O(1)操作,但不保持向量中元素的顺序 | 如果`i`超出范围      |
+
+```move
+use std::vector;
+
+let mut v = vector::empty<u64>();
+vector::push_back(&mut v, 5);
+vector::push_back(&mut v, 6);
+
+assert!(*vector::borrow(&v, 0) == 5, 42);
+assert!(*vector::borrow(&v, 1) == 6, 42);
+assert!(vector::pop_back(&mut v) == 6, 42);
+assert!(vector::pop_back(&mut v) == 5, 42);
+```
+
+**销毁和复制`vector`**
+
+`vector<T>`的某些行为取决于元素类型`T`的能力。例如,包含没有`drop`能力的元素的向量不能像上面示例中的`v`那样被隐式丢弃--它们必须使用`vector::destroy_empty`显式销毁。
+
+注意,除非`vec`包含零个元素,否则`vector::destroy_empty`将在运行时中止:
+
+```move
+fun destroy_any_vector<T>(vec: vector<T>) {
+    vector::destroy_empty(vec) // 删除这行将导致编译器错误
+}
+```
+
+但对于丢弃包含具有`drop`能力的元素的向量不会发生错误:
+
+```move
+fun destroy_droppable_vector<T: drop>(vec: vector<T>) {
+    // 有效!
+    // 不需要显式做任何事来销毁向量
+}
+```
+
+同样,除非元素类型具有`copy`能力,否则向量不能被复制。换句话说,当且仅当`T`具有`copy`能力时,`vector<T>`才具有`copy`能力。请注意,如果需要,它将被隐式复制:
+
+```move
+let x = vector[10];
+let y = x; // 隐式复制
+let z = x;
+(y, z)
+```
+
+请记住,复制大向量可能很昂贵。如果这是一个问题,注释`intended`用法可以防止意外复制。例如,
+
+```move
+let x = vector[10];
+let y = move x;
+let z = x; // 错误! x已被移动
+(y, z)
+```
+
+有关更多详细信息,请参阅[类型能力](https://reference.sui-book.com/abilities.html)和[泛型](https://reference.sui-book.com/generics.html)部分。
+
+**所有权**
+
+如上文所述,只有当元素可以被复制时,`vector`值才能被复制。在这种情况下,可以通过[`copy`](https://reference.sui-book.com/variables.html#move-and-copy)或[解引用`*`](https://reference.sui-book.com/primitive-types/references.html#reading-and-writing-through-references)进行复制。
+
+
+
+### 2.2.5 引用
+
+Move有两种类型的引用:不可变引用`&`和可变引用`&mut`。不可变引用是只读的,不能修改底层值(或其任何字段)。可变引用允许通过该引用进行修改。Move的类型系统强制执行所有权规则,以防止引用错误。
+
+Move提供了创建和扩展引用以及将可变引用转换为不可变引用的操作符。这里我们用`e: T`表示"表达式`e`的类型为`T`"。
+
+| 语法        | 类型                                 | 描述                               |
+| ----------- | ------------------------------------ | ---------------------------------- |
+| `&e`        | `&T`,其中`e: T`且`T`不是引用类型     | 创建`e`的不可变引用                |
+| `&mut e`    | `&mut T`,其中`e: T`且`T`不是引用类型 | 创建`e`的可变引用                  |
+| `&e.f`      | `&T`,其中`e.f: T`                    | 创建结构体`e`的字段`f`的不可变引用 |
+| `&mut e.f`  | `&mut T`,其中`e.f: T`                | 创建结构体`e`的字段`f`的可变引用   |
+| `freeze(e)` | `&T`,其中`e: &mut T`                 | 将可变引用`e`转换为不可变引用      |
+
+`&e.f`和`&mut e.f`操作符既可以用于创建新的引用到结构体中,也可以用于扩展现有引用:
+
+```move
+let s = S { f: 10 };
+let f_ref1: &u64 = &s.f; // 可以
+let s_ref: &S = &s;
+let f_ref2: &u64 = &s_ref.f // 也可以
+```
+
+多字段的引用表达式只要两个结构体在同一模块中就可以工作:
+
+```move
+public struct A { b: B }
+public struct B { c : u64 }
+fun f(a: &A): &u64 {
+    &a.b.c
+}
+```
+
+最后,请注意不允许引用的引用:
+
+```move
+let x = 7;
+let y: &u64 = &x;
+let z: &&u64 = &y; // 错误! 无法编译
+```
+
+**通过引用读写**
+
+可变和不可变引用都可以被读取以产生被引用值的副本。
+
+只有可变引用可以被写入。写入`*x = v`会丢弃之前存储在`x`中的值,并用`v`更新它。
+
+这两种操作都使用类似C的`*`语法。但请注意,读取是一个表达式,而写入是必须发生在等号左侧的变更。
+
+| 语法       | 类型                           | 描述                 |
+| ---------- | ------------------------------ | -------------------- |
+| `*e`       | `T`,其中`e`是`&T`或`&mut T`    | 读取`e`指向的值      |
+| `*e1 = e2` | `()`,其中`e1: &mut T`且`e2: T` | 用`e2`更新`e1`中的值 |
+
+为了能读取引用,底层类型必须具有`copy`能力,因为读取引用会创建值的新副本。这条规则防止了资产被复制:
+
+```move
+fun copy_coin_via_ref_bad(c: Coin) {
+    let c_ref = &c;
+    let counterfeit: Coin = *c_ref; // 不允许!
+    pay(c);
+    pay(counterfeit);
+}
+```
+
+相对地:为了能写入引用,底层类型必须具有`drop`能力,因为写入引用会丢弃(或"删除")旧值。这条规则防止了资源值被销毁:
+
+```move=
+fun destroy_coin_via_ref_bad(mut ten_coins: Coin, c: Coin) {
+    let ref = &mut ten_coins;
+    *ref = c; // 错误! 不允许--会销毁10个硬币!
+}
+```
