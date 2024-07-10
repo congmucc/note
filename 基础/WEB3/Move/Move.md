@@ -459,7 +459,7 @@ fun copy_coin_via_ref_bad(c: Coin) {
 
 相对地:为了能写入引用,底层类型必须具有`drop`能力,因为写入引用会丢弃(或"删除")旧值。这条规则防止了资源值被销毁:
 
-```move=
+```move
 fun destroy_coin_via_ref_bad(mut ten_coins: Coin, c: Coin) {
     let ref = &mut ten_coins;
     *ref = c; // 错误! 不允许--会销毁10个硬币!
