@@ -465,3 +465,285 @@ fun destroy_coin_via_ref_bad(mut ten_coins: Coin, c: Coin) {
     *ref = c; // 错误! 不允许--会销毁10个硬币!
 }
 ```
+
+
+
+**`freeze`推断**
+
+可变引用可以在期望不可变引用的上下文中使用:
+
+```move
+let mut x = 7;
+let y: &u64 = &mut x;
+```
+
+这是因为在底层,编译器会在需要的地方插入`freeze`指令。这里有更多`freeze`推断的示例:
+
+```move
+fun takes_immut_returns_immut(x: &u64): &u64 { x }
+
+// 在返回值上进行freeze推断
+fun takes_mut_returns_immut(x: &mut u64): &u64 { x }
+
+fun expression_examples() {
+    let mut x = 0;
+    let mut y = 0;
+    takes_immut_returns_immut(&x); // 无推断
+    takes_immut_returns_immut(&mut x); // 推断为freeze(&mut x)
+    takes_mut_returns_immut(&mut x); // 无推断
+
+    assert!(&x == &mut y, 42); // 推断为freeze(&mut y)
+}
+
+fun assignment_examples() {
+    let x = 0;
+    let y = 0;
+    let imm_ref: &u64 = &x;
+
+    imm_ref = &x; // 无推断
+    imm_ref = &mut y; // 推断为freeze(&mut y)
+}
+```
+
+
+
+**子类型**
+
+通过这种`freeze`推断,Move类型检查器可以将`&mut T`视为`&T`的子类型。如上所示,这意味着在任何使用`&T`值的表达式中,也可以使用`&mut T`值。这个术语在错误消息中用于简洁地表示在需要`&T`的地方提供了`&mut T`。例如:
+
+```move
+module a::example {
+    fun read_and_assign(store: &mut u64, new_value: &u64) {
+        *store = *new_value
+    }
+
+    fun subtype_examples() {
+        let mut x: &u64 = &0;
+        let mut y: &mut u64 = &mut 1;
+
+        x = &mut 1; // 有效
+        y = &2; // 错误! 无效!
+
+        read_and_assign(y, x); // 有效
+        read_and_assign(x, y); // 错误! 无效!
+    }
+}
+```
+
+
+
+可变和不可变引用都可以随时被复制和扩展,*即使存在同一引用的现有副本或扩展*:
+
+```move
+fun reference_copies(s: &mut S) {
+  let s_copy1 = s; // 可以
+  let s_extension = &mut s.f; // 也可以
+  let s_copy2 = s; // 仍然可以
+  ...
+}
+```
+
+这可能会让熟悉Rust所有权系统的程序员感到惊讶,Rust会拒绝上面的代码。Move的类型系统在处理复制)时更加宽松,但在写入前确保可变引用的唯一所有权方面同样严格。
+
+**引用不能被存储**
+
+引用和元组是_唯一_不能作为结构体字段值存储的类型,这也意味着它们不能存在于存储或对象)中。在程序执行期间创建的所有引用都会在Move程序终止时被销毁;它们完全是短暂的。这也适用于所有没有`store`能力的类型:任何非`store`类型的值必须在程序终止前被销毁。但请注意引用和元组更进一步,从一开始就不允许存在于结构体中。
+
+这是Move和Rust的另一个区别,Rust允许在结构体中存储引用。
+
+我们可以想象一个更复杂、更具表现力的类型系统,允许在结构体中存储引用。我们可以允许在没有`store`的结构体中使用引用,但核心困难在于Move有一个相当复杂的系统来跟踪静态引用安全性。类型系统的这个方面也需要扩展以支持在结构体中存储引用。简而言之,Move的引用安全系统需要扩展以支持存储引用,这是我们在语言演化过程中一直在关注的问题。
+
+
+
+### 2.2.6元组与单元
+
+Move 并未完全支持元组，这与其他将元组作为[一等公民](https://en.wikipedia.org/wiki/First-class_citizen)的语言有所不同。然而，为了支持多返回值，Move 提供了类似元组的表达式。这些表达式在运行时不会生成具体的值（字节码中不存在元组），因此它们有很大的局限性：
+
+- 只能出现在表达式中（通常在函数的返回位置）。
+- 不能绑定到局部变量。
+- 不能存储在结构体中。
+- 元组类型不能用于实例化泛型。
+
+类似地，[unit `()`](https://en.wikipedia.org/wiki/Unit_type) 类型是 Move 源语言为了基于表达式的设计而创建的。单位值 `()` 在运行时不会产生任何值。可以将单位 `()` 视为一个空元组，适用于所有对元组的限制。
+
+考虑到这些限制，在语言中使用元组可能会感到奇怪。但在其他语言中，元组最常见的用例之一是允许函数返回多个值。一些语言通过强迫用户编写包含多个返回值的结构体来解决这个问题。然而，在 Move 中，你不能在[结构体](https://reference.sui-book.com/structs.html)中放置引用。这要求 Move 支持多返回值。在字节码层面，这些多返回值全部压入堆栈。在源代码层面，这些多返回值使用元组表示。
+
+
+
+**字面量**
+
+元组通过在括号内使用逗号分隔的表达式列表创建。
+
+| 语法            | 类型                                                         | 描述                                      |
+| --------------- | ------------------------------------------------------------ | ----------------------------------------- |
+| `()`            | `(): ()`                                                     | 单位类型，空元组，或 0 元素的元组         |
+| `(e1, ..., en)` | `(e1, ..., en): (T1, ..., Tn)` 其中 `e_i: Ti` 满足 `0 < i <= n` 且 `n > 0` | `n` 元组，`n` 元素的元组，包含 `n` 个元素 |
+
+注意 `(e)` 并没有类型 `(e): (t)`，换句话说，不存在单元素元组。如果括号内只有一个元素，则括号仅用于消除歧义，没有其他特殊含义。
+
+有时，包含两个元素的元组称为"对"，包含三个元素的元组称为"三元组"。
+
+```move
+module 0x42::example {
+    // 以下三个函数是等价的
+
+    // 当没有提供返回类型时，假定为 `()`
+    fun returns_unit_1() { }
+
+    // 空表达式块中有一个隐式的 () 值
+    fun returns_unit_2(): () { }
+
+    // 显式版本的 `returns_unit_1` 和 `returns_unit_2`
+    fun returns_unit_3(): () { () }
+
+    fun returns_3_values(): (u64, bool, address) {
+        (0, false, @0x42)
+    }
+    fun returns_4_values(x: &u64): (&u64, u8, u128, vector<u8>) {
+        (x, 0, 1, b"foobar")
+    }
+}
+```
+
+
+
+**操作**
+
+目前，对元组唯一可以执行的操作是解构。
+
+对于任何大小的元组，都可以在 `let` 绑定或赋值中解构。
+
+例如：
+
+```move
+module 0x42::example {
+    // 以下三个函数是等价的
+    fun returns_unit() {}
+    fun returns_2_values(): (bool, bool) { (true, false) }
+    fun returns_4_values(x: &u64): (&u64, u8, u128, vector<u8>) { (x, 0, 1, b"foobar") }
+
+    fun examples(cond: bool) {
+        let () = ();
+        let (mut x, mut y): (u8, u64) = (0, 1);
+        let (mut a, mut b, mut c, mut d) = (@0x0, 0, false, b"");
+
+        () = ();
+        (x, y) = if (cond) (1, 2) else (3, 4);
+        (a, b, c, d) = (@0x1, 1, true, b"1");
+    }
+
+    fun examples_with_function_calls() {
+        let () = returns_unit();
+        let (mut x, mut y): (bool, bool) = returns_2_values();
+        let (mut a, mut b, mut c, mut d) = returns_4_values(&0);
+
+        () = returns_unit();
+        (x, y) = returns_2_values();
+        (a, b, c, d) = returns_4_values(&1);
+    }
+}
+```
+
+
+
+**子类型**
+
+与引用一样，元组是 Move 中唯一具有[子类型](https://en.wikipedia.org/wiki/Subtyping)的类型。元组的子类型仅在引用中的协变方式存在。
+
+例如：
+
+```move
+let x: &u64 = &0;
+let y: &mut u64 = &mut 1;
+
+// (&u64, &mut u64) 是 (&u64, &u64) 的子类型
+// 因为 &mut u64 是 &u64 的子类型
+let (a, b): (&u64, &u64) = (x, y);
+
+// (&mut u64, &mut u64) 是 (&u64, &u64) 的子类型
+// 因为 &mut u64 是 &u64 的子类型
+let (c, d): (&u64, &u64) = (y, y);
+
+// 错误! (&u64, &mut u64) 不是 (&mut u64, &mut u64) 的子类型
+// 因为 &u64 不是 &mut u64 的子类型
+let (e, f): (&mut u64, &mut u64) = (x, y);
+```
+
+
+
+**所有权**
+
+如前所述，元组值在运行时并不真正存在。目前它们不能存储到局部变量中（但未来可能会添加此功能）。因此，元组只能移动，不能复制，因为复制它们需要首先将其放入局部变量中。
+
+
+
+## 2.3 局部变量和作用域
+
+**声明局部变量：**
+
+**`let` 绑定**
+
+Move 程序使用 `let` 将变量名称绑定到值：
+
+```move
+let x = 1;
+let y = x + x;
+```
+
+`let` 也可以在不将值绑定到局部变量的情况下使用。
+
+```move
+let x;
+```
+
+然后可以在稍后为局部变量赋值。
+
+```move
+let x;
+if (cond) {
+  x = 1;
+} else {
+  x = 0;
+}
+```
+
+在无法提供默认值时，这在从循环中提取值时非常有用。
+
+```move
+let x;
+let cond = true;
+let i = 0;
+loop {
+    let (res, cond) = foo(i);
+    if (!cond) {
+        x = res;
+        break;
+    };
+    i = i + 1;
+}
+```
+
+要在赋值后修改局部变量，或者借用它的可变引用 `&mut`，必须将其声明为 `mut`。
+
+```move
+let mut x = 0;
+if (cond) x = x + 1;
+foo(&mut x);
+```
+
+一些显式类型注解的例子：
+
+```move
+module 0x42::example {
+
+    public struct S { f: u64, g: u64 }
+
+    fun annotated() {
+        let u: u8 = 0;
+        let b: vector<u8> = b"hello";
+        let a: address = @0x0;
+        let (x, y): (&u64, &mut u64) = (&0, &mut 1);
+        let S { f, g: f2 }: S = S { f: 0, g: 1 };
+    }
+}
+```
