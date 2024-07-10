@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Patrick Collins/Patrick Collins.md",
+                "file": "基础/WEB3/Move/Move.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Patrick Collins/Patrick Collins.md",
+                "file": "基础/WEB3/Move/Move.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Patrick Collins/Patrick Collins.md"
+                "file": "基础/WEB3/Move/Move.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Patrick Collins/Patrick Collins.md",
+                "file": "基础/WEB3/Move/Move.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,6 +171,7 @@
   },
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/后端/Go/Golang基础/Golang基础.md",
     "基础/WEB3/Move/Move.md",
     "基础/WEB3/Solidity/Solidity.md",
@@ -214,7 +215,6 @@
     "实习/assets",
     "实习/航天宏图.md",
     "实习",
-    "基础/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ部署指南/RabbitMQ部署指南.md",
     "基础/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ部署指南/assets",
     "基础/后端/Java/框架/SpringBoot/JUnit5/assets",
     "未命名.canvas",

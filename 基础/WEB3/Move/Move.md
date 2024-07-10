@@ -747,3 +747,37 @@ module 0x42::example {
     }
 }
 ```
+
+
+
+
+
+
+
+
+
+| 方法签名                   | 调用范围                  | 返回值 |
+| -------------------------- | ------------------------- | ------ |
+| fun call()                 | 只能模块内调用            | 可以有 |
+| public fun call()          | 全部合约能调用            | 可以有 |
+| public entry fun call()    | 全部合约和Dapp(RPC)能调用 | 无     |
+| entry fun call()           | 只能Dapp(RPC)调用         | 无     |
+| public(package) fun call() | 只能指定的模块能调用      | 可以有 |
+
+
+
+**init方法**
+
+1. 只能是私有的
+
+2. 会在发布合约的是自动调用一次
+
+3. 只有两种形式
+
+   ```move
+   fun init(ctx: &mut TxContext){}
+   
+   fun init(witness: Struct, ctx: &mut TxContext){}
+   ```
+
+   
