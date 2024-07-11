@@ -1007,7 +1007,15 @@ public fun delete_dog(dog: Dog) {
 
 `abort10`
 
-`assert!(num>10, ErrMustGet10)`
+
+
+```move
+const ErrMustGet10: u64 = 0xa;
+
+assert!(num>10, ErrMustGet10)
+```
+
+
 
 
 
@@ -1022,3 +1030,463 @@ emit(value);
 ```
 
 > 可以将日志打印出来
+
+
+
+
+
+
+
+# 设计模式
+
+
+
+## Capability
+
+- 简单的理解就是一种权限的设计模式，当你需要做什么的时候，必须传入这个结构体的实例来验证你是不是有这个权限
+- 这个权限一般来说是一个object有key的能力，可以适当加store能力
+
+```move
+    fun init(ctx: &mut TxContext) {
+        transfer::transfer(AdminCap {
+            id: object::new(ctx)
+        }, tx_context::sender(ctx))
+    }
+
+    /// The entry function can not be called if `AdminCap` is not passed as
+    /// the first argument. Hence only owner of the `AdminCap` can perform
+    /// this action.
+    public fun create_and_send(
+        _: &AdminCap, name: vector<u8>, to: address, ctx: &mut TxContext
+    ) {
+        transfer::transfer(Item {
+            id: object::new(ctx),
+            name: string::utf8(name)
+        }, to)
+    }
+```
+
+> 先初始化发送者结构体
+>
+> 这里面主要是`_: &AdminCap`这个形参，如果不是这个类型调用就会报错
+
+
+
+## Witness
+
+- 简单理解就是这个结构体创建出来的实例是为了创建另一个资源需要的一种权限，创建的同一个实例只能使用一次，这个结构体创建出来需要可以销毁，可以简单理解成权限的特殊模式
+- 要点结构体没有字段，只有drop能力，实实例是能使用一次
+
+```move
+    public fun create_guardian<T: drop>(
+        _witness: T, ctx: &mut TxContext
+    ): Guardian<T> {
+        Guardian { id: object::new(ctx) }
+    }
+    
+    
+     public  struct PEACE has drop {}
+
+    /// Module initializer is the best way to ensure that the
+    /// code is called only once. With `Witness` pattern it is
+    /// often the best practice.
+    fun init(ctx: &mut TxContext) {
+        let peace1 = PEACE{};
+        let peace2 = PEACE{};
+        transfer::public_transfer(
+            witness::create_guardian(peace1, ctx),
+            tx_context::sender(ctx)
+        );
+
+        transfer::public_transfer(
+            witness::create_guardian(peace2, ctx),
+            @0x1,
+        )
+    }
+```
+
+> 这个是创建一个空的drop能力的PEACE结构体，然后被当作形参传给函数，但是实际上这个结构体仅仅是伴随着传进来，没有在函数中用到`_witness`，也就是见证者
+
+
+
+**子模式**：同一个模块下面只能有一个drop见证者结构体的实例必须唯一
+
+见证者结构体是**全部大写**而且跟模块名一样，而且需要在init函数中初始化，保证唯一性。
+
+```move
+module pat::dain {
+	public struct DAIN has drop {}
+}
+```
+
+
+
+**可以转移型的见证者模式**
+
+```move
+public struct WITNEss has store, drop{}
+
+public struct WitnessBox has key{ id: UID,witnesS: WITNESS }
+```
+
+- 也就是这见证者结构体可以创建了放在一个容器里面，随着容器转移所有权，需要用到的时候在取出来做见证
+- 要点结构体没有字段，只有drop能力和store，需要一个object的容器来包装
+
+```move
+
+    public struct WITNESS has store, drop {}
+
+  
+    public struct WitnessCarrier has key { id: UID, witness: WITNESS }
+
+ 
+    fun init(ctx: &mut TxContext) {
+        transfer::transfer(
+            WitnessCarrier { id: object::new(ctx), witness: WITNESS {} },
+            tx_context::sender(ctx)
+        )
+    }
+
+    /// Unwrap a carrier and get the inner WITNESS type.
+    public fun get_witness(carrier: WitnessCarrier): WITNESS {
+        let WitnessCarrier { id, witness } = carrier;
+        object::delete(id);
+        witness
+    }
+```
+
+> 这里面进行了转移，就是WitnessCarrier之中创建了一个新的，然后可以见证，其实就是可以一个大人（WitnessCarrier）带着不能转移的小孩（WITNESS）跑到其他地方了
+
+
+
+## hot-potato
+
+```move
+public struct Receipt { price: u64}
+
+public fun create(xx:XX,...):(Receipt{},Coin<x>)
+
+public fun burn(rece:Receipt,...)
+```
+
+
+
+
+
+- 简单理解就是烫手的山芋，你拿到手里肯定处理不了，所以你只能还回去
+
+关键的点
+
+- 结构体没有任何能力
+- 提供对外方法创建结构体
+- 提供对外的方法销毁这个结构体
+
+
+
+```move
+module design_pattern::hot_potato {
+    use sui::transfer;
+    use sui::sui::SUI;
+    use sui::coin::{Self, Coin};
+    use sui::object::{Self, UID};
+    use sui::tx_context::{TxContext};
+
+    /// Price for the first phone model in series
+    const MODEL_ONE_PRICE: u64 = 10000;
+
+    /// Price for the second phone model
+    const MODEL_TWO_PRICE: u64 = 20000;
+
+    /// For when someone tries to purchase non-existing model
+    const EWrongModel: u64 = 1;
+
+    /// For when paid amount does not match the price
+    const EIncorrectAmount: u64 = 2;
+
+    /// A phone; can be purchased or traded in for a newer model
+    public
+    struct Phone has key, store { id: UID, model: u8 }
+
+    /// Payable receipt. Has to be paid directly or paid with a trade-in option.
+    /// Cannot be stored, owned or dropped - has to be used to select one of the
+    /// options for payment: `trade_in` or `pay_full`.
+    public struct Receipt { price: u64 }
+
+    /// Get a phone, pay later.
+    /// Receipt has to be passed into one of the functions that accept it:
+    ///  in this case it's `pay_full` or `trade_in`.
+    public fun buy_phone(model: u8, ctx: &mut TxContext): (Phone, Receipt) {
+        assert!(model == 1 || model == 2, EWrongModel);
+
+        let price = if (model == 1) MODEL_ONE_PRICE else MODEL_TWO_PRICE;
+
+        (
+            Phone { id: object::new(ctx), model },
+            Receipt { price }
+        )
+    }
+
+
+    /// Pay the full price for the phone and consume the `Receipt`.
+    public fun pay_full(receipt: Receipt, payment: Coin<SUI>) {
+        let Receipt { price } = receipt;
+        assert!(coin::value(&payment) == price, EIncorrectAmount);
+
+        // for simplicity's sake transfer directly to @examples account
+        transfer::public_transfer(payment, @design_pattern);
+    }
+
+    /// Give back an old phone and get 50% of its price as a discount for the new one.
+    public fun trade_in(receipt: Receipt, old_phone: Phone, payment: Coin<SUI>) {
+        let Receipt { price } = receipt;
+        let tradein_price = if (old_phone.model == 1) {
+            MODEL_ONE_PRICE
+        } else {
+            MODEL_TWO_PRICE
+        };
+        let to_pay = price - (tradein_price / 2);
+
+        assert!(coin::value(&payment) == to_pay, EIncorrectAmount);
+
+        transfer::public_transfer(old_phone, @design_pattern);
+        transfer::public_transfer(payment, @design_pattern);
+    }
+}
+```
+
+> 这是一个买手机的例子 ，使用 `Receipt` 来控制操作的顺序和权限，其中`buy_phone`会返回一个`Receipt`收据，然后我们拿着收据才可以使用`pay_full`函数，`Receipt` 不能存储、拥有或丢弃，必须传递给特定的函数（`pay_full` 或 `trade_in`）才能完成交易。
+
+
+
+
+
+
+
+## 闪电贷
+
+- 在一个交易里面必须完成借和还
+- 无需抵押
+- 不还一定会报错
+- 主要用于套利
+
+
+
+```move
+// Copyright (c) Mysten Labs, Inc.
+// SPDX-License-Identifier: Apache-2.0
+
+/// A flash loan that works for any Coin type
+module design_pattern::flash_lender {
+    use sui::balance::{Self, Balance};
+    use sui::coin::{Self, Coin};
+    use sui::object;
+    use sui::object::{UID, ID};
+
+    /// A shared object offering flash loans to any buyer willing to pay `fee`.
+    public
+    struct FlashLender<phantom T> has key {
+        id: UID,
+        /// Coins available to be lent to prospective borrowers
+        to_lend: Balance<T>,
+        /// Number of `Coin<T>`'s that will be charged for the loan.
+        /// In practice, this would probably be a percentage, but
+        /// we use a flat fee here for simplicity.
+        fee: u64,
+    }
+
+    /// A "hot potato" struct recording the number of `Coin<T>`'s that
+    /// were borrowed. Because this struct does not have the `key` or
+    /// `store` ability, it cannot be transferred or otherwise placed in
+    /// persistent storage. Because it does not have the `drop` ability,
+    /// it cannot be discarded. Thus, the only way to get rid of this
+    /// struct is to call `repay` sometime during the transaction that created it,
+    /// which is exactly what we want from a flash loan.
+    public
+
+    struct Receipt<phantom T> {
+        /// ID of the flash lender object the debt holder borrowed from
+        flash_lender_id: ID,
+        /// Total amount of funds the borrower must repay: amount borrowed + the fee
+        repay_amount: u64
+    }
+
+    /// An object conveying the privilege to withdraw funds from and deposit funds to the
+    /// `FlashLender` instance with ID `flash_lender_id`. Initially granted to the creator
+    /// of the `FlashLender`, and only one `AdminCap` per lender exists.
+    public
+
+    struct AdminCap has key, store {
+        id: UID,
+        flash_lender_id: ID,
+    }
+
+    /// Attempted to borrow more than the `FlashLender` has.
+    /// Try borrowing a smaller amount.
+    const ELoanTooLarge: u64 = 0;
+
+    /// Tried to repay an amount other than `repay_amount` (i.e., the amount borrowed + the fee).
+    /// Try repaying the proper amount.
+    const EInvalidRepaymentAmount: u64 = 1;
+
+    /// Attempted to repay a `FlashLender` that was not the source of this particular debt.
+    /// Try repaying the correct lender.
+    const ERepayToWrongLender: u64 = 2;
+
+    /// Attempted to perform an admin-only operation without valid permissions
+    /// Try using the correct `AdminCap`
+    const EAdminOnly: u64 = 3;
+
+    /// Attempted to withdraw more than the `FlashLender` has.
+    /// Try withdrawing a smaller amount.
+    const EWithdrawTooLarge: u64 = 4;
+
+    // === Creating a flash lender ===
+
+    /// Create a shared `FlashLender` object that makes `to_lend` available for borrowing.
+    /// Any borrower will need to repay the borrowed amount and `fee` by the end of the
+    /// current transaction.
+    public fun new<T>(to_lend: Balance<T>, fee: u64, ctx: &mut TxContext): AdminCap {
+        let id = object::new(ctx);
+        let flash_lender_id = object::uid_to_inner(&id);
+        let flash_lender = FlashLender { id, to_lend, fee };
+        // make the `FlashLender` a shared object so anyone can request loans
+        transfer::share_object(flash_lender);
+
+        // give the creator admin permissions
+        AdminCap { id: object::new(ctx), flash_lender_id }
+    }
+
+    /// Same as `new`, but transfer `AdminCap` to the transaction sender
+    public entry fun create<T>(to_lend: Coin<T>, fee: u64, ctx: &mut TxContext) {
+        let balance = coin::into_balance(to_lend);
+        let admin_cap = new(balance, fee, ctx);
+
+        transfer::public_transfer(admin_cap, tx_context::sender(ctx))
+    }
+
+    // === Core functionality: requesting a loan and repaying it ===
+
+    /// Request a loan of `amount` from `lender`. The returned `Receipt<T>` "hot potato" ensures
+    /// that the borrower will call `repay(lender, ...)` later on in this tx.
+    /// Aborts if `amount` is greater that the amount that `lender` has available for lending.
+    public fun loan<T>(
+        self: &mut FlashLender<T>, amount: u64, ctx: &mut TxContext
+    ): (Coin<T>, Receipt<T>) {
+        let to_lend = &mut self.to_lend;
+        assert!(balance::value(to_lend) >= amount, ELoanTooLarge);
+        let loan = coin::take(to_lend, amount, ctx);
+        let repay_amount = amount + self.fee;
+        let receipt = Receipt { flash_lender_id: object::id(self), repay_amount };
+
+        (loan, receipt)
+    }
+
+    /// Repay the loan recorded by `receipt` to `lender` with `payment`.
+    /// Aborts if the repayment amount is incorrect or `lender` is not the `FlashLender`
+    /// that issued the original loan.
+    public fun repay<T>(self: &mut FlashLender<T>, payment: Coin<T>, receipt: Receipt<T>) {
+        let Receipt { flash_lender_id, repay_amount } = receipt;
+        assert!(object::id(self) == flash_lender_id, ERepayToWrongLender);
+        assert!(coin::value(&payment) == repay_amount, EInvalidRepaymentAmount);
+
+        coin::put(&mut self.to_lend, payment)
+    }
+
+    // === Admin-only functionality ===
+
+    /// Allow admin for `self` to withdraw funds.
+    public fun withdraw<T>(
+        self: &mut FlashLender<T>,
+        admin_cap: &AdminCap,
+        amount: u64,
+        ctx: &mut TxContext
+    ): Coin<T> {
+        // only the holder of the `AdminCap` for `self` can withdraw funds
+        check_admin(self, admin_cap);
+
+        let to_lend = &mut self.to_lend;
+        assert!(balance::value(to_lend) >= amount, EWithdrawTooLarge);
+        coin::take(to_lend, amount, ctx)
+    }
+
+    /// Allow admin to add more funds to `self`
+    public entry fun deposit<T>(
+        self: &mut FlashLender<T>, admin_cap: &AdminCap, coin: Coin<T>
+    ) {
+        // only the holder of the `AdminCap` for `self` can deposit funds
+        check_admin(self, admin_cap);
+        coin::put(&mut self.to_lend, coin);
+    }
+
+    /// Allow admin to update the fee for `self`
+    public entry fun update_fee<T>(
+        self: &mut FlashLender<T>, admin_cap: &AdminCap, new_fee: u64
+    ) {
+        // only the holder of the `AdminCap` for `self` can update the fee
+        check_admin(self, admin_cap);
+
+        self.fee = new_fee
+    }
+
+    fun check_admin<T>(self: &FlashLender<T>, admin_cap: &AdminCap) {
+        assert!(object::borrow_id(self) == &admin_cap.flash_lender_id, EAdminOnly);
+    }
+
+    // === Reads ===
+
+    /// Return the current fee for `self`
+    public fun fee<T>(self: &FlashLender<T>): u64 {
+        self.fee
+    }
+
+    /// Return the maximum amount available for borrowing
+    public fun max_loan<T>(self: &FlashLender<T>): u64 {
+        balance::value(&self.to_lend)
+    }
+
+    /// Return the amount that the holder of `self` must repay
+    public fun repay_amount<T>(self: &Receipt<T>): u64 {
+        self.repay_amount
+    }
+
+    /// Return the amount that the holder of `self` must repay
+    public fun flash_lender_id<T>(self: &Receipt<T>): ID {
+        self.flash_lender_id
+    }
+}
+```
+
+[设计模式_](https://www.bilibili.com/video/BV1iz421k7NA/?p=8)
+
+
+
+
+
+# 高阶
+
+## framework
+
+
+
+## stdlib
+
+- address.move
+- hash.move
+- ascii.move
+- option.move
+- bcs.move
+- string.move
+- bit_vector.move
+- type_name.move
+- debug.move
+- unit_test.move
+- vector.move
+- fixed_point32.move
+
+
+
+
+
+- Balance:一个通用的余额可存储处理程序。在Coin模块中用于允许余额操作，并可用于实现具有Supply 和 Balance 的自定义货币。
+- Coin:定义了 Coin 类型－表示可互换的令牌和货币的平台范围内的表示。Coin 可以被描述为围绕Balance类型的安全包装器。
+- Token:Token 模块实现了一个可配置的闭环令牌系统。该策略由一组规则定义，必须满足这些规则才能对令牌执行操作。
