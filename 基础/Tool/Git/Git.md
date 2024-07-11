@@ -118,6 +118,8 @@ git config --global user.email "2562907972@qq.com"
 
 
 
+### 7 LF & CRLF
+
 在Windows平台上，git默认的core.autocrlf是true，可以通过`git config --list`命令查看。
 
 Git可以在你提交时自动地把行结束符CRLF转换成LF，而在签出代码时把LF转换成CRLF。用`core.autocrlf`来打开此项功能， 如果是在Windows系统上，把它设置成`true`（默认配置），这样当签出代码时，LF会被转换成CRLF：

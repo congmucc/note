@@ -24,6 +24,8 @@ Move诞生的里面我们总结几个关键点:
 
 
 
+
+
 ## 1.3 和其他编程语言有什么不同
 
 - 每一次运行程序都是一个**完整的事务**，要么全部成功要么全部失败
@@ -114,6 +116,15 @@ sui 1.22.0-0362997459
    ```
 
    
+
+```move
+Generated new keypair and alias for address with scheme "ed25519" [xenodochial-zircon: 0xfabe32506438a111fa9cc7db561bea1e47121ef51cdb4e6b73658e90e60a88f5]  
+Secret Recovery Phrase : [winner install they predict timber raw flush own sting garlic winner metal]
+```
+
+
+
+
 
 
 
@@ -752,9 +763,25 @@ module 0x42::example {
 
 
 
+## 2.4 输出
+
+```move
+module std::debug {
+	native public fun print<T>(x: &T);
+	
+	native public fun print_stack_trace();
+}
+```
 
 
 
+# 进阶
+
+
+
+
+
+## 函数
 
 | 方法签名                   | 调用范围                  | 返回值 |
 | -------------------------- | ------------------------- | ------ |
@@ -780,4 +807,204 @@ module 0x42::example {
    fun init(witness: Struct, ctx: &mut TxContext){}
    ```
 
-   
+
+
+
+
+### 函数的传值
+
+```move
+fn f(consume: T, write: &mut T, read: &T)
+```
+
+> - T: 可以进行增删改查，转移
+> - &mut T：只能写和读
+> - &T：只能读
+
+
+
+```move
+public fun del(dog: Dog) {
+	let Dog{id, age} = dog;
+	object::delete(id);
+	
+	let _age = age;
+}
+```
+
+> 这里是删除对象，对象是含有id，可以看一下函数中，函数的传值，需要第一个层级，才能删除，为什么能删除可以看[结构体解构-删除变量]
+
+
+
+
+
+### 所有权方法
+
+| 方法                | 生成的方法      | 属性        |
+| ------------------- | --------------- | ----------- |
+| transfer            | 独享对象        | key         |
+| public_transfer     | 独享对象        | key + store |
+| freeze_object       | 共享对象 - 常量 | key         |
+| public_freeze_objec | 共享对象 - 常量 | key + store |
+| share_object        | 共享对象        | key         |
+| public_share_object | 共享对象        | key + store |
+
+
+
+
+
+
+
+生成一个独享层次的狗
+
+```move
+let dog = Dog{
+	id:Object::new(ctx),
+	age:10,
+}
+
+transfer(dog, sender(ctx));
+```
+
+生成一个共享层次的狗
+
+```move
+let dog2 = Dog{
+	id:Object::new(ctx),
+	age:10,
+}
+
+share_object(dog2);
+```
+
+
+
+
+
+
+
+
+
+## 结构体
+
+### 基础
+
+结构体必须在模块内定义，结构体的字段可以是命名的或位置的：
+
+```move
+module a::m {
+    public struct Foo { x: u64, y: bool }
+    public struct Bar {}
+    public struct Baz { foo: Foo, }
+    //                          ^ 注意：在结尾处加逗号是允许的
+
+    public struct PosFoo(u64, bool)
+    public struct PosBar()
+    public struct PosBaz(Foo)
+}
+
+```
+
+> 说明这个结构体是在a包下的m文件夹中
+
+
+
+**可见性**
+
+正如你可能注意到的，所有结构体都声明为 `public`。这意味着结构体的类型可以从任何其他模块引用。然而，结构体的字段，以及创建或销毁结构体的能力，仍然是在定义结构体的模块内部。
+
+在未来，我们计划添加将结构体声明为 `public(package)` 或作为内部的功能，类似于 函数。
+
+#### 能力
+
+如上所述，默认情况下，结构体声明为线性和短暂的。因此，为了允许值在这些方式下使用（例如，复制、丢弃、存储在对象 中，或用于定义可存储的 [对象](https://reference.sui-book.com/abilities/object.html)），可以通过注释使用 `has <ability>` 来赋予结构体 [能力](https://reference.sui-book.com/abilities.html)：
+
+```move
+module a::m {
+    public struct Foo has copy, drop { x: u64, y: bool }
+}
+```
+
+能力声明可以出现在结构体字段之前或之后。然而，只能使用其中一个，不能同时使用两者。如果在结构体字段之后声明能力，则能力声明必须以分号结尾；
+
+**四种能力**：
+
+- copy-被修饰的值可以被复制
+- drop-被修饰的值在作用域结束时可以被丢弃。
+- key－被修饰的值可以作为键值对全局状态进行访问。
+- store-被修饰的值可以被存储到其他结构体
+
+
+
+
+
+
+
+### 对象
+
+**UTxO**
+
+UTxO的概念账户模本模型，这个模型下，我有一个自己对应的账户，上面记录我有13块钱，那么13这个数字是明明白白记录到系统中的。
+
+UTXO非常适合并行运算，这个特点在分布式的计算机网络中显得非常的巧妙，UTXO模型和生活中一样你有一张张100100面值的人民币，每一张都独立，可以**单独使用**,
+
+Sui是基于UTXO模型的
+
+
+
+
+
+**对象**
+
+对象的定义：
+
+- 必须有key能力
+- 第一个字段必须是 id，而且类型为`sui::object::UID`
+
+```move
+module book::obj {
+	use sui::object::UID;
+	public struct ColorObj has key {
+		id: UID,
+		red: u8,
+	}
+}
+```
+
+
+
+定义资产
+
+常见资产：银行余额，支付宝微信余额，房产等常见资产的是大家生活中常见的能直观理解的资产
+
+资产的扩充：一条朋友圈，一篇文章资产扩充一条微博，朋友圈的点赞，微信步数，这些其实都是实实在在的资产
+
+给资产下定义：你所看定义到的一切东西，都可以用程序的方式定义成资产的一一对应
+
+
+
+
+
+### 结构体解构-删除变量
+
+```move
+public fun delete_dog(dog: Dog) {
+    let Dog { age: u8, gender: u8 } = dog;
+    let _age = age;
+    let _gender = gender;
+}
+```
+
+> 在 Rust 或 Move 这样的语言中，当一个函数参数的所有权被转移（如在解构操作中），并且没有显式地返回或转移给其他变量时，这个参数就会被销毁或删除。这是因为 Rust 和 Move 的所有权模型会在函数结束时自动清理不再使用的资源。因此，即使函数中没有显式地“删除”操作，只要所有权被转移并且不再使用，资源就会被释放。
+
+
+
+
+
+
+
+## 错误处理
+
+`abort10`
+
+`assert!(num>10, ErrMustGet10)`
