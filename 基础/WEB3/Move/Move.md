@@ -1008,3 +1008,17 @@ public fun delete_dog(dog: Dog) {
 `abort10`
 
 `assert!(num>10, ErrMustGet10)`
+
+
+
+
+
+## 日志处理
+
+```move
+use std::event::emit;
+
+emit(value);
+```
+
+> 可以将日志打印出来
