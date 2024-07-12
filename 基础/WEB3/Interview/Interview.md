@@ -6,6 +6,7 @@ linkedin：多维护一下
 Web3Jobs: https://web3.career/
 Upwork : https://www.upwork.com/
 dapp learning: https://dapplearning.org/hiring
+http://web3hc.com
 
 
 

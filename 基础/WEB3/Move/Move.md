@@ -1033,6 +1033,14 @@ emit(value);
 
 
 
+## 单元测试
+
+```move
+#[test]
+
+#[test_only]
+```
+
 
 
 
@@ -1492,3 +1500,87 @@ module design_pattern::flash_lender {
 - Token:Token 模块实现了一个可配置的闭环令牌系统。该策略由一组规则定义，必须满足这些规则才能对令牌执行操作。`Token` 和 `Coin` 类似，但通常用来表示更广泛的资产类型，包括非同质化代币（NFT）。
 
 ![image-20240712091314489](./assets/image-20240712091314489.png)
+
+
+
+
+
+```move
+module design_pattern::hot_potato {
+    use sui::transfer;
+    use sui::sui::SUI;
+    use sui::coin::{Self, Coin};
+    use sui::object::{Self, UID};
+    use sui::tx_context::{TxContext};
+
+    struct MyTokenRule has store, drop {}
+    struct MY_COIN has store, drop {}
+    struct MyTokenConfig has store, drop {
+        amount_rule: u64,
+    }
+
+    fun test_token() {
+        let mut ctx = tx_context::dummy();
+        let (mut treasury_cap, coin_metadata) = coin::create_currency<MY_COIN>(
+            MY_COIN {}, 9, b"MC", b"My Coins", b"description", std::option::none(), &mut ctx
+        );
+
+        let (mut policy, policy_cap) = token::new_policy(&treasury_cap, &mut ctx);
+        token::allow(
+            &mut policy,
+            &policy_cap,
+            token::to_coin_action(),
+            &mut ctx
+        );
+
+        token::add_rule_config(
+            MyTokenRule {},
+            &mut policy,
+            &policy_cap,
+            MyTokenConfig { amount_rule: 1_000_000_000 },
+            &mut ctx
+        );
+
+        let token = token::mint(
+            &mut treasury_cap,
+            1_000_000_000,
+            &mut ctx
+        );
+
+        let (coin, mut action_request) = token::to_coin(
+            token,
+            &mut ctx
+        );
+
+        token::add_approval(
+            MyTokenRule {},
+            &mut action_request,
+        );
+
+        token::confirm_request(
+            &policy,
+            action_request,
+            &mut ctx
+        );
+
+        token::share_policy(&policy);
+        transfer::public_transfer(coin, @0x1234);
+        transfer::public_transfer(policy_cap, @0x1234);
+        transfer::public_share_object(treasury_cap);
+        transfer::public_freeze_object(coin_metadata);
+    }
+}
+```
+
+
+
+- display
+
+Sui Object Display 是一种模板引l擎，可以实现对类型的链上管理与链下表示(显示)的模板化。通过它，你可以将对象的数据替换为模板字符串。该标准不限制你可以设置的字段。你可以使用{property}语法访问所有对象属性，然后将它们作为模板字符串的一部分插入其中
+
+
+
+
+
+## USDC
+
