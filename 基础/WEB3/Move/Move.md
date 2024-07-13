@@ -97,6 +97,8 @@ sui 1.22.0-0362997459
 
 ## 1.5 sui常用命令
 
+所有都是一个对象，一般只有对象有所有权
+
 1. **创建一个新的基于move的工程**
 
    ```sh
@@ -1583,4 +1585,103 @@ Sui Object Display 是一种模板引l擎，可以实现对类型的链上管理
 
 
 ## USDC
+
+USDC（USD Coin）是代表与美元（USD）挂钩的稳定币。在区块链上使用 USDC 可以提供价格稳定的数字资产，这对于支付、交易和借贷等金融应用非常重要。
+
+### USDC 的概念
+
+- **稳定币**：USDC 是一种与美元 1:1 挂钩的稳定币，旨在减少加密货币市场的波动性。
+- **透明和合规**：USDC 由受监管的金融机构发行，确保每个 USDC 都有等值的美元储备支持。
+
+```move
+module usdc::USDC {
+    use sui::transfer;
+    use sui::coin::{Self, Coin};
+    use sui::object::{Self, UID};
+    use sui::tx_context::{Self, TxContext};
+
+    // USDC 代币结构体
+    public struct USDC has store, key {
+        id: UID,
+        balance: u64,
+    }
+
+    // 初始化 USDC 代币
+    public fun init(ctx: &mut TxContext) {
+        let usdc = USDC { id: object::new(ctx), balance: 1_000_000_000 };
+        transfer::public_share_object(&usdc, ctx);
+    }
+
+    // 铸造新的 USDC 代币
+    public fun mint(ctx: &mut TxContext, amount: u64) {
+        let usdc = borrow_global_mut<USDC>(tx_context::sender(ctx));
+        usdc.balance = usdc.balance + amount;
+    }
+
+    // 转移 USDC 代币
+    public fun transfer(ctx: &mut TxContext, to: address, amount: u64) {
+        let sender_usdc = borrow_global_mut<USDC>(tx_context::sender(ctx));
+        assert!(sender_usdc.balance >= amount, 1);
+        sender_usdc.balance = sender_usdc.balance - amount;
+
+        let recipient_usdc = borrow_global_mut<USDC>(to);
+        recipient_usdc.balance = recipient_usdc.balance + amount;
+    }
+}
+```
+
+
+
+
+
+# 实战
+
+构造一个自己的coin
+
+```move
+module task2::my_coin {
+    use sui::tx_context::{Self, TxContext, sender};
+    use sui::coin;
+    use sui::transfer::{public_transfer, public_freeze_object};
+    use sui::url::Url;
+
+    public struct MY_COIN has drop {}
+
+    fun init(witness: MY_COIN, ctx: &mut TxContext) {
+
+        let icon_url = option::none<Url>();
+
+        let  (treasury_cap,coin_meta_data) =  coin::create_currency(witness, 6,b"EAS",b"EAS币",b"this is a EAS coin",icon_url, ctx);
+
+        // 所有权共享  不可变共享
+        public_freeze_object(coin_meta_data);
+
+        // 独享 控制管理权限
+        public_transfer(treasury_cap, sender(ctx));
+        
+        // 共享 控制管理权限
+        public_share_object(treasury_cap);
+    }
+
+}
+```
+
+
+
+> `sui client publish --skip-dependency-verification`发布到测试网，
+>
+> ```sh
+> sui client call --package 0x2 --module coin --function mint_and_transfer --args 0xfd92912b3b7fd159afb39329c1ccdd8719c7a6042fce9ce1106f688dcca2045d 10000000000 0x309a17166da7efe3e0f1053f735d1c1504f7badf974046b25ea382ecf694a685 --type-args "0x0a85af72122aa89d98ff4720f7ef7faf370397719270635602beeac7748dc78c::my_coin::MY_COIN"
+> ```
+>
+> > 这个命令使用gpt看一下都懂了
+
+> 其中需要解释一下：
+>
+> - public_freeze_object 使对象变为只读状态，允许多人共享但禁止修改。
+> - public_transfer 则是将对象的独占权限转移给另一个账户，使该账户能够独享对对象的控制和修改权限。
+>
+> 这两个函数相结合之后才可以进行修改，就是使用了call然后将自己的币用命令调用sui官方提供的mint_and_transfer这个函数将数据转移到指定账户
+
+
 

@@ -219,3 +219,11 @@ git cherry-pick <commitHash>
 > ```
 
 上面代码表示将`feature`分支的最近一次提交，转移到当前分支。
+
+
+
+
+
+## git reset
+
+> Reset Current Branch to Here
