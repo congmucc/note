@@ -801,9 +801,87 @@ let s = returns_string(); // 返回值的所有权转移到s
 
 
 
+### 2.3.2 对于栈和堆结构体函数所有权转移
+
+- 对于栈上数据，如果类型实现了Copy trait，那么在赋值或传递给函数时，数据会被复制，而不是转移所有权。
+
+  ```rust
+  fn copy_example(a: i32) {
+      println!("a in function: {}", a);
+  }
+  
+  fn main() {
+      let b = 10;
+      copy_example(b);
+      println!("b in main: {}", b); // b仍然有效，因为i32实现了Copy trait
+  }
+  ```
+
+  转移所有权：
+
+  ```rust
+  使用Box<T>包装类型：将基本数据类型包装在Box<T>中，可以将其存储在堆上，从而绕过Copy的限制。Box<T>不实现Copy，因此在传递给函数时会发生所有权转移。  
+  fn process_boxed_data(data: Box<i32>) {
+         println!("Processing data: {}", *data);
+     }
+  
+     fn main() {
+         let data = Box::new(42);
+         process_boxed_data(data);
+         // println!("{}", *data); // 编译错误，因为data的所有权已经转移
+     }
+  ```
+
+  ```rust
+     使用move闭包：另一种方法是使用闭包并显式地使用move关键字。这会强制闭包捕获其环境中的变量的所有权，即使这些变量实现了Copy。
+  fn main() {
+         let data = 42;
+         let processor = move || println!("Processing data: {}", data);
+         processor();
+         // println!("{}", data); // 编译错误，因为data的所有权已经转移给闭包
+     }
+     
+  ```
+
+  > 注意：main函数将不会结束，因为processor闭包持有data的所有权，而processor闭包本身是在main的作用域内定义的。要使这个示例工作，你需要确保闭包在main函数结束之前被调用或销毁。
+
+- 堆上数据如`Vec<T>`和String不实现Copy，因此在函数调用时会发生所有权转移。
+
+  ```rust
+  fn process_vec(v: Vec<i32>) {
+      println!("Processing vector: {:?}", v);
+  }
+  
+  fn main() {
+      let v = vec![1, 2, 3];
+      process_vec(v);
+      // println!("{:?}", v); // 编译错误，因为v的所有权已经转移
+  }
+  ```
+
+- 如果结构体包含至少一个不实现Copy的字段，那么整个结构体也不会实现Copy，因此在函数调用时会发生所有权转移。
+
+  ```rust
+  struct MyStruct {
+      data: String,
+  }
+  
+  fn process_my_struct(ms: MyStruct) {
+      println!("Processing struct: {:?}", ms);
+  }
+  
+  fn main() {
+      let ms = MyStruct { data: String::from("Data") };
+      process_my_struct(ms);
+      // println!("{:?}", ms); // 编译错误，因为ms的所有权已经转移
+  }
+  ```
+
+  
 
 
-### 2.3.2 move类型
+
+### 2.3.3 move类型
 > 指的是赋值的话就转移所有权
 
 1. **字符串 (`String`)**: `String` 类型在堆上分配内存来存储可变长度的字符串数据。当一个 `String` 被赋值给另一个变量或作为参数传递给函数时，所有权会转移。
@@ -1636,7 +1714,7 @@ Point::PI
 
 每当将值从一个位置传递到另一个位置时，borrow checker都会重新评估所有权。
 
-1．ImmutableBorrow使用不可变的借用，值的所有权仍归发送方所有，接收方直接接收对该值的引l用，而不是该值的副本。但是，他们不能使用该引用来修改它指向的值，编译器不允许这样做。释放资源的责任仍由发送方承担。仅当发件人本身超出范围时，才会删除该值
+1．ImmutableBorrow使用不可变的借用，值的所有权仍归发送方所有，接收方直接接收对该值的引l用，而不是该值的副本。但是，他们不能使用该引用来修改它指向的值，编译器不允许这样   做。释放资源的责任仍由发送方承担。仅当发件人本身超出范围时，才会删除该值
 
 2．MutableBorrow使用可变的借用所有权和删除值的责任也由发送者承担。但是接收方能够通过他们接收的引用来修改该值。
 
