@@ -84,7 +84,7 @@ public class DictTypeControllerTest {
 12345678910111213141516171819202122232425262728293031323334353637383940414243
 ```
 
-![在这里插入图片描述](./assets/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LqaIOeRnw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center.png)
+![在这里插入图片描述](./assets/image.png)
 
 ### 2. @ParameterizedTest
 

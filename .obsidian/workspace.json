@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f97e224a7ac1a7c8",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md"
+                "file": "基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md"
               }
             }
           },
@@ -143,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/后端/Java/框架/SpringBoot/JUnit5/JUnit5.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,6 +171,8 @@
   },
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/后端/Java/框架/SpringBoot/JUnit5/assets/image.png",
+    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Move/Move.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
@@ -182,7 +183,6 @@
     "基础/Tool/Linux/Linux.md",
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/道路/道路.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/思想/设计模式/设计模式.md",
     "基础/思想/架构/DDD架构.md",
@@ -203,7 +203,6 @@
     "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "02-Code/基础",
     "02-Code",
-    "基础/后端/Java/JavaWeb开发规范.md",
     "实习/assets/OAuth.png",
     "实习/assets/image-20240628110945338.png",
     "实习/assets/image-20240604174153000.png",
