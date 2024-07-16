@@ -236,3 +236,131 @@ Solana 账户模型中还有一个特殊的「租金（Rent）」的概念。租
 ●**executable**：表示是否可执行，如果为true，表示该账户中的数据可以被执行，是程序账户。如果为false，表示该账户用于存储普通的数据，而不是可执行代码。
 
 ●**rent_epoch**：表示下一次该账户将被扣除租金的时期。Solana使用租金机制来防止账户被无限期占用而不使用，避免状态膨胀。
+
+## 1.5 PDA
+
+### 1.5.1 什么是 PDA？
+
+在Solana区块链中，PDA指的是“程序派生地址”（Program Derived Address）。这是一种特殊类型的地址，由 Solana 的程序生成，而不是由用户的私钥直接派生。**PDA的主要目的是允许程序拥有和控制某些数据或资产，而不需要传统的私钥签名**。
+
+读到这还一头雾水吗，没关系让我们把这个概念拆开做更详细的解释。
+
+### 1.5.2 私钥、公钥与助记词
+
+Solana 和以太坊一样，有私钥、公钥、助记词三种东西。私钥是私自保管不可示人的，当我们授权某一笔交易时，我们需要通过私钥签名并“授权”该交易。私钥是一串乱码，不好记，与之对应有一串助记词。助记词可以通过算法推出私钥，所以实际上我们在使用钱包时，只要记住助记词。而我们可以通过加密算法从私钥推算出公钥。公钥是可以展示给别人看的，别人通过你的公钥给你转账，同时公钥也是程序的地址，也叫 program_id。
+
+要注意的是我们只能从助记词通过加密算法推算出私钥，从私钥推算出公钥，而无法反向从公钥推算出私钥，从私钥推算出助记词。否则我们所有加密地址中的代币都可以被任何人控制了。这其中的过程通过ECDSA算法进行计算，如果希望了解具体的原理可以先从了解 ECDSA算法开始。但是理解 PDA 账户可以不必这么深入，让我们先把这个过程进行一个简化。
+
+这就是 PDA 的原理，“程序派生地址”（Program Derived Address）是没有对应的私钥的，它是由一个程序的program_id和seed派生/衍生出来的，这也是为什么它被称之为“程序派生地址”（Program Derived Address）。有时候我们通过 program_id 和 seed 获得的公钥正好有对应的私钥，那么这种情况下我们就需要重新生成一个公钥，通常是在我们的 program_id 和 seed 之外再加上一个数字（这个数字有个专有名词叫 bump），这个数字从 255 开始，依次往下，直到生成的公钥没有私钥为止。
+
+### 1.5.3 那我们为什么需要 PDA
+
+在区块链中，你需要一个私钥来证明你拥有一个公钥的所有权，同时你才能签字同意这个账户的转账请求。但如果这个账户的所有者不是一个人而是一个去中心化程序，那么把私钥放在这个程序上就不是一个好主意，因为所有程序代码都在链上都是公开的，如果所有人都能看到你的私钥，那么人们就能进行一些恶意操作，比如偷走你的代币。这时我们就需要一个没有私钥的 PDA。 这样程序不需要私钥就能对一个地址进行签名操作。
+
+### 1.5.4 如何生成 PDA 地址
+
+这里我们使用 Solana 的Anchor开发框架，实现 PDA 账户的初始化（Anchor 框架我们会在后续章节专门介绍，这里只是让大家简单了解下 PDA 账户的生成过程）。
+
+```javascript
+// PDA 账户存储的数据
+pub struct Counter {
+    count: u64
+}
+```
+
+这个 PDA 账户存储的是Counter结构的数据，它包含了一个u64类型的count值。
+
+```javascript
+pub struct InitializeAccounts<'info> {
+		#[account(
+			init, 
+			seeds = [b"my_seed", 
+							 user.key.to_bytes().as_ref()
+							]
+			bump,
+			payer = user, 
+			space = 8 + 8
+		)]
+		pub pda_counter: Account<'info, Counter>,
+}
+```
+
+其中的pda_counter字段为要生成的PDA 账户，我们标记了初始化时用到的seeds值及bump，其中的 seeds 可以是根据业务场景设置的任意字节数组，Anchor 默认使用符合条件的第一个 bump 值，不需要我们手动指定，同时Anchor 内部也会自动获取program_id，同样不需要我们手动指定。
+
+但是我们需要指定账户所占用的空间大小space以及支付初始化交易费的账户payer。这里指定账户的空间大小为16个字节，前 8 个字节存储 Anchor 自动添加的鉴别器，用于识别帐户类型。接下来的 8 个字节为存储在Counter帐户类型中的数据分配空间（count为 u64 类型，占用 8 字节），space 主要用于计算账户在网络中的租金。
+
+以上就是生成 PDA 账户的部分代码示意，虽然并不完整，但向我们展示了 PDA 账户涉及到的相关内容：program_id 程序ID、seed 种子、bump 值、space 空间。后续章节会进行详细的介绍。
+
+## 1.6 程序
+
+### 1.6.1 什么是程序
+
+Solana 程序，在其他链上叫做智能合约，是所有链上活动的基础。任何开发者都可以在 Solana 链上编写以及部署程序。 链上的一切活动，从去中心化金融（DeFi），到非同质化代币（NFT），再到社交媒体，链上游戏，都由Solana程序所驱动。
+
+### 1.6.2 Solana 的**程序有哪几种**
+
+通常可以分为以下两种：
+
+**On-chain Programs：**这些是部署在 Solana 上的用户编写的程序，由开发者在 Solana 网络上根据具体业务场景开发的程序。它们可以通过升级权限进行升级，该权限通常是部署程序的帐户或者指定的其他账户。
+
+**Native programs：**这些是集成到 Solana 核心模块中的程序。它们提供了验证节点（validator）运行所需的基本功能。native programs 只能通过网络范围内的软件更新进行升级。常见的原生程序有 [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program)、[BPF Loader Program](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) 、[Vote program](https://docs.solana.com/developing/runtime-facilities/programs#vote-program) 和 [Solana Program Libraries - SPL](https://spl.solana.com/)等。其中 [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) 这个程序负责管理建立新账户以及在两个账户之间转账SOL。[Solana SPL](https://spl.solana.com/) 程序定义了一系列的链上活动，其中包括针对代币的创建，交换，借贷，以及创建质押池，维护链上域名解析服务等。
+
+### Solana 的**程序有特点？**
+
+Solana 程序模型的显着特征之一是**代码和数据的分离**。程序存储在程序账户中，它是无状态的，这意味着它们不会在内部存储任何状态，但它是可执行的executable，会执行相应的逻辑。相反，它们需要操作的所有数据都存储在单独的数据帐户中，这些帐户在 Transaction 交易中通过引用传递给程序账户，因为它本身是不可执行的。
+
+
+Solana中将**程序和状态**分离的设计，这是很多以太坊开发者来到Solana生态最大的困惑，但这样的设计确实带来了很大的好处：
+
+程序可以独立于状态进行开发、测试、部署和升级，提高了程序的可重用性和可扩展性。相反在以太坊中，智能合约和状态是绑定到一起的，合约的升级是一件非常麻烦的事情，必须通过代理模式间接实现逻辑和状态的分离，才可以进行逻辑的升级，并且在新的智能合约中，新增变量的处理要非常小心，避免存储布局 Layout 冲突，覆盖掉旧变量。
+
+此外，由于状态数据是以账户的形式存储在网络中，因此可以方便地进行分片和并行处理，从而提高了 Solana 网络的吞吐量和效率。
+
+所以，Solana中的程序和状态分离的设计提高了程序的可重用性和可扩展性，同时也提高了Solana网络的吞吐量和效率，使得网络的升级和维护变得更加容易。
+
+### **如何编写程序**
+
+这里我们看一个简单的 solana 程序，这是 Rust 编写的 hello world 程序，实现了简单的日志打印。通常我们将程序写在lib.rs文件中：
+
+
+
+```javascript
+// 引入 Solana 程序的相关依赖
+use solana_program::{
+    account_info::AccountInfo,
+    entrypoint,
+    entrypoint::ProgramResult,
+    pubkey::Pubkey,
+    msg
+};
+
+// 程序入口点
+entrypoint!(process_instruction);
+
+// 指令处理逻辑
+pub fn process_instruction(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    instruction_data: &[u8]
+) -> ProgramResult{
+    msg!("Hello, world!");
+
+    Ok(())
+}
+```
+
+所有的程序都有一个单独的入口点，类似于 Rust 中的main函数，指令的执行就是从这里开始的（即process_instruction），参数须包括：
+
+●program_id: pubkey （程序ID，即程序地址）
+
+●accounts: AccountInfo数组，指令所涉及的账户集合。
+
+●instruction_data: byte array字节数组，即指令所需的参数，该例子中并没有用到。
+
+在实际的项目中，通常不会把所有逻辑都写在lib.rs文件中，为了更清晰的划分功能模块，大部分程序遵循以下架构：
+
+![image](./assets/83a4fb39-c5ea-496a-a1bc-e4c53ea5ec79.webp)
+
+Preview
+
+最近，[Anchor](https://www.anchor-lang.com/) 逐渐成为了一个广受欢迎的Solana程序开发框架，它通过减少样板代码并简化序列化和反序列化来简化程序的创建。在后续的章节，我们也会有专门的介绍。
