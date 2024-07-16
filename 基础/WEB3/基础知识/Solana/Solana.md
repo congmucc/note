@@ -305,7 +305,7 @@ Solana 程序，在其他链上叫做智能合约，是所有链上活动的基�
 
 **Native programs：**这些是集成到 Solana 核心模块中的程序。它们提供了验证节点（validator）运行所需的基本功能。native programs 只能通过网络范围内的软件更新进行升级。常见的原生程序有 [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program)、[BPF Loader Program](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) 、[Vote program](https://docs.solana.com/developing/runtime-facilities/programs#vote-program) 和 [Solana Program Libraries - SPL](https://spl.solana.com/)等。其中 [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) 这个程序负责管理建立新账户以及在两个账户之间转账SOL。[Solana SPL](https://spl.solana.com/) 程序定义了一系列的链上活动，其中包括针对代币的创建，交换，借贷，以及创建质押池，维护链上域名解析服务等。
 
-### Solana 的**程序有特点？**
+### 1.6.3 Solana 的**程序有特点？**
 
 Solana 程序模型的显着特征之一是**代码和数据的分离**。程序存储在程序账户中，它是无状态的，这意味着它们不会在内部存储任何状态，但它是可执行的executable，会执行相应的逻辑。相反，它们需要操作的所有数据都存储在单独的数据帐户中，这些帐户在 Transaction 交易中通过引用传递给程序账户，因为它本身是不可执行的。
 
@@ -318,7 +318,7 @@ Solana中将**程序和状态**分离的设计，这是很多以太坊开发者�
 
 所以，Solana中的程序和状态分离的设计提高了程序的可重用性和可扩展性，同时也提高了Solana网络的吞吐量和效率，使得网络的升级和维护变得更加容易。
 
-### **如何编写程序**
+### 1.6.4 **如何编写程序**
 
 这里我们看一个简单的 solana 程序，这是 Rust 编写的 hello world 程序，实现了简单的日志打印。通常我们将程序写在lib.rs文件中：
 
@@ -364,3 +364,111 @@ pub fn process_instruction(
 Preview
 
 最近，[Anchor](https://www.anchor-lang.com/) 逐渐成为了一个广受欢迎的Solana程序开发框架，它通过减少样板代码并简化序列化和反序列化来简化程序的创建。在后续的章节，我们也会有专门的介绍。
+
+
+
+## 1.7 交易与指令
+
+### 1.7.1 **交易（Transaction）**
+
+交易是一组原子性的操作，代表对区块链状态的一系列更改，包括转账代币、调用程序、更新账户状态等。每个交易都具有唯一的签名，并由一个或多个指令组成。交易费用的支付通常使用 Solana 的原生代币 SOL。
+
+**签名：**每个交易都必须由一个或多个账户的私钥进行签名，以确保交易的身份和完整性。
+
+### 1.7.2 **指令（Instruction）**
+
+指令是交易中的一条具体指令，包含执行指令所需的具体数据，可以包括执行指令的程序唯一标识 program_id、账户列表、指令参数、配置信息等，用于执行一个特定的操作。
+
+多个指令组成的交易可以实现多个不同的操作，形成一个**原子性**的事务。
+
+当我们需要通过 Solana 发起一笔转账，或者调用一个程序时我们就需要通过交易（Transaction）来来完成。每个交易都包含：
+
+●instructions：一个或多个指令
+
+●blockhash：最新的块哈希值
+
+●signatures：指令对应的发起人的签名
+
+我们通过交易与 Solana 发生交互，而交互的最小单元就是交易中的指令（Instruction）。一个交易可以打包多个指令，指令指定调用哪个程序，要读取或修改哪些账户，以及执行程序需要的额外数据。
+
+在进行一笔转账交易后我们可以在区块链浏览器查看相关操作，就可以看见一笔转账交易包含了三个指令: **Compute Budget: Set Compute Unit Price**， **Compute Budget：Set Compute Unit Limit**和 **Sol Transfer**
+
+> **Set Compute Unit Price**： 设置单个CU的价格
+>
+> **Set Compute Unit Limit**：设置最多能消耗的CU的数量
+>
+> **Transfer**: 进行一次转账
+
+## 1.8 交易费与确认
+
+### 1.8.1 交易费用
+
+我们在上一章提到什么是交易与指令，那么执行一个交易就需要 **Compute unit。**
+
+如果你熟悉 EVM，**CU(Compute unit)**就像是gas fee
+
+当然如果你不熟悉也没关系，Solana 就像个由多个节点连接组成的公共巨型计算机，节点运行者往往需要投入大量的物理资源(如CPU, GPU)来维持巨型计算机的稳定运行，为了奖励节点运行者处理链上大量的交易维持网络的稳定，gas费将做为他们贡献的补偿。
+
+当然 CU 的存在还有一些别的目的，比如：
+
+1.通过对交易引入实际成本，减少网络垃圾
+
+2.设定每笔交易的最低费用金额，为网络提供长期的经济稳定性
+
+因此，当用户在链上发送一笔交易时，往往需要支付一笔手续费用于处理交易中所包含的指令。
+
+### 1.8.2 CU最大限制
+
+由于每笔交易中所包含的指令调用数量和数据量的不同，每笔交易都设定了**最大的CU限制**——”**compute budget**”以确保单笔交易的数据量不会过大从而造成网络的拥堵。
+
+每条指令的执行都会消耗不同数量的CU，在消耗了大量的CU后(即消耗的CU已经超出了”compute budget”所限定的最大CU)，指令运行将停止并返回错误，从而导致交易失败。
+
+### 1.8.3 交易费
+
+在一笔转账交易中，我们可以看到其中包含了对于**CU limit**和**CU price**的设置。
+
+指令Set Compute Unit Price中，可以看到compute budget 程序将每CU的价格设定为 50000 lamports (**1 SOL = 1000,000,000 lamports**)
+
+指令Set Compute Unit Limit中，compute budget程序将该笔交易的CU消耗上限设置为**200,000.** 当一笔交易所有的指令CU消耗超过了200,000时，交易将会失败。
+
+手续费的计算公式为: **CU数量 \* CU价格 = 手续费用**
+
+### 1.8.4 交易的确认
+
+一笔交易在根据在solana网络上的确认程度可以分为以下几类主要状态:
+
+
+
+```javascript
+'processed': 查询已通过连接节点获得1次确认的最新区块
+'confirmed': 查询已通过集群获得1次确认的最新区块
+'finalized': 查询已由集群完成的最新区块
+```
+
+
+
+
+
+## 1.9 加密与钱包
+
+### 1.9.1 什么是 Keypair 密钥对
+
+在 Solana 中，采用了Ed25519 curve非对称加密算法，用于生成数字签名和验证数字签名。与对称加密算法不同，非对称加密使用一对密钥：pubkey公钥和secretkey私钥，如果使用公钥加密，则只有对应的私钥能够进行解密；如果使用私钥加密，则可以使用对应的公钥验证签名，即判断该签名是否由私钥的持有者发起。
+
+Solana 中公钥用作指向网络上帐户的address地址，由于地址本身可读性较差，也可以使用域名系统，如使用example.sol来指向dDCQNnDmNbFVi8cQhKAgXhyhXeJ625tvwsunRyRc7c8这样的地址，使得地址的辨识度更高。
+
+私钥用于验证该密钥对的权限。如果您拥有某个地址的私钥，您就可以控制该地址内的代币。当然，您应该始终对私钥保密。更推荐的做法是使用钱包。
+
+Solana 的[Playground](https://beta.solpg.io/)是一个在线 IDE 工具，用于在浏览器中体验和测试 Solana 区块链的功能，类似于以太坊的Remix开发工具。我们在后续的课程中会大量地使用 Solana Playground。
+
+在 Playground 中，Wallet（钱包）通常是通过 Solana 提供的默认生成机制生成的，包括一个公钥和一个私钥。可以通过该 keypair 密钥对 Playground 中执行各种操作，如创建账户、发送交易等。用户可以通过界面上的相关功能查看和管理生成的钱包。
+
+对于开发环境，我们可以在这个[🚰🚰🚰水龙头](https://faucet.solana.com/)地址领取测试sol，每小时最多10个（后续课程中我们需要用到大量的测试币，请提前领取）。
+
+请注意，由于 Solana Playground 是一个测试和学习工具，生成的钱包主要用于模拟 Solana 区块链上的交互，并不适用于真实的生产环境。在真实的应用中，我们需要更安全和专业的方式来生成和管理钱包。
+
+### Phantom 软件钱包
+
+在进行实际的资产管理时，我们应该使用专业的软件钱包或硬件钱包。
+
+比如，[Phantom](https://phantom.app/) 是 Solana 生态系统中使用最广泛的软件钱包之一。它支持一些最流行的浏览器，并具有用于随时随地连接的移动应用程序。更多的信息，大家可以在它的官网查阅。
