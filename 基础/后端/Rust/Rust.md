@@ -198,6 +198,14 @@ Rust第三方库：[crates.io: Rust Package Registry](https://crates.io/)
 > - 删除库
 >   `cargo rm dependency_name`
 
+```rust
+cargo new (project's name)  //创建一个新的 cargo 项目
+cargo build                 //编译项目
+cargo run                   //对项目进行编译，然后再运行
+```
+
+
+
 
 
 国内源：
@@ -3061,3 +3069,186 @@ pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
 主体函数首先使用`syn::parse`函数解析输入的` TokenStream`，并将其转换为`DeriveInput`类型的`ast`。然后，它调用 `impl_hello_macro`函数，将 `ast` 作为参数传递给它，生成实现`HelloMacro`特征的 Rust 代码，并将其转换为`TokenStream`，并返回给调用者。因此，当用户使用`#[derive(HelloMacro)]`标记了他的类型后，Rust 编译器在编译前会调用 `hello_macro_derive` 函数，生成相应的代码，即宏的展开。
 
 在介绍`impl_hello_macro`函数之前，我们再来回顾下上节提到的Token概念，`Token` 是 Rust 代码的最小单元，它是源代码中的一个元素，代表了语法的一部分。在Rust中，Token可以是关键字、标识符、运算符、符号等。在宏中，我们需要操作和理解这些 Token，以便生成或转换代码。
+
+`syn::parse`调用会返回一个`DeriveInput`结构体来代表解析后的 Rust 代码，后续逻辑我们就是在此基础上调整相应的 Rust 代码，这里大家也许更容易理解为什么说宏是一种元编程了：编写 Rust 代码的代码。
+
+```rust
+DeriveInput {
+	// --snip--
+	vis: Visibility,
+	ident: Ident {
+		ident: "MyStruct",
+		span: #0 bytes(95..103)
+	},
+	generics: Generics,
+	
+	// Data是一个枚举，分别是DataStruct，DataEnum，DataUnion，这里以 DataStruct 为例
+	data: Data(
+		DataStruct {
+			struct_token: Struct,
+			fields: Fields,
+			semi_token: Some(
+				Semi
+			)
+		}
+	)
+}
+```
+
+接下来看下如何构建特征实现的代码，也是过程宏的具体实现逻辑:
+
+```rust
+fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
+    
+    let name = &ast.ident;
+    let gen = quote! {
+				// 实现 HelloMacro 特征
+        impl HelloMacro for #name {
+            fn hello_macro() {
+                println!("Hello, Macro! My name is {}!", stringify!(#name));
+            }
+        }
+    };
+    gen.into()
+}
+```
+
+首先，将结构体的名称赋予给name，也就是 name 中会包含一个字段，它的值是字符串MyStruct。
+
+其次，使用`quote!`可以定义我们想要返回的 Rust 代码。由于编译器需要的内容和` quote!` 直接返回的不一样，因此还需要使用`.into`方法其转换为`TokenStream`。
+
+特征的`hell_macro()`函数只有一个功能，就是使用`println!`打印一行欢迎语句，使用`stringify!`获取`#name`的字面值形式。有了这个宏，我们就可以直接用它来标记结构体
+
+```rust
+#[derive(HelloMacro)]
+struct MyStruct;
+```
+
+
+
+**完整代码**
+
+```rust
+// HelloMacro 宏的定义
+extern crate proc_macro;
+use proc_macro::TokenStream;
+use quote::quote;
+use syn;
+use syn::DeriveInput;
+
+#[proc_macro_derive(HelloMacro)]
+pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
+
+    let ast:DeriveInput = syn::parse(input).unwrap();
+
+    impl_hello_macro(&ast)
+
+}
+
+fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
+    
+    let name = &ast.ident;
+    let gen = quote! {
+				// 派生宏所实现的特征
+        impl HelloMacro for #name {
+            fn hello_macro() {
+                println!("Hello, Macro! My name is {}!", stringify!(#name));
+            }
+        }
+    };
+    gen.into()
+}
+
+
+// 宏的使用
+#[derive(HelloMacro)]
+struct MyStruct;
+
+#[derive(HelloMacro)]
+struct YourStruct;
+
+fn main() {
+    println!("Hello, world!");
+    MyStruct::hello_macro();
+    YourStruct::hello_macro();
+}
+```
+
+
+
+### 5.7.3 过程宏-属性式宏&函数式宏
+
+说明：也有人将其称为 **类属性宏** 和 **类函数宏**，但这里提到的“类”并不是面向对象编程中的class，而是like，类似于的意思，因此这种叫法很容易让人混淆，翻译成“属性式”和“函数式”则更加贴切。
+
+**属性式宏**（attribute-like macro）：定义了可添加到标记对象的新外部属性。这种宏通过`#[attr]`或`#[attr(…)]`方式调用，其中`…`是标记的具体属性（可选）。
+
+
+
+一个属性式宏定义的简单框架如下所示：
+
+```javascript
+use proc_macro::TokenStream;
+
+// 这里标记宏的类型
+#[proc_macro_attribute]
+pub fn custom_attribute(input: TokenStream, annotated_item: TokenStream) -> TokenStream {
+    annotated_item
+}
+```
+
+这里需要注意的是，与派生宏、函数式宏不同，属性式宏有两个输入参数，而不是一个。
+
+●第一个参数是属性名称后面的带分隔符的标记项（即`#[attr(…)]`中(…)的具体内容）。如果只有属性名称（其后不带标记项，比如 `#[attr]`），则这个参数的值为空。
+
+●第二个参数是标记的代码项本身的 Token 流，它可以是被标记的字段、结构体、函数等（见真实用例）。
+
+
+
+如下的代码展示了一些常见的属性式宏：`#[cfg(…)]`是根据条件编译的属性宏、`#[test]`是用于标记测试函数的属性宏、`#[allow(...)]`和 `#[warn(...)]`控制编译器的警告级别。
+
+```rust
+// 用于根据条件选择性地包含或排除代码
+#[cfg(feature = "some_feature")]
+fn conditional_function() {
+    // 仅在特定特性启用时才编译此函数
+}
+
+#[test]
+fn my_test() {
+    // 测试函数
+}
+
+#[allow(unused_variables)]
+fn unused_variable() {
+    // 允许未使用的变量
+}
+```
+
+
+
+**什么是函数式宏（function-like macro)**
+
+函数式宏采用`proc_macro!`关键字定义，通过`custom_fn_macro!(…)`的方式来调用。但不同于声明式宏使用模式匹配的方式，函数宏则更像是常规的函数调用，可以使用各种 Rust 语法，包括条件语句、循环、模式匹配等，使得它更加灵活和强大。
+
+
+
+```rust
+use proc_macro::TokenStream;
+
+// 这里标记宏的类型
+#[proc_macro]
+pub fn custom_fn_macro(input: TokenStream) -> TokenStream {
+    input
+}
+```
+
+
+
+可以看到，这实际上只是从一个`TokenStream`到另一个`TokenStream`的映射，其中 input 是调用分隔符内的标记项。
+
+例如，对于示例调用`foo!(bar)`，`input` 输入标记流即为`bar`。返回的标记流将替换宏调用。
+
+右侧我们展示了 Rust 中常见的函数式宏，以及 Solana 中anchor 框架的`declare_id!`宏
+
+
+
