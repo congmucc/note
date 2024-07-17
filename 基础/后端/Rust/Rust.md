@@ -2834,3 +2834,230 @@ fn main() {
 
 
 
+## 5.7  宏
+
+> **声明式宏**（Declarative Macros）允许开发者使用宏规则（macro_rules!）创建模式匹配和替换规则，根据匹配到的模式进行代码替换。声明式宏是一种基于文本的宏，它仅仅是简单的文本替换，并没有对语法树进行操作。
+>
+> **过程宏**（Procedural Macros）允许开发者在代码生成阶段使用 Rust 代码来处理输入并生成输出。而非像声明式宏那样匹配对应模式然后以另一部分代码替换当前代码，因此是更为强大和灵活的宏形式，过程宏有三种主要类型：派生宏（derive macros）、属性式宏（attribute-like macros）和函数式宏（function-like macros）。
+
+
+
+### 5.7.1 声明式宏
+
+这里展示了一个简单的声明式宏的定义（使用关键字`macro_rules!`），该宏通过参数个数实现了2种模式匹配机制。
+
+*注意：Rust 编译器对该宏展开后，并不是对2个数进行了求和计算，而是将其展开为2个相加的数字，代码如下：*
+
+```rust
+// 宏的定义
+macro_rules! add {
+	// 匹配 2 个参数，如add!(1,2), add!(2,3)
+    ($a:expr,$b:expr) => {
+        // macro 宏展开的代码
+        {
+            // 表达式相加
+            $a + $b
+        }
+    };
+
+	// 匹配 1 个参数，如 add!(1), add!(2)
+    ($a:expr) => {{
+        $a
+    }};
+}
+
+fn main() {
+	let x = 0;
+    // 宏的使用
+    add!(1, 2);
+    add!(x);
+}
+
+// 宏展开的代码如下
+fn main() {
+	{
+		1 + 2
+	}
+}
+```
+
+**Rust 宏中的 Token 是什么概念？**
+
+Token 是 Rust 代码的最小单元，它是源代码中的一个元素，代表了语法的一部分。在 Rust 中，Token可以是关键字、标识符、运算符、符号等。在宏中，我们需要操作和理解这些 Token，以便生成或转换代码。
+
+```rust
+macro_rules! add {
+    ($a:expr,$b:expr) => {{
+        $a + $b
+    }};
+}
+```
+
+上面的代码中，参数以`$`作为开头，`:`后表明该参数的类型，参数类型通常被称为`Token`，Rust 中常见的 Token 类型有：
+
+
+●表达式（`expr`）：表示 Rust 代码中的表达式，例如` x + y`、`if condition { true } else { false } `等，数字也是一种表达式。
+
+●语句（`stmt`）：表示 Rust 代码中的语句，例如 `let x = 1;`、`println!("Hello, world!"); `等。
+
+●类型（`ty`）：表示 Rust 代码中的类型，例如 `i32`、`bool`、`String `等。
+
+●标识符（`ident`）：表示 Rust 代码中的标识符，例如变量名、函数名、结构体名等。
+
+●通用 Token（`tt`）：表示 Rust 代码中的任意 Token，可以用于匹配和生成任意类型的 Token。
+
+
+
+**声明式宏如何实现比函数更加灵活的功能，如不确定的参数类型、非固定数量的参数等？**
+
+```rust
+macro_rules! add_as {
+    // ty 表示参数类型
+    ($a:expr,$b:expr,$typ:ty) => {
+        $a as $typ + $b as $typ
+    };
+}
+
+fn main() {
+	// 这里 add! 宏可以使用多种数据类型
+    println!("{}", add_as!(0, 2, u8));
+	println!("{}", add_as!(0, 2, u16));
+}
+```
+
+Rust 宏也支持接受非固定数量的参数。操作符与正则表达式非常相似，`*`用于零个或多个标记类型，`+`用于零个或一个参数。
+
+```rust
+macro_rules! add{
+    // 匹配单个参数
+    ($a:expr)=>{
+       $a
+    };
+   // 匹配2个参数
+    ($a:expr,$b:expr)=>{
+       {
+           $a+$b
+       }
+    };
+   // 递归调用
+    ($a:expr,$($b:tt)*)=>{
+        {
+            $a+add!($($b)*)
+        }
+    }
+}
+
+fn main() {
+    println!("{}", add!(1, 2, 3, 4));
+}
+```
+
+重复的标记类型包含在`$()`中，后面跟着一个*或`+`，表示该标记将重复的次数。`$($b:tt)*`表示tt类型的参数`$b`，可以重复0~N次，而`add!($($b)*)`则表示多个`$b`会递归调用`add!`宏，因此也就实现了非固定数量的参数调用。
+
+
+
+
+
+
+
+### 5.7.2 过程宏-派生宏
+
+**派生宏**（Derive Macros）：通常用于为struct结构体、enum枚举、union类型实现Trait特征。使用时通过`#[derive(CustomMacro)]`这样的语法，允许用户轻松地为自定义类型提供一些通用的实现。前文提到三种过程宏(派生宏、属性宏、函数宏)，它们的工作方式都是类似的：**使用 Rust 的源代码作为输入参数，基于代码进行一系列操作后，再输出一段全新的代码。**
+
+```javascript
+use proc_macro::TokenStream;
+
+// 标记类宏的类型
+#[proc_macro_derive(CustomMacro)]
+pub fn custom_macro_derive(input: TokenStream) -> TokenStream {
+    TokenStream::new()
+}
+```
+
+input 输入标记流是添加了 derive 属性的类型，它将始终是 enum、struct 或者 union 类型，因为只有这些类型才可以使用 derive 派生宏。
+
+需要说明的是，过程宏中的**派生宏**输出的代码并不会替换之前的代码，而是在原来代码基础上追加指定宏的 Trait 实现。
+
+
+
+下面的代码我们定义了一个Foo结构体，通常情况下 struct 有许多 Trait 要实现。这里使用了2种方式，一种是常规的impl，另一种是使用宏
+
+```solidity
+struct Foo { x: i32, y: i32 }
+
+// 方式一
+impl Copy for Foo { ... }
+impl Clone for Foo { ... }
+impl Ord for Foo { ... }
+impl PartialOrd for Foo { ... }
+impl Eq for Foo { ... }
+impl PartialEq for Foo { ... }
+impl Debug for Foo { ... }
+impl Hash for Foo { ... }
+
+// 方式二
+#[derive(Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Debug, Hash, Default)]
+struct Foo { x: i32, y: i32 }
+```
+
+这种情况下显然通过derive宏更加方便。但以上两种方式并没有孰优孰劣，**主要在于不同的类型是否可以使用同样的默认特征实现，如果可以，那过程宏的方式可以帮我们减少很多代码实现。**
+
+
+
+**派生宏实现原理**
+
+我们以HelloMacro这个 Trait 特征为例，这里有MyStruct和YourStruct这2个结构体实现了 Trait 特征的hello_macro()函数，并打印出对应的结构体的名称。
+
+```rust
+// 这是一个通用的 Trait 特征
+trait HelloMacro {
+	fn hello_macro();
+}
+
+// 自定义结构体 MyStruct，并实现如上特征
+struct MyStruct;
+impl HelloMacro for MyStruct {
+	fn hello_macro() {
+		println!("Hello, Macro! My name is MyStruct!");
+	}
+}
+
+// 自定义结构体 YourStruct，并实现如上特征
+struct YourStruct;
+impl HelloMacro for YourStruct {
+	fn hello_macro() {
+		println!("Hello, Macro! My name is YourStruct!");
+	}
+}
+
+fn main() {
+	MyStruct::hello_macro();
+	YourStruct::hello_macro();
+}
+```
+
+
+
+这个HelloMacro特征可以对任意结构体使用，并且在打印日志中自动替换成结构体的名称，因此把它定义为宏是比较合适的。按照过程宏定义的模板，我们实现如下的代码：
+
+```rust
+// 引入宏相关的依赖
+extern crate proc_macro;
+use proc_macro::TokenStream;
+use quote::quote;
+use syn;
+use syn::DeriveInput;
+
+// HelloMacro 宏的实现逻辑
+#[proc_macro_derive(HelloMacro)]
+pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
+	let ast:DeriveInput = syn::parse(input).unwrap();
+	impl_hello_macro(&ast)
+}
+```
+
+前几行代码引入了 macro 相关的依赖： Rust 的`quote`和`syn`库，其中 `syn` 库用于解析 Rust 代码的 AST（抽象语法树），而` quote `库用于生成 Rust 代码。
+
+主体函数首先使用`syn::parse`函数解析输入的` TokenStream`，并将其转换为`DeriveInput`类型的`ast`。然后，它调用 `impl_hello_macro`函数，将 `ast` 作为参数传递给它，生成实现`HelloMacro`特征的 Rust 代码，并将其转换为`TokenStream`，并返回给调用者。因此，当用户使用`#[derive(HelloMacro)]`标记了他的类型后，Rust 编译器在编译前会调用 `hello_macro_derive` 函数，生成相应的代码，即宏的展开。
+
+在介绍`impl_hello_macro`函数之前，我们再来回顾下上节提到的Token概念，`Token` 是 Rust 代码的最小单元，它是源代码中的一个元素，代表了语法的一部分。在Rust中，Token可以是关键字、标识符、运算符、符号等。在宏中，我们需要操作和理解这些 Token，以便生成或转换代码。
