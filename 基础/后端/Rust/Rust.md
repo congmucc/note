@@ -419,8 +419,8 @@ let a = 20; // Shadowing Variables
 
   **注意`String`是具有所有权的，而`&str`并没有**
   `&str`可以借用，但是`String`不可以
-
-
+  
+  > `&str` 可以借用是因为它本身就是引用，而 `String` 不能直接借用是因为它拥有其数据的所有权
 
 - **`Struct`中属性推荐使用`String`**
 
@@ -572,6 +572,52 @@ house.print_location();
 > - **`fn print_location(&self)`**: 定义了一个名为 `print_location` 的方法，它接受一个引用到 `self`（即枚举实例自身）作为参数。`&self` 是 Rust 中的方法自引用的惯用写法，意味着这个方法不会获取 `self` 的所有权，仅借用它来读取数据。
 >
 > 这里面有一个关键的思想就是面向函数式编程，而不是面向对象
+
+
+
+
+
+```rust
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+fn main() {
+    let msgs = [
+        Message::Quit,
+        Message::Move { x: 1, y: 3 },
+        Message::ChangeColor(255, 255, 0)
+    ];
+
+    for msg in msgs {
+        show_message(msg);
+    }
+}
+
+fn show_message(msg: Message) {
+    match msg {
+        Message::Move { x, y } => {
+            assert_eq!(x, 1);
+            assert_eq!(y, 3);
+        },
+        // 或者下面的写法
+        Message::Move { x: a, y: b } => {
+            assert_eq!(a, 1);
+            assert_eq!(b, 3);
+        },
+        Message::ChangeColor(_, g, b) => {
+            assert_eq!(g, 255);
+            assert_eq!(b, 0);
+        },
+        _ => println!("no data in these variants")
+    }
+}
+```
+
+
 
 
 
@@ -902,7 +948,7 @@ let s = returns_string(); // 返回值的所有权转移到s
 
 ## 2.4 类型位置与堆栈
 
-### 2.4.1 stack
+### 2.4.1 heap
 
 - **介绍**
 > 1. 堆栈将按照获取值的顺序存储值，并以相反的顺序删除值
@@ -914,8 +960,21 @@ let s = returns_string(); // 返回值的所有权转移到s
 2. `tuple`和`array`
 3. `struct`与枚举等也是存储在栈上 如果属性有`String`等在堆上的数据类型会有指向堆的
 
+一般来说在栈上的数据类型都默认实现了copy，但struct等默认为move，需要Copy只需要设置数据类型实现Copy特质即可，或是调用Clone函数（需要实现Clone特质）
 
-### 2.4.2 heap
+```rust
+let a = 5;
+let b = a; // 这里 a 的值被复制给了 b 没有涉及到搜有权转移
+```
+
+
+
+
+
+
+
+
+### 2.4.2 stack
 - **介绍**
 > 1. 堆的规律性较差，当你把一些东西放到你请求的堆上时，你请求，请求空间，并返回一个指针，这是该位置的地址
 > 2. 长度不确定
@@ -924,9 +983,7 @@ let s = returns_string(); // 返回值的所有权转移到s
 - **存储类型**
 `Box` `Rc` `String/Vec`等
 
-一般来说在栈上的数据类型都默认实现了copy，但struct等默认为move，需要Copy只需要设置数据类型实现Copy特质即可，或是调用Clone函数（需要实现Clone特质）
-
-**栈上的数据基本都有所有权**  [move所有权查看](# 2.3.2 move类型)
+**堆上的数据基本都有所有权**  [move所有权查看](# 2.3.3 move类型)
 
 ```rust
     let x = "ss".to_string();
@@ -1925,6 +1982,90 @@ Trait Object 包含了两个部分的“胖指针”：
 3. 多重实现：类型可以实现多个特质，这允许你将不同的行为组合在一起。
 4. 特质边界：在泛型代码中，你可以使用特质作为类型约束。这被称为特质边界，它限制了泛型类型必须实现的特质。
 5. Trait Alias：Rust 还支持 trait alias，允许你为复杂的 trait 组合创建简洁的别名，以便在代码中更轻松地引l用.
+
+在Rust编程语言中，特质（Trait）是一个非常强大的概念，它提供了多态性和抽象的能力。特质**类似于其他语言中的接口**，但功能更为丰富和灵活。下面是对Rust中特质的一些基本介绍：
+
+#### 1. 定义特质
+
+特质定义了一组方法签名，以及可能的默认实现。一个特质可以定义为：
+
+```
+rusttrait Summary {
+    fn summarize(&self) -> String;
+}
+```
+
+这定义了一个名为 `Summary` 的特质，它有一个方法 `summarize`，接受一个对自身的引用，并返回一个 `String`。
+
+#### 2. 实现特质
+
+任何类型都可以实现一个特质，即使这个类型不是你定义的。例如，假设有一个 `NewsArticle` 类型：
+
+```
+ruststruct NewsArticle {
+    headline: String,
+    location: String,
+    author: String,
+    content: String,
+}
+
+impl Summary for NewsArticle {
+    fn summarize(&self) -> String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+```
+
+这里，`NewsArticle` 实现了 `Summary` 特质，提供了 `summarize` 方法的具体实现。
+
+#### 3. 使用特质作为约束
+
+当定义一个函数或类型时，你可以使用特质作为参数或返回类型的约束。例如：
+
+```
+rustfn notify(item: impl Summary) {
+    println!("Breaking news: {}", item.summarize());
+}
+```
+
+这里，`notify` 函数接受任何实现了 `Summary` 特质的类型。
+
+#### 4. 特质对象
+
+Rust 允许你使用动态调度，即在运行时决定调用哪个方法。这通过使用特质对象来实现：
+
+```
+rustlet article = NewsArticle { /*...*/ };
+let tweet = Tweet { /*...*/ };
+
+let items = vec![Box::new(article) as Box<dyn Summary>, Box::new(tweet)];
+```
+
+这里，`items` 是一个 `Box<dyn Summary>` 的向量，可以存储任何实现了 `Summary` 特质的对象。
+
+#### 5. 默认方法
+
+特质可以有默认实现的方法，这可以减少实现者的工作量：
+
+```
+rusttrait Display {
+    fn display(&self) -> String {
+        format!("Displaying {}", self.describe())
+    }
+
+    fn describe(&self) -> String;
+}
+```
+
+#### 6. 上界和下界
+
+特质可以与其他特质一起使用，形成上界和下界，以限制函数参数的类型范围。
+
+#### 7. 自动特质
+
+Rust 有一些内置的自动特质，如 `Copy` 和 `Clone`，它们不需要显式实现，因为编译器可以自动判断类型是否符合这些特质的要求。
+
+总之，Rust 的特质提供了一种强大且灵活的方式来定义行为的抽象，支持多态和动态调度，同时保持了Rust的类型安全和性能优势。
 
 
 
