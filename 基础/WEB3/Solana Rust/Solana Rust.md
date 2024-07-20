@@ -326,3 +326,70 @@ Anchor 也为前端项目提供了一系列的库和工具，简化了跟链上�
 ## 安装
 
 Anchor 本身是 Rust 写的 Solana 开发框架，同时也支持前端项目，因此它的安装涉及到一系列的依赖，比如 Rust、Solana、Yarn，在完成依赖的安装后，再安装 Anchor 版本管理工具(Anchor Version Manager) avm，如果你熟悉 Nodejs，他就像管理 nodejs 版本的 nvm。 通过avm，我们能更加灵活的使用和管理 Anchor。[安装指南可以看这里](https://www.anchor-lang.com/docs/installation)。
+
+
+
+### 常用指令
+
+1、**创建新项目**：这个命令用于创建一个新的 Anchor 项目，包含了 demo 代码，你可以用自己的项目名称替换 **my_project** 。
+
+```rust
+anchor init my_project
+```
+
+2、**构建新的程序（智能合约）**：这个命令用于构建和编译程序。它会在target/deploy目录下生成编译后的合约二进制文件。如果在项目目录下可以省略项目名称。
+
+```bash
+anchor build [my_project]
+```
+
+**3**、**测试程序逻辑**：运行这个命令会执行程序的测试套件，确保程序的功能正常。
+
+```bash
+anchor test
+```
+
+4**、部署程序到指定网络**：Solana 的 devnet 是一个专门用于开发和测试的网络，通常我们会把项目先部署在本地或者开发测试网进行验证，验证通过后部署到主网 mainnet-beta。
+
+```rust
+// 部署到开发测试网
+anchor deploy --env devnet
+// 部署到主网
+anchor deploy --env mainnet-beta
+```
+
+### 项目目录结构
+
+创建完项目 **my_project** 后，我们进入 **my_project** 文件夹， 可以看到 Anchor 自动生成的文件和目录：
+
+```bash
+my_project/
+├── Anchor.toml
+├── programs/
+│   └── my_program/
+│       ├── Cargo.toml
+│       ├── src/
+│       │   └── lib.rs
+│       └── tests/
+│           └── program_test.rs
+├── target/
+└── tests/
+    └── integration_test.rs
+```
+
+这是一个简化的结构，提供了一个基本的框架，使你能够开始编写、测试和部署程序。在具体的项目中，你可能需要根据需求添加其他文件和目录，例如配置文件、文档等。以下是一些关键文件和目录的说明：
+
+●**Anchor.toml****：** 项目的配置文件，包含项目的基本信息、依赖关系和其他配置项。
+
+●**programs**目录**：** 包含你的程序的目录。在这个例子中，有一个名为**my_program**的子目录。
+
+●**Cargo.toml****：** 程序的Rust项目配置文件。
+
+●**src**目录**：** 包含实际的程序代码文件，通常是**lib.rs**，在实际的项目中我们会根据模块划分，拆的更细。
+
+●**tests**目录**：** 包含用于测试程序的测试代码文件。
+
+●**target**目录**：** 包含构建和编译生成的文件。
+
+●**tests**目录**：** 包含整合测试代码文件，用于测试整个项目的集成性能。
+
