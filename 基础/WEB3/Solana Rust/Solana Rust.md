@@ -329,6 +329,32 @@ Anchor 本身是 Rust 写的 Solana 开发框架，同时也支持前端项目�
 
 
 
+```sh
+
+C:\Users\Administrator>solana-keygen new
+Generating a new keypair
+
+For added security, enter a BIP39 passphrase
+
+NOTE! This passphrase improves security of the recovery seed phrase NOT the
+keypair file itself, which is stored as insecure plain text
+
+BIP39 Passphrase (empty for none):
+
+
+Wrote new keypair to C:\Users\Administrator\.config\solana\id.json
+=====================================================================
+pubkey: GhuT9vp4JnLEYBsDFFAShUXekw4nSEq8XZyrsc8efPNu
+=====================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+coyote honey kit valve excuse nominee farm fan trick board quote tone
+=====================================================================
+```
+
+
+
+
+
 ### 常用指令
 
 1、**创建新项目**：这个命令用于创建一个新的 Anchor 项目，包含了 demo 代码，你可以用自己的项目名称替换 **my_project** 。
