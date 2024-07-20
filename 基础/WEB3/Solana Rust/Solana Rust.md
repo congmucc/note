@@ -419,3 +419,46 @@ my_project/
 
 ●**tests**目录**：** 包含整合测试代码文件，用于测试整个项目的集成性能。
 
+
+
+`anchor help`
+
+```sh
+anchor help
+
+available commands:
+  init      初始化一个工作空间。
+  build     构建整个工作空间。
+  expand    展开宏（cargo expand 的包装）。
+  verify    验证链上字节码是否与本地编译的构件匹配。在程序子目录中运行此命令，即包含程序的 Cargo.toml 文件的目录。
+  test      在本地网络运行集成测试。
+  new       创建一个新的程序。
+  idl       与接口定义语言（IDL）交互的命令。
+  clean     从目标目录中删除除程序密钥对之外的所有构建产物。
+  deploy    部署工作空间中的每个程序。
+  migrate   运行部署迁移脚本。
+  upgrade   部署、初始化接口定义并一次性迁移所有内容的命令。升级单个程序。配置的钱包必须是升级权限。
+  cluster   集群命令。
+  shell     启动一个带有 anchor 客户端设置的节点 shell。
+  run       运行由当前工作空间的 anchor.toml 定义的脚本。
+  login     将来自注册表的 API 令牌保存到本地。
+  publish   将经过验证的构建发布到 anchor 注册表。
+  keys      密钥对命令。
+  localnet  本地网络命令。
+  account   使用提供的接口定义获取并反序列化帐户。
+  help      打印此消息或给定子命令的帮助信息。
+```
+
+
+
+
+
+### **anchor init** **和** **anchor new** **有什么区别？**
+
+它们都是用于创建 Anchor 项目的命令，但它们有不同的目的和用法：
+
+1.`anchor init` ：初始化工作空间，该命令会创建一个包含基本项目结构和配置文件的工作空间。你需要指定一个工作空间的名称，例如 `anchor init my_workspace` 中的 `my_workspace`。
+
+2.`anchor new`：创建新程序，创建一个新的 Anchor 程序（智能合约），包括相关的目录和文件。你需要指定一个程序的名称，例如 `anchor new my_program` 中的`my_program`。
+
+通常，你会首先使用anchor init初始化一个工作空间，然后使用anchor new在该工作空间中创建一个或多个程序。
