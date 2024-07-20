@@ -1,6 +1,6 @@
 # 1 介绍
 
-
+[关于本书 - Rust语言圣经(Rust Course)](https://course.rs/about-book.html)
 
 ## 1.1 Rust特点
 
@@ -2710,6 +2710,138 @@ fn main() {
 
 
 ## 5.4 线程
+
+### 5.4.1 线程的基本使用
+
+**创建线程**
+
+使用 `thread::spawn` 可以创建线程：
+
+```rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {} from the spawned thread!", i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!("hi number {} from the main thread!", i);
+        thread::sleep(Duration::from_millis(1));
+    }
+}
+```
+
+> ```rust
+> hi number 1 from the main thread!
+> hi number 1 from the spawned thread!
+> hi number 2 from the main thread!
+> hi number 2 from the spawned thread!
+> hi number 3 from the main thread!
+> hi number 3 from the spawned thread!
+> hi number 4 from the main thread!
+> hi number 4 from the spawned thread!
+> ```
+>
+> - 线程内部的代码使用闭包来执行
+> - `main` 线程一旦结束，程序就立刻结束，因此需要保持它的存活，直到其它子线程完成自己的任务
+> - `thread::sleep` 会让当前线程休眠指定的时间，随后其它线程会被调度运行，因此就算你的电脑只有一个 CPU 核心，该程序也会表现的如同多 CPU 核心一般，这就是并发！
+
+
+
+
+
+通过调用 `handle.join`，可以让当前线程阻塞，直到它等待的子线程的结束，
+
+
+
+```rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..5 {
+            println!("hi number {} from the spawned thread!", i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    handle.join().unwrap();
+
+    for i in 1..5 {
+        println!("hi number {} from the main thread!", i);
+        thread::sleep(Duration::from_millis(1));
+    }
+}
+```
+
+### 5.4.2 在线程闭包中使用 move
+
+可以使用 `move` 来将所有权从一个线程转移到另外一个线程。
+
+首先，来看看在一个线程中直接使用另一个线程中的数据会如何：
+
+```rust
+use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(|| {
+        println!("Here's a vector: {:?}", v);
+    });
+
+    handle.join().unwrap();
+}
+```
+
+其实代码本身并没有什么问题，问题在于 Rust 无法确定新的线程会活多久（多个线程的结束顺序并不是固定的），所以也无法确定新线程所引用的 `v` 是否在使用过程中一直合法：
+
+```rust
+use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(|| {
+        println!("Here's a vector: {:?}", v);
+    });
+
+    drop(v); // oh no!
+
+    handle.join().unwrap();
+}
+```
+
+大家要记住，线程的启动时间点和结束时间点是不确定的，因此存在一种可能，当主线程执行完， `v` 被释放掉时，新的线程很可能还没有结束甚至还没有被创建成功，此时新线程对 `v` 的引用立刻就不再合法！
+
+好在报错里进行了提示：`to force the closure to take ownership of v (and any other referenced variables), use the `move` keyword`，让我们使用 `move` 关键字拿走 `v` 的所有权即可：
+
+```rust
+use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(move || {
+        println!("Here's a vector: {:?}", v);
+    });
+
+    handle.join().unwrap();
+
+    // 下面代码会报错borrow of moved value: `v`
+    // println!("{:?}",v);
+}
+```
+
+如上所示，很简单的代码，而且 Rust 的所有权机制保证了数据使用上的安全：`v` 的所有权被转移给新的线程后，`main` 线程将无法继续使用：最后一行代码将报错。
+
+
 
 
 

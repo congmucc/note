@@ -1,3 +1,5 @@
+## 错误处理
+
 ### ProgramResult 枚举
 
 ProgramResult是 solana 中定义的一个通用错误处理类型，它是solana_program中的一个结构体，具体如下：
@@ -37,4 +39,8 @@ pub enum ProgramError {
 		// ……
 }
 ```
+
+
+
+
 
