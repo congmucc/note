@@ -3356,13 +3356,9 @@ fn unused_variable() {
 }
 ```
 
-
-
 **什么是函数式宏（function-like macro)**
 
 函数式宏采用`proc_macro!`关键字定义，通过`custom_fn_macro!(…)`的方式来调用。但不同于声明式宏使用模式匹配的方式，函数宏则更像是常规的函数调用，可以使用各种 Rust 语法，包括条件语句、循环、模式匹配等，使得它更加灵活和强大。
-
-
 
 ```rust
 use proc_macro::TokenStream;
@@ -3374,13 +3370,11 @@ pub fn custom_fn_macro(input: TokenStream) -> TokenStream {
 }
 ```
 
-
-
 可以看到，这实际上只是从一个`TokenStream`到另一个`TokenStream`的映射，其中 input 是调用分隔符内的标记项。
 
 例如，对于示例调用`foo!(bar)`，`input` 输入标记流即为`bar`。返回的标记流将替换宏调用。
 
-右侧我们展示了 Rust 中常见的函数式宏，以及 Solana 中anchor 框架的`declare_id!`宏
+ Rust 中常见的函数式宏，以及 Solana 中anchor 框架的`declare_id!`宏
 
 
 
