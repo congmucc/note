@@ -642,3 +642,20 @@ Context 使用泛型`T`指定了指令函数所需要的账户集合，在实际
 #### `Context<T>` 泛型 T
 
 我们先看下第一个指令函数的泛型T：`InitializeAccounts`，该账户集合有3个账户，第1个为数据账户`pda_counter`，它是该程序的衍生账户，用于存储计数器数据；第2个参数为对交易发起签名的账户`user`，支付了该笔交易费；第3个参数为 Solana 系统账户`system_program`，因为PDA账户需要由系统生成，所以我们也需要这个系统账户。
+
+```rust
+#[derive(Accounts)]
+pub struct InitializeAccounts<'info> {
+		// pda 账户
+    #[account(init, seeds = [b"my_seed", user.key.to_bytes().as_ref()], payer = user, space = 8 + 8)]
+    pub pda_counter: Account<'info, Counter>,
+		// 交易签名账户
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+```
+
+### 指令参数（可选）
+
+在 Anchor 框架中，指令函数的第一个参数ctx是**必须**的，而第二个参数是指令函数执行时传递的额外数据，是**可选**的，是否需要取决于指令的具体逻辑和需求。在initialize中，它被用于初始化计数器的初始值；而在increment中，该指令不需要额外的数据，所以只有ctx参数。
