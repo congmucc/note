@@ -739,3 +739,56 @@ pub user: Signer<'info>,
 pub system_program: Program<'info, System>,
 ```
 
+完整代码
+
+
+
+```rust
+// 引入 anchor 框架的预导入模块
+use anchor_lang::prelude::*;
+
+// 程序的链上地址
+declare_id!("3Vg9yrVTKRjKL9QaBWsZq4w7UsePHAttuZDbrZK3G5pf");
+
+// 指令处理逻辑
+#[program]
+mod anchor_counter {
+    use super::*;
+    pub fn initialize(ctx: Context<InitializeAccounts>, instruction_data: u64) -> Result<()> {
+        ctx.accounts.counter.count = instruction_data;
+        Ok(())
+    }
+
+    pub fn increment(ctx: Context<UpdateAccounts>) -> Result<()> {
+        let counter = &mut ctx.accounts.counter;
+        msg!("Previous counter: {}", counter.count);
+        counter.count = counter.count.checked_add(1).unwrap();
+        msg!("Counter incremented. Current count: {}", counter.count);
+        Ok(())
+    }
+}
+
+// 指令涉及的账户集合
+#[derive(Accounts)]
+pub struct InitializeAccounts<'info> {
+    #[account(init, seeds = [b"my_seed", user.key.to_bytes().as_ref()], payer = user, space = 8 + 8)]
+    pub pda_counter: Account<'info, Counter>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct UpdateAccounts<'info> {
+    #[account(mut)]
+    pub counter: Account<'info, Counter>,
+    pub user: Signer<'info>,
+}
+
+// 自定义账户类型
+#[account]
+pub struct Counter {
+    count: u64
+}
+```
+
