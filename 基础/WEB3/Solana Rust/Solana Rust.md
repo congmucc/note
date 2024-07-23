@@ -614,7 +614,7 @@ mod anchor_counter {
 
 Solana 的 IDL（接口定义语言）和以太坊的 ADSL（Application Binary Interface Description Language）有一些相似之处。它们都是一种用于描述智能合约接口的语言规范，包括合约的数据结构、指令等信息。
 
-### #[program]宏
+### Context
 
 Context是 Anchor 框架中定义的一个结构体，用于封装与 Solana 程序执行相关的上下文信息，**包含了 instruction 指令元数据以及逻辑中所需要的所有账户信息**。它的结构如下：
 
@@ -656,6 +656,86 @@ pub struct InitializeAccounts<'info> {
 }
 ```
 
-### 指令参数（可选）
+#### 指令参数（可选）
 
 在 Anchor 框架中，指令函数的第一个参数ctx是**必须**的，而第二个参数是指令函数执行时传递的额外数据，是**可选**的，是否需要取决于指令的具体逻辑和需求。在initialize中，它被用于初始化计数器的初始值；而在increment中，该指令不需要额外的数据，所以只有ctx参数。
+
+
+
+### Accounts
+
+使用ctx.accounts可以获取指令函数的账户集合InitializeAccounts，它是一个实现了#[derive(Accounts)]派生宏的结构体。该派生宏为结构体生成与 Solana 程序账户相关的处理逻辑，以便开发者能够更方便地访问和管理其中的账户。
+
+```rust
+// anchor_lang::context
+pub struct Context<'a, 'b, 'c, 'info, T> {
+    pub accounts: &'b mut T,
+    // ...
+}
+
+#[program]
+mod anchor_counter {
+    pub fn initialize(ctx: Context<InitializeAccounts>, instruction_data: u64) -> Result<()> {
+        ctx.accounts.counter.count = instruction_data;
+        Ok(())
+    }
+}
+
+#[derive(Accounts)]
+pub struct InitializeAccounts<'info> {
+    #[account(init, payer = user, space = 8 + 8)]
+    pub counter: Account<'info, Counter>,
+    // ...
+} 
+```
+
+
+
+#### #[derive(Accounts)] 宏的介绍
+
+该宏应用于指令所要求的账户列表，实现了给定 struct 结构体数据的反序列化功能，**因此在获取账户时不再需要手动迭代账户以及反序列化操作，并且实现了账户满足程序安全运行所需要的安全检查**，当然，需要#[account]宏配合使用。
+
+1、下面我们看下示例中的InitializeAccounts结构体，当initialize指令函数被调用时，程序会做如下2个校验：
+
+```rust
+#[derive(Accounts)]
+pub struct InitializeAccounts<'info> {
+    #[account(init, seeds = [b"my_seed", user.key.to_bytes().as_ref()], payer = user, space = 8 + 8)]
+    pub pda_counter: Account<'info, Counter>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+```
+
+●**账户类型校验：**传入的账户是否跟InitializeAccounts定义的账户类型相匹配，例如Account、Singer、Program等类型。
+
+●**账户权限校验**：根据账户标注的权限，框架会进行相应的权限校验，例如检查是否有足够的签名权限、是否可以修改等。
+
+如果其中任何一个校验失败，将导致指令执行失败并产生错误。
+
+2、InitializeAccounts结构体中有如下3种账户类型：
+
+2.1、 Account类型：它是AccountInfo类型的包装器，可用于验证账户所有权并将底层数据反序列化为Rust类型。对于结构体中的counter账户，Anchor 会实现如下功能：
+
+```rust
+pub pda_counter: Account<'info, Counter>,
+```
+
+
+① 该账户类型的 Counter 数据自动实现反序列化。
+
+② 检查传入的所有者是否跟 Counter 的所有者匹配。
+
+2.2、Signer类型：这个类型会检查给定的账户是否签署了交易，但并不做所有权的检查。只有在并不需要底层数据的情况下，才应该使用Signer类型。
+
+```rust
+pub user: Signer<'info>,
+```
+
+2.3、Program类型：验证这个账户是个特定的程序。对于system_program 字段，Program 类型用于指定程序应该为系统程序，Anchor 会替我们完成校验。
+
+```rust
+pub system_program: Program<'info, System>,
+```
+
