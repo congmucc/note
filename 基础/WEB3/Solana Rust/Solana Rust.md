@@ -716,7 +716,7 @@ pub struct InitializeAccounts<'info> {
 
 2、InitializeAccounts结构体中有如下3种账户类型：
 
-2.1、 Account类型：它是AccountInfo类型的包装器，可用于验证账户所有权并将底层数据反序列化为Rust类型。对于结构体中的counter账户，Anchor 会实现如下功能：
+2.1、 **Account类型**：它是AccountInfo类型的包装器，可用于验证账户所有权并将底层数据反序列化为Rust类型。对于结构体中的counter账户，Anchor 会实现如下功能：
 
 ```rust
 pub pda_counter: Account<'info, Counter>,
@@ -727,13 +727,13 @@ pub pda_counter: Account<'info, Counter>,
 
 ② 检查传入的所有者是否跟 Counter 的所有者匹配。
 
-2.2、Signer类型：这个类型会检查给定的账户是否签署了交易，但并不做所有权的检查。只有在并不需要底层数据的情况下，才应该使用Signer类型。
+2.2、**Signer类型**：这个类型会检查给定的账户是否签署了交易，但并不做所有权的检查。只有在并不需要底层数据的情况下，才应该使用Signer类型。
 
 ```rust
 pub user: Signer<'info>,
 ```
 
-2.3、Program类型：验证这个账户是个特定的程序。对于system_program 字段，Program 类型用于指定程序应该为系统程序，Anchor 会替我们完成校验。
+2.3、**Program类型**：验证这个账户是个特定的程序。对于system_program 字段，Program 类型用于指定程序应该为系统程序，Anchor 会替我们完成校验。
 
 ```rust
 pub system_program: Program<'info, System>,
@@ -792,3 +792,139 @@ pub struct Counter {
 }
 ```
 
+
+
+## account核心
+
+ Anchor实现的**账户属性约束**：**#[account(..)]**。
+
+```rust
+#[derive(Accounts)]
+struct ExampleAccounts {
+  #[account(
+    seeds = [b"example_seed"],
+    bump
+  )]
+  pub pda_account: Account<'info, AccountType>,
+  
+	#[account(mut)]
+  pub user: Signer<'info>,
+}
+```
+
+### **#[account(..)]** 宏的介绍
+
+它是 Anchor 框架中的一个属性宏，提供了一种声明式的方式来指定账户的初始化、权限、空间（占用字节数）、是否可变等属性，从而简化了与 Solana 程序交互的代码。也可以看成是一种账户属性约束。
+
+**1、初始化一个派生账户地址 PDA ：**它是根据seeds、program_id以及bump动态计算而来的，其中的bump是程序在计算地址时自动生成的一个值（Anchor 默认使用符合条件的第一个 bump 值），不需要我们手动指定。
+
+```rust
+#[account(
+	init, 
+	seeds = [b"my_seed"], 
+	bump,
+	payer = user, 
+	space = 8 + 8
+)]
+pub pda_counter: Account<'info, Counter>,
+pub user: Signer<'info>,
+```
+
+●**init：**Anchor 会通过相关属性配置初始化一个派生帐户地址 PDA 。
+
+●**seeds：**种子（seeds）是一个任意长度的字节数组，通常包含了派生账户地址 PDA 所需的信息，在这个例子中我们仅使用了字符串my_seed作为种子。当然，也可以包含其他信息：如指令账户集合中的其他字段user、指令函数中的参数instruction_data，示意代码如下：
+
+```rust
+#[derive(Accounts)]
+#[instruction(instruction_data: String)]
+pub struct InitializeAccounts<'info> {
+		#[account(
+			init, 
+			seeds = [b"my_seed", 
+			user.key.to_bytes().as_ref(),
+			instruction_data.as_ref()]
+			bump,
+			payer = user, 
+			space = 8 + 8
+		)]
+		pub pda_counter: Account<'info, Counter>,
+		pub user: Signer<'info>,
+}
+```
+
+●**payer：**指定了支付账户，即进行账户初始化时，使用user这个账户支付交易费用。
+
+●**space：**指定账户的空间大小为16个字节，前 8 个字节存储 Anchor 自动添加的鉴别器，用于识别帐户类型。接下来的 8 个字节为存储在Counter帐户类型中的数据分配空间（count为 u64 类型，占用 8 字节）。
+
+**2、验证派生账户地址 PDA ：**有些时候我们需要在调用指令函数时，验证传入的 PDA 地址是否正确，也可以采用类似的方式，只需要传入对应的seeds和bump即可，Anchor就会按照此规则并结合program_id来计算 PDA 地址，完成验证工作。注意：这里不需要init属性。
+
+```rust
+#[derive(Accounts)]
+#[instruction(instruction_data: String)]
+pub struct InitializeAccounts<'info> {
+		#[account(
+			seeds = [b"my_seed", 
+							 user.key.to_bytes().as_ref(),
+							 instruction_data.as_ref()
+							]
+			bump
+		)]
+		pub pda_counter: Account<'info, Counter>,
+		pub user: Signer<'info>,
+}
+```
+
+**3、** **#[account(mut)]** **属性约束：**
+
+●**mut：**表示这是一个可变账户，，即在程序的执行过程中，这个账户的数据（包括余额）可能会发生变化。在Solana 程序中，对账户进行写操作需要将其标记为可变。
+
+
+
+
+
+```rust
+#[derive(Accounts)]
+pub struct InstructionAccounts {
+		// 账户属性约束
+    #[account(init, seeds = [b"mySeeds"], payer = user, space = 8 + 8)]
+    pub account_name: Account<'info, MyAccount >,
+    ...
+}
+
+// 账户结构体上的 #[account] 宏
+#[account]
+pub struct MyAccount {
+    pub my_data: u64,
+}
+```
+
+### **#[account]** 宏的介绍
+
+Anchor 框架中，#[account]宏是一种特殊的宏，它用于处理账户的**（反）序列化**、**账户识别器、所有权验证**。这个宏大大简化了程序的开发过程，使开发者可以更专注于业务逻辑而不是底层的账户处理。它主要实现了以下几个 Trait 特征：
+
+●**（反）序列化**：Anchor框架会自动为使用 #[account] 标记的结构体实现序列化和反序列化。这是因为 Solana 账户需要将数据序列化为字节数组以便在网络上传输，同时在接收方需要将这些字节数组反序列化为合适的数据结构进行处理。
+
+●**Discriminator（账户识别器）**：它是帐户类型的 8 字节唯一标识符，源自帐户类型名称 SHA256 哈希值的前 8 个字节。在实现帐户序列化特征时，前 8 个字节被保留用于帐户鉴别器。因此，在对数据反序列化时，就会验证传入账户的前8个字节，如果跟定义的不匹配，则是无效账户，账户反序列化失败。
+
+●**Owner（所有权校验）**：使用 #[account] 标记的结构体所对应的 Solana 账户的所有权属于程序本身，也就是在程序的**declare_id!**宏中声明的程序ID。上面代码中MyAccount账户的所有权为程序本身。
+
+
+
+
+
+
+
+## 猜数游戏
+
+
+
+```rust
+#[account]
+pub struct GuessingAccount {}
+```
+
+
+
+我们要定义记录数据的结构体，也需要用 #[account] 标记为 Solana 的账户类型，这样就可以在链上存储游戏要记录的数字。
+
+> #[account] 将结构体定义为账户类型，使得结构体能够映射到区块链上的一个账户，存储所需的状态信息，并通过合约中的函数进行访问和修改，同时自动处理数据的序列化、反序列化和验证。
