@@ -716,7 +716,7 @@ pub struct InitializeAccounts<'info> {
 
 2、InitializeAccounts结构体中有如下3种账户类型：
 
-2.1、 **Account类型**：它是AccountInfo类型的包装器，可用于验证账户所有权并将底层数据反序列化为Rust类型。对于结构体中的counter账户，Anchor 会实现如下功能：
+2.1、 **Account类型**：它是AccountInfo类型的包装器，**可用于验证账户所有权并将底层数据反序列化为Rust类型**。对于结构体中的counter账户，Anchor 会实现如下功能：
 
 ```rust
 pub pda_counter: Account<'info, Counter>,
@@ -727,13 +727,17 @@ pub pda_counter: Account<'info, Counter>,
 
 ② 检查传入的所有者是否跟 Counter 的所有者匹配。
 
-2.2、**Signer类型**：这个类型会检查给定的账户是否签署了交易，但并不做所有权的检查。只有在并不需要底层数据的情况下，才应该使用Signer类型。
+2.2、**Signer类型**：这个类型会检查给定的账户是否签署了交易，但并不做所有权的检查。只有在并不需要底层数据的情况下，才应该使用Signer类型。**表示这个账户是一个签名者，即它拥有进行交易或操作的权限。**
 
 ```rust
 pub user: Signer<'info>,
 ```
 
 2.3、**Program类型**：验证这个账户是个特定的程序。对于system_program 字段，Program 类型用于指定程序应该为系统程序，Anchor 会替我们完成校验。
+
+system_program 属性是用于执行Solana上的基本操作，**如账户的创建和管理。这个属性是程序与Solana系统级功能交互的桥梁。**
+
+`<'info> `确保这些引用在整个 **Initialize** 结构体的生命周期内都是有效的。这意味着，只要 **Initialize** 结构体存在，其中的账户数据就可以安全地被访问和使用。
 
 ```rust
 pub system_program: Program<'info, System>,
@@ -928,3 +932,251 @@ pub struct GuessingAccount {}
 我们要定义记录数据的结构体，也需要用 #[account] 标记为 Solana 的账户类型，这样就可以在链上存储游戏要记录的数字。
 
 > #[account] 将结构体定义为账户类型，使得结构体能够映射到区块链上的一个账户，存储所需的状态信息，并通过合约中的函数进行访问和修改，同时自动处理数据的序列化、反序列化和验证。
+
+
+
+
+
+```rust
+use anchor_lang::prelude::*;
+use solana_program::clock::Clock;
+
+declare_id!("11111111111111111111111111111111");
+
+#[program]
+pub mod anchor_bac {
+    use super::*;
+    use std::cmp::Ordering;
+
+    pub fn initialize(ctx: Context<AccountContext>) -> Result<()> {
+        let guessing_account = &mut ctx.accounts.guessing_account;
+        guessing_account.number = generate_random_number();
+        Ok(())
+    }
+
+    pub fn guess(ctx: Context<AccountContext>, number: u32) -> Result<()> {
+        let guessing_account = &mut ctx.accounts.guessing_account;
+        let target = guessing_account.number;
+
+        match number.cmp(&target) {
+            Ordering::Less => return err!(MyError::NumberTooSmall),
+            Ordering::Greater => {
+                return err!(MyError::NumberTooLarge);
+            }
+            Ordering::Equal => return Ok(()),
+        }
+    }
+}
+
+fn generate_random_number() -> u32 {
+    let clock = Clock::get().expect("Failed to get clock");
+    let last_digit = (clock.unix_timestamp % 10) as u8;
+    let result = (last_digit + 1) as u32;
+    result
+}
+
+#[account]
+pub struct GuessingAccount {
+    pub number: u32,
+}
+
+#[derive(Accounts)]
+pub struct AccountContext<'info> {
+    #[account(
+        init_if_needed,
+        space=32,
+        payer=payer,
+        seeds = [b"guessing pda"],
+        bump
+    )]
+    pub guessing_account: Account<'info, GuessingAccount>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    pub system_program: Program<'info, System>,
+}
+
+#[error_code]
+pub enum MyError {
+    #[msg("Too small")]
+    NumberTooSmall,
+    #[msg("Too larget")]
+    NumberTooLarge,
+}
+```
+
+
+
+```ts
+const program = pg.program;
+const seeds = Buffer.from("guessing pda");
+const guessingPdaPubkey = anchor.web3.PublicKey.findProgramAddressSync(
+  [seeds],
+  program.programId
+);
+
+async function initialize() {
+  try {
+    const initializeTx = await program.methods
+      .initialize()
+      .accounts({
+        guessingAccount: guessingPdaPubkey[0],
+        payer: pg.wallet.publicKey,
+        systemProgram: web3.SystemProgram.programId,
+      })
+      .rpc();
+
+    console.log(
+      "Initialize successfully!\n Your transaction signature is:",
+      initializeTx
+    );
+  } catch (errors: any) {
+    console.log(errors);
+  }
+}
+
+async function guessing(number: number) {
+  try {
+    const guessingTx = await program.methods
+      .guess(number)
+      .accounts({
+        guessingAccount: guessingPdaPubkey[0],
+        payer: pg.wallet.publicKey,
+        systemProgram: web3.SystemProgram.programId,
+      })
+      .rpc();
+    console.log("Congratulation you're right!");
+  } catch (errors: any) {
+    console.log(errors.error.errorMessage);
+  }
+}
+
+// initialize();
+guessing(3);
+
+```
+
+
+
+
+
+- 带有权限验证的计数器项目
+
+```rust
+use anchor_lang::prelude::*;
+use std::ops::DerefMut;
+
+declare_id!("4rYU4LZNaM1smqPx3omxBrKkRdUEMQvfFoJ2F3nNYVv5");
+
+#[program]
+pub mod counter {
+    use super::*;
+
+    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+        let counter = ctx.accounts.counter.deref_mut();
+        let bump = ctx.bumps.counter;
+
+        *counter = Counter {
+            authority: *ctx.accounts.authority.key,
+            count: 0,
+            bump,
+        };
+
+        Ok(())
+    }
+
+    pub fn increment(ctx: Context<Increment>) -> Result<()> {
+        require_keys_eq!(
+            ctx.accounts.authority.key(),
+            ctx.accounts.counter.authority,
+            ErrorCode::Unauthorized
+        );
+
+        ctx.accounts.counter.count += 1;
+        Ok(())
+    }
+}
+
+#[derive(Accounts)]
+pub struct Initialize<'info> {
+    #[account(
+        init,
+        payer = authority,
+        space = Counter::SIZE,
+        seeds = [b"counter"],
+        bump
+    )]
+    counter: Account<'info, Counter>,
+    #[account(mut)]
+    authority: Signer<'info>,
+    system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct Increment<'info> {
+    #[account(
+        mut,
+        seeds = [b"counter"],
+        bump = counter.bump
+    )]
+    counter: Account<'info, Counter>,
+    authority: Signer<'info>,
+}
+
+#[account]
+pub struct Counter {
+    pub authority: Pubkey,
+    pub count: u64,
+    pub bump: u8,
+}
+
+impl Counter {
+    pub const SIZE: usize = 8 + 32 + 8 + 1;
+}
+
+#[error_code]
+pub enum ErrorCode {
+    #[msg("You are not authorized to perform this action.")]
+    Unauthorized,
+}
+```
+
+
+
+用户的调用代码
+
+```rust
+const wallet = pg.wallet;
+const program = pg.program;
+const counterSeed = Buffer.from("counter");
+
+const counterPubkey = await web3.PublicKey.findProgramAddressSync(
+  [counterSeed],
+  pg.PROGRAM_ID
+);
+
+const initializeTx = await pg.program.methods
+  .initialize()
+  .accounts({
+    counter: counterPubkey[0],
+    authority: pg.wallet.publicKey,
+    systemProgram: web3.SystemProgram.programId,
+  })
+  .rpc();
+
+let counterAccount = await program.account.counter.fetch(counterPubkey[0]);
+console.log("account after initializing ==> ", Number(counterAccount.count));
+
+const incrementTx = await pg.program.methods
+  .increment()
+  .accounts({
+    counter: counterPubkey[0],
+    authority: pg.wallet.publicKey,
+  })
+  .rpc();
+
+counterAccount = await program.account.counter.fetch(counterPubkey[0]);
+console.log("account after increasing ==>", Number(counterAccount.count));
+```
+
