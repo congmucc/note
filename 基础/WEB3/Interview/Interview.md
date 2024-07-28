@@ -41,13 +41,20 @@ http://web3hc.com
 > 3、[Sui_社区](https://sui.io/)
 > 6、万能文章： https://learnblockchain.cn/article/3682
 > 7、B站万能文章： https://www.bilibili.com/read/cv33484328/
-HackQuestion：
+>
+> 8、[TinTinLand Community (notion.so)](https://www.notion.so/TinTinLand-Community-3f0b56879c57411f9a04dd82ba541e6a)
+>
+> HackQuestion：
 
 > 这条推介绍了每个咱们社区提交的项目，都有 devfolio 的链接，打开有项目GitHub仓库地址。大家可以看看找找灵感
 >
 > https://x.com/HackQuest_/status/1806841299556872215
 >
 > 更新的推特链接在这！https://x.com/HackQuest_/status/1807229270617362544?t=cLyswlxXspPENbFwwqbCjA&s=19
+>
+> 
+>
+> 
 
 
 nexts 教程(前端) https://s.juejin.cn/ds/iFNc8Mkn/
