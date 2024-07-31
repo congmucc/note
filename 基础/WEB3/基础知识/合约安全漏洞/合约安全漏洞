@@ -1,0 +1,40 @@
+## 1.1 普通重入攻击
+
+Re-Entrancy 漏洞本质上是一个状态同步问题。当智能合约调用外部函数时，执行流会转移到被调用的合约。如果调用合约未能正确同步状态，就可能在转移执行流时被再次调用，从而重复执行相同的代码逻辑。
+
+具体来说,攻击往往分两步:
+
+1.被攻击的合约调用了攻击合约的外部函数，并转移了执行流。
+
+2.在攻击合约函数中，利用某些技巧再次调用被攻击合约的漏洞函数。
+
+由于 EVM 是单线程的，重新进入漏洞函数时，合约状态并未被正确更新，就像第一次调用一样。这样攻击者就能够多次重复执行一些代码逻辑，从而实现非预期的行为。典型的攻击模式是多次重复提取资金。
+
+```solidity
+contract EtherStore {
+    mapping(address => uint256) public balances;
+
+    function deposit() public payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw() public {
+        uint256 bal = balances[msg.sender];
+        require(bal > 0);
+
+        (bool sent,) = msg.sender.call{value: bal}("");
+        require(sent, "Failed to send Ether");
+
+        balances[msg.sender] = 0;
+    }
+
+    // Helper function to check the balance of this contract
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+●deposit 函数中，用户可以存入 ETH，得到的 WETH 记录在 balances 状态变量中。
+
+●withdraw 函数中，用户可以提取 ETH，通过 call 低级调用转账给用户，此时执行流转移到用户合约。如果用户合约是一个恶意合约，它可以在默认的 receive 函数中再次回调 withdraw。由于余额未被更新，require 语句会通过检查，攻击合约就能多次重复提取 ETH。
