@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Go/Golang基础/Golang基础.md",
+                "file": "基础/Tool/Linux/Linux.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/后端/Go/Golang基础/Golang基础.md",
+                "file": "基础/Tool/Linux/Linux.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Go/Golang基础/Golang基础.md"
+                "file": "基础/Tool/Linux/Linux.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/后端/Go/Golang基础/Golang基础.md",
+                "file": "基础/Tool/Linux/Linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/后端/Go/Golang基础/Golang基础.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
@@ -178,7 +179,6 @@
     "基础/后端/SQL/Redis/Redis高级.md",
     "基础/后端/SQL/Redis/Redis导学.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
-    "基础/后端/Go/Golang基础/Golang基础.md",
     "实战笔记/项目笔记/Go/模板搭建/模板搭建.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
