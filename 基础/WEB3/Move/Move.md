@@ -121,9 +121,6 @@ sui 1.22.0-0362997459
 
 ```move
 Generated new keypair and alias for address with scheme "ed25519" [xenodochial-zircon: 0xfabe32506438a111fa9cc7db561bea1e47121ef51cdb4e6b73658e90e60a88f5]  
-Secret Recovery Phrase : [winner install they predict timber raw flush own sting garlic winner metal]
-
-ld29959366
 ```
 
 
