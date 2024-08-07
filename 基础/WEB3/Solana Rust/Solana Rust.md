@@ -934,9 +934,6 @@ pub struct GuessingAccount {}
 > #[account] 将结构体定义为账户类型，使得结构体能够映射到区块链上的一个账户，存储所需的状态信息，并通过合约中的函数进行访问和修改，同时自动处理数据的序列化、反序列化和验证。
 
 
-
-
-
 ```rust
 use anchor_lang::prelude::*;
 use solana_program::clock::Clock;
