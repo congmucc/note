@@ -73,6 +73,34 @@ https://b23.tv/kX1W6RD
 前后端都看的部分:开头到1.9
 
 
+Rust:
+> 👉【Rust 一周信息汇总（7.30-8.4）】
+>
+> Rust开发经验总结
+> https://dev.to/digkill_abd82674a0a76249a/experience-developing-in-rust-m6j
+>
+> Rust中的引用和所有权
+> https://dev.to/danielmwandiki/rust-reference-and-ownership-31ic
+>
+> 自己动手用Rust实现WebSocket
+> https://www.thespatula.io/rust/rust_websocket/
+>
+> Rust逆向入门：从反编译视角学习内存模型
+> https://mp.weixin.qq.com/s/mkqVt1I3vq5EZ2R26l5UOQ
+>
+> 大模型时代的操作系统：融合Rust和大模型，vivo打造AI操作系统
+> https://mp.weixin.qq.com/s/MNq6Q5idzUdjKFd_tqBJ8A
+>
+> Rust版fish-shell的首次发布计划
+> https://github.com/fish-shell/fish-shell/issues/10633
+>
+> 如何在Rust中使用命名函数参数
+> https://elastio.github.io/bon/blog/how-to-do-named-function-arguments-in-rust
+>
+> 📍Rust开发者资源库：https://www.notion.so/Rust-ee148e9f9ba64f0db187e51eb62816c6?pvs=4
+>
+> 群内每周干货不断，欢迎朋友们相互学习交流👏
+
 
 
 
