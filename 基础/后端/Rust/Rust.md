@@ -53,9 +53,9 @@ vscode插件
 
 **命令：**
 
-**创建**：`cargo new project_name`
+**创建**：`cargo new project_name` 创建一个可执行的二进制项目，包含一个main函数，可以直接运行
 
-`cargo new --lib project_name `创建一个新的 Rust 库项目的
+`cargo new --lib project_name `创建一个新的 Rust **库项目**的，它没有 `main` 函数，不能直接运行，而是被其他项目依赖或链接。
 
 **构建项目** (生成二进制可执行文件或库文件)：`cargo build`
 
@@ -69,7 +69,7 @@ vscode插件
 
 ## 1.4 项目结构与路径
 
-![image-20240628000841742](./assets/image-20240628000841742.png)
+
 对于Cargo.toml文件：
 
 > package
