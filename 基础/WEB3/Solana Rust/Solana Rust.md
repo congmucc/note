@@ -1537,3 +1537,98 @@ describe('metaplex_nft', () => {
 用前面铸造完成输出的 Mint key 替换掉下面链接的 **Token**，打开链接即可查看：
 
 https://solscan.io/token/DehGx61vZPYNaMWm9KYdP91UYXXLu1XKoc2CCu3NZFNb?cluster=devnet
+
+
+
+
+
+评论区：
+
+- lib.rs
+
+```rust
+use solana_program::{
+    entrypoint,
+    entrypoint::ProgramResult,
+    pubkey::Pubkey,
+    msg,
+    account_info::AccountInfo,
+};
+pub mod instruction;
+use instruction::{MovieInstruction};
+
+
+entrypoint!(process_instruction);
+
+pub fn add_movie_review(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    title: String,
+    rating: u8,
+    description: String
+) -> ProgramResult {
+
+    msg!("正在添加电影评论...");
+    msg!("标题: {}", title);
+    msg!("评分: {}", rating);
+    msg!("描述: {}", description);
+
+    Ok(())
+}
+
+
+pub fn process_instruction(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    instruction_data: &[u8]
+) -> ProgramResult {
+
+    let instruction = MovieInstruction::unpack(instruction_data)?;
+
+    match instruction {
+        MovieInstruction::AddMovieReview { title, rating, description } => {
+            add_movie_review(program_id, accounts, title, rating, description)
+        }
+    }
+}
+```
+
+- instruction.rs
+
+```rust
+use borsh::{BorshDeserialize};
+use solana_program::{program_error::ProgramError};
+
+pub enum MovieInstruction {
+    AddMovieReview {
+        title: String,
+        rating: u8,
+        description: String
+    }
+}
+
+#[derive(BorshDeserialize)]
+struct MovieReviewPayload {
+    title: String,
+    rating: u8,
+    description: String
+}
+
+impl MovieInstruction {
+    pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
+
+        let (&variant, rest) = input.split_first().ok_or(ProgramError::InvalidInstructionData)?;
+
+        let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
+
+        Ok(match variant {
+            0 => Self::AddMovieReview {
+                title: payload.title,
+                rating: payload.rating,
+                description: payload.description },
+            _ => return Err(ProgramError::InvalidInstructionData)
+        })
+    }
+}
+```
+
