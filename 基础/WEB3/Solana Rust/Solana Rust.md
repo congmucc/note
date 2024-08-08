@@ -1,3 +1,4 @@
+https://creatorsdao.github.io/
 ## 错误处理
 
 ### ProgramResult 枚举
@@ -314,6 +315,17 @@ pub fn process_instruction(
 ![image](./assets/bfeaba22-1c19-4925-9f2d-17cd8b69976e.webp)
 
 
+### 租金计算
+```rust
+// 计算存储结构体 NoteState 所需的账户大小
+// 4字节用于存储后续动态数据（字符串）的大小
+// 8字节用于存储64位整数ID
+let account_len: usize = (4 + title.len()) + (4 + body.len()) + 8;
+
+// 计算所需租金
+let rent = Rent::get()?;
+let rent_lamports = rent.minimum_balance(account_len);
+```
 
 # Anchor
 
