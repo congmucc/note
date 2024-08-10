@@ -333,15 +333,22 @@ let rent_lamports = rent.minimum_balance(account_len);
 `CPI`可以使用 `invoke` 或 `invoke_signed` 来实现。
 
 ```
-pub fn invoke(    instruction: &Instruction,    account_infos: &[AccountInfo],) -> ProgramResult
+pub fn invoke(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo],
+) -> ProgramResult
 ```
 
 ```
-pub fn invoke_signed(    instruction: &Instruction,    account_infos: &[AccountInfo],    signers_seeds: &[&[u8]],) -> ProgramResult
+pub fn invoke_signed(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo],
+    signers_seeds: &[&[u8]],
+) -> ProgramResult
 ```
 
 当你不需要签署交易时，使用 `invoke`。当你需要签署交易时，使用 `invoke_signed`。在我们的例子中，我们是唯一可以为`PDA`签署的人，因此我们将使用 `invoke_signed`。
-
+![](assets/Pasted%20image%2020240810220338.png)
 
 
 
