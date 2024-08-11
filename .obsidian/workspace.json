@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "garlic",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,7 +169,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "89576b1119517bb5",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
     "基础/WEB3/Solana Rust/Solana Rust.md",
     "基础/量化交易/量化交易.md",
