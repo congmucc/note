@@ -1209,7 +1209,7 @@ console.log("account after increasing ==>", Number(counterAccount.count));
 
 
 
-- nft
+### nft
 
 使用**Solana CLI** 将网络设置为 **devnet**
 
