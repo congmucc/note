@@ -957,20 +957,9 @@ Anchor 框架中，#[account]宏是一种特殊的宏，它用于处理账户的
 
 
 
-## 猜数游戏
+## Demo
 
-
-
-```rust
-#[account]
-pub struct GuessingAccount {}
-```
-
-
-
-我们要定义记录数据的结构体，也需要用 #[account] 标记为 Solana 的账户类型，这样就可以在链上存储游戏要记录的数字。
-
-> #[account] 将结构体定义为账户类型，使得结构体能够映射到区块链上的一个账户，存储所需的状态信息，并通过合约中的函数进行访问和修改，同时自动处理数据的序列化、反序列化和验证。
+### 猜数游戏
 
 
 ```rust
@@ -1097,7 +1086,7 @@ guessing(3);
 
 
 
-- 带有权限验证的计数器项目
+### 带有权限验证的计数器项目
 
 ```rust
 use anchor_lang::prelude::*;
@@ -1238,7 +1227,7 @@ Keypair Path: /Users/anoushkkharangate/.config/solana/id.json
 Commitment: confirmed
 ```
 
-**使用 Anchor CLI 来****创建项目**
+**使用 Anchor CLI 来** **创建项目**
 
 ```sh
 anchor init metaplex_nft
