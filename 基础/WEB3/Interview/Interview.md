@@ -8,6 +8,14 @@ Upwork : https://www.upwork.com/
 dapp learning: https://dapplearning.org/hiring
 http://web3hc.com
 
+https://web3internships.com
+
+https://web3.career/
+
+https://remote3.co/
+
+
+
 
 
 # 2 简历方面

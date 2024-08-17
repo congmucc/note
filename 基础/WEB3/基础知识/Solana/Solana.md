@@ -545,7 +545,7 @@ NFT（非同质化代币）是基于区块链技术的一种独特的数字资�
 
 https://creatorsdao.github.io/
 
-## Solana Rust
+# Solana Rust
 ## 错误处理
 
 ### ProgramResult 枚举
@@ -2119,7 +2119,7 @@ https://solscan.io/token/DehGx61vZPYNaMWm9KYdP91UYXXLu1XKoc2CCu3NZFNb?cluster=de
 
 
 
-评论区：
+### 评论区
 
 - lib.rs
 
