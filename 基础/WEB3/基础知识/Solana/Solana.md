@@ -1813,6 +1813,32 @@ anchor-spl = "0.24.2"
 mpl-token-metadata = { version = "1.2.5", features = ["no-entrypoint"] }
 ```
 
+本课程将使用强大的 Anchor 框架来开发，因此，首要步骤是导入 Anchor 框架的相关依赖。
+
+1.导入 anchor_lang 的 prelude 模块
+
+```rust
+use anchor_lang::prelude::*;
+```
+
+prelude 模块里包含了我们后续开发所需要的 Anchor 关键模块和函数。
+
+2.导入 anchor_lang 的 invoke 函数
+
+```rust
+use anchor_lang::solana_program::program::invoke;
+```
+
+它可以让我们的程序调用另一个已部署好的外部程序，这在我们后续的铸造 NFT 操作中需要用到。
+
+在 Anchor 框架中，我们使用 declare_id! 宏来指定程序的链上地址。当您第一次构建一个 Anchor 程序时，框架会生成一个新的密钥对。这个密钥对的公钥就是您的程序 ID。
+
+```rust
+declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7EfcYkg476zPFsLnS");
+```
+
+通常情况下，每次基于 Anchor 框架去构建 Solana 程序时，程序 ID 都会有所不同。但是，我们通过 declare_id! 宏可以为程序指定某个固定的 ID，这样后续即使程序升级，它的 ID 仍然不会发生改变。
+
 
 
 ```rust
