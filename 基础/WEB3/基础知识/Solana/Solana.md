@@ -1916,11 +1916,10 @@ pub struct MintNFT<'info> {}
 
 让我们来理解这两行代码的基本构成和作用：
 
-1.`#[derive(Accounts)]`： 回顾下前面 Anchor 基础课，我们知道这个派生宏可以实现对给定结构体数据的反序列化，自动生成账户等操作。
+1. `#[derive(Accounts)]`： 回顾下前面 Anchor 基础课，我们知道这个派生宏可以实现对给定结构体数据的反序列化，自动生成账户等操作。
+   更详细的解释就是，有了这个派生宏，在获取账户时不再需要手动迭代账户以及反序列化操作，并且实现了账户满足程序安全运行所需要的安全检查。
 
-更详细的解释就是，有了这个派生宏，在获取账户时不再需要手动迭代账户以及反序列化操作，并且实现了账户满足程序安全运行所需要的安全检查。
-
-2.`pub struct MintNFT<'info> {}`：这定义了一个名为MintNFT的公共结构体。<'info>是一个生命周期参数，它在这里表明结构体中的所有引用都必须在同一生命周期内有效。
+2. `pub struct MintNFT<'info> {}`：这定义了一个名为MintNFT的公共结构体。<'info>是一个生命周期参数，它在这里表明结构体中的所有引用都必须在同一生命周期内有效。
 
 首先，我们第一个定义的是 **mint_authority** 属性，它负责交易的授权和签名，简而言之，就是定义了谁有权限发起 NFT 铸造操作。
 
@@ -1935,22 +1934,81 @@ pub struct MintNFT<'info> {
     pub mint_authority: Signer<'info>,
     #[account(mut)]
     pub mint: UncheckedAccount<'info>,
+    // #[account(mut)]
+    pub token_program: Program<'info, Token>,
+    #[account(mut)]
+    pub metadata: UncheckedAccount<'info>,
+    #[account(mut)]
+    pub token_account: UncheckedAccount<'info>,
+    pub token_metadata_program: UncheckedAccount<'info>,
+    #[account(mut)]
+    pub payer: AccountInfo<'info>,
+    pub system_program: Program<'info, System>,
+    pub rent: AccountInfo<'info>,
+    #[account(mut)]
+    pub master_edition: UncheckedAccount<'info>,
 }
 ```
 
-●**Signer<'info>**：**mint_authority** 是 Signer 类型，表示进行 NFT 铸造操作的账户，支持进行交易、签名的操作。
+●**`Signer<'info>`**：**mint_authority** 是 Signer 类型，表示进行 NFT 铸造操作的账户，支持进行交易、签名的操作。
 
-●**#[account(mut)]**：这个属性宏表示 **mint_authority** 是一个可变的账户引用。因为在执行铸造过程中，这个账户的状态可能会发生变化（如余额），所以我们需要把这个属性标记为可变的。
+●**`#[account(mut)]`**：这个属性宏表示 **mint_authority** 是一个可变的账户引用。因为在执行铸造过程中，这个账户的状态可能会发生变化（如余额），所以我们需要把这个属性标记为可变的。
 
 ●**UncheckedAccount VS. Account**
 
-**mint** 属性使用 UncheckedAccount 作为账户类型而不是 Account ，因为：
+​	**mint** 属性使用 UncheckedAccount 作为账户类型而不是 Account ，因为：
 
-1.当你使用 Account 类型时，Anchor 框架会自动为你执行一系列检查和验证，例如检查账户的所有权、确保它没有被关闭等；
+1. 当你使用 Account 类型时，Anchor 框架会自动为你执行一系列检查和验证，例如检查账户的所有权、确保它没有被关闭等；
 
-2.而在 NFT 铸造场景，我们使用 UncheckedAccount 可以实现自定义的验证和错误处理，带来了更多的控制权和操作的灵活性。
+2. 而在 NFT 铸造场景，我们使用 UncheckedAccount 可以实现自定义的验证和错误处理，带来了更多的控制权和操作的灵活性。
+
+●**`Program<'info, Token>`**：**token_program** 字段是 Program 类型，表示 Solana 上的程序，泛型使用了 Token 来指定，说明它是负责执行所有与代币相关的操作，如代币的转移、铸造等。
+
+●**`#[account(mut)]`** ：表示 **metadata** 是一个可变的账户引用，因为在 NFT 铸造过程中，账户的状态（如存储的信息）可能会发生变化。
+
+●**token_account** : 这个属性代表了与即将被铸造的 NFT 相关联的代币账户，简而言之，就是程序会将新铸造出来的 NFT 发送到 **token_account** 指定的账户。
+
+●**token_metadata_program** : 它指向一个处理元数据相关的程序，由于我们项目是基于 **Metaplex** 协议进行 NFT 开发，因此 **token_metadata_program** 指向一个 **Metaplex** 的元数据程序。这个程序负责管理和存储与 NFT 相关的所有元数据，比如 NFT 的描述、作者信息等。
+
+●**`AccountInfo<'info>`**：**payer** 帐户使用 **Anchor** 的 AccountInfo 账户类型。Account 帐户类型虽然是一种更安全的帐户声明方式，它也包含 AccountInfo 的所有方法，但它适用在需要对账户进行所有权检查、将底层数据反序列化为指定类型的场景。其次我们将该帐户标记为 `#[account(mut)]`，因为交易时会涉及到交易费用，需要更改帐户的余额。
+
+●**`Program<'info, System>`**：**system_program** 使用 Program 类型，指 Solana 的系统程序（System Program），它是 Solana 区块链的基础组成部分，提供了一系列底层功能，如账户的创建、管理和资金的转移。        在我们项目中定义 **system_program** ，是利用系统程序的基础功能，实现账户的创建和修改。
+
+●**rent** : 它负责 Solana 上的租金系统账户，用于处理账户维护费用
+
+●**master_edition** : 这个属性在 NFT 铸造过程中非常关键，它代表了 NFT 的“Master Edition”，用于管理 NFT 的限量发行和维护其元数据的一致性。  在 Metaplex Solana NFT 标准中，**MasterEditions** 的概念就是一个 “主” NFT，用户在其中要指定需要铸造的副本数量、NFT 的元数据信息，确保其稀缺性和独特性。（后面我们会更详细介绍）
+
+
 
 #### Unit4－铸造NFT
+
+为了实现我们 NFT 铸造，我们需要导入 anchor_spl 库，它可以通过与 Solana 标准程序库（SPL）的交互，实现代币管理等常见的功能。
+
+1.导入 anchor_spl::token 模块。
+
+```rust
+use anchor_spl::token;
+```
+
+它基于 Solana 的代币标准，提供了处理代币相关操作的基础功能。通过导入这个模块，我们就能够在程序中轻松实现代币的创建、转账和查询等操作。
+
+2.导入anchor_spl::token模块中的 **MintTo** 和 **Token** 结构体。
+
+```rust
+use anchor_spl::token::{MintTo, Token};
+```
+
+●**MintTo** 允许我们在程序中铸造新的代币；
+
+●**Token** 是一个代币实例；
+
+
+
+
+
+
+
+
 
 
 
@@ -2075,27 +2133,19 @@ pub mod metaplex_nft {
 pub struct MintNFT<'info> {
     #[account(mut)]
     pub mint_authority: Signer<'info>,
-
-    /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub mint: UncheckedAccount<'info>,
     // #[account(mut)]
     pub token_program: Program<'info, Token>,
-    /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub metadata: UncheckedAccount<'info>,
-    /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub token_account: UncheckedAccount<'info>,
-    /// CHECK: This is not dangerous because we don't read or write from this account
     pub token_metadata_program: UncheckedAccount<'info>,
-    /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub payer: AccountInfo<'info>,
     pub system_program: Program<'info, System>,
-    /// CHECK: This is not dangerous because we don't read or write from this account
     pub rent: AccountInfo<'info>,
-    /// CHECK: This is not dangerous because we don't read or write from this account
     #[account(mut)]
     pub master_edition: UncheckedAccount<'info>,
 }
