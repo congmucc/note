@@ -1815,29 +1815,89 @@ mpl-token-metadata = { version = "1.2.5", features = ["no-entrypoint"] }
 
 本课程将使用强大的 Anchor 框架来开发，因此，首要步骤是导入 Anchor 框架的相关依赖。
 
-1.导入 anchor_lang 的 prelude 模块
 
-```rust
-use anchor_lang::prelude::*;
-```
+2. **导入 Anchor 依赖**
 
-prelude 模块里包含了我们后续开发所需要的 Anchor 关键模块和函数。
+   欢迎来到我们 Solana NFT 课程的第一节课。
 
-2.导入 anchor_lang 的 invoke 函数
+   首先，我们程序初始化的第一步——导入依赖，在这一步骤中我们将学习如何正确地导入所需的库和模块，确保了我们有合适的工具来编写和运行我们的代码。
 
-```rust
-use anchor_lang::solana_program::program::invoke;
-```
+   本课程将使用强大的 **Anchor** **框架**来开发，因此，首要步骤是导入 Anchor 框架的相关依赖。
 
-它可以让我们的程序调用另一个已部署好的外部程序，这在我们后续的铸造 NFT 操作中需要用到。
+   1.导入 anchor_lang 的 prelude 模块
 
-在 Anchor 框架中，我们使用 declare_id! 宏来指定程序的链上地址。当您第一次构建一个 Anchor 程序时，框架会生成一个新的密钥对。这个密钥对的公钥就是您的程序 ID。
+   ```rust
+   use anchor_lang::prelude::*;
+   ```
 
-```rust
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7EfcYkg476zPFsLnS");
-```
+   **prelude** 模块里包含了我们后续开发所需要的 Anchor 关键模块和函数。
 
-通常情况下，每次基于 Anchor 框架去构建 Solana 程序时，程序 ID 都会有所不同。但是，我们通过 declare_id! 宏可以为程序指定某个固定的 ID，这样后续即使程序升级，它的 ID 仍然不会发生改变。
+   2.导入 anchor_lang 的 invoke 函数
+
+   ```rust
+   use anchor_lang::solana_program::program::invoke;
+   ```
+
+   它可以让我们的程序调用另一个已部署好的外部程序，这在我们后续的铸造 NFT 操作中需要用到。
+   
+
+3. **声明程序ID**
+
+   1.导入 anchor_lang 的 prelude 模块
+
+   ```rust
+   use anchor_lang::prelude::*;
+   ```
+
+   prelude 模块里包含了我们后续开发所需要的 Anchor 关键模块和函数。
+
+   2.导入 anchor_lang 的 invoke 函数
+
+   ```rust
+   use anchor_lang::solana_program::program::invoke;
+   ```
+
+   它可以让我们的程序调用另一个已部署好的外部程序，这在我们后续的铸造 NFT 操作中需要用到。
+
+   在 Anchor 框架中，我们使用 declare_id! 宏来指定程序的链上地址。当您第一次构建一个 Anchor 程序时，框架会生成一个新的密钥对。这个密钥对的公钥就是您的程序 ID。
+
+   ```rust
+   declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7EfcYkg476zPFsLnS");
+   ```
+
+   通常情况下，每次基于 Anchor 框架去构建 Solana 程序时，程序 ID 都会有所不同。但是，我们通过 declare_id! 宏可以为程序指定某个固定的 ID，这样后续即使程序升级，它的 ID 仍然不会发生改变。
+
+
+
+4. **定义程序模块**
+
+   1.使用`#[program]`宏：用来定义一个 Solana 程序模块，它包含了程序的相关指令和其他相关操作函数。
+
+   ```rust
+   #[program]
+   ```
+
+   2.定义 metaplex_nft 模块：接下来，我们将定义一个名为metaplex_nft的模块。在这个模块中，我们将编写核心的业务逻辑和智能合约函数。
+
+   ```rust
+   #[program]
+   pub mod metaplex_nft {}
+   ```
+
+   声明为 pub 模块，使模块中的内容可以被外部访问和使用。
+
+   3.导入父模块中的内容
+
+   ```rust
+   1#[program]
+   2pub mod metaplex_nft {
+   3    use super::*;
+   4    // 后续业务逻辑
+   5}
+   ```
+
+   这样，我们就可以直接使用父模块定义的所有组件，而不需要重复声明。
+
 
 
 
