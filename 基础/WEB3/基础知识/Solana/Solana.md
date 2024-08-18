@@ -901,7 +901,7 @@ pub fn invoke_signed(
 ```
 
 当你不需要签署交易时，使用 `invoke`。当你需要签署交易时，使用 `invoke_signed`。在我们的例子中，我们是唯一可以为`PDA`签署的人，因此我们将使用 `invoke_signed`。
-![](./assets/Pasted image 20240810220338.png)
+![](./assets/20240810220338.png)
 
 
 
