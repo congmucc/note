@@ -2006,13 +2006,171 @@ use anchor_spl::token::{MintTo, Token};
 
 
 
+```rust
+#[program]
+pub mod metaplex_anchor_nft {
+    // ... 其他代码 ...
 
+    pub fn mint_nft(
+        ctx: Context<MintNFT>,
+        creator_key: Pubkey,
+        uri: String,
+        title: String) -> Result<()> {
+
+        let cpi_accounts = MintTo {
+            mint: ctx.accounts.mint.to_account_info(),
+            to: ctx.accounts.token_account.to_account_info(),
+            authority: ctx.accounts.payer.to_account_info(),
+        };
+		let cpi_program = ctx.accounts.token_program.to_account_info();
+		let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
+        token::mint_to(cpi_ctx, 1)?;
+    }
+}
+```
+
+
+
+**函数参数：**
+
+●**`ctx: Context<MintNFT>`**：这是一个包含所有必要账户信息的上下文，用于后续执行 NFT 的铸造操作。
+
+●creator_key: Pubkey：创建者的公钥，代表了 NFT 的创建者。
+
+●uri: String：NFT 元数据的 **URI**，通常是指向描述 NFT 详细信息的外部链接。
+
+●title: String：NFT 的标题。
+
+
+
+cpi_accounts **的作用：** 它是一个 **MintTo** 结构体的实例，包含了进行 NFT 铸造操作所需的账户信息，为接下来进行跨程序调用做准备。
+
+●**mint**：指向 NFT 的 mint 账户，用于铸造 NFT。
+
+●**to**：接收铸造 NFT 的目标账户。
+
+●**authority**：执行铸造操作的授权账户，通常是支付交易费用的账户。
+
+> CPI 在 Solana 编程和 Anchor 框架中指的是 "Cross-Program Invocation"，即跨程序调用。这是 Solana 智能合约（程序）之间交互的一种机制，允许一个程序（合约）调用另一个已经部署在 Solana 区块链上的程序的函数或方法。
+>
+> 例如，在 NFT 铸造的过程中，一个程序需要调用 Solana 的 Token Program 来创建新的代币或修改代币的状态。这就是通过 CPI 来实现的，即一个程序（NFT 铸造程序）调用另一个程序（Token Program）的功能。
+
+**cpi_program** 和 **cpi_accounts**，表示铸造代币要调用的程序和相关的账户,使用这些变量来构建 **cpi_ctx**：
+
+●**ctx.accounts.token_program**：这是通过 Anchor 框架 **Context** 传递(**MintNFT**)的 Token Program 的引用 - **token_account**。
+
+●**to_account_info()** **：**将 Anchor 包装账户 **token_account** 转换为 **Solana** 原生的 AccountInfo 类型。
+
+AccountInfo 是 **Solana** 程序之间进行交互时使用的基本账户类型，当我们进行跨程序调用时，需要统一转换为这种基本类型。
+
+
+
+```rust
+token::mint_to(cpi_ctx, 1)?;
+```
+
+●这个函数负责在指定的 **mint** 账户上创建指定数量的代币。在我们使用场景里，铸造数量为 1 的代币，也就是铸造一个新的 NFT。
+
+●cpi_ctx ：封装了 mint 账户、接收账户和授权账户等信息。
 
 
 
 
 
 #### Unit5－添加NFT 元数据
+
+导入 **Metaplex** 协议 mpl_token_metadata 库中的两个相关函数：
+
+1.**create_master_edition_v3**：这一函数用于创建 Master Edition NFT，它会指定关联的元数据账户、最大铸造数量等参数，确保每个 NFT 都是独一无二。
+
+> **Master Edition** 是 Metaplex 协议中的一个特殊概念。它代表了一个NFT的“原版”。拥有 **Master Edition** 的用户可以创建该 NFT 的有限或无限数量的复制品（称为Prints）。 
+>
+> 简而言之，我们第3章创建的 NFT 仅仅是一个普通的Token，MasterEditions 的概念为合约标准增加了更多的可能性，它的目的是建立了一个“主”NFT，用户可以在这个**主 NFT** 指定需要铸造的副本数量。 
+>
+> 这对于艺术家来说是一个重要的功能，因为它允许他们保留原始作品的控制权，同时能够发行多个副本。
+
+2.**create_metadata_accounts_v2**：此函数则是用于在区块链上为每个 NFT 实现创建和存储元数据，包括创作者信息、作品标题等。
+
+```rust
+1use mpl_token_metadata::instruction::{create_master_edition_v3, create_metadata_accounts_v2};
+```
+
+
+
+```rust
+pub fn mint_nft(
+        ctx: Context<MintNFT>,
+        creator_key: Pubkey,
+        uri: String,
+        title: String) -> Result<()> {
+        
+		// ... 前面的代码 ...
+
+		let account_array = vec![
+        ctx.accounts.metadata.to_account_info(),
+        ctx.accounts.mint.to_account_info(),
+        ctx.accounts.mint_authority.to_account_info(),
+        ctx.accounts.payer.to_account_info(),
+        ctx.accounts.token_metadata_program.to_account_info(),
+        ctx.accounts.token_program.to_account_info(),
+        ctx.accounts.system_program.to_account_info(),
+        ctx.accounts.rent.to_account_info(),
+    ];
+}
+```
+
+●**metadata**: 存储 NFT 的元数据信息，例如名称、描述、图片链接等。
+
+●**mint**: NFT 的 mint 账户，用于标识 NFT 的唯一性。
+
+●**mint_authority**: NFT 的铸造授权账户，具有创建 NFT 的权限。
+
+●**payer**: 支付交易费用的账户。
+
+●**token_metadata_program**: Metaplex 的 Token Metadata 程序账户，用于创建和更新 NFT 元数据。
+
+●**token_program**: Solana 的 Token Program 账户，用于执行代币相关操作。
+
+●**system_program**: Solana 的系统程序账户，用于一些程序基本操作。
+
+●**rent**: Solana 网络的租金账户，用于支付数据存储的费用。
+
+
+
+
+
+```rust
+		let creator_arr = vec![
+            mpl_token_metadata::state::Creator {
+                address: creator_key,
+                verified: false,
+                share: 100,
+            },
+            mpl_token_metadata::state::Creator {
+                address: ctx.accounts.mint_authority.key(),
+                verified: false,
+                share: 0,
+            },
+     ];
+```
+
+
+
+**Creator** **中的属性说明：**
+
+●每个 **Creator** 结构体实例代表一个创作者，包括其地址、是否经过验证和其在作品中得到的版税比例。
+
+●**address**: 创作者的地址。
+
+●**verified**: 标记创作者的身份是否被确认和验证。在 NFT 市场上，这可以增加 NFT 的可信度。在这个例子中，初始设置为 *false*。
+
+●**share**: 创作者在版税中所占的比例。
+
+1.主创作者： **address** 字段设置为 **creator_key**，代表了 NFT 的原始创作者。share: 100 表示原创作者拥有所有相关版税的 100%。
+
+2.协助创作者：也就是被授权帮助执行创作的人，他的 **address** 字段设置为 **ctx.accounts.mint_authority.key()**，代表他是 NFT 的铸造授权者。share: 0 表示他在版税中没有份额，通常就是某个协助角色或合作方。
+
+
 
 #### Unit 6 - 创建 NFT Master Edition
 
