@@ -1469,7 +1469,7 @@ pub struct InitializeAccounts<'info> {
 
 **3、** **#[account(mut)]** **属性约束：**
 
-●**mut：**表示这是一个可变账户，，即在程序的执行过程中，这个账户的数据（包括余额）可能会发生变化。在Solana 程序中，对账户进行写操作需要将其标记为可变。
+●**mut：**表示这是一个可变账户，即在程序的执行过程中，这个账户的数据（包括余额）可能会发生变化。在Solana 程序中，对账户进行写操作需要将其标记为可变。
 
 
 
@@ -1762,58 +1762,6 @@ console.log("account after increasing ==>", Number(counterAccount.count));
 ### nft
 
 #### Unit 2-程序初始化
-
-使用**Solana CLI** 将网络设置为 **devnet**
-
-```sh
-solana config set --url devnet
-```
-
-确认网络是否设置生效
-
-```sh
-Config File: /Users/anoushkkharangate/.config/solana/cli/config.yml
-RPC URL: https://api.devnet.solana.com
-WebSocket URL: wss://api.devnet.solana.com/ (computed)
-Keypair Path: /Users/anoushkkharangate/.config/solana/id.json
-Commitment: confirmed
-```
-
-**使用 Anchor CLI 来** **创建项目**
-
-```sh
-anchor init metaplex_nft
-```
-
-找到Anchor.toml 文件，其中 provider 的网络是否设置为 **devnet**
-
-```rust
-[features]
-seeds = false
-[programs.devnet]
-metaplex_nft = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
-
-[registry]
-url = "https://anchor.projectserum.com"
-
-[provider]
-cluster = "devnet"
-wallet = "/Users/<user-name>/.config/solana/id.json"
-
-[scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
-```
-
-**项目导入依赖：**
-
-找到 **programs** 的文件夹，转到 programs/metaplex_nft/Cargo.toml 并添加这些依赖项。
-
-```rust
-[dependencies]
-anchor-lang = "0.24.2"
-anchor-spl = "0.24.2"
-mpl-token-metadata = { version = "1.2.5", features = ["no-entrypoint"] }
-```
 
 本课程将使用强大的 Anchor 框架来开发，因此，首要步骤是导入 Anchor 框架的相关依赖。
 
@@ -2261,6 +2209,60 @@ NFT 的 mint 账户和元数据账户是分开的，但它们通过 NFT 的唯�
 #### Unit 6 - 创建 NFT Master Edition
 
 #### Unit 7－交互
+
+使用**Solana CLI** 将网络设置为 **devnet**
+
+```sh
+solana config set --url devnet
+```
+
+确认网络是否设置生效
+
+```sh
+Config File: /Users/anoushkkharangate/.config/solana/cli/config.yml
+RPC URL: https://api.devnet.solana.com
+WebSocket URL: wss://api.devnet.solana.com/ (computed)
+Keypair Path: /Users/anoushkkharangate/.config/solana/id.json
+Commitment: confirmed
+```
+
+**使用 Anchor CLI 来** **创建项目**
+
+```sh
+anchor init metaplex_nft
+```
+
+找到Anchor.toml 文件，其中 provider 的网络是否设置为 **devnet**
+
+```rust
+[features]
+seeds = false
+[programs.devnet]
+metaplex_nft = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "devnet"
+wallet = "/Users/<user-name>/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+```
+
+**项目导入依赖：**
+
+找到 **programs** 的文件夹，转到 programs/metaplex_nft/Cargo.toml 并添加这些依赖项。
+
+```rust
+[dependencies]
+anchor-lang = "0.24.2"
+anchor-spl = "0.24.2"
+mpl-token-metadata = { version = "1.2.5", features = ["no-entrypoint"] }
+```
+
+
 
 
 ```rust
