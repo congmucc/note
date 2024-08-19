@@ -901,7 +901,23 @@ pub fn invoke_signed(
 ```
 
 当你不需要签署交易时，使用 `invoke`。当你需要签署交易时，使用 `invoke_signed`。在我们的例子中，我们是唯一可以为`PDA`签署的人，因此我们将使用 `invoke_signed`。
+
+- **`invoke`**:
+  - 用于所有账户都已签名的情况。
+  - 不需要额外的种子或签名种子。
+- **`invoke_signed`**:
+  - 用于包含未签名账户（如 **PDA**）的情况。
+  - 需要额外的种子和签名种子来生成派生账户的公钥。
+
+`CpiContext::new(cpi_program, cpi_accounts)`
+
+`CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)`
+
 ![](./assets/20240810220338.png)
+
+![image-20240819203706084](./assets/image-20240819203706084.png)
+
+左边是需要被调用的cpi例子，右边是调用cpi的例子
 
 
 
@@ -1471,10 +1487,6 @@ pub struct InitializeAccounts<'info> {
 
 ●**mut：**表示这是一个可变账户，即在程序的执行过程中，这个账户的数据（包括余额）可能会发生变化。在Solana 程序中，对账户进行写操作需要将其标记为可变。
 
-
-
-
-
 ```rust
 #[derive(Accounts)]
 pub struct InstructionAccounts {
@@ -1505,7 +1517,13 @@ Anchor 框架中，#[account]宏是一种特殊的宏，它用于处理账户的
 
 
 
+## 前端调用
 
+[anchor](https://www.bilibili.com/video/BV118411i7pS/?p=1&t=1860)
+
+![image-20240819204353249](./assets/image-20240819204353249.png)
+
+![image-20240819204413866](./assets/image-20240819204413866.png)
 
 ## Demo
 
