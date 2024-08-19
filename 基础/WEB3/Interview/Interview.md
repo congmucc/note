@@ -82,28 +82,31 @@ https://b23.tv/kX1W6RD
 
 
 Rust:
-> 👉【Rust 一周信息汇总（7.30-8.4）】
+> 👉【Rust 一周信息汇总（8.12-8.18）】
 >
-> Rust开发经验总结
-> https://dev.to/digkill_abd82674a0a76249a/experience-developing-in-rust-m6j
+> Rust 语言中国力量的崛起 ｜ 2024 Rust 中文社区调研报告
+> https://mp.weixin.qq.com/s/0A7-YpM2Nfv6VOpbxItudw
 >
-> Rust中的引用和所有权
-> https://dev.to/danielmwandiki/rust-reference-and-ownership-31ic
+> 通过Flutter实现Rust GUI库的开发
+> https://cjycode.com/posts/rust-ui-flutter/
 >
-> 自己动手用Rust实现WebSocket
-> https://www.thespatula.io/rust/rust_websocket/
+> 用Rust实现Lua解释器
+> https://wubingzheng.github.io/build-lua-in-rust/en/
 >
-> Rust逆向入门：从反编译视角学习内存模型
-> https://mp.weixin.qq.com/s/mkqVt1I3vq5EZ2R26l5UOQ
+> 使用Rust创造175种字体
+> https://chevyray.dev/blog/creating-175-fonts/
 >
-> 大模型时代的操作系统：融合Rust和大模型，vivo打造AI操作系统
-> https://mp.weixin.qq.com/s/MNq6Q5idzUdjKFd_tqBJ8A
+> 使用Rust构建简单的VM
+> https://blog.subnetzero.io/post/building-language-vm-part-01/
 >
-> Rust版fish-shell的首次发布计划
-> https://github.com/fish-shell/fish-shell/issues/10633
+> 使用Rust开发Linux实时应用
+> https://github.com/roboplc/roboplc/
 >
-> 如何在Rust中使用命名函数参数
-> https://elastio.github.io/bon/blog/how-to-do-named-function-arguments-in-rust
+> 夜天之书 #102 从参与 Rust 标准库开发看开源贡献的源动力
+> https://mp.weixin.qq.com/s/VDF1UzLoGqfItuPMicMdiQ
+>
+> 2024 Rust中国大会第二批精彩演讲主题列表
+> https://mp.weixin.qq.com/s/s1gDweRqCOB6B3pKYnEfUA
 >
 > 📍Rust开发者资源库：https://www.notion.so/Rust-ee148e9f9ba64f0db187e51eb62816c6?pvs=4
 >

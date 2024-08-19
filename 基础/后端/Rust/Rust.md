@@ -1863,7 +1863,7 @@ let boxed_point = Box::new(Point { x: 1, y: 2 });
 
 
 
-请转到[5.4 特质](# 5.4 特质)，[5.4.5 Trait与多态和继承](# 5.4.5 Trait与多态和继承)，实现的话是impl
+请转到[5.4 特质](# 5.4 特质)，[5.2.5 Trait与多态和继承](# 5.2.5 Trait与多态和继承)，实现的话是impl
 
 
 
@@ -1972,6 +1972,8 @@ fn main() {
 
 **介绍**：
 
+> **类似于其他语言中的接口**
+
 在Rust中，特质（Traits）是一种定义方法签名的机制
 
 ​	特质允许你定义一组方法的签名，但可以不提供具体的实现（也可以提供）。这些方法签名可以包括参数和返回类型，但可以不包括方法的实现代码。
@@ -1997,8 +1999,8 @@ Trait Object 包含了两个部分的“胖指针”：
 
 特质定义了一组方法签名，以及可能的默认实现。一个特质可以定义为：
 
-```
-rusttrait Summary {
+```rust
+trait Summary {
     fn summarize(&self) -> String;
 }
 ```
@@ -2009,8 +2011,8 @@ rusttrait Summary {
 
 任何类型都可以实现一个特质，即使这个类型不是你定义的。例如，假设有一个 `NewsArticle` 类型：
 
-```
-ruststruct NewsArticle {
+```rust
+struct NewsArticle {
     headline: String,
     location: String,
     author: String,
@@ -2030,8 +2032,8 @@ impl Summary for NewsArticle {
 
 当定义一个函数或类型时，你可以使用特质作为参数或返回类型的约束。例如：
 
-```
-rustfn notify(item: impl Summary) {
+```rust
+fn notify(item: impl Summary) {
     println!("Breaking news: {}", item.summarize());
 }
 ```
@@ -2042,8 +2044,8 @@ rustfn notify(item: impl Summary) {
 
 Rust 允许你使用动态调度，即在运行时决定调用哪个方法。这通过使用特质对象来实现：
 
-```
-rustlet article = NewsArticle { /*...*/ };
+```rust
+let article = NewsArticle { /*...*/ };
 let tweet = Tweet { /*...*/ };
 
 let items = vec![Box::new(article) as Box<dyn Summary>, Box::new(tweet)];
@@ -2055,8 +2057,8 @@ let items = vec![Box::new(article) as Box<dyn Summary>, Box::new(tweet)];
 
 特质可以有默认实现的方法，这可以减少实现者的工作量：
 
-```
-rusttrait Display {
+```rust
+trait Display {
     fn display(&self) -> String {
         format!("Displaying {}", self.describe())
     }
@@ -2382,7 +2384,7 @@ fn main() {
 
 
 
-### 5.4.5 Trait与多态和继承
+### 5.2.5 Trait与多态和继承
 
 首先，需要说明一下，**rust不支持继承**，不支持面向对象，它里面可以**使用层级才代替继承**
 
@@ -2437,6 +2439,7 @@ trait Deque: Queue { // 这里就差不多继承
     fn pop_back(&mut self) -> Option<i32>;
 }
 
+
 #[derive(Debug)]
 struct List {
     data: VecDeque<i32>,
@@ -2490,6 +2493,235 @@ fn main() {
 }
 
 ```
+
+
+
+```rust
+// 定义错误类型
+#[derive(Debug)]
+enum UserFileError {
+    PermissionDenied,
+    ValidationError,
+}
+
+// 定义一个通用的结果类型
+type UserFileResult<T> = Result<T, UserFileError>;
+
+// 定义 `Diff` 枚举，用于标记文件是否被修改
+#[derive(Debug)]
+enum Diff {
+    Unmodified,
+    Modified,
+}
+
+impl Diff {
+    fn to_modified(self) -> Self {
+        Diff::Modified
+    }
+}
+
+// 定义 `Scope` 枚举，用于表示文件标签的作用域（公共或私有）
+#[derive(Debug)]
+enum Scope {
+    Private,
+    Public,
+}
+
+impl Scope {
+    fn to_public(self) -> Self {
+        Scope::Public
+    }
+
+    fn to_private(self) -> Self {
+        Scope::Private
+    }
+}
+
+// `FileTag` 结构体包含文件标签的各种属性
+#[derive(Debug)]
+struct FileTag {
+    color: String,
+    name: String,
+    operator: Option<u64>,
+    user_id: u64,
+    diff: Diff,
+    scope: Scope,
+}
+
+// 实现 `FileTag` 的功能
+impl FileTag {
+    // 定义一个默认颜色
+    pub const DEFAULT_COLOR: &'static str = "#f6f8fa";
+
+    // 返回一个构建器实例
+    pub fn builder() -> FileTagBuilder {
+        FileTagBuilder::default()
+    }
+
+    // 更改操作者
+    pub fn change_operator(&mut self, operator: u64) -> UserFileResult<()> {
+        self.diff = self.diff.to_modified();
+        self.operator = Some(operator);
+        self.validate()?;
+        Ok(())
+    }
+
+    // 更改颜色（需要权限验证）
+    pub fn change_color(&mut self, color: String, user_id: u64) -> UserFileResult<()> {
+        if user_id != self.user_id {
+            return Err(UserFileError::PermissionDenied);
+        }
+        self.diff = self.diff.to_modified();
+        self.color = color;
+        self.validate()?;
+        Ok(())
+    }
+
+    // 更改名称（需要权限验证）
+    pub fn change_name(&mut self, name: String, user_id: u64) -> UserFileResult<()> {
+        if user_id != self.user_id {
+            return Err(UserFileError::PermissionDenied);
+        }
+        self.diff = self.diff.to_modified();
+        self.name = name;
+        self.validate()?;
+        Ok(())
+    }
+
+    // 切换到公共作用域
+    pub fn change_to_public_scope(&mut self) -> UserFileResult<()> {
+        self.diff = self.diff.to_modified();
+        self.scope = self.scope.to_public();
+        self.validate()?;
+        Ok(())
+    }
+
+    // 切换到私有作用域
+    pub fn change_to_private_scope(&mut self) -> UserFileResult<()> {
+        self.diff = self.diff.to_modified();
+        self.scope = self.scope.to_private();
+        self.validate()?;
+        Ok(())
+    }
+
+    // 验证函数，假设它检查某些条件以确保数据的有效性
+    fn validate(&self) -> UserFileResult<()> {
+        if self.name.is_empty() {
+            return Err(UserFileError::ValidationError);
+        }
+        Ok(())
+    }
+}
+
+// `FileTagBuilder` 结构体用于简化 `FileTag` 的创建
+#[derive(Default)]
+struct FileTagBuilder {
+    color: String,
+    name: String,
+    user_id: u64,
+    scope: Scope,
+}
+
+impl FileTagBuilder {
+    pub fn color(mut self, color: String) -> Self {
+        self.color = color;
+        self
+    }
+
+    pub fn name(mut self, name: String) -> Self {
+        self.name = name;
+        self
+    }
+
+    pub fn user_id(mut self, user_id: u64) -> Self {
+        self.user_id = user_id;
+        self
+    }
+
+    pub fn scope(mut self, scope: Scope) -> Self {
+        self.scope = scope;
+        self
+    }
+
+    pub fn build(self) -> FileTag {
+        FileTag {
+            color: self.color,
+            name: self.name,
+            operator: None,
+            user_id: self.user_id,
+            diff: Diff::Unmodified,
+            scope: self.scope,
+        }
+    }
+}
+
+fn main() {
+    // 使用构建器模式创建 `FileTag` 实例
+    let file_tag = FileTag::builder()
+        .color("#f6f8fa".to_string())
+        .name("My File".to_string())
+        .user_id(1)
+        .scope(Scope::Private)
+        .build();
+
+    println!("{:?}", file_tag);
+}
+
+```
+
+
+
+
+
+其中
+
+```rust
+// `FileTagBuilder` 结构体用于简化 `FileTag` 的创建
+#[derive(Default)]
+struct FileTagBuilder {
+    color: String,
+    name: String,
+    user_id: u64,
+    scope: Scope,
+}
+
+impl FileTagBuilder {
+    pub fn color(mut self, color: String) -> Self {
+        self.color = color;
+        self
+    }
+}
+```
+
+> 这个 `impl` 块紧跟在结构体定义之后，名字与结构体一致，即 `FileTagBuilder`。这意味着这个 `impl` 块中定义的方法（如 `color`、`name`、`user_id`、`scope`、`build`）都属于 `FileTagBuilder` 结构体。
+>
+> 也就是创建一个这个结构体的方法。
+
+```rust
+FileTagBuilder::color();
+```
+
+> 可以这样调用
+
+
+
+**`self` vs `&mut self`**
+
+- **`mut self`**：表示该方法获取了结构体实例的**所有权**。调用该方法时，结构体实例会被移动（move）到方法内部，并且该方法可以修改实例的值。修改后，方法通常会返回 `self`，以便调用链可以继续使用修改后的实例。
+- **`&mut self`**：表示该方法获取了结构体实例的**可变借用**。调用该方法时，结构体实例不会被移动，而是通过引用传递，允许在方法内部修改实例的值，但不需要返回 `self`。
+
+**为什么使用 `mut self` 而不是 `&mut self`**
+
+使用 `mut self` 而不是 `&mut self` 通常用于以下情况：
+
+- **链式调用**：`mut self` 允许方法返回 `Self`，因此可以方便地进行链式调用。比如在构建器模式（Builder Pattern）中，经常使用这种方式。
+- **转移所有权**：当你希望方法调用结束后，原实例不再可用时（比如某些状态已经发生了变化），`mut self` 是合适的选择。
+
+**`mut self`**：获取实例的所有权，并在方法内部修改实例。通常返回 `self`，允许链式调用。
+
+**`&mut self`**：借用实例的可变引用，允许在方法内部修改实例，而无需转移所有权。
+
+
 
 
 
