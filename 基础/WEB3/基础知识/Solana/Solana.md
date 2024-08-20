@@ -1823,6 +1823,8 @@ console.log("account after increasing ==>", Number(counterAccount.count));
 
 ### nft
 
+[Check it out on YouTube!](https://www.youtube.com/playlist?list=PLUBKxx7QjtVnU3hkPc8GF1Jh4DE7cf4n1)
+
 #### Unit 2-程序初始化
 
 本课程将使用强大的 Anchor 框架来开发，因此，首要步骤是导入 Anchor 框架的相关依赖。
