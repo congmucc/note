@@ -2,6 +2,10 @@
 
 [关于本书 - Rust语言圣经(Rust Course)](https://course.rs/about-book.html)
 
+[Docs.rs](https://docs.rs/)
+
+[crates.io: Rust Package Registry](https://crates.io/)
+
 ## 1.1 Rust特点
 
 1. 具有独一无二的所有权机制，可以防止悬垂引用，并发中产生竞争
