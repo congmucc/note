@@ -2465,6 +2465,8 @@ pub struct MintNFT<'info> {
 
 **构建并部署程序**
 
+`anchor deploy -- --use-rpc`
+
 运行 `anchor build && anchor deploy` ，您应该会看到已部署的 **Program ID**
 
 将 **Program ID** 粘贴到 Anchor.toml 和 lib.rs 文件中的临时 ID。
@@ -2719,3 +2721,10 @@ impl MovieInstruction {
 }
 ```
 
+
+
+## 网站
+
+[Metaplex Developer Hub](https://developers.metaplex.com/)
+
+[Quickstart - Docs (anchor-lang.com)](https://www.anchor-lang.com/docs/solana-playground)
