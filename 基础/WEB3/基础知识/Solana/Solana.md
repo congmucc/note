@@ -633,8 +633,6 @@ entrypoint!(process_instruction);
 
 该指令处理函数我们在前面章节已介绍过，这里不再赘述。
 
-
-
 ```javascript
 fn process_instruction(
 		// 当前的程序ID
