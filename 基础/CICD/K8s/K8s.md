@@ -146,3 +146,16 @@ spec:
 
 
 ### 2.2.3 
+
+
+
+## 3 应用
+
+通过 [1.2 流程和概念](# 1.2 流程和概念)可以得到一些概念。
+
+[Kubernetes一小时轻松入门_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Se411r7vY/)
+
+> 生产环境下：
+>
+> - 一个pod对应一个容器
+> - 使用service进行对外公开ip，然后设置`spec.ports.nodePort`的值 (必须在30000到32767之间) 和`spec.type`的值为NodePort（一般都是这个）
