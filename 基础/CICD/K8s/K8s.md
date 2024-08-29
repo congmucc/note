@@ -157,5 +157,5 @@ spec:
 
 > 生产环境下：
 >
-> - 一个pod对应一个容器
+> - 一个pod对应一个容器，因为一般情况下可以通过上层`Deployment`进行管理pod
 > - 使用service进行对外公开ip，然后设置`spec.ports.nodePort`的值 (必须在30000到32767之间) 和`spec.type`的值为NodePort（一般都是这个）
