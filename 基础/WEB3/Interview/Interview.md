@@ -15,6 +15,11 @@ https://web3.career/
 https://remote3.co/
 
 
+有關 Solana 的開發待遇，建議參考：
+https://earn.superteam.fun  - 這是跟印度小哥 / 非洲小哥們競爭的水平
+https://jobs.solana.com/jobs - 這是北美歐洲的中層管理的水平
+我們在華語區，找中間點落墨就好，不要搞到印非價，成為了人才知道歐美肯出多少來搶
+
 
 
 
