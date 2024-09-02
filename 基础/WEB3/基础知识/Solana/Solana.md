@@ -1437,6 +1437,7 @@ pub pda_counter: Account<'info, Counter>,
 pub user: Signer<'info>,
 ```
 
+
 ●**init：**Anchor 会通过相关属性配置初始化一个派生帐户地址 PDA 。
 
 ●**seeds：**种子（seeds）是一个任意长度的字节数组，通常包含了派生账户地址 PDA 所需的信息，在这个例子中我们仅使用了字符串my_seed作为种子。当然，也可以包含其他信息：如指令账户集合中的其他字段user、指令函数中的参数instruction_data，示意代码如下：
@@ -1463,6 +1464,35 @@ pub struct InitializeAccounts<'info> {
 
 ●**space：**指定账户的空间大小为16个字节，前 8 个字节存储 Anchor 自动添加的鉴别器，用于识别帐户类型。接下来的 8 个字节为存储在Counter帐户类型中的数据分配空间（count为 u64 类型，占用 8 字节）。
 
+
+```rust
+#[derive(Accounts)]
+#[instruction(instruction_data: String)]
+pub struct Example<'info> {
+    #[account(seeds = [b"example-seed", user.key().as_ref(), instruction_data.as_ref()]
+    pub pad_account: Account<'info, AccountType>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+}
+```
+在此示例中，通过`seed`和`bump`约束验证`pda_account`的地址是否是预期的`PDA`。
+
+推导`PDA`的 `seeds`包括：
+
+- `example_seed` - 一个硬编码的字符串值
+- `user.key()` - 传入账户的公钥 `user`
+- `instruction_data` - 传入指令的数据
+    - 你可以通过`#[instruction(...)]`属性来访问这些数据
+
+默认情况下，`init`会将创建账户的所有者设置为当前正在执行的程序。
+
+- 当使用`init`与`seeds`和`bump`初始化`PDA`账户时，所有者必须是正在执行的程序
+- 这是因为创建账户需要签名，只有执行程序的`PDA`才能提供
+- 如果用于派生`PDA`的`programId`与正在执行的程序的`programId`不匹配，则`PDA`账户初始化的签名验证将失败
+- 因为`init`使用`find_program_address`来推导`PDA`，所以不需要指定`bump`值
+- 这意味着`PDA`将使用规范的`bump`进行推导
+- 在为执行`Anchor`程序所初始化和拥有的账户分配`space`时，请记住前8个字节是保留给唯一账户`discriminator`的，`Anchor`程序使用该`discriminator`来识别程序账户类型
+
 **2、验证派生账户地址 PDA ：**有些时候我们需要在调用指令函数时，验证传入的 PDA 地址是否正确，也可以采用类似的方式，只需要传入对应的seeds和bump即可，Anchor就会按照此规则并结合program_id来计算 PDA 地址，完成验证工作。注意：这里不需要init属性。
 
 ```rust
@@ -1481,7 +1511,7 @@ pub struct InitializeAccounts<'info> {
 }
 ```
 
-**3、** **#[account(mut)]** **属性约束：**
+ #### **#[account(mut)]** **属性约束**
 
 ●**mut：**表示这是一个可变账户，即在程序的执行过程中，这个账户的数据（包括余额）可能会发生变化。在Solana 程序中，对账户进行写操作需要将其标记为可变。
 
@@ -1504,7 +1534,27 @@ pub struct MyAccount {
 在许多情况下，你可能需要更新现有账户而不是创建新账户。`Anchor`提供了出色的`realloc`约束，为现有账户重新分配空间提供了一种简便的方法。
 
 ```
-#[derive(Accounts)]#[instruction(instruction_data: String)]pub struct ReallocExampl<'info> {    #[account(        mut,        seeds = [b"example_seed", user.key().as_ref()]        bump,        realloc = 8 + 4 + instruction_data.len(),        realloc::payer = user,        realloc::zero = false,    )]    pub pda_account: Account<'info, AccountType>,    #[account(mut)]    pub user: Signer<'info>,    pub system_program: Program<'info, System>,}#[account]pub struct AccountType  {    pub data: u64}
+#[derive(Accounts)]
+#[instruction(instruction_data: String)]
+pub struct ReallocExampl<'info> {
+    #[account(
+        mut,
+        seeds = [b"example_seed", user.key().as_ref()]
+        bump,
+        realloc = 8 + 4 + instruction_data.len(),
+        realloc::payer = user,
+        realloc::zero = false,
+    )]
+    pub pda_account: Account<'info, AccountType>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[account]
+pub struct AccountType  {
+    pub data: u64
+}
 ```
 
 `realloc`约束必须与以下内容结合使用：
@@ -1523,6 +1573,59 @@ pub struct MyAccount {
 - 在之前减小过空间的账户上增加空间时，应将此约束设置为true
 
 
+#### `close` 关闭操作
+
+当你用完一个账户并不再需要它时会发生什么呢？你可以将它关闭！
+
+通过这样做，你可以腾出空间，并收回用于支付租金的`SOL`！
+
+执行关闭操作是通过使用 `close` 约束来完成的：
+
+```rust
+pub fn close(ctx: Context<Close>) -> Result<()> {
+    Ok(())
+}
+
+#[derive(Accounts)]
+pub struct Close<'info> {
+    #[account(mut, close = receiver)]
+    pub data_account: Account<'info, AccountType>,
+    #[account(mut)]
+    pub receiver: Signer<'info>,
+}
+```
+
+- `close` 约束会在指令执行结束时将账户标记为已关闭，并通过将其`discriminator`设置为 `CLOSED_ACCOUNT_DISCRIMINATOR`，同时将其 `lamports` 发送到特定的账户。
+- 将`discriminator`设置为特定的变量，以阻止账户复活攻击（例如，后续指令重新添加租金豁免的`lamports`）。
+- 我们将关闭名为 `data_account` 的账户，并将用于租金的`lamports`发送到名为 `receiver` 的账户。
+- 然而，目前任何人都可以调用关闭指令并关闭 `data_account`。
+
+```rust
+pub fn close(ctx: Context<Close>) -> Result<()> {
+    Ok(())
+}
+
+#[derive(Accounts)]
+pub struct Close<'info> {
+    #[account(mut, close = receiver, has_one = receiver)]
+    pub data_account: Account<'info, AccountType>,
+    #[account(mut)]
+    pub receiver: Signer<'info>,
+}
+
+#[account]
+pub struct AccountType {
+    pub data: String,
+    pub receiver: PubKey,
+}
+```
+
+- **`has_one` 约束可以用来核实传入指令的账户是否与存储在 `data` 账户字段中的账户匹配。**
+- 你必须在所使用的账户的 `data` 字段上应用特定的命名规则，以便进行 `has_one` 约束检查。
+- 使用 `has_one = receiver`时：
+    - 账户的 `data` 需要有一个名为 `receiver` 的字段与之匹配。
+    - 在 `#[derive(Accounts)]` 结构中，账户名称也必须称为 `receiver`。
+- 请注意，虽然使用 `close` 约束只是一个例子，但 `has_one` 约束可以有更广泛的用途。
 
 ### **#[account]** 宏的介绍
 
