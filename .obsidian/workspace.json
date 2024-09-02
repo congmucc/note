@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,6 +171,7 @@
   },
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets/Pasted.md",
@@ -180,7 +181,6 @@
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
     "基础/量化交易/量化交易基础/量化交易基础.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/量化交易/量化交易基础",
     "基础/思想/架构/DDD架构.md",
     "基础/WEB3/Solana Rust/Solana Rust.md",
