@@ -65,7 +65,7 @@ https://jobs.solana.com/jobs - 這是北美歐洲的中層管理的水平
 >
 > 更新的推特链接在这！https://x.com/HackQuest_/status/1807229270617362544?t=cLyswlxXspPENbFwwqbCjA&s=19
 >
-> 
+> solana：[開發者工具 (notion.site)](https://solanazh.notion.site/97bb28dd0bc34281894ae761fa49bee6)
 >
 > 
 

@@ -409,7 +409,7 @@ let a = 20; // Shadowing Variables
 
 
 
-**6、String与&str**
+**6、String与&str 和`Vec<u8>`**
 
 - `String`是一个堆分配的可变字符串类型
 
@@ -470,8 +470,14 @@ let a = 20; // Shadowing Variables
   ```
 
   > 使用`"rust".to_owned()`或者`"rust".to_string(())`将`&str`转化为`String`
-
-
+  
+  **`Vec<u8>`**
+  `Vec<u8>` 是一个动态大小的字节数组。
+  
+  - 动态大小：`Vec<u8>` 可以在运行时增长或缩小。
+  - 堆分配：`Vec<u8>` 的数据存储在堆上，这意味着它不受栈帧的大小限制。
+  - 不一定是 UTF-8：`Vec<u8>` 可以包含任何字节序列，不一定是有效的 UTF-8 编码文本。
+  - 所有权：`Vec<u8>` 拥有它所包含的数据。
 
 **7、枚举**
 
@@ -1405,7 +1411,33 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 在函数上面加上`#[test]`就可以将函数变为测试函数
 
+```rust
+// src/lib.rs 或 src/main.rs
 
+#[cfg(test)]
+mod tests {
+    
+    use super::*;
+    
+    #[test]
+    fn test_add() {
+        assert_eq!(add(2, 3), 5);
+        assert_eq!(add(-1, 1), 0);
+        assert_eq!(add(0, 0), 0);
+    }
+}
+```
+
+> 1. **`#[cfg(test)]`**：
+>    - 这个属性告诉 Rust 编译器只有在测试模式下才编译这部分代码。
+> 2. **`mod tests`**：
+>    - 定义一个模块 `tests`，用于组织测试代码。
+> 3. **`use super::*;`**：
+>    - 导入当前模块中的所有公共项，以便测试函数可以访问 `add` 函数。
+> 4. **`#[test]`**：
+>    - 标记测试函数，告诉 Rust 这是一个测试函数。
+> 5. **`assert_eq!`**：
+>    - 断言函数的结果与预期结果相同。
 
 
 
