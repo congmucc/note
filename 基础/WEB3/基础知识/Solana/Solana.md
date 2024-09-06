@@ -548,6 +548,10 @@ https://creatorsdao.github.io/
 # Solana Rust
 
 
+
+[Solana 中文开发教程 (solanazh.com)](https://www.solanazh.com/)
+
+
 ## 错误处理
 
 ### ProgramResult 枚举

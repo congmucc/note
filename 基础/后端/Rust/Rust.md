@@ -235,6 +235,17 @@ git-fetch-with-cli = true
 
 变量命名：小写下划线`let nice_count = 100;`
 
+在 Rust 中，`src/lib.rs` 文件是一个非常重要的文件，它是库（library）的主要入口点。以下是关于 `src/lib.rs` 文件的一些详细说明：
+
+`src/lib.rs` 文件的作用
+
+1. **定义库的公共接口**：
+   - `src/lib.rs` 文件用于定义库的公共接口，即库对外暴露的函数、结构体、枚举等。
+2. **模块组织**：
+   - `src/lib.rs` 文件可以包含多个模块，并组织这些模块的结构。
+3. **导出公共项**：
+   - 在 `src/lib.rs` 文件中，你可以导出库中的公共项，使它们可以在其他模块或外部 crate 中使用。
+
 
 
 
@@ -409,7 +420,7 @@ let a = 20; // Shadowing Variables
 
 
 
-**6、String与&str 和`Vec<u8>`**
+**6、String与&str 和`Vec<u8> [u8]`**
 
 - `String`是一个堆分配的可变字符串类型
 
