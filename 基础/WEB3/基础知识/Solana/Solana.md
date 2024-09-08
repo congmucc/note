@@ -545,6 +545,7 @@ NFT（非同质化代币）是基于区块链技术的一种独特的数字资�
 
 https://creatorsdao.github.io/
 [调试 Solana 程序 | Solana Co Learn (creatorsdao.github.io)](https://creatorsdao.github.io/solana-co-learn/cookbook-zh/guides/debugging-solana-programs)
+
 # Solana Rust
 
 [如何在 Solana 中编写您的第一个锚点程序 - 第 2 部分 |QuickNode 快节点 --- How to Write Your First Anchor Program in Solana - Part 2 | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/how-to-write-your-first-anchor-program-in-solana-part-2)
@@ -2862,3 +2863,27 @@ impl MovieInstruction {
 [Metaplex Developer Hub](https://developers.metaplex.com/)
 
 [Quickstart - Docs (anchor-lang.com)](https://www.anchor-lang.com/docs/solana-playground)
+
+[How to Create and Mint Fungible SPL Tokens Using Anchor | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/create-tokens)
+
+
+
+
+
+## 命令
+
+
+
+```sh
+anchor deploy -- --use-rpc
+```
+
+> 使用本地部署
+
+
+
+```anchor
+anchor test --skip-deploy
+```
+
+> 先跳过deploy，直接test，这是基于已经deploy
