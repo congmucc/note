@@ -547,7 +547,7 @@ https://creatorsdao.github.io/
 [调试 Solana 程序 | Solana Co Learn (creatorsdao.github.io)](https://creatorsdao.github.io/solana-co-learn/cookbook-zh/guides/debugging-solana-programs)
 # Solana Rust
 
-
+[如何在 Solana 中编写您的第一个锚点程序 - 第 2 部分 |QuickNode 快节点 --- How to Write Your First Anchor Program in Solana - Part 2 | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/how-to-write-your-first-anchor-program-in-solana-part-2)
 
 [Solana 中文开发教程 (solanazh.com)](https://www.solanazh.com/)
 
@@ -1954,6 +1954,8 @@ console.log("account after increasing ==>", Number(counterAccount.count));
 
 
 ### nft
+
+[How to Create and Mint Fungible SPL Tokens Using Anchor | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/create-tokens)
 
 [Check it out on YouTube!](https://www.youtube.com/playlist?list=PLUBKxx7QjtVnU3hkPc8GF1Jh4DE7cf4n1)
 
