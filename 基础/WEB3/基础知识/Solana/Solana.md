@@ -1633,11 +1633,11 @@ pub fn invoke_signed(
 
 ![image-20240819203706084](./assets/image-20240819203706084.png)
 
+>  左边是需要被调用的cpi例子，右边是调用cpi的例子
+>
+> 建议看完图片代码之后再看anchor跨程序调用，这里面很优秀
 
 
-
-
-左边是需要被调用的cpi例子，右边是调用cpi的例子
 
 [图片代码](https://github.com/coral-xyz/anchor/blob/master/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs)
 
