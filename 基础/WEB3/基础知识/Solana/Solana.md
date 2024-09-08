@@ -884,45 +884,6 @@ let rent_lamports = rent.minimum_balance(account_len);
 ```
 
 
-### 跨程序调用CPI
-
-`CPI`可以使用 `invoke` 或 `invoke_signed` 来实现。
-
-```
-pub fn invoke(
-    instruction: &Instruction,
-    account_infos: &[AccountInfo],
-) -> ProgramResult
-```
-
-```
-pub fn invoke_signed(
-    instruction: &Instruction,
-    account_infos: &[AccountInfo],
-    signers_seeds: &[&[u8]],
-) -> ProgramResult
-```
-
-当你不需要签署交易时，使用 `invoke`。当你需要签署交易时，使用 `invoke_signed`。在我们的例子中，我们是唯一可以为`PDA`签署的人，因此我们将使用 `invoke_signed`。
-
-- **`invoke`**:
-  - 用于所有账户都已签名的情况。
-  - 不需要额外的种子或签名种子。
-- **`invoke_signed`**:
-  - 用于包含未签名账户（如 **PDA**）的情况。
-  - 需要额外的种子和签名种子来生成派生账户的公钥。
-
-`CpiContext::new(cpi_program, cpi_accounts)`
-
-`CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)`
-
-![](./assets/20240810220338.png)
-
-![image-20240819203706084](./assets/image-20240819203706084.png)
-
-左边是需要被调用的cpi例子，右边是调用cpi的例子
-
-[anchor/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs at master · coral-xyz/anchor (github.com)](https://github.com/coral-xyz/anchor/blob/master/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs)
 
 # Anchor
 
@@ -1633,6 +1594,113 @@ pub struct AccountType {
     - 账户的 `data` 需要有一个名为 `receiver` 的字段与之匹配。
     - 在 `#[derive(Accounts)]` 结构中，账户名称也必须称为 `receiver`。
 - 请注意，虽然使用 `close` 约束只是一个例子，但 `has_one` 约束可以有更广泛的用途。
+
+
+
+### 跨程序调用-CPI
+
+`CPI`可以使用 `invoke` 或 `invoke_signed` 来实现。
+
+```
+pub fn invoke(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo],
+) -> ProgramResult
+```
+
+```
+pub fn invoke_signed(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo],
+    signers_seeds: &[&[u8]],
+) -> ProgramResult
+```
+
+当你不需要签署交易时，使用 `invoke`。当你需要签署交易时，使用 `invoke_signed`。在我们的例子中，我们是唯一可以为`PDA`签署的人，因此我们将使用 `invoke_signed`。
+
+- **`invoke`**:
+  - 用于所有账户都已签名的情况。
+  - 不需要额外的种子或签名种子。
+- **`invoke_signed`**:
+  - 用于包含未签名账户（如 **PDA**）的情况。
+  - 需要额外的种子和签名种子来生成派生账户的公钥。
+
+`CpiContext::new(cpi_program, cpi_accounts)`
+
+`CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)`
+
+![](./assets/20240810220338.png)
+
+![image-20240819203706084](./assets/image-20240819203706084.png)
+
+
+
+
+
+左边是需要被调用的cpi例子，右边是调用cpi的例子
+
+[图片代码](https://github.com/coral-xyz/anchor/blob/master/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs)
+
+看完图片代码看下面这个
+
+[跨程序调用 - Docs --- Cross-Program Invocations - Docs (anchor-lang.com)](https://www.anchor-lang.com/docs/cross-program-invocations)
+
+[How to CPI with a PDA Signer in a Solana program | Solana](https://solana.com/zh/developers/guides/getstarted/how-to-cpi-with-signer)
+
+```rust
+pub fn create_reward_mint(
+        ctx: Context<CreateTokenReward>,
+        uri: String,
+        name: String,
+        symbol: String,
+    ) -> Result<()> {
+        msg!("Create Reward Token");
+
+        let seeds = &["mint".as_bytes(), &[*ctx.bumps.get("reward_mint").unwrap()]];
+
+        let signer = [&seeds[..]];
+
+        let account_info = vec![
+            ctx.accounts.metadata.to_account_info(),
+            ctx.accounts.reward_mint.to_account_info(),
+            ctx.accounts.user.to_account_info(),
+            ctx.accounts.token_metadata_program.to_account_info(),
+            ctx.accounts.token_program.to_account_info(),
+            ctx.accounts.system_program.to_account_info(),
+            ctx.accounts.rent.to_account_info(),
+        ];
+
+        invoke_signed(
+            &create_metadata_accounts_v2(
+                ctx.accounts.token_metadata_program.key(),
+                ctx.accounts.metadata.key(),
+                ctx.accounts.reward_mint.key(),
+                ctx.accounts.reward_mint.key(),
+                ctx.accounts.user.key(),
+                ctx.accounts.user.key(),
+                name,
+                symbol,
+                uri,
+                None,
+                0,
+                true,
+                true,
+                None,
+                None,
+            ),
+            account_info.as_slice(),
+            &signer,
+        )?;
+
+        Ok(())
+    }
+```
+
+
+
+
+
+
 
 ### **#[account]** 宏的介绍
 
