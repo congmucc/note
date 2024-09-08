@@ -922,7 +922,7 @@ pub fn invoke_signed(
 
 左边是需要被调用的cpi例子，右边是调用cpi的例子
 
-
+[anchor/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs at master · coral-xyz/anchor (github.com)](https://github.com/coral-xyz/anchor/blob/master/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs)
 
 # Anchor
 
