@@ -2021,6 +2021,94 @@ console.log("account after increasing ==>", Number(counterAccount.count));
 
 
 
+```ts
+import * as anchor from "@coral-xyz/anchor";
+
+import { Program } from "@coral-xyz/anchor";
+
+import { Counter } from "../target/types/counter";
+
+  
+  
+  
+  
+
+describe("counter", () => {
+
+  // Configure the client to use the local cluster.
+
+  const provider = anchor.AnchorProvider.env()
+
+  anchor.setProvider(provider);
+
+  const wallet = provider.wallet as anchor.Wallet;
+
+  const connection = provider.connection;
+
+  const program = anchor.workspace.Counter as Program<Counter>;
+
+  const counterSeed = Buffer.from("counter");
+
+  
+  
+
+  it("Is initialized!", async  () => {
+
+    // Add your test here.
+
+    const [counterPubkey]  =  anchor.web3.PublicKey.findProgramAddressSync(
+
+      [counterSeed],
+
+      program.programId
+
+    )
+
+  
+
+    const initialize = await program.methods.initialize()
+
+    .accounts({
+
+      counter: counterPubkey,
+
+      authority: wallet.publicKey,
+
+      systemProgram: anchor.web3.SystemProgram.programId,
+
+    })
+
+    .rpc()
+
+  
+
+    console.log("第一个函数 Initialized!完成: ", initialize)
+
+  
+  
+
+    const increment = await program.methods.increment()
+
+      .accounts({
+
+        count: counterPubkey,
+
+        authority: wallet.publicKey,
+
+      })
+
+      .rpc()
+
+  
+  
+
+      console.log("第二个函数 increment", increment);
+
+  });
+
+});
+```
+
 
 ### nft
 
