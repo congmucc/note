@@ -77,6 +77,10 @@ vscode插件
 
 [包和模块 - Rust语言圣经(Rust Course)](https://course.rs/basic/crate-module/intro.html)
 
+
+
+[rust 模块组织结构 - li-peng - 博客园 (cnblogs.com)](https://www.cnblogs.com/li-peng/p/13587910.html)
+
 > package
 >
 > - 设置项目名
