@@ -77,9 +77,13 @@ vscode插件
 
 [包和模块 - Rust语言圣经(Rust Course)](https://course.rs/basic/crate-module/intro.html)
 
+**对于导出导入：**
+
+> 基本上就这两个模式，一个是文件中添加mod.rs进行暴露mod，一个是在文件夹外创建一个同名的文件，然后进行暴露
+>
+> [rust 模块组织结构 - li-peng - 博客园 (cnblogs.com)](https://www.cnblogs.com/li-peng/p/13587910.html)
 
 
-[rust 模块组织结构 - li-peng - 博客园 (cnblogs.com)](https://www.cnblogs.com/li-peng/p/13587910.html)
 
 > package
 >
