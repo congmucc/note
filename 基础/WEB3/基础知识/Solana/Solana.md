@@ -3024,6 +3024,20 @@ impl MovieInstruction {
 
 [開發者工具 (notion.site)](https://solanazh.notion.site/97bb28dd0bc34281894ae761fa49bee6)
 
+
+
+
+
+
+
+rpc:
+https://solana.com/rpc
+
+   "https://api.mainnet-beta.solana.com",
+    "https://cold-hanni-fast-mainnet.helius-rpc.com/",
+    "https://mainnet-beta.solflare.network"
+这三个都是免费的RPC节点，不用登录和注册
+
 ## 命令
 
 
