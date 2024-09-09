@@ -1730,6 +1730,101 @@ Anchor 框架中，#[account]宏是一种特殊的宏，它用于处理账户的
 
 
 
+```ts
+import * as anchor from "@coral-xyz/anchor";
+import { Program } from "@coral-xyz/anchor";
+import { Counter } from "../target/types/counter";
+
+
+
+
+describe("counter", () => {
+  // Configure the client to use the local cluster.
+  const provider = anchor.AnchorProvider.env()
+  anchor.setProvider(provider);
+  const wallet = provider.wallet as anchor.Wallet;
+  const connection = provider.connection;
+  
+  const program = anchor.workspace.Counter as Program<Counter>;
+  
+  const counterSeed = Buffer.from("counter");
+  
+
+
+  it("Is initialized!", async  () => {
+    // Add your test here.
+    const [counterPubkey]  =  anchor.web3.PublicKey.findProgramAddressSync(
+      [counterSeed],
+      program.programId
+    )
+
+    const initialize = await program.methods.initialize()
+    .accounts({
+      counter: counterPubkey,
+      authority: wallet.publicKey,
+      systemProgram: anchor.web3.SystemProgram.programId,
+    })
+    .rpc()
+
+    console.log("第一个函数 Initialized!完成: ", initialize)
+
+
+    const increment = await program.methods.increment()
+      .accounts({
+        count: counterPubkey,
+        authority: wallet.publicKey,
+      })
+      .rpc()
+
+
+      console.log("第二个函数 increment", increment);
+  });
+});
+
+```
+
+
+
+## 类型区别
+
+```rust
+    // 买家
+    #[account(mut)]
+    pub buyer: Signer<'info>,
+    // 卖家
+    #[account(mut)]
+    pub lister: AccountInfo<'info>,
+    // 交易费用大小
+    #[account(mut)]
+    pub fee: AccountInfo<'info>,
+```
+
+1. **买家 (`Signer`)**
+
+- **`#[account(mut)]`**: 表示这个账户是可变的。
+- **`pub buyer: Signer<'info>`**: `Signer` 类型表示这个账户必须是一个签名者（signer），即拥有该账户私钥的实体能够对交易进行签名。这意味着买家必须参与交易的签名过程，以证明其身份和授权。
+
+2. **卖家 (`AccountInfo`)**
+
+- **`#[account(mut)]`**: 表示这个账户是可变的。
+- **`pub lister: AccountInfo<'info>`**: `AccountInfo` 类型表示这是一个普通的账户信息对象。它不需要是签名者，只需要提供账户的基本信息（如公钥、余额等）。卖家可能不需要直接参与交易的签名过程，但仍然需要访问其账户信息。
+
+3. **费用 (`AccountInfo`)**
+
+- **`#[account(mut)]`**: 表示这个账户是可变的。
+- **`pub fee: AccountInfo<'info>`**: 同样，`AccountInfo` 类型表示这是一个普通的账户信息对象。费用账户通常用于存储交易费用或其他相关资金。它不需要是签名者，只需要提供账户的基本信息即可。s
+
+- **买家** (`Signer`)：需要参与交易签名，证明其身份和授权。
+- **卖家** (`AccountInfo`)：不需要直接参与交易签名，但需要访问其账户信息。
+- **费用** (`AccountInfo`)：不需要直接参与交易签名，主要用于存储交易费用或其他资金信息。
+
+
+
+
+
+- `AccountInfo` 是一个基础的账户信息接口，提供了账户的基础元数据。
+- `Account` 通常指具体的账户数据结构，包含了账户的状态和功能逻辑。
+
 
 
 ## Demo
