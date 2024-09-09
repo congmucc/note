@@ -172,11 +172,15 @@ pub fn eat_at_restaurant() {
 分模块开发
 
 ```rust
-mod front_of_house; // rust会在本mod下面寻找这个mod的名字，如front_of_house.rs
+// src\lib.rs
+mod front_of_house; // rust会在本mod下面寻找这个mod的名字，如src\front_of_house.rs
 
 //假设如果还有一个子模块还有文件导入（如mod hosting）的话，可以创建一个名为front_of_house的包，然后再包中创建hosting.rs文件
 
+// src\front_of_house\hosting.rs
 ```
+
+> 这点可以看视频
 
 ## 1.5 如何获取Rust的库和国内源
 
