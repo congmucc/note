@@ -6,6 +6,12 @@
 
 [crates.io: Rust Package Registry](https://crates.io/)
 
+[Rust开发者资源库 (notion.so)](https://www.notion.so/Rust-ee148e9f9ba64f0db187e51eb62816c6)
+
+
+
+
+
 ## 1.1 Rust特点
 
 1. 具有独一无二的所有权机制，可以防止悬垂引用，并发中产生竞争
