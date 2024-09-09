@@ -73,8 +73,9 @@ vscode插件
 
 ## 1.4 项目结构与路径
 
-
 对于Cargo.toml文件：
+
+[包和模块 - Rust语言圣经(Rust Course)](https://course.rs/basic/crate-module/intro.html)
 
 > package
 >
@@ -118,7 +119,7 @@ fn serve_order() {}
 
 mod back_of_house {
 	fn fix_incorrect_order() {
-		super::serve_order(); // 这里面直接跳出了back_of_house这个mod，而不是函数作用域
+		super::serve_order(); // 这里面直接跳出了back_of_house这个mod，而不是fix_incorrect_order函数作用域
 		crate::serve_order(); // 绝对路径
 	}
 }
