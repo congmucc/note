@@ -1,6 +1,6 @@
 # 1 Solana 基础概念
-
 ## 1.1 介绍
+[再解Solana技术架构：将要迎来第二春吗？ - PANews (panewslab.com)](https://www.panewslab.com/zh/articledetails/o84f9rcey4oo.html)
 
 ### 1.1.1 共识机制
 
