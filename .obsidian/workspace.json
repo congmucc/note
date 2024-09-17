@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/SQL/Redis/Redis高级.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/后端/SQL/Redis/Redis高级.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/SQL/Redis/Redis高级.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/后端/SQL/Redis/Redis高级.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,16 +171,27 @@
   },
   "active": "397b8a3489560776",
   "lastOpenFiles": [
-    "基础/后端/SQL/Redis/Redis导学.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/CICD/K8s/K8s.md",
+    "基础/CICD/Docker/Docker.md",
+    "基础/CICD/Jenkins/Jenkins.md",
+    "基础/CICD/CICD.md",
+    "基础/CICD/Devops/Devops.md",
+    "基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
+    "基础/后端/Java/微服务框架/MQ/MQ.md",
+    "基础/后端/Java/JavaWeb开发规范.md",
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/后端/Go/Golang基础/Golang基础.md",
+    "基础/后端/Rust/Rust.md",
+    "实战笔记/项目笔记/Go/模板搭建/模板搭建.md",
+    "基础/后端/Rust/assets/image-20240629235928924.png",
     "基础/后端/SQL/Redis/Redis高级.md",
+    "基础/后端/SQL/Redis/Redis导学.md",
     "基础/后端/SQL/Redis/Redis.md",
     "基础/后端/SQL/MongoDB/MongoDB.md",
-    "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/道路/道路.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/Interview/Interview.md",
-    "基础/后端/Rust/Rust.md",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets/Pasted.md",
     "assets",
@@ -190,18 +201,8 @@
     "基础/量化交易/量化交易基础/量化交易基础.md",
     "基础/量化交易/量化交易基础",
     "基础/思想/架构/DDD架构.md",
-    "基础/WEB3/Solana Rust/Solana Rust.md",
     "基础/WEB3/Solana Rust/assets/Pasted image 20240810220338.png",
-    "基础/Tool/Linux/Linux.md",
     "基础/后端/Rust/assets/image-20240628000841742.png",
-    "基础/WEB3/Move/Move.md",
-    "基础/后端/Go/Golang基础/Golang基础.md",
-    "基础/WEB3/Patrick Collins/Patrick Collins.md",
-    "实战笔记/项目笔记/Go/模板搭建/模板搭建.md",
-    "基础/WEB3/基础知识/Ethereum/Ethereum.md",
-    "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
-    "基础/WEB3/基础知识/编译部署/目录.md",
-    "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
     "基础/前端/Interview.zip",
     "基础/后端/Java/框架/SpringBoot/JUnit5/assets/image.png",
     "基础/WEB3/Move",
@@ -215,7 +216,6 @@
     "实习/assets/image-20240604174153000.png",
     "实习/assets/image-20240604174043250.png",
     "实习/assets/image-20240604104820562.png",
-    "实习/assets/image-20231223020052999.png",
     "实习/assets",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
