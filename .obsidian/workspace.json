@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               }
             }
           },
@@ -143,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,6 +171,7 @@
   },
   "active": "89576b1119517bb5",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
@@ -192,7 +192,6 @@
     "基础/后端/Rust/assets/image-20240628000841742.png",
     "基础/WEB3/Move/Move.md",
     "基础/后端/Go/Golang基础/Golang基础.md",
-    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/后端/SQL/Redis/Redis高级.md",
     "基础/后端/SQL/Redis/Redis导学.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
