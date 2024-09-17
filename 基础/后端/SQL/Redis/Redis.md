@@ -1,5 +1,3 @@
-[TOC]
-
 # Redis基础
 
 ## 3 Redis p50
