@@ -120,6 +120,13 @@ Rust:
 
 
 
+
+
+## 信息方面：
+1、 [PANews - 你的Web3信息官 (panewslab.com)](https://www.panewslab.com/zh/index.html)：
+[一文盘点 BTC Layer2 龙头项目 BEVM 生态现状 - PANews (panewslab.com)](https://www.panewslab.com/zh/articledetails/633tw301r48g.html)
+
+
 ## 3.1 前端框架
 [Wagmi | Reactivity for Ethereum apps](https://wagmi.sh/)
 
