@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md"
+                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/Tool/Linux/Linux.md",
+                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,12 +169,14 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e2e95db7a15f4e50",
+  "active": "397b8a3489560776",
   "lastOpenFiles": [
+    "基础/WEB3/Patrick Collins/Patrick Collins.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/Tool/Linux/Linux.md",
     "工作/航天宏图/航天宏图.md",
     "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/Interview/Interview.md",
     "README.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
@@ -198,8 +200,6 @@
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets/Pasted.md",
     "assets",
-    "基础/WEB3/Solidity/实战.md",
-    "基础/WEB3/Solidity/Solidity.md",
     "基础/量化交易/量化交易基础",
     "基础/WEB3/Solana Rust/assets/Pasted image 20240810220338.png",
     "基础/后端/Rust/assets/image-20240628000841742.png",
