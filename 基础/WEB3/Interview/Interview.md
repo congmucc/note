@@ -119,15 +119,6 @@ Rust:
 
 
 
-
-
-
-## 信息方面：
-1、 [PANews - 你的Web3信息官 (panewslab.com)](https://www.panewslab.com/zh/index.html)：
-[一文盘点 BTC Layer2 龙头项目 BEVM 生态现状 - PANews (panewslab.com)](https://www.panewslab.com/zh/articledetails/633tw301r48g.html)
-
-2、[专注Web3行业深度报道，洞察潮水流动的方向 - 区块链媒体 - 区块链新闻资讯 - 区块链技术应用 - 区块链项目机构 - 深潮TechFlow (techflowpost.com)](https://www.techflowpost.com/)
-
 ## 3.1 前端框架
 [Wagmi | Reactivity for Ethereum apps](https://wagmi.sh/)
 
@@ -136,6 +127,15 @@ Rust:
 [开始使用 ·维姆 --- Getting Started · Viem](https://viem.sh/docs/getting-started.html)
 
 
+
+# 网站- 信息方面：
+1、 [PANews - 你的Web3信息官 (panewslab.com)](https://www.panewslab.com/zh/index.html)：
+[一文盘点 BTC Layer2 龙头项目 BEVM 生态现状 - PANews (panewslab.com)](https://www.panewslab.com/zh/articledetails/633tw301r48g.html)
+
+2、[专注Web3行业深度报道，洞察潮水流动的方向 - 区块链媒体 - 区块链新闻资讯 - 区块链技术应用 - 区块链项目机构 - 深潮TechFlow (techflowpost.com)](https://www.techflowpost.com/)
+
+
+3、[Global Press Release & Newswire Distribution Services | Business Wire](https://www.businesswire.com/portal/site/home/)
 
 
 
