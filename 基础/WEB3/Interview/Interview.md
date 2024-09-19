@@ -134,3 +134,25 @@ Rust:
 
 [开始使用 ·维姆 --- Getting Started · Viem](https://viem.sh/docs/getting-started.html)
 
+
+
+
+
+
+
+
+
+
+
+面试：
+
+
+
+1、rust内存模型
+
+2、扫块多线程优化方式：整合一个拿队列进行保存入库。
+
+3、gas费组成
+
+4、
+
