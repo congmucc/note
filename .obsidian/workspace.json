@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rollup",
+                "query": "gas",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md"
+                "file": "基础/WEB3/Interview/Interview.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -171,11 +171,12 @@
   },
   "active": "397b8a3489560776",
   "lastOpenFiles": [
+    "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
+    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/Tool/Linux/Linux.md",
     "工作/航天宏图/航天宏图.md",
-    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Interview/Interview.md",
     "README.md",
@@ -198,7 +199,6 @@
     "基础/后端/SQL/MongoDB/MongoDB.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
-    "assets/Pasted.md",
     "assets",
     "基础/量化交易/量化交易基础",
     "基础/WEB3/Solana Rust/assets/Pasted image 20240810220338.png",
