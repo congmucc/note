@@ -249,7 +249,7 @@ Optimistic Rollup 这种方案，它的技术原理如下：
 
 
 
-## 1.6 Layer 2 - ZK Rollup
+8## 1.6 Layer 2 - ZK Rollup
 
 > 零知识证明(Zero-Knowledge Proofs)是一种密码学技术，允许一方（证明者）向另一方（验证者）证明某个声明是真实的，而无需透露声明本身的具体内容。在 ZK Rollup 中，零知识证明用于验证交易的有效性。
 
