@@ -156,7 +156,7 @@ Rust:
 3、gas组成（Gas Fee = Gas Used * Gas Price，Gas 可以分为两个主要组成部分：**Gas Limit** 和 **Gas Price**。）
 
 - **基础费用（Intrinsic Gas Cost）**：与交易的基本数据（如签名、接收者地址等）相关的固定成本。每笔交易都有最低的 21,000 gas 作为基础费用。
-- **执行成本（Execution Gas Cost）**：与实际执行的操作有关，比如存储、计算等。智能合约的每个操作（如存储写入、函数调用、循环等）都有特定的 gas 消耗。
+- **执行成本（Execution Gas Cost）**：与实际执行的操作有关，比如存储、计算等。智能合约的每个操作（如存储写入、函数调用、循环等）都有特定的 gas 消耗。c
 
 4、layer2是什么，layer1和layer2如何通信（状态通道）
 
