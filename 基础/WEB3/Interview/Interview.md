@@ -157,3 +157,8 @@ Rust:
 
 4、layer2是什么，layer1和layer2如何通信（状态通道）
 
+5、防止双花问题
+
+6、[区块链｜ 期望35K｜腾讯2轮面经，感觉区块链方向一点都不卷 (qq.com)](https://mp.weixin.qq.com/s/21_WEWEprfP7BEWZ9rrhwQ)
+
+7、
