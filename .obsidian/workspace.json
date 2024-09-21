@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md"
+                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,15 +169,19 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "397b8a3489560776",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
+    "实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
+    "实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
+    "实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md",
+    "实战笔记/项目笔记/Java+Vue/党务修改.md",
+    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/Move/Move.md",
     "基础/WEB3/Solidity/Solidity.md",
     "基础/前端/JavaScript/JavaScript.md",
-    "实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
@@ -193,10 +197,6 @@
     "基础/CICD/Jenkins/Jenkins.md",
     "基础/CICD/CICD.md",
     "基础/CICD/Devops/Devops.md",
-    "基础/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
-    "基础/后端/Java/微服务框架/MQ/MQ.md",
-    "基础/后端/Java/JavaWeb开发规范.md",
-    "基础/后端/Go/Golang基础/Golang基础.md",
     "基础/后端/Rust/assets/image-20240629235928924.png",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets",

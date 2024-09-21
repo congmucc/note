@@ -165,3 +165,5 @@ Rust:
 6、[区块链｜ 期望35K｜腾讯2轮面经，感觉区块链方向一点都不卷 (qq.com)](https://mp.weixin.qq.com/s/21_WEWEprfP7BEWZ9rrhwQ)
 
 7、Mev问题（三明治攻击等等）
+
+8、入库的事务如何处理。
