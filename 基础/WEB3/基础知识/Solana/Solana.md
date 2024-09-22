@@ -556,6 +556,7 @@ https://creatorsdao.github.io/
     
 - **确认交易**：通过`solana confirm`命令检查交易是否成功，确保合约已被成功部署并获得地址。
 
+> BPF（Berkeley Packet Filter）起初是为了网络数据包过滤而设计的一种技术，但在Solana等区块链平台中，它作为一种通用的字节码格式，被用于智能合约的执行。Solana的运行时环境将合约编译为BPF字节码，使其能够在虚拟机中高效执行。
 
 # Solana Rust
 
