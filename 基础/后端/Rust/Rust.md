@@ -1284,8 +1284,8 @@ fn find_element(array: &[i32], target: i32) -> Option<usize> {
 fn main() {
     let arr = [1, 2, 3, 4, 5];
 
-    match find_element(array: &arr, target: 4) {
-        Some(index) => println!("found at index {}", index),
+    match find_element(&arr, 4) { 
+        Some(index) => println!("Found at index {}", index),
         None => println!("None"),
     }
 }
@@ -2889,7 +2889,13 @@ for遍历的一种方式
 
 
 
-
+```rust
+    for (index, &item) in array.iter().enumerate() {
+        if item == target {
+            return Some(index);
+        }
+    }
+```
 
 
 
