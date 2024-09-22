@@ -540,11 +540,29 @@ NFT（非同质化代币）是基于区块链技术的一种独特的数字资�
 https://creatorsdao.github.io/
 [调试 Solana 程序 | Solana Co Learn (creatorsdao.github.io)](https://creatorsdao.github.io/solana-co-learn/cookbook-zh/guides/debugging-solana-programs)
 
+## 合约部署到链上的流程
+
+- **创建钱包**：使用Solana CLI创建一个钱包，生成公私钥对。私钥用于签名交易，公钥是钱包地址。
+    
+- **请求SOL**：在测试网络上，使用`solana airdrop`命令获取一些SOL，以便支付部署费用。
+    
+- **构建合约**：在合约目录中，运行`anchor build`，这会生成`target/deploy`文件夹，其中包含编译后的合约二进制文件。
+    
+- **生成交易**：使用`solana program deploy`命令时，Solana CLI会创建一个交易，并将合约的BPF二进制文件包含在其中。
+    
+- **签名交易**：CLI会自动使用钱包的私钥对交易进行签名。这一步非常重要，因为只有签名的交易才能被提交到Solana网络。
+    
+- **发送交易**：签名后，交易会被发送到Solana网络，节点会验证签名，并将合约部署到链上。
+    
+- **确认交易**：通过`solana confirm`命令检查交易是否成功，确保合约已被成功部署并获得地址。
+
+
 # Solana Rust
 
 [如何在 Solana 中编写您的第一个锚点程序 - 第 2 部分 |QuickNode 快节点 --- How to Write Your First Anchor Program in Solana - Part 2 | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/how-to-write-your-first-anchor-program-in-solana-part-2)
 
 [Solana 中文开发教程 (solanazh.com)](https://www.solanazh.com/)
+
 
 
 ## 错误处理

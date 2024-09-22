@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "397b8a3489560776",
   "lastOpenFiles": [
+    "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
     "实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
     "实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
     "实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
@@ -196,7 +197,6 @@
     "基础/CICD/Docker/Docker.md",
     "基础/CICD/Jenkins/Jenkins.md",
     "基础/CICD/CICD.md",
-    "基础/CICD/Devops/Devops.md",
     "基础/后端/Rust/assets/image-20240629235928924.png",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets",
