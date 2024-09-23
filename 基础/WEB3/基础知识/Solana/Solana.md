@@ -3009,7 +3009,6 @@ pub struct MintNFT<'info> {
 在您的项目中，找到 **tests** 的文件夹，转到 tests/metaplex_nft.ts 并粘贴下面的代码：
 
 
-
 ```ts
 import * as anchor from '@project-serum/anchor'
 import { Program, Wallet } from '@project-serum/anchor'

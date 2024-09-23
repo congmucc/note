@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Move/Move.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "UTXO",
+                "query": "drop",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Move/Move.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Move/Move.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               }
             }
           },
@@ -143,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Move/Move.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,33 +171,32 @@
   },
   "active": "397b8a3489560776",
   "lastOpenFiles": [
-    "基础/WEB3/道路/道路.md",
+    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/后端/Rust/Rust.md",
     "基础/WEB3/Interview/Interview.md",
+    "基础/后端/Rust/assets/image-20240629235928924.png",
+    "基础/WEB3/Move/Move.md",
+    "基础/前端/vue/vue2-3/day12-day14-大事件管理系统/大事件管理系统.md",
+    "基础/WEB3/道路/道路.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
     "实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
     "实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
     "实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
     "实战笔记/项目笔记/Java+Vue/vue3大事件项目总结.md",
     "实战笔记/项目笔记/Java+Vue/党务修改.md",
-    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
-    "基础/WEB3/Move/Move.md",
     "基础/WEB3/Solidity/Solidity.md",
     "基础/前端/JavaScript/JavaScript.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
     "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Solidity/合约安全.md",
-    "基础/后端/Rust/Rust.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/Tool/Linux/Linux.md",
     "工作/航天宏图/航天宏图.md",
     "README.md",
     "基础/CICD/K8s/K8s.md",
-    "基础/CICD/Docker/Docker.md",
-    "基础/CICD/Jenkins/Jenkins.md",
-    "基础/后端/Rust/assets/image-20240629235928924.png",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets",
     "基础/量化交易/量化交易基础",
