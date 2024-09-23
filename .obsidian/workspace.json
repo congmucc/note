@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -170,7 +169,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ff17a40e34515f2a",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
