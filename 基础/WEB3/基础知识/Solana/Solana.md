@@ -3380,3 +3380,8 @@ anchor test --skip-deploy
 ```
 
 > 先跳过deploy，直接test，这是基于已经deploy
+
+```
+solana program close --buffers
+```
+
