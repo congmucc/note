@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md"
+                "file": "基础/WEB3/Interview/Interview.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+                "file": "基础/WEB3/Interview/Interview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,8 +169,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "397b8a3489560776",
+  "active": "e2e95db7a15f4e50",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
@@ -179,7 +180,6 @@
     "基础/WEB3/Move/Move.md",
     "基础/前端/vue/vue2-3/day12-day14-大事件管理系统/大事件管理系统.md",
     "基础/WEB3/道路/道路.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "实战笔记/项目笔记/Java+Vue/闻讯头条/闻讯头条.md",
     "实战笔记/项目笔记/Java+Vue/Java后台管理系统总结/Java后台管理系统总结.md",
     "实战笔记/项目笔记/Java+Vue/uniapp电商项目/uniapp电商项目.md",
