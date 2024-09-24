@@ -443,19 +443,19 @@ Preview
 #### Solana的Gas组成
 
 1. **基本费用（Base Fee）**
-    
+   
     - 每个交易都有固定的基本费用，通常由网络的状态和当前的负载决定。即使交易未被执行，基本费用也会被收取。开发者应注意基本费用在高负载期间可能会有所增加。
 2. **计算费用（Compute Fee）**
-    
+   
     - Solana使用计算单位（Compute Units）来衡量合约执行时所需的资源。每个操作（如数据读取、数学计算等）消耗一定数量的计算单位。复杂的合约逻辑、循环和条件语句都会增加计算费用。
 3. **存储费用（Storage Fee）**
-    
+   
     - 写入和更新链上状态（例如创建账户或存储数据）会产生存储费用。每个状态的初始创建和后续更新都有相应的费用。存储费用的结构设计旨在鼓励开发者合理管理链上数据。
 4. **数据传输费用（Data Transfer Fee）**
-    
+   
     - 数据在链上的传输（例如在不同账户间移动数据）也可能产生费用。虽然这部分费用通常较小，但在频繁的数据操作中也会有所累积。
 5. **网络拥堵和动态费用机制**
-    
+   
     - 在网络高负载情况下，Solana会动态调整基本费用以反映网络的真实成本。这意味着在拥堵期间，费用可能会显著上升。
 
 #### 如何减少Gas费用
@@ -463,23 +463,23 @@ Preview
 作为开发人员，有几种策略可以帮助减少Solana上的gas费用：
 
 1. **优化合约逻辑**
-    
+   
     - 减少复杂度：避免不必要的计算和复杂的控制流结构，如循环和深层嵌套条件。尽量减少合约中的状态变化，以降低计算费用。
     - 使用高效的数据结构：选择合适的数据结构（如数组、映射等），以优化存储和读取操作。
 2. **批量处理**
-    
+   
     - 在合约中实现批量操作，尽量将多个操作合并为一个交易。这可以显著降低计算和存储费用，因为多个操作共享基本费用。
 3. **减少存储操作**
-    
+   
     - 尽量减少对链上状态的写入和更新。使用内存存储（如局部变量）来保存临时数据，减少对链上存储的依赖。
 4. **使用条件逻辑避免冗余操作**
-    
+   
     - 在合约中加入条件检查，以避免执行不必要的操作。例如，在更新状态之前检查新值是否与当前值不同。
 5. **监控和调整费用**
-    
+   
     - 在开发和测试阶段，使用Solana的工具（如`solana transaction`命令）监控交易的计算单位消耗。根据这些数据，调整合约逻辑以优化费用。
 6. **使用最新的Solana工具**
-    
+   
     - 关注Solana的更新和优化，确保使用最新版本的SDK和工具。这些工具通常会包含性能改进和优化，使开发更高效。
 
 
@@ -487,28 +487,28 @@ Preview
 #### Solana的Gas组成示例
 
 1. **基本费用（Base Fee）**
-    
+   
     - 每笔交易都有一个基本费用，例如，当前网络状态下的固定费用。假设基本费用为0.000005 SOL。
 2. **计算费用（Compute Fee）**
-    
+   
     - 计算单位（Compute Units）是Solana衡量合约执行消耗的标准。每个操作消耗的计算单位数量不同：
         - 数据读取：约1个计算单位
         - 数据写入：约5个计算单位
         - 算术运算：约1个计算单位
     - 假设你有一个合约执行10次加法运算和1次数据写入，计算费用可能为：`10 * 1 + 5 = 15`个计算单位。
 3. **存储费用（Storage Fee）**
-    
+   
     - 存储新账户或状态的费用。假设创建新账户的费用为0.002 SOL，每次更新可能会产生额外费用，例如0.0001 SOL。
 4. **数据传输费用（Data Transfer Fee）**
-    
+   
     - 在链上移动数据的费用，通常较小，但在大规模数据操作中会累积。
 
 #### 优化Gas费用的策略与示例
 
 1. **优化合约逻辑**
-    
+   
     - **示例**：假设你有一个合约，在一个循环中执行多个数据写入操作：
-        
+      
         rust
         
         复制代码
@@ -525,19 +525,19 @@ Preview
         
     - 这样可以显著减少计算单位的消耗。
 2. **减少存储操作**
-    
+   
     - **示例**：假设你频繁更新合约状态。每次更新都会产生存储费用。你可以使用临时变量，减少对链上状态的写入：
-        
+      
         rust
         
         复制代码
         
         `pub fn update_state(current: u32) -> ProgramResult {     let new_value = current + 1; // 计算新值     if new_value != current {         // 仅在值变化时写入         // 更新状态     }     Ok(()) }`
-        
-3. **批量处理**
     
+3. **批量处理**
+   
     - **示例**：如果你需要同时处理多个用户的请求，可以将多个操作合并为一个交易。例如，假设你需要处理多个转账：
-        
+      
         rust
         
         复制代码
@@ -546,19 +546,19 @@ Preview
         
     - 通过批量处理，可以减少基本费用的消耗，因为所有操作在一个交易中提交。
 4. **使用条件逻辑**
-    
+   
     - **示例**：在更新状态时先进行条件检查，避免不必要的写入：
-        
+      
         rust
         
         复制代码
         
         `pub fn conditional_update(state: &mut State, new_value: u32) -> ProgramResult {     if state.value != new_value {         state.value = new_value; // 仅在值改变时更新     }     Ok(()) }`
-        
-5. **监控和调整费用**
     
+5. **监控和调整费用**
+   
     - 开发时使用命令行工具监控计算单位消耗，例如：
-        
+      
         bash
         
         复制代码
@@ -667,17 +667,17 @@ https://creatorsdao.github.io/
 ## 合约部署到链上的流程
 
 - **创建钱包**：使用Solana CLI创建一个钱包，生成公私钥对。私钥用于签名交易，公钥是钱包地址。
-    
+  
 - **请求SOL**：在测试网络上，使用`solana airdrop`命令获取一些SOL，以便支付部署费用。
-    
+  
 - **构建合约**：在合约目录中，运行`anchor build`，这会生成`target/deploy`文件夹，其中包含编译后的合约二进制文件。
-    
+  
 - **生成交易**：使用`solana program deploy`命令时，Solana CLI会创建一个交易，并将合约的BPF二进制文件包含在其中。
-    
+  
 - **签名交易**：CLI会自动使用钱包的私钥对交易进行签名。这一步非常重要，因为只有签名的交易才能被提交到Solana网络。
-    
+  
 - **发送交易**：签名后，交易会被发送到Solana网络，节点会验证签名，并将合约部署到链上。
-    
+  
 - **确认交易**：通过`solana confirm`命令检查交易是否成功，确保合约已被成功部署并获得地址。
 
 > BPF（Berkeley Packet Filter）起初是为了网络数据包过滤而设计的一种技术，但在Solana等区块链平台中，它作为一种通用的字节码格式，被用于智能合约的执行。Solana的运行时环境将合约编译为BPF字节码，使其能够在虚拟机中高效执行。
@@ -2019,7 +2019,7 @@ pub struct ProgramAccountContext<'info> {
 use anchor_lang::prelude::*;
 use solana_program::clock::Clock;
 
-declare_id!("11111111111111111111111111111111");
+declare_id!("ZRotXTzojzsNxwS9rZXqLva6jN8N2izhCPfjMibjNjj");
 
 #[program]
 pub mod anchor_bac {
@@ -2082,6 +2082,90 @@ pub enum MyError {
     #[msg("Too larget")]
     NumberTooLarge,
 }
+```
+
+> 4zXYCV9JReJHStTe8cHVjxe23YZmschEGXj3vhqwEaHYY6gS1jbTP9v1GTcFx8LPxreudwHV6MHdJwoWM4g28dHC
+
+
+
+
+
+```rust
+use anchor_lang::prelude::*;
+use solana_program::clock::Clock;
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
+
+declare_id!("FnGPg3RqjuwAxPY7KTPA1m4Wc6Ydb7XCFjyBLp4DGiAp");
+
+#[program]
+pub mod anchor_bac {
+    use super::*;
+
+    pub fn initialize(ctx: Context<AccountContext>) -> Result<()> {
+        let guessing_account = &mut ctx.accounts.guessing_account;
+        guessing_account.number_hash = generate_hashed_random_number();
+        Ok(())
+    }
+
+    pub fn guess(ctx: Context<AccountContext>, number: u32) -> Result<()> {
+        let guessing_account = &ctx.accounts.guessing_account;
+
+        let guess_hash = generate_hash(number);
+
+        if guess_hash == guessing_account.number_hash {
+            return Ok(());
+        } else if guess_hash < guessing_account.number_hash {
+            return err!(MyError::NumberTooSmall);
+        } else {
+            return err!(MyError::NumberTooLarge);
+        }
+    }
+}
+
+fn generate_hashed_random_number() -> u32 {
+    let clock = Clock::get().expect("Failed to get clock");
+    let random_value = (clock.unix_timestamp % 100) as u32;
+
+    generate_hash(random_value)
+}
+
+fn generate_hash(number: u32) -> u32 {
+    let mut hasher = DefaultHasher::new();
+    number.hash(&mut hasher);
+    hasher.finish() as u32
+}
+
+#[account]
+pub struct GuessingAccount {
+    pub number_hash: u32,
+}
+
+#[derive(Accounts)]
+pub struct AccountContext<'info> {
+    #[account(
+        init_if_needed,
+        space = 32,
+        payer = payer,
+        seeds = [b"guessing pda"],
+        bump
+    )]
+    pub guessing_account: Account<'info, GuessingAccount>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    pub system_program: Program<'info, System>,
+}
+
+#[error_code]
+pub enum MyError {
+    #[msg("Too small")]
+    NumberTooSmall,
+    #[msg("Too large")]
+    NumberTooLarge,
+}
+
 ```
 
 
