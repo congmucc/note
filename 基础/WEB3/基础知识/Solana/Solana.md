@@ -3381,7 +3381,8 @@ anchor test --skip-deploy
 
 > 先跳过deploy，直接test，这是基于已经deploy
 
-```
+```sh
 solana program close --buffers
 ```
 
+> 关闭所有部署，并且返还sol
