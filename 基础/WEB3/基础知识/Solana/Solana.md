@@ -2953,7 +2953,7 @@ use anchor_spl::token;
 use anchor_spl::token::{MintTo, Token};
 use mpl_token_metadata::instruction::{create_master_edition_v3, create_metadata_accounts_v2};
 
-declare_id!("3bfaUxYjL8PhJbCiw9rxjaijdgyUs8cJNGSufPuaPuKu");
+declare_id!("");
 
 #[program]
 pub mod metaplex_nft {
@@ -3036,7 +3036,6 @@ pub mod metaplex_nft {
             ctx.accounts.rent.to_account_info(),
         ];
         msg!("Master Edition Account Infos Assigned");
-        // 这是发起cpi调用
         invoke(
             &create_master_edition_v3(
                 ctx.accounts.token_metadata_program.key(),
