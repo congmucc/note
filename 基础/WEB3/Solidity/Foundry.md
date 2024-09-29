@@ -87,11 +87,21 @@ forge test
 > `-vv`: Print some logs and you can add `v` to print  extra
 > eg: `forge test --match-test test_Increment -vvv` It will print 3 logs
 >
-> `--fork-url`: add fork test
+> `--rpc-url`: add fork test
+
+```sh
+forge coverage --fork--url $URL
+```
+
+> It outputs test rates
 
 [7.7 分叉（Fork）测试_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13a4y1F7V3/?p=88)
 
-> This course 
+> There are four tests in this course.
+
+
+
+
 
 ## `anvil`
 
