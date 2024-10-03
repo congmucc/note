@@ -104,7 +104,7 @@ forge coverage --fork--url $URL
 
 
 
-#### Cheatcodes:
+#### Cheatcodes
 
 > [Cheatcodes - Foundry Book (getfoundry.sh)](https://book.getfoundry.sh/forge/cheatcodes)
 >
@@ -123,24 +123,36 @@ forge coverage --fork--url $URL
 
 
 
-
-
-
-
 #### Gas price of test
 
 `forge snapshot`
 
 > The command  will record the gas price of Individual tests and generate a `.gas-snapshot` file.
 >
-> eg: `forge snapshot --mt te
-> st_Increment`
+> eg: `forge snapshot --mt test_Increment`
+> test_Increment is function name
 
-
-
-txGasPrice
+`vm.txGasPrice`
 
 > It's cheatcode
+
+
+
+#### Store
+
+`forge inspect`
+
+> Check how the contract is stored, and it will tell you the contract layout of the contract.
+>
+> eg: `forge inspect Counter storageLayout`
+>
+> Couter is contract name
+
+
+
+
+
+
 
 ### Prompt code error
 
@@ -192,3 +204,31 @@ cast --to-base 0x283c3 dec
 
 > 将16进制转换为10进制，foundry内置了
 
+
+
+
+
+# Gas Optimization
+
+
+
+## Memory And Store
+
+```solidity
+    function testWithdrawFromMultipleFunders() public funded skipZkSync{
+        uint160 numberOfFunders = s_funder.length;
+        uint160 startingFunderIndex = 2;
+        for (uint160 i = startingFunderIndex; i < numberOfFunders + startingFunderIndex; i++) {
+        }
+```
+
+> **Type**: use memory variable instead of stored variables
+>
+> **Reason**: in 2 lines, we know we use memory variable `numberOfFunders` and used it in a for loop.
+>
+> ```solidity
+>         for (uint160 i = startingFunderIndex; i < s_funder.length + startingFunderIndex; i++) {
+>         }
+> ```
+>
+> > Each for loop calls the `fundMe.fund` function. If it's called `loops` times, it costs `100 wei * loops`. However, if it uses the memory variable `numberOfFunders`, the cost is `3 wei * loops + 100 wei`.
