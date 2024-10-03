@@ -30,7 +30,7 @@ forge --help
 
 
 
-**Contract deployment**
+### **Contract deployment**
 
 ```sh
 forge script script/Deploy.s.sol --rpc-url http://127.0.0.1:8545
@@ -44,9 +44,13 @@ forge script script/Deploy(名字需要更改).s.sol --rpc-url $RPC_URL --broadc
 
 > 生成部署信息到文件
 
+`forge create`
+
+> Deploy a smart contract
 
 
-**Installation of dependencies**
+
+### **Installation of dependencies**
 
 ```sh
 forge install
@@ -65,10 +69,9 @@ forge install
 > > 
 > > 
 > > remappings = ["@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/"]
-> > 
 > > ```
-> >
-> > It redirects to this file directory.
+> > 
+> >It redirects to this file directory.
 
 > [7.3 继续进行设置_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13a4y1F7V3/?p=84)
 
@@ -76,13 +79,13 @@ forge install
 
 
 
-**Contract Test**
+### **Contract Test**
 
 ```sh
 forge test
 ```
 
-> `--match-test function_name`: Run the corresponding function eg: `forge test --match-test test_Increment`
+> `--match-test function_name`: Run the corresponding function eg: `forge test --mt test_Increment`
 >
 > `-vv`: Print some logs and you can add `v` to print  extra
 > eg: `forge test --match-test test_Increment -vvv` It will print 3 logs
@@ -101,11 +104,69 @@ forge coverage --fork--url $URL
 
 
 
+#### Cheatcodes:
+
+> [Cheatcodes - Foundry Book (getfoundry.sh)](https://book.getfoundry.sh/forge/cheatcodes)
+>
+> https://book.getfoundry.sh/cheatcodes/
+>
+> - `vm.expectRevert` : It will revert the next line of code.
+> - `vm.prank`: It will set `msg.sender` to the specified address for next call. “The next call” includes static calls as well, but not calls to the cheat code address.  and use it with `makeAddr()` 
+> - `makeAddr`: Creates an address derived from the provided `name`.
+> - `deal`:
+
+[7.13 了解更多的Cheatcodes_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13a4y1F7V3/?p=94)
+
+`vm.txGasPrice()`
+
+> It sets the gas price of the transaction
+
+
+
+
+
+
+
+#### Gas price of test
+
+`forge snapshot`
+
+> The command  will record the gas price of Individual tests and generate a `.gas-snapshot` file.
+>
+> eg: `forge snapshot --mt te
+> st_Increment`
+
+
+
+txGasPrice
+
+> It's cheatcode
+
+### Prompt code error
+
+`chaisel`
+
+> debugging test, prompt code error
+
+```sh
+> chaisel
+> !help
+> uint256 cat = 1;
+> cat 
+> unint256 catAndThree = cat + 3;
+```
+
+
+
+
+
+
+
+
+
 
 
 ## `anvil`
-
-
 
 搭建本地节点
 
