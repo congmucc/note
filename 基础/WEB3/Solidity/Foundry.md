@@ -56,10 +56,10 @@ forge script script/Deploy(名字需要更改).s.sol --rpc-url $RPC_URL --broadc
 forge install
 ```
 
-> 安装依赖，fork一下依赖
+> 安装依赖，fork一下依赖，地址为：`https://github.com/smartcontractkit/chainlink-brownie-contracts`,只需要后面的即可，会自动补充，`@`选版本
 >
 > ```sh
-> forge insatll smartcontranctkit/chainlink-brownie-contracts@0.7.1 --no-commit
+> forge install smartcontractkit/chainlink-brownie-contracts@0.7.1 --no-commit
 > ```
 >
 > > Then modify the remappings attribute under
@@ -101,6 +101,10 @@ forge coverage --fork--url $URL
 [7.7 分叉（Fork）测试_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13a4y1F7V3/?p=88)
 
 > There are four tests in this course.
+>
+> 1. fork tests：[7.7 分叉（Fork）测试_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13a4y1F7V3/?p=88)
+> 2. integration tests：[7.19 集成测试Interactions](https://www.bilibili.com/video/BV13a4y1F7V3/?p=100)
+> 3. 
 
 
 
@@ -123,7 +127,7 @@ forge coverage --fork--url $URL
 
 
 
-#### Gas price of test
+#### Get gas price of test
 
 `forge snapshot`
 
@@ -206,6 +210,21 @@ cast --to-base 0x283c3 dec
 
 
 
+**Foundry-devops**
+
+>  Find your Address of the most recently deployed contract
+>
+> ```rust
+> // foundry.toml
+> 
+> ffi = true
+> 
+> ```
+>
+> You can use the `Foundry-devops` command in your terminal, but you must set `ffi = true` in the `foundry.toml` file.
+
+
+
 
 
 # Gas Optimization
@@ -232,3 +251,8 @@ cast --to-base 0x283c3 dec
 > ```
 >
 > > Each for loop calls the `fundMe.fund` function. If it's called `loops` times, it costs `100 wei * loops`. However, if it uses the memory variable `numberOfFunders`, the cost is `3 wei * loops + 100 wei`.
+> >
+> > [7.18 取款（withdraw）功能的gas优化（2）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV13a4y1F7V3/?p=99)
+
+
+

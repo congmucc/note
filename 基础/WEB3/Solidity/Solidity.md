@@ -343,9 +343,11 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 
 
 
+## 1.5 命名 style guide
 
+[Style Guide — Solidity 0.8.28 documentation (soliditylang.org)](https://docs.soliditylang.org/en/latest/style-guide.html)
 
-
+[Make a doc that has the solidity style guide + the Chainlink style guide · Issue #13 · smartcontractkit/full-blockchain-solidity-course-js (github.com)](https://github.com/smartcontractkit/full-blockchain-solidity-course-js/issues/13)
 
 # 2 提升
 
