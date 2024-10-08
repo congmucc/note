@@ -349,6 +349,44 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 
 [Make a doc that has the solidity style guide + the Chainlink style guide · Issue #13 · smartcontractkit/full-blockchain-solidity-course-js (github.com)](https://github.com/smartcontractkit/full-blockchain-solidity-course-js/issues/13)
 
+
+
+[9.2 Solidit 的布局i](https://www.bilibili.com/video/BV13a4y1F7V3/?p=109)
+
+### Order of Layout
+
+
+
+- **Contract elements should be laid out in the following order:**
+  Pragma statements
+  Import statements
+  Events
+  Errors
+  Interfaces
+  Libraries
+  Contracts
+- **Inside each contract, library or interface, use the following order:**
+  - Type declarations
+  - State variables
+  - Events
+  - Errors
+  - Modifiers
+  - Functions
+- **Functions should be grouped according to their visibility and ordered:**
+  constructor
+  receive function (if exists)
+  fallback function (if exists)
+  external
+  public
+  internal
+  private
+
+
+
+
+
+
+
 # 2 提升
 
 ## 2.1 函数基础
@@ -1940,7 +1978,9 @@ function callNonExist(address _addr) external{
 
 ### 4.6.4 总结
 
-这一讲，我们介绍了如何用`call`这一低级函数来调用其他合约。`call`不是调用合约的推荐方法，因为不安全。但他能让我们在不知道源代码和`ABI`的情况下调用目标合约，很有用。
+这一讲，我们介绍了如何用`call`这一低级函数来调用其他合约。`call`**不是调用合约的推荐方法**，因为不安全。但他能让我们在不知道源代码和`ABI`的情况下调用目标合约，很有用。
+
+推荐4.5 声明合约变量后调用函数
 
 
 
