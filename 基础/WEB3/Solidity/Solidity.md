@@ -709,6 +709,10 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+![image-20241008212158008](./assets/image-20241008212158008.png)
+
+![image-20241008212200714](./assets/image-20241008212200714.png)
+
 ## 2.4 日志
 
 ```solidity
@@ -734,6 +738,10 @@ keccak256("Transfer(addrses,address,uint256)")
 除了事件签名，主题还可以包含至多`3`个`indexed`参数，也就是`Transfer`事件中的`from`和`to`。
 
 `indexed`标记的参数可以理解为检索事件的索引“键”，方便之后搜索。每个 `indexed` 参数的大小为固定的256比特，如果参数太大了（比如字符串），就会自动计算哈希存储在主题中。
+
+没有`indexed`关键词的会被编码，不方便检索。
+
+
 
 ### 2.4.2 数据 `Data`
 
