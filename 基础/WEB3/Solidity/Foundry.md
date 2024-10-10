@@ -304,6 +304,8 @@ withdraw:
 
 ## CEI: Checks, Effects, Interactions
 
+> CEI is a design pattern for contract development
+
 ```solidity
     function fulfillRandomWords(uint256 _requestId, uint256[] calldata _randomWords) internal override {
     	//Checks
