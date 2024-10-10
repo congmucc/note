@@ -302,6 +302,34 @@ withdraw:
 
 
 
+## CEI: Checks, Effects, Interactions
+
+```solidity
+    function fulfillRandomWords(uint256 _requestId, uint256[] calldata _randomWords) internal override {
+    	//Checks
+        if (!s_requests[_requestId].exists) {
+            revert("request not found");
+        }
+        // Effects
+        uint256 indexOfWinner = _randomWords[0] % s_players.length;
+        address payable winner = s_players[indexOfWinner];
+        s_recentWinner = winner;
+
+        s_players = new address payable[](0);
+        s_lastTimeStamp = block.timestamp;
+        // This line of code should be here, following the rules
+        emit WinnerPicked(winner);
+        
+        // Interactions
+        (bool success,) = winner.call{value: address(this).balance}("");
+        if (!success) {
+            revert Raffle_TransferFailed();
+        }
+    }
+```
+
+
+
 
 
 
