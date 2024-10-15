@@ -67,23 +67,57 @@ https://jobs.solana.com/jobs - 這是北美歐洲的中層管理的水平
 >
 > solana：[開發者工具 (notion.site)](https://solanazh.notion.site/97bb28dd0bc34281894ae761fa49bee6)
 >
-> 
 
 
-nexts 教程(前端) https://s.juejin.cn/ds/iFNc8Mkn/
 
-ethersjs 教程(前端，i法):https://github.com/WTFAcademy/WTF-Ethers
+> 备注前面加上自己预期的岗位比如前端-张三/GO-李四。
+>
+> 区块链知识面试题(每周至少四题，文档中可以留下自己的评论，群内语音打卡模拟面试说辞，什么时候开始语音打卡我会艾特大家参与)
+>
+> https://grayjiang.notion.site/da167dffbe0e47cbb6b4eedb657f04ad?pvs=4
+>
+>
+> js现代教程(前端）：https://zh.javascript.info/js
+>
+> react 速成教程:https://www.bilibili.com/video/BV1764y1z7pb/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=232d2847d404e1b7f7e956165ad03541
+>
+> nextJs教程(前端）：https://s.juejin.cn/ds/iFNc8Mkn/
+>
+> ethersjs教程(前端，前置知识为 solidity 基础语法）：https://github.com/WTFAcademy/WTF-Ethers
+>
+> -----------------------------------------
+> 以下三种 go 语言学习资料任选其一适合自己的就好。
+>
+> go语言圣经文字版(后端，比较详细枯燥）：https://golang-china.github.io/gopl-zh/
+> go by example(后端，简洁明了）：https://gobyexample-cn.github.io/
+>
+> go与链上交互(后端）：
+> 文字教程旧版参考https://goethereumbook.org/zh/
+> 文字教程新版参考  
+> https://mirror.xyz/rbtree.eth/B2OZSszjxD3BfI07WOuAFzzrACilxvZcgb09GYdMgng
+> 因为旧版 api 过时，需要搭配新版一起参考。
+>
+> solidity教程(后端必须全部学习，前端学习基础语法即可）：https://github.com/AmazingAng/WTF-Solidity
+>
+> 视频(链底层相关推荐) ：
+> https://www.bilibili.com/video/BV1hz42167qE/?spm_id_from=333.1007.tianma.2-3-6.click&vd_source=232d2847d404e1b7f7e956165ad03541
+>
+> -----------------------------------------
+> 实战方向(前置条件 wtf solidity 基础语法学完)
+> 【【4K中字】B站最新Solidity智能合约Foundry框架零基础教程1-12课（已完结）-哔哩哔哩】 https://b23.tv/kX1W6RD
+> 前后端都看的部分:开头到 1.9
+> 后端 foundry 学习 ：6.1开始全部
+>
+> 一、 每周智能合约答疑课
+> 录制文件：https://meeting.tencent.com/crm/2G9vpnMl1f
+> 二、 以太坊ethclient包使用 - 2.10 部署合约
+> https://meeting.tencent.com/cw/lRVVV6yld7
 
-新版参考
-https://mirror.xyz/rbtree.eth/B20ZSszixD3Bf107WOuAFzzrACilxvZcqb09GYdMgng
 
-solidity 教程(后端必须全部学习，前端学习基础语法即可):https://github.com/AmazingAng/WTF-Solidity
 
-社区：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy/)
+> https://github.com/zitup/uniswap-v3-core-with-annotations (uniswap注释版本)
 
-实战方向(前置条件 wtf solidity 基础语法学完)【【4K中字】B站最新Solidity智能合约Foundry框架零基础教程1-12课(已完结)-哔哩哩)
-https://b23.tv/kX1W6RD
-前后端都看的部分:开头到1.9
+
 
 
 Rust:
