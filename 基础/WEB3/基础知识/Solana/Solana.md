@@ -696,6 +696,7 @@ https://creatorsdao.github.io/
 
 [Solana 中文开发教程 (solanazh.com)](https://www.solanazh.com/)
 
+[anchor/examples/tutorial/basic-0 at master · coral-xyz/anchor](https://github.com/coral-xyz/anchor/tree/master/examples/tutorial/basic-0)
 
 
 ## 错误处理
