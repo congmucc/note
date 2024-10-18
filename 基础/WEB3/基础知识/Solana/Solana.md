@@ -3385,3 +3385,7 @@ solana program close --buffers
 ```
 
 > 关闭所有部署，并且返还sol
+
+
+
+·
