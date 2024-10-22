@@ -3394,3 +3394,10 @@ solana program close --buffers
 发布合约的账户当每次发布合约的时候会给租金给第二个用户
 > `user` 账户（第一个账户）支付了一部分 `SOL` 作为交易费用和账户租金，因此它的余额减少了 `0.001402 SOL`。
 
+
+## 新增
+
+PDA账户是由`program_id`、`seeds` 和 `bump` 的哈希生成的。
+> 如果你在 `#[account]` 宏中添加 `init` 属性，而所提供的 `seeds` 和 `bump` 值与现有的账户相同，是不会生成一个新的账户的。因为 `init` 的作用是**初始化一个账户**，而账户地址是基于 `program_id`、`seeds` 和 `bump` 的哈希生成的。
+
+

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust"
+              "title": "Solana"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Rust/Rust.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Rust"
+              "title": "Outline of Solana"
             }
           },
           {
@@ -191,9 +191,10 @@
   },
   "active": "397b8a3489560776",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/后端/Rust/Rust.md",
     "基础/WEB3/Anchor/Anchor.md",
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
+    "基础/后端/Rust/Rust.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/量化交易/量化学习/量化学习.md",
     "README.md",
@@ -218,7 +219,6 @@
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/Tool/Linux/Linux.md",
-    "工作/航天宏图/航天宏图.md",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets",
     "基础/量化交易/量化交易基础",
