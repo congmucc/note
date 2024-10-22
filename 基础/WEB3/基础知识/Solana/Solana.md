@@ -1780,7 +1780,7 @@ pub fn invoke_signed(
 ![image-20240819203706084](./assets/image-20240819203706084.png)
 
 >  左边是需要被调用的cpi例子，右边是调用cpi的例子
->  [How to Create a System Program PDA and transform sol to PDA | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/system-program-pda#initializing-a-system-pda)
+>  [How to Create a System Program PDA and transfer sol to PDA | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/system-program-pda#initializing-a-system-pda)
 >
 > 建议看完图片代码之后再看anchor跨程序调用，这里面很优秀
 
