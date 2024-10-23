@@ -3394,8 +3394,6 @@ anchor deploy --provider.cluster
 
 > 使用本地部署
 
-
-
 ```anchor
 anchor test --skip-deploy
 ```
@@ -3409,10 +3407,18 @@ solana program close --buffers
 > 关闭所有部署，并且返还sol
 
 
+```sh
+solana-test-validator
+```
+搭建本地验证节点
+
 
 
 发布合约的账户当每次发布合约的时候会给租金给第二个用户
 > `user` 账户（第一个账户）支付了一部分 `SOL` 作为交易费用和账户租金，因此它的余额减少了 `0.001402 SOL`。
+
+
+
 
 
 ## 新增
