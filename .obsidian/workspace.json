@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Solana"
+              "title": "Anchor"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md"
+                "file": "基础/WEB3/Anchor/Anchor.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Solana"
+              "title": "Outline of Anchor"
             }
           },
           {
@@ -191,10 +191,10 @@
   },
   "active": "397b8a3489560776",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/后端/Rust/Rust.md",
     "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
