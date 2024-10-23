@@ -3389,6 +3389,7 @@ alchemy
 
 ```sh
 anchor deploy -- --use-rpc
+anchor deploy --provider.cluster
 ```
 
 > 使用本地部署
