@@ -176,6 +176,55 @@ EOA-外部账户(external owned account)是由人们通过私钥创建的账户�
 
 Solana 链上程序是只读或无状态的，即程序的账户（可执行账户）只存储代码，不存储任何状态，程序会把状态存储在其他独立的账户（不可执行账户）中。如果一个程序账户是一个数据账户的所有者，那么它就可以改变数据账户中的状态。
 
+```rust
+// 数据账户定义
+#[account]
+pub struct UserAccount {
+    pub balance: u64,
+}
+
+// 程序账户定义
+#[program]
+pub mod my_game {
+    use super::*;
+
+    // 创建数据账户
+    pub fn create_user_account(ctx: Context<CreateUserAccount>, initial_balance: u64) -> Result<()> {
+        let user_account = &mut ctx.accounts.user_account;
+        user_account.balance = initial_balance;
+        Ok(())
+    }
+
+    // 更新用户账户
+    pub fn update_balance(ctx: Context<UpdateBalance>, amount: u64) -> Result<()> {
+        let user_account = &mut ctx.accounts.user_account;
+        user_account.balance += amount; // 更新余额
+        Ok(())
+    }
+}
+
+// 账户上下文
+#[derive(Accounts)]
+pub struct CreateUserAccount<'info> {
+    #[account(init, payer = user, space = 8 + UserAccount::SIZE)]
+    pub user_account: Account<'info, UserAccount>, // 数据账户
+    pub user: Signer<'info>, // 创建者
+    pub system_program: Program<'info, System>, // 系统程序
+}
+
+#[derive(Accounts)]
+pub struct UpdateBalance<'info> {
+    #[account(mut)]
+    pub user_account: Account<'info, UserAccount>, // 可变数据账户
+}
+
+```
+- **程序账户**:
+    - 程序账户在部署合约时自动创建，包含程序逻辑。
+    - 只需要提供程序的字节码，而不需要额外的状态信息。
+- **数据账户**:
+    - 数据账户需要在程序中通过指令显式创建，通常需要指定初始状态（例如余额）。
+    - 可以使用 `#[account(init)]` 属性来初始化。
 
 
 > 在以太坊中，智能合约有自己的存储空间来保持状态数据。状态数据通常是合约执行过程中生成并存储的变量和信息。这些数据存储在以太坊虚拟机 (EVM) 中，并且可以在后续的交易和调用中被访问和修改。
