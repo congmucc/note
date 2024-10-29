@@ -908,7 +908,7 @@ let s = returns_string(); // 返回值的所有权转移到s
   转移所有权：
 
   ```rust
-  使用Box<T>包装类型：将基本数据类型包装在Box<T>中，可以将其存储在堆上，从而绕过Copy的限制。Box<T>不实现Copy，因此在传递给函数时会发生所有权转移。  
+ // 使用Box<T>包装类型：将基本数据类型包装在Box<T>中，可以将其存储在堆上，从而绕过Copy的限制。Box<T>不实现Copy，因此在传递给函数时会发生所有权转移。  
   fn process_boxed_data(data: Box<i32>) {
          println!("Processing data: {}", *data);
      }
@@ -921,7 +921,7 @@ let s = returns_string(); // 返回值的所有权转移到s
   ```
 
   ```rust
-     使用move闭包：另一种方法是使用闭包并显式地使用move关键字。这会强制闭包捕获其环境中的变量的所有权，即使这些变量实现了Copy。
+     //使用move闭包：另一种方法是使用闭包并显式地使用move关键字。这会强制闭包捕获其环境中的变量的所有权，即使这些变量实现了Copy。
   fn main() {
          let data = 42;
          let processor = move || println!("Processing data: {}", data);

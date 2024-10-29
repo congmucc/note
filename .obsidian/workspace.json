@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/量化交易/量化交易基础/量化交易基础.md",
+                "file": "基础/后端/Rust/Rust.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "量化交易基础"
+              "title": "Rust"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/量化交易/量化交易基础/量化交易基础.md"
+                "file": "基础/后端/Rust/Rust.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 量化交易基础"
+              "title": "Outline of Rust"
             }
           },
           {
@@ -191,6 +191,7 @@
   },
   "active": "397b8a3489560776",
   "lastOpenFiles": [
+    "基础/量化交易/量化交易基础/量化交易基础.md",
     "基础/后端/Rust/Rust.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Anchor/Anchor.md",
@@ -218,7 +219,6 @@
     "基础/WEB3/Solidity/Solidity.md",
     "基础/前端/JavaScript/JavaScript.md",
     "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
-    "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets",
     "基础/量化交易/量化交易基础",
