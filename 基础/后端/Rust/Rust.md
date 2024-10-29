@@ -889,6 +889,70 @@ let s = returns_string(); // 返回值的所有权转移到s
 
 
 
+
+`String` 变量在以下几种情况下可能无法继续使用：
+
+1. **转移了所有权（Move）**：如果函数接受的是一个 `String` 的所有权（而非引用），则在函数调用后，原来的变量就无法再使用了。
+
+    ```rust
+    fn string_func_ownership(s: String) {
+        println!("{}", s);
+    }
+
+    fn main() {
+        let s = String::from("hello");
+        string_func_ownership(s); // 所有权被转移到函数内
+        println!("{}", s); // 错误：s 的所有权已经转移
+    }
+    ```
+
+2. **可变借用（Mutable Borrow）冲突**：如果有一个函数或代码片段对变量进行了可变借用，那么在此借用结束前，无法对该变量进行其他借用。
+
+    ```rust
+    fn modify_string(s: &mut String) {
+        s.push_str(" world");
+    }
+
+    fn main() {
+        let mut s = String::from("hello");
+        
+        // 可变借用
+        modify_string(&mut s);
+
+        println!("{}", s); // 正常：可变借用已结束
+        
+        let r1 = &mut s; // 可变借用开始
+        let r2 = &mut s; // 错误：不能同时有多个可变借用
+    }
+    ```
+
+3. **不可变和可变借用冲突**：在同一作用域中，无法同时对变量进行不可变借用和可变借用。
+
+    ```rust
+    fn main() {
+        let mut s = String::from("hello");
+
+        let r1 = &s; // 不可变借用
+        let r2 = &s; // 另一个不可变借用，可以正常进行
+        
+        // let r3 = &mut s; // 错误：不可变借用还存在时无法进行可变借用
+
+        println!("{}, {}", r1, r2); // 正常：不可变借用可以同时存在多个
+    }
+    ```
+
+4. **超出生命周期**：在函数内部创建的引用不能返回给外部使用，因为它的生命周期仅限于该函数内。
+
+    ```rust
+    fn return_ref() -> &String {
+        let s = String::from("hello");
+        &s // 错误：返回了一个局部变量的引用
+    }
+    ```
+
+### 总结
+Rust 的借用规则确保了内存安全，避免数据竞争和悬垂引用，具体规则包括所有权、可变/不可变借用的排他性以及生命周期的控制。当违反这些规则时，编译器会报错，从而让代码更健壮。
+
 ### 2.3.2 对于栈和堆结构体函数所有权转移
 
 - 对于栈上数据，如果类型实现了Copy trait，那么在赋值或传递给函数时，数据会被复制，而不是转移所有权。
