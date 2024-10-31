@@ -26,9 +26,11 @@ One of the best
 
 
 ## Anchor用法
+
+
+
 ```rust
-
-
+/// PageVisits::INIT_SPACE 当遇见联合结构体的时候最好直接使用impl，方便一些
     #[account(
         space = 8 + PageVisits::INIT_SPACE,
         seeds = [
@@ -38,21 +40,24 @@ One of the best
         bump,
     )]
 
+impl PageVisits {
+    pub const SEED_PREFIX: &'static [u8; 11] = b"page_visits";
+}
+```
+
+```rust
 /// 以下两个都是赋值给结构体
     *ctx.accounts.page_visits = PageVisits {
         page_visits: 0,
         bump: ctx.bumps.page_visits,
     };
-
+/// `set_inner` 是 Anchor 框架中提供的一种方法，允许你设置账户内部存储的数据。它通常用于结构体账户，其中数据以某种特定的方式存储在账户中。
 	ctx.accounts.favorites.set_inner(PageVisits {
 		0,
 		ctx.bumps.page_visits
 	});
-
-impl PageVisits {
-    pub const SEED_PREFIX: &'static [u8; 11] = b"page_visits";
-}
 ```
+
 
 
 
