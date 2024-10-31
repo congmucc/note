@@ -59,7 +59,33 @@ impl PageVisits {
 ```
 
 
+```rust
+/// 当传入的值是anchor的结构体的时候如何传参
+/// 
+    pub fn create_system_account(
+        ctx: Context<CreateSystemAccount>,
+        address_data: AddressData,
+    ) -> Result<()> {}
 
+
+#[derive(AnchorSerialize, AnchorDeserialize, Debug)]
+pub struct AddressData {
+    name: String,
+    address: String,
+}
+
+/// ts
+
+import type { RentExample } from '../target/types/rent_example';
+
+const addressData: anchor.IdlTypes<RentExample>['addressData'] = {
+  name: 'Marcus',
+  address: '123 Main St. San Francisco, CA',
+};
+
+
+```
+> [program-examples | Look at the test file](https://github.com/solana-developers/program-examples/blob/main/basics/rent/anchor/programs/rent-example/src/lib.rs)
 
 
 ## Rust用法：
