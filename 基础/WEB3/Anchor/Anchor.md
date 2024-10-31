@@ -25,6 +25,49 @@ One of the best
 
 
 
+## Anchor用法
+```rust
+
+
+    #[account(
+        space = 8 + PageVisits::INIT_SPACE,
+        seeds = [
+            PageVisits::SEED_PREFIX,
+            payer.key().as_ref(),
+        ],
+        bump,
+    )]
+
+/// 以下两个都是赋值给结构体
+    *ctx.accounts.page_visits = PageVisits {
+        page_visits: 0,
+        bump: ctx.bumps.page_visits,
+    };
+
+	ctx.accounts.favorites.set_inner(PageVisits {
+		0,
+		ctx.bumps.page_visits
+	});
+
+impl PageVisits {
+    pub const SEED_PREFIX: &'static [u8; 11] = b"page_visits";
+}
+```
+
+
+
+
+## Rust用法：
+```rust
+/// 用于安全地对整数进行加法运算，
+/// 加法结果不溢出，则返回 `Some(result)`，其中 `result` 是加法的结果。
+    pub fn increment(&mut self) {
+        self.page_visits = self.page_visits.checked_add(1).unwrap();
+    }
+```
+
+
+
 
 
 
