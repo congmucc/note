@@ -11,10 +11,15 @@
             "id": "bd5ed1573970a304",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Solana"
             }
           }
         ]
@@ -120,9 +125,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
+              },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Solana"
             }
           },
           {
