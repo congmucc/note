@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Solana"
+              "title": "Anchor"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md"
+                "file": "基础/WEB3/Anchor/Anchor.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Solana"
+              "title": "Outline of Anchor"
             }
           },
           {
