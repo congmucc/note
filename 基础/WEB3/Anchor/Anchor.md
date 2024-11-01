@@ -20,6 +20,8 @@ address：```
 [Getting Test SOL | Solana](https://solana.com/developers/cookbook/development/test-sol)
 
 
+[Solar](https://solanazh.notion.site/Solar-39ce384859524425859978df2c78e173)
+
 One of the best
 [Program Examples | Solana](https://solana.com/docs/programs/examples)
 
