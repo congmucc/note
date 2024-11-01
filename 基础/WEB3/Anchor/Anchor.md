@@ -85,8 +85,58 @@ const addressData: anchor.IdlTypes<RentExample>['addressData'] = {
   address: '123 Main St. San Francisco, CA',
 };
 
+await program.methods
+  .createSystemAccount(addressData)
+  .accounts({
+	payer: wallet.publicKey,
+	newAccount: newKeypair.publicKey,
+  })
+  .signers([wallet.payer, newKeypair])
+  .rpc();
 
 
+/// 这是另一种
+
+pub fn mint_tokens(ctx: Context<MintTokens>, quantity: u64) -> Result<()> {}
+
+#[derive(Accounts)]
+pub struct MintTokens<'info> {
+    #[account(
+        mut,
+        seeds = [b"mint"],
+        bump,
+        mint::authority = mint,
+    )]
+    pub mint: Account<'info, Mint>,
+    #[account(
+        init_if_needed,
+        payer = payer,
+        associated_token::mint = mint,
+        associated_token::authority = payer,
+    )]
+    pub destination: Account<'info, TokenAccount>,
+    #[account(mut)]
+    pub payer: Signer<'info>,
+    pub rent: Sysvar<'info, Rent>,
+    pub system_program: Program<'info, System>,
+    pub token_program: Program<'info, Token>,
+    pub associated_token_program: Program<'info, AssociatedToken>,
+}
+///ts
+const context = {
+	mint,
+	destination,
+	payer,
+	rent: web3.SYSVAR_RENT_PUBKEY,
+	systemProgram: web3.SystemProgram.programId,
+	tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+	associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+};
+
+const tx = await pg.program.methods
+.mintTokens(new BN(mintAmount * 10 ** metadata.decimals))
+.accounts(context)
+.transction();
 
 ```
 > [program-examples | Look at the test file](https://github.com/solana-developers/program-examples/blob/main/basics/rent/anchor/programs/rent-example/src/lib.rs)
