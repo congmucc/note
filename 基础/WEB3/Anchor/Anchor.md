@@ -86,9 +86,49 @@ const addressData: anchor.IdlTypes<RentExample>['addressData'] = {
 };
 
 
+
+
 ```
 > [program-examples | Look at the test file](https://github.com/solana-developers/program-examples/blob/main/basics/rent/anchor/programs/rent-example/src/lib.rs)
 
+
+
+pda不能做签名
+```rust
+/// **签名**: 由于 PDA 不能直接作为 signer，需要通过 `with_signer(signer_seeds)` 提供 PDA 的种子数组来生成一个有效的签名。这是为了确保在调用相关操作时，能够验证该 PDA 的合法性。
+
+
+//  这里的 `mint_authority` 和 `update_authority` 被设置为 `mint_account`（一个 PDA）。这意味着铸造和更新操作的权限由这个 PDA 管理。
+CpiContext::new(
+    ctx.accounts.token_metadata_program.to_account_info(),
+    CreateMetadataAccountsV3 {
+        metadata: ctx.accounts.metadata_account.to_account_info(),
+        mint: ctx.accounts.mint_account.to_account_info(),
+        mint_authority: ctx.accounts.mint_account.to_account_info(), // PDA is mint authority
+        update_authority: ctx.accounts.mint_account.to_account_info(), // PDA is update authority
+        payer: ctx.accounts.payer.to_account_info(),
+        system_program: ctx.accounts.system_program.to_account_info(),
+        rent: ctx.accounts.rent.to_account_info(),
+    },
+)
+.with_signer(signer_seeds), // 使用 PDA 来签名
+
+
+/// 因为 `payer` 是一个 signer，因此不需要额外的签名上下文。只要 `payer` 在上下文中被声明为 `Signer`，它就能直接进行操作。
+CpiContext::new(
+    ctx.accounts.token_metadata_program.to_account_info(),
+    CreateMetadataAccountsV3 {
+        metadata: ctx.accounts.metadata_account.to_account_info(),
+        mint: ctx.accounts.mint_account.to_account_info(),
+        mint_authority: ctx.accounts.payer.to_account_info(),
+        update_authority: ctx.accounts.payer.to_account_info(),
+        payer: ctx.accounts.payer.to_account_info(),
+        system_program: ctx.accounts.system_program.to_account_info(),
+        rent: ctx.accounts.rent.to_account_info(),
+    },
+),
+
+```
 
 ## Rust用法：
 ```rust
