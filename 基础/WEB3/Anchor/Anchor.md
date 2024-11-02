@@ -197,6 +197,8 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 
 
 
+
+
 ## 交互
 
 **显式指定 `signers`**
