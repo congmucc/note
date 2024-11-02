@@ -190,7 +190,10 @@ CpiContext::new(
 ```
 
 
-
+```rust
+/// 对数量进行指数增加
+amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
+```
 
 
 
