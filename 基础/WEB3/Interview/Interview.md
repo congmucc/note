@@ -153,6 +153,20 @@ Rust:
 
 
 
+Solar新官网 (https://solanazh.notion.site/Solar-39ce384859524425859978df2c78e173?pvs=4)闪亮登场，最全的Solana中文信息都在这里！ 
+
+🟣 加入Solar，了解Solar成员荣誉体系 (https://solanazh.notion.site/Solar-117d1d99211c804a8ceac18a9791ec1f?pvs=4) 
+💎 Bounty赏金任务 (https://solanazh.notion.site/Bounty-c8b0ceeb39f2441d94b0beb9df947d04?pvs=4)（10+赏金任务进行中）：做任务，赢赏金！ 
+🍻 线上+线下社区活动 (https://solanazh.notion.site/7a4f2071572d489aa845d492acbb9be9?pvs=4) 
+🗣 TG社群「讲话赚钱活动」  (https://solanazh.notion.site/TG-119d1d99211c804b9054c8dcb0f2e1fb?pvs=4) 
+
+🖥 中文开发教程 (https://solanazh.notion.site/116d1d99211c81b7b4e3e77e93f231f9?pvs=4) / 开发者论坛 (https://solanazh.notion.site/116d1d99211c81c4b78fda6d3b2df337?pvs=4) 
+🐨 Solar (https://solanazh.notion.site/Solar-121d1d99211c809c9af2d3cb1ef56fb9?pvs=4)懒人包 (https://solanazh.notion.site/Solar-121d1d99211c809c9af2d3cb1ef56fb9?pvs=4)：Solana生态每日重点事件总结 
+🗞 S (https://solanazh.notion.site/Solar-733f861383af462abd4d9d32797866a6?pvs=4)olar (https://solanazh.notion.site/Solar-733f861383af462abd4d9d32797866a6?pvs=4)报刊亭 (https://solanazh.notion.site/Solar-733f861383af462abd4d9d32797866a6?pvs=4)：新闻/深度文章日历，可按赛道、项目检索 
+🏞 Solana生态导览及工具 (https://solanazh.notion.site/121d1d99211c80ad8f1efa4dded2bab2?pvs=4)推荐
+
+
+
 ## 3.1 前端框架
 [Wagmi | Reactivity for Ethereum apps](https://wagmi.sh/)
 
