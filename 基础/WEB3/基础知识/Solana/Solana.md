@@ -277,7 +277,7 @@ pub struct InitializeATA<'info> {
 1. **`AssociatedToken`**: `AssociatedToken` 程序专门用于创建并管理 **关联代币账户** (Associated Token Account, ATA)。它提供了一种 **标准化** 的方式，为每个用户和特定代币生成唯一的、与用户钱包地址关联的代币账户。`AssociatedToken` 程序允许程序在需要时 **自动创建 ATA**，如果它不存在。这减少了手动创建账户的麻烦，确保程序具有预期的地址结构和账户组织方式。
     
 2. **`TokenAccount`**: `TokenAccount` 是通用的 SPL 代币账户类型，它可以是任何账户，而不仅限于关联代币账户（ATA）。`TokenAccount` 并没有自动创建的功能，它仅仅表示一个代币余额的账户。因此，如果需要确保账户是 **特定用户和特定代币的 ATA**，单靠 `TokenAccount` 是不足的。
-
+> 这俩都是mint token的时候需要的，也就是mint的时候防止用户没有`TokenAccount`账户，使用`AssociatedToken`ATA生成程序自动生成，这个是一个Program指令账户。
 **为什么需要同时带上 `AssociatedToken`**
 
 在 `Anchor` 框架的上下文中，指定 `associated_token_program: Program<'info, AssociatedToken>` 的原因是为了能够调用关联代币程序的功能，确保在账户缺失时能够 **自动生成 ATA**。这在某些情况下能提升用户体验和账户管理的便捷性。
