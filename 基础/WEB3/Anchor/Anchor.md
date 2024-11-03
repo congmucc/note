@@ -30,7 +30,7 @@ One of the best
 ## Anchor用法
 
 
-
+### 当遇见联合结构体的时候最好直接使用impl，方便一些
 ```rust
 /// PageVisits::INIT_SPACE 当遇见联合结构体的时候最好直接使用impl，方便一些
     #[account(
@@ -60,7 +60,7 @@ impl PageVisits {
 	});
 ```
 
-
+### 当传入的值是anchor的结构体的时候如何传参
 ```rust
 /// 当传入的值是anchor的结构体的时候如何传参
 /// 
@@ -143,7 +143,7 @@ const tx = await pg.program.methods
 
 
 
-pda不能做签名
+### pda不能做签名
 ```rust
 /// **签名**: 由于 PDA 不能直接作为 signer，需要通过 `with_signer(signer_seeds)` 提供 PDA 的种子数组来生成一个有效的签名。这是为了确保在调用相关操作时，能够验证该 PDA 的合法性。
 
@@ -180,7 +180,46 @@ CpiContext::new(
 
 ```
 
+### `Program<'info, System>`使用场景：
+
+- 当你需要创建新的账户。
+- 当你需要关闭账户并将余额转移到其他账户。
+- 当你需要执行与 SOL 代币转账相关的操作。
+```rust
+use anchor_lang::prelude::*;
+use anchor_spl::token::Token;
+
+#[derive(Accounts)]
+pub struct CreateAccount<'info> {
+    #[account(mut)]
+    pub payer: Signer<'info>, // 账户创建者
+    #[account(
+        init,
+        payer = payer,
+        space = 8 + std::mem::size_of::<MyAccount>(),
+    )]
+    pub new_account: Account<'info, MyAccount>,
+    pub system_program: Program<'info, System>, // 引入系统程序
+}
+
+#[program]
+pub mod my_program {
+    use super::*;
+
+    pub fn create_account(ctx: Context<CreateAccount>) -> Result<()> {
+        // 可以在这里对 new_account 进行初始化
+        Ok(())
+    }
+}
+
+```
+
+
+### 
+
+
 ## Rust用法：
+### 用于安全地对整数进行加法运算，
 ```rust
 /// 用于安全地对整数进行加法运算，
 /// 加法结果不溢出，则返回 `Some(result)`，其中 `result` 是加法的结果。
@@ -189,9 +228,9 @@ CpiContext::new(
     }
 ```
 
-
+### 进行指数增加
 ```rust
-/// 对数量进行指数增加
+/// 进行指数增加
 amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 ```
 

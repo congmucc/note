@@ -252,63 +252,6 @@ Solana 账户模型中还有一个特殊的「租金（Rent）」的概念。租
 ●ATA(Associated Token Account)账户：关联账户。它是用户与特定的 SPL（Solana Program Library）Token 代币关联的账户，主要作用是允许用户方便管理他们持有的代币。
 
 
-```rust
-#[derive(Accounts)]
-pub struct InitializeATA<'info> {
-    #[account(mut)]
-    pub user: Signer<'info>,
-    pub mint: Account<'info, Mint>,
-    #[account(
-        init_if_needed,
-        payer = user,
-        associated_token::mint = mint,
-        associated_token::authority = user,
-    )]
-    pub user_ata: Account<'info, TokenAccount>, // 这是实际的 TokenAccount
-    pub token_program: Program<'info, Token>,
-    pub associated_token_program: Program<'info, AssociatedToken>, // 这是 ATA 生成的程序
-    pub system_program: Program<'info, System>,
-}
-
-```
-
-`AssociatedToken` 和 `TokenAccount` 各自有不同的作用：
-
-1. **`AssociatedToken`**: `AssociatedToken` 程序专门用于创建并管理 **关联代币账户** (Associated Token Account, ATA)。它提供了一种 **标准化** 的方式，为每个用户和特定代币生成唯一的、与用户钱包地址关联的代币账户。`AssociatedToken` 程序允许程序在需要时 **自动创建 ATA**，如果它不存在。这减少了手动创建账户的麻烦，确保程序具有预期的地址结构和账户组织方式。
-    
-2. **`TokenAccount`**: `TokenAccount` 是通用的 SPL 代币账户类型，它可以是任何账户，而不仅限于关联代币账户（ATA）。`TokenAccount` 并没有自动创建的功能，它仅仅表示一个代币余额的账户。因此，如果需要确保账户是 **特定用户和特定代币的 ATA**，单靠 `TokenAccount` 是不足的。
-> 这俩都是mint token的时候需要的，也就是mint的时候防止用户没有`TokenAccount`账户，使用`AssociatedToken`ATA生成程序自动生成，这个是一个Program指令账户。
-**为什么需要同时带上 `AssociatedToken`**
-
-在 `Anchor` 框架的上下文中，指定 `associated_token_program: Program<'info, AssociatedToken>` 的原因是为了能够调用关联代币程序的功能，确保在账户缺失时能够 **自动生成 ATA**。这在某些情况下能提升用户体验和账户管理的便捷性。
-
-```rust
-#[account(
-    init_if_needed,
-    payer = user,
-    associated_token::mint = mint,
-    associated_token::authority = user,
-)]
-pub ata: Account<'info, TokenAccount>,
-```
-
-在上面的例子中，`associated_token` 属性在账户初始化时，会通过 `AssociatedToken` 程序确保 ATA 的创建，**如果没有**该账户的话。没有 `AssociatedToken` 程序的支持，仅依靠 `TokenAccount` 是无法完成这个功能的。因此，`associated_token_program` 参数是关键的一部分。
-
-```ts
-import {
-
-ASSOCIATED_TOKEN_PROGRAM_ID,
-
-} from "@solana/spl-token";
-
-// 使用这个进行调用，一般来说可以不用调用
-
-```
-
-### 总结
-
-- **`TokenAccount`** 表示一个通用的代币账户，但没有自动创建功能。
-- **`AssociatedToken`** 程序用于确保自动创建用户与代币的唯一关联账户（ATA）。
 
 ### 1.4.6 账户的定义
 
@@ -767,6 +710,66 @@ NFT（非同质化代币）是基于区块链技术的一种独特的数字资�
 
 ●**Max Supply**：最大供应量，一旦供应量达到最大供应量，就不能再以这种方式铸造更多的 NFT。但请注意，如果 **Master Edition** 的 **Max Supply** 属性被设置为空，意味着这个 NFT 是可以被无限量增发的。
 
+
+### ATA账户
+
+```rust
+#[derive(Accounts)]
+pub struct InitializeATA<'info> {
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub mint: Account<'info, Mint>,
+    #[account(
+        init_if_needed,
+        payer = user,
+        associated_token::mint = mint,
+        associated_token::authority = user,
+    )]
+    pub user_ata: Account<'info, TokenAccount>, // 这是实际的 TokenAccount
+    pub token_program: Program<'info, Token>,
+    pub associated_token_program: Program<'info, AssociatedToken>, // 这是 ATA 生成的程序
+    pub system_program: Program<'info, System>,
+}
+
+```
+
+`AssociatedToken` 和 `TokenAccount` 各自有不同的作用：
+
+1. **`AssociatedToken`**: `AssociatedToken` 程序专门用于创建并管理 **关联代币账户** (Associated Token Account, ATA)。它提供了一种 **标准化** 的方式，为每个用户和特定代币生成唯一的、与用户钱包地址关联的代币账户。`AssociatedToken` 程序允许程序在需要时 **自动创建 ATA**，如果它不存在。这减少了手动创建账户的麻烦，确保程序具有预期的地址结构和账户组织方式。
+    
+2. **`TokenAccount`**: `TokenAccount` 是通用的 SPL 代币账户类型，它可以是任何账户，而不仅限于关联代币账户（ATA）。`TokenAccount` 并没有自动创建的功能，它仅仅表示一个代币余额的账户。因此，如果需要确保账户是 **特定用户和特定代币的 ATA**，单靠 `TokenAccount` 是不足的。
+> 这俩都是mint token的时候需要的，也就是mint的时候防止用户没有`TokenAccount`账户，使用`AssociatedToken`ATA生成程序自动生成，这个是一个Program指令账户。
+**为什么需要同时带上 `AssociatedToken`**
+
+在 `Anchor` 框架的上下文中，指定 `associated_token_program: Program<'info, AssociatedToken>` 的原因是为了能够调用关联代币程序的功能，确保在账户缺失时能够 **自动生成 ATA**。这在某些情况下能提升用户体验和账户管理的便捷性。
+
+```rust
+#[account(
+    init_if_needed,
+    payer = user,
+    associated_token::mint = mint,
+    associated_token::authority = user,
+)]
+pub ata: Account<'info, TokenAccount>,
+```
+
+在上面的例子中，`associated_token` 属性在账户初始化时，会通过 `AssociatedToken` 程序确保 ATA 的创建，**如果没有**该账户的话。没有 `AssociatedToken` 程序的支持，仅依靠 `TokenAccount` 是无法完成这个功能的。因此，`associated_token_program` 参数是关键的一部分。
+
+```ts
+import {
+
+ASSOCIATED_TOKEN_PROGRAM_ID,
+
+} from "@solana/spl-token";
+
+// 使用这个进行调用，一般来说可以不用调用
+
+```
+
+**总结**
+
+- **`TokenAccount`** 表示一个通用的代币账户，但没有自动创建功能。
+- **`AssociatedToken`** 程序用于确保自动创建用户与代币的唯一关联账户（ATA）。
 
 
 
