@@ -240,6 +240,8 @@ associated_token::authority = recipient,
 )]
 pub associated_token_account: Account<'info, TokenAccount>,
 ```
+> 这个意思很简单，就是用户是`SystemAccount`账户，再然后通过该账户生成对应的`TokenAccount`
+> 这就不用PDA生成的账户了。
 > [program-examples/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs at main · solana-developers/program-examples · GitHub](https://github.com/solana-developers/program-examples/blob/main/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs)
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
