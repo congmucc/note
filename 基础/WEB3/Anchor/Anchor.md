@@ -143,7 +143,7 @@ const tx = await pg.program.methods
 
 
 
-### pda不能做签名
+### pda不能做签名 cpi什么时候用signer
 ```rust
 /// **签名**: 由于 PDA 不能直接作为 signer，需要通过 `with_signer(signer_seeds)` 提供 PDA 的种子数组来生成一个有效的签名。这是为了确保在调用相关操作时，能够验证该 PDA 的合法性。
 

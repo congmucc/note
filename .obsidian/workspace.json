@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust"
+              "title": "Anchor"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Rust/Rust.md"
+                "file": "基础/WEB3/Anchor/Anchor.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Rust"
+              "title": "Outline of Anchor"
             }
           },
           {
@@ -191,13 +191,13 @@
   },
   "active": "bd5ed1573970a304",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/WEB3/Anchor/Anchor.md",
+    "基础/后端/Rust/Rust.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/CICD/CICD.md",
-    "基础/WEB3/Anchor/Anchor.md",
-    "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/量化交易/量化交易基础/量化交易基础.md",
     "基础/WEB3/Interview/Interview~.md",
-    "基础/后端/Rust/Rust.md",
     "基础/Tool/Git/Git.md",
     "基础/量化交易/量化学习/量化学习.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
