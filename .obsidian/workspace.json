@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "实战笔记/构建项目模板/Go后端/Go后端.md",
+                "file": "README.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Go后端"
+              "title": "README"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "实战笔记/构建项目模板/Go后端/Go后端.md"
+                "file": "README.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Go后端"
+              "title": "Outline of README"
             }
           },
           {
@@ -191,8 +191,8 @@
   },
   "active": "bd5ed1573970a304",
   "lastOpenFiles": [
-    "assets/Pasted.md",
     "实战笔记/构建项目模板/Go后端/Go后端.md",
+    "assets/Pasted.md",
     "实战笔记/构建项目模板/Java后端/Java后端.md",
     "实战笔记/构建项目模板/Vue前端/Vue前端.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
