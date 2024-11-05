@@ -227,7 +227,6 @@ pub mod my_program {
 - `TokenAccount` 是一个专门的账户类型，设计用来存储和管理 SPL 代币的余额。这种账户能够执行与代币相关的操作，例如转账、查询余额等。
 ```rust
   
-
 pub recipient: SystemAccount<'info>,
 
 #[account(mut)]
@@ -241,6 +240,7 @@ associated_token::authority = recipient,
 )]
 pub associated_token_account: Account<'info, TokenAccount>,
 ```
+> [program-examples/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs at main · solana-developers/program-examples · GitHub](https://github.com/solana-developers/program-examples/blob/main/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs)
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust
