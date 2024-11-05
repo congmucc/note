@@ -222,6 +222,25 @@ pub mod my_program {
 - 在涉及代币转移的操作中，当目标账户是关联账户时。
 
 
+### **SystemAccount vs. TokenAccount**
+- `SystemAccount<'info>` 表示一个普通的 Solana 账户，它可以用作转账的接收者、控制权的持有者等，但它不特定于持有任何类型的代币。
+- `TokenAccount` 是一个专门的账户类型，设计用来存储和管理 SPL 代币的余额。这种账户能够执行与代币相关的操作，例如转账、查询余额等。
+```rust
+  
+
+pub recipient: SystemAccount<'info>,
+
+#[account(mut)]
+pub mint_account: Account<'info, Mint>,
+  
+#[account(
+init_if_needed,
+payer = mint_authority,
+associated_token::mint = mint_account,
+associated_token::authority = recipient,
+)]
+pub associated_token_account: Account<'info, TokenAccount>,
+```
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust
