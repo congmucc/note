@@ -282,3 +282,22 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
     
 - **存储 `bump`** 使得后续指令能够准确地生成相同的 PDA 地址。
 
+
+
+
+### 本地部署spl
+> 参考教程：[How to Fork and Deploy Solana Accounts & Programs from Mainnet to Localhost | QuickNode Guides](https://www.quicknode.com/guides/solana-development/accounts-and-data/fork-programs-to-localnet)
+> 这个是直接拉取公链上的nft进行测试，我们如果是创建nft的话不必如此。
+
+#### 1、Clone Metaplex Token Metadata Program
+
+```sh
+solana program dump -u m metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
+```
+> 结果： `Wrote program to metadata.so`，并且会在本地生成相应的so文件
+
+
+```sh
+solana-test-validator -r --bpf-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
+```
+> 直接运行 这段代码之后会开启一个本地
