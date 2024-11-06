@@ -297,6 +297,8 @@ solana program dump -u m metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 > 结果： `Wrote program to metadata.so`，并且会在本地生成相应的so文件
 
 
+#### 2、Initiate a Local Solana Validator with Cloned Accounts & Programs
+
 ```sh
 solana-test-validator -r --bpf-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 ```
@@ -314,4 +316,4 @@ program = "genesis/metadata.so"
 > 注意，这里`program`是一个路径，以根目录为基础。
 
 
-#### 2、
+#### 3、
