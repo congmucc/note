@@ -423,9 +423,6 @@ describe("transfer-tokens", () => {
 ```
 
 
-
-
-
 #### 4、Test
 
 > 项目目录新开一个终端
