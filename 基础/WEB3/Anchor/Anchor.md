@@ -300,4 +300,6 @@ solana program dump -u m metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 ```sh
 solana-test-validator -r --bpf-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 ```
-> 直接运行 这段代码之后会开启一个本地
+> 直接运行 这段代码之后会开启一个本地验证器。
+
+此时需要修改一下
