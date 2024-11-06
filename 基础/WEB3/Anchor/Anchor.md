@@ -265,7 +265,7 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 
 ## 交互
 
-**显式指定 `signers`**
+### **显式指定 `signers`**
 1. **使用新生成的密钥对**
     - 当你需要使用一个新生成的密钥对（例如 `Keypair.generate()`）来签署交易时，必须显式指定 `signers`，因为这些密钥对不在当前连接的钱包中。
 2. **多签名交易**
@@ -274,3 +274,11 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
     - 当某个账户在交易中需要签名，但这个账户不是当前连接的钱包时，需要显式指定 `signers`。
 4. **自定义签名逻辑**
     - 当你需要实现自定义的签名逻辑，例如使用硬件钱包或其他外部签名服务时，需要显式指定 `signers`。
+
+
+### 为什么需要存储 `bump`？
+
+- **PDA 是根据 `seeds` 和 `bump` 计算出来的**，而 `seeds` 是固定的。因此，如果你希望在后续指令中使用相同的 PDA，必须确保 **`bump` 一致**。否则，Anchor 会尝试自动计算新的 `bump`，而这会导致计算出的 PDA 地址不同，无法访问到正确的账户。
+    
+- **存储 `bump`** 使得后续指令能够准确地生成相同的 PDA 地址。
+
