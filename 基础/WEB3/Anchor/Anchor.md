@@ -354,5 +354,77 @@ pub struct CreateToken<'info> {
 **TS**
 
 ```ts
+import * as anchor from "@coral-xyz/anchor";
+import { getAssociatedTokenAddressSync } from '@solana/spl-token';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { TransferTokens } from "../target/types/transfer_tokens";
+
+describe("transfer-tokens", () => {
+  // Configure the client to use the local cluster.
+  const provider = anchor.AnchorProvider.env();
+  anchor.setProvider(provider);
+  const payer = provider.wallet as anchor.Wallet;
+  const program = anchor.workspace.TransferTokens as anchor.Program<TransferTokens>;
+  const metadata = {
+    name: 'CAT',
+    symbol: 'EASON',
+    uri: 'https://images.pexels.com/photos/16254138/pexels-photo-16254138/free-photo-of-a-sketch-of-a-cat.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  };
+  
+
+  const METADATA_PROGRAM_ID = new PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
+
+    // Generate new keypair to use as address for mint account.
+    const mintKeypair = new Keypair();
+
+    // Generate new keypair to use as address for recipient wallet.
+    const recipient = new Keypair();
+
+    const metadataSeeds = [
+      Buffer.from('metadata'),
+      METADATA_PROGRAM_ID.toBuffer(), // Token Metadata Program的地址
+      mintKeypair.publicKey.toBuffer(), // Mint 公钥
+    ];
+  
+    // 获取 PDA 地址和 bump 值
+    const [metadataPDA, metadataBump] = PublicKey.findProgramAddressSync(metadataSeeds, METADATA_PROGRAM_ID);
+
+    // Derive the associated token address account for the mint and payer.
+    const senderTokenAddress = getAssociatedTokenAddressSync(mintKeypair.publicKey, payer.publicKey);
+
+    // Derive the associated token address account for the mint and recipient.
+    const recepientTokenAddress = getAssociatedTokenAddressSync(mintKeypair.publicKey, recipient.publicKey);
+
+  it('Create an SPL Token!', async () => {
+    const transactionSignature = await program.methods
+      .createToken(metadata.name, metadata.symbol, metadata.uri)
+      .accounts({
+        payer: payer.publicKey,
+        mintAccount: mintKeypair.publicKey,
+        metadataAccount: metadataPDA,
+        tokenMetadataProgram: METADATA_PROGRAM_ID
+      })
+      .signers([mintKeypair])
+      .rpc();
+
+    // console.log('Success!');
+    // console.log(`   Mint Address: ${mintKeypair.publicKey}`);
+    // console.log(`   Transaction Signature: ${transactionSignature}`);
+    // const mintAccountInfo = await program.provider.connection.getAccountInfo(mintKeypair.publicKey);
+    // console.log('mintAccountInfo :>> ', mintAccountInfo);
+  });
+});
+```
+
+
+
+
+
+#### 4、Test
+
+> 项目目录新开一个终端
+
+```sh
+anchor test --provider.cluster http://localhost:8899 --skip-local-validator
 ```
 
