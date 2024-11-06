@@ -291,6 +291,12 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 
 #### 1、Clone Metaplex Token Metadata Program
 
+在项目根目录新开一个目录`genesis`
+```sh
+mkdir genesis
+cd genesis
+```
+
 ```sh
 solana program dump -u m metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 ```
