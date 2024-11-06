@@ -279,7 +279,7 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 ### 为什么需要存储 `bump`？
 
 - **PDA 是根据 `seeds` 和 `bump` 计算出来的**，而 `seeds` 是固定的。因此，如果你希望在后续指令中使用相同的 PDA，必须确保 **`bump` 一致**。否则，Anchor 会尝试自动计算新的 `bump`，而这会导致计算出的 PDA 地址不同，无法访问到正确的账户。
-    
+  
 - **存储 `bump`** 使得后续指令能够准确地生成相同的 PDA 地址。
 
 
@@ -297,7 +297,7 @@ solana program dump -u m metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 > 结果： `Wrote program to metadata.so`，并且会在本地生成相应的so文件
 
 
-#### 2、Initiate a Local Solana Validator with Cloned Accounts & Programs
+#### 2、Initiate a Local Solana Validator
 
 ```sh
 solana-test-validator -r --bpf-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
@@ -316,4 +316,43 @@ program = "genesis/metadata.so"
 > 注意，这里`program`是一个路径，以根目录为基础。
 
 
-#### 3、
+#### 3、Coding
+**Rust**
+```rust
+#[derive(Accounts)]
+pub struct CreateToken<'info> {
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    #[account(
+        init,
+        payer = payer,
+        mint::decimals = 9,
+        mint::authority = payer.key(),
+        mint::freeze_authority = payer.key(),
+    )]
+    pub mint_account: Account<'info, Mint>,
+
+    /// CHECK: Validate address by deriving pda
+    #[account(
+        mut,
+        seeds = [b"metadata", token_metadata_program.key().as_ref(), mint_account.key().as_ref()],
+        bump,
+        seeds::program = token_metadata_program.key(),
+    )]
+    pub metadata_account: UncheckedAccount<'info>,
+
+    pub token_program: Program<'info, Token>,
+    pub token_metadata_program: Program<'info, Metadata>,
+    pub system_program: Program<'info, System>,
+    pub rent: Sysvar<'info, Rent>,
+}
+```
+
+
+
+**TS**
+
+```ts
+```
+
