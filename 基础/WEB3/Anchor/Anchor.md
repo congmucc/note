@@ -300,6 +300,6 @@ solana program dump -u m metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 ```sh
 solana-test-validator -r --bpf-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s metadata.so
 ```
-> 直接运行 这段代码之后会开启一个本地验证器。
+> 然后，你需要启动本地的 Solana 测试验证器，并将 Metaplex Token Metadata 程序部署到 Localnet，运行这段代码之后会开启一个本地验证器。
 
-此时需要修改一下
+此时需要修改一下`Anchor.toml`，
