@@ -180,6 +180,10 @@ CpiContext::new(
 
 ```
 
+### 什么时候用`Signer`签名
+
+
+
 ### `Program<'info, System>`使用场景：
 
 - 当你需要创建新的账户。
