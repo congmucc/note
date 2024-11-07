@@ -329,14 +329,16 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
    pub mint_account: Account<'info, Mint>,
    ```
    
-   > 在上述代码中，`payer` 是必须签署交易的，因为它不仅支付费用，还设置了 `mint_account` 的所有权。
-   >
-   > 这里还需要一个`mint_account`签名，因为需要账户初始化
+  > 在上述代码中，`payer` 是必须签署交易的，因为它不仅支付费用，还设置了 `mint_account` 的所有权。
+   
+   **特别注意**：
+   > 这里还需要一个`mint_account`签名，因为需要账户初始化，如果没有使用 `seeds` 和 `bump` 参数，那么该账户确实是一个新账户，需要一个独特的公钥（mintKeypair）来签名。
    >
    > 也就是
    > ```ts
    >   .signers([payer, mintKeypair])  // 签名者是 payer 和 mintKeypair    payer可不写，默认的。
    > ```
+   > 反过来如果
 
 
 
