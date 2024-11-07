@@ -319,93 +319,28 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 1. **创建账户（`init` 操作）**
    如果一个账户是通过 `#[account(init)]` 来创建的，通常需要签名者来支付费用并确保账户的初始化。例如，`payer` 必须签署账户创建操作，因为它需要支付相关费用。签名者授权该操作，并且如果涉及到初始化多个账户，相关账户的所有者通常也需要签署。
    
-```rust
-#[account(
-    init,
-    payer = payer, // 需要 payer 签署并支付费用
-    mint::decimals = 9,
-    mint::authority = payer.key(), // payer 是 mint_account 的 authority
-)]
-pub mint_account: Account<'info, Mint>,
-```
+   ```rust
+   #[account(
+       init,
+       payer = payer, // 需要 payer 签署并支付费用
+       mint::decimals = 9,
+       mint::authority = payer.key(), // payer 是 mint_account 的 authority
+   )]
+   pub mint_account: Account<'info, Mint>,
+   ```
+   
+   > 在上述代码中，`payer` 是必须签署交易的，因为它不仅支付费用，还设置了 `mint_account` 的所有权。
+   >
+   > 这里还需要一个`mint_account`签名，因为需要账户初始化
+   >
+   > 也就是
+   > ```ts
+   >   .signers([payer, mintKeypair])  // 签名者是 payer 和 mintKeypair    payer可不写，默认的。
+   > ```
 
-在上述代码中，`payer` 是必须签署交易的，因为它不仅支付费用，还设置了 `mint_account` 的所有权。
 
-### 2. **修改账户内容**
-如果交易涉及修改某个账户的内容或状态（例如转账、更新状态），则需要该账户的签名来证明它同意这些修改。例如，如果账户余额发生变化，持有该账户的密钥需要签署以确认其授权。
 
-#### 例子
-```rust
-#[account(mut)]
-pub mint_account: Account<'info, Mint>,
-```
 
-在此情况下，`mint_account` 是可变的（`mut`），并且执行该操作时需要签名者来修改账户内容。
-
-### 3. **支付交易费用**
-每笔交易都需要支付一定的费用，这通常由 `payer` 提供。为了支付费用，`payer` 必须签署交易。无论是创建新账户、进行转账还是执行其他操作，交易的支付费用都需要 `payer` 来授权。
-
-#### 例子
-```typescript
-const transactionSignature = await program.methods
-  .mintToken(new anchor.BN(100))
-  .accounts({
-    mintAuthority: payer.publicKey,
-    recipient: recipient.publicKey,
-    mintAccount: mintKeypair.publicKey,
-    associatedTokenAccount: senderTokenAddress,
-  })
-  .rpc();  // payer 支付交易费用并签署
-```
-
-在这里，`payer` 是支付交易费用和签署的关键账户。
-
-### 4. **某些账户的特定操作**
-有些账户操作会要求某些账户的密钥提供签名。例如，在合约中操作 Token 时，`mintAuthority` 和 `freezeAuthority` 等权限可能需要签名者的确认。
-
-#### 例子
-```rust
-#[account(mut)]
-pub mint_authority: Signer<'info>,  // mint_authority 必须签署交易
-```
-
-这里的 `mint_authority` 是一个必需签署交易的账户，它的签名是为了确认授权操作，如铸币（minting）操作。
-
-### 5. **PDA（程序派生账户）**
-当你使用 PDA（程序派生账户）时，通常不直接使用私钥来签署交易，而是通过计算出的派生密钥来进行签名。但如果 PDA 相关的账户操作涉及到修改或验证数据，仍然需要该账户的授权。
-
-#### 例子
-```rust
-#[account(
-    mut,
-    seeds = [b"metadata", token_metadata_program.key().as_ref(), mint_account.key().as_ref()],
-    bump
-)]
-pub metadata_account: UncheckedAccount<'info>,
-```
-
-如果 `metadata_account` 需要更新或修改内容，尽管 PDA 不使用私钥，但仍然需要通过合约计算并授权操作。
-
-### 6. **合约执行的权限**
-每当一个智能合约的操作涉及到控制账户、转移资产或执行操作时，通常需要相关账户的签名。这是为了确保操作的合法性和账户的权限。
-
-#### 例子
-```rust
-#[account(mut)]
-pub associated_token_account: Account<'info, TokenAccount>,
-```
-
-如果你要修改 `associated_token_account`，需要保证该账户有授权进行该操作，并且签署交易。
-
-### 结论
-总结一下，签名的使用通常依赖于以下几个因素：
-
-- **创建账户**：如果操作需要创建账户或初始化账户，相关账户的所有者或费用支付者需要签名。
-- **修改账户内容**：如果交易涉及修改账户内容（如转账或更新状态），相关账户的所有者必须签署交易。
-- **支付交易费用**：支付交易费用的账户需要签署交易。
-- **权限验证**：如果操作涉及权限控制（如转移资产或铸造 Token），相应的权限持有者需要签署。
-
-签名的作用是授权和确认交易的合法性，确保操作得到合法账户的批准。
 
 
 ### 为什么需要存储 `bump`？
