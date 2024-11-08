@@ -486,3 +486,7 @@ describe("transfer-tokens", () => {
 anchor test --provider.cluster http://localhost:8899 --skip-local-validator
 ```
 
+
+
+## 坑
+1、合约里面不要使用f32，会有精度问题。
