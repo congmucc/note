@@ -302,7 +302,7 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
    >
    > 也就是
    > ```ts
-   >   .signers([payer, mintKeypair])  // 签名者是 payer 和 mintKeypair    payer可不写，默认的。
+   >   .signers([mintKeypair])  // 签名者是 mintKeypair。
    > ```
    > 反过来如果是PDA账户，则不需要签名，因为PDA不能签名，可以看前面的[### pda不能做签名 cpi什么时候用signer](### pda不能做签名 cpi什么时候用signer)
 
