@@ -282,7 +282,7 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 - **账户创建**：需要提供签名者来支付账户的创建费用（通常是 `payer`）。
 - **资金转账**：需要签名者来验证资金是否允许转移。
 - **执行授权操作**：例如铸币、冻结、授权等操作，必须有账户提供签名来验证权限。
-
+[使用不同的签名者修改帐户 - RareSkills --- Modifying accounts using different signers - RareSkills](https://www.rareskills.io/post/anchor-signer)
 
 需要签名的场景：
 
