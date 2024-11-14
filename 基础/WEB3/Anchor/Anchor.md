@@ -270,6 +270,7 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 ## 交互
 
 ### **显式指定 `signers`**
+> 显示指定signers的时候，默认链接的钱包就不会签名了。
 1. **使用新生成的密钥对**
     - 当你需要使用一个新生成的密钥对（例如 `Keypair.generate()`）来签署交易时，必须显式指定 `signers`，因为这些密钥对不在当前连接的钱包中。
 2. **多签名交易**
@@ -302,7 +303,7 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
    >
    > 也就是
    > ```ts
-   >   .signers([mintKeypair])  // 签名者是 mintKeypair，还有当前钱包链接的。
+   >   .signers([mintKeypair])  // 签名者是 mintKeypair
    > ```
    > 反过来如果是PDA账户，则不需要签名，因为PDA不能签名，可以看前面的[### pda不能做签名 cpi什么时候用signer](### pda不能做签名 cpi什么时候用signer)
 
