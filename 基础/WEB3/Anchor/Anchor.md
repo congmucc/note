@@ -268,6 +268,9 @@ amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 ### 随机性VRF
 [solana-co-learn/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/blob/main/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md)
 
+### 工具
+[solana-co-learn/docs/awesome-solana-zh 在 Main ·创作者DAO/solana-co-learn --- solana-co-learn/docs/awesome-solana-zh at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/tree/main/docs/awesome-solana-zh)
+
 
 ## 交互
 
