@@ -499,3 +499,11 @@ anchor test --provider.cluster http://localhost:8899 --skip-local-validator
 
 ## 坑
 1、合约里面不要使用f32，会有精度问题。
+
+
+验证：
+
+大家好，我目前刚刚开始solana合约开发，看solanazh文档学习到很多东西。有两个观点想向各位印证一下：
+  1. rust合约并没有类似于solidity合约中的receive方法，所以不能通过单纯的转账sol来触发合约方法。
+  2. 由于有网络传输字节的限制和最大单元计算的限制，无法用合约无法完成空投的功能，一次性最多给80个地址左右转账spl的token
+> 1.不能 只能写指令解决 2.是的 可以写批量脚本 不知道捆绑交易能行不
