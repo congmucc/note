@@ -370,6 +370,8 @@ Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
 amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 ```
 
+## `fixed::types::I64F64` 高精度
+>`fixed::types::I64F64` 是 Rust 中用于高精度、定点数运算的一种类型，它为需要稳定和精确计算的场景（如金融计算、嵌入式系统等）提供了一个理想的工具。
 
 
 ## 交互
