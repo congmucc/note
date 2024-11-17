@@ -248,6 +248,112 @@ pub associated_token_account: Account<'info, TokenAccount>,
 > 这个意思很简单，就是用户是`SystemAccount`账户，再然后通过该账户生成对应的`TokenAccount`
 > 这就不用PDA生成的账户了。
 > [program-examples/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs at main · solana-developers/program-examples · GitHub](https://github.com/solana-developers/program-examples/blob/main/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs)
+
+
+### 随机性VRF
+[solana-co-learn/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/blob/main/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md)
+
+### 工具
+[solana-co-learn/docs/awesome-solana-zh 在 Main ·创作者DAO/solana-co-learn --- solana-co-learn/docs/awesome-solana-zh at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/tree/main/docs/awesome-solana-zh)
+
+
+
+### 使用`Box`
+```rust
+pub struct CreatePool<'info> {
+    #[account(
+        seeds = [
+            amm.id.as_ref()
+        ],
+        bump,
+    )]
+    pub amm: Box<Account<'info, Amm>>,
+
+    #[account(
+        init,
+        payer = payer,
+        space = Pool::LEN,
+        seeds = [
+            amm.key().as_ref(),
+            mint_a.key().as_ref(),
+            mint_b.key().as_ref(),
+        ],
+        bump,
+    )]
+    pub pool: Box<Account<'info, Pool>>,
+
+    /// CHECK: Read only authority
+    #[account(
+        seeds = [
+            amm.key().as_ref(),
+            mint_a.key().as_ref(),
+            mint_b.key().as_ref(),
+            AUTHORITY_SEED,
+        ],
+        bump,
+    )]
+    pub pool_authority: AccountInfo<'info>,
+
+    #[account(
+        init,
+        payer = payer,
+        seeds = [
+            amm.key().as_ref(),
+            mint_a.key().as_ref(),
+            mint_b.key().as_ref(),
+            LIQUIDITY_SEED,
+        ],
+        bump,
+        mint::decimals = 6,
+        mint::authority = pool_authority,
+    )]
+    pub mint_liquidity: Box<Account<'info, Mint>>,
+
+    pub mint_a: Box<Account<'info, Mint>>,
+
+    pub mint_b: Box<Account<'info, Mint>>,
+
+    #[account(
+        init,
+        payer = payer,
+        associated_token::mint = mint_a,
+        associated_token::authority = pool_authority,
+    )]
+    pub pool_account_a: Box<Account<'info, TokenAccount>>,
+
+    #[account(
+        init,
+        payer = payer,
+        associated_token::mint = mint_b,
+        associated_token::authority = pool_authority,
+    )]
+    pub pool_account_b: Box<Account<'info, TokenAccount>>,
+
+    /// The account paying for all rents
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    /// Solana ecosystem accounts
+    pub token_program: Program<'info, Token>,
+    pub associated_token_program: Program<'info, AssociatedToken>,
+    pub system_program: Program<'info, System>,
+}
+```
+
+为什么使用 Box：
+Box 用于优化性能和减少内存占用：
+Rust 中的大型结构体会占用较多栈内存。
+Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
+在 Solana 中，这种优化尤其重要，因为账户数据可能非常大。
+
+
+
+
+
+
+
+
+
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust
@@ -264,12 +370,6 @@ pub associated_token_account: Account<'info, TokenAccount>,
 amount >= MIN_AMOUNT_TO_RAISE.pow(self.mint_to_raise.decimals as u32),
 ```
 
-
-### 随机性VRF
-[solana-co-learn/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/blob/main/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md)
-
-### 工具
-[solana-co-learn/docs/awesome-solana-zh 在 Main ·创作者DAO/solana-co-learn --- solana-co-learn/docs/awesome-solana-zh at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/tree/main/docs/awesome-solana-zh)
 
 
 ## 交互
