@@ -180,7 +180,39 @@ CpiContext::new(
 ),
 
 ```
+> 
 
+```rust
+if swap_a {
+    token::transfer(
+        CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            Transfer {
+                from: ctx.accounts.trader_account_a.to_account_info(),
+                to: ctx.accounts.pool_account_a.to_account_info(),
+                authority: ctx.accounts.trader.to_account_info(),
+            },
+        ),
+        input,
+    )?;
+    token::transfer(
+        CpiContext::new_with_signer(
+            ctx.accounts.token_program.to_account_info(),
+            Transfer {
+                from: ctx.accounts.pool_account_b.to_account_info(),
+                to: ctx.accounts.trader_account_b.to_account_info(),
+                authority: ctx.accounts.pool_authority.to_account_info(),
+            },
+            signer_seeds,
+        ),
+        output,
+    )?;
+}
+
+```
+> 背景是amm用户向池子进行`token`转账
+> 这里为什么第一个`transfer`中的`CpiContext`使用的是`CpiContext::new`而不是`CpiContext::new_with_signer`，因为`authority`的值是`trader`本身，所以不需要`signer`
+> 第二个`transfer`的`authority`是`pool_authority`所以说需要相应的`signer`.
 
 
 
