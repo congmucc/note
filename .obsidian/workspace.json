@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Anchor/Anchor.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Anchor"
+              "title": "Solana"
             }
           }
         ],
@@ -142,10 +142,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Anchor/Anchor.md"
+                "file": "基础/WEB3/基础知识/Solana/Solana.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Anchor"
+              "title": "Outline of Solana"
             }
           },
           {
@@ -207,10 +207,10 @@
   },
   "active": "218c1942dc90165b",
   "lastOpenFiles": [
+    "基础/WEB3/Anchor/Anchor.md",
     "基础/后端/Rust/Rust.md",
     "基础/量化交易/量化交易基础/量化交易基础.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/量化交易/量化学习/量化学习.md",
