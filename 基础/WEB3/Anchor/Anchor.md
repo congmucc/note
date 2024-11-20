@@ -643,6 +643,8 @@ yarn init --yes
 # 导入的 tsconfig.json：
 tsc -init --resolveJsonModule true
 
+yarn install 
+
 ts-node app.ts
 
 ```
