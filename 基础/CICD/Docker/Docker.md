@@ -1653,7 +1653,7 @@ nginx               nginx               "/docker-entrypoint.…"   nginx        
 # 配置
 
 ## Mysql
-```bush
+```bash
 docker run -d \
   --name first-mysql-container \
   -e MYSQL_ROOT_PASSWORD=123456 \
@@ -1666,25 +1666,29 @@ docker run -d \
 > **数据目录、配置文件、log的挂载**
 > 需要有相应目录，并且
 
-```bush
+```bash
 mkdir -p /Users/eason/docker/mysql/{data,config,logs}
+chmod -R 777 /Users/eason/docker/mysql
 ```
+
 
 ## Redis
 
-```sh
+```bash
 docker run -d \
-  --name redis-container \
+  --name redis \
+  --restart=always \
+  -p 6379:6379 \
   -v /Users/eason/docker/redis/data:/data \
   -v /Users/eason/docker/redis/config/redis.conf:/usr/local/etc/redis/redis.conf \
   -v /Users/eason/docker/redis/logs:/var/log/redis \
-  -p 6379:6379 \
-  redis:latest \
-  redis-server /usr/local/etc/redis/redis.conf
+  redis \
+  redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
 
 ```
 
 
 ```sh
 mkdir -p /Users/eason/docker/redis/{data,config,logs}
+chmod -R 777 /Users/eason/docker/redis
 ```
