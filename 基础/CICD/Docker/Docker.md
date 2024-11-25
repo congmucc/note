@@ -1688,6 +1688,7 @@ docker run -d \
   redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
 
 ```
+> 一般不需要
 
 
 ```sh
