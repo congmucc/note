@@ -1658,7 +1658,7 @@ docker run -d \
   --name mysql \
   --restart=always \
   -e MYSQL_ROOT_PASSWORD=123456 \
-  -p 3307:3306 \
+  -p 3306:3306 \
   -v /Users/eason/docker/mysql/data:/var/lib/mysql \
   -v /Users/eason/docker/mysql/config:/etc/mysql/conf.d \
   -v /Users/eason/docker/mysql/logs:/var/log/mysql \
