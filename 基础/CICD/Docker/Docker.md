@@ -1662,7 +1662,7 @@ docker run -d \
   -v /Users/eason/docker/mysql/data:/var/lib/mysql \
   -v /Users/eason/docker/mysql/config:/etc/mysql \
   -v /Users/eason/docker/mysql/logs:/var/log/mysql \
-  mysql
+  mysql:8.0.35
 ```
 > **数据目录、配置文件、log的挂载**
 > 需要有相应目录，并且
