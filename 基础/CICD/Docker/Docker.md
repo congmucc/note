@@ -1648,3 +1648,22 @@ nginx               nginx               "/docker-entrypoint.…"   nginx        
 >    ```
 >
 >    > docker network connect 网络名字 容器名字
+>    
+
+# 配置
+
+## Mysql
+```bush
+docker run -d \
+  --name first-mysql-container \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  -p 3307:3306 \
+  -v /home/username/mysql_data:/var/lib/mysql \
+  -v /home/username/mysql_config:/etc/mysql \
+  -v /home/username/mysql_logs:/var/log/mysql \
+  mysql
+```
+> 
+
+## Redis
+
