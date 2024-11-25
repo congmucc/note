@@ -1657,6 +1657,7 @@ nginx               nginx               "/docker-entrypoint.…"   nginx        
 docker run -d \
   --name mysql \
   --restart=always \
+  -e TZ=Asia/Shanghai \
   -e MYSQL_ROOT_PASSWORD=123456 \
   -p 3306:3306 \
   -v /Users/eason/docker/mysql/data:/var/lib/mysql \
