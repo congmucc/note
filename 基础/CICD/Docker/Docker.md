@@ -1708,6 +1708,6 @@ docker run -d \
   -v /Users/eason/docker/consul/data:/consul/data \
   -v /Users/eason/docker/consul/config:/consul/config \
   -v /Users/eason/docker/consul/logs:/consul/logs \
-  consul \
+  consul:1.15.4 \
   agent -dev -client=0.0.0.0
 ```
