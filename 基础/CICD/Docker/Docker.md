@@ -1695,3 +1695,19 @@ docker run -d \
 mkdir -p /Users/eason/docker/redis/{data,config,logs}
 chmod -R 777 /Users/eason/docker/redis
 ```
+
+
+## Consul
+
+```bash
+docker run -d \
+  --name=consul \
+  --restart=always \
+  -p 8500:8500 \
+  -p 8600:8600/udp \
+  -v /Users/eason/docker/consul/data:/consul/data \
+  -v /Users/eason/docker/consul/config:/consul/config \
+  -v /Users/eason/docker/consul/logs:/consul/logs \
+  consul \
+  agent -dev -client=0.0.0.0
+```
