@@ -1667,7 +1667,7 @@ docker run -d \
 > 需要有相应目录，并且
 
 ```bush
-mkdir -p //Users/eason/docker/mysql/data /Users/eason/docker/mysql/config /Users/eason/docker/mysql/logs
+mkdir -p /Users/eason/docker/mysql/data /Users/eason/docker/mysql/config /Users/eason/docker/mysql/logs
 chmod 777 /Users/eason/docker/mysql/data /Users/eason/docker/mysql/config /Users/eason/docker/mysql/logs
 ```
 
