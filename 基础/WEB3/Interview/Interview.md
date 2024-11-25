@@ -10,9 +10,15 @@ http://web3hc.com
 
 https://web3internships.com
 
-https://web3.career/
-
 https://remote3.co/
+
+www.useweb3.xyz
+
+[Cryptocurrency Jobs and Blockchain Jobs (133 new) Nov 2024 | Crypto Jobs List](https://cryptojobslist.com/)
+
+www.remoteok.com
+
+www.blockchain.works-hub.com
 
 
 有關 Solana 的開發待遇，建議參考：
