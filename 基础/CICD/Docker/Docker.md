@@ -1663,7 +1663,7 @@ docker run -d \
   -v /home/username/mysql_logs:/var/log/mysql \
   mysql
 ```
-> 
+> **数据目录、配置文件、log的挂载**
 
 ## Redis
 
