@@ -1658,12 +1658,18 @@ docker run -d \
   --name first-mysql-container \
   -e MYSQL_ROOT_PASSWORD=123456 \
   -p 3307:3306 \
-  -v /home/username/mysql_data:/var/lib/mysql \
-  -v /home/username/mysql_config:/etc/mysql \
-  -v /home/username/mysql_logs:/var/log/mysql \
+  -v /home/eason/mysql_data:/var/lib/mysql \
+  -v /home/eason/mysql_config:/etc/mysql \
+  -v /home/eason/mysql_logs:/var/log/mysql \
   mysql
 ```
 > **数据目录、配置文件、log的挂载**
+> 需要有相应目录，并且
+
+```bush
+mkdir -p /home/eason/mysql_data /home/eason/mysql_config /home/eason/mysql_logs
+chmod 777 /home/eason/mysql_data /home/eason/mysql_config /home/eason/mysql_logs
+```
 
 ## Redis
 
