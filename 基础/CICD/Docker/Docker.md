@@ -1711,6 +1711,6 @@ docker run -d \
   consul:1.15.4 \
   agent -server -bootstrap-expect=1 -client=0.0.0.0 \
   -data-dir=/consul/data \
-  -ui-config.enabled=true
+  -ui
 ```
 > 不要使用dev模式，会丢失数据
