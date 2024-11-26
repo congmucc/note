@@ -137,6 +137,9 @@ func main() {
 
 4、GOROOT\bin
 
+> **bin:** **存放编译后的二进制文件**
+> **pkg：存放编译后的包文件。 包文件扩展名通常为x****xx****.****a** **，即 .****a** **结尾。**   
+> **src：存放****Go****语言包的源代码**
 
 
 [golang环境详细安装、配置_golang安装-CSDN博客](https://blog.csdn.net/qq_44830881/article/details/123457805)
