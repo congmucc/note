@@ -143,6 +143,9 @@ func main() {
 
 
 基于项目模块独立化和下载模块简单化这两个需求，使用go mod即可解决。注意，使用go mod管理依赖包就要去除项目使用的gopath，尤其是在golan的设置中，否则会报出类似“exits should not”的错误。在一个go项目目录下（比如项目名叫hello），直接使用  go mod hello 即可初始化一个go.mod文件，这个文件中记录着项目依赖的模块信息。对于1.16.x版本还需运行 go mod tidy 才会下载依赖模块，而不是像老教程一样去 go env -w GO111MODULE=on 之后运行go mod vendor将依赖包下载到hello项目中单独维护。
+
+`GoPath`用来存放我们从网上拉取的第三方依赖包  
+`GoModule`用来存放我们自己的`Golang`项目文件，当自己的项目需要依赖第三方的包的时候，我们通过`GoModule`目录下的一个`go.mod`文件来引用`GoPath`目录`pkg`包下的`mod`文件夹下的第三方依赖即可
                         
 https://blog.csdn.net/weixin_43237362/article/details/118062274
 
