@@ -144,7 +144,7 @@ func main() {
 
 基于项目模块独立化和下载模块简单化这两个需求，使用go mod即可解决。注意，使用go mod管理依赖包就要去除项目使用的gopath，尤其是在golan的设置中，否则会报出类似“exits should not”的错误。在一个go项目目录下（比如项目名叫hello），直接使用  go mod hello 即可初始化一个go.mod文件，这个文件中记录着项目依赖的模块信息。对于1.16.x版本还需运行 go mod tidy 才会下载依赖模块，而不是像老教程一样去 go env -w GO111MODULE=on 之后运行go mod vendor将依赖包下载到hello项目中单独维护。
                         
-原文链接：https://blog.csdn.net/weixin_43237362/article/details/118062274
+https://blog.csdn.net/weixin_43237362/article/details/118062274
 
 [Mac 安装 Go + Vscode IDE （完整版）_mac vscode go-CSDN博客](https://blog.csdn.net/weixin_39149333/article/details/131500659)
 
