@@ -146,6 +146,8 @@ func main() {
                         
 原文链接：https://blog.csdn.net/weixin_43237362/article/details/118062274
 
+[Mac 安装 Go + Vscode IDE （完整版）_mac vscode go-CSDN博客](https://blog.csdn.net/weixin_39149333/article/details/131500659)
+
 [golang环境详细安装、配置_golang安装-CSDN博客](https://blog.csdn.net/qq_44830881/article/details/123457805)
 
 
