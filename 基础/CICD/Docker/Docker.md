@@ -1710,7 +1710,7 @@ docker run -d \
   -v /Users/eason/docker/consul/logs:/consul/logs \
   consul:1.15.4 \
   agent -server -bootstrap-expect=1 -client=0.0.0.0 \
-  -data-dir=/consul/data
-
+  -data-dir=/consul/data \
+  -ui-config.enabled=true
 ```
 > 不要使用dev模式，会丢失数据
