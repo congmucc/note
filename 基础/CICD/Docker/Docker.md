@@ -1709,5 +1709,8 @@ docker run -d \
   -v /Users/eason/docker/consul/config:/consul/config \
   -v /Users/eason/docker/consul/logs:/consul/logs \
   consul:1.15.4 \
-  agent -dev -client=0.0.0.0
+  agent -server -bootstrap-expect=1 -client=0.0.0.0 \
+  -data-dir=/consul/data
+
 ```
+> 不要使用dev模式，会丢失数据
