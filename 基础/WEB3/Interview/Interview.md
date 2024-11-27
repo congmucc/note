@@ -200,6 +200,9 @@ Solar新官网 (https://solanazh.notion.site/Solar-39ce384859524425859978df2c78e
 
 
 
+### Faucet
+[Arbitrum Faucet](https://arbitrum.faucet.dev/ArbSepolia)
+
 
 
 # 面试：
