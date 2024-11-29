@@ -1660,9 +1660,9 @@ docker run -d \
   -e TZ=Asia/Shanghai \
   -e MYSQL_ROOT_PASSWORD=123456 \
   -p 3306:3306 \
-  -v /Users/eason/docker/mysql/data:/var/lib/mysql \
-  -v /Users/eason/docker/mysql/config:/etc/mysql/conf.d \
-  -v /Users/eason/docker/mysql/logs:/var/log/mysql \
+  -v ~/docker/mysql/data:/var/lib/mysql \
+  -v ~/docker/mysql/config:/etc/mysql/conf.d \
+  -v ~/docker/mysql/logs:/var/log/mysql \
   mysql:8.0.35
 ```
 > **数据目录、配置文件、log的挂载**
