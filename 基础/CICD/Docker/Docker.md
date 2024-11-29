@@ -1669,10 +1669,13 @@ docker run -d \
 > 需要有相应目录，并且
 
 ```bash
-mkdir -p /Users/eason/docker/mysql/{data,config,logs}
-chmod -R 777 /Users/eason/docker/mysql
+mkdir -p ~/docker/mysql/{data,config,logs}
+chmod -R 777 ~/docker/mysql
 ```
 
+```bash
+docker run -d --name mysql --restart=always -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -v ~\docker\mysql\data:/var/lib/mysql -v ~\docker\mysql\config:/etc/mysql/conf.d -v ~\docker\mysql\logs:/var/log/mysql mysql:8.0.35
+```
 
 ## Redis
 
@@ -1681,9 +1684,9 @@ docker run -d \
   --name redis \
   --restart=always \
   -p 6379:6379 \
-  -v /Users/eason/docker/redis/data:/data \
-  -v /Users/eason/docker/redis/config/redis.conf:/usr/local/etc/redis/redis.conf \
-  -v /Users/eason/docker/redis/logs:/var/log/redis \
+  -v ~/docker/redis/data:/data \
+  -v ~/docker/redis/config/redis.conf:/usr/local/etc/redis/redis.conf \
+  -v ~/docker/redis/logs:/var/log/redis \
   redis \
   redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
 
@@ -1692,8 +1695,8 @@ docker run -d \
 
 
 ```sh
-mkdir -p /Users/eason/docker/redis/{data,config,logs}
-chmod -R 777 /Users/eason/docker/redis
+mkdir -p ~/docker/redis/{data,config,logs}
+chmod -R 777 ~/docker/redis
 ```
 
 
@@ -1705,9 +1708,9 @@ docker run -d \
   --restart=always \
   -p 8500:8500 \
   -p 8600:8600/udp \
-  -v /Users/eason/docker/consul/data:/consul/data \
-  -v /Users/eason/docker/consul/config:/consul/config \
-  -v /Users/eason/docker/consul/logs:/consul/logs \
+  -v ~/docker/consul/data:/consul/data \
+  -v ~/docker/consul/config:/consul/config \
+  -v ~/docker/consul/logs:/consul/logs \
   consul:1.15.4 \
   agent -server -bootstrap-expect=1 -client=0.0.0.0 \
   -data-dir=/consul/data \
