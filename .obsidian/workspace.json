@@ -21,21 +21,8 @@
               "icon": "lucide-file",
               "title": "Docker"
             }
-          },
-          {
-            "id": "c84fea05060332d3",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.7"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.7"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "基础/CICD/Docker/Docker.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "Docker 的反向链接列表"
             }
           },
           {
@@ -137,9 +125,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "file": "基础/CICD/Docker/Docker.md"
+              },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "Docker 的大纲"
             }
           },
           {
@@ -170,11 +160,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "基础/CICD/Docker/Docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "Docker 的出链列表"
             }
           }
         ],
@@ -198,7 +189,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c84fea05060332d3",
+  "active": "bd5ed1573970a304",
   "lastOpenFiles": [
     "基础/后端/Go/Golang基础/Golang基础.md",
     "基础/WEB3/Interview/Interview.md",
