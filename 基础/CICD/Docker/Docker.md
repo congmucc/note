@@ -1674,7 +1674,7 @@ chmod -R 777 ~/docker/mysql
 ```
 
 ```bash
-docker run -d --name mysql --restart=always -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -v ~\docker\mysql\data:/var/lib/mysql -v ~\docker\mysql\config:/etc/mysql/conf.d -v ~\docker\mysql\logs:/var/log/mysql mysql:8.0.35
+docker run -d --name mysql --restart=always -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -v C:\Users\Administrator\docker\mysql\data:/var/lib/mysql -v C:\Users\Administrator\docker\mysql\config:/etc/mysql/conf.d -v C:\Users\Administrator\docker\mysql\logs:/var/log/mysql mysql:8.0.35
 ```
 > win
 ## Redis
@@ -1689,7 +1689,6 @@ docker run -d \
   -v ~/docker/redis/logs:/var/log/redis \
   redis \
   redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
-
 ```
 > 一般不需要
 
