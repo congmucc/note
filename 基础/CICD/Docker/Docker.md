@@ -1676,7 +1676,7 @@ chmod -R 777 ~/docker/mysql
 ```bash
 docker run -d --name mysql --restart=always -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -v ~\docker\mysql\data:/var/lib/mysql -v ~\docker\mysql\config:/etc/mysql/conf.d -v ~\docker\mysql\logs:/var/log/mysql mysql:8.0.35
 ```
-
+> WI
 ## Redis
 
 ```bash
