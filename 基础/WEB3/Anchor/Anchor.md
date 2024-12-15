@@ -634,13 +634,17 @@ anchor test --provider.cluster http://localhost:8899 --skip-local-validator
 
 
 ### 创建前端
-```sh
+```bash
 echo > app.ts
 
+# 一定要这个，不然会一直有项目
 yarn init --yes
 
-# 导入的 tsconfig.json： 
+# 导入的 tsconfig.json： 后面那个是允许倒入json文件
 tsc -init --resolveJsonModule true
+
+# 使用yarn创建一个包含基本配置的tsconfig.json
+yarn tsc -init
 
 yarn install 
 
