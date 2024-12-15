@@ -5,11 +5,15 @@
   "embedUseExcalidrawFolder": false,
   "templateFilePath": "Excalidraw/Template.excalidraw",
   "scriptFolderPath": "Excalidraw/Scripts",
+  "fontAssetsPath": "Excalidraw/CJK Fonts",
+  "loadChineseFonts": false,
+  "loadJapaneseFonts": false,
+  "loadKoreanFonts": false,
   "compress": true,
   "decompressForMDView": false,
   "onceOffCompressFlagReset": true,
+  "onceOffGPTVersionReset": false,
   "autosave": true,
-  "autosaveInterval": 15000,
   "autosaveIntervalDesktop": 15000,
   "autosaveIntervalMobile": 10000,
   "drawingFilenamePrefix": "Drawing ",
@@ -27,6 +31,7 @@
   "previewMatchObsidianTheme": false,
   "width": "400",
   "height": "",
+  "overrideObsidianFontSize": false,
   "dynamicStyling": "colorful",
   "isLeftHanded": false,
   "iframeMatchExcalidrawTheme": true,
@@ -35,8 +40,11 @@
   "matchThemeTrigger": false,
   "defaultMode": "normal",
   "defaultPenMode": "never",
+  "penModeDoubleTapEraser": true,
+  "penModeSingleFingerPanning": true,
   "penModeCrosshairVisible": true,
   "renderImageInMarkdownReadingMode": false,
+  "renderImageInHoverPreviewForMDNotes": false,
   "renderImageInMarkdownToPDF": false,
   "allowPinchZoom": false,
   "allowWheelZoom": false,
@@ -79,8 +87,11 @@
   "experimentalFileTag": "✏️",
   "experimentalLivePreview": true,
   "fadeOutExcalidrawMarkup": false,
+  "loadPropertySuggestions": true,
   "experimentalEnableFourthFont": false,
   "experimantalFourthFont": "Virgil",
+  "addDummyTextElement": false,
+  "zoteroCompatibility": false,
   "fieldSuggester": true,
   "compatibilityMode": false,
   "drawingOpenCount": 0,
@@ -100,7 +111,7 @@
   "mdCSS": "",
   "scriptEngineSettings": {},
   "defaultTrayMode": true,
-  "previousRelease": "2.2.2",
+  "previousRelease": "2.6.8",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
   "latexBoilerplate": "\\color{blue}",
@@ -422,6 +433,7 @@
   "numberOfCustomPens": 0,
   "pdfScale": 4,
   "pdfBorderBox": true,
+  "pdfFrame": false,
   "pdfGapSize": 20,
   "pdfGroupPages": false,
   "pdfLockAfterImport": true,
@@ -429,6 +441,11 @@
   "pdfNumRows": 1,
   "pdfDirection": "right",
   "pdfImportScale": 0.3,
+  "gridSettings": {
+    "DYNAMIC_COLOR": true,
+    "COLOR": "#000000",
+    "OPACITY": 50
+  },
   "laserSettings": {
     "DECAY_LENGTH": 50,
     "DECAY_TIME": 1000,
@@ -445,11 +462,12 @@
     "borderOpacity": 0,
     "filenameVisible": false
   },
+  "markdownNodeOneClickEditing": false,
   "canvasImmersiveEmbed": true,
   "startupScriptPath": "",
   "openAIAPIToken": "",
   "openAIDefaultTextModel": "gpt-3.5-turbo-1106",
-  "openAIDefaultVisionModel": "gpt-4-vision-preview",
+  "openAIDefaultVisionModel": "gpt-4o",
   "openAIDefaultImageGenerationModel": "dall-e-3",
   "openAIURL": "https://api.openai.com/v1/chat/completions",
   "openAIImageGenerationURL": "https://api.openai.com/v1/images/generations",
@@ -743,5 +761,29 @@
   "areaZoomLimit": 1,
   "longPressDesktop": 500,
   "longPressMobile": 500,
-  "isDebugMode": false
+  "doubleClickLinkOpenViewMode": true,
+  "isDebugMode": false,
+  "rank": "Bronze",
+  "modifierKeyOverrides": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Enter"
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "k"
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "G"
+    }
+  ],
+  "showSplashscreen": true,
+  "autosaveInterval": 15000
 }

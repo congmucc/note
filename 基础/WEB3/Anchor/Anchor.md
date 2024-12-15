@@ -639,7 +639,7 @@ echo > app.ts
 
 yarn init --yes
 
-# 导入的 tsconfig.json：
+# 导入的 tsconfig.json： 
 tsc -init --resolveJsonModule true
 
 yarn install 
