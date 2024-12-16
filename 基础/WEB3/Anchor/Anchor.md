@@ -377,13 +377,67 @@ Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
 
 
 
-### 多指令
+### 多指令合约和调用
 
 - 合约
 [Reading Multiple Instructions | Solana](https://solana.com/developers/cookbook/programs/read-multiple-instructions)
 - 调用
 [How to Send Bulk Transactions on Solana | QuickNode Guides](https://www.quicknode.com/guides/solana-development/transactions/how-to-send-bulk-transactions-on-solana)
 
+
+### 状态压缩 State Compression
+[Creating Compressed NFTs with JavaScript | Solana](https://solana.com/developers/guides/javascript/compressed-nfts)
+
+Merkle tree
+> 是一个二叉树，除了叶子节点其他都是hash，
+
+
+
+```rust
+import { Connection, Keypair } from '@solana/web3.js';
+import { Metaplex, createCompressionTree } from '@metaplex-foundation/js';
+import { addLeafToCompressionTree } from '@metaplex-foundation/js';
+import { updateLeafInCompressionTree } from '@metaplex-foundation/js';
+import { getMerkleProof } from '@metaplex-foundation/js';
+
+const connection = new Connection('https://api.mainnet-beta.solana.com');
+const payer = Keypair.generate(); // 创建支付账户
+
+// 初始化 Metaplex 客户端
+const metaplex = Metaplex.make(connection).useKeypair(payer);
+
+// 创建压缩树
+const { treeAddress } = await createCompressionTree(metaplex, {
+	depth: 20, // Merkle 树的深度
+	maxDepth: 20, // 最大深度
+	canopyDepth: 5, // 冗余深度
+});
+console.log('Compression Tree Address:', treeAddress.toBase58());
+
+// 要存储的数据
+const data = { id: 1, owner: 'SomeOwnerPublicKey' };
+const dataHash = crypto.createHash('sha256').update(JSON.stringify(data)).digest('hex');
+
+// 添加到树
+await addLeafToCompressionTree(metaplex, treeAddress, dataHash);
+console.log('Data added to compression tree.');
+
+// 更新数据
+const newData = { id: 1, owner: 'NewOwnerPublicKey' };
+const newDataHash = crypto.createHash('sha256').update(JSON.stringify(newData)).digest('hex');
+
+// 更新树的叶子节点
+await updateLeafInCompressionTree(metaplex, treeAddress, 0, newDataHash); // 0 为叶子索引
+console.log('Data updated in compression tree.');
+  
+// 获取链上 Merkle 证明
+const proof = await getMerkleProof(metaplex, treeAddress, 0);
+console.log('Merkle Proof:', proof);
+
+// 验证链下数据
+const isValid = verifyMerkleProof(dataHash, proof, treeRoot);
+console.log('Is data valid:', isValid);
+```
 
 
 
