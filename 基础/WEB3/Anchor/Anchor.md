@@ -389,8 +389,21 @@ Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
 [Creating Compressed NFTs with JavaScript | Solana](https://solana.com/developers/guides/javascript/compressed-nfts)
 
 Merkle tree
-> 是一个二叉树，除了叶子节点其他都是hash，根结点是由两个子节点的hash进行
+> 是一个二叉树，除了叶子节点其他都是hash，根结点是由两个子节点的hash进行hash计算，然后只需要知道根节点，然后使用 SDK 或调用智能合约，获取从叶节点到根节点的哈希路径。之后直接
 
+1、**存储链上的信息：**
+- 叶节点索引（`leafIndex`）。
+- 从叶节点到根节点的哈希路径。
+- 链上存储的 Merkle 根。
+2、**获取链上 Merkle proof**
+> 获取从叶节点到根节点的哈希路径。
+
+3、**验证链下数据**
+> 验证链下数据的核心是利用 Merkle 证明重建根节点哈希，并与链上存储的 Merkle 根进行对比。
+- 根据证明路径，从目标数据的哈希开始，依次与路径中的其他哈希进行合并计算。
+- 计算方式遵循 Merkle 树的规则：
+    - 如果目标哈希是左节点，与右节点哈希合并。
+    - 如果目标哈希是右节点，与左节点哈希合并。
 
 
 ```rust
