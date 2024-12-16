@@ -386,7 +386,6 @@ Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
 
 
 ### 状态压缩 State Compression
-[Creating Compressed NFTs with JavaScript | Solana](https://solana.com/developers/guides/javascript/compressed-nfts)
 
 Merkle tree
 > 是一个二叉树，除了叶子节点其他都是hash，根结点是由两个子节点的hash进行hash计算，然后只需要知道根节点，然后使用 SDK 或调用智能合约，获取从叶节点到根节点的哈希路径。之后直接
@@ -405,6 +404,8 @@ Merkle tree
     - 如果目标哈希是左节点，与右节点哈希合并。
     - 如果目标哈希是右节点，与左节点哈希合并。
 
+> [Creating Compressed NFTs with JavaScript | Solana](https://solana.com/developers/guides/javascript/compressed-nfts)
+> 这是一个例子
 
 ```rust
 import { Connection, Keypair } from '@solana/web3.js';
