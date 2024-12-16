@@ -389,7 +389,7 @@ Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
 [Creating Compressed NFTs with JavaScript | Solana](https://solana.com/developers/guides/javascript/compressed-nfts)
 
 Merkle tree
-> 是一个二叉树，除了叶子节点其他都是hash，
+> 是一个二叉树，除了叶子节点其他都是hash，根结点是由两个子节点的hash进行
 
 
 
