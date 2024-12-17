@@ -460,6 +460,39 @@ console.log('Is data valid:', isValid);
 > 应该要有至少三个监听器在不一样的伺服器，同时也用不一样的RPC，然后用queue的方式，把他传去数据库，等待处理
 > 我们的交易量很大，监听几百万个交易
 
+```ts
+let currentIndex = 0;
+
+const rpcEndpoints = [
+    "https://rpc1.blockchain.com",
+    "https://rpc2.blockchain.com",
+    "https://rpc3.blockchain.com",
+];
+
+function getNextRpc(): string {
+    const rpc = rpcEndpoints[currentIndex];
+    currentIndex = (currentIndex + 1) % rpcEndpoints.length;
+    return rpc;
+}
+
+const failedRpcs = new Set<string>();
+
+function markRpcAsFailed(rpc: string) {
+    failedRpcs.add(rpc);
+    setTimeout(() => failedRpcs.delete(rpc), 60000); // Retry after 60 seconds
+}
+
+function getNextHealthyRpc(): string {
+    let attempts = 0;
+    while (attempts < rpcEndpoints.length) {
+        const rpc = getNextRpc();
+        if (!failedRpcs.has(rpc)) return rpc;
+        attempts++;
+    }
+    throw new Error("No healthy RPC endpoints available");
+}
+```
+
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust
