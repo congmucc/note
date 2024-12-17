@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Go/Golang基础/Golang基础.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Golang基础"
+              "title": "Anchor"
             }
           }
         ]
@@ -126,10 +126,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Go/Golang基础/Golang基础.md"
+                "file": "基础/WEB3/Anchor/Anchor.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Golang基础"
+              "title": "Outline of Anchor"
             }
           },
           {
@@ -192,8 +192,8 @@
   },
   "active": "bd5ed1573970a304",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
     "基础/后端/Go/Golang基础/Golang基础.md",
+    "conflict-files-obsidian-git.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/CICD/Docker/Docker.md",
