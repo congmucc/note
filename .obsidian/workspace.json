@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a6f0ba5f9be53d7e",
+        "id": "a93e1dca0424f30d",
         "type": "tabs",
         "children": [
           {
-            "id": "bd5ed1573970a304",
+            "id": "4447ef2a12b80634",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Anchor/Anchor.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Anchor"
+              "title": "New tab"
             }
           }
         ]
@@ -126,10 +121,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Anchor/Anchor.md"
+                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Anchor"
+              "title": "Outline of 合约安全漏洞"
             }
           },
           {
@@ -190,19 +185,24 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "bd5ed1573970a304",
+  "active": "4447ef2a12b80634",
   "lastOpenFiles": [
-    "基础/后端/Go/Golang基础/Golang基础.md",
-    "conflict-files-obsidian-git.md",
+    "基础/WEB3/Solidity/合约安全.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
-    "基础/CICD/Docker/Docker.md",
     "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/Patrick Collins/Patrick Collins.md",
+    "基础/WEB3/Solidity/Solidity.md",
+    "基础/WEB3/Solidity/实战.md",
+    "基础/WEB3/Solidity/Foundry.md",
+    "基础/后端/Go/Golang基础/Golang基础.md",
+    "conflict-files-obsidian-git.md",
+    "基础/CICD/Docker/Docker.md",
     "基础/WEB3/道路/道路.md",
     "基础/后端/Rust/Rust.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/量化交易/量化交易基础/量化交易基础.md",
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/量化交易/量化学习/量化学习.md",
     "基础/项目经理/基础/基础.md",
@@ -216,12 +216,7 @@
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
     "基础/CICD/CICD.md",
     "基础/WEB3/Interview/Interview~.md",
-    "基础/Tool/Git/Git.md",
-    "基础/WEB3/Patrick Collins/Patrick Collins.md",
-    "基础/后端/Python/全栈（Python）/全栈（Python版本）.md",
     "基础/WEB3/Anchor",
-    "基础/WEB3/基础知识/Ethereum/Ethereum.md",
-    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
     "基础/后端/Rust/assets/image-20240629235928924.png",
     "基础/WEB3/基础知识/Solana/assets/20240810220338.png",
     "assets",
