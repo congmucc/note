@@ -455,6 +455,8 @@ console.log('Is data valid:', isValid);
 
 
 ### 地址查找表(ALT)和版本化交易
+
+#### 地址查找表ALT
 > 1. ALT 是在客户端层面工作的，合约本身不需要特别的代码来处理 ALT
 > 2. 合约只需要正常接收和处理这些地址，就像它们是直接在交易中传递的一样
 > 3. ALT 的主要好处是在客户端减少交易大小，特别是当交易需要引用多个地址时
@@ -519,6 +521,12 @@ async function compareTxSize() {
 Transaction Size without Address Lookup Table:  413 bytes
 Transaction Size with Address Lookup Table:     292 bytes
 ```
+
+
+#### 版本化交易
+> 版本控制交易将允许您现在使用 Address Lookup Tables，并且将来可能会有额外的功能，目前就是这一个功能。
+
+[How to Use Versioned Transactions on Solana | QuickNode Guides](https://www.quicknode.com/guides/solana-development/transactions/how-to-use-versioned-transactions-on-solana#create-a-version-0-transaction)
 
 ### 监听
 > 如果是关于RPC，我们之前是有做类似 Round Robin，其中一个倒了，另外一个还会在运作
