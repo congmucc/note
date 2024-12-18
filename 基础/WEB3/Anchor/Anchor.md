@@ -463,6 +463,43 @@ console.log('Is data valid:', isValid);
 可以看上面这个，最后的一个函数`compareTxSize();`，这个就是
 
 
+```ts
+
+    const lookupTable = (await SOLANA_CONNECTION.getAddressLookupTable(LOOKUP_TABLE_ADDRESS)).value;
+    if (!lookupTable) return;
+    console.log("   ✅ - Fetched Lookup Table:", lookupTable.key.toString());
+
+    // Step 2 - Generate a Solana transfer instruction to an address in our lookup table
+    const txInstructions: TransactionInstruction[] = [];
+    for (let i = 0; i < lookupTable.state.addresses.length; i++) {
+        const address = lookupTable.state.addresses[i];
+        txInstructions.push(
+            SystemProgram.transfer({
+                fromPubkey: SIGNER_WALLET.publicKey,
+                toPubkey: address,
+                lamports: 0.01 * LAMPORTS_PER_SOL,
+            })
+        )
+    }
+
+    const messageWithLookupTable = new TransactionMessage({
+        payerKey: SIGNER_WALLET.publicKey,
+        recentBlockhash: latestBlockhash.blockhash,
+        instructions: txInstructions
+    }).compileToV0Message([lookupTable]); // 👈 NOTE: We DO include the lookup table
+    const transactionWithLookupTable = new VersionedTransaction(messageWithLookupTable);
+    transactionWithLookupTable.sign([SIGNER_WALLET]);
+
+
+    const messageWithoutLookupTable = new TransactionMessage({
+        payerKey: SIGNER_WALLET.publicKey,
+        recentBlockhash: latestBlockhash.blockhash,
+        instructions: txInstructions
+    }).compileToV0Message(); // 👈 NOTE: We do NOT include the lookup table
+    const transactionWithoutLookupTable = new VersionedTransaction(messageWithoutLookupTable);
+    transactionWithoutLookupTable.sign([SIGNER_WALLET]);
+```
+> 这个就是正常在客户端使用，但是
 
 
 ### 监听
