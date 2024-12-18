@@ -459,17 +459,19 @@ console.log('Is data valid:', isValid);
 > 2. 合约只需要正常接收和处理这些地址，就像它们是直接在交易中传递的一样
 > 3. ALT 的主要好处是在客户端减少交易大小，特别是当交易需要引用多个地址时
 
-[qn-guide-examples/solana/versioned-tx/lookupTables.ts at main · quiknode-labs/qn-guide-examples](https://github.com/quiknode-labs/qn-guide-examples/blob/main/solana/versioned-tx/lookupTables.ts)
+[github](https://github.com/quiknode-labs/qn-guide-examples/blob/main/solana/versioned-tx/lookupTables.ts)
+[How to Use Lookup Tables on Solana | QuickNode Guides](https://www.quicknode.com/guides/solana-development/accounts-and-data/how-to-use-lookup-tables-on-solana#add-addresses-to-your-lookup-table)
 可以看上面这个，最后的一个函数`compareTxSize();`，这个就是
 
 
 ```ts
-
+async function compareTxSize() {
+    // Step 1 - Fetch the lookup table
     const lookupTable = (await SOLANA_CONNECTION.getAddressLookupTable(LOOKUP_TABLE_ADDRESS)).value;
     if (!lookupTable) return;
-    console.log("   ✅ - Fetched Lookup Table:", lookupTable.key.toString());
+    console.log("   ✅ - Fetched lookup table:", lookupTable.key.toString());
 
-    // Step 2 - Generate a Solana transfer instruction to an address in our lookup table
+    // Step 2 - Generate an array of Solana transfer instruction to each address in our lookup table
     const txInstructions: TransactionInstruction[] = [];
     for (let i = 0; i < lookupTable.state.addresses.length; i++) {
         const address = lookupTable.state.addresses[i];
@@ -482,6 +484,11 @@ console.log('Is data valid:', isValid);
         )
     }
 
+    // Step 3 - Fetch the latest Blockhash
+    let latestBlockhash = await SOLANA_CONNECTION.getLatestBlockhash('finalized');
+    console.log("   ✅ - Fetched latest blockhash. Last valid height:", latestBlockhash.lastValidBlockHeight);
+
+    // Step 4 - Generate and sign a transaction that uses a lookup table
     const messageWithLookupTable = new TransactionMessage({
         payerKey: SIGNER_WALLET.publicKey,
         recentBlockhash: latestBlockhash.blockhash,
@@ -490,7 +497,7 @@ console.log('Is data valid:', isValid);
     const transactionWithLookupTable = new VersionedTransaction(messageWithLookupTable);
     transactionWithLookupTable.sign([SIGNER_WALLET]);
 
-
+    // Step 5 - Generate and sign a transaction that DOES NOT use a lookup table
     const messageWithoutLookupTable = new TransactionMessage({
         payerKey: SIGNER_WALLET.publicKey,
         recentBlockhash: latestBlockhash.blockhash,
@@ -498,9 +505,20 @@ console.log('Is data valid:', isValid);
     }).compileToV0Message(); // 👈 NOTE: We do NOT include the lookup table
     const transactionWithoutLookupTable = new VersionedTransaction(messageWithoutLookupTable);
     transactionWithoutLookupTable.sign([SIGNER_WALLET]);
-```
-> 这个就是正常在客户端使用，但是
 
+    console.log("   ✅ - Compiled transactions");
+
+    // Step 6 - Log our transaction size
+    console.log('Transaction size without address lookup table: ', transactionWithoutLookupTable.serialize().length, 'bytes');
+    console.log('Transaction size with address lookup table:    ', transactionWithLookupTable.serialize().length, 'bytes');
+}
+```
+> 这个就是正常在客户端使用，但是添加了一个ALT
+
+```bash
+Transaction Size without Address Lookup Table:  413 bytes
+Transaction Size with Address Lookup Table:     292 bytes
+```
 
 ### 监听
 > 如果是关于RPC，我们之前是有做类似 Round Robin，其中一个倒了，另外一个还会在运作
