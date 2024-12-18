@@ -389,6 +389,10 @@ Box 将数据存储在堆上，而不是栈上，减少栈内存压力。
 
 Merkle tree
 > 是一个二叉树，除了叶子节点其他都是hash，根结点是由两个子节点的hash进行hash计算，然后只需要知道根节点，然后使用 SDK 或调用智能合约，获取从叶节点到根节点的哈希路径。之后直接
+> **[默克尔树](https://en.wikipedia.org/wiki/Merkle_tree)**是一种数据结构，用于在大型数据集中存储各个数据的哈希值，以允许对数据集内容进行高效和安全的验证。每条数据（称为`叶`子）都经过哈希处理，然后与另一个哈希配对以创建新的哈希。重复此过程，直到只剩下一个哈希值，称为`根`。根哈希用于验证数据的完整性。
+
+
+[What are Compressed NFTs and How to Mint one on Solana | QuickNode Guides](https://www.quicknode.com/guides/solana-development/nfts/mint-compressed-nft)
 
 1、**存储链上的信息：**
 - 叶节点索引（`leafIndex`）。
