@@ -459,7 +459,8 @@ console.log('Is data valid:', isValid);
 > 2. 合约只需要正常接收和处理这些地址，就像它们是直接在交易中传递的一样
 > 3. ALT 的主要好处是在客户端减少交易大小，特别是当交易需要引用多个地址时
 
-
+[qn-guide-examples/solana/versioned-tx/lookupTables.ts at main · quiknode-labs/qn-guide-examples](https://github.com/quiknode-labs/qn-guide-examples/blob/main/solana/versioned-tx/lookupTables.ts)
+可以看上面这个，最后的一个函数`compareTxSize();`，这个就是
 
 
 
