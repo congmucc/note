@@ -513,7 +513,7 @@ async function compareTxSize() {
     console.log('Transaction size with address lookup table:    ', transactionWithLookupTable.serialize().length, 'bytes');
 }
 ```
-> 这个就是正常在客户端使用，但是添加了一个ALT
+> 这个就是正常在客户端使用，但是添加了一个ALT减少了交易大小
 
 ```bash
 Transaction Size without Address Lookup Table:  413 bytes
