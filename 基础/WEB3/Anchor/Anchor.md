@@ -279,6 +279,9 @@ pub associated_token_account: Account<'info, TokenAccount>,
 > [program-examples/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs at main · solana-developers/program-examples · GitHub](https://github.com/solana-developers/program-examples/blob/main/tokens/transfer-tokens/anchor/programs/transfer-tokens/src/instructions/mint.rs)
 
 
+### Mint2022 在合约中初始化mint账户
+[program-examples/tokens/token-2022/default-account-state/anchor/programs/default-account-state/src/lib.rs at main · solana-developers/program-examples](https://github.com/solana-developers/program-examples/blob/main/tokens/token-2022/default-account-state/anchor/programs/default-account-state/src/lib.rs)
+
 ### 随机性VRF
 [solana-co-learn/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md at main · CreatorsDAO/solana-co-learn](https://github.com/CreatorsDAO/solana-co-learn/blob/main/docs/Solana-Co-Learn/module6/randomness/randomising-loot-with-switchborar/README.md)
 
