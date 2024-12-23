@@ -573,6 +573,80 @@ function getNextHealthyRpc(): string {
 }
 ```
 
+
+
+### Mutip call
+```ts
+import { ethers } from "ethers";
+
+// ABI of your multicall contract
+const multiCallABI = [
+    "function aggregate(tuple(address target, bytes callData)[] calls) public returns (uint256 blockNumber, bytes[] returnData)"
+];
+
+// ABI of the target contract
+const targetContractABI = [
+    "function draw(uint256 order_id, uint256 amount, uint256 game_id, string seed, bool hash_expired) external"
+];
+
+// Addresses
+const multiCallAddress = "0xYourMultiCallContractAddress";
+const targetContractAddress = "0xYourTargetContractAddress";
+
+async function customMulticallForDraw() {
+    // Connect to an Ethereum provider
+    const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID");
+    const signer = provider.getSigner();
+
+    // Initialize the multicall contract
+    const multicallContract = new ethers.Contract(multiCallAddress, multiCallABI, signer);
+
+    // Initialize the target contract interface
+    const targetInterface = new ethers.utils.Interface(targetContractABI);
+
+    // Prepare the calls to the `draw` function
+    const calls = [];
+    for (let i = 0; i < 10; i++) {
+        const order_id = i + 1; // Example order ID
+        const amount = (i + 1) * 10; // Example amounts
+        const game_id = 100 + i; // Example game IDs
+        const seed = `seed_${i}`; // Example seeds
+        const hash_expired = i % 2 === 0; // Alternate hash expiration status
+
+        // Encode function data
+        const callData = targetInterface.encodeFunctionData("draw", [
+            order_id,
+            amount,
+            game_id,
+            seed,
+            hash_expired,
+        ]);
+
+        // Add to calls array
+        calls.push({
+            target: targetContractAddress,
+            callData,
+        });
+    }
+
+    // Perform the multicall
+    try {
+        const [blockNumber, returnData] = await multicallContract.aggregate(calls);
+        console.log("Block Number:", blockNumber);
+
+        // Decode the results if applicable
+        const decodedResults = returnData.map((data: string) =>
+            targetInterface.decodeFunctionResult("draw", data)
+        );
+        console.log("Decoded Results:", decodedResults);
+    } catch (error) {
+        console.error("Error during multicall:", error);
+    }
+}
+customMulticallForDraw();
+```
+
+
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust
