@@ -72,16 +72,16 @@ Go语言保证了既能到达静态编译语言的安全和性能，又达到了
       ○建议将环境变量GO111MODULE设置为auto，这样就会根据当前工作目录下是否有go.mod决定使用什么进行项目管理
       ○不同版本管理下，go的一系列执行命令都会产生变化
 
-| 命令            | 作用                                          |
-| --------------- | --------------------------------------------- |
+| 命令              | 作用                               |
+| --------------- | -------------------------------- |
 | go mod download | 下载依赖包到本地 (默认为 GOPATH/pkg/mod 目录) |
-| go mod edit     | 编辑 go.mod 文件                              |
-| go mod graph    | 打印模块依赖图                                |
+| go mod edit     | 编辑 go.mod 文件                     |
+| go mod graph    | 打印模块依赖图                          |
 | go mod init     | 初始化当前文件夹，创建 go.mod 文件            |
 | go mod tidy     | 增加缺少的包，删除无用的包                    |
-| go mod vendor   | 将依赖复制到 vendor 目录下                    |
-| go mod verify   | 校验依赖                                      |
-| go mod why      | 解释为什么需要依赖                            |
+| go mod vendor   | 将依赖复制到 vendor 目录下                |
+| go mod verify   | 校验依赖                             |
+| go mod why      | 解释为什么需要依赖                        |
 
 
 
