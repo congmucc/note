@@ -1,6 +1,6 @@
 [Installation - Foundry Book (getfoundry.sh)](https://book.getfoundry.sh/getting-started/installation)
 
-
+[读取事件日志 · Ethereum Development with Go](https://goethereumbook.org/zh/event-read/)
 
 # Environment Setting
 
