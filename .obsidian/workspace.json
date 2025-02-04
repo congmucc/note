@@ -15,14 +15,36 @@
               "state": {
                 "file": "基础/WEB3/Move/Move.md",
                 "mode": "source",
+                "source": false,
                 "backlinks": true,
-                "source": false
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
               "title": "Move"
             }
+          },
+          {
+            "id": "6e8e7a49a822deb4",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -41,7 +63,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -126,10 +149,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Move/Move.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Move"
+              "title": "Outline"
             }
           },
           {
@@ -190,7 +215,7 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "4447ef2a12b80634",
+  "active": "6e8e7a49a822deb4",
   "lastOpenFiles": [
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Solidity/实战.md",
