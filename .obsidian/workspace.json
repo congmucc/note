@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/CICD/Docker/Docker.md",
+                "file": "基础/前端/Interview/Interview.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Docker"
+              "title": "Interview"
             }
           }
         ],
@@ -161,13 +161,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/CICD/Docker/Docker.md",
+                "file": "基础/前端/Interview/Interview.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Docker"
+              "title": "Outline of Interview"
             }
           },
           {
@@ -230,6 +230,7 @@
   },
   "active": "6e8e7a49a822deb4",
   "lastOpenFiles": [
+    "基础/CICD/Docker/Docker.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Move/Move.md",
@@ -243,7 +244,6 @@
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "conflict-files-obsidian-git.md",
-    "基础/CICD/Docker/Docker.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/量化交易/量化交易基础/量化交易基础.md",
