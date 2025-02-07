@@ -1739,3 +1739,10 @@ docker run --name elasticsearch -p 9200:9200 -p 9300:9300 \
 docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx128m" -v C:/Users/Administrator/docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v C:/Users/Administrator/docker/elasticsearch/data:/usr/share/elasticsearch/data -v C:/Users/Administrator/docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:7.9.2
 ```
 > win
+
+## RabbitMq
+
+```sh
+docker run --name rabbit --restart=always -p 15672:15672 -p 5672:5672  -d  rabbitmq:management
+```
+> 通用
