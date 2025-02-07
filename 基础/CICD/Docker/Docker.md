@@ -1722,3 +1722,8 @@ docker run -d \
 ```
 > 不要使用dev模式，会丢失数据
 > http://127.0.0.1:8500/
+
+## Elasticsearch
+```sh
+
+```
