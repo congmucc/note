@@ -1693,6 +1693,11 @@ docker run -d \
 > 一般不需要
 
 
+```redis
+
+```
+> win
+
 ```sh
 mkdir -p ~/docker/redis/{data,config,logs}
 chmod -R 777 ~/docker/redis

@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "实战笔记/构建项目模板/Java后端/Java后端.md",
+                "file": "基础/CICD/Docker/Docker.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Java后端"
+              "title": "Docker"
             }
           }
         ],
@@ -161,13 +161,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "实战笔记/构建项目模板/Java后端/Java后端.md",
+                "file": "基础/CICD/Docker/Docker.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Java后端"
+              "title": "Outline of Docker"
             }
           },
           {
@@ -230,6 +230,7 @@
   },
   "active": "6e8e7a49a822deb4",
   "lastOpenFiles": [
+    "实战笔记/构建项目模板/Java后端/Java后端.md",
     "基础/后端/Java/微服务框架/微服务.md",
     "基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
     "基础/后端/Java/JavaWeb开发规范.md",
@@ -255,7 +256,6 @@
     "基础/量化交易/量化学习/量化学习.md",
     "基础/项目经理/基础/基础.md",
     "README.md",
-    "实战笔记/构建项目模板/Go后端/Go后端.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
