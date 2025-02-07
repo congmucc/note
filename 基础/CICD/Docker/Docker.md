@@ -1727,6 +1727,7 @@ docker run -d \
 ```sh
 docker run --name elasticsearch -p 9200:9200 -p 9300:9300 \
  -e "discovery.type=single-node" \
+ -e "network.host=0.0.0.0" \
  -e ES_JAVA_OPTS="-Xms64m -Xmx128m" \
  -v ~/docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
  -v ~/docker/elasticsearch/data:/usr/share/elasticsearch/data \
@@ -1736,7 +1737,7 @@ docker run --name elasticsearch -p 9200:9200 -p 9300:9300 \
 
 
 ```sh
-docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx128m" -v C:/Users/Administrator/docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v C:/Users/Administrator/docker/elasticsearch/data:/usr/share/elasticsearch/data -v C:/Users/Administrator/docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:7.9.2
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx128m" -e "network.host=0.0.0.0" -v C:/Users/Administrator/docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v C:/Users/Administrator/docker/elasticsearch/data:/usr/share/elasticsearch/data -v C:/Users/Administrator/docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:7.9.2
 ```
 > win
 
