@@ -1694,7 +1694,7 @@ docker run -d \
 
 
 ```redis
-
+docker run -d --name redis --restart=always -p 6379:6379 -v C:\Users\Administrator\docker\redis\data:/data -v C:\Users\Administrator\docker\redis\config\redis.conf:/usr/local/etc/redis/redis.conf -v C:\Users\Administrator\docker\redis\logs:/var/log/redis redis redis-server /usr/local/etc/redis/redis.conf
 ```
 > win
 
