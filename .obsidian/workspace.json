@@ -8,30 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4447ef2a12b80634",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Move/Move.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Move"
-            }
-          },
-          {
             "id": "6e8e7a49a822deb4",
             "type": "leaf",
             "state": {
@@ -55,8 +31,7 @@
               "title": "Docker"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -230,13 +205,14 @@
   },
   "active": "6e8e7a49a822deb4",
   "lastOpenFiles": [
+    "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
+    "基础/CICD/Docker/Docker.md",
     "实战笔记/构建项目模板/Java后端/Java后端.md",
     "基础/后端/Java/微服务框架/微服务.md",
     "基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
     "基础/后端/Java/JavaWeb开发规范.md",
     "基础/WEB3/Move/Move.md",
     "基础/前端/Interview/Interview.md",
-    "基础/CICD/Docker/Docker.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Solidity/Foundry.md",
@@ -255,7 +231,6 @@
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/量化交易/量化学习/量化学习.md",
     "基础/项目经理/基础/基础.md",
-    "README.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
