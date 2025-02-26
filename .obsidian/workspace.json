@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "工作/宏图/航天宏图.md",
+                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,10 +28,23 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "航天宏图"
+              "title": "WEB3基础"
+            }
+          },
+          {
+            "id": "9ad00ded4837695f",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.7"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -136,13 +149,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "工作/宏图/航天宏图.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 航天宏图"
+              "title": "Outline"
             }
           },
           {
@@ -203,34 +215,34 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "6e8e7a49a822deb4",
+  "active": "9ad00ded4837695f",
   "lastOpenFiles": [
+    "基础/WEB3/Move/Move.md",
+    "基础/WEB3/Solidity/Solidity.md",
+    "基础/WEB3/Solidity/Foundry.md",
+    "基础/WEB3/Solidity/实战.md",
+    "基础/WEB3/Solidity/合约安全.md",
+    "基础/WEB3/Patrick Collins/Patrick Collins.md",
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/Anchor/Anchor.md",
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/WEB3/道路/道路.md",
+    "工作/宏图/航天宏图.md",
     "基础/CICD/Docker/Docker.md",
     "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
     "实战笔记/构建项目模板/Java后端/Java后端.md",
     "基础/后端/Java/微服务框架/微服务.md",
     "基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
     "基础/后端/Java/JavaWeb开发规范.md",
-    "基础/WEB3/Move/Move.md",
     "基础/前端/Interview/Interview.md",
-    "基础/WEB3/Anchor/Anchor.md",
-    "基础/WEB3/Solidity/实战.md",
-    "基础/WEB3/Solidity/Foundry.md",
-    "基础/WEB3/Solidity/Solidity.md",
     "基础/后端/Go/Golang基础/Golang基础.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/后端/Rust/Rust.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
-    "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "conflict-files-obsidian-git.md",
-    "基础/WEB3/道路/道路.md",
-    "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/量化交易/量化交易基础/量化交易基础.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/量化交易/量化学习/量化学习.md",
-    "基础/项目经理/基础/基础.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
