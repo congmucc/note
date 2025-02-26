@@ -222,3 +222,17 @@ Solar新官网 (https://solanazh.notion.site/Solar-39ce384859524425859978df2c78e
 8、入库的事务如何处理。
 9、对于solana的账户数据泄露（猜数游戏）
 10、如何节约gas
+
+
+
+
+Miner 是从什么方式获取到待打包的 Transactions? 
+Miner 是基于什么样策略从 Transaction Pool 中选择 Transaction 呢？
+被选择的 Transactions 又是以怎样的顺序(Order)被打包到区块中的呢？
+在执行 Transaction 的 EVM 是怎么计算 gas used，从而限定 Block 中 Transaction 的数量?
+剩余的 gas 又是怎么返还给 Transaction Proposer 的呢？
+EVM 是怎么解释 Contract Code 的 Message Call 并执行的呢？
+在执行 Transaction 时，是什么模块，怎样去修改 Contract 中持久化变量？
+Smart Contract 中的持久化变量是以什么样的形式存储？又是存储在什么地方？
+当新的 Block 更新到 Blockchain 中时，World State 又是在什么时机，以什么方式更新的呢？
+哪些数据常驻内存，哪些数据需要保存在 Disk 中呢？
