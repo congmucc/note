@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "da9ae0a75c3605ef",
+        "id": "07b5463010f63bc9",
         "type": "tabs",
         "children": [
           {
-            "id": "524850ee031ee1e8",
+            "id": "3e4e9e119068e860",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -159,12 +159,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Interview"
+              "title": "Outgoing links"
             }
           }
         ],
