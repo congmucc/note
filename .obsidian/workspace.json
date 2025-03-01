@@ -32,55 +32,7 @@
             }
           },
           {
-            "id": "d9ece33ca2afe735",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Interview/面经.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "面经"
-            }
-          },
-          {
-            "id": "51035b7b55b507a1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Interview/面经.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "面经"
-            }
-          },
-          {
-            "id": "258f5a03f5aa8112",
+            "id": "a2be607fc1d6500d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -103,8 +55,7 @@
               "title": "Mantle-Network"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -177,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/CICD/Docker/Docker.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +138,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Docker 的反向链接列表"
+              "title": "Backlinks for 面经"
             }
           },
           {
@@ -209,13 +160,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Mantle-Network"
+              "title": "Outline of 面经"
             }
           },
           {
@@ -254,8 +205,7 @@
               "title": "Outgoing links from Geth"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -276,17 +226,17 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "258f5a03f5aa8112",
+  "active": "3e4e9e119068e860",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+    "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/WEB3/基础知识/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
-    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
-    "基础/WEB3/Interview/面经.md",
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/Solidity/Foundry.md",
     "基础/WEB3/Solidity/实战.md",
