@@ -354,7 +354,7 @@ Mantle 团队在实际做设计的时候，考虑到传统 OP Rollups 方案的�
 
 区块链的模块化架构是一种新型的区块链架构，在这种结构中，区块链的主要功能（比如执行交易、达成共识、结算和数据存储）被分散到不同的专业层级上。这就像是在一个大公司里，不同的部门各司其职，负责不同的业务一样。
 
-![image](./assets/83c1c780-7d1f-4e01-b308-ec07d22a62be.webp)
+![image](assets/83c1c780-7d1f-4e01-b308-ec07d22a62be.webp)
 
 
 
@@ -385,7 +385,7 @@ Mantle 团队在实际做设计的时候，考虑到传统 OP Rollups 方案的�
    - 一旦确认余额充足，Alice 点击发送。她的钱包软件（客户端）会通过 RPC 向 Mantle 网络中的节点发送交易请求。这个请求包括了交易的具体细节，如收款人地址、转账金额等。
    - Mantle 节点接收到 Alice 的交易请求后，会开始处理这笔交易，这标志着 Alice 向 Bob 转账的过程正式开始。
 
-![image](./assets/789dab12-4230-4834-aa59-80f8e77b6481.webp)
+![image](assets/789dab12-4230-4834-aa59-80f8e77b6481.webp)
 
 
 
@@ -410,7 +410,7 @@ Mantle 团队在实际做设计的时候，考虑到传统 OP Rollups 方案的�
 
 综上，排序器 在 Mantle 网络中不仅提高了交易处理的效率，还通过打包交易降低了单个用户的交易费用，使得整个区块链网络更加经济高效。对于像 Alice 这样的普通用户来说，这种方法不仅加速了她的转账处理，还降低了她的成本负担，提高了区块链技术的实用性。
 
-![image](./assets/910f7165-8ad0-40e0-9806-d733571a2510.webp)
+![image](assets/910f7165-8ad0-40e0-9806-d733571a2510.webp)
 
 ## 2.4 Mantle - 交易是怎么在公链上传输和提交的
 
@@ -471,7 +471,7 @@ Mantle 中用于提交区块交易状态根到一层网络的组件叫做 op-pro
 
 总之，op-batcher 和 op-proposer 共同确保了 Layer 2 网络能够高效、安全地运行，同时减轻了主链的负担，提高了整个系统的可扩展性。对于像 Alice 这样的用户来说，这意味着她的转账操作不仅在 Mantle 上得到快速处理，而且在整个以太坊网络中都得到了充分的确认和记录。
 
-![image](./assets/84dadf2b-da69-4c78-bf26-5f53286a13f7.webp)
+![image](assets/84dadf2b-da69-4c78-bf26-5f53286a13f7.webp)
 
 
 
@@ -500,7 +500,7 @@ Alice 的交易经历了 Mantle 网络中的多个重要阶段，打包、传输
    
    - 通过这种方式，可以确保即使在 Layer2 发生错误，Layer1 也能作为最终的审查者，提供一个安全网，确保整个系统的准确性和完整性。
 
-![image](./assets/946484e1-00ab-405d-b962-fc3d48cc280b.webp)
+![image](assets/946484e1-00ab-405d-b962-fc3d48cc280b.webp)
 
 ## 2.6 Mantle - Layer2 数据是怎么存储的
 
@@ -539,7 +539,7 @@ Alice 的交易经历了 Mantle 网络中的多个重要阶段，打包、传输
 
 总结来说，Mantle DA 在 Mantle 网络中扮演着数据可用性层至关重要的角色。它不仅确保了所有交易数据的安全存储和快速访问，还通过其先进的技术极大地提高了数据处理效率和系统的整体性能。对于像 Alice 这样的用户来说，Mantle DA 的存在使得她的交易体验更加顺畅，安全和透明。
 
-![image](./assets/ff6e5c94-cdac-4465-97ef-fdd25f334bfe.webp)
+![image](assets/ff6e5c94-cdac-4465-97ef-fdd25f334bfe.webp)
 
 
 
@@ -565,7 +565,7 @@ Alice 在 Mantle 上完成资金转移的过程展示了 Mantle 架构的效率�
    - Challenges：为了解决这个挑战，这个 Fraud Proof 包含的 Layer 2 数据（可能是引发争议的交易和状态更新）会被发布到 Layer 1 网络；
    - Verify：Layer 1 的智能合约将使用这些数据来执行状态转换，如果状态转换验证失败，说明 Layer 2 的更新确实有误。这样的机制提供了一种方法来纠正 Layer 2 上的错误，确保整个网络的正确性。
 
-![image](./assets/e840904c-9ff2-4be3-8c1b-3fecc7023177.webp)
+![image](assets/e840904c-9ff2-4be3-8c1b-3fecc7023177.webp)
 
 
 
