@@ -32,6 +32,30 @@
             }
           },
           {
+            "id": "48357d63a7363655",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "合约安全漏洞"
+            }
+          },
+          {
             "id": "a2be607fc1d6500d",
             "type": "leaf",
             "state": {
@@ -55,7 +79,8 @@
               "title": "Mantle-Network"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -128,17 +153,17 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 面经"
+              "title": "Backlinks for 合约安全漏洞"
             }
           },
           {
@@ -148,10 +173,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
-              "title": "标签"
+              "title": "Tags"
             }
           },
           {
@@ -160,13 +187,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of 合约安全漏洞"
             }
           },
           {
@@ -205,7 +232,8 @@
               "title": "Outgoing links from Geth"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -226,17 +254,17 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "3e4e9e119068e860",
+  "active": "48357d63a7363655",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/Interview/面经.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/Interview/面经.md",
     "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/WEB3/基础知识/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/Solidity/Foundry.md",
     "基础/WEB3/Solidity/实战.md",
