@@ -664,7 +664,7 @@ func decodeBetPlaced(logData string) *BetPlaced {
   
     // 创建 BetPlaced 结构体实例  
     var bet BetPlaced  
-    offset := 8  // 
+    offset := 8  // Discriminator 标识符
   
     // 解析 game_id    bet.GameID = binary.LittleEndian.Uint64(data[offset : offset+8])  
     offset += 8  
