@@ -11,10 +11,24 @@
             "id": "3e4e9e119068e860",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Geth"
             }
           }
         ]
@@ -122,13 +136,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Interview.md",
+                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Interview"
+              "title": "Outline of Geth"
             }
           },
           {
@@ -159,15 +173,16 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Geth"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -188,17 +203,23 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "bab168e69ff05614",
+  "active": "3e4e9e119068e860",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
+    "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+    "基础/WEB3/基础知识/Mantle Network/Mantle Network.md",
+    "基础/WEB3/Solidity/实战.md",
+    "基础/WEB3/Patrick Collins/Patrick Collins.md",
+    "基础/WEB3/Ethersjs/Ethersjs.md",
+    "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/Move/Move.md",
     "README.md",
     "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/Solidity/Foundry.md",
-    "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Solidity/合约安全.md",
-    "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/道路/道路.md",
@@ -210,12 +231,6 @@
     "基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
     "基础/后端/Java/JavaWeb开发规范.md",
     "基础/前端/Interview/Interview.md",
-    "基础/后端/Go/Golang基础/Golang基础.md",
-    "基础/后端/Rust/Rust.md",
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/Ethersjs/Ethersjs.md",
-    "conflict-files-obsidian-git.md",
-    "基础/量化交易/量化交易基础/量化交易基础.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
