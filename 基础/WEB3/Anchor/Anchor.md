@@ -647,12 +647,13 @@ customMulticallForDraw();
 ```
 
 
-## solana的base58
+## solana的Base58 && Base64
 Solana 使用 Base58 作为账户地址格式，Solana 的 **公钥（Pubkey）** 是 **32 字节（256 位）的 Ed25519 公钥**，而为了便于人类阅读和复制，Solana 采用 **Base58** 进行编码。
 
-但是日志需要base64进行编码：
-```
-  
+
+但是日志需要**Base64**进行编码：
+
+```  
 func decodeBetPlaced(logData string) *BetPlaced {  
     // Base64 解码  
     data, err := base64.StdEncoding.DecodeString(logData)  
@@ -694,8 +695,30 @@ func decodeBetPlaced(logData string) *BetPlaced {
 
 ### Ed25519
 
+**Ed25519** 是一种**高效、安全的椭圆曲线签名算法**，广泛用于 Web3 生态，如 **Solana、TON 和 Sui**。它基于 **Curve25519** 椭圆曲线，提供更快的签名速度和更小的公私钥尺寸。
 
+Solana **默认使用 Ed25519 进行账户公私钥对的生成和交易签名**。
+```
+import { Transaction, SystemProgram } from "@solana/web3.js";
 
+// 创建交易 
+const transaction = new Transaction().add( 
+	SystemProgram.transfer({ fromPubkey: sender.publicKey, toPubkey: recipient.publicKey, lamports: 1000, 
+	}) 
+);
+
+// 使用 Ed25519 签名交易 
+transaction.sign(sender);
+```
+**Solana 交易签名 = Ed25519 签名**，由发送者的私钥签名，验证者用公钥验证。
+
+总结
+
+| 区块链        | 签名算法              | 地址计算                 | 额外哈希 |
+| ---------- | ----------------- | -------------------- | ---- |
+| **Solana** | Ed25519           | Base58(公钥)           | ❌    |
+| **TON**    | Ed25519           | 哈希+额外信息              | ✅    |
+| **Sui**    | Ed25519 + Blake2b | Blake2b(公钥) 取前 20 字节 | ✅    |
 
 
 ## Rust用法：
