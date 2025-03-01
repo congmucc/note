@@ -460,7 +460,10 @@ const isValid = verifyMerkleProof(dataHash, proof, treeRoot);
 console.log('Is data valid:', isValid);
 ```
 
-
+| 功能               | 影响合约（On-Chain Program）？ | 影响交互端（SDK, Dapp）？ |
+| ---------------- | ----------------------- | ----------------- |
+| **版本化交易（V1 交易）** | ❌ 不影响                   | ✅ 需要支持            |
+| **地址查找表（ALT）**   | ❌ 不影响                   | ✅ 需要使用            |
 ### 地址查找表(ALT)和版本化交易
 
 #### 地址查找表ALT
