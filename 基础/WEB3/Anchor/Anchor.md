@@ -647,6 +647,51 @@ customMulticallForDraw();
 ```
 
 
+## solana的base58
+Solana 使用 Base58 作为账户地址格式，Solana 的 **公钥（Pubkey）** 是 **32 字节（256 位）的 Ed25519 公钥**，而为了便于人类阅读和复制，Solana 采用 **Base58** 进行编码。
+
+但是日志需要base64进行编码：
+```
+  
+func decodeBetPlaced(logData string) *BetPlaced {  
+    // Base64 解码  
+    data, err := base64.StdEncoding.DecodeString(logData)  
+  
+    if err != nil {  
+       slog.Error("Failed to decode BetPlaced", "error", err)  
+       return nil  
+    }  
+  
+    // 创建 BetPlaced 结构体实例  
+    var bet BetPlaced  
+    offset := 8  // 
+  
+    // 解析 game_id    bet.GameID = binary.LittleEndian.Uint64(data[offset : offset+8])  
+    offset += 8  
+  
+    // 解析 player    playerBinary := data[offset : offset+32]  
+    playerBase58 := base58.Encode(playerBinary)  
+    bet.Player = playerBase58  
+  
+    offset += 32  
+  
+    // 解析 order_id    bet.OrderID = binary.LittleEndian.Uint64(data[offset : offset+8])  
+    offset += 8  
+    // 解析 amount    bet.Amount = binary.LittleEndian.Uint64(data[offset : offset+8])  
+    offset += 9  
+  
+    // 前三个字节是空字节  
+    offset += 3  
+    // 解析 hash 长度并提取 hash    bet.Hash = string(data[offset : offset+64])  
+    offset += 64  
+  
+    // 解析剩余的数据作为自定义数据  
+    bet.Data = data[offset:]  
+  
+    return &bet  
+}
+```
+
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust

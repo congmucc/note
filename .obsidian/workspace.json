@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Anchor"
             }
           },
           {
@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -153,7 +153,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +163,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Solana"
+              "title": "Backlinks for Anchor"
             }
           },
           {
@@ -187,13 +187,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md",
+                "file": "基础/WEB3/Anchor/Anchor.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Solana"
+              "title": "Outline of Anchor"
             }
           },
           {
@@ -254,7 +254,7 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "268801c2e9cc0305",
+  "active": "48357d63a7363655",
   "lastOpenFiles": [
     "基础/WEB3/Interview/面经.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
