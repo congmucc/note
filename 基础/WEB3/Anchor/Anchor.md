@@ -692,6 +692,12 @@ func decodeBetPlaced(logData string) *BetPlaced {
 }
 ```
 
+### Ed25519
+
+
+
+
+
 ## Rust用法：
 ### 用于安全地对整数进行加法运算，
 ```rust
