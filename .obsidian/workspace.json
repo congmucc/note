@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,11 +76,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "WEB3基础"
+              "title": "面经"
+            }
+          },
+          {
+            "id": "258f5a03f5aa8112",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Mantle-Network"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -185,13 +209,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+                "file": "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of WEB3基础"
+              "title": "Outline of Mantle-Network"
             }
           },
           {
@@ -252,16 +276,17 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "51035b7b55b507a1",
+  "active": "258f5a03f5aa8112",
   "lastOpenFiles": [
-    "基础/WEB3/Interview/面经.md",
-    "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
-    "基础/WEB3/Ethersjs/Ethersjs.md",
-    "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
+    "基础/WEB3/基础知识/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
+    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/WEB3/Ethersjs/Ethersjs.md",
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/Solidity/合约安全.md",
     "基础/WEB3/Solidity/Foundry.md",
     "基础/WEB3/Solidity/实战.md",
@@ -280,7 +305,6 @@
     "实战笔记/构建项目模板/Java后端/Java后端.md",
     "基础/后端/Java/微服务框架/微服务.md",
     "基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
-    "基础/后端/Java/JavaWeb开发规范.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
@@ -299,7 +323,6 @@
     "实战笔记/项目笔记/Go/模板搭建",
     "02-Code/基础",
     "02-Code",
-    "实习/assets/OAuth.png",
     "未命名.canvas",
     "02-Code/基础/后端/Java/JavaWeb/未命名.canvas",
     "Task/未命名.canvas",
