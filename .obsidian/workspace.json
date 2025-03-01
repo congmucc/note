@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,16 +52,16 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "合约安全漏洞"
+              "title": "面经"
             }
           },
           {
-            "id": "a2be607fc1d6500d",
+            "id": "268801c2e9cc0305",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,11 +76,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Mantle-Network"
+              "title": "Solana"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "gas",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,7 +120,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜索"
+              "title": "Search"
             }
           },
           {
@@ -153,7 +153,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +163,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 合约安全漏洞"
+              "title": "Backlinks for Solana"
             }
           },
           {
@@ -187,13 +187,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+                "file": "基础/WEB3/基础知识/Solana/Solana.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 合约安全漏洞"
+              "title": "Outline of Solana"
             }
           },
           {
@@ -254,26 +254,28 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "48357d63a7363655",
+  "active": "268801c2e9cc0305",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/Interview/面经.md",
-    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
-    "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/基础知识/Ethereum/Ethereum.md",
-    "基础/WEB3/基础知识/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/WEB3/Patrick Collins/Patrick Collins.md",
+    "基础/WEB3/Move/Move.md",
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/Solidity/Foundry.md",
+    "基础/WEB3/基础知识/Ethereum/Ethereum.md",
+    "基础/WEB3/Solidity/实战.md",
+    "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
+    "基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
+    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+    "基础/WEB3/基础知识/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Solidity/合约安全.md",
-    "基础/WEB3/Solidity/Foundry.md",
-    "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Move/assets/image-20240712091314489.png",
-    "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/基础知识/编译部署/Geth/Geth.md",
     "基础/WEB3/基础知识/编译部署/Ganache/Ganache.md",
-    "基础/WEB3/Move/Move.md",
     "README.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/道路/道路.md",
@@ -282,7 +284,6 @@
     "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
     "实战笔记/构建项目模板/Java后端/Java后端.md",
     "基础/后端/Java/微服务框架/微服务.md",
-    "基础/后端/Java/JavaWeb/Mybatis-Plus/Mybatis-Plus.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
