@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/Interview/Solana.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Solana"
             }
           }
         ]
@@ -138,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/Interview/Solana.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of Solana"
             }
           },
           {
@@ -207,8 +207,9 @@
   },
   "active": "268801c2e9cc0305",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/Solidity/实战.md",
@@ -234,7 +235,6 @@
     "基础/CICD/Docker/Docker.md",
     "基础/后端/Java/微服务框架/Elasticsearch/安装elasticsearch/安装elasticsearch.md",
     "实战笔记/构建项目模板/Java后端/Java后端.md",
-    "基础/后端/Java/微服务框架/微服务.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
