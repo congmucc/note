@@ -57,6 +57,62 @@ Auction House 是 Metaplex 提供的一个去中心化 NFT 交易协议，与 Op
 
 ---
 
+
+## SPL
+**Solana Program Library（SPL）** 是 Solana 生态系统中的代币和 DeFi 相关标准，相当于以太坊的 ERC 标准。SPL 代币是 Solana 上的原生代币格式，支持高吞吐量、低成本的交易。
+
+
+### **2. SPL Associated Token Account（SPL ATA，代币账户标准）**
+
+**简介**：SPL ATA 规定了 **Solana 账户如何存储代币**，用于**减少复杂性和 Gas 费**。  
+**特点**：
+
+- 兼容 **SPL Token**，每个钱包地址只有一个**默认代币账户**。
+- 避免手动管理多个代币账户。
+- **降低 Gas 费**，更高效地执行代币操作。
+
+---
+
+### **3. SPL Token 2022（改进版 SPL 代币）**
+
+**简介**：SPL Token 2022 是 **SPL Token** 的增强版，类似于以太坊的 **ERC-777**，添加了**扩展功能**。  
+**新增功能**：
+
+- **自动化转账（Transfer Hooks）**：支持在转账时执行代码（类似 ERC-777 Hooks）。
+- **可配置手续费**：允许项目方设定代币交易的手续费。
+- **代币冻结/销毁功能**：提供可选的中央控制能力。
+- **多签权限（Multisig）**：增强安全性。
+
+---
+
+### **4. SPL Memo Program（交易备注标准）**
+
+**简介**：SPL Memo 允许在交易中附加 **自定义文本数据**，类似于比特币的 **OP_RETURN** 或以太坊的 **Transaction Input**。  
+**应用场景**：
+
+- 记录交易信息（如订单号、签名）。
+- 便于链上数据分析（如 Solscan、Phantom）。
+
+---
+
+### **5. SPL Governance（去中心化治理）**
+
+**简介**：SPL Governance 提供了一套**去中心化治理**（DAO）框架，类似于**以太坊的 ERC-20 + Snapshot** 机制。  
+**功能**：
+
+- **创建和管理 DAO**（Decentralized Autonomous Organization）。
+- **治理投票**（持有治理代币的用户可参与）。
+- **资金管理**（Treasury 管理）。
+
+**示例：使用 Solana DAO 进行投票**
+
+- **成员创建提案（Proposal）**
+- **治理代币持有者投票**
+- **执行治理决策**（如更新智能合约）
+
+---
+
+
 ## Defi协议
 
 好的，我会以面试官的身份针对 **DeFi（去中心化金融）协议** 提出一些面试问题，并提供标准化的答案。问题涵盖 DeFi 的基本概念、核心协议（如 AMM、借贷、衍生品）、安全性和 Solana 生态中的 DeFi 发展。
@@ -194,6 +250,22 @@ NFT 在不同区块链上的实现方式有所不同，以下是最常见的 NFT
 |              | Metaplex Compressed NFT（cNFT） | 低成本 NFT，适用于大规模发行             |
 | **Flow**     | Flow NFT                      | 可升级 NFT，适用于 NBA Top Shot 等应用 |
 | **Polygon**  | ERC-721 / ERC-1155            | 以太坊兼容，交易费用更低                 |
+|              |                               |                              |
+
+对比 SPL 与 ERC
+
+|**功能**|**SPL（Solana）**|**ERC（Ethereum）**|
+|---|---|---|
+|可替代代币|**SPL Token**|**ERC-20**|
+|非同质化代币|**SPL Token + Metadata**|**ERC-721 / ERC-1155**|
+|代币账户管理|**SPL Associated Token Account**|**ERC-20 余额存储在合约内**|
+|交易备注|**SPL Memo**|**交易 Input Data**|
+|代币扩展|**SPL Token 2022**|**ERC-777（Hooks）、ERC-4626（收益代币）**|
+|去中心化治理|**SPL Governance**|**ERC-20 + Snapshot**|
+|域名服务|**SPL Name Service**|**ENS（Ethereum Name Service）**|
+
+
+
 
 Solana 的 **Metaplex Token Metadata** 是 Solana 生态中的主要 NFT 标准，它允许 NFT 具有唯一的 **Mint Address** 和存储在链上的元数据。
 
