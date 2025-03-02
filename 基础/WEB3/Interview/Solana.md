@@ -201,7 +201,7 @@ Solana 的 **Metaplex Token Metadata** 是 Solana 生态中的主要 NFT 标准�
 
 ---
 
-#### **面试问题 3：在 Solana 上创建 NFT 需要哪些步骤？**
+### **面试问题 3：在 Solana 上创建 NFT 需要哪些步骤？**
 
 #### **回答：**
 
@@ -240,9 +240,9 @@ Candy Machine 是 **大规模 NFT 发售（如 10K PFP 项目）** 的重要工�
 
 ---
 
-## **面试问题 5：如何在 Solana 上实现 NFT 交易市场？**
+### **面试问题 5：如何在 Solana 上实现 NFT 交易市场？**
 
-### **回答：**
+#### **回答：**
 
 Solana 上的 NFT 交易市场通常基于 **Auction House Protocol**，它与 OpenSea 等中心化市场的最大区别是 **去中心化托管（Escrow-less）**。
 
