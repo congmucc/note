@@ -186,14 +186,14 @@ NFT 之所以独特，是因为它在区块链上存储了元数据（Metadata�
 
 NFT 在不同区块链上的实现方式有所不同，以下是最常见的 NFT 标准：
 
-|**区块链**|**标准**|**特点**|
-|---|---|---|
-|**Ethereum**|ERC-721|早期 NFT 标准，每个 NFT 独立存在|
-||ERC-1155|支持 NFT + FT，多种资产可共享合约|
-|**Solana**|Metaplex Token Metadata|类似 ERC-721，提供 NFT 元数据|
-||Metaplex Compressed NFT（cNFT）|低成本 NFT，适用于大规模发行|
-|**Flow**|Flow NFT|可升级 NFT，适用于 NBA Top Shot 等应用|
-|**Polygon**|ERC-721 / ERC-1155|以太坊兼容，交易费用更低|
+| **区块链**      | **标准**                        | **特点**                       |
+| ------------ | ----------------------------- | ---------------------------- |
+| **Ethereum** | ERC-721                       | 早期 NFT 标准，每个 NFT 独立存在        |
+|              | ERC-1155                      | 支持 NFT + FT，多种资产可共享合约        |
+| **Solana**   | Metaplex Token Metadata       | 类似 ERC-721，提供 NFT 元数据        |
+|              | Metaplex Compressed NFT（cNFT） | 低成本 NFT，适用于大规模发行             |
+| **Flow**     | Flow NFT                      | 可升级 NFT，适用于 NBA Top Shot 等应用 |
+| **Polygon**  | ERC-721 / ERC-1155            | 以太坊兼容，交易费用更低                 |
 
 Solana 的 **Metaplex Token Metadata** 是 Solana 生态中的主要 NFT 标准，它允许 NFT 具有唯一的 **Mint Address** 和存储在链上的元数据。
 
