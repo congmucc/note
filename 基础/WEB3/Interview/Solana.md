@@ -165,11 +165,9 @@ Solana 生态的 DeFi 协议涵盖多个领域，主要包括：
 
 ### **面试问题 1：什么是 NFT？它与 FT（Fungible Token，可替代代币）有什么区别？**
 
-#### **回答：**
+
 
 NFT（Non-Fungible Token，非同质化代币）是一种 **独一无二的数字资产**，它存储在区块链上，常用于艺术品、游戏道具、虚拟土地、会员权益等领域。
-
-#### **与 FT（可替代代币）的区别：**
 
 |**特性**|**NFT（非同质化代币）**|**FT（可替代代币）**|
 |---|---|---|
@@ -184,7 +182,7 @@ NFT 之所以独特，是因为它在区块链上存储了元数据（Metadata�
 
 ### **面试问题 2：NFT 常见的区块链标准有哪些？它们有何不同？**
 
-#### **回答：**
+
 
 NFT 在不同区块链上的实现方式有所不同，以下是最常见的 NFT 标准：
 
@@ -203,7 +201,7 @@ Solana 的 **Metaplex Token Metadata** 是 Solana 生态中的主要 NFT 标准�
 
 ### **面试问题 3：在 Solana 上创建 NFT 需要哪些步骤？**
 
-#### **回答：**
+
 
 在 Solana 上创建 NFT 主要涉及 **SPL Token + Metaplex Token Metadata**，具体步骤如下：
 
@@ -225,7 +223,7 @@ metaplex create_candy_machine --env mainnet-beta
 
 ### **面试问题 4：什么是 Metaplex Candy Machine？它的作用是什么？**
 
-#### **回答：**
+
 
 **Candy Machine** 是 Metaplex 提供的一种 **去中心化 NFT Minting 机制**，主要用于 **公平分发 NFT**，常见于 PFP（头像类）NFT 项目。
 
@@ -242,7 +240,7 @@ Candy Machine 是 **大规模 NFT 发售（如 10K PFP 项目）** 的重要工�
 
 ### **面试问题 5：如何在 Solana 上实现 NFT 交易市场？**
 
-#### **回答：**
+
 
 Solana 上的 NFT 交易市场通常基于 **Auction House Protocol**，它与 OpenSea 等中心化市场的最大区别是 **去中心化托管（Escrow-less）**。
 
@@ -264,7 +262,7 @@ Solana 生态中的 NFT 交易市场主要有：
 
 ### **面试问题 6：什么是 Compressed NFT（cNFT）？它与传统 NFT 有何不同？**
 
-#### **回答：**
+
 
 **Compressed NFT（cNFT）** 是 Solana 生态中的一种 **低成本 NFT 解决方案**，主要用于大规模 NFT 发行（如游戏资产、身份凭证）。
 
@@ -283,7 +281,7 @@ cNFT 主要由 **Metaplex Bubblegum 程序** 处理，适用于 **Web3 游戏、
 
 ### **面试问题 7：NFT 生态面临哪些安全挑战？如何防范？**
 
-#### **回答：**
+
 
 NFT 生态面临的主要安全挑战包括：
 
