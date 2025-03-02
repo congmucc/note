@@ -9,9 +9,9 @@
 **回答：**  
 Metaplex 是 Solana 生态中的 NFT 基础设施，它提供了一整套工具和智能合约，使开发者能够创建、管理和交易 NFT，而无需从头构建 NFT 相关的智能合约。Metaplex 主要包括以下几个核心组件：
 
-1. **Candy Machine**：一个常用的 NFT Mint 机制，支持公平分发 NFT，防止 Bot 滥用铸造。
-2. **Token Metadata**：为 NFT 赋予标准化的元数据，使其在市场和钱包中可识别。
-3. **Auction House**：一个去中心化的 NFT 交易市场协议，支持点对点交易，不需要中心化的市场合约托管资产。
+1. **Candy Machine**：一个常用的 **NFT Mint** 机制，支持公平分发 NFT，防止 Bot 滥用铸造。
+2. **Token Metadata**：为 NFT 赋予标准化的**元数据**，使其在市场和钱包中可识别。
+3. **Auction House**：一个去中心化的 **NFT 交易市场**协议，支持点对点交易，不需要中心化的市场合约托管资产。
 
 Metaplex 使 Solana 上的 NFT 生态更加高效，并提供了一种低成本、高吞吐的解决方案。
 
