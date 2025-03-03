@@ -156,6 +156,32 @@ NFT 之所以独特，是因为它在区块链上存储了元数据（Metadata�
 
 
 
+| **对比维度**                | **Ethereum 协议**                    | **Solana 对应协议**              | **对比分析**                                                                                                                                            |
+| ----------------------- | ---------------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **单一 NFT 标准**           | **ERC-721**                        | **Metaplex Token Metadata**  | - **ERC-721** 是最早的 NFT 标准，定义了不可替代代币的基础规范。- **Metaplex（Token Metadata）** 是 Solana 的主流 NFT 规范，提供类似的功能，并增加了**链上存储**和**更低的 Gas 费用**。                    |
+| **多 NFT 标准**            | **ERC-1155**                       | **Metaplex Edition（可选）**     | - **ERC-1155** 允许同一合约管理多种 NFT 和 FT（类似游戏道具）。- Solana **Metaplex** 也支持 Edition（多个副本），但不如 ERC-1155 复杂。                                                 |
+| **批量铸造（Batch Minting）** | **ERC-721A、ERC-2309**              | **Candy Machine、Bubblegum**  | - **ERC-721A（Azuki 方案）** 允许以低 Gas 费批量铸造 NFT。- **Candy Machine** 是 Solana 的核心 NFT 批量发行方案，具备更高效率和更低的成本。- **Bubblegum** 允许压缩 NFT，大幅降低 Mint 成本，适合大规模项目。 |
+| **动态 NFT（升级/组合）**       | **ERC-3664、ERC-998**               | **Fusion**                   | - **ERC-3664** 允许 NFT 具有可变属性，如升级、变化。- **ERC-998** 允许 NFT 作为“容器”，装入其他 NFT。- **Fusion** 在 Solana 上实现了类似功能，支持 **NFT 组合、升级**，可用于游戏角色装备。                 |
+| **存储方式**                | **IPFS、Arweave、链下存储**              | **Metaplex、Bubblegum（压缩存储）** | - 以太坊 NFT **通常存储在 IPFS、Arweave**，数据仍然可能链下存储。- Solana **支持链上存储**，Bubblegum 通过**Merkle 树结构**优化存储，使 NFT 存储成本更低。                                        |
+| **铭刻 NFT（Inscription）** | **Ethereum L2（如 Ordinals on ETH）** | **Inscription**              | - **ETH 生态中没有原生铭刻 NFT 方案**，但 Layer2（如 Ordinals on ETH）开始尝试。- **Solana 的 Inscription** 允许 NFT **直接铭刻到区块链上**，数据 100% 链上。                              |
+| **访问权限控制**              | **ERC-4907（租赁）、NFT gating**        | **Token Auth Rules**         | - **ERC-4907** 支持 NFT **租赁功能**。- **Token Auth Rules** 允许 Solana NFT 设置**访问权限、租赁规则、交易限制**等，可更精细化控制 NFT 交互。                                           |
+| **NFT 账户模型**            | **需 ERC-6551 扩展**                  | **原生支持**                     | - **ERC-6551** 允许 NFT 作为钱包，存储代币、NFT 等。- **Solana NFT 本身就是一个账户（Account Model）**，无需额外扩展。                                                              |
+| **版税机制**                | **ERC-2981（但可被绕过）**                | **Metaplex 版税（强制执行）**        | - **ERC-2981** 允许 NFT 设定版税，但**市场可以绕过**。- **Solana Metaplex 版税机制** **强制执行**，保护创作者利益。                                                                 |
+| **收益共享（NFT 分成）**        | **未原生支持，需额外合约**                    | **Hydra（Fanout Wallets）**    | - 以太坊上 NFT 需要额外智能合约来实现收益共享。- **Hydra** 允许 NFT **收益自动分配**，适合 DAO、游戏项目。                                                                               |
+
+---
+
+
+### **结论**
+
+如果你关注：
+
+- **高价值艺术品、品牌 NFT** 👉 选择 Ethereum（更强的生态，更成熟的市场）
+- **游戏 NFT、大规模铸造、低成本交易** 👉 选择 Solana（更快的速度、更低的费用）
+
+Solana 适合 **游戏、PFP 项目、大规模 NFT 发行**，Ethereum 更适合 **蓝筹 NFT、高价值艺术品**。你对哪个协议更感兴趣？😊
+
+
 NFT 在不同区块链上的实现方式有所不同，以下是最常见的 NFT 标准：
 
 | **区块链**      | **标准**                        | **特点**                       |
