@@ -420,7 +420,7 @@ ComputeBudgetInstruction::set_compute_unit_limit(400_000);
 
 ---
 
-## **总结**
+### **总结**
 
 |题目|难度|
 |---|---|
@@ -432,7 +432,192 @@ ComputeBudgetInstruction::set_compute_unit_limit(400_000);
 |如何调试 CU 使用？|🌟🌟🌟🌟🌟|
 |Solana 1.16 CU 优化|🌟🌟🌟🌟|
 
-你还想深入哪些部分？需要代码示例吗？
+
+在 Solana 中优化 **计算单元（Compute Unit, CU）** 使用，可以通过多种方法来降低交易成本、提高吞吐量，并确保智能合约的高效执行。以下是一些实际的优化方式，包括 **代码层面** 和 **其他层面** 的优化建议。
+
+---
+
+### **代码层面的优化**
+
+#### 1. **减少账户访问**
+
+每个账户的访问都需要消耗 CU，因此要尽量减少不必要的账户读取或写入操作。
+
+- **优化前：**
+    
+    ```rust
+    let mut data = account.data.borrow_mut();
+    let deserialized_data: MyStruct = MyStruct::try_from_slice(&data)?;
+    ```
+    
+- **优化后：** 使用更高效的内存访问方式，例如 **零拷贝（ZeroCopy）**，避免重复序列化/反序列化。
+    
+    ```rust
+    let account_data = ZeroCopy::load::<MyStruct>(&account.data.borrow())?;
+    ```
+    
+
+#### 2. **避免无关账户的传递**
+
+在交易中仅传递需要操作的账户。每增加一个账户，交易的计算开销就会增加。
+
+- **优化前：**
+    
+    ```rust
+    let accounts = vec![
+        account1, account2, account3, account4, account5
+    ];
+    invoke(&instruction, &accounts)?;
+    ```
+    
+- **优化后：** 只传递当前需要操作的账户，避免冗余账户的传递。
+    
+    ```rust
+    let accounts = vec![account1, account2];  // 只传递必要的账户
+    invoke(&instruction, &accounts)?;
+    ```
+    
+
+#### 3. **减少跨合约调用**
+
+每次跨合约调用都可能会增加计算开销，尤其是在多个合约之间传递数据时。可以通过将多个操作合并到一个合约中来减少跨合约调用。
+
+- **优化前：**
+    
+    ```rust
+    invoke(&contract1_instruction, &account_infos)?;
+    invoke(&contract2_instruction, &account_infos)?;
+    ```
+    
+- **优化后：** 合并合约操作为一个交易流程，减少跨合约调用。
+    
+    ```rust
+    invoke(&merged_contract_instruction, &account_infos)?;
+    ```
+    
+
+#### 4. **避免重复计算**
+
+如果某些计算是重复进行的，可以将计算结果缓存或通过其他方式减少重复计算。
+
+- **优化前：**
+    
+    ```rust
+    let result1 = expensive_calculation(data);
+    let result2 = expensive_calculation(data);
+    ```
+    
+- **优化后：** 使用缓存变量来避免重复计算。
+    
+    ```rust
+    let result = expensive_calculation(data);
+    let result1 = result;
+    let result2 = result;
+    ```
+    
+
+#### 5. **简化智能合约逻辑**
+
+智能合约中的一些复杂逻辑或不必要的循环会消耗大量 CU。确保合约逻辑尽可能简洁，并避免不必要的循环或条件判断。
+
+- **优化前：**
+    
+    ```rust
+    for i in 0..1000 {
+        let temp = complex_operation(i);
+        if temp > threshold {
+            break;
+        }
+    }
+    ```
+    
+- **优化后：** 精简代码逻辑，减少不必要的循环。
+    
+    ```rust
+    let temp = complex_operation(0);  // 只进行一次计算
+    if temp > threshold {
+        return Ok(());
+    }
+    ```
+    
+
+---
+
+### **其他层面的优化**
+
+#### 1. **使用地址查找表（ALT）**
+
+Solana 引入了地址查找表（Address Lookup Table, ALT）来优化交易中存储账户地址的方式。在处理多个账户时，使用 ALT 可以减少交易体积，从而节省 CU。
+
+- **实现 ALT：** 使用 `AddressLookupTableProgram` 创建和扩展 ALT，确保合约可以通过索引而不是公钥直接访问账户。
+
+#### 2. **交易分批**
+
+对于涉及大量账户或数据的交易，考虑将交易分批提交，而不是一次性提交所有内容。这样可以避免由于计算过多导致 CU 超出限制。
+
+- **示例：**
+    - **批量交易**：例如在 NFT 交易中，可以将多个 NFT 的 mint 操作分为多个交易，而不是一个交易执行所有操作。
+
+#### 3. **动态调整 CU 上限**
+
+在某些情况下，交易可能需要更多的计算资源。通过 `ComputeBudgetInstruction` 提高交易的 CU 限制，确保复杂交易能够顺利执行。
+
+- **示例：** 提高 CU 限制到 500,000：
+    
+    ```rust
+    let ix = ComputeBudgetInstruction::set_compute_unit_limit(500_000);
+    ```
+    
+
+#### 4. **网络层面的优化**
+
+Solana 的 **吞吐量** 和 **CU 使用** 也受到网络状态的影响，保持网络稳定和高效是系统级的优化：
+
+- **增加集群节点数**：更多节点可以处理更多并发交易。
+- **使用更低延迟的网络连接**：确保交易数据传输的速度。
+- **优化交易验证节点**：提高节点处理能力和效率。
+
+#### 5. **合约升级和优化**
+
+通过不断改进合约，优化计算逻辑，减少不必要的计算和存储操作，来降低整体的 CU 消耗。
+
+- **示例：**
+    - **替换复杂的 `if` 判断**：避免在合约中执行复杂的条件判断，而是通过更简洁的数学逻辑来实现。
+    - **合并多个指令**：将合约中的多个指令合并成一个更高效的执行流程。
+
+#### 6. **减少存储操作**
+
+Solana 中的 **存储操作**（如写入账户数据）是非常昂贵的，尽量减少不必要的存储操作，特别是避免在每个交易中都进行写入操作。
+
+- **优化前：** 每次操作后都写入账户数据：
+    
+    ```rust
+    account.data.borrow_mut()[0] = 1;
+    ```
+    
+- **优化后：** 在必要时才进行写操作：
+    
+    ```rust
+    if account.data.borrow_mut()[0] != 1 {
+        account.data.borrow_mut()[0] = 1;
+    }
+    ```
+    
+
+---
+
+### **总结**
+
+|优化策略|解释|
+|---|---|
+|减少账户访问|减少不必要的账户访问，避免冗余的账户传递|
+|优化计算逻辑|简化智能合约逻辑，避免复杂的循环和条件判断|
+|使用地址查找表（ALT）|对多个账户的操作使用 ALT，减少交易体积和计算成本|
+|动态调整 CU 上限|对需要大量计算的交易动态增加 CU 限制|
+|交易分批|对多个操作分批提交，避免超出 CU 上限|
+|合约升级和优化|精简合约代码，提高执行效率，减少计算和存储开销|
+
+这些优化策略可以帮助你在 Solana 上开发时提高合约性能，降低交易费用，并有效控制计算资源的消耗。如果你有更多问题，或希望深入某个优化策略，欢迎继续提问！
 
 ## NFT
 
