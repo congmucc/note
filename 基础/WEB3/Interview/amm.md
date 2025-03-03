@@ -1,5 +1,8 @@
 
 
+## deposit_liquidity**代码详细解析**
+
+
 **向流动性池（Liquidity Pool）存入代币（deposit liquidity）** 的逻辑，核心功能是：
 
 - **检查存款者的余额**，防止存入超出余额的代币。
@@ -10,7 +13,7 @@
 
 ---
 
-## deposit_liquidity**代码详细解析**
+
 
 ### **1. 防止存款者存入超出自己账户的代币**
 
@@ -202,11 +205,13 @@ token::mint_to(
 
 
 
+## swap_exact_tokens_for_tokens **代码解析**
+
+
 这个 `swap_exact_tokens_for_tokens` 函数实现了 **恒定乘积做市商（Constant Product Market Maker, CPMM）** 逻辑，允许交易者在池子中交换两种代币，同时确保流动性池的乘积（恒定乘积公式）不会降低。
 
 ---
 
-## swap_exact_tokens_for_tokens **代码解析**
 
 ### **1. 确保用户不会转入超出自己账户余额的资产**
 
@@ -431,6 +436,137 @@ if invariant > ctx.accounts.pool_account_a.amount * ctx.accounts.pool_account_a.
 这个实现符合 **Uniswap V2 恒定乘积模型**，但没有 **流动性提供（LP Token）** 相关逻辑，如果你想深入优化，可以考虑 **支持动态费率、TWAP 价格预言机等特性** 🚀。
 
 
+## withdraw_liquidity 代码解析
+
+这个 `withdraw_liquidity` 方法的作用是**从流动性池（Pool）中提取代币，同时销毁（burn）对应的流动性代币（LP 代币）**。下面是详细的解析：
+
+---
+
+
+### **1. 计算 PDA 签名**
+
+```rust
+let authority_bump = ctx.bumps.pool_authority;
+let authority_seeds = &[
+    &ctx.accounts.pool.amm.to_bytes(),
+    &ctx.accounts.pool.mint_a.key().to_bytes(),
+    &ctx.accounts.pool.mint_b.key().to_bytes(),
+    AUTHORITY_SEED,
+    &[authority_bump],
+];
+let signer_seeds = &[&authority_seeds[..]];
+```
+
+- 这里构造了 `pool_authority` 的 **PDA（程序派生地址）** 作为流动性池的管理者。
+- `signer_seeds` 用于后续的 `token::transfer` CPI 调用，确保池子授权这些转账操作。
+
+---
+
+### **2. 计算用户可以提取的 Token A 和 Token B**
+
+```rust
+let amount_a = I64F64::from_num(amount)
+    .checked_mul(I64F64::from_num(ctx.accounts.pool_account_a.amount))
+    .unwrap()
+    .checked_div(I64F64::from_num(ctx.accounts.mint_liquidity.supply + MINIMUM_LIQUIDITY))
+    .unwrap()
+    .floor()
+    .to_num::<u64>();
+```
+
+- 计算 `amount_a`，即用户按流动性份额应得的 **Token A** 数量：
+    - `amount`：用户想要提取的 LP 代币数量
+    - `ctx.accounts.pool_account_a.amount`：池子中 Token A 的总量
+    - `ctx.accounts.mint_liquidity.supply + MINIMUM_LIQUIDITY`：总 LP 代币的供应量（包含最小流动性）
+
+---
+
+类似地，计算 Token B：
+
+```rust
+let amount_b = I64F64::from_num(amount)
+    .checked_mul(I64F64::from_num(ctx.accounts.pool_account_b.amount))
+    .unwrap()
+    .checked_div(I64F64::from_num(ctx.accounts.mint_liquidity.supply + MINIMUM_LIQUIDITY))
+    .unwrap()
+    .floor()
+    .to_num::<u64>();
+```
+
+---
+
+### **3. 从池子转移 Token A 和 Token B**
+
+```rust
+token::transfer(
+    CpiContext::new_with_signer(
+        ctx.accounts.token_program.to_account_info(),
+        Transfer {
+            from: ctx.accounts.pool_account_a.to_account_info(),
+            to: ctx.accounts.depositor_account_a.to_account_info(),
+            authority: ctx.accounts.pool_authority.to_account_info(),
+        },
+        signer_seeds,
+    ),
+    amount_a,
+)?;
+```
+
+- `token::transfer` 将 `amount_a` 的 Token A 从流动性池转给用户。
+- `signer_seeds` 确保 PDA 作为授权者。
+
+同样地，Token B 也会被转移：
+
+```rust
+token::transfer(
+    CpiContext::new_with_signer(
+        ctx.accounts.token_program.to_account_info(),
+        Transfer {
+            from: ctx.accounts.pool_account_b.to_account_info(),
+            to: ctx.accounts.depositor_account_b.to_account_info(),
+            authority: ctx.accounts.pool_authority.to_account_info(),
+        },
+        signer_seeds,
+    ),
+    amount_b,
+)?;
+```
+
+---
+
+### **4. 销毁 LP 代币**
+
+```rust
+token::burn(
+    CpiContext::new(
+        ctx.accounts.token_program.to_account_info(),
+        Burn {
+            mint: ctx.accounts.mint_liquidity.to_account_info(),
+            from: ctx.accounts.depositor_account_liquidity.to_account_info(),
+            authority: ctx.accounts.depositor.to_account_info(),
+        },
+    ),
+    amount,
+)?;
+```
+
+- `token::burn` 直接销毁 `amount` 数量的 LP 代币（相当于赎回流动性）。
+- **注意：** 这里的 `authority` 不是 PDA，而是 `depositor`（用户自己），所以需要用户持有 LP 代币的授权。
+
+---
+
+## **总结**
+
+1. 计算 PDA 作为池子的管理者，用于授权代币转移。
+2. 计算用户应得的 Token A 和 Token B。
+3. 从池子里转移 Token A 和 Token B 给用户。
+4. 销毁用户提供的 LP 代币，减少流动性份额。
+
+**这样，用户就成功地从流动性池中取回了自己提供的资金。**
+
+你有具体的疑问吗？
+
+
 ## 流动性
 
 ### **1. 为什么要有最小流动性？**
@@ -569,3 +705,70 @@ minOutputAmount = expectedOutput * (1 - slippage / 100)
 - 在前端，用户可以设置滑点容忍度，以提高交易的成功率和可预测性。
 
 滑点控制是 DeFi 交易中必不可少的机制，确保交易者不会因市场变化而意外损失过多资金。
+
+
+## MINIMUM_LIQUIDITY 最小流动性
+
+`MINIMUM_LIQUIDITY` 是为了**防止流动性池被完全抽干**，通常用于**避免早期流动性提供者占据不公平的优势**。它的存在确保了流动性池始终留有一定数量的 LP 代币，即使所有流动性提供者都撤资，也不会让池子彻底归零。
+
+---
+
+### **为什么要加上 `MINIMUM_LIQUIDITY`？**
+
+在流动性池的设计中：
+
+- **第一个提供流动性的人**（LP）往往会创建一个初始的池子。
+- 如果没有 `MINIMUM_LIQUIDITY`，第一个 LP 提供流动性后可以马上撤回所有的流动性，并销毁所有的 LP 代币，从而**获得比原始存入金额更多的资产**（由于计算精度问题或市场滑点）。这会带来**套利漏洞**。
+- `MINIMUM_LIQUIDITY` 设定一个**最低的 LP 代币供应量**，确保即使所有流动性提供者都撤出，仍然有一部分 LP 代币锁定，防止攻击者利用流动性池完全抽干的机会套利。
+
+---
+
+### **代码层面的作用**
+
+```rust
+let amount_a = I64F64::from_num(amount)
+    .checked_mul(I64F64::from_num(ctx.accounts.pool_account_a.amount))
+    .unwrap()
+    .checked_div(I64F64::from_num(
+        ctx.accounts.mint_liquidity.supply + MINIMUM_LIQUIDITY,  // 这里加了 MINIMUM_LIQUIDITY
+    ))
+    .unwrap()
+    .floor()
+    .to_num::<u64>();
+```
+
+#### **如果不加 `MINIMUM_LIQUIDITY`：**
+
+假设：
+
+- LP 代币总供应量 `supply = 100`
+- 用户想要提取 `amount = 100`
+- 池子中的 `pool_account_a.amount = 1000`
+
+那么：
+
+```
+amount_a = (100 / 100) * 1000 = 1000
+```
+
+用户会把池子里的所有资产提取走，导致池子归零，这样新用户就无法加入，系统崩溃。
+
+#### **加上 `MINIMUM_LIQUIDITY` 后：**
+
+假设 `MINIMUM_LIQUIDITY = 10`，那么：
+
+```
+amount_a = (100 / (100 + 10)) * 1000 = (100 / 110) * 1000 ≈ 909
+```
+
+这就避免了所有资产被完全取走，保证池子不会崩溃。
+
+---
+
+### **总结**
+
+- `MINIMUM_LIQUIDITY` 确保池子不会被完全清空。
+- 保护了流动性池，防止早期流动性提供者套利。
+- 维持池子的稳定性，使未来的交易仍然可以进行。
+
+如果 `MINIMUM_LIQUIDITY` 让你疑惑，你可以理解为**“一个安全阀”**，它确保流动性池一直有一些剩余，不会完全归零。
