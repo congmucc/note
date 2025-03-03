@@ -140,6 +140,8 @@ NFT 之所以独特，是因为它在区块链上存储了元数据（Metadata�
 
 ### **面试问题 2：NFT 常见的区块链标准有哪些？它们有何不同？**
 
+^91929f
+
 | **协议------名称** | **功能特点**                                                            | **适用场景**           |
 | -------------- | ------------------------------------------------------------------- | ------------------ |
 | **ERC-721**    | - 最基础的 NFT 标准，每个代币都是唯一的，不可分割。  <br>- 通过 `tokenURI` 关联元数据，链上仅存储指针。   | 艺术品、收藏品            |
@@ -172,14 +174,6 @@ NFT 之所以独特，是因为它在区块链上存储了元数据（Metadata�
 ---
 
 
-### **结论**
-
-如果你关注：
-
-- **高价值艺术品、品牌 NFT** 👉 选择 Ethereum（更强的生态，更成熟的市场）
-- **游戏 NFT、大规模铸造、低成本交易** 👉 选择 Solana（更快的速度、更低的费用）
-
-Solana 适合 **游戏、PFP 项目、大规模 NFT 发行**，Ethereum 更适合 **蓝筹 NFT、高价值艺术品**。你对哪个协议更感兴趣？😊
 
 
 NFT 在不同区块链上的实现方式有所不同，以下是最常见的 NFT 标准：
@@ -192,19 +186,19 @@ NFT 在不同区块链上的实现方式有所不同，以下是最常见的 NFT
 |              | Metaplex Compressed NFT（cNFT） | 低成本 NFT，适用于大规模发行             |
 | **Flow**     | Flow NFT                      | 可升级 NFT，适用于 NBA Top Shot 等应用 |
 | **Polygon**  | ERC-721 / ERC-1155            | 以太坊兼容，交易费用更低                 |
-|              |                               |                              |
+
 
 对比 SPL 与 ERC
 
-|**功能**|**SPL（Solana）**|**ERC（Ethereum）**|
-|---|---|---|
-|可替代代币|**SPL Token**|**ERC-20**|
-|非同质化代币|**SPL Token + Metadata**|**ERC-721 / ERC-1155**|
-|代币账户管理|**SPL Associated Token Account**|**ERC-20 余额存储在合约内**|
-|交易备注|**SPL Memo**|**交易 Input Data**|
-|代币扩展|**SPL Token 2022**|**ERC-777（Hooks）、ERC-4626（收益代币）**|
-|去中心化治理|**SPL Governance**|**ERC-20 + Snapshot**|
-|域名服务|**SPL Name Service**|**ENS（Ethereum Name Service）**|
+| **功能** | **SPL（Solana）**                  | **ERC（Ethereum）**                 |
+| ------ | -------------------------------- | --------------------------------- |
+| 可替代代币  | **SPL Token**                    | **ERC-20**                        |
+| 非同质化代币 | **SPL Token + Metadata**         | **ERC-721 / ERC-1155**            |
+| 代币账户管理 | **SPL Associated Token Account** | **ERC-20 余额存储在合约内**               |
+| 交易备注   | **SPL Memo**                     | **交易 Input Data**                 |
+| 代币扩展   | **SPL Token 2022**               | **ERC-777（Hooks）、ERC-4626（收益代币）** |
+| 去中心化治理 | **SPL Governance**               | **ERC-20 + Snapshot**             |
+| 域名服务   | **SPL Name Service**             | **ENS（Ethereum Name Service）**    |
 
 
 
