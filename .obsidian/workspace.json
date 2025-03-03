@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Solana"
+              "title": "面经"
             }
           }
         ]
@@ -138,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Solana"
+              "title": "Outline of 面经"
             }
           },
           {
@@ -207,13 +207,13 @@
   },
   "active": "268801c2e9cc0305",
   "lastOpenFiles": [
-    "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/Interview/amm.md",
-    "基础/WEB3/Anchor/Anchor.md",
-    "基础/WEB3/Interview/Solana.md",
-    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/Interview/amm.md",
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Anchor/Anchor.md",
+    "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/Solidity/实战.md",
