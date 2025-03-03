@@ -104,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,13 +211,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Solana"
+              "title": "Outline of 面经"
             }
           },
           {
@@ -278,10 +278,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "df84e70b15fe06f0",
+  "active": "2683db8d5e41ed75",
   "lastOpenFiles": [
-    "基础/WEB3/Interview/面经.md",
     "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Interview/面经.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/Interview/amm.md",

@@ -220,8 +220,6 @@ Solana 生态中的 NFT 交易市场主要有：
 
 ### **面试问题 6：什么是 Compressed NFT（cNFT）？它与传统 NFT 有何不同？**
 
-
-
 **Compressed NFT（cNFT）** 是 Solana 生态中的一种 **低成本 NFT 解决方案**，主要用于大规模 NFT 发行（如游戏资产、身份凭证）。
 
 ### **与普通 NFT 的区别：**
