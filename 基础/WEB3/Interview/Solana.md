@@ -372,13 +372,13 @@ Solana 生态中，**Solend 和 Tulip Protocol 支持闪电贷**，但由于 Sol
 **回答：**  
 Solana 生态的 DeFi 协议涵盖多个领域，主要包括：
 
-|领域|协议|作用|
-|---|---|---|
-|**去中心化交易所（DEX）**|Raydium, Serum, Orca|提供 AMM 和订单簿交易|
-|**借贷（Lending）**|Solend, Jet Protocol|允许用户抵押资产进行借贷|
-|**收益聚合（Yield Aggregator）**|Tulip Protocol, Francium|通过自动复利优化收益|
-|**稳定币（Stablecoin）**|UXD, Saber, Mercurial|提供去中心化稳定币交易|
-|**衍生品（Derivatives）**|Drift Protocol, Mango Markets|期货、杠杆交易等|
+| 领域                         | 协议                            | 作用            |
+| -------------------------- | ----------------------------- | ------------- |
+| **去中心化交易所（DEX）**           | Raydium, Serum, Orca          | 提供 AMM 和订单簿交易 |
+| **借贷（Lending）**            | Solend, Jet Protocol          | 允许用户抵押资产进行借贷  |
+| **收益聚合（Yield Aggregator）** | Tulip Protocol, Francium      | 通过自动复利优化收益    |
+| **稳定币（Stablecoin）**        | UXD, Saber, Mercurial         | 提供去中心化稳定币交易   |
+| **衍生品（Derivatives）**       | Drift Protocol, Mango Markets | 期货、杠杆交易等      |
 
 这些协议构成了 Solana DeFi 生态的重要基石，并不断发展。
 
