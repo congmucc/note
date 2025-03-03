@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/基础知识/Ethereum/Ethereum.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Ethereum"
             }
           }
         ],
@@ -136,7 +136,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ed255",
+                "query": "Ed2",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,8 +157,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -212,13 +211,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/基础知识/Ethereum/Ethereum.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of Ethereum"
             }
           },
           {
@@ -279,10 +278,11 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "ff17a40e34515f2a",
+  "active": "1c2b3e08a5a6dd3f",
   "lastOpenFiles": [
-    "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Solidity/实战.md",
@@ -291,7 +291,6 @@
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/Solidity/Solidity.md",

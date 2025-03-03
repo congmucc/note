@@ -700,6 +700,8 @@ func decodeBetPlaced(logData string) *BetPlaced {
 
 ### Ed25519
 
+^8c34df
+
 **Ed25519** 是一种**高效、安全的椭圆曲线签名算法**，广泛用于 Web3 生态，如 **Solana、TON 和 Sui**。它基于 **Curve25519** 椭圆曲线，提供更快的签名速度和更小的公私钥尺寸。
 
 Solana **默认使用 Ed25519 进行账户公私钥对的生成和交易签名**。
