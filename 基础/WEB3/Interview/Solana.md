@@ -513,7 +513,7 @@ $$
 
 
 
-## **Uniswap V1 vs. V2 vs. V3 **
+## Uniswap V1 vs. V2 vs. V3 
 
 以下是一些关于 **Uniswap 各版本区别** 的面试问题，并附带示例答案。
 
