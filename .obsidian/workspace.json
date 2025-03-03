@@ -37,54 +37,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Solana"
-            }
-          },
-          {
-            "id": "2683db8d5e41ed75",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Interview/amm.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "amm"
-            }
-          },
-          {
-            "id": "eb1b906fbc5366e1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "基础/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
@@ -104,12 +56,12 @@
             }
           },
           {
-            "id": "df84e70b15fe06f0",
+            "id": "401901071c97eac8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
+                "file": "基础/WEB3/Solidity/实战.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,10 +76,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Solana"
+              "title": "实战"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -159,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "eip",
+                "query": "跨链",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,7 +133,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -234,13 +188,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Move/Move.md",
+                "file": "基础/WEB3/Solidity/实战.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Move"
+              "title": "Outline of 实战"
             }
           },
           {
@@ -301,21 +255,21 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "268801c2e9cc0305",
+  "active": "401901071c97eac8",
   "lastOpenFiles": [
+    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Move/Move.md",
     "基础/WEB3/Interview/amm.md",
     "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
-    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Interview/Interview.md",
-    "基础/WEB3/Move/Move.md",
     "基础/WEB3/道路/道路.md",
-    "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Solidity/Solidity.md",
     "基础/WEB3/Patrick Collins/Patrick Collins.md",
     "基础/WEB3/Solidity/Foundry.md",
