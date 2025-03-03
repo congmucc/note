@@ -104,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,13 +211,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/amm.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of amm"
+              "title": "Outline of 面经"
             }
           },
           {
@@ -278,10 +278,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "8b937da2365e3da3",
+  "active": "cfe307593d5227f6",
   "lastOpenFiles": [
-    "基础/WEB3/Interview/面经.md",
     "基础/WEB3/Interview/amm.md",
+    "基础/WEB3/Interview/面经.md",
     "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Anchor/Anchor.md",
