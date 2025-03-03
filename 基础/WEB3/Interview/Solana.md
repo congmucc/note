@@ -317,7 +317,7 @@ AMM（Automated Market Maker，自动做市商）是去中心化交易所（DEX�
 AMM 的核心机制包括：
 
 - **流动性池（Liquidity Pool）**：用户存入两种代币作为流动性，例如 SOL/USDC，供交易者兑换。
-- **定价机制**：常见的 AMM 使用 **恒定乘积公式** x×y=kx \times y = k（如 Uniswap 和 Raydium）来决定交易价格。
+- **定价机制**：常见的 AMM 使用 **恒定乘积公式** $$ x×y=k $$（如 Uniswap 和 Raydium）来决定交易价格。
 - **流动性提供者（LP）**：向池子存入资产的用户会获得交易手续费作为奖励。
 
 **与传统订单簿的主要区别**：
