@@ -11,5 +11,5 @@
     "downscalePercent": 100
   },
   "showLineNumber": false,
-  "readableLineLength": true
+  "readableLineLength": false
 }
