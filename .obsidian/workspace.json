@@ -30,8 +30,33 @@
               "icon": "lucide-file",
               "title": "面经"
             }
+          },
+          {
+            "id": "2683db8d5e41ed75",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "基础/WEB3/Interview/Solana.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Solana"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -138,13 +163,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/WEB3/Interview/Solana.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of Solana"
             }
           },
           {
@@ -205,16 +230,17 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "268801c2e9cc0305",
+  "active": "2683db8d5e41ed75",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Interview/面经.md",
-    "基础/WEB3/Interview/amm.md",
-    "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Interview/Interview.md",
+    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+    "基础/WEB3/基础知识/Solana/Solana.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Solidity/Solidity.md",
@@ -224,7 +250,6 @@
     "基础/WEB3/基础知识/Ethereum/Ethereum.md",
     "实战笔记/项目笔记/WEB3/钱包项目/钱包项目.md",
     "基础/后端/Java/微服务框架/分布式/分布式事务/分布式事务.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Solidity/合约安全.md",

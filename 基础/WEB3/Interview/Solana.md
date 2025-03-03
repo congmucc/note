@@ -211,7 +211,228 @@ Solana 生态的 DeFi 协议涵盖多个领域，主要包括：
 
 你对这些面试问题是否满意？或者你希望更深入讨论某个具体的 DeFi 主题，例如 **跨链互操作性、DeFi 安全性、流动性质押（LSTs）** 等？
 
+## **Solana 计算单元（Compute Unit, CU）优化 - 面试题**
 
+Solana 交易的执行成本由 **计算单元（CU）** 决定，每个智能合约指令（Instruction）消耗一定量的 CU。优化 CU 使用可以降低交易成本，提高 TPS。以下是常见的面试题及答案。
+
+---
+
+### **基础问题**
+
+#### **1. 什么是 Solana 计算单元（Compute Unit, CU）？**
+
+**答案：**  
+计算单元（CU）是 **衡量 Solana 交易计算成本的单位**，类似以太坊的 Gas。Solana 交易执行时，每个智能合约指令（Instruction）都会消耗 CU。
+
+- 每个区块的 CU 限制：**最大 12.5 亿 CU**
+- 默认交易 CU 限制：**200,000 CU**
+- 超过默认 CU 需要 **手动提升上限**
+
+---
+
+#### **2. 计算单元（CU）与交易费用（TX Fee）的关系？**
+
+**答案：**  
+Solana 交易费用由以下公式决定：
+
+交易费用=CU 消耗×CU 价格\text{交易费用} = \text{CU 消耗} \times \text{CU 价格}
+
+- CU 价格由 **网络拥堵情况动态调整**
+- 交易可以 **指定愿意支付的 CU 价格**（类似以太坊 EIP-1559 提供小费）
+- **优化 CU 既能降低 Gas 费，也能提高交易成功率**
+
+---
+
+### **进阶问题**
+
+#### **3. 如何提高 CU 限制，确保交易不会失败？**
+
+**答案：**  
+Solana 交易有默认 CU 限制（200,000 CU）。如果交易超出 CU 限制，会 **Transaction error: exceeded compute budget**。
+
+#### **提升 CU 限制的方法**
+
+1. **手动增加 CU 限制**
+    
+    ```rust
+    let increase_budget_ix = ComputeBudgetInstruction::set_compute_unit_limit(500_000);
+    ```
+    
+    - 设置计算单元上限（500,000 CU）
+2. **增加愿意支付的 CU 价格**
+    
+    ```rust
+    let set_price_ix = ComputeBudgetInstruction::set_compute_unit_price(10_000);
+    ```
+    
+    - 提高 CU 价格，提高交易优先级
+3. **交易前插入 CU 优化指令**
+    
+    ```rust
+    let priority_fee_ix = ComputeBudgetInstruction::request_units(1_000_000, 10_000);
+    ```
+    
+    - 确保交易获取足够 CU，提高被打包的概率
+
+---
+
+#### **4. 哪些 Solana 操作最消耗 CU？**
+
+**答案：**
+
+- **创建新账户**（Solana 账户的初始化）
+- **哈希计算**（SHA256、Keccak256 等）
+- **BPF 程序调用**（复杂智能合约）
+- **跨合约调用**（多个合约交互）
+- **序列化 / 反序列化数据**（Account 解析）
+
+示例：
+
+```rust
+msg!("Before expensive computation");
+invoke(&expensive_instruction, &account_infos)?;
+msg!("After expensive computation");
+```
+
+如果 `After expensive computation` 没有被打印，说明 CU 耗尽，交易失败。
+
+---
+
+### **优化策略**
+
+#### **5. 如何优化 CU 使用？**
+
+|**优化方法**|**说明**|
+|---|---|
+|**减少跨合约调用**|合约间调用成本高，尽量在一个合约内完成逻辑|
+|**优化数据结构**|使用 `ZeroCopy` 代替 Borsh 序列化，减少解析成本|
+|**使用 ALT（地址查找表）**|避免重复传输公钥，减少交易体积|
+|**减少账户访问**|避免访问无关账户（`account_infos` 数量影响 CU）|
+|**使用合适的哈希算法**|`SHA256` 比 `Keccak256` 便宜|
+|**缓存计算结果**|避免重复计算相同的数据|
+
+示例：  
+**错误（高 CU 消耗）**
+
+```rust
+let mut account_data = account.data.borrow();
+let deserialized_data: MyStruct = BorshDeserialize::deserialize(&mut account_data)?;
+```
+
+**优化（低 CU 消耗）**
+
+```rust
+let account_data = ZeroCopy::load::<MyStruct>(&account.data.borrow())?;
+```
+
+---
+
+#### **6. CU 优化在 DeFi / NFT 交易中的作用？**
+
+**DeFi 场景：**
+
+- AMM 交易（如 Raydium、Orca）涉及多个账户，ALT 优化账户访问减少 CU 消耗
+- 订单撮合逻辑中，减少不必要的 `invoke()`，降低 CU
+
+**NFT 场景：**
+
+- Mint NFT 需要创建新账户（高 CU 消耗），可以优化 `Metaplex` 代码
+- 交易多个 NFT 时，批量处理减少 CU
+
+示例（优化 Mint NFT）
+
+```rust
+ComputeBudgetInstruction::set_compute_unit_limit(400_000);
+```
+
+---
+
+#### **7. 如何调试 CU 使用？**
+
+1. **本地模拟执行**
+    
+    ```bash
+    solana-test-validator
+    ```
+    
+2. **开启日志**
+    
+    ```rust
+    solana_logger::setup();
+    msg!("Transaction started");
+    ```
+    
+3. **使用 `solana logs` 监控 CU**
+    
+    ```bash
+    solana logs
+    ```
+    
+
+---
+
+### **高级问题**
+
+#### **8. 如何在 Anchor 框架中优化 CU？**
+
+**答案：**
+
+1. **减少 `accounts` 访问**
+    
+    ```rust
+    #[account(mut)]
+    pub my_account: Account<'info, Data>,
+    ```
+    
+    - 仅使用 `mut` 修改必要的账户，避免不必要的写操作
+2. **使用 `seeds` 代替显式公钥**
+    
+    ```rust
+    #[account(
+        init,
+        payer = user,
+        seeds = [b"vault", user.key().as_ref()],
+        bump
+    )]
+    ```
+    
+    - 避免存储完整公钥，减少数据读取 CU
+
+---
+
+#### **9. Solana 1.16 版本后，CU 计算有哪些优化？**
+
+**答案：**
+
+- **动态 CU 价格调整**
+- **CU 限制提高**（默认 200k → 400k）
+- **BPF VM 优化**（减少 CPU 消耗）
+
+---
+
+#### **10. Solana CU 未来发展方向？**
+
+**可能的改进**
+
+- **更智能的 CU 定价**
+- **交易批量处理优化**
+- **账户压缩减少 CU**
+
+---
+
+## **总结**
+
+|题目|难度|
+|---|---|
+|什么是 CU？|🌟🌟|
+|CU 如何影响交易费用？|🌟🌟🌟|
+|如何增加 CU 限制？|🌟🌟🌟|
+|CU 优化方法？|🌟🌟🌟🌟|
+|DeFi / NFT 场景 CU 优化？|🌟🌟🌟🌟|
+|如何调试 CU 使用？|🌟🌟🌟🌟🌟|
+|Solana 1.16 CU 优化|🌟🌟🌟🌟|
+
+你还想深入哪些部分？需要代码示例吗？
 
 ## NFT
 
