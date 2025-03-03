@@ -389,18 +389,20 @@ NFT 生态面临的主要安全挑战包括：
 
 **答案：**  
 AMM 主要通过恒定乘积公式：
+$$
 
 x⋅y=kx \cdot y = k
-
+$$
 来计算报价。其中：
 
 - xx 和 yy 代表池中的两种代币数量。
 - kk 作为常数，在没有额外流动性加入时保持不变。
 
-当用户想要用 Δx\Delta x 交换 Δy\Delta y：
-
+当用户想要用 $$Δx\Delta x $$交换$$ Δy\Delta y$$：
+$$
 ynew=kxnewy_{new} = \frac{k}{x_{new}} Δy=yold−ynew\Delta y = y_{old} - y_{new}
 
+$$
 这种模型的优点是**无需订单簿**，但缺点是**价格滑点高**，特别是在流动性较低时。
 
 ---
@@ -474,9 +476,9 @@ ynew=kxnewy_{new} = \frac{k}{x_{new}} Δy=yold−ynew\Delta y = y_{old} - y_{new
 
 - 允许 LP 选择一个价格范围提供流动性，而非整个市场价格范围。
 - 交易价格按照**曲线定价**，价格公式：
-
+$$
 P=(yx)P = \left(\frac{y}{x}\right)
-
+$$
 - LP 在其选定价格范围内提供更高资本效率，减少价格滑点。
 
 ---
@@ -555,8 +557,9 @@ P=(yx)P = \left(\frac{y}{x}\right)
 **答案：**  
 Uniswap V2 引入 **时间加权平均价格（TWAP）** 预言机：
 
+$$
 TWAP=∑Pt⋅Δt∑Δt\text{TWAP} = \frac{\sum P_t \cdot \Delta t}{\sum \Delta t}
-
+$$
 - 记录过去的价格累计值，防止短时间内操纵价格。
 - 解决了 V1 无法提供可靠预言机数据的问题。
 
@@ -568,11 +571,14 @@ TWAP=∑Pt⋅Δt∑Δt\text{TWAP} = \frac{\sum P_t \cdot \Delta t}{\sum \Delta t
 
 **答案：**  
 V3 允许 LP 在 **自定义价格范围内提供流动性**，而不是像 V2 一样将流动性均匀分布在整个价格区间：
-
+$$
 Pmin≤P≤PmaxP_{\text{min}} \leq P \leq P_{\text{max}}
-
+$$
 - 在 LP 选择的价格范围内，资金利用率提升 **4,000 倍**。
 - **减少无常损失**（Impermanent Loss），因为 LP 资金不会一直处于非最优价格区间。
+
+> **无常损失**:是流动性提供者（LP）在 AMM（自动做市商）协议中存入资产后，由于价格变动而导致的**相对损失**。它被称为“无常”，是因为如果价格回归初始状态，损失会消失。但如果价格持续偏离，损失就变成**永久损失**。
+
 
 **示例：**
 
