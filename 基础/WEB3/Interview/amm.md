@@ -514,6 +514,13 @@ let amount_a = I64F64::from_num(amount)
     - `ctx.accounts.pool_account_a.amount`：池子中 Token A 的总量
     - `ctx.accounts.mint_liquidity.supply + MINIMUM_LIQUIDITY`：总 LP 代币的供应量（包含最小流动性）
 
+
+这段代码的数学表达式如下：
+
+$$\text{amount\_a} = \left\lfloor \frac{\text{amount} \times \text{pool\_account\_a.amount}}{\text{mint\_liquidity.supply} + \text{MINIMUM\_LIQUIDITY}} \right\rfloor$$
+
+
+
 ---
 
 类似地，计算 Token B：
