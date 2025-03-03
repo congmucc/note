@@ -54,9 +54,33 @@
               "icon": "lucide-file",
               "title": "面经"
             }
+          },
+          {
+            "id": "eb1b906fbc5366e1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "基础/WEB3/Interview/面经.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "面经"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -230,17 +254,17 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "2683db8d5e41ed75",
+  "active": "eb1b906fbc5366e1",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
+    "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
     "基础/WEB3/Interview/amm.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
-    "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Move/Move.md",
     "基础/WEB3/道路/道路.md",
