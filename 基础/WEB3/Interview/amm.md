@@ -239,11 +239,13 @@ let taxed_input = input - input * amm.fee as u64 / 10000;
 ```
 
 - `amm.fee` 表示交易费率，假设 `fee = 30`（0.3%）。
-- 交易费用计算公式：$$ text{taxed_input} = text{input} - \left( \frac{\text{input} \times \text{fee}}{10000} \right) $$
+- 交易费用计算公式：$$ taxed_input=input−(input×fee​/10000) $$
 - 例如：
     - 如果 `input = 1000`，`fee = 30`，则 `taxed_input = 997`（扣除 0.3% 手续费）。
 
 ---
+
+
 
 ### **3. 计算输出代币数量**
 
@@ -274,7 +276,7 @@ let output = if swap_a {
 .to_num::<u64>();
 ```
 
-- 这里使用 **恒定乘积公式 x×y=kx \times y = k** 计算输出： output=taxed_input×pool_Bpool_A+taxed_input\text{output} = \frac{\text{taxed\_input} \times \text{pool\_B}}{\text{pool\_A} + \text{taxed\_input}} 其中：
+- 这里使用 **恒定乘积公式 x×y=k** 计算输出： $${output} = \frac{\text{taxed\_input} \times \text{pool\_B}}{\text{pool\_A} + \text{taxed\_input}} $$其中：
     - `pool_A` 和 `pool_B` 分别是池子中的两种代币数量。
     - `taxed_input` 是扣除手续费后的输入代币数量。
 
