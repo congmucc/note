@@ -239,7 +239,7 @@ let taxed_input = input - input * amm.fee as u64 / 10000;
 ```
 
 - `amm.fee` 表示交易费率，假设 `fee = 30`（0.3%）。
-- 交易费用计算公式： \text{taxed_input} = \text{input} - \left( \frac{\text{input} \times \text{fee}}{10000} \right)
+- 交易费用计算公式：$$ text{taxed_input} = text{input} - \left( \frac{\text{input} \times \text{fee}}{10000} \right) $$
 - 例如：
     - 如果 `input = 1000`，`fee = 30`，则 `taxed_input = 997`（扣除 0.3% 手续费）。
 
