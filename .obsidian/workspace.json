@@ -136,7 +136,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "ed255",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,7 +157,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -278,7 +279,7 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "1c2b3e08a5a6dd3f",
+  "active": "ff17a40e34515f2a",
   "lastOpenFiles": [
     "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/面经.md",
