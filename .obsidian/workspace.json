@@ -54,30 +54,6 @@
               "icon": "lucide-file",
               "title": "面经"
             }
-          },
-          {
-            "id": "788273783b15a40c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/基础知识/Solana/Solana.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Solana"
-            }
           }
         ],
         "currentTab": 1
@@ -256,17 +232,17 @@
   },
   "active": "2683db8d5e41ed75",
   "lastOpenFiles": [
-    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/基础知识/Mantle-Network/Mantle-Network.md",
+    "基础/WEB3/Interview/amm.md",
     "基础/WEB3/基础知识/合约安全漏洞/合约安全漏洞.md",
     "基础/WEB3/基础知识/Solana/Solana.md",
-    "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Move/Move.md",
-    "基础/WEB3/基础知识/WEB3基础/WEB3基础.md",
     "基础/WEB3/道路/道路.md",
     "基础/WEB3/Solidity/实战.md",
     "基础/WEB3/Solidity/Solidity.md",
