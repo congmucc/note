@@ -78,7 +78,7 @@ Solana 的 POH 共识机制中使用的哈希函数是 SHA-256，这是一种安
 
 先来了解下在 Solana的系统架构中最重要的两种角色：**Leader**（出块者）和 **Validator**（验证者）。两者实际上都是质押了 SOL 代币的全节点，只是在不同的出块周期内，Leader 会由不同的全节点来充当，而没有当选 Leader 的全节点会成为 Validator。 所以在选择验证者方面， Solana 采用的是 PoS（权益证明）机制，验证者是通过抵押一定数量的代币来参与网络交易的验证的，持有更多代币的验证者有更大的机会被选中生成新的区块。
 
-![image](./assets/632e813a-47c9-4daf-a0a9-c99894838b07.webp)
+![image](assets/632e813a-47c9-4daf-a0a9-c99894838b07.webp)
 
 
 
@@ -100,7 +100,7 @@ Solana 的 POH 共识机制中使用的哈希函数是 SHA-256，这是一种安
 
 在 Solana 的共识协议中，有 Epoch（纪元）和Slot（间隔）两大时间单位。每个 Slot 约为0.4~0.8秒，相当于一个区块的时间间隔。而每个Epoch周期包含43.2万个Slot（区块），长达2~4天。每过4个 Slot（出块周期），Leader节点就会进行一次变更。
 
-![image](./assets/40488b70-a5be-4875-aaa2-c40407ca57ca.webp)
+![image](assets/40488b70-a5be-4875-aaa2-c40407ca57ca.webp)
 
 
 
@@ -164,7 +164,7 @@ EOA-外部账户(external owned account)是由人们通过私钥创建的账户�
 
 让我们来理解一下外部账户和合约账户的异同
 
-![image](./assets/fd74dbca-b8a9-4011-9395-66f553363d51.webp)
+![image](assets/fd74dbca-b8a9-4011-9395-66f553363d51.webp)
 
 ### 1.4.3 Solana 账户
 
@@ -406,7 +406,7 @@ pub fn process_instruction(
 
 在实际的项目中，通常不会把所有逻辑都写在lib.rs文件中，为了更清晰的划分功能模块，大部分程序遵循以下架构：
 
-![image](./assets/83a4fb39-c5ea-496a-a1bc-e4c53ea5ec79.webp)
+![image](assets/83a4fb39-c5ea-496a-a1bc-e4c53ea5ec79.webp)
 
 Preview
 
@@ -1129,11 +1129,11 @@ pub fn process_instruction(
 
 部署成功后，我们可以在 Solana 区块链浏览器中查看[该笔交易信息](https://explorer.solana.com/tx/n4rQU85FmLjB82RAkRvRwj9jYYSseUYfvRi4jY6ZpxuoNGd8qFCiV4UsDbyKVviY5GWcBm7hwNVzMvr5JhvYaux?cluster=devnet)。其中5CiS...为我们的wallet钱包公钥，而CHZn.…为程序账户，它具有executable可执行属性，并且updateable可升级，该程序ID下对应的7Lxk…账户存储了程序的二进制文件（请注意：二进制文件并不是直接存储在程序账户中，而是下面的子账户中）。
 
-![image](./assets/ae64a64e-8d36-47b1-b973-e84bca85f9f7.webp)
+![image](assets/ae64a64e-8d36-47b1-b973-e84bca85f9f7.webp)
 
 这里展示了程序账户和子账户（存储程序二进制文件）之间的关系。
 
-![image](./assets/bfeaba22-1c19-4925-9f2d-17cd8b69976e.webp)
+![image](assets/bfeaba22-1c19-4925-9f2d-17cd8b69976e.webp)
 
 ## 状态管理
 
@@ -1915,9 +1915,9 @@ pub fn invoke_signed(
 
 `CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)`
 
-![](./assets/20240810220338.png)
+![](assets/20240810220338.png)
 
-![image-20240819203706084](./assets/image-20240819203706084.png)
+![image-20240819203706084](assets/image-20240819203706084.png)
 
 >  左边是需要被调用的cpi例子，右边是调用cpi的例子
 >  [How to Create a System Program PDA and transfer sol to PDA | QuickNode](https://www.quicknode.com/guides/solana-development/anchor/system-program-pda#initializing-a-system-pda)
@@ -2009,11 +2009,11 @@ Anchor 框架中，#[account]宏是一种特殊的宏，它用于处理账户的
 
 [anchor](https://www.bilibili.com/video/BV118411i7pS/?p=1&t=1860)
 
-![image-20240819204353249](./assets/image-20240819204353249.png)
+![image-20240819204353249](assets/image-20240819204353249.png)
 
-![image-20240819204413866](./assets/image-20240819204413866.png)
+![image-20240819204413866](assets/image-20240819204413866.png)
 
-![image-20240819204521334](./assets/image-20240819204521334.png)
+![image-20240819204521334](assets/image-20240819204521334.png)
 [密钥对和钱包 | Solana Co Learn (creatorsdao.github.io)](https://creatorsdao.github.io/solana-co-learn/cookbook-zh/references/keypairs-and-wallets)
 
 
