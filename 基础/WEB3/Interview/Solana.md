@@ -19,6 +19,8 @@ Metaplex 使 Solana 上的 NFT 生态更加高效，并提供了一种低成本�
 
 ### **面试问题 2：Candy Machine 是什么？它如何防止机器人滥用 NFT Mint？**
 
+^f022b2
+
 **回答：**  
 Candy Machine 是 Metaplex 提供的一个 NFT Minting 机制，主要用于大规模 NFT 系列的**公平分发**。它采用以下方式防止机器人滥用：
 
