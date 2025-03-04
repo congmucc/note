@@ -54,33 +54,9 @@
               "icon": "lucide-file",
               "title": "面经"
             }
-          },
-          {
-            "id": "aa2ee4eedd8e3b7c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Solana"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -187,13 +163,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/WEB3/Interview/Solana.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Solana"
+              "title": "Outline of 面经"
             }
           },
           {
@@ -254,12 +230,12 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "aa2ee4eedd8e3b7c",
+  "active": "cfe307593d5227f6",
   "lastOpenFiles": [
+    "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/面经.md",
     "基础/WEB3/Base/Solana/Solana.md",
     "基础/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/Interview/Solana.md",
     "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Anchor/Anchor.md",

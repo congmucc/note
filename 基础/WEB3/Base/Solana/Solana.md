@@ -774,7 +774,7 @@ ASSOCIATED_TOKEN_PROGRAM_ID,
 
 ```
 
-**总结**
+**总结** 
 
 - **`TokenAccount`** 表示一个通用的代币账户，但没有自动创建功能。
 - **`AssociatedToken`** 程序用于确保自动创建用户与代币的唯一关联账户（ATA）。
