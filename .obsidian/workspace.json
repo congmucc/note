@@ -4,35 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "07b5463010f63bc9",
+        "id": "79cd9b0c439c61f6",
         "type": "tabs",
         "children": [
           {
-            "id": "268801c2e9cc0305",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "基础/WEB3/Move/Move.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Move"
-            }
-          },
-          {
-            "id": "cfe307593d5227f6",
+            "id": "32bfb81e8d2d942e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -55,8 +31,7 @@
               "title": "面经"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -88,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "滑点",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -109,7 +84,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -230,13 +206,14 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "cfe307593d5227f6",
+  "active": "32bfb81e8d2d942e",
   "lastOpenFiles": [
-    "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Interview/面经.md",
+    "基础/WEB3/Interview/Solana.md",
+    "基础/WEB3/Move/Move.md",
     "基础/WEB3/Base/Solana/Solana.md",
     "基础/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
-    "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Interview/Interview.md",
     "基础/WEB3/Anchor/Anchor.md",
     "基础/WEB3/Base/WEB3Base/WEB3Base.md",
@@ -245,7 +222,6 @@
     "实战笔记/项目笔记/Java+Vue/苍穹外卖.md",
     "基础/WEB3/Base/Ethereum/Ethereum.md",
     "基础/WEB3/Base/Mantle-Network/Mantle-Network.md",
-    "基础/WEB3/Move/Move.md",
     "基础/WEB3/Ethersjs/Ethersjs.md",
     "基础/WEB3/way/way.md",
     "基础/WEB3/Solidity/Solidity.md",
