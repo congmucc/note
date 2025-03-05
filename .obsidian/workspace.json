@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/WEB3/Interview/面经.md",
+                "file": "基础/后端/Rust/Rust.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Rust"
             }
           }
         ]
@@ -137,12 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "基础/后端/Rust/Rust.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Rust"
             }
           },
           {
@@ -202,7 +203,7 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "e2e95db7a15f4e50",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
     "基础/WEB3/Interview/面经.md",
     "基础/WEB3/Interview/amm.md",
