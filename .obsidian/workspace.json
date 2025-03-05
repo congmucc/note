@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Rust"
+              "title": "面经"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "基础/后端/Rust/Rust.md",
+                "file": "基础/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Rust"
+              "title": "Outline of 面经"
             }
           },
           {
@@ -203,8 +203,9 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "23e17f4719f8a01f",
+  "active": "993f28e2c0836012",
   "lastOpenFiles": [
+    "基础/后端/Rust/Rust.md",
     "基础/WEB3/Interview/面经.md",
     "基础/WEB3/Interview/amm.md",
     "基础/WEB3/Move/Move.md",
@@ -232,7 +233,6 @@
     "基础/WEB3/Move/assets/image-20240712091314489.png",
     "基础/WEB3/Base/编译部署/Geth/Geth.md",
     "基础/WEB3/Base/编译部署/Ganache/Ganache.md",
-    "README.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
