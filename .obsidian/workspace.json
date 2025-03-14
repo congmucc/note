@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/后端/Go/Golang基础/Golang基础.md",
+                "file": "Base/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Golang基础"
+              "title": "Anchor"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/Go/Golang基础/Golang基础.md",
+                "file": "Base/WEB3/Anchor/Anchor.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Golang基础"
+              "title": "Outline of Anchor"
             }
           },
           {
@@ -205,6 +205,7 @@
   },
   "active": "c30fd2e6c9d5f844",
   "lastOpenFiles": [
+    "Base/后端/Go/Golang基础/Golang基础.md",
     "Base/后端/Rust/Rust.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Base/Solana/Solana.md",
@@ -232,7 +233,6 @@
     "Base/WEB3/Base/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "Base/WEB3/Move/assets/image-20240712091314489.png",
     "Base/WEB3/Base/编译部署/Geth/Geth.md",
-    "Base/WEB3/Base/编译部署/Ganache/Ganache.md",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004507.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004311.png",
