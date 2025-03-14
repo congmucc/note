@@ -1688,7 +1688,7 @@ docker run -d \
   -v ~/docker/redis/config/redis.conf:/usr/local/etc/redis/redis.conf \
   -v ~/docker/redis/logs:/var/log/redis \
   redis \
-  redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
+  redis-server /usr/local/etc/redis/redis.conf
 ```
 > 一般不需要
 
