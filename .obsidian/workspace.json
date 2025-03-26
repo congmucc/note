@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/后端/SQL/Mysql/面试问题.md",
+                "file": "Base/思想/架构/DDD架构.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面试问题"
+              "title": "DDD架构"
             }
           }
         ],
@@ -88,7 +88,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "脏读",
+                "query": "ddd",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -162,13 +162,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/SQL/Mysql/面试问题.md",
+                "file": "Base/思想/架构/DDD架构.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面试问题"
+              "title": "Outline of DDD架构"
             }
           },
           {
@@ -228,13 +228,18 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "fc81983ede2b33f7",
+  "active": "23e17f4719f8a01f",
   "lastOpenFiles": [
+    "实战笔记/项目笔记/Java+Vue/uniapp电商项目/官方笔记/rabbit-shop/08-地址模块.md",
+    "实战笔记/项目笔记/Java+Vue/uniapp电商项目/官方笔记/rabbit-shop/07-用户模块.md",
+    "实战笔记/项目笔记/Java+Vue/uniapp电商项目/官方笔记/rabbit-shop/06-登录模块.md",
+    "实战笔记/项目笔记/Java+Vue/uniapp电商项目/官方笔记/rabbit-shop/05-详情模块.md",
+    "工作/宏图/航天宏图.md",
+    "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/Mysql.md",
     "Base/WEB3/Interview/binance.md",
     "Base/后端/SQL/Redis/Redis导学.md",
     "Base/后端/SQL/Mysql/优化问题.md",
-    "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Redis/Redis.md",
     "Base/后端/Java/微服务框架/SpringCloud/SpringCloud.md",
     "Base/后端/Java/微服务框架/Zookeeper/assets/zookeeper-1.png",
@@ -244,7 +249,6 @@
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/面经.md",
     "Base/后端/Java/JavaWeb开发规范.md",
-    "工作/宏图/航天宏图.md",
     "Base/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "Base/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ-高级篇.md",
     "Base/WEB3/Anchor/Anchor.md",
@@ -260,9 +264,6 @@
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
-    "Base/WEB3/Base/WEB3Base/WEB3Base.md",
-    "Base/WEB3/Base/Solana/Solana.md",
-    "Base/WEB3/Ethersjs/Ethersjs.md",
     "Base/WEB3/Base/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "Base/WEB3/Move/assets/image-20240712091314489.png",
     "Base/WEB3/Anchor",
