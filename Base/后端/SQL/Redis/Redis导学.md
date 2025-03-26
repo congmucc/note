@@ -45,3 +45,16 @@
 原理：[后端面试反复问的缓存双写一致性问题_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Jz421e7an/)
 解决方案：[【IT老齐062】缓存一致性如何保障？先写库还是先写缓存？聊聊Cache Aside Pattern与延迟双删_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1aF411e7ur/)
 > 双写一致，需要  **先更新数据库再删缓存+延时双删**+**删除重试**
+
+### Redis的大Key问题如何解决
+> Redis的大Key问题是指单个Key所对应的数据量过大，一般单个key超过10kb就被认为是大Key
+1. 分拆大Key  
+big list： list1、list2、...listN  
+big hash：可以将数据分段存储，比如一个大的key，假设存了1百万的用户数据，可以拆分成200个key，每个key下面存放5000个用户数据  
+  
+2. 压缩数据  
+在存储之前对较大的数据进行压缩，从而减少存储占用空间。
+3. 惰性删除  
+当更新或删除大Key时使用惰性删除(lazyfree-lazy-expire yes)来避免阻塞整个Redis。  
+4. 使用SCAN替代KEYS  
+在处理集合时，使用SCAN命令遍历大Key而不是KEYS，避免一次性加载所有数据
