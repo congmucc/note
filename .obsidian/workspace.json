@@ -13,78 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "binance"
-            }
-          },
-          {
-            "id": "18767b9adea36647",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Base/后端/Java/Interview/Interview.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Interview"
-            }
-          },
-          {
-            "id": "60869b3dcad70e33",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Base/后端/SQL/Mysql/优化问题.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "优化问题"
-            }
-          },
-          {
-            "id": "b0a15f5fcc452ba2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "Base/后端/SQL/Mysql/面试问题.md",
                 "mode": "source",
                 "source": false,
@@ -102,81 +30,8 @@
               "icon": "lucide-file",
               "title": "面试问题"
             }
-          },
-          {
-            "id": "2654fc8a13aa4824",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Base/后端/SQL/Mysql/Mysql.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Mysql"
-            }
-          },
-          {
-            "id": "4f60492d750ec013",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Base/后端/SQL/Mysql/优化问题.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "优化问题"
-            }
-          },
-          {
-            "id": "0dbfb4e7c9a97d67",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Base/后端/Java/Interview/Interview.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Interview"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -282,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/Java/Interview/Interview.md",
+                "file": "Base/后端/SQL/Mysql/面试问题.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Interview"
+              "title": "Outline of 面试问题"
             }
           },
           {
@@ -348,12 +203,12 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "18767b9adea36647",
+  "active": "c30fd2e6c9d5f844",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/binance.md",
     "Base/后端/SQL/Mysql/优化问题.md",
-    "Base/后端/SQL/Mysql/面试问题.md",
+    "Base/WEB3/Interview/binance.md",
     "Base/后端/Java/Interview/Interview.md",
+    "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Redis/Redis导学.md",
     "Base/后端/SQL/Mysql/Mysql.md",
     "Base/WEB3/Interview/Interview.md",
