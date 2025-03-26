@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/后端/SQL/Mysql/面试问题.md",
+                "file": "Base/后端/SQL/Redis/Redis导学.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面试问题"
+              "title": "Redis导学"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/SQL/Mysql/面试问题.md",
+                "file": "Base/后端/SQL/Redis/Redis导学.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面试问题"
+              "title": "Outline of Redis导学"
             }
           },
           {
@@ -205,11 +205,13 @@
   },
   "active": "c30fd2e6c9d5f844",
   "lastOpenFiles": [
+    "Base/后端/SQL/Redis/Redis.md",
+    "Base/后端/SQL/Redis/Redis导学.md",
+    "Base/后端/SQL/Redis/Redis高级.md",
+    "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Base/WEB3/Interview/binance.md",
     "Base/后端/Java/Interview/Interview.md",
-    "Base/后端/SQL/Mysql/面试问题.md",
-    "Base/后端/SQL/Redis/Redis导学.md",
     "Base/后端/SQL/Mysql/Mysql.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/面经.md",
@@ -218,7 +220,6 @@
     "Base/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
     "Base/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ-高级篇.md",
     "Base/WEB3/Anchor/Anchor.md",
-    "Base/后端/SQL/Redis/Redis高级.md",
     "Base/后端/SQL/Redis/assets/1683684262698-5d50a3b5-0bcb-473e-b96f-9afa8baaf7be.png",
     "Base/后端/SQL/Mysql/assets/640-1706957849677-9.png",
     "Base/后端/SQL/Mysql/assets/640-1706957849676-8.png",
@@ -237,7 +238,6 @@
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Solidity/Foundry.md",
-    "Base/WEB3/Solidity/合约安全.md",
     "Base/WEB3/Base/Ethereum/assets/22516b1c-cb36-4f73-9ca4-5b79d0be6f3a.webp",
     "Base/WEB3/Move/assets/image-20240712091314489.png",
     "实战笔记/构建项目模板/Vue前端/assets/Pasted image 20240413004547.png",
