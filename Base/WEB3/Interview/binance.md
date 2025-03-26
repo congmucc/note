@@ -17,6 +17,9 @@
 
 [mysql 各种锁   B+树](../../后端/SQL/Mysql/面试问题.md#^96de15)
 
-[Redis导学](../../后端/SQL/Redis/Redis导学.md)
+[Redis 大key 双写一致性](../../后端/SQL/Redis/Redis导学.md)
+
+
+面试官你好
 
 

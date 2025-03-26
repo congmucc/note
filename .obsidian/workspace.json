@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/后端/SQL/Mysql/Mysql.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,10 +28,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "binance"
+              "title": "Mysql"
+            }
+          },
+          {
+            "id": "fc81983ede2b33f7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Base/后端/SQL/Mysql/面试问题.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "面试问题"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -63,7 +88,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "大key",
+                "query": "脏读",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -137,13 +162,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/后端/SQL/Mysql/面试问题.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of binance"
+              "title": "Outline of 面试问题"
             }
           },
           {
@@ -203,10 +228,11 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "c30fd2e6c9d5f844",
+  "active": "fc81983ede2b33f7",
   "lastOpenFiles": [
-    "Base/后端/SQL/Redis/Redis导学.md",
+    "Base/后端/SQL/Mysql/Mysql.md",
     "Base/WEB3/Interview/binance.md",
+    "Base/后端/SQL/Redis/Redis导学.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Redis/Redis.md",
@@ -215,7 +241,6 @@
     "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
     "Base/后端/SQL/Redis/Redis高级.md",
     "Base/后端/Java/Interview/Interview.md",
-    "Base/后端/SQL/Mysql/Mysql.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/面经.md",
     "Base/后端/Java/JavaWeb开发规范.md",
