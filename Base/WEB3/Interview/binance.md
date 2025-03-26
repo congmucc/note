@@ -16,3 +16,7 @@
 [mysql优化问题 + 千万级查询，深度分页](../../后端/SQL/Mysql/优化问题.md#^176b49)
 
 [mysql 各种锁   B+树](../../后端/SQL/Mysql/面试问题.md#^96de15)
+
+[Redis导学](../../后端/SQL/Redis/Redis导学.md)
+
+
