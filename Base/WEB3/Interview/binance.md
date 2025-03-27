@@ -9,7 +9,6 @@
 - 熟练掌握 Solidity 等智能合约语言。
 - 作为 Web3 开发人员的成熟经验。
 
-维恩
 
 
 [Jvm](../../后端/Java/Interview/Interview.md#^10fe41)
