@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "工作/宏图/航天宏图.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "航天宏图"
+              "title": "binance"
             }
           },
           {
@@ -186,13 +186,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "工作/宏图/航天宏图.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 航天宏图"
+              "title": "Outline of binance"
             }
           },
           {
@@ -254,13 +254,13 @@
   },
   "active": "fc81983ede2b33f7",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/Interview.md",
+    "Base/WEB3/Interview/面经.md",
+    "工作/宏图/航天宏图.md",
     "Base/后端/Java/Interview/Interview.md",
     "Base/WEB3/way/way.md",
-    "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/binance.md",
     "Base/后端/SQL/Mysql/优化问题.md",
-    "工作/宏图/航天宏图.md",
     "README.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "实战笔记/项目笔记/Java+Vue/uniapp电商项目/官方笔记/rabbit-shop/06-登录模块.md",
