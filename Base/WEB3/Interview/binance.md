@@ -30,6 +30,7 @@
 一开始做游戏吗，就按照一个游戏一个合约，之后发现开发成本太高，后面转成整成一个大合约架子，基础包含 下注，开奖，提现，自动开奖，自动下注。合约里面只存储像转账，对数据判断的一些逻辑，而不是将游戏逻辑也放进去，游戏逻辑使用后端进行代替，采用链上链下相结合进行完成的逻辑，
 
 自动下注：
+下注方法 `function auto_bet(uint256 game_id, uint256 token_id, uint256 initial_amount, uint256[] auto_set, bytes32[] hashArr, bytes data) external {}`
 - - game_id 游戏ID
     - token_id tokenID 0 ETH, 1 USDT, 2 USDC
     - initial_amount 第一个订单金额
