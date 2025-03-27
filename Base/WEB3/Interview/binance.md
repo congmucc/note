@@ -31,7 +31,7 @@
 #### **1. 个人介绍（简短有力，突出核心技能）**
 
 **候选人：**  
-您好，我是ld，目前在后端开发领域有1年的经验，专注于Golang开发，同时也有一定的Java开发背景。我在区块链和Web3领域有深入的研究，特别是Solana、Ethereum和SUI等公链，并熟悉智能合约开发，包括Foundry和Anchor框架。
+您好，我是ld，目前在后端开发领域有1年的经验，专注于Golang开发，同时也有一定的Java开发背景。我在区块链和Web3领域有深入的研究，特别是Solana、Ethereum、ton、base和SUI等公链，并熟悉智能合约开发，包括Foundry和Anchor框架。
 
 在后端开发方面，我擅长微服务架构，熟练使用Gin、GoZero等Golang框架，并具备Kafka、RabbitMQ、ElasticSearch等中间件的使用经验。此外，我有数据库优化的经验，能基于MySQL、PostgreSQL和Redis进行高效的数据存储和查询优化。我在之前的工作中，参与了RBAC权限管理、系统日志框架、TOTP双因子认证等项目。
 
