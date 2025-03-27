@@ -56,6 +56,30 @@
             }
           },
           {
+            "id": "f9a3df529ae78108",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Base/WEB3/Interview/面经.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "面经"
+            }
+          },
+          {
             "id": "689ed5ed16929b2f",
             "type": "leaf",
             "state": {
@@ -80,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -252,13 +276,14 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "fc81983ede2b33f7",
+  "active": "f9a3df529ae78108",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Interview/Interview.md",
+    "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Interview/Solana.md",
-    "Base/WEB3/Interview/Interview.md",
+    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Interview/amm.md",
     "Base/思想/架构/DDD架构.md",
     "Base/思想/设计模式/设计模式.md",
     "工作/宏图/航天宏图.md",
@@ -280,7 +305,6 @@
     "Base/后端/SQL/Redis/Redis高级.md",
     "Base/后端/Java/JavaWeb开发规范.md",
     "Base/后端/Java/微服务框架/Elasticsearch/分布式搜索引擎01.md",
-    "Base/后端/Java/微服务框架/MQ/RabbitMQ-高级篇/RabbitMQ-高级篇.md",
     "Base/后端/SQL/Redis/assets/1683684262698-5d50a3b5-0bcb-473e-b96f-9afa8baaf7be.png",
     "Base/后端/SQL/Mysql/assets/640-1706957849677-9.png",
     "Base/后端/SQL/Mysql/assets/640-1706957849676-8.png",
