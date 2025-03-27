@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "binance"
             }
           },
           {
@@ -210,13 +210,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of binance"
             }
           },
           {
@@ -278,10 +278,10 @@
   },
   "active": "f9a3df529ae78108",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Anchor/Anchor.md",
-    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/amm.md",
     "Base/思想/架构/DDD架构.md",
