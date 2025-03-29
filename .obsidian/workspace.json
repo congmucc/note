@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "binance"
+              "title": "Zookeeper"
             }
           }
         ]
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for binance"
+              "title": "Backlinks for Zookeeper"
             }
           },
           {
@@ -123,12 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from binance"
+              "title": "Outgoing links from Zookeeper"
             }
           },
           {
@@ -152,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of binance"
+              "title": "Outline of Zookeeper"
             }
           }
         ]
@@ -185,6 +185,9 @@
   },
   "active": "7a78fcee04b91366",
   "lastOpenFiles": [
+    "Base/后端/Java/框架/SpringSecurity/SpringSecurity.md",
+    "Base/后端/Java/JavaWeb开发规范.md",
+    "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/amm.md"
   ]
 }
