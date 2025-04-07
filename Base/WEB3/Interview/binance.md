@@ -187,3 +187,8 @@ m / purpose' / coin_type' / account' / change / address_index
 - **职业成长**：Binance的工程师在技术成长方面有哪些支持？比如Code Review、技术分享、内部培训等？
     
 - **招聘流程**：请问接下来的面试流程是怎样的？会涉及哪些技术考察方向？
+
+
+
+哪些平台获取信息
+论坛，举个例子

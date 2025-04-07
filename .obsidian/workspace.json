@@ -183,16 +183,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4e30780d9dca4f24",
+  "active": "7a78fcee04b91366",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/Interview.md",
-    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/amm.md",
+    "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Interview/Solana.md",
+    "Base/WEB3/Interview/Interview.md",
+    "Base/WEB3/Anchor/Anchor.md",
     "README.md",
     "Base/CICD/Docker/Docker.md",
     "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
     "Base/后端/Java/框架/SpringSecurity/SpringSecurity.md",
-    "Base/后端/Java/JavaWeb开发规范.md",
-    "Base/WEB3/Interview/binance.md"
+    "Base/后端/Java/JavaWeb开发规范.md"
   ]
 }
