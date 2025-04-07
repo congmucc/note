@@ -102,7 +102,7 @@ BTC 使用 **UTXO（未花费交易输出）模型**，交易的输入 (`inputs`
 > 像BTC的[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)（钱包的地址由衍生路径决定，例如`“m/0/0/1”`。），[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)，和[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)。
 
 我们的逻辑：
-> 因为HD钱包的场景是多账户、多用途（钱包App）， 我们仅仅是想做个充值绑定、收款系统，所以不像hd 是有多个 key，而我们不需要那个，只需要一个 mnemonic/seed，就可以生成了，
+> 因为HD钱包的场景是多账户、多用途（钱包App）， 我们仅仅是想做个充值绑定、收款系统，所以不像hd 是有多个 key，而我们不需要那个，只需要一个 mnemonic/seed，就可以生成了，一般是在用户注册成功之后就给他们。
 > 用户转完钱包之后，我们这边再进行归集。
 
 ```
