@@ -98,8 +98,29 @@ BTC 使用 **UTXO（未花费交易输出）模型**，交易的输入 (`inputs`
 ### 充值业务
 
 通过**HD钱包**进行生成单独用户的钱包，用户可以从一个随机种子创建一系列密钥对
+像BTC的[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)（钱包的地址由衍生路径决定，例如`“m/0/0/1”`。），[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)，和[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)。
 
 
+
+#### BIP44
+
+
+`BIP44`为`BIP32`的衍生路径提供了一套通用规范，适配比特币、以太坊等多链。这一套规范包含六级，每级之间用"/"分割：
+
+```
+m / purpose' / coin_type' / account' / change / address_index
+```
+
+其中：
+
+- m: 固定为"m"
+- purpose：固定为"44"
+- coin_type：代币类型，比特币主网为0，比特币测试网为1，以太坊主网为60
+- account：账户索引，从0开始。
+- change：是否为外部链，0为外部链，1为内部链，一般填0.
+- address_index：地址索引，从0开始，想生成新地址就把这里改为1，2，3。
+
+举个例子，以太坊的默认衍生路径为`"m/44'/60'/0'/0/0"`。
 
 # 
 您好，感谢您这边抽时间进行面试，其中看了一下岗位的需求，先说岗位需求需要java，我这边是也是没有问题的，因为我这边之前也搞过java，语言都是大差不差，关键是看思想逻辑，我在现在这家公司主要是使用golang，微服务的话使用的是fiber。
