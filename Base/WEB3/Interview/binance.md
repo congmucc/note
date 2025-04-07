@@ -99,11 +99,18 @@ BTC 使用 **UTXO（未花费交易输出）模型**，交易的输入 (`inputs`
 
 概念：
 > 通过**HD钱包**进行生成单独用户的钱包，用户可以从一个随机种子创建一系列密钥对 
-> 像BTC的[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)（钱包的地址由衍生路径决定，例如`“m/0/0/1”`。），[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)，和[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)。
+> 像BTC的[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)（`BIP32`提出可以用一个随机种子衍生多个私钥，例如`“m/0/0/1”`。），[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)(升级了规范，变成6级了)，和[BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)（`BIP39`让用户能以一些人类可记忆的助记词的方式保管私钥，而不是一串16进制的数字：）。
 
 我们的逻辑：
-> 因为HD钱包的场景是多账户、多用途（钱包App）， 我们仅仅是想做个充值绑定、收款系统，所以不像hd 是有多个 key，而我们不需要那个，只需要一个 mnemonic/seed，就可以生成了，一般是在用户注册成功之后就给他们。
+> 因为HD钱包的场景是多账户（钱包App）， 我们仅仅是想做个充值绑定、收款系统，所以不像hd 是有多个 key，而我们不需要那个，只需要一个 mnemonic/seed，就可以生成了，一般是在用户注册成功之后就给他们。
 > 用户转完钱包之后，我们这边再进行归集。
+
+归集方案：
+>我们这里使用的是维护一个地址表，后端服务订阅新区块（或定时拉取）， 拿到交易列表后，对交易的
+>`to` 地址或者 input data 做比对；如果命中你分配的地址，**说明这个用户有充值**；入库、更新余额、
+>通知等。
+>
+>还有另一个方案，用户充值的时候后端起一个线程监听对应的钱包地址，但是这个不是很好，因为这个如果用户多的话，容易崩。
 
 
 
