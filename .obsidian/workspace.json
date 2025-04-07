@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/Interview.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Interview"
+              "title": "binance"
             }
           }
         ]
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Zookeeper"
+              "title": "Backlinks for binance"
             }
           },
           {
@@ -152,21 +152,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Zookeeper"
+              "title": "Outline of binance"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -183,8 +183,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7a78fcee04b91366",
+  "active": "4e30780d9dca4f24",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/amm.md",
     "README.md",
