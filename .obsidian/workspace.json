@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/Interview.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Interview"
+              "title": "binance"
             }
           }
         ]
@@ -152,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/Interview.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Interview"
+              "title": "Outline of binance"
             }
           }
         ],
@@ -185,9 +185,9 @@
   },
   "active": "7a78fcee04b91366",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/amm.md",
-    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Anchor/Anchor.md",
