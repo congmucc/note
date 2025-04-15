@@ -13,6 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Base/WEB3/Interview/面经.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "面经"
+            }
+          },
+          {
+            "id": "9d3b7c7576c62d6e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Base/WEB3/Interview/amm.md",
                 "mode": "source",
                 "source": false,
@@ -31,7 +55,8 @@
               "title": "amm"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,7 +208,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6fc3a2ebb171c130",
+  "active": "9d3b7c7576c62d6e",
   "lastOpenFiles": [
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/amm.md",
