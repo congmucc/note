@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/amm.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "amm"
             }
           }
         ]
@@ -152,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/amm.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of amm"
             }
           }
         ],
@@ -185,8 +185,8 @@
   },
   "active": "6fc3a2ebb171c130",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Solidity/Foundry.md",
