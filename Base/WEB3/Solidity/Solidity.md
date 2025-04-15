@@ -7,12 +7,34 @@
 [中文版 Solidity develop 文档 (solidity-cn.readthedocs.io)](https://solidity-cn.readthedocs.io/zh/develop/introduction-to-smart-contracts.html)
 
 
+**面试**：
 ### 合约发送to的类型
+| 类型                | 描述                |
+| ----------------- | ----------------- |
+| `address`         | 普通地址，不可调用合约方法     |
+| `address payable` | 可接收 ETH 的地址（推荐使用） |
 
-
-
+| 方法         | 是否自动回退 | 限制Gas  | 报错方式            | 推荐程度          |
+| ---------- | ------ | ------ | --------------- | ------------- |
+| `transfer` | ✅ 是    | 固定2300 | 自动revert        | ⚠️ 不推荐（gas限制） |
+| `send`     | ✅ 是    | 固定2300 | 返回bool          | 🚫 不推荐（不安全）   |
+| `call`     | ❌ 否    | 可自定义   | 推荐用法需检查 success | ✅ 推荐          |
 ### 发送交易中的执行字段
 
+| 字段名                    | 作用描述                                         |
+| ---------------------- | -------------------------------------------- |
+| `from`                 | 发起交易的地址（发送方）                                 |
+| `to`                   | 接收地址（合约或用户地址，合约部署时为 `null`）                  |
+| `value`                | 发送的 ETH 数量（以 wei 为单位）                        |
+| `data`                 | 要调用的合约函数的编码（或部署合约时的合约字节码）                    |
+| `gas`                  | 最大 gas 限额（限制此交易最多消耗多少 gas）                   |
+| `gasPrice`             | 每单位 gas 的价格（在 EIP-1559 前是固定价格）               |
+| `nonce`                | 交易计数器（防止重放攻击，每个地址唯一递增）                       |
+| `chainId`              | 所在链的 ID（用于防重放攻击，EIP-155 签名机制）                |
+| `accessList`           | （可选）EIP-2930 提出的字段，预声明需要访问的 storage（优化 gas）  |
+| `maxPriorityFeePerGas` | 用户愿意支付给矿工的“小费”，EIP-1559 引入                   |
+| `maxFeePerGas`         | 用户愿意支付的最多 gas 费用（包含 baseFee 和小费），EIP-1559 引入 |
+| `signature`            | 签名（由私钥签出的，包含 `v`, `r`, `s` 三个部分）             |
 
 # 1 基础
 
