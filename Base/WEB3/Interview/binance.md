@@ -114,7 +114,7 @@
 
 事物的话 commit
 
-**幂等性控制**：
+**幂等性控制**：（重复插入或重复开奖）
 - 在 `下注表` 和 `状态表` 中，对 `tx_hash` 设置**唯一索引**；
 - 在逻辑中先做**查重判断**：
 - 或者使用数据库的 `INSERT IGNORE` （mysql）/ `ON CONFLICT DO NOTHING`（postgrasql） 机制：
