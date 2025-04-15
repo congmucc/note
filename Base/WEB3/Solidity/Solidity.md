@@ -7,6 +7,12 @@
 [中文版 Solidity develop 文档 (solidity-cn.readthedocs.io)](https://solidity-cn.readthedocs.io/zh/develop/introduction-to-smart-contracts.html)
 
 
+### 合约发送to的类型
+
+
+
+### 发送交易中的执行字段
+
 
 # 1 基础
 
@@ -223,8 +229,9 @@
 solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同存储位置的`gas`成本不同。`storage`类型的数据存在链上，类似计算机的硬盘，消耗`gas`多；`memory`和`calldata`类型的临时存在内存里，消耗`gas`少。大致用法：
 
 1. `storage`：合约里的**状态变量默认都是**`storage`，存储在链上。
-2. `memory`：函数里的参数和临时变量一般用`memory`，存储在内存中，不上链。
-3. `calldata`：和`memory`类似，存储在内存中，不上链。与`memory`的不同点在于`calldata`变量不能修改（`immutable`），一般用于函数的参数。例子：
+2. 
+3. `memory`：函数里的参数和临时变量一般用`memory`，存储在内存中，不上链。
+4. `calldata`：和`memory`类似，存储在内存中，不上链。与`memory`的不同点在于`calldata`变量不能修改（`immutable`），一般用于函数的参数。例子：
 
 ```solidity
     function fCalldata(uint[] calldata _x) public pure returns(uint[] calldata){
@@ -297,11 +304,7 @@ solidity数据存储位置有三类：`storage`，`memory`和`calldata`。不同
 
 ## 1.4 执行上下文的生命周期
 
-### 合约发送to的类型
 
-
-
-### 发送交易中的执行字段
 
 
 ### 1.4.1 合约被调用或交易被发送
