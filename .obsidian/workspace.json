@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Solidity/Solidity.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Solidity"
+              "title": "面经"
             }
           }
         ]
@@ -152,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Solidity/Solidity.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Solidity"
+              "title": "Outline of 面经"
             }
           }
         ],
@@ -185,12 +185,13 @@
   },
   "active": "6fc3a2ebb171c130",
   "lastOpenFiles": [
-    "Base/WEB3/Solidity/Foundry.md",
-    "Base/WEB3/way/way.md",
-    "Base/WEB3/Solidity/Solidity.md",
-    "Base/WEB3/Solidity/实战.md",
-    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/amm.md",
+    "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Solidity/实战.md",
+    "Base/WEB3/Solidity/Foundry.md",
+    "Base/WEB3/Solidity/Solidity.md",
+    "Base/WEB3/way/way.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Ethersjs/Ethersjs.md",
@@ -198,7 +199,6 @@
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Solidity/合约安全.md",
-    "Base/WEB3/Interview/binance.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Base/后端/SQL/Mysql/Mysql.md",
