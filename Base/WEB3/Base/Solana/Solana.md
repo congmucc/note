@@ -435,7 +435,9 @@ Preview
 
 ●signatures：指令对应的发起人的签名
 
-我们通过交易与 Solana 发生交互，而交互的最小单元就是交易中的指令（Instruction）。一个交易可以打包多个指令，指令指定调用哪个程序，要读取或修改哪些账户，以及执行程序需要的额外数据。
+我们通过交易与 Solana 发生交互，而交互的最小单元就是交易中的指令（Instruction）。一个交易可以打包多个指令，
+**指令的三个参数：**
+**指令指定调用哪个程序，要读取或修改哪些账户，以及执行程序需要的额外数据**。
 
 在进行一笔转账交易后我们可以在区块链浏览器查看相关操作，就可以看见一笔转账交易包含了三个指令: **Compute Budget: Set Compute Unit Price**， **Compute Budget：Set Compute Unit Limit**和 **Sol Transfer**
 
