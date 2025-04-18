@@ -893,7 +893,7 @@ minOutputAmount = expectedOutput * (1 - slippage / 100)
 
 
 
-### **1. 无常损失（Impermanent Loss）**
+## **1. 无常损失（Impermanent Loss）**
 
 无常损失是 AMM 中的一个常见问题，它是指流动性提供者（LP）由于池内资产价格波动，导致其从池子中退出时获得的价值低于如果直接持有资产的价值。
 
