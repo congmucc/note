@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "amm"
+              "title": "面经"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of amm"
+              "title": "Outline of 面经"
             }
           }
         ],
@@ -210,18 +210,19 @@
   },
   "active": "9d3b7c7576c62d6e",
   "lastOpenFiles": [
-    "Base/WEB3/Solidity/Solidity.md",
-    "Base/WEB3/Solidity/Foundry.md",
-    "Base/WEB3/Base/Solana/Solana.md",
+    "Base/WEB3/Interview/Solana.md",
+    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Ethersjs/Ethersjs.md",
+    "Base/WEB3/Base/Solana/Solana.md",
+    "Base/WEB3/Base/WEB3Base/WEB3Base.md",
+    "Base/WEB3/Solidity/Solidity.md",
+    "Base/WEB3/Solidity/Foundry.md",
     "README.md",
-    "Base/WEB3/Interview/Solana.md",
-    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/way/way.md",
-    "Base/WEB3/Ethersjs/Ethersjs.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Solidity/合约安全.md",
@@ -232,7 +233,6 @@
     "Base/后端/SQL/Redis/Redis.md",
     "Base/后端/SQL/Redis/Redis高级.md",
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
-    "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/后端/Java/Interview/Interview.md",
     "Base/CICD/Docker/Docker.md",
     "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md"
