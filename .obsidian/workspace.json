@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "ab6b4702d97c506b",
+    "id": "10a42913ef99a281",
     "type": "split",
     "children": [
       {
-        "id": "69aa338cae5c76b9",
+        "id": "4b9969b8567d3476",
         "type": "tabs",
         "children": [
           {
-            "id": "9d3b7c7576c62d6e",
+            "id": "616880640d0c6f91",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/amm.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,24 +28,49 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "amm"
+            }
+          },
+          {
+            "id": "6c9b5bdec27f6cdd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Base/WEB3/Interview/amm.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "amm"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "fdf45c55cb9dffcc",
+    "id": "c5a54e4bf2d290a7",
     "type": "split",
     "children": [
       {
-        "id": "bacebf6fd51a9a36",
+        "id": "95fb2913ec66444b",
         "type": "tabs",
         "children": [
           {
-            "id": "e95d2f7f6d51ac25",
+            "id": "09b54ba511f25fcb",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -58,7 +83,7 @@
             }
           },
           {
-            "id": "20f83a932dcb0e0f",
+            "id": "a24e9418222eae46",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -75,7 +100,7 @@
             }
           },
           {
-            "id": "a66e0f44ae12399a",
+            "id": "1b59fb31f1a3ef45",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -91,20 +116,20 @@
     "width": 300
   },
   "right": {
-    "id": "b7c36d40f3087407",
+    "id": "6893b384dde56c3d",
     "type": "split",
     "children": [
       {
-        "id": "832ddc0f52f3fbb5",
+        "id": "17abbd564bf1534c",
         "type": "tabs",
         "children": [
           {
-            "id": "c638aba049061203",
+            "id": "c39876956954151d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Base/WEB3/Interview/binance.md",
+                "file": "Base/WEB3/Interview/amm.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,25 +139,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for binance"
+              "title": "Backlinks for amm"
             }
           },
           {
-            "id": "44846da37701e1be",
+            "id": "a7e6ae3838398442",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md",
+                "file": "Base/WEB3/Interview/amm.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Zookeeper"
+              "title": "Outgoing links from amm"
             }
           },
           {
-            "id": "460475f55e6a790d",
+            "id": "d2558d3b5a74d025",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -147,18 +172,18 @@
             }
           },
           {
-            "id": "4e30780d9dca4f24",
+            "id": "da25a487ed0195ec",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/amm.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of amm"
             }
           }
         ],
@@ -183,33 +208,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9d3b7c7576c62d6e",
+  "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/amm.md",
-    "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/Interview.md",
-    "Base/WEB3/Interview/binance.md",
-    "Base/WEB3/Ethersjs/Ethersjs.md",
-    "Base/WEB3/Base/Solana/Solana.md",
-    "Base/WEB3/Base/WEB3Base/WEB3Base.md",
-    "Base/WEB3/Solidity/Solidity.md",
-    "Base/WEB3/Solidity/Foundry.md",
-    "README.md",
-    "Base/WEB3/Solidity/实战.md",
-    "Base/WEB3/way/way.md",
-    "Base/WEB3/Base/Ethereum/Ethereum.md",
-    "Base/WEB3/Anchor/Anchor.md",
-    "Base/WEB3/Solidity/合约安全.md",
-    "Base/后端/SQL/Mysql/面试问题.md",
-    "Base/后端/SQL/Mysql/优化问题.md",
-    "Base/后端/SQL/Mysql/Mysql.md",
-    "Base/后端/SQL/Redis/Redis导学.md",
-    "Base/后端/SQL/Redis/Redis.md",
-    "Base/后端/SQL/Redis/Redis高级.md",
-    "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
-    "Base/后端/Java/Interview/Interview.md",
-    "Base/CICD/Docker/Docker.md",
-    "Base/后端/Java/微服务框架/Zookeeper/Zookeeper.md"
+    "conflict-files-obsidian-git.md",
+    "work/宏图/航天宏图.md"
   ]
 }
