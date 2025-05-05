@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Base/Uniswap.md",
+                "file": "Base/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Uniswap"
+              "title": "Anchor"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Base/Uniswap.md",
+                "file": "Base/WEB3/Anchor/Anchor.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Uniswap"
+              "title": "Outline of Anchor"
             }
           }
         ],
@@ -210,8 +210,8 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Base/Uniswap.md",
+    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/Interview.md",
