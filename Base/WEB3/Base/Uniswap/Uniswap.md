@@ -41,84 +41,26 @@
 
 
 
-## 二、实战学习路线
 
-### ✅ Step 1：基础了解与官方资源
-
-|内容|推荐资源|
-|---|---|
-|Uniswap V2 & V3 白皮书|https://uniswap.org/whitepaper|
-|Uniswap V3 Core Docs|https://docs.uniswap.org/|
-|ABI 接口文档|https://docs.uniswap.org/reference/contracts|
-
----
-
-### ✅ Step 2：合约交互与报价（模拟交易）
-
-1. 了解 V2/V3 合约地址：Router 和 Pool
-    - V2 Router：`0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D`
-    - V3 Router：`0xE592427A0AEce92De3Edee1F18E0157C05861564`
-2. 使用脚本或 Ethers.js/Web3.js：
-    - `getAmountsOut(amountIn, path)`（V2）
-    - `quoteExactInputSingle`（V3）
-3. 工具推荐：
-    - Ethers.js（推荐）
-    - Viem（轻量新库）
-    - Hardhat + Alchemy/Infura/Ankr 节点
----
-
-### ✅ Step 3：监听事件（解析 swap）
-
-1. 使用 Ethers.js 或 Web3.js `contract.on("Swap", callback)`
-2. 或者解析历史 logs：
-   ```js
-		provider.getLogs({
-		  address: poolAddress,
-		  topics: [swapTopicHash],
-		  fromBlock,
-		  toBlock
-		})
-     ```
-3. 分析字段：
-    - sender, recipient, amount0/1In/Out
-    - 可以计算 token 价格变化、swap 成本等
-
----
-
-### ✅ Step 4：理解深度、LP、Tick（Uniswap V3）
-
-1. 使用 GraphQL/Uniswap Subgraph：
-    - https://thegraph.com/explorer/subgraph/uniswap/uniswap-v3
-2. 关键字段：
-    - `liquidity`：当前池子深度
-    - `tick`：当前 tick index
-    - `sqrtPriceX96`：价格根号，计算真实价格用
-3. Tick 价格换算公式：
-    `price = 1.0001 ^ tick`
-
----
-
-### ✅ Step 5：构建你自己的脚本/应用
-
-目标示例：
-- 获取 ETH → USDC swap 报价（V2 和 V3 对比）
-- 监听某交易对的实时交易事件
-- 分析某池当前 tick、深度、活跃 LP 区间
-- 模拟一笔交易，记录其滑点与真实价格
-
----
+## 实战
 
 [获取报价 |统一交换 --- Getting a Quote | Uniswap](https://docs.uniswap.org/sdk/v3/guides/swaps/quoting)
-## ⚒️ 工具推荐
 
-|工具|用途|
+## Quote
+- 查询某个池子（如 `WETH/USDC`）的当前价格和 tick
+- 估算从输入 token（如 WETH）换到输出 token（如 USDC）得到的数量
+- 获取当前 LP 池储备（间接通过合约）
+- 使用 ABI 调用 `slot0()` 获取当前 tick 和 sqrtPriceX96
+- 解析 `Swap` 事件
+
+|需求项|实现方式|
 |---|---|
-|Alchemy / Infura|RPC 节点|
-|Ethers.js|JS 合约交互|
-|Foundry / Hardhat|测试合约调用|
-|The Graph|获取 LP、tick 数据|
-|Tenderly|事务调试、模拟|
-|Uniswap V3 SDK|交易路径规划、tick 模拟|
+|✅ 查询当前价格|使用 `slot0()` 获取 `sqrtPriceX96` 计算|
+|✅ 获取 LP 深度|查询 `liquidity` 变量|
+|✅ 获取 Tick|使用 `slot0()` 获取当前 tick|
+|✅ ABI 调用合约|用 ABI 读取合约数据|
+|✅ Swap 报价|使用 V3 SDK 构建 `Trade`|
+|✅ 事件解析|监听并解析 `Swap` 事件|
 
 
 ```ts
@@ -198,23 +140,20 @@ New sqrtPriceX96: 1864117560196013696886026851855178
 New liquidity: 6066937332023339941
 ---------------------------
 ```
-- 查询某个池子（如 `WETH/USDC`）的当前价格和 tick
-- 估算从输入 token（如 WETH）换到输出 token（如 USDC）得到的数量
-- 获取当前 LP 池储备（间接通过合约）
-- 使用 ABI 调用 `slot0()` 获取当前 tick 和 sqrtPriceX96
-- 解析 `Swap` 事件
-
-|需求项|实现方式|
-|---|---|
-|✅ 查询当前价格|使用 `slot0()` 获取 `sqrtPriceX96` 计算|
-|✅ 获取 LP 深度|查询 `liquidity` 变量|
-|✅ 获取 Tick|使用 `slot0()` 获取当前 tick|
-|✅ ABI 调用合约|用 ABI 读取合约数据|
-|✅ Swap 报价|使用 V3 SDK 构建 `Trade`|
-|✅ 事件解析|监听并解析 `Swap` 事件|
 
 
 
+## Router & Trade
+这是模拟交易
+
+- 构造Pool
+- 构造router
+- 构造trade
+- 价格输出估算
+	console.log("Mid Price:", route.midPrice.toSignificant(6)); //池中当前的中间价格（理论价格）
+	console.log("Execution Price:", trade.executionPrice.toSignificant(6)); //实际成交价格
+	console.log("Expected Output:", trade.outputAmount.toSignificant(6)); //你预计能拿到多少 USDC
+- swap监听
 
 ```ts
 import { ethers } from "ethers";
@@ -251,7 +190,7 @@ async function main() {
 	console.log("✅ 当前 sqrtPriceX96:", sqrtPriceX96.toString());
 	console.log("✅ 当前 Tick:", tick);
 	console.log("✅ 当前 LP 流动性:", liquidity.toString());
-	
+	// 注意，需要为0
 	const ticks = [
 		{
 			index: 201300,
