@@ -212,3 +212,94 @@ New liquidity: 6066937332023339941
 |✅ ABI 调用合约|用 ABI 读取合约数据|
 |✅ Swap 报价|使用 V3 SDK 构建 `Trade`|
 |✅ 事件解析|监听并解析 `Swap` 事件|
+
+
+
+
+```ts
+import { ethers } from "ethers";
+import {
+	Pool, TickMath, nearestUsableTick, Trade, Route, SwapQuoter, SwapRouter,
+	TickListDataProvider
+} from "@uniswap/v3-sdk";
+import {
+	Token, CurrencyAmount, TradeType, Percent
+} from "@uniswap/sdk-core";
+import IUniswapV3PoolABI from "@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json";
+import { JSBI } from "@uniswap/sdk";
+  
+// ✅ 参数
+const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/KEY");
+const poolAddress = "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8"; // USDC/WETH 0.3%
+
+// ✅ Token 定义（注意 checksum）
+const USDC = new Token(1, ethers.utils.getAddress("0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"), 6, "USDC", "USD Coin");
+const WETH = new Token(1, ethers.utils.getAddress("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"), 18, "WETH", "Wrapped Ether");
+
+async function main() {
+	const poolContract = new ethers.Contract(poolAddress, IUniswapV3PoolABI.abi, provider);
+	
+	const [slot0, liquidity] = await Promise.all([
+		poolContract.slot0(),
+		poolContract.liquidity()
+	]);
+	
+	const sqrtPriceX96 = slot0.sqrtPriceX96;
+	const tick = slot0.tick;
+	const tickSpacing = 60; // USDC/WETH 的 feeTier = 3000 -> spacing = 60
+	
+	console.log("✅ 当前 sqrtPriceX96:", sqrtPriceX96.toString());
+	console.log("✅ 当前 Tick:", tick);
+	console.log("✅ 当前 LP 流动性:", liquidity.toString());
+	
+	const ticks = [
+		{
+			index: 201300,
+			liquidityNet: JSBI.BigInt("123456789"),
+			liquidityGross: JSBI.BigInt("123456789")
+		},
+		{
+			index: 201360,
+			liquidityNet: JSBI.BigInt("-123456789"),
+			liquidityGross: JSBI.BigInt("123456789")
+		}
+	];
+	
+	const tickProvider = new TickListDataProvider(ticks, tickSpacing);
+	const pool = new Pool(
+		WETH,
+		USDC,
+		3000,
+		sqrtPriceX96.toString(),
+		liquidity.toString(),
+		tick,
+		tickProvider
+	);
+	
+	// 构建 Route 和 Trade
+	const amountIn = CurrencyAmount.fromRawAmount(WETH, ethers.utils.parseEther("1").toString());
+	const route = new Route([pool], WETH, USDC);
+	const trade = await Trade.fromRoute(route, amountIn, TradeType.EXACT_INPUT);
+	
+	console.log("Mid Price:", route.midPrice.toSignificant(6)); //池中当前的中间价格（理论价格）
+	console.log("Execution Price:", trade.executionPrice.toSignificant(6)); //实际成交价格
+	console.log("Expected Output:", trade.outputAmount.toSignificant(6)); //你预计能拿到多少 USDC
+	
+	// 解析事件（模拟 swap 日志）
+	poolContract.on("Swap", (sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick, event) => {
+		console.log("🔥 Swap Event Detected:");
+		console.log({ sender, recipient, amount0: amount0.toString(), amount1: amount1.toString() });
+		event.removeListener(); // 只监听一次
+	});
+}
+
+main().catch(console.error);
+
+✅ 当前 sqrtPriceX96: 1865736113605630736735858196288758
+✅ 当前 Tick: 201346
+✅ 当前 LP 流动性: 7266794844411932770
+Mid Price: 1803.26
+Execution Price: 1797.84
+Expected Output: 1797.84
+```
+
