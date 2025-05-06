@@ -181,6 +181,11 @@ const main = async () => {
 
 main();
 ```
+- 查询某个池子（如 `WETH/USDC`）的当前价格和 tick
+- 估算从输入 token（如 WETH）换到输出 token（如 USDC）得到的数量
+- 获取当前 LP 池储备（间接通过合约）
+- 使用 ABI 调用 `slot0()` 获取当前 tick 和 sqrtPriceX96
+- 解析 `Swap` 事件
 
 |需求项|实现方式|
 |---|---|
