@@ -175,11 +175,27 @@ const main = async () => {
 		console.log(`Token1 Change: ${ethers.utils.formatUnits(amount1)}`);
 		console.log(`New Tick: ${tick}`);
 		console.log(`New sqrtPriceX96: ${sqrtPriceX96}`);
+		console.log(`New liquidity: ${liquidity}`);
 		console.log('---------------------------');
 	});
 };
 
 main();
+
+
+
+✅ 当前 sqrtPriceX96: 1864234913218244291503370571162558
+✅ 当前 Tick: 201330
+✅ 当前 LP 流动性: 6084222501667747663
+✅ 估算报价: 1 WETH 可得约 1797.841328 USDC
+📢 Swap Event:
+From 0x5050e08626c499411B5D0E0b5AF0E83d3fD82EDF → 0x5050e08626c499411B5D0E0b5AF0E83d3fD82EDF
+Token0 Change: 0.000000016264101854
+Token1 Change: -8.999692493060258515
+New Tick: 201329
+New sqrtPriceX96: 1864117560196013696886026851855178
+New liquidity: 6066937332023339941
+---------------------------
 ```
 - 查询某个池子（如 `WETH/USDC`）的当前价格和 tick
 - 估算从输入 token（如 WETH）换到输出 token（如 USDC）得到的数量
