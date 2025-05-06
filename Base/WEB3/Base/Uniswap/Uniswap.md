@@ -115,3 +115,66 @@
 |The Graph|获取 LP、tick 数据|
 |Tenderly|事务调试、模拟|
 |Uniswap V3 SDK|交易路径规划、tick 模拟|
+
+
+```ts
+import { ethers } from 'ethers';
+import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
+import { abi as QuoterABI } from '@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json';
+
+
+const provider = new ethers.providers.JsonRpcProvider('https://eth-mainnet.g.alchemy.com/v2/KEY');
+
+const WETH_ADDRESS = ethers.utils.getAddress("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2");
+const USDC_ADDRESS = ethers.utils.getAddress("0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48");
+const UNISWAP_V3_POOL_ADDRESS = '0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640'; // USDC/WETH 0.05%
+const QUOTER_ADDRESS = '0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6';
+
+
+const main = async () => {
+	
+	const poolContract = new ethers.Contract(UNISWAP_V3_POOL_ADDRESS, IUniswapV3PoolABI.abi, provider);
+	const quoterContract = new ethers.Contract(QUOTER_ADDRESS, QuoterABI, provider);
+	
+	// 1. 获取 slot0（包括 sqrtPriceX96 和当前 tick）
+	const [sqrtPriceX96, tick, , , , ,] = await poolContract.slot0();
+	console.log('✅ 当前 sqrtPriceX96:', sqrtPriceX96.toString());
+	console.log('✅ 当前 Tick:', tick);
+	
+	// 2. 获取当前流动性（Liquidity）
+	const liquidity = await poolContract.liquidity();
+	console.log('✅ 当前 LP 流动性:', liquidity.toString());
+	
+	// 3. Swap 报价（输入 1 WETH 换 USDC）
+	const amountIn = ethers.utils.parseEther('1');
+	const quotedAmountOut = await quoterContract.callStatic.quoteExactInputSingle(
+		WETH_ADDRESS,
+		USDC_ADDRESS,
+		3000, // fee: 0.05%
+		amountIn,
+		0
+	);
+	console.log(`✅ 估算报价: 1 WETH 可得约 ${ethers.utils.formatUnits(quotedAmountOut, 6)} USDC`);
+	
+	// 4. 监听 Swap 事件
+	poolContract.on('Swap', (
+		sender,
+		recipient,
+		amount0,
+		amount1,
+		sqrtPriceX96,
+		liquidity,
+		tick
+	) => {
+		console.log(`📢 Swap Event:`);
+		console.log(`From ${sender} → ${recipient}`);
+		console.log(`Token0 Change: ${ethers.utils.formatUnits(amount0)}`);
+		console.log(`Token1 Change: ${ethers.utils.formatUnits(amount1)}`);
+		console.log(`New Tick: ${tick}`);
+		console.log(`New sqrtPriceX96: ${sqrtPriceX96}`);
+		console.log('---------------------------');
+	});
+};
+
+main();
+```
