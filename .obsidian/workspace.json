@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Base/Uniswap/Uniswap.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,11 +52,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Uniswap"
+              "title": "面经"
+            }
+          },
+          {
+            "id": "c07dbde82893db38",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Base/WEB3/Solidity/Solidity.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Solidity"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -177,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Base/Uniswap/Uniswap.md",
+                "file": "Base/WEB3/Solidity/Solidity.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Uniswap"
+              "title": "Outline of Solidity"
             }
           }
         ],
@@ -208,21 +232,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6c9b5bdec27f6cdd",
+  "active": "c07dbde82893db38",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/amm.md",
+    "Base/WEB3/Interview/Solana.md",
+    "Base/WEB3/Solidity/实战.md",
+    "Base/WEB3/Solidity/Solidity.md",
+    "Base/WEB3/Solidity/Foundry.md",
+    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Interview/Interview.md",
+    "README.md",
+    "Base/WEB3/Base/Uniswap/Uniswap.md",
     "Base/WEB3/way/way.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/Mysql.md",
-    "Base/WEB3/Interview/Interview.md",
-    "Base/WEB3/Interview/binance.md",
-    "Base/WEB3/Base/Uniswap/Uniswap.md",
     "Base/WEB3/Base/Uniswap",
     "Base/WEB3/Anchor/Anchor.md",
-    "Base/WEB3/Interview/amm.md",
-    "Base/WEB3/Interview/Solana.md",
-    "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Solidity/Solidity.md",
-    "README.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Work/宏图/assets/image-20240628110945338.png",
     "Work/宏图/assets/image-20240604174153000.png",
