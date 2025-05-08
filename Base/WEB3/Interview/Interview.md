@@ -238,3 +238,19 @@ EVM 是怎么解释 Contract Code 的 Message Call 并执行的呢？
 Smart Contract 中的持久化变量是以什么样的形式存储？又是存储在什么地方？
 当新的 Block 更新到 Blockchain 中时，World State 又是在什么时机，以什么方式更新的呢？
 哪些数据常驻内存，哪些数据需要保存在 Disk 中呢？
+
+
+
+
+bitgit：
+
+1. eth的nft可以大量魔改，solana呢？
+2. 一些eip协议
+3. 
+
+
+binance：
+1. 获取信息的途径
+2. 如果项目中有一个自己的想法如何处理
+
+
