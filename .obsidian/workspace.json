@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "amm"
+              "title": "README"
             }
           }
         ],
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of amm"
+              "title": "Outline of README"
             }
           }
         ],
@@ -234,10 +234,10 @@
   },
   "active": "c07dbde82893db38",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Solidity/Foundry.md",
     "Base/WEB3/Interview/binance.md",
