@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "binance"
             }
           }
         ],
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/binance.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of binance"
             }
           }
         ],
@@ -234,13 +234,14 @@
   },
   "active": "c07dbde82893db38",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Solidity/Foundry.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Interview/Solana.md",
     "README.md",
-    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Base/Uniswap/Uniswap.md",
@@ -248,7 +249,6 @@
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/Mysql.md",
     "Base/WEB3/Base/Uniswap",
-    "Base/WEB3/Anchor/Anchor.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Work/宏图/assets/image-20240628110945338.png",
     "Work/宏图/assets/image-20240604174153000.png",
