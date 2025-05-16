@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Base/Uniswap/Uniswap.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Uniswap"
             }
           },
           {
@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,11 +76,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "amm"
+              "title": "Mantle-Network"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "Base/WEB3/Base/Uniswap/Uniswap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of amm"
+              "title": "Outline of Uniswap"
             }
           }
         ],
@@ -232,20 +232,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c07dbde82893db38",
+  "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/amms.md",
-    "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Anchor/Anchor.md",
+    "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
+    "Base/WEB3/Base/Uniswap/Uniswap.md",
+    "Base/WEB3/Interview/amms.md",
     "Base/WEB3/Interview/amm.md",
+    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Solidity/Foundry.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Interview/Solana.md",
     "README.md",
     "Base/WEB3/Interview/Interview.md",
-    "Base/WEB3/Base/Uniswap/Uniswap.md",
     "Base/WEB3/way/way.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/Mysql.md",
