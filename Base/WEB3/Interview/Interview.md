@@ -254,3 +254,9 @@ binance：
 2. 如果项目中有一个自己的想法如何处理
 
 
+
+
+
+
+
+I'm an enthusiastic blockchain backend engineer with deep hands-on experience in smart contract development (Solidity, Rust, Move), multi-chain integration (Ethereum, Solana, Sui), and DeFi protocols. Although I'm an early-career developer, Bitstamp’s ethos and long-term vision align with my goal to build impactful, secure financial infrastructure. My hybrid skill set in backend systems and on-chain logic makes me uniquely positioned to drive meaningful features across Web2 and Web3 stacks. Let’s build the future of finance together.
