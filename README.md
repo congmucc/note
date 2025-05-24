@@ -2,4 +2,4 @@
 
 ## 本地为Obsidian 做反向链接
 
-www.linkedin.com/in/mu-cong
+www.linkedin.com/in/congmucc

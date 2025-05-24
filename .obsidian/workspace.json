@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "PROJECT_INTRO"
+              "title": "README"
             }
           },
           {
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of PROJECT_INTRO"
+              "title": "Outline of README"
             }
           }
         ],
@@ -234,6 +234,7 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/PROJECT_INTRO.md",
     "README.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Base/Solana/Solana.md",
@@ -246,7 +247,6 @@
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Solidity/Foundry.md",
-    "Base/WEB3/Interview/PROJECT_INTRO.md",
     "Base/WEB3/Interview/amms.md",
     "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
     "Base/WEB3/way/way.md",
