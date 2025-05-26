@@ -261,7 +261,7 @@ binance：
 
 为什么加入公司：
 ```txt
-I'm an enthusiastic blockchain backend engineer with deep hands-on experience in smart contract development (Solidity, Rust, Move), multi-chain integration (Ethereum, Solana, Sui), and DeFi protocols. Although I'm an early-career developer, 公司名字’s ethos and long-term vision align with my goal to build impactful, secure financial infrastructure. My hybrid skill set in backend systems and on-chain logic makes me uniquely positioned to drive meaningful features across Web2 and Web3 stacks. Let’s build the future of crypto together.
+I'm an enthusiastic blockchain backend engineer with deep hands-on experience in smart contract development (Solidity, Rust, Move), multi-chain integration (Ethereum, Solana, Sui), and the backend systems (Golang, Java, Node.js), Although I'm an early-career developer, 公司名字’s ethos and long-term vision align with my goal to build impactful, secure financial infrastructure. My hybrid skill set in backend systems and on-chain logic makes me uniquely positioned to drive meaningful features across Web2 and Web3 stacks. Let’s build the future of crypto together.
 ```
 
 
