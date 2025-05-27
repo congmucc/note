@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/Interview.md",
+                "file": "Base/AI大模型/Dify.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Interview"
+              "title": "Dify"
             }
           },
           {
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/Interview.md",
+                "file": "Base/AI大模型/Dify.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Interview"
+              "title": "Outline of Dify"
             }
           }
         ],
@@ -234,10 +234,11 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "README.md",
+    "Base/AI大模型/Dify.md",
+    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/binance.md",
-    "README.md",
-    "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/PROJECT_INTRO.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Interview/Solana.md",
