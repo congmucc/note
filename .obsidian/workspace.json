@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/AI大模型/Dify.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Dify"
+              "title": "README"
             }
           },
           {
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/AI大模型/Dify.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Dify"
+              "title": "Outline of README"
             }
           }
         ],
@@ -234,8 +234,8 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "README.md",
     "Base/AI大模型/Dify.md",
+    "README.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/binance.md",
