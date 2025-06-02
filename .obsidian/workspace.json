@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
+                "file": "Base/WEB3/Solidity/实战.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "PROJECT_INTRO"
+              "title": "实战"
             }
           },
           {
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
+                "file": "Base/WEB3/Solidity/实战.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of PROJECT_INTRO"
+              "title": "Outline of 实战"
             }
           }
         ],
@@ -234,6 +234,9 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Solidity/合约安全.md",
+    "Base/WEB3/Ethersjs/Ethersjs.md",
+    "Base/WEB3/Interview/PROJECT_INTRO.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/WEB3/Interview/amm.md",
@@ -247,7 +250,6 @@
     "Base/WEB3/Base/Uniswap/Uniswap.md",
     "Base/WEB3/Interview/binance.md",
     "Base/AI大模型/Dify.md",
-    "Base/WEB3/Interview/PROJECT_INTRO.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/amms.md",
@@ -271,7 +273,6 @@
     "Work/宏图/assets",
     "Work/宏图",
     "Work",
-    "conflict-files-obsidian-git.md",
-    "work/宏图/航天宏图.md"
+    "conflict-files-obsidian-git.md"
   ]
 }
