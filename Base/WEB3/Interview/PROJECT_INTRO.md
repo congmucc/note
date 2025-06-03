@@ -207,7 +207,8 @@
 
 **基于交易量与池子深度比例的动态调整**
 比例计算:
-计算交易量与池子储备的比例: ratio = input_amount / reserve
+计算交易量与池子储备的比例: **ratio** = input_amount / reserve
+就是流动性池里某个 token 当前的余额（储备量）
 比例越大，意味着交易相对池子深度越大
 二次函数应用:
 使用二次函数 fee = base_fee + adjustment * ratio²
