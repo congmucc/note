@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Base/Ethereum/Ethereum.md",
+                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Ethereum"
+              "title": "PROJECT_INTRO"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Base/Ethereum/Ethereum.md",
+                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Ethereum"
+              "title": "Outline of PROJECT_INTRO"
             }
           }
         ],
@@ -210,9 +210,9 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
     "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Solidity/Solidity.md",
