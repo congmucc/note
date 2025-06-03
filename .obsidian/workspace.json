@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
+                "file": "Base/WEB3/Base/Ethereum/Ethereum.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Mantle-Network"
+              "title": "Ethereum"
             }
           },
           {
@@ -201,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
+                "file": "Base/WEB3/Base/Ethereum/Ethereum.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Mantle-Network"
+              "title": "Outline of Ethereum"
             }
           }
         ],
@@ -235,6 +235,7 @@
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
@@ -253,7 +254,6 @@
     "Base/AI大模型/Dify.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/amms.md",
-    "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
     "Base/WEB3/way/way.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/后端/SQL/Mysql/Mysql.md",
