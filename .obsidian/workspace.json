@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "PROJECT_INTRO"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/PROJECT_INTRO.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of PROJECT_INTRO"
             }
           }
         ],
@@ -210,8 +210,8 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/PROJECT_INTRO.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
