@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Solidity/实战.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "实战"
+              "title": "README"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Solidity/实战.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 实战"
+              "title": "Outline of README"
             }
           }
         ],
@@ -210,6 +210,7 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/binance.md",
@@ -227,7 +228,6 @@
     "Base/WEB3/Ethersjs/Ethersjs.md",
     "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
-    "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Patrick Collins/Patrick Collins.md",
     "Base/WEB3/Solidity/合约安全.md",
     "README.md",
