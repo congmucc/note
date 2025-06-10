@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Solidity/Foundry.md",
+                "file": "Base/WEB3/Anchor/Anchor.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Foundry"
+              "title": "Anchor"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Solidity/Foundry.md",
+                "file": "Base/WEB3/Anchor/Anchor.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Foundry"
+              "title": "Outline of Anchor"
             }
           }
         ],
@@ -210,8 +210,9 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/way/way.md",
+    "Base/WEB3/Solidity/Foundry.md",
+    "Base/WEB3/Solidity/Solidity.md",
     "README.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Interview/面经.md",
@@ -222,7 +223,6 @@
     "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Interview/PROJECT_INTRO.md",
     "Base/WEB3/Base/Uniswap/Uniswap.md",
-    "Base/WEB3/Solidity/Foundry.md",
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
     "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/WEB3/Base/Solana/Solana.md",

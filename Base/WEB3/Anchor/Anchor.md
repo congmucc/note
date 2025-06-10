@@ -988,7 +988,7 @@ yarn init --yes
 # 导入的 tsconfig.json： 后面那个是允许倒入json文件
 tsc -init --resolveJsonModule true
 
-# 使用yarn创建一个包含基本配置的tsconfig.json.   npm install -g typescript
+# 使用yarn创建一个包含基本配置的tsconfig.json.   yarn add --dev typescript
 yarn tsc -init                     
 
 yarn install 
