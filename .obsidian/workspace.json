@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/后端/Go/Golang基础/Golang基础.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Golang基础"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/后端/Go/Golang基础/Golang基础.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of Golang基础"
             }
           }
         ],
@@ -210,11 +210,11 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/Interview/project/Tg-bot.md",
     "Base/WEB3/Base/Uniswap/Uniswap.md",
     "Base/WEB3/Interview/binance.md",
-    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Anchor/Anchor.md",
