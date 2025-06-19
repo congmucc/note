@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/后端/Go/Golang基础/Golang基础.md",
+                "file": "Base/后端/Rust/Rust.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Golang基础"
+              "title": "Rust"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/Go/Golang基础/Golang基础.md",
+                "file": "Base/后端/Rust/Rust.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Golang基础"
+              "title": "Outline of Rust"
             }
           }
         ],
@@ -210,6 +210,7 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/后端/Go/Golang基础/Golang基础.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/Interview/project/Tg-bot.md",
