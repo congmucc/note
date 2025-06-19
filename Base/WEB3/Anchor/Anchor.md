@@ -653,6 +653,25 @@ customMulticallForDraw();
 ```
 
 
+
+### 什么是 Anchor 的 Zero-Copy？零拷贝
+
+在 Solana 上，账户数据默认会被拷贝成 Rust 结构体（如 `Account<T>`），每次访问都是拷贝后使用。
+
+**Zero-Copy（零拷贝）** 是一种优化方式，使用 `#[zero_copy]` + `AccountLoader<T>` 来 **直接从账户内存映射到结构体**，不拷贝，提升性能，特别适用于频繁读取的大账户结构，如 order book、AMM 状态等。
+
+## 🧠 什么时候该用 Zero-Copy？
+
+适用场景如下：
+- 频繁访问大数据结构，如 DEX 中的订单簿、流动性池信息
+- 多个指令共享对某账户的高频只读/写访问
+- 链上复杂状态更新场景，性能瓶颈在账户解析上
+
+不适用场景：
+- 小结构体（数据少、字段简单），性能提升有限
+- 使用了动态类型（String、Vec、Option）等
+- 不熟悉 Rust 生命周期或 Solana 内存模型者（容易出错）
+
 ## solana的Base58 && Base64
 Solana 使用 Base58 作为账户地址格式，Solana 的 **公钥（Pubkey）** 是 **32 字节（256 位）的 Ed25519 公钥**，而为了便于人类阅读和复制，Solana 采用 **Base58** 进行编码。
 
