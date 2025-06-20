@@ -493,6 +493,14 @@ func (u *User) CanRegisterActivity(activity Activity) bool {
 - 领域模型不再是数据库表，而是 **业务语义载体**
 
 
+1. **职责划分的维度不同：技术分层 vs 领域分层**
+
+|项目|MVC|DDD|
+|---|---|---|
+|分层方式|通常分为 controller / service / model / dao|分为 application / domain / infrastructure|
+|划分依据|技术角色（UI 控制、数据操作）|业务语义与职责边界|
+**解释**：MVC 是按“做什么”来分，DDD 是按“属于谁”来分，DDD 会将业务核心逻辑放在 `domain` 层中，controller 只是入口。
+
 ---
 
 ## 🧩 三、具体例子：订单业务对比
