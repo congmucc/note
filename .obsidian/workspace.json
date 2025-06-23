@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/project/Tg-bot.md",
+                "file": "Base/WEB3/Interview/project/AMM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Tg-bot"
+              "title": "AMM"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/project/Tg-bot.md",
+                "file": "Base/WEB3/Interview/project/AMM.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Tg-bot"
+              "title": "Outline of AMM"
             }
           }
         ],
@@ -210,14 +210,15 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Interview/project/Tg-bot.md",
+    "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/way/way.md",
+    "Base/WEB3/Interview/project/AMM.md",
+    "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/思想/架构/DDD架构.md",
     "Base/思想/设计模式/设计模式.md",
     "Base/后端/Go/Golang基础/Golang基础.md",
     "Base/后端/Rust/Rust.md",
-    "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/Base/Uniswap/Uniswap.md",
     "Base/WEB3/Interview/binance.md",
     "Base/WEB3/Interview/协议.md",
@@ -231,7 +232,6 @@
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
     "README.md",
-    "Base/WEB3/way/way.md",
     "Base/WEB3/Solidity/Foundry.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Base/WEB3Base/WEB3Base.md",
