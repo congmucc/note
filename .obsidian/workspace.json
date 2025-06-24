@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/project/Tg-bot.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Tg-bot"
             }
           }
         ],
@@ -88,7 +88,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "重组",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/project/Tg-bot.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of Tg-bot"
             }
           }
         ],
@@ -210,9 +210,10 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/project/AMM.md",
-    "Base/WEB3/Interview/project/Tg-bot.md",
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/project/Tg-bot.md",
+    "Base/WEB3/Interview/project/FEATURES_SUMMARY.md",
+    "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/way/way.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/思想/架构/DDD架构.md",
@@ -236,7 +237,6 @@
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/WEB3/Ethersjs/Ethersjs.md",
-    "Base/WEB3/Base/Mantle-Network/Mantle-Network.md",
     "Base/WEB3/Base/Uniswap",
     "Work/宏图/assets/image-20240628110945338.png",
     "Work/宏图/assets/image-20240604174153000.png",
