@@ -345,6 +345,17 @@ pub struct InitializeAccounts<'info> {
 
 ### 1.6.1 什么是程序
 
+### Solana 上账户内存如何分配与释放
+
+> 在 Solana 中，账户内存是在创建时通过 `create_account` 类指令手动申请的，并由 `lamports` 预付租金（或设置 rent-exempt），但释放只能通过系统程序销毁账户（deallocate），否则账户及其内存永久保留。
+
+> Solana **不会自动释放内存**，释放逻辑必须手动触发！
+
+
+释放的方式是：将账户 lamports 转给别人，然后将其 data 清空，owner 设为 `SystemProgram`
+
+
+
 Solana 程序，在其他链上叫做智能合约，是所有链上活动的基础。任何开发者都可以在 Solana 链上编写以及部署程序。 链上的一切活动，从去中心化金融（DeFi），到非同质化代币（NFT），再到社交媒体，链上游戏，都由Solana程序所驱动。
 
 ### 1.6.2 Solana 的**程序有哪几种**
