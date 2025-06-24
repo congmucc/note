@@ -10,7 +10,7 @@ redis-server.exe redis.windows.conf
 
 ### 3.2 Redis常用命令 p52
 
-#### 3.2.1 字符串
+#### 3.2.1 字符串（String）
 
 > 字符串(string): 普通字符串，Redis中最简单的数据类型
 
@@ -25,7 +25,7 @@ SETNX key value                 只有在 key不存在时设置 key 的值
 
 
 
-#### 3.2.2 哈希
+#### 3.2.2 哈希（Hash）
 
 > 哈希(hash):也叫散列，类似于Java中的HashMap结构
 
@@ -43,7 +43,7 @@ HVALS key                        获取哈希表中所有值
 
 
 
-#### 3.2.3 列表
+#### 3.2.3 列表（List）
 
 > 列表(list): 按照插入顺序排序，可以有重复元素，类似于Java中的LinkedList
 
@@ -61,7 +61,7 @@ BRPOP key1 [key2 ] timeout       移出并获取列表的最后一个元素,如�
 
 
 
-#### 3.2.4 集合
+#### 3.2.4 集合（Set）
 
 > 集合(set):无序集合，没有重复元素，类似于Java中的HashSet
 
@@ -80,7 +80,7 @@ SREM key member1 [member2]            移除集合中一个或多个成员
 
 
 
-#### 3.2.5 有序集合
+#### 3.2.5 有序集合（Zset）
 
 > 有序集合(sorted set /zset): 集合中每个元素关联一个分数(score)，根据分数升序排序，没有重复元素
 
