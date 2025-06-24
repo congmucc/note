@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/project/AMM.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "AMM"
+              "title": "面经"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/project/AMM.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AMM"
+              "title": "Outline of 面经"
             }
           }
         ],
@@ -210,10 +210,10 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/Interview/project/Tg-bot.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/way/way.md",
-    "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/思想/架构/DDD架构.md",
     "Base/思想/设计模式/设计模式.md",
