@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/后端/SQL/Redis/Redis高级.md",
+                "file": "Base/WEB3/Interview/个人业务.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Redis高级"
+              "title": "个人业务"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/SQL/Redis/Redis高级.md",
+                "file": "Base/WEB3/Interview/个人业务.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Redis高级"
+              "title": "Outline of 个人业务"
             }
           }
         ],
@@ -210,16 +210,19 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/project/Tg-bot.md",
+    "Base/WEB3/Interview/Interview.md",
+    "Base/WEB3/way/way.md",
+    "Base/后端/SQL/Redis/Redis高级.md",
     "Base/后端/SQL/Redis/Redis.md",
     "Base/后端/SQL/Mysql/优化问题.md",
-    "Base/WEB3/Interview/binance.md",
+    "Base/WEB3/Interview/个人业务.md",
     "Base/后端/Java/JavaSE/17_多线程/线程池.md",
     "Base/后端/Java/JavaSE/17_多线程/17.1_进程和线程.md",
     "Base/后端/Java/JavaSE/17_多线程/17.6_线程的生命周期.md",
     "Base/后端/Java/JavaSE/17_多线程/17.7_线程同步机制.md",
     "Base/后端/Java/JavaSE/17_多线程/17.10_释放锁.md",
     "Base/WEB3/Interview/project/AMM.md",
-    "Base/WEB3/Interview/project/Tg-bot.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Base/Solana/Solana.md",
@@ -231,11 +234,8 @@
     "Base/后端/Java/Interview/Interview.md",
     "Base/后端/Go/Golang基础/Golang基础.md",
     "Base/WEB3/Interview/project/FEATURES_SUMMARY.md",
-    "Base/WEB3/way/way.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/思想/架构/DDD架构.md",
-    "Base/思想/设计模式/设计模式.md",
-    "Base/后端/Rust/Rust.md",
     "Base/WEB3/Interview/project",
     "Base/WEB3/Base/Uniswap",
     "Work/宏图/assets/image-20240628110945338.png",
