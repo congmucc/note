@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/后端/SQL/Mysql/优化问题.md",
+                "file": "Base/AI大模型/Langchain4j.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "优化问题"
+              "title": "Langchain4j"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/后端/SQL/Mysql/优化问题.md",
+                "file": "Base/AI大模型/Langchain4j.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 优化问题"
+              "title": "Outline of Langchain4j"
             }
           }
         ],
@@ -210,8 +210,11 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
-    "Base/后端/Java/JavaSE/17_多线程/线程池.md",
+    "Base/AI大模型/Dify.md",
+    "Base/AI大模型/Langchain4j.md",
+    "Base/AI大模型/Ai大模型.md",
     "Base/后端/SQL/Mysql/优化问题.md",
+    "Base/后端/Java/JavaSE/17_多线程/线程池.md",
     "Base/后端/SQL/Mysql/Mysql.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/WEB3/Interview/个人业务.md",
@@ -233,9 +236,6 @@
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Solidity/Foundry.md",
-    "Base/后端/Java/Interview/Interview.md",
-    "Base/后端/Go/Golang基础/Golang基础.md",
-    "Base/WEB3/Interview/project/FEATURES_SUMMARY.md",
     "Base/WEB3/Interview/project",
     "Base/WEB3/Base/Uniswap",
     "Work/宏图/assets/image-20240628110945338.png",
