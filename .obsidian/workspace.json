@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/个人业务.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "个人业务"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/WEB3/Interview/个人业务.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of 个人业务"
             }
           }
         ],
@@ -210,6 +210,7 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/个人业务.md",
     "Base/后端/Java/Interview/Interview.md",
     "Base/后端/SQL/Mysql/优化问题.md",
@@ -229,7 +230,6 @@
     "Base/后端/Java/JavaSE/17_多线程/17.7_线程同步机制.md",
     "Base/后端/Java/JavaSE/17_多线程/17.10_释放锁.md",
     "Base/WEB3/Interview/project/AMM.md",
-    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Anchor/Anchor.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Interview/Solana.md",
