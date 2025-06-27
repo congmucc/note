@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/个人业务.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "个人业务"
+              "title": "面经"
             }
           }
         ],
@@ -177,13 +177,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/个人业务.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 个人业务"
+              "title": "Outline of 面经"
             }
           }
         ],
@@ -210,6 +210,7 @@
   },
   "active": "6c9b5bdec27f6cdd",
   "lastOpenFiles": [
+    "Base/WEB3/Interview/个人业务.md",
     "Base/后端/Java/Interview/Interview.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Base/后端/SQL/Mysql/面试问题.md",
@@ -218,7 +219,6 @@
     "Base/AI大模型/Ai大模型.md",
     "Base/后端/Java/JavaSE/17_多线程/线程池.md",
     "Base/后端/SQL/Mysql/Mysql.md",
-    "Base/WEB3/Interview/个人业务.md",
     "Base/WEB3/Interview/project/Tg-bot.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/way/way.md",
