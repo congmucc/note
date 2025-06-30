@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "Base/WEB3/Interview/project/AMM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,11 +124,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "amm"
+              "title": "AMM"
+            }
+          },
+          {
+            "id": "59ef538ca8cbf0ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Base/WEB3/Interview/Solana.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Solana"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -249,13 +273,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/amm.md",
+                "file": "Base/WEB3/Interview/Solana.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of amm"
+              "title": "Outline of Solana"
             }
           }
         ],
@@ -280,11 +304,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "25a064211cdad7e4",
+  "active": "59ef538ca8cbf0ef",
   "lastOpenFiles": [
-    "Base/WEB3/Interview/面经.md",
-    "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/project/AMM.md",
+    "Base/WEB3/Interview/amm.md",
+    "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/Interview.md",
     "Base/WEB3/Interview/个人业务.md",
