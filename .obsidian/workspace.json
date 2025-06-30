@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
+                "file": "Base/WEB3/Interview/个人业务.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "合约安全漏洞"
+              "title": "个人业务"
             }
           }
         ],
@@ -273,13 +273,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
+                "file": "Base/WEB3/Interview/个人业务.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 合约安全漏洞"
+              "title": "Outline of 个人业务"
             }
           }
         ],
@@ -308,8 +308,8 @@
   "lastOpenFiles": [
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/个人业务.md",
-    "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
+    "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/WEB3/Interview/project/AMM.md",
