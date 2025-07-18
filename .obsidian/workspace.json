@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/project/AMM.md",
+                "file": "Base/WEB3/Solidity/实战.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "AMM"
+              "title": "实战"
             }
           },
           {
@@ -152,7 +152,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -184,7 +184,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "ABI struct",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -304,10 +304,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "59ef538ca8cbf0ef",
+  "active": "25a064211cdad7e4",
   "lastOpenFiles": [
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Interview/project/AMM.md",
+    "Base/WEB3/Solidity/实战.md",
+    "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/WEB3/Solidity/Solidity.md",
+    "Base/WEB3/Solidity/合约安全.md",
     "Base/WEB3/Base/Ethereum/Ethereum.md",
     "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Interview/amm.md",
@@ -315,10 +319,8 @@
     "Base/WEB3/Interview/个人业务.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/后端/SQL/Redis/Redis导学.md",
-    "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
-    "Base/WEB3/Interview/project/AMM.md",
     "Base/后端/Java/Interview/Interview.md",
     "Base/后端/SQL/Mysql/优化问题.md",
     "Base/后端/SQL/Mysql/面试问题.md",
@@ -330,8 +332,6 @@
     "Base/WEB3/Interview/project/Tg-bot.md",
     "Base/WEB3/way/way.md",
     "Base/后端/SQL/Redis/Redis高级.md",
-    "Base/后端/SQL/Redis/Redis.md",
-    "Base/后端/Java/JavaSE/17_多线程/17.1_进程和线程.md",
     "Base/WEB3/Interview/project",
     "Base/WEB3/Base/Uniswap",
     "Work/宏图/assets/image-20240628110945338.png",
