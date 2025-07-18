@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Solidity/实战.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "实战"
+              "title": "面经"
             }
           },
           {
@@ -273,13 +273,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Solidity/实战.md",
+                "file": "Base/WEB3/Interview/面经.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 实战"
+              "title": "Outline of 面经"
             }
           }
         ],
@@ -306,9 +306,9 @@
   },
   "active": "25a064211cdad7e4",
   "lastOpenFiles": [
+    "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Interview/面经.md",
     "Base/WEB3/Interview/project/AMM.md",
-    "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/WEB3/Solidity/Solidity.md",
     "Base/WEB3/Solidity/合约安全.md",
