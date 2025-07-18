@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/后端/Go/Golang基础/Golang基础.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "面经"
+              "title": "Golang基础"
             }
           },
           {
@@ -273,13 +273,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Base/WEB3/Interview/面经.md",
+                "file": "Base/后端/Go/Golang基础/Golang基础.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 面经"
+              "title": "Outline of Golang基础"
             }
           }
         ],
@@ -306,8 +306,10 @@
   },
   "active": "25a064211cdad7e4",
   "lastOpenFiles": [
-    "Base/WEB3/Solidity/实战.md",
+    "Base/后端/SQL/Mysql/优化问题.md",
+    "Base/WEB3/Interview/个人业务.md",
     "Base/WEB3/Interview/面经.md",
+    "Base/WEB3/Solidity/实战.md",
     "Base/WEB3/Interview/project/AMM.md",
     "Base/WEB3/Base/WEB3Base/WEB3Base.md",
     "Base/WEB3/Solidity/Solidity.md",
@@ -316,13 +318,11 @@
     "Base/WEB3/Interview/协议.md",
     "Base/WEB3/Interview/amm.md",
     "Base/WEB3/Interview/Interview.md",
-    "Base/WEB3/Interview/个人业务.md",
     "Base/WEB3/Interview/Solana.md",
     "Base/后端/SQL/Redis/Redis导学.md",
     "Base/WEB3/Base/Solana/Solana.md",
     "Base/WEB3/Base/合约安全漏洞/合约安全漏洞.md",
     "Base/后端/Java/Interview/Interview.md",
-    "Base/后端/SQL/Mysql/优化问题.md",
     "Base/后端/SQL/Mysql/面试问题.md",
     "Base/AI大模型/Langchain4j.md",
     "Base/AI大模型/Dify.md",
